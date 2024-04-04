@@ -1,6 +1,9 @@
 import os
 import shutil
 import csv
+import curses
+import threading
+import time
 from pydub.utils import mediainfo
 from uuid import uuid4
 import keyboard
@@ -23,6 +26,11 @@ class FileInfo:
 class Learner:
     fieldnames = ['UID', 'File', tag1, tag2, tag3, tag4]
     def __init__(self, version):
+        # curses init
+        self.stdscr = curses.initscr()
+        self.stdscr.clear()
+        curses.curs_set(0)  # Hide the cursor
+
         self.version_folder = os.path.join("learndata", version)
         self.input_folder = os.path.join(self.version_folder, "input_folder")
         self.output_folder = os.path.join(self.version_folder, "output_folder")
@@ -34,6 +42,8 @@ class Learner:
         self.start_index = 0
         self.end_index = 0
         self.redraw = True
+        
+
 
     def create_version_folder(self):
         if os.path.exists(self.version_folder):
@@ -56,20 +66,45 @@ class Learner:
             file_name = os.path.basename(file_path)
             self.file_info_dict[file_path] = FileInfo(file_path, file_name)
 
-    def display_files(self):
-        os.system('cls' if os.name == 'nt' else 'clear')
-        print("Audio Files:")
-        for i in range(self.start_index, self.end_index):
-            file_path = self.files[i]
-            if file_path.endswith('.mp3') or file_path.endswith('.wav') or file_path.endswith('.aif'):
-                file_info = self.file_info_dict[file_path]
-                tags_str = ', '.join(key for key, value in file_info.tags.items() if value == 1)
-                added_status = "Added" if file_info.added_to_csv else ""
-                line = f"  {file_info.file_name:<30} | Tags: {tags_str:<45} | Status: {added_status}"
-                if i == self.current_index:
-                    print(f"> {line}")
-                else:
-                    print(f"  {line}")
+    def display_status_message(self, message):
+        max_y, max_x = self.stdscr.getmaxyx()
+        self.stdscr.move(max_y - 1, 0)  # Move cursor to the last row
+        self.stdscr.clrtoeol()  # Clear the last row
+        self.stdscr.addstr(max_y - 1, 0, message)  # Print the message
+        self.stdscr.refresh()  # Refresh the screen
+        
+        # Define a function to clear the message after 1 second
+        def clear_message():
+            time.sleep(1)
+            self.stdscr.move(max_y - 1, 0)  # Move cursor to the last row
+            self.stdscr.clrtoeol()  # Clear the last row
+            self.stdscr.refresh()  # Refresh the screen to remove the message
+        
+        # Start a new thread to execute the clear_message function
+        threading.Thread(target=clear_message).start()
+
+    def display_file_list(self):
+        # self.stdscr.clear()
+        max_y, max_x = self.stdscr.getmaxyx()
+
+        self.stdscr.addstr(0, 0, "Audio Files:")
+        
+        # Calculate start and end indices for visible items
+        start_index = max(0, min(self.current_index - max_y // 2, len(self.file_info_dict) - max_y + 2))
+        end_index = min(len(self.file_info_dict), start_index + max_y - 2)
+        
+        # Display visible items
+        for i, (file_path, file_info) in enumerate(list(self.file_info_dict.items())[start_index:end_index], start=start_index):
+            tags_str = ', '.join(key for key, value in file_info.tags.items() if value == 1)
+            added_status = "Added" if file_info.added_to_csv else ""
+            line = f"{file_info.file_name:<30} | Tags: {tags_str:<45} | Status: {added_status}"
+            if i == self.current_index:
+                self.stdscr.addstr(i - start_index + 1, 0, f"> {line}", curses.A_BOLD)
+            else:
+                self.stdscr.addstr(i - start_index + 1, 0, f"  {line}")
+        
+        # Refresh the screen
+        self.stdscr.refresh()
 
     def move_cursor(self, direction):
         if direction == 'down':
@@ -97,19 +132,22 @@ class Learner:
 
     def save_file_to_csv(self, file_path):
         file_info = self.file_info_dict[file_path]
-        uid = uuid4().hex
-        self.file_info_dict[file_path].uid = uid
-        output_file_path = os.path.join(self.output_folder, f"{uid}.wav")
-        shutil.copy2(file_path, output_file_path)
-        with open(self.tags_csv, 'a', newline='') as csvfile:
-            writer = csv.DictWriter(csvfile, fieldnames=self.fieldnames)
-            writer.writerow({'UID': uid,
-                            'File': file_path,
-                            tag1: file_info.tags[tag1],
-                            tag2: file_info.tags[tag2],
-                            tag3: file_info.tags[tag3],
-                            tag4: file_info.tags[tag4]})
-        self.file_info_dict[file_path].added_to_csv = True
+        if any(file_info.tags.values()):
+            uid = uuid4().hex
+            self.file_info_dict[file_path].uid = uid
+            output_file_path = os.path.join(self.output_folder, f"{uid}.wav")
+            shutil.copy2(file_path, output_file_path)
+            with open(self.tags_csv, 'a', newline='') as csvfile:
+                writer = csv.DictWriter(csvfile, fieldnames=self.fieldnames)
+                writer.writerow({'UID': uid,
+                                'File': file_path,
+                                tag1: file_info.tags[tag1],
+                                tag2: file_info.tags[tag2],
+                                tag3: file_info.tags[tag3],
+                                tag4: file_info.tags[tag4]})
+            self.file_info_dict[file_path].added_to_csv = True
+        else:
+            self.display_status_message("No tags assigned to the current file. Skipping saving to CSV.")
 
     def save_tags_to_csv(self):
         file_path = self.files[self.current_index]
@@ -145,7 +183,7 @@ class Learner:
         
         while True:
             if self.redraw:
-                self.display_files()
+                self.display_file_list()
                 self.redraw = False
 
             key_event = keyboard.read_event()
