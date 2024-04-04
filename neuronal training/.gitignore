@@ -6,3 +6,4 @@ Thumbs.db
 venv/
 temp/
 input_folder/*
+output_folder/*
