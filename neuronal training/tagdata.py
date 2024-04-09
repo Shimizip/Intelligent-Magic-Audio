@@ -93,7 +93,7 @@ class Learner:
         threading.Thread(target=clear_message).start()
 
     def display_file_list(self):
-        # self.stdscr.clear()
+        self.stdscr.clear()
         max_y, max_x = self.stdscr.getmaxyx()
 
         self.stdscr.addstr(0, 0, "Audio Files:")
@@ -106,6 +106,7 @@ class Learner:
         for i, (file_path, file_info) in enumerate(list(self.file_info_dict.items())[start_index:end_index], start=start_index):
             tags_str = ', '.join(key for key, value in file_info.tags.items() if value == 1)
             added_status = "Added" if file_info.added_to_csv else ""
+
             playing_indicator_col = self.playing_indicator if file_path == self.currently_playing and self.audio_playing_event.is_set() else " "
             line = f"{playing_indicator_col:<4} {file_info.file_name:<30} | Tags: {tags_str:<45} | Status: {added_status}"
             if self.waiting_for_play_sig:
@@ -157,8 +158,11 @@ class Learner:
     def save_file_to_csv(self, file_path):
         file_info = self.file_info_dict[file_path]
         if any(file_info.tags.values()):
-            uid = uuid4().hex
-            self.file_info_dict[file_path].uid = uid
+            if not self.file_info_dict[file_path].uid:
+                uid = uuid4().hex
+                self.file_info_dict[file_path].uid = uid
+            else:
+                uid = self.file_info_dict[file_path].uid
             output_file_path = os.path.join(self.output_folder, f"{uid}.wav")
             shutil.copy2(file_path, output_file_path)
             with open(self.tags_csv, 'a', newline='') as csvfile:
