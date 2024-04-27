@@ -15,11 +15,12 @@ typedef struct {
 typedef struct {
     File files[MAX_FILES];
     int num_files;
+    int cursor;
     int current_file_index;
 } FileManager;
 
 void initializeFileManager(FileManager *fm);
 void addFile(FileManager *fm, const char *filename);
-void selectFile(FileManager *fm, int index);
+void selectFile(FileManager *fm);
 
 #endif /* FILE_MANAGER_H */

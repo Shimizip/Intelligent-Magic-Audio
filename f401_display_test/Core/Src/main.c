@@ -108,8 +108,6 @@ int main(void)
   ssd1306_UpdateScreen(&hi2c1);
 
   HAL_Delay(1000);
-  const char *elements[] = {"fart2.wav", "electroonic.wav", "sick.wav"};
-
 
   // Filemanager
   FileManager fm;
@@ -120,14 +118,16 @@ int main(void)
   addFile(&fm, "fart2.wav");
   addFile(&fm, "fart3.wav");
 
-  selectFile(&fm, 1);
+  selectFile(&fm);
   // Displaying the files
   char *filenames[MAX_FILES];
   for (int i = 0; i < fm.num_files; i++) {
       filenames[i] = fm.files[i].filename; // Extracting filenames from File structures
   }
-  
-  displayStrings(&hi2c1, filenames, fm.num_files);
+  char *currentFileName = fm.files[fm.current_file_index].filename;
+
+  displayStrings(&hi2c1, filenames, fm.num_files, fm.cursor);
+  renderSelectedFile(&hi2c1, currentFileName);
   /* USER CODE END 2 */
 
   /* Infinite loop */
