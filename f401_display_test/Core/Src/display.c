@@ -23,7 +23,21 @@ void displayStrings(I2C_HandleTypeDef *hi2c1, char** strings, uint8_t numStrings
             }
         }
     }
-
     // Update display
+    ssd1306_UpdateScreen(hi2c1);
+}
+
+void renderSelectedFile(I2C_HandleTypeDef *hi2c1, const char *filename) {
+    // Clear the bottom part of the screen
+    for (uint8_t i = 0; i < 128; i++) {
+        for (uint8_t j = 48; j < 64; j++) {
+            ssd1306_DrawPixel(i, j, Black);
+        }
+    }
+
+    // Write the selected file name at the bottom of the screen
+    ssd1306_SetCursor(0, 56);
+    ssd1306_WriteString(filename, Font_7x10, White);
+
     ssd1306_UpdateScreen(hi2c1);
 }

@@ -24,6 +24,7 @@
 #include "ssd1306.h"
 #include "fonts.h"
 #include "display.h"
+#include "filemanager.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -107,20 +108,26 @@ int main(void)
   ssd1306_UpdateScreen(&hi2c1);
 
   HAL_Delay(1000);
-  const char *elements[] = {"fart.wav", "electroonic.wav", "sick.wav"};
+  const char *elements[] = {"fart2.wav", "electroonic.wav", "sick.wav"};
 
-  // Write data to local screenbuffer
-  // ssd1306_SetCursor(0, 0);
-  // ssd1306_WriteString(elements[0], Font_7x10, White);
 
-  // ssd1306_SetCursor(0, 8);
-  // ssd1306_WriteString(elements[1], Font_7x10, White);
+  // Filemanager
+  FileManager fm;
+  initializeFileManager(&fm);
 
-  // Copy all data from local screenbuffer to the screen
+  // Adding some dummy files
+  addFile(&fm, "fart.wav");
+  addFile(&fm, "fart2.wav");
+  addFile(&fm, "fart3.wav");
+
+  selectFile(&fm, 1);
+  // Displaying the files
+  char *filenames[MAX_FILES];
+  for (int i = 0; i < fm.num_files; i++) {
+      filenames[i] = fm.files[i].filename; // Extracting filenames from File structures
+  }
   
-  // ssd1306_UpdateScreen(&hi2c1);
-
-  displayStrings(&hi2c1, elements, 3);
+  displayStrings(&hi2c1, filenames, fm.num_files);
   /* USER CODE END 2 */
 
   /* Infinite loop */

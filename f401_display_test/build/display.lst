@@ -1,4 +1,4 @@
-ARM GAS  /tmp/cczomZO6.s 			page 1
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\cc9fJJGq.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -58,7 +58,7 @@ ARM GAS  /tmp/cczomZO6.s 			page 1
   51              	.LVL2:
    6:Core/Src/display.c **** 
    7:Core/Src/display.c ****     // Write data to local screen buffer
-ARM GAS  /tmp/cczomZO6.s 			page 2
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\cc9fJJGq.s 			page 2
 
 
    8:Core/Src/display.c ****     for (uint8_t k = 0; k < numStrings; k++) {
@@ -118,7 +118,7 @@ ARM GAS  /tmp/cczomZO6.s 			page 1
   17:Core/Src/display.c ****             if (j == 0 || j == 63) {
   18:Core/Src/display.c ****                 ssd1306_DrawPixel(i, j, White);
   94              		.loc 1 18 17 is_stmt 1 view .LVU15
-ARM GAS  /tmp/cczomZO6.s 			page 3
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\cc9fJJGq.s 			page 3
 
 
   95 0038 0122     		movs	r2, #1
@@ -178,7 +178,7 @@ ARM GAS  /tmp/cczomZO6.s 			page 1
  137              		.loc 1 14 35 is_stmt 0 discriminator 2 view .LVU27
  138 0066 EDB2     		uxtb	r5, r5
  139              	.LVL15:
-ARM GAS  /tmp/cczomZO6.s 			page 4
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\cc9fJJGq.s 			page 4
 
 
  140              	.L4:
@@ -217,22 +217,22 @@ ARM GAS  /tmp/cczomZO6.s 			page 1
  164              	.LFE134:
  166              		.text
  167              	.Letext0:
- 168              		.file 2 "/home/jonas/.config/VSCodium/User/globalStorage/bmd.stm32-for-vscode/@xpack-dev-tools/arm
- 169              		.file 3 "/home/jonas/.config/VSCodium/User/globalStorage/bmd.stm32-for-vscode/@xpack-dev-tools/arm
+ 168              		.file 2 "C:/Users/jonas/AppData/Roaming/VSCodium/User/globalStorage/bmd.stm32-for-vscode/@xpack-de
+ 169              		.file 3 "C:/Users/jonas/AppData/Roaming/VSCodium/User/globalStorage/bmd.stm32-for-vscode/@xpack-de
  170              		.file 4 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f401xe.h"
  171              		.file 5 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h"
  172              		.file 6 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h"
  173              		.file 7 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c.h"
  174              		.file 8 "Core/Inc/fonts.h"
  175              		.file 9 "Core/Inc/ssd1306.h"
-ARM GAS  /tmp/cczomZO6.s 			page 5
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\cc9fJJGq.s 			page 5
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 display.c
-     /tmp/cczomZO6.s:21     .text.displayStrings:00000000 $t
-     /tmp/cczomZO6.s:27     .text.displayStrings:00000000 displayStrings
-     /tmp/cczomZO6.s:162    .text.displayStrings:0000007c $d
+C:\Users\jonas\AppData\Local\Temp\cc9fJJGq.s:21     .text.displayStrings:00000000 $t
+C:\Users\jonas\AppData\Local\Temp\cc9fJJGq.s:27     .text.displayStrings:00000000 displayStrings
+C:\Users\jonas\AppData\Local\Temp\cc9fJJGq.s:162    .text.displayStrings:0000007c $d
 
 UNDEFINED SYMBOLS
 ssd1306_Fill
