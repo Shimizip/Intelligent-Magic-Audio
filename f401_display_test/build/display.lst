@@ -1,0 +1,243 @@
+ARM GAS  /tmp/cczomZO6.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"display.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.file 1 "Core/Src/display.c"
+  20              		.section	.text.displayStrings,"ax",%progbits
+  21              		.align	1
+  22              		.global	displayStrings
+  23              		.syntax unified
+  24              		.thumb
+  25              		.thumb_func
+  27              	displayStrings:
+  28              	.LVL0:
+  29              	.LFB134:
+   1:Core/Src/display.c **** #include "display.h" 
+   2:Core/Src/display.c **** 
+   3:Core/Src/display.c **** void displayStrings(I2C_HandleTypeDef *hi2c1, char** strings, uint8_t numStrings) {
+  30              		.loc 1 3 83 view -0
+  31              		.cfi_startproc
+  32              		@ args = 0, pretend = 0, frame = 0
+  33              		@ frame_needed = 0, uses_anonymous_args = 0
+  34              		.loc 1 3 83 is_stmt 0 view .LVU1
+  35 0000 F8B5     		push	{r3, r4, r5, r6, r7, lr}
+  36              		.cfi_def_cfa_offset 24
+  37              		.cfi_offset 3, -24
+  38              		.cfi_offset 4, -20
+  39              		.cfi_offset 5, -16
+  40              		.cfi_offset 6, -12
+  41              		.cfi_offset 7, -8
+  42              		.cfi_offset 14, -4
+  43 0002 0646     		mov	r6, r0
+  44 0004 0F46     		mov	r7, r1
+  45 0006 1546     		mov	r5, r2
+   4:Core/Src/display.c ****     // Clear screen
+   5:Core/Src/display.c ****     ssd1306_Fill(Black);
+  46              		.loc 1 5 5 is_stmt 1 view .LVU2
+  47 0008 0020     		movs	r0, #0
+  48              	.LVL1:
+  49              		.loc 1 5 5 is_stmt 0 view .LVU3
+  50 000a FFF7FEFF 		bl	ssd1306_Fill
+  51              	.LVL2:
+   6:Core/Src/display.c **** 
+   7:Core/Src/display.c ****     // Write data to local screen buffer
+ARM GAS  /tmp/cczomZO6.s 			page 2
+
+
+   8:Core/Src/display.c ****     for (uint8_t k = 0; k < numStrings; k++) {
+  52              		.loc 1 8 5 is_stmt 1 view .LVU4
+  53              	.LBB2:
+  54              		.loc 1 8 10 view .LVU5
+  55              		.loc 1 8 18 is_stmt 0 view .LVU6
+  56 000e 0024     		movs	r4, #0
+  57              		.loc 1 8 5 view .LVU7
+  58 0010 0EE0     		b	.L2
+  59              	.LVL3:
+  60              	.L3:
+   9:Core/Src/display.c ****         ssd1306_SetCursor(0, k * 8); // Assuming each line of text is 8 pixels high
+  61              		.loc 1 9 9 is_stmt 1 view .LVU8
+  62 0012 E100     		lsls	r1, r4, #3
+  63 0014 01F0F801 		and	r1, r1, #248
+  64 0018 0020     		movs	r0, #0
+  65 001a FFF7FEFF 		bl	ssd1306_SetCursor
+  66              	.LVL4:
+  10:Core/Src/display.c ****         ssd1306_WriteString(strings[k], Font_7x10, White);
+  67              		.loc 1 10 9 view .LVU9
+  68 001e 174A     		ldr	r2, .L15
+  69 0020 0123     		movs	r3, #1
+  70 0022 06CA     		ldm	r2, {r1, r2}
+  71 0024 57F82400 		ldr	r0, [r7, r4, lsl #2]
+  72 0028 FFF7FEFF 		bl	ssd1306_WriteString
+  73              	.LVL5:
+   8:Core/Src/display.c ****         ssd1306_SetCursor(0, k * 8); // Assuming each line of text is 8 pixels high
+  74              		.loc 1 8 42 discriminator 3 view .LVU10
+  75 002c 0134     		adds	r4, r4, #1
+  76              	.LVL6:
+   8:Core/Src/display.c ****         ssd1306_SetCursor(0, k * 8); // Assuming each line of text is 8 pixels high
+  77              		.loc 1 8 42 is_stmt 0 discriminator 3 view .LVU11
+  78 002e E4B2     		uxtb	r4, r4
+  79              	.LVL7:
+  80              	.L2:
+   8:Core/Src/display.c ****         ssd1306_SetCursor(0, k * 8); // Assuming each line of text is 8 pixels high
+  81              		.loc 1 8 27 is_stmt 1 discriminator 1 view .LVU12
+  82 0030 AC42     		cmp	r4, r5
+  83 0032 EED3     		bcc	.L3
+  84              	.LBE2:
+  85              	.LBB3:
+  11:Core/Src/display.c ****     }
+  12:Core/Src/display.c **** 
+  13:Core/Src/display.c ****     // Draw rectangle border on screen
+  14:Core/Src/display.c ****     for (uint8_t i = 0; i < 128; i++) {
+  86              		.loc 1 14 18 is_stmt 0 view .LVU13
+  87 0034 0025     		movs	r5, #0
+  88              	.LVL8:
+  89              		.loc 1 14 18 view .LVU14
+  90 0036 17E0     		b	.L4
+  91              	.LVL9:
+  92              	.L5:
+  93              	.LBB4:
+  15:Core/Src/display.c ****         for (uint8_t j = 0; j < 64; j++) {
+  16:Core/Src/display.c ****             // Draw top and bottom borders
+  17:Core/Src/display.c ****             if (j == 0 || j == 63) {
+  18:Core/Src/display.c ****                 ssd1306_DrawPixel(i, j, White);
+  94              		.loc 1 18 17 is_stmt 1 view .LVU15
+ARM GAS  /tmp/cczomZO6.s 			page 3
+
+
+  95 0038 0122     		movs	r2, #1
+  96 003a 2146     		mov	r1, r4
+  97 003c 2846     		mov	r0, r5
+  98 003e FFF7FEFF 		bl	ssd1306_DrawPixel
+  99              	.LVL10:
+ 100              	.L7:
+  15:Core/Src/display.c ****         for (uint8_t j = 0; j < 64; j++) {
+ 101              		.loc 1 15 38 discriminator 2 view .LVU16
+ 102 0042 0134     		adds	r4, r4, #1
+ 103              	.LVL11:
+  15:Core/Src/display.c ****         for (uint8_t j = 0; j < 64; j++) {
+ 104              		.loc 1 15 38 is_stmt 0 discriminator 2 view .LVU17
+ 105 0044 E4B2     		uxtb	r4, r4
+ 106              	.LVL12:
+ 107              	.L10:
+  15:Core/Src/display.c ****         for (uint8_t j = 0; j < 64; j++) {
+ 108              		.loc 1 15 31 is_stmt 1 discriminator 1 view .LVU18
+ 109 0046 3F2C     		cmp	r4, #63
+ 110 0048 0CD8     		bhi	.L13
+  17:Core/Src/display.c ****                 ssd1306_DrawPixel(i, j, White);
+ 111              		.loc 1 17 13 view .LVU19
+  17:Core/Src/display.c ****                 ssd1306_DrawPixel(i, j, White);
+ 112              		.loc 1 17 16 is_stmt 0 view .LVU20
+ 113 004a 002C     		cmp	r4, #0
+ 114 004c F4D0     		beq	.L5
+  17:Core/Src/display.c ****                 ssd1306_DrawPixel(i, j, White);
+ 115              		.loc 1 17 24 discriminator 1 view .LVU21
+ 116 004e 3F2C     		cmp	r4, #63
+ 117 0050 F2D0     		beq	.L5
+  19:Core/Src/display.c ****             }
+  20:Core/Src/display.c ****             // Draw left and right borders
+  21:Core/Src/display.c ****             else if (i == 0 || i == 127) {
+ 118              		.loc 1 21 18 is_stmt 1 view .LVU22
+ 119              		.loc 1 21 21 is_stmt 0 view .LVU23
+ 120 0052 0DB1     		cbz	r5, .L8
+ 121              		.loc 1 21 29 discriminator 1 view .LVU24
+ 122 0054 7F2D     		cmp	r5, #127
+ 123 0056 F4D1     		bne	.L7
+ 124              	.L8:
+  22:Core/Src/display.c ****                 ssd1306_DrawPixel(i, j, White);
+ 125              		.loc 1 22 17 is_stmt 1 view .LVU25
+ 126 0058 0122     		movs	r2, #1
+ 127 005a 2146     		mov	r1, r4
+ 128 005c 2846     		mov	r0, r5
+ 129 005e FFF7FEFF 		bl	ssd1306_DrawPixel
+ 130              	.LVL13:
+ 131 0062 EEE7     		b	.L7
+ 132              	.L13:
+ 133              	.LBE4:
+  14:Core/Src/display.c ****         for (uint8_t j = 0; j < 64; j++) {
+ 134              		.loc 1 14 35 discriminator 2 view .LVU26
+ 135 0064 0135     		adds	r5, r5, #1
+ 136              	.LVL14:
+  14:Core/Src/display.c ****         for (uint8_t j = 0; j < 64; j++) {
+ 137              		.loc 1 14 35 is_stmt 0 discriminator 2 view .LVU27
+ 138 0066 EDB2     		uxtb	r5, r5
+ 139              	.LVL15:
+ARM GAS  /tmp/cczomZO6.s 			page 4
+
+
+ 140              	.L4:
+  14:Core/Src/display.c ****         for (uint8_t j = 0; j < 64; j++) {
+ 141              		.loc 1 14 27 is_stmt 1 discriminator 1 view .LVU28
+ 142 0068 15F0800F 		tst	r5, #128
+ 143 006c 01D1     		bne	.L14
+ 144              	.LBB5:
+  15:Core/Src/display.c ****             // Draw top and bottom borders
+ 145              		.loc 1 15 22 is_stmt 0 view .LVU29
+ 146 006e 0024     		movs	r4, #0
+ 147 0070 E9E7     		b	.L10
+ 148              	.L14:
+ 149              	.LBE5:
+ 150              	.LBE3:
+  23:Core/Src/display.c ****             }
+  24:Core/Src/display.c ****         }
+  25:Core/Src/display.c ****     }
+  26:Core/Src/display.c **** 
+  27:Core/Src/display.c ****     // Update display
+  28:Core/Src/display.c ****     ssd1306_UpdateScreen(hi2c1);
+ 151              		.loc 1 28 5 is_stmt 1 view .LVU30
+ 152 0072 3046     		mov	r0, r6
+ 153 0074 FFF7FEFF 		bl	ssd1306_UpdateScreen
+ 154              	.LVL16:
+  29:Core/Src/display.c **** }...
+ 155              		.loc 1 29 1 is_stmt 0 view .LVU31
+ 156 0078 F8BD     		pop	{r3, r4, r5, r6, r7, pc}
+ 157              	.LVL17:
+ 158              	.L16:
+ 159              		.loc 1 29 1 view .LVU32
+ 160 007a 00BF     		.align	2
+ 161              	.L15:
+ 162 007c 00000000 		.word	Font_7x10
+ 163              		.cfi_endproc
+ 164              	.LFE134:
+ 166              		.text
+ 167              	.Letext0:
+ 168              		.file 2 "/home/jonas/.config/VSCodium/User/globalStorage/bmd.stm32-for-vscode/@xpack-dev-tools/arm
+ 169              		.file 3 "/home/jonas/.config/VSCodium/User/globalStorage/bmd.stm32-for-vscode/@xpack-dev-tools/arm
+ 170              		.file 4 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f401xe.h"
+ 171              		.file 5 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h"
+ 172              		.file 6 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h"
+ 173              		.file 7 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c.h"
+ 174              		.file 8 "Core/Inc/fonts.h"
+ 175              		.file 9 "Core/Inc/ssd1306.h"
+ARM GAS  /tmp/cczomZO6.s 			page 5
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 display.c
+     /tmp/cczomZO6.s:21     .text.displayStrings:00000000 $t
+     /tmp/cczomZO6.s:27     .text.displayStrings:00000000 displayStrings
+     /tmp/cczomZO6.s:162    .text.displayStrings:0000007c $d
+
+UNDEFINED SYMBOLS
+ssd1306_Fill
+ssd1306_SetCursor
+ssd1306_WriteString
+ssd1306_DrawPixel
+ssd1306_UpdateScreen
+Font_7x10
