@@ -7,4 +7,4 @@ venv/
 temp/
 input_folder/*
 output_folder/*
-learndata/*
+*.wav
