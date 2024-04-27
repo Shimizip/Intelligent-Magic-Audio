@@ -25,6 +25,7 @@
 #include "fonts.h"
 #include "display.h"
 #include "filemanager.h"
+#include "audio.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -127,8 +128,11 @@ int main(void)
   addFile(&fm, "fart11.wav");
   addFile(&fm, "fart12.wav");
 
+  // uint32_t num_samples = 2000;
+  // int16_t samples[num_samples];
+  // generateWaveform(samples, num_samples);
+  // drawWaveform(&hi2c1,samples, num_samples);
   /* USER CODE END 2 */
-
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)

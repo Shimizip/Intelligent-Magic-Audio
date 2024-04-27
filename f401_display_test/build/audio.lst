@@ -1,0 +1,200 @@
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccZGIi6E.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"audio.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.file 1 "Core/Src/audio.c"
+  20              		.global	__aeabi_dmul
+  21              		.global	__aeabi_d2iz
+  22              		.global	__aeabi_dadd
+  23              		.global	__aeabi_dcmpge
+  24              		.global	__aeabi_dsub
+  25              		.section	.text.generateWaveform,"ax",%progbits
+  26              		.align	1
+  27              		.global	generateWaveform
+  28              		.syntax unified
+  29              		.thumb
+  30              		.thumb_func
+  32              	generateWaveform:
+  33              	.LVL0:
+  34              	.LFB0:
+   1:Core/Src/audio.c **** #include <math.h>
+   2:Core/Src/audio.c **** #include <stdlib.h>
+   3:Core/Src/audio.c **** 
+   4:Core/Src/audio.c **** #include "audio.h"
+   5:Core/Src/audio.c **** 
+   6:Core/Src/audio.c **** #define SAMPLE_RATE     44100   // Sample rate in Hz
+   7:Core/Src/audio.c **** #define DURATION        0.01      // Duration of the waveform in seconds
+   8:Core/Src/audio.c **** #define AMPLITUDE       32767   // Maximum amplitude (16-bit signed)
+   9:Core/Src/audio.c **** 
+  10:Core/Src/audio.c **** void generateWaveform(int16_t* samples, uint32_t numSamples) {
+  35              		.loc 1 10 62 view -0
+  36              		.cfi_startproc
+  37              		@ args = 0, pretend = 0, frame = 0
+  38              		@ frame_needed = 0, uses_anonymous_args = 0
+  39              		.loc 1 10 62 is_stmt 0 view .LVU1
+  40 0000 2DE9F041 		push	{r4, r5, r6, r7, r8, lr}
+  41              		.cfi_def_cfa_offset 24
+  42              		.cfi_offset 4, -24
+  43              		.cfi_offset 5, -20
+  44              		.cfi_offset 6, -16
+  45              		.cfi_offset 7, -12
+  46              		.cfi_offset 8, -8
+  47              		.cfi_offset 14, -4
+  48 0004 8046     		mov	r8, r0
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccZGIi6E.s 			page 2
+
+
+  49 0006 0F46     		mov	r7, r1
+  11:Core/Src/audio.c ****     // Generate a simple sine wave
+  12:Core/Src/audio.c ****     double frequency = 440.0;   // Frequency of the sine wave in Hz (A4 note)
+  50              		.loc 1 12 5 is_stmt 1 view .LVU2
+  51              	.LVL1:
+  13:Core/Src/audio.c ****     double phaseIncrement = 2 * M_PI * frequency / SAMPLE_RATE;
+  52              		.loc 1 13 5 view .LVU3
+  14:Core/Src/audio.c ****     double phase = 0.0;
+  53              		.loc 1 14 5 view .LVU4
+  15:Core/Src/audio.c **** 
+  16:Core/Src/audio.c ****     for (uint32_t i = 0; i < numSamples; i++) {
+  54              		.loc 1 16 5 view .LVU5
+  55              	.LBB2:
+  56              		.loc 1 16 10 view .LVU6
+  57              		.loc 1 16 19 is_stmt 0 view .LVU7
+  58 0008 0026     		movs	r6, #0
+  59              	.LBE2:
+  14:Core/Src/audio.c ****     double phase = 0.0;
+  60              		.loc 1 14 12 view .LVU8
+  61 000a 0024     		movs	r4, #0
+  62 000c 0025     		movs	r5, #0
+  63              	.LBB3:
+  64              		.loc 1 16 5 view .LVU9
+  65 000e 00E0     		b	.L2
+  66              	.LVL2:
+  67              	.L3:
+  68              		.loc 1 16 43 is_stmt 1 discriminator 2 view .LVU10
+  69 0010 0136     		adds	r6, r6, #1
+  70              	.LVL3:
+  71              	.L2:
+  72              		.loc 1 16 28 discriminator 1 view .LVU11
+  73 0012 BE42     		cmp	r6, r7
+  74 0014 28D2     		bcs	.L8
+  17:Core/Src/audio.c ****         samples[i] = (int16_t)(AMPLITUDE * sin(phase));
+  75              		.loc 1 17 9 view .LVU12
+  76              		.loc 1 17 44 is_stmt 0 view .LVU13
+  77 0016 45EC104B 		vmov	d0, r4, r5
+  78 001a FFF7FEFF 		bl	sin
+  79              	.LVL4:
+  80 001e 51EC100B 		vmov	r0, r1, d0
+  81              		.loc 1 17 42 discriminator 1 view .LVU14
+  82 0022 13A3     		adr	r3, .L9
+  83 0024 D3E90023 		ldrd	r2, [r3]
+  84 0028 FFF7FEFF 		bl	__aeabi_dmul
+  85              	.LVL5:
+  86              		.loc 1 17 22 discriminator 1 view .LVU15
+  87 002c FFF7FEFF 		bl	__aeabi_d2iz
+  88              	.LVL6:
+  89              		.loc 1 17 20 discriminator 1 view .LVU16
+  90 0030 28F81600 		strh	r0, [r8, r6, lsl #1]	@ movhi
+  18:Core/Src/audio.c ****         phase += phaseIncrement;
+  91              		.loc 1 18 9 is_stmt 1 view .LVU17
+  92              		.loc 1 18 15 is_stmt 0 view .LVU18
+  93 0034 10A3     		adr	r3, .L9+8
+  94 0036 D3E90023 		ldrd	r2, [r3]
+  95 003a 2046     		mov	r0, r4
+  96 003c 2946     		mov	r1, r5
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccZGIi6E.s 			page 3
+
+
+  97 003e FFF7FEFF 		bl	__aeabi_dadd
+  98              	.LVL7:
+  99 0042 0446     		mov	r4, r0
+ 100              	.LVL8:
+ 101              		.loc 1 18 15 view .LVU19
+ 102 0044 0D46     		mov	r5, r1
+ 103              	.LVL9:
+  19:Core/Src/audio.c ****         if (phase >= 2 * M_PI) {
+ 104              		.loc 1 19 9 is_stmt 1 view .LVU20
+ 105              		.loc 1 19 12 is_stmt 0 view .LVU21
+ 106 0046 0EA3     		adr	r3, .L9+16
+ 107 0048 D3E90023 		ldrd	r2, [r3]
+ 108 004c FFF7FEFF 		bl	__aeabi_dcmpge
+ 109              	.LVL10:
+ 110 0050 0028     		cmp	r0, #0
+ 111 0052 DDD0     		beq	.L3
+  20:Core/Src/audio.c ****             phase -= 2 * M_PI;
+ 112              		.loc 1 20 13 is_stmt 1 view .LVU22
+ 113              		.loc 1 20 19 is_stmt 0 view .LVU23
+ 114 0054 0AA3     		adr	r3, .L9+16
+ 115 0056 D3E90023 		ldrd	r2, [r3]
+ 116 005a 2046     		mov	r0, r4
+ 117 005c 2946     		mov	r1, r5
+ 118 005e FFF7FEFF 		bl	__aeabi_dsub
+ 119              	.LVL11:
+ 120 0062 0446     		mov	r4, r0
+ 121              	.LVL12:
+ 122              		.loc 1 20 19 view .LVU24
+ 123 0064 0D46     		mov	r5, r1
+ 124              	.LVL13:
+ 125              		.loc 1 20 19 view .LVU25
+ 126 0066 D3E7     		b	.L3
+ 127              	.L8:
+ 128              		.loc 1 20 19 view .LVU26
+ 129              	.LBE3:
+  21:Core/Src/audio.c ****         }
+  22:Core/Src/audio.c ****     }
+  23:Core/Src/audio.c **** }...
+ 130              		.loc 1 23 1 view .LVU27
+ 131 0068 BDE8F081 		pop	{r4, r5, r6, r7, r8, pc}
+ 132              	.LVL14:
+ 133              	.L10:
+ 134              		.loc 1 23 1 view .LVU28
+ 135 006c AFF30080 		.align	3
+ 136              	.L9:
+ 137 0070 00000000 		.word	0
+ 138 0074 C0FFDF40 		.word	1088421824
+ 139 0078 295EF138 		.word	955342377
+ 140 007c 690CB03F 		.word	1068502121
+ 141 0080 182D4454 		.word	1413754136
+ 142 0084 FB211940 		.word	1075388923
+ 143              		.cfi_endproc
+ 144              	.LFE0:
+ 146              		.text
+ 147              	.Letext0:
+ 148              		.file 2 "C:/Users/jonas/AppData/Roaming/VSCodium/User/globalStorage/bmd.stm32-for-vscode/@xpack-de
+ 149              		.file 3 "C:/Users/jonas/AppData/Roaming/VSCodium/User/globalStorage/bmd.stm32-for-vscode/@xpack-de
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccZGIi6E.s 			page 4
+
+
+ 150              		.file 4 "C:/Users/jonas/AppData/Roaming/VSCodium/User/globalStorage/bmd.stm32-for-vscode/@xpack-de
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccZGIi6E.s 			page 5
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 audio.c
+C:\Users\jonas\AppData\Local\Temp\ccZGIi6E.s:26     .text.generateWaveform:00000000 $t
+C:\Users\jonas\AppData\Local\Temp\ccZGIi6E.s:32     .text.generateWaveform:00000000 generateWaveform
+C:\Users\jonas\AppData\Local\Temp\ccZGIi6E.s:137    .text.generateWaveform:00000070 $d
+
+UNDEFINED SYMBOLS
+__aeabi_dmul
+__aeabi_d2iz
+__aeabi_dadd
+__aeabi_dcmpge
+__aeabi_dsub
+sin

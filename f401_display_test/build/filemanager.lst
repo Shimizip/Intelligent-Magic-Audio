@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\cc5osE9u.s 			page 1
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccOPzN6j.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\cc5osE9u.s 			page 1
   43              		.loc 1 13 5 is_stmt 1 view .LVU5
   44              		.loc 1 13 22 is_stmt 0 view .LVU6
   45 000e C0F8EC33 		str	r3, [r0, #1004]
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\cc5osE9u.s 			page 2
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccOPzN6j.s 			page 2
 
 
   14:Core/Src/filemanager.c **** }
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\cc5osE9u.s 			page 1
   89 0016 FFF7FEFF 		bl	strcpy
   90              	.LVL5:
   19:Core/Src/filemanager.c ****         if(fm->num_files == 1)
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\cc5osE9u.s 			page 3
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccOPzN6j.s 			page 3
 
 
   91              		.loc 1 19 9 is_stmt 1 view .LVU17
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\cc5osE9u.s 			page 1
   28:Core/Src/filemanager.c ****     } else {
   29:Core/Src/filemanager.c ****         fm->cursor_index = fm->num_files - 1 ;
  137              		.loc 1 29 9 is_stmt 1 view .LVU31
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\cc5osE9u.s 			page 4
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccOPzN6j.s 			page 4
 
 
  138              		.loc 1 29 30 is_stmt 0 view .LVU32
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\cc5osE9u.s 			page 1
  184              		.loc 1 39 1 view .LVU46
  185 001c 7047     		bx	lr
  186              		.cfi_endproc
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\cc5osE9u.s 			page 5
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccOPzN6j.s 			page 5
 
 
  187              	.LFE140:
@@ -273,21 +273,21 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\cc5osE9u.s 			page 1
  215              	.Letext0:
  216              		.file 2 "Core/Inc/filemanager.h"
  217              		.file 3 "C:/Users/jonas/AppData/Roaming/VSCodium/User/globalStorage/bmd.stm32-for-vscode/@xpack-de
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\cc5osE9u.s 			page 6
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccOPzN6j.s 			page 6
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 filemanager.c
-C:\Users\jonas\AppData\Local\Temp\cc5osE9u.s:21     .text.initializeFileManager:00000000 $t
-C:\Users\jonas\AppData\Local\Temp\cc5osE9u.s:27     .text.initializeFileManager:00000000 initializeFileManager
-C:\Users\jonas\AppData\Local\Temp\cc5osE9u.s:52     .text.addFile:00000000 $t
-C:\Users\jonas\AppData\Local\Temp\cc5osE9u.s:58     .text.addFile:00000000 addFile
-C:\Users\jonas\AppData\Local\Temp\cc5osE9u.s:111    .text.cursorUp:00000000 $t
-C:\Users\jonas\AppData\Local\Temp\cc5osE9u.s:117    .text.cursorUp:00000000 cursorUp
-C:\Users\jonas\AppData\Local\Temp\cc5osE9u.s:150    .text.cursorDown:00000000 $t
-C:\Users\jonas\AppData\Local\Temp\cc5osE9u.s:156    .text.cursorDown:00000000 cursorDown
-C:\Users\jonas\AppData\Local\Temp\cc5osE9u.s:190    .text.selectFile:00000000 $t
-C:\Users\jonas\AppData\Local\Temp\cc5osE9u.s:196    .text.selectFile:00000000 selectFile
+C:\Users\jonas\AppData\Local\Temp\ccOPzN6j.s:21     .text.initializeFileManager:00000000 $t
+C:\Users\jonas\AppData\Local\Temp\ccOPzN6j.s:27     .text.initializeFileManager:00000000 initializeFileManager
+C:\Users\jonas\AppData\Local\Temp\ccOPzN6j.s:52     .text.addFile:00000000 $t
+C:\Users\jonas\AppData\Local\Temp\ccOPzN6j.s:58     .text.addFile:00000000 addFile
+C:\Users\jonas\AppData\Local\Temp\ccOPzN6j.s:111    .text.cursorUp:00000000 $t
+C:\Users\jonas\AppData\Local\Temp\ccOPzN6j.s:117    .text.cursorUp:00000000 cursorUp
+C:\Users\jonas\AppData\Local\Temp\ccOPzN6j.s:150    .text.cursorDown:00000000 $t
+C:\Users\jonas\AppData\Local\Temp\ccOPzN6j.s:156    .text.cursorDown:00000000 cursorDown
+C:\Users\jonas\AppData\Local\Temp\ccOPzN6j.s:190    .text.selectFile:00000000 $t
+C:\Users\jonas\AppData\Local\Temp\ccOPzN6j.s:196    .text.selectFile:00000000 selectFile
 
 UNDEFINED SYMBOLS
 strcpy

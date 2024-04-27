@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccfvMyNy.s 			page 1
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccS50bWd.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccfvMyNy.s 			page 1
   28:Core/Src/stm32f4xx_hal_msp.c **** /* USER CODE BEGIN TD */
   29:Core/Src/stm32f4xx_hal_msp.c **** 
   30:Core/Src/stm32f4xx_hal_msp.c **** /* USER CODE END TD */
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccfvMyNy.s 			page 2
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccS50bWd.s 			page 2
 
 
   31:Core/Src/stm32f4xx_hal_msp.c **** 
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccfvMyNy.s 			page 1
   43              		.loc 1 70 3 view .LVU3
   44 0008 0C4B     		ldr	r3, .L3
   45 000a 5A6C     		ldr	r2, [r3, #68]
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccfvMyNy.s 			page 3
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccS50bWd.s 			page 3
 
 
   46 000c 42F48042 		orr	r2, r2, #16384
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccfvMyNy.s 			page 1
   91              		.syntax unified
   92              		.thumb
   93              		.thumb_func
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccfvMyNy.s 			page 4
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccS50bWd.s 			page 4
 
 
   95              	HAL_I2C_MspInit:
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccfvMyNy.s 			page 1
  103:Core/Src/stm32f4xx_hal_msp.c ****     GPIO_InitStruct.Mode = GPIO_MODE_AF_OD;
  104:Core/Src/stm32f4xx_hal_msp.c ****     GPIO_InitStruct.Pull = GPIO_PULLUP;
  105:Core/Src/stm32f4xx_hal_msp.c ****     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccfvMyNy.s 			page 5
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccS50bWd.s 			page 5
 
 
  106:Core/Src/stm32f4xx_hal_msp.c ****     GPIO_InitStruct.Alternate = GPIO_AF4_I2C1;
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccfvMyNy.s 			page 1
  160 0038 1223     		movs	r3, #18
  161 003a 0493     		str	r3, [sp, #16]
  104:Core/Src/stm32f4xx_hal_msp.c ****     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccfvMyNy.s 			page 6
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccS50bWd.s 			page 6
 
 
  162              		.loc 1 104 5 is_stmt 1 view .LVU33
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccfvMyNy.s 			page 1
  203 006c 00380240 		.word	1073887232
  204 0070 00040240 		.word	1073873920
  205              		.cfi_endproc
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccfvMyNy.s 			page 7
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccS50bWd.s 			page 7
 
 
  206              	.LFE135:
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccfvMyNy.s 			page 1
  137:Core/Src/stm32f4xx_hal_msp.c ****     */
  138:Core/Src/stm32f4xx_hal_msp.c ****     HAL_GPIO_DeInit(GPIOB, GPIO_PIN_6);
  241              		.loc 1 138 5 view .LVU54
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccfvMyNy.s 			page 8
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccS50bWd.s 			page 8
 
 
  242 0016 074C     		ldr	r4, .L18+8
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccfvMyNy.s 			page 1
  280 0000 00B5     		push	{lr}
  281              		.cfi_def_cfa_offset 4
  282              		.cfi_offset 14, -4
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccfvMyNy.s 			page 9
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccS50bWd.s 			page 9
 
 
  283 0002 89B0     		sub	sp, sp, #36
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccfvMyNy.s 			page 1
  310              		.cfi_restore_state
  164:Core/Src/stm32f4xx_hal_msp.c **** 
  311              		.loc 1 164 5 is_stmt 1 view .LVU66
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccfvMyNy.s 			page 10
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccS50bWd.s 			page 10
 
 
  312              	.LBB6:
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccfvMyNy.s 			page 1
  351 0050 0223     		movs	r3, #2
  352 0052 0493     		str	r3, [sp, #16]
  173:Core/Src/stm32f4xx_hal_msp.c ****     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccfvMyNy.s 			page 11
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccS50bWd.s 			page 11
 
 
  353              		.loc 1 173 5 is_stmt 1 view .LVU82
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccfvMyNy.s 			page 1
  193:Core/Src/stm32f4xx_hal_msp.c ****   if(huart->Instance==USART2)
  395              		.loc 1 193 3 is_stmt 1 view .LVU91
  396              		.loc 1 193 11 is_stmt 0 view .LVU92
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccfvMyNy.s 			page 12
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccS50bWd.s 			page 12
 
 
  397 0002 0268     		ldr	r2, [r0]
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccfvMyNy.s 			page 1
  429              	.LFE138:
  431              		.text
  432              	.Letext0:
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccfvMyNy.s 			page 13
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccS50bWd.s 			page 13
 
 
  433              		.file 2 "C:/Users/jonas/AppData/Roaming/VSCodium/User/globalStorage/bmd.stm32-for-vscode/@xpack-de
@@ -730,26 +730,26 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccfvMyNy.s 			page 1
  439              		.file 8 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c.h"
  440              		.file 9 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h"
  441              		.file 10 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_cortex.h"
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccfvMyNy.s 			page 14
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccS50bWd.s 			page 14
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 stm32f4xx_hal_msp.c
-C:\Users\jonas\AppData\Local\Temp\ccfvMyNy.s:21     .text.HAL_MspInit:00000000 $t
-C:\Users\jonas\AppData\Local\Temp\ccfvMyNy.s:27     .text.HAL_MspInit:00000000 HAL_MspInit
-C:\Users\jonas\AppData\Local\Temp\ccfvMyNy.s:84     .text.HAL_MspInit:0000003c $d
-C:\Users\jonas\AppData\Local\Temp\ccfvMyNy.s:89     .text.HAL_I2C_MspInit:00000000 $t
-C:\Users\jonas\AppData\Local\Temp\ccfvMyNy.s:95     .text.HAL_I2C_MspInit:00000000 HAL_I2C_MspInit
-C:\Users\jonas\AppData\Local\Temp\ccfvMyNy.s:202    .text.HAL_I2C_MspInit:00000068 $d
-C:\Users\jonas\AppData\Local\Temp\ccfvMyNy.s:209    .text.HAL_I2C_MspDeInit:00000000 $t
-C:\Users\jonas\AppData\Local\Temp\ccfvMyNy.s:215    .text.HAL_I2C_MspDeInit:00000000 HAL_I2C_MspDeInit
-C:\Users\jonas\AppData\Local\Temp\ccfvMyNy.s:259    .text.HAL_I2C_MspDeInit:0000002c $d
-C:\Users\jonas\AppData\Local\Temp\ccfvMyNy.s:266    .text.HAL_UART_MspInit:00000000 $t
-C:\Users\jonas\AppData\Local\Temp\ccfvMyNy.s:272    .text.HAL_UART_MspInit:00000000 HAL_UART_MspInit
-C:\Users\jonas\AppData\Local\Temp\ccfvMyNy.s:371    .text.HAL_UART_MspInit:00000064 $d
-C:\Users\jonas\AppData\Local\Temp\ccfvMyNy.s:377    .text.HAL_UART_MspDeInit:00000000 $t
-C:\Users\jonas\AppData\Local\Temp\ccfvMyNy.s:383    .text.HAL_UART_MspDeInit:00000000 HAL_UART_MspDeInit
-C:\Users\jonas\AppData\Local\Temp\ccfvMyNy.s:425    .text.HAL_UART_MspDeInit:00000020 $d
+C:\Users\jonas\AppData\Local\Temp\ccS50bWd.s:21     .text.HAL_MspInit:00000000 $t
+C:\Users\jonas\AppData\Local\Temp\ccS50bWd.s:27     .text.HAL_MspInit:00000000 HAL_MspInit
+C:\Users\jonas\AppData\Local\Temp\ccS50bWd.s:84     .text.HAL_MspInit:0000003c $d
+C:\Users\jonas\AppData\Local\Temp\ccS50bWd.s:89     .text.HAL_I2C_MspInit:00000000 $t
+C:\Users\jonas\AppData\Local\Temp\ccS50bWd.s:95     .text.HAL_I2C_MspInit:00000000 HAL_I2C_MspInit
+C:\Users\jonas\AppData\Local\Temp\ccS50bWd.s:202    .text.HAL_I2C_MspInit:00000068 $d
+C:\Users\jonas\AppData\Local\Temp\ccS50bWd.s:209    .text.HAL_I2C_MspDeInit:00000000 $t
+C:\Users\jonas\AppData\Local\Temp\ccS50bWd.s:215    .text.HAL_I2C_MspDeInit:00000000 HAL_I2C_MspDeInit
+C:\Users\jonas\AppData\Local\Temp\ccS50bWd.s:259    .text.HAL_I2C_MspDeInit:0000002c $d
+C:\Users\jonas\AppData\Local\Temp\ccS50bWd.s:266    .text.HAL_UART_MspInit:00000000 $t
+C:\Users\jonas\AppData\Local\Temp\ccS50bWd.s:272    .text.HAL_UART_MspInit:00000000 HAL_UART_MspInit
+C:\Users\jonas\AppData\Local\Temp\ccS50bWd.s:371    .text.HAL_UART_MspInit:00000064 $d
+C:\Users\jonas\AppData\Local\Temp\ccS50bWd.s:377    .text.HAL_UART_MspDeInit:00000000 $t
+C:\Users\jonas\AppData\Local\Temp\ccS50bWd.s:383    .text.HAL_UART_MspDeInit:00000000 HAL_UART_MspDeInit
+C:\Users\jonas\AppData\Local\Temp\ccS50bWd.s:425    .text.HAL_UART_MspDeInit:00000020 $d
 
 UNDEFINED SYMBOLS
 HAL_NVIC_SetPriorityGrouping

@@ -8,6 +8,9 @@
 #define BORDER_WIDTH            1
 #define LINE_HEIGHT             10
 #define CURSOR                  '>'
+#define WAVEFORM_TOP        0
+#define WAVEFORM_BOTTOM     (LIST_SECTION_HEIGHT - BORDER_WIDTH)
+#define SAMPLE_SKIP             2
 
 // Global variables to keep track of the visible portion of the list
 static uint8_t first_visible_index = 0;
@@ -75,4 +78,62 @@ void renderSelectedFile(I2C_HandleTypeDef *hi2c1, const char *filename) {
     // Write the selected file name in the selected file section
     ssd1306_SetCursor(0, LIST_SECTION_HEIGHT + 2); // Adjust Y position for text alignment
     ssd1306_WriteString(filename, Font_7x10, White);
+}
+
+void drawWaveform(I2C_HandleTypeDef *hi2c1, int16_t *samples, uint32_t numSamples) {
+    // Clear the waveform area
+    for (uint8_t i = 0; i < DISPLAY_WIDTH; i++) {
+        for (uint8_t j = WAVEFORM_TOP; j < WAVEFORM_BOTTOM; j++) {
+            ssd1306_DrawPixel(i, j, Black);
+        }
+    }
+
+    // Draw waveform
+    // uint32_t x_step = DISPLAY_WIDTH / numSamples;
+    uint8_t x_step = numSamples / DISPLAY_WIDTH;
+
+    for (uint32_t i = 0; i < DISPLAY_WIDTH; i ++) {
+
+        int8_t x1 = i;
+        int8_t y1 = (samples[i * x_step] * (WAVEFORM_BOTTOM - WAVEFORM_TOP) ) / 65536 + (WAVEFORM_BOTTOM - WAVEFORM_TOP)/2;
+        // uint32_t y2 = (samples[i + SAMPLE_SKIP] * (WAVEFORM_BOTTOM - WAVEFORM_TOP) / 32767) + WAVEFORM_TOP;
+        // drawLine(x1, y1, x1, y2, White);
+        ssd1306_DrawPixel(x1, y1, White);
+        // ssd1306_UpdateScreen(hi2c1);
+    }
+
+    // Draw border around the waveform area
+    for (uint8_t i = 0; i < DISPLAY_WIDTH; i++) {
+        for (uint8_t j = WAVEFORM_TOP; j < WAVEFORM_BOTTOM; j++) {
+            if (j == WAVEFORM_TOP || j == WAVEFORM_BOTTOM - 1 || i == 0 || i == DISPLAY_WIDTH - 1) {
+                ssd1306_DrawPixel(i, j, White);
+            }
+        }
+    }
+
+    // Update display
+    ssd1306_UpdateScreen(hi2c1);
+}
+
+void drawLine(int16_t x0, int16_t y0, int16_t x1, int16_t y1, uint16_t color) {
+    int16_t dx = abs(x1 - x0);
+    int16_t sx = x0 < x1 ? 1 : -1;
+    int16_t dy = -abs(y1 - y0);
+    int16_t sy = y0 < y1 ? 1 : -1;
+    int16_t err = dx + dy;
+    int16_t e2;
+
+    while (1) {
+        ssd1306_DrawPixel(x0, y0, color);
+        if (x0 == x1 && y0 == y1) break;
+        e2 = 2 * err;
+        if (e2 >= dy) {
+            err += dy;
+            x0 += sx;
+        }
+        if (e2 <= dx) {
+            err += dx;
+            y0 += sy;
+        }
+    }
 }

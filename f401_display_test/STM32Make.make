@@ -36,6 +36,7 @@ BUILD_DIR = build
 ######################################
 # C sources
 C_SOURCES =  \
+Core/Src/audio.c \
 Core/Src/display.c \
 Core/Src/filemanager.c \
 Core/Src/fonts.c \
