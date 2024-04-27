@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccykdux9.s 			page 1
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccCo8SSc.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -45,12 +45,12 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccykdux9.s 			page 1
    9:Core/Src/display.c **** #define LINE_HEIGHT             10
   10:Core/Src/display.c **** #define CURSOR                  '>'
   11:Core/Src/display.c **** 
-  12:Core/Src/display.c **** void displayStrings(I2C_HandleTypeDef *hi2c1, char** strings, uint8_t numStrings, uint8_t cursor) {
-  34              		.loc 1 12 99 view -0
+  12:Core/Src/display.c **** void displayStrings(I2C_HandleTypeDef *hi2c1, char** strings, uint8_t numStrings, uint8_t cursor_in
+  34              		.loc 1 12 105 view -0
   35              		.cfi_startproc
   36              		@ args = 0, pretend = 0, frame = 128
   37              		@ frame_needed = 0, uses_anonymous_args = 0
-  38              		.loc 1 12 99 is_stmt 0 view .LVU1
+  38              		.loc 1 12 105 is_stmt 0 view .LVU1
   39 0000 2DE9F041 		push	{r4, r5, r6, r7, r8, lr}
   40              		.cfi_def_cfa_offset 24
   41              		.cfi_offset 4, -24
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccykdux9.s 			page 1
   43              		.cfi_offset 6, -16
   44              		.cfi_offset 7, -12
   45              		.cfi_offset 8, -8
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccykdux9.s 			page 2
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccCo8SSc.s 			page 2
 
 
   46              		.cfi_offset 14, -4
@@ -89,9 +89,9 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccykdux9.s 			page 1
   66              	.LVL3:
   67              	.L14:
   68              	.LBB3:
-  18:Core/Src/display.c ****         ssd1306_SetCursor(BORDER_WIDTH, k * LINE_HEIGHT + BORDER_WIDTH); // Adjust cursor position 
-  19:Core/Src/display.c ****         if(k == cursor){
-  20:Core/Src/display.c ****             // Write the line with cursor
+  18:Core/Src/display.c ****         ssd1306_SetCursor(BORDER_WIDTH, k * LINE_HEIGHT + BORDER_WIDTH); // Adjust cursor_index pos
+  19:Core/Src/display.c ****         if(k == cursor_index){
+  20:Core/Src/display.c ****             // Write the line with cursor_index
   21:Core/Src/display.c ****             char line_with_cursor[DISPLAY_WIDTH - BORDER_WIDTH];
   69              		.loc 1 21 13 is_stmt 1 view .LVU8
   22:Core/Src/display.c ****             snprintf(line_with_cursor, sizeof(line_with_cursor), "%c %s", CURSOR, strings[k]);
@@ -115,23 +115,23 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccykdux9.s 			page 1
   86              	.L4:
   87              		.loc 1 23 13 is_stmt 0 view .LVU11
   88              	.LBE3:
-  17:Core/Src/display.c ****         ssd1306_SetCursor(BORDER_WIDTH, k * LINE_HEIGHT + BORDER_WIDTH); // Adjust cursor position 
+  17:Core/Src/display.c ****         ssd1306_SetCursor(BORDER_WIDTH, k * LINE_HEIGHT + BORDER_WIDTH); // Adjust cursor_index pos
   89              		.loc 1 17 42 is_stmt 1 discriminator 2 view .LVU12
   90 0036 0134     		adds	r4, r4, #1
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccykdux9.s 			page 3
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccCo8SSc.s 			page 3
 
 
   91              	.LVL6:
-  17:Core/Src/display.c ****         ssd1306_SetCursor(BORDER_WIDTH, k * LINE_HEIGHT + BORDER_WIDTH); // Adjust cursor position 
+  17:Core/Src/display.c ****         ssd1306_SetCursor(BORDER_WIDTH, k * LINE_HEIGHT + BORDER_WIDTH); // Adjust cursor_index pos
   92              		.loc 1 17 42 is_stmt 0 discriminator 2 view .LVU13
   93 0038 E4B2     		uxtb	r4, r4
   94              	.LVL7:
   95              	.L2:
-  17:Core/Src/display.c ****         ssd1306_SetCursor(BORDER_WIDTH, k * LINE_HEIGHT + BORDER_WIDTH); // Adjust cursor position 
+  17:Core/Src/display.c ****         ssd1306_SetCursor(BORDER_WIDTH, k * LINE_HEIGHT + BORDER_WIDTH); // Adjust cursor_index pos
   96              		.loc 1 17 27 is_stmt 1 discriminator 1 view .LVU14
   97 003a 4445     		cmp	r4, r8
   98 003c 11D2     		bcs	.L13
-  18:Core/Src/display.c ****         if(k == cursor){
+  18:Core/Src/display.c ****         if(k == cursor_index){
   99              		.loc 1 18 9 view .LVU15
  100 003e 04EB8401 		add	r1, r4, r4, lsl #2
  101 0042 4900     		lsls	r1, r1, #1
@@ -140,9 +140,9 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccykdux9.s 			page 1
  104 0048 0120     		movs	r0, #1
  105 004a FFF7FEFF 		bl	ssd1306_SetCursor
  106              	.LVL8:
-  19:Core/Src/display.c ****             // Write the line with cursor
+  19:Core/Src/display.c ****             // Write the line with cursor_index
  107              		.loc 1 19 9 view .LVU16
-  19:Core/Src/display.c ****             // Write the line with cursor
+  19:Core/Src/display.c ****             // Write the line with cursor_index
  108              		.loc 1 19 11 is_stmt 0 view .LVU17
  109 004e BC42     		cmp	r4, r7
  110 0050 E2D0     		beq	.L14
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccykdux9.s 			page 1
   33:Core/Src/display.c ****                 ssd1306_DrawPixel(i, j, White);
  131              		.loc 1 33 17 is_stmt 1 view .LVU22
  132 0066 0122     		movs	r2, #1
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccykdux9.s 			page 4
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccCo8SSc.s 			page 4
 
 
  133 0068 2146     		mov	r1, r4
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccykdux9.s 			page 1
  175              		.loc 1 31 22 is_stmt 0 view .LVU34
  176 0094 0024     		movs	r4, #0
  177 0096 EDE7     		b	.L10
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccykdux9.s 			page 5
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccCo8SSc.s 			page 5
 
 
  178              	.L16:
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccykdux9.s 			page 1
   43:Core/Src/display.c ****     // Clear the selected file section of the screen
   44:Core/Src/display.c ****     for (uint8_t i = 0; i < DISPLAY_WIDTH; i++) {
  225              		.loc 1 44 5 is_stmt 1 view .LVU40
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccykdux9.s 			page 6
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccCo8SSc.s 			page 6
 
 
  226              	.LBB7:
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccykdux9.s 			page 1
   48:Core/Src/display.c ****     }
   49:Core/Src/display.c **** 
   50:Core/Src/display.c ****     // Write the selected file name in the selected file section
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccykdux9.s 			page 7
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccCo8SSc.s 			page 7
 
 
   51:Core/Src/display.c ****     ssd1306_SetCursor(0, LIST_SECTION_HEIGHT + 2); // Adjust Y position for text alignment
@@ -404,18 +404,18 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccykdux9.s 			page 1
  305              		.file 8 "Core/Inc/fonts.h"
  306              		.file 9 "Core/Inc/ssd1306.h"
  307              		.file 10 "<built-in>"
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccykdux9.s 			page 8
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccCo8SSc.s 			page 8
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 display.c
-C:\Users\jonas\AppData\Local\Temp\ccykdux9.s:21     .rodata.displayStrings.str1.4:00000000 $d
-C:\Users\jonas\AppData\Local\Temp\ccykdux9.s:25     .text.displayStrings:00000000 $t
-C:\Users\jonas\AppData\Local\Temp\ccykdux9.s:31     .text.displayStrings:00000000 displayStrings
-C:\Users\jonas\AppData\Local\Temp\ccykdux9.s:195    .text.displayStrings:000000a4 $d
-C:\Users\jonas\AppData\Local\Temp\ccykdux9.s:201    .text.renderSelectedFile:00000000 $t
-C:\Users\jonas\AppData\Local\Temp\ccykdux9.s:207    .text.renderSelectedFile:00000000 renderSelectedFile
-C:\Users\jonas\AppData\Local\Temp\ccykdux9.s:293    .text.renderSelectedFile:00000048 $d
+C:\Users\jonas\AppData\Local\Temp\ccCo8SSc.s:21     .rodata.displayStrings.str1.4:00000000 $d
+C:\Users\jonas\AppData\Local\Temp\ccCo8SSc.s:25     .text.displayStrings:00000000 $t
+C:\Users\jonas\AppData\Local\Temp\ccCo8SSc.s:31     .text.displayStrings:00000000 displayStrings
+C:\Users\jonas\AppData\Local\Temp\ccCo8SSc.s:195    .text.displayStrings:000000a4 $d
+C:\Users\jonas\AppData\Local\Temp\ccCo8SSc.s:201    .text.renderSelectedFile:00000000 $t
+C:\Users\jonas\AppData\Local\Temp\ccCo8SSc.s:207    .text.renderSelectedFile:00000000 renderSelectedFile
+C:\Users\jonas\AppData\Local\Temp\ccCo8SSc.s:293    .text.renderSelectedFile:00000048 $d
 
 UNDEFINED SYMBOLS
 ssd1306_Fill

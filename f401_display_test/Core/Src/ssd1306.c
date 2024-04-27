@@ -214,7 +214,7 @@ void ssd1306_InvertColors(void)
 }
 
 //
-//  Set cursor position
+//  Set cursor_index position
 //
 void ssd1306_SetCursor(uint8_t x, uint8_t y)
 {

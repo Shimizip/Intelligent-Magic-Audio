@@ -9,15 +9,15 @@
 #define LINE_HEIGHT             10
 #define CURSOR                  '>'
 
-void displayStrings(I2C_HandleTypeDef *hi2c1, char** strings, uint8_t numStrings, uint8_t cursor) {
+void displayStrings(I2C_HandleTypeDef *hi2c1, char** strings, uint8_t numStrings, uint8_t cursor_index) {
     // Clear screen
     ssd1306_Fill(Black);
 
     // Write data to list section of the screen
     for (uint8_t k = 0; k < numStrings; k++) {
-        ssd1306_SetCursor(BORDER_WIDTH, k * LINE_HEIGHT + BORDER_WIDTH); // Adjust cursor position based on line height
-        if(k == cursor){
-            // Write the line with cursor
+        ssd1306_SetCursor(BORDER_WIDTH, k * LINE_HEIGHT + BORDER_WIDTH); // Adjust cursor_index position based on line height
+        if(k == cursor_index){
+            // Write the line with cursor_index
             char line_with_cursor[DISPLAY_WIDTH - BORDER_WIDTH];
             snprintf(line_with_cursor, sizeof(line_with_cursor), "%c %s", CURSOR, strings[k]);
             ssd1306_WriteString(line_with_cursor, Font_7x10, White);

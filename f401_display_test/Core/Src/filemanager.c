@@ -10,7 +10,7 @@
 void initializeFileManager(FileManager *fm) {
     fm->num_files = 0;
     fm->current_file_index = -1;
-    fm->cursor = -1;
+    fm->cursor_index = -1;
 }
 
 void addFile(FileManager *fm, const char *filename) {
@@ -18,22 +18,26 @@ void addFile(FileManager *fm, const char *filename) {
         strcpy(fm->files[fm->num_files].filename, filename);
         fm->num_files++;
         if(fm->num_files == 1)
-            fm->cursor = 1;
+            fm->cursor_index = 0;
     }
 }
 
 void cursorUp(FileManager *fm){
-    if (fm->cursor < fm->num_files - 1) {
-        fm->cursor++;
+    if (fm->cursor_index > 0) {
+        fm->cursor_index--;
+    } else {
+        fm->cursor_index = fm->num_files - 1 ;
     }
 }
 
 void cursorDown(FileManager *fm){
-    if (fm->cursor > 0) {
-        fm->cursor--;
+    if (fm->cursor_index < fm->num_files - 1) {
+        fm->cursor_index++;
+    } else {
+        fm->cursor_index = 0;
     }
 }
 
 void selectFile(FileManager *fm) {
-    fm->current_file_index = fm->cursor;
+    fm->current_file_index = fm->cursor_index;
 }
