@@ -114,10 +114,18 @@ int main(void)
   initializeFileManager(&fm);
 
   // Adding some dummy files
-  addFile(&fm, "fart.wav");
+  addFile(&fm, "fart1.wav");
   addFile(&fm, "fart2.wav");
   addFile(&fm, "fart3.wav");
-
+  addFile(&fm, "fart4.wav");
+  addFile(&fm, "fart5.wav");
+  addFile(&fm, "fart6.wav");
+  addFile(&fm, "fart7.wav");
+  addFile(&fm, "fart8.wav");
+  addFile(&fm, "fart9.wav");
+  addFile(&fm, "fart10.wav");
+  addFile(&fm, "fart11.wav");
+  addFile(&fm, "fart12.wav");
 
   /* USER CODE END 2 */
 
@@ -133,9 +141,12 @@ int main(void)
         filenames[i] = fm.files[i].filename; // Extracting filenames from File structures
     }
     char *currentFileName = fm.files[fm.current_file_index].filename;
-
     displayStrings(&hi2c1, filenames, fm.num_files, fm.cursor_index);
     renderSelectedFile(&hi2c1, currentFileName);
+    // Update display
+    ssd1306_UpdateScreen(&hi2c1);
+
+
     cursorUp(&fm);
     /* USER CODE END WHILE */
     /* USER CODE BEGIN 3 */
