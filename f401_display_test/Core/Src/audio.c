@@ -4,7 +4,7 @@
 #include "audio.h"
 
 #define SAMPLE_RATE     44100   // Sample rate in Hz
-#define DURATION        0.01      // Duration of the waveform in seconds
+#define DURATION        0.01    // Duration of the waveform in seconds
 #define AMPLITUDE       32767   // Maximum amplitude (16-bit signed)
 
 void generateWaveform(int16_t* samples, uint32_t numSamples) {
