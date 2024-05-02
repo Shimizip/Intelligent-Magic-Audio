@@ -6,7 +6,7 @@
 # - entry_2
 
 # The project name
-target: Penis
+target: f401_encoder_test
 # Can be C or C++
 language: C
 
