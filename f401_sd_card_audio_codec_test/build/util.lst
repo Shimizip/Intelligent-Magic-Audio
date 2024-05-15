@@ -1,0 +1,153 @@
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccuxpiL4.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"util.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.file 1 "Core/Src/util.c"
+  20              		.section	.text.uart_printf,"ax",%progbits
+  21              		.align	1
+  22              		.global	uart_printf
+  23              		.syntax unified
+  24              		.thumb
+  25              		.thumb_func
+  27              	uart_printf:
+  28              	.LVL0:
+  29              	.LFB137:
+   1:Core/Src/util.c **** #include "util.h"
+   2:Core/Src/util.c **** 
+   3:Core/Src/util.c **** void uart_printf(const char *fmt, ...) {
+  30              		.loc 1 3 40 view -0
+  31              		.cfi_startproc
+  32              		@ args = 4, pretend = 16, frame = 8
+  33              		@ frame_needed = 0, uses_anonymous_args = 1
+  34              		.loc 1 3 40 is_stmt 0 view .LVU1
+  35 0000 0FB4     		push	{r0, r1, r2, r3}
+  36              		.cfi_def_cfa_offset 16
+  37              		.cfi_offset 0, -16
+  38              		.cfi_offset 1, -12
+  39              		.cfi_offset 2, -8
+  40              		.cfi_offset 3, -4
+  41 0002 10B5     		push	{r4, lr}
+  42              		.cfi_def_cfa_offset 24
+  43              		.cfi_offset 4, -24
+  44              		.cfi_offset 14, -20
+  45 0004 82B0     		sub	sp, sp, #8
+  46              		.cfi_def_cfa_offset 32
+  47 0006 04AB     		add	r3, sp, #16
+  48 0008 53F8042B 		ldr	r2, [r3], #4
+   4:Core/Src/util.c ****   static char buffer[256];
+  49              		.loc 1 4 3 is_stmt 1 view .LVU2
+   5:Core/Src/util.c ****   va_list args;
+  50              		.loc 1 5 3 view .LVU3
+   6:Core/Src/util.c ****   va_start(args, fmt);
+  51              		.loc 1 6 3 view .LVU4
+  52 000c 0193     		str	r3, [sp, #4]
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccuxpiL4.s 			page 2
+
+
+   7:Core/Src/util.c ****   vsnprintf(buffer, sizeof(buffer), fmt, args);
+  53              		.loc 1 7 3 view .LVU5
+  54 000e 0A4C     		ldr	r4, .L3
+  55 0010 4FF48071 		mov	r1, #256
+  56 0014 2046     		mov	r0, r4
+  57 0016 FFF7FEFF 		bl	vsnprintf
+  58              	.LVL1:
+   8:Core/Src/util.c ****   va_end(args);
+  59              		.loc 1 8 3 view .LVU6
+   9:Core/Src/util.c **** 
+  10:Core/Src/util.c ****   int len = strlen(buffer);
+  60              		.loc 1 10 3 view .LVU7
+  61              		.loc 1 10 13 is_stmt 0 view .LVU8
+  62 001a 2046     		mov	r0, r4
+  63 001c FFF7FEFF 		bl	strlen
+  64              	.LVL2:
+  11:Core/Src/util.c ****   HAL_UART_Transmit(&huart2, (uint8_t*)buffer, len, -1);
+  65              		.loc 1 11 3 is_stmt 1 view .LVU9
+  66 0020 4FF0FF33 		mov	r3, #-1
+  67 0024 82B2     		uxth	r2, r0
+  68 0026 2146     		mov	r1, r4
+  69 0028 0448     		ldr	r0, .L3+4
+  70              	.LVL3:
+  71              		.loc 1 11 3 is_stmt 0 view .LVU10
+  72 002a FFF7FEFF 		bl	HAL_UART_Transmit
+  73              	.LVL4:
+  12:Core/Src/util.c **** }...
+  74              		.loc 1 12 1 view .LVU11
+  75 002e 02B0     		add	sp, sp, #8
+  76              		.cfi_def_cfa_offset 24
+  77              		@ sp needed
+  78 0030 BDE81040 		pop	{r4, lr}
+  79              		.cfi_restore 14
+  80              		.cfi_restore 4
+  81              		.cfi_def_cfa_offset 16
+  82 0034 04B0     		add	sp, sp, #16
+  83              		.cfi_restore 3
+  84              		.cfi_restore 2
+  85              		.cfi_restore 1
+  86              		.cfi_restore 0
+  87              		.cfi_def_cfa_offset 0
+  88 0036 7047     		bx	lr
+  89              	.L4:
+  90              		.align	2
+  91              	.L3:
+  92 0038 00000000 		.word	buffer.0
+  93 003c 00000000 		.word	huart2
+  94              		.cfi_endproc
+  95              	.LFE137:
+  97              		.section	.bss.buffer.0,"aw",%nobits
+  98              		.align	2
+ 101              	buffer.0:
+ 102 0000 00000000 		.space	256
+ 102      00000000 
+ 102      00000000 
+ 102      00000000 
+ 102      00000000 
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccuxpiL4.s 			page 3
+
+
+ 103              		.text
+ 104              	.Letext0:
+ 105              		.file 2 "C:/Users/jonas/AppData/Roaming/VSCodium/User/globalStorage/bmd.stm32-for-vscode/@xpack-de
+ 106              		.file 3 "C:/Users/jonas/AppData/Roaming/VSCodium/User/globalStorage/bmd.stm32-for-vscode/@xpack-de
+ 107              		.file 4 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f401xe.h"
+ 108              		.file 5 "C:/Users/jonas/AppData/Roaming/VSCodium/User/globalStorage/bmd.stm32-for-vscode/@xpack-de
+ 109              		.file 6 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h"
+ 110              		.file 7 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h"
+ 111              		.file 8 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h"
+ 112              		.file 9 "C:/Users/jonas/AppData/Roaming/VSCodium/User/globalStorage/bmd.stm32-for-vscode/@xpack-de
+ 113              		.file 10 "C:/Users/jonas/AppData/Roaming/VSCodium/User/globalStorage/bmd.stm32-for-vscode/@xpack-d
+ 114              		.file 11 "C:/Users/jonas/AppData/Roaming/VSCodium/User/globalStorage/bmd.stm32-for-vscode/@xpack-d
+ 115              		.file 12 "<built-in>"
+ 116              		.file 13 "Core/Inc/util.h"
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccuxpiL4.s 			page 4
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 util.c
+C:\Users\jonas\AppData\Local\Temp\ccuxpiL4.s:21     .text.uart_printf:00000000 $t
+C:\Users\jonas\AppData\Local\Temp\ccuxpiL4.s:27     .text.uart_printf:00000000 uart_printf
+C:\Users\jonas\AppData\Local\Temp\ccuxpiL4.s:92     .text.uart_printf:00000038 $d
+C:\Users\jonas\AppData\Local\Temp\ccuxpiL4.s:101    .bss.buffer.0:00000000 buffer.0
+C:\Users\jonas\AppData\Local\Temp\ccuxpiL4.s:98     .bss.buffer.0:00000000 $d
+
+UNDEFINED SYMBOLS
+vsnprintf
+strlen
+HAL_UART_Transmit
+huart2

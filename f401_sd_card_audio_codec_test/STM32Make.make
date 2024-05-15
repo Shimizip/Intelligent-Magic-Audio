@@ -37,6 +37,7 @@ BUILD_DIR = build
 # C sources
 C_SOURCES =  \
 Core/Src/audio.c \
+Core/Src/cpu_time.c \
 Core/Src/fatfs_sd.c \
 Core/Src/main.c \
 Core/Src/stm32f4xx_hal_msp.c \
@@ -45,6 +46,7 @@ Core/Src/syscalls.c \
 Core/Src/sysmem.c \
 Core/Src/system_stm32f4xx.c \
 Core/Src/user_diskio_spi.c \
+Core/Src/util.c \
 Core/Src/wavDecoder.c \
 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c \
 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.c \

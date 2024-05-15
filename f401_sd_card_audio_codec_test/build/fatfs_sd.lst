@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccnid9nb.s 			page 1
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\cct01AQh.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccnid9nb.s 			page 1
   29:Core/Src/fatfs_sd.c **** {
   30:Core/Src/fatfs_sd.c **** 	HAL_GPIO_WritePin(SD_CS_PORT, SD_CS_PIN, GPIO_PIN_SET);
   31:Core/Src/fatfs_sd.c **** 	HAL_Delay(1);
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccnid9nb.s 			page 2
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\cct01AQh.s 			page 2
 
 
   32:Core/Src/fatfs_sd.c **** }
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccnid9nb.s 			page 1
   86:Core/Src/fatfs_sd.c **** /* power on */
   87:Core/Src/fatfs_sd.c **** static void SD_PowerOn(void) 
   88:Core/Src/fatfs_sd.c **** {
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccnid9nb.s 			page 3
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\cct01AQh.s 			page 3
 
 
   89:Core/Src/fatfs_sd.c **** 	uint8_t args[6];
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccnid9nb.s 			page 1
   42              	.L2:
   43 0008 00000000 		.word	PowerFlag
   44              		.cfi_endproc
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccnid9nb.s 			page 4
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\cct01AQh.s 			page 4
 
 
   45              	.LFE142:
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccnid9nb.s 			page 1
   93              		.loc 1 44 8 discriminator 1 view .LVU10
   44:Core/Src/fatfs_sd.c **** 	HAL_SPI_Transmit(HSPI_SDCARD, buffer, len, SPI_TIMEOUT);
   94              		.loc 1 44 9 is_stmt 0 discriminator 1 view .LVU11
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccnid9nb.s 			page 5
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\cct01AQh.s 			page 5
 
 
   95 0004 054B     		ldr	r3, .L10
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccnid9nb.s 			page 1
  142              		.loc 1 37 8 discriminator 1 view .LVU20
   37:Core/Src/fatfs_sd.c **** 	HAL_SPI_Transmit(HSPI_SDCARD, &data, 1, SPI_TIMEOUT);
  143              		.loc 1 37 9 is_stmt 0 discriminator 1 view .LVU21
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccnid9nb.s 			page 6
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\cct01AQh.s 			page 6
 
 
  144 0008 074B     		ldr	r3, .L15
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccnid9nb.s 			page 1
  193              		.loc 1 24 2 view .LVU28
  194 000c 0120     		movs	r0, #1
  195 000e FFF7FEFF 		bl	HAL_Delay
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccnid9nb.s 			page 7
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\cct01AQh.s 			page 7
 
 
  196              	.LVL8:
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccnid9nb.s 			page 1
   50:Core/Src/fatfs_sd.c **** 	uint8_t dummy, data;
  249              		.loc 1 50 1 is_stmt 1 view -0
  250              		.cfi_startproc
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccnid9nb.s 			page 8
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\cct01AQh.s 			page 8
 
 
  251              		@ args = 0, pretend = 0, frame = 8
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccnid9nb.s 			page 1
  296              		.section	.text.SD_PowerOn,"ax",%progbits
  297              		.align	1
  298              		.syntax unified
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccnid9nb.s 			page 9
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\cct01AQh.s 			page 9
 
 
  299              		.thumb
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccnid9nb.s 			page 1
  342 0018 FFF7FEFF 		bl	SELECT
  343              	.LVL17:
  103:Core/Src/fatfs_sd.c **** 	args[1] = 0;
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccnid9nb.s 			page 10
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\cct01AQh.s 			page 10
 
 
  344              		.loc 1 103 2 view .LVU57
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccnid9nb.s 			page 1
  381 004c 02D0     		beq	.L34
  382 004e 0CB1     		cbz	r4, .L34
  115:Core/Src/fatfs_sd.c **** 	}
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccnid9nb.s 			page 11
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\cct01AQh.s 			page 11
 
 
  383              		.loc 1 115 3 is_stmt 1 view .LVU75
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccnid9nb.s 			page 1
  430              		.cfi_offset 3, -8
  431              		.cfi_offset 14, -4
   73:Core/Src/fatfs_sd.c **** 
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccnid9nb.s 			page 12
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\cct01AQh.s 			page 12
 
 
  432              		.loc 1 73 2 view .LVU85
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccnid9nb.s 			page 1
  142:Core/Src/fatfs_sd.c **** 	Timer1 = 200;
  143:Core/Src/fatfs_sd.c **** 
  144:Core/Src/fatfs_sd.c **** 	/* loop until receive a response or timeout */
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccnid9nb.s 			page 13
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\cct01AQh.s 			page 13
 
 
  145:Core/Src/fatfs_sd.c **** 	do {
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccnid9nb.s 			page 1
  199:Core/Src/fatfs_sd.c **** 
  200:Core/Src/fatfs_sd.c **** 	/* transmit 0x05 accepted */
  201:Core/Src/fatfs_sd.c **** 	if ((resp & 0x1F) == 0x05) return TRUE;
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccnid9nb.s 			page 14
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\cct01AQh.s 			page 14
 
 
  202:Core/Src/fatfs_sd.c **** 
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccnid9nb.s 			page 1
  231:Core/Src/fatfs_sd.c **** 	if (cmd == CMD12) SPI_RxByte();
  232:Core/Src/fatfs_sd.c **** 
  233:Core/Src/fatfs_sd.c **** 	/* receive response */
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccnid9nb.s 			page 15
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\cct01AQh.s 			page 15
 
 
  234:Core/Src/fatfs_sd.c **** 	uint8_t n = 10;
@@ -898,7 +898,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccnid9nb.s 			page 1
  533              		.loc 1 228 2 is_stmt 1 view .LVU113
  534 003e FFF7FEFF 		bl	SPI_TxByte
  535              	.LVL36:
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccnid9nb.s 			page 16
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\cct01AQh.s 			page 16
 
 
  231:Core/Src/fatfs_sd.c **** 
@@ -958,7 +958,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccnid9nb.s 			page 1
  579              		.align	1
  580              		.syntax unified
  581              		.thumb
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccnid9nb.s 			page 17
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\cct01AQh.s 			page 17
 
 
  582              		.thumb_func
@@ -1018,7 +1018,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccnid9nb.s 			page 1
  630 0004 0D46     		mov	r5, r1
  139:Core/Src/fatfs_sd.c **** 
  631              		.loc 1 139 2 is_stmt 1 view .LVU135
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccnid9nb.s 			page 18
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\cct01AQh.s 			page 18
 
 
  142:Core/Src/fatfs_sd.c **** 
@@ -1078,7 +1078,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccnid9nb.s 			page 1
  671 002a 013D     		subs	r5, r5, #1
  672              	.LVL51:
  155:Core/Src/fatfs_sd.c **** 
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccnid9nb.s 			page 19
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\cct01AQh.s 			page 19
 
 
  673              		.loc 1 155 10 discriminator 1 view .LVU151
@@ -1138,7 +1138,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccnid9nb.s 			page 1
  720              		.cfi_offset 5, -12
  721              		.cfi_offset 6, -8
  722              		.cfi_offset 14, -4
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccnid9nb.s 			page 20
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\cct01AQh.s 			page 20
 
 
  723 0002 0646     		mov	r6, r0
@@ -1198,7 +1198,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccnid9nb.s 			page 1
  762              		.loc 1 203 9 view .LVU175
  763 0026 0020     		movs	r0, #0
  764 0028 F2E7     		b	.L69
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccnid9nb.s 			page 21
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\cct01AQh.s 			page 21
 
 
  765              	.LVL65:
@@ -1258,7 +1258,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccnid9nb.s 			page 1
  805 0052 052B     		cmp	r3, #5
  806 0054 F4D1     		bne	.L80
  807              	.LVL74:
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccnid9nb.s 			page 22
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\cct01AQh.s 			page 22
 
 
  808              	.L74:
@@ -1318,7 +1318,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccnid9nb.s 			page 1
  847              		.cfi_offset 4, -12
  848              		.cfi_offset 5, -8
  849              		.cfi_offset 14, -4
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccnid9nb.s 			page 23
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\cct01AQh.s 			page 23
 
 
  850 0008 83B0     		sub	sp, sp, #12
@@ -1378,7 +1378,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccnid9nb.s 			page 1
  290:Core/Src/fatfs_sd.c **** 				if (Timer1 && SD_SendCmd(CMD58, 0) == 0)
  291:Core/Src/fatfs_sd.c **** 				{
  292:Core/Src/fatfs_sd.c **** 					/* Check CCS bit */
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccnid9nb.s 			page 24
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\cct01AQh.s 			page 24
 
 
  293:Core/Src/fatfs_sd.c **** 					for (n = 0; n < 4; n++)
@@ -1438,7 +1438,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccnid9nb.s 			page 1
  869              		.cfi_remember_state
  870              		.cfi_def_cfa_offset 12
  871              		@ sp needed
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccnid9nb.s 			page 25
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\cct01AQh.s 			page 25
 
 
  872 001c 30BD     		pop	{r4, r5, pc}
@@ -1498,7 +1498,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccnid9nb.s 			page 1
  912 0048 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
  913 004a 03F0FE03 		and	r3, r3, #254
  914 004e 1370     		strb	r3, [r2]
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccnid9nb.s 			page 26
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\cct01AQh.s 			page 26
 
 
  915              	.L99:
@@ -1558,7 +1558,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccnid9nb.s 			page 1
  956              	.LVL91:
  957              	.L85:
  276:Core/Src/fatfs_sd.c **** 			{
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccnid9nb.s 			page 27
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\cct01AQh.s 			page 27
 
 
  958              		.loc 1 276 18 is_stmt 1 discriminator 1 view .LVU233
@@ -1618,7 +1618,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccnid9nb.s 			page 1
  290:Core/Src/fatfs_sd.c **** 				{
  999              		.loc 1 290 9 is_stmt 0 view .LVU247
  1000 00ba 2F4B     		ldr	r3, .L113+8
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccnid9nb.s 			page 28
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\cct01AQh.s 			page 28
 
 
  1001 00bc 1B88     		ldrh	r3, [r3]
@@ -1678,7 +1678,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccnid9nb.s 			page 1
  1041              		.loc 1 299 11 view .LVU261
  1042 00ec 13F0400F 		tst	r3, #64
  1043 00f0 36D0     		beq	.L102
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccnid9nb.s 			page 29
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\cct01AQh.s 			page 29
 
 
  299:Core/Src/fatfs_sd.c **** 				}
@@ -1738,7 +1738,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccnid9nb.s 			page 1
  1086 0122 3BB1     		cbz	r3, .L96
  1087              	.L97:
  308:Core/Src/fatfs_sd.c **** 			{
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccnid9nb.s 			page 30
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\cct01AQh.s 			page 30
 
 
  1088              		.loc 1 308 4 view .LVU274
@@ -1798,7 +1798,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccnid9nb.s 			page 1
  1129 015c DFD1     		bne	.L95
  1130 015e E9E7     		b	.L96
  1131              	.LVL109:
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccnid9nb.s 			page 31
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\cct01AQh.s 			page 31
 
 
  1132              	.L102:
@@ -1858,7 +1858,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccnid9nb.s 			page 1
  350:Core/Src/fatfs_sd.c **** 	return Stat;
  1180              		.loc 1 350 2 is_stmt 1 view .LVU295
  1181              		.loc 1 350 9 is_stmt 0 view .LVU296
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccnid9nb.s 			page 32
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\cct01AQh.s 			page 32
 
 
  1182 0002 034B     		ldr	r3, .L118
@@ -1918,7 +1918,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccnid9nb.s 			page 1
  1229 000a 1C46     		mov	r4, r3
  1230              		.loc 1 357 11 discriminator 2 view .LVU304
  1231 000c 002B     		cmp	r3, #0
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccnid9nb.s 			page 33
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\cct01AQh.s 			page 33
 
 
  1232 000e 3AD0     		beq	.L128
@@ -1978,7 +1978,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccnid9nb.s 			page 1
  1268 0036 68B9     		cbnz	r0, .L124
  1269              	.L126:
  376:Core/Src/fatfs_sd.c **** 		{
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccnid9nb.s 			page 34
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\cct01AQh.s 			page 34
 
 
  377:Core/Src/fatfs_sd.c **** 			do {
@@ -2038,7 +2038,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccnid9nb.s 			page 1
  1308              		.loc 1 392 1 view .LVU334
  1309 0062 70BD     		pop	{r4, r5, r6, pc}
  1310              	.LVL129:
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccnid9nb.s 			page 35
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\cct01AQh.s 			page 35
 
 
  1311              	.L135:
@@ -2098,7 +2098,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccnid9nb.s 			page 1
  357:Core/Src/fatfs_sd.c **** 
  1356              		.loc 1 357 29 discriminator 3 view .LVU345
  1357 0088 EBE7     		b	.L121
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccnid9nb.s 			page 36
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\cct01AQh.s 			page 36
 
 
  1358              	.LVL137:
@@ -2158,7 +2158,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccnid9nb.s 			page 1
  400:Core/Src/fatfs_sd.c **** 
  401:Core/Src/fatfs_sd.c **** 	/* no disk */
  402:Core/Src/fatfs_sd.c **** 	if (Stat & STA_NOINIT) return RES_NOTRDY;
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccnid9nb.s 			page 37
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\cct01AQh.s 			page 37
 
 
  1404              		.loc 1 402 2 is_stmt 1 view .LVU353
@@ -2218,7 +2218,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccnid9nb.s 			page 1
  1439              		.loc 1 421 3 is_stmt 1 view .LVU368
  1440              		.loc 1 421 16 is_stmt 0 view .LVU369
  1441 0038 214B     		ldr	r3, .L158+4
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccnid9nb.s 			page 38
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\cct01AQh.s 			page 38
 
 
  1442 003a 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
@@ -2278,7 +2278,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccnid9nb.s 			page 1
  1482              		.loc 1 435 6 discriminator 1 view .LVU385
  1483 0066 F0B1     		cbz	r0, .L151
  1484              	.LVL148:
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccnid9nb.s 			page 39
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\cct01AQh.s 			page 39
 
 
  1485              	.L142:
@@ -2338,7 +2338,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccnid9nb.s 			page 1
  1521              	.LVL154:
  416:Core/Src/fatfs_sd.c **** 	}
  1522              		.loc 1 416 10 view .LVU397
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccnid9nb.s 			page 40
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\cct01AQh.s 			page 40
 
 
  1523 0092 E9E7     		b	.L142
@@ -2398,7 +2398,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccnid9nb.s 			page 1
  1569              		.loc 1 402 32 discriminator 1 view .LVU406
  1570 00b2 0320     		movs	r0, #3
  1571              	.LVL164:
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccnid9nb.s 			page 41
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\cct01AQh.s 			page 41
 
 
  402:Core/Src/fatfs_sd.c **** 
@@ -2458,7 +2458,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccnid9nb.s 			page 1
  456:Core/Src/fatfs_sd.c **** 
  457:Core/Src/fatfs_sd.c **** 	/* pdrv should be 0 */
  458:Core/Src/fatfs_sd.c **** 	if (drv) return RES_PARERR;
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccnid9nb.s 			page 42
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\cct01AQh.s 			page 42
 
 
  1617              		.loc 1 458 2 view .LVU415
@@ -2518,7 +2518,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccnid9nb.s 			page 1
  1641 0024 0D2D     		cmp	r5, #13
  1642 0026 00F29680 		bhi	.L179
  1643 002a DFE805F0 		tbb	[pc, r5]
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccnid9nb.s 			page 43
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\cct01AQh.s 			page 43
 
 
  1644              	.L167:
@@ -2578,7 +2578,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccnid9nb.s 			page 1
  1687              		.loc 1 472 4 view .LVU435
  1688 0058 82E0     		b	.L161
  1689              	.LVL175:
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccnid9nb.s 			page 44
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\cct01AQh.s 			page 44
 
 
  1690              	.L164:
@@ -2638,7 +2638,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccnid9nb.s 			page 1
  1730              		.loc 1 494 23 view .LVU451
  1731 0084 9B09     		lsrs	r3, r3, #6
  1732              		.loc 1 494 8 view .LVU452
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccnid9nb.s 			page 45
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\cct01AQh.s 			page 45
 
 
  1733 0086 012B     		cmp	r3, #1
@@ -2698,7 +2698,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccnid9nb.s 			page 1
  1776              	.LVL184:
  1777              		.loc 1 505 21 view .LVU472
  1778 00c6 3360     		str	r3, [r6]
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccnid9nb.s 			page 46
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\cct01AQh.s 			page 46
 
 
  1779              	.LVL185:
@@ -2758,7 +2758,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccnid9nb.s 			page 1
  1816              	.L172:
  514:Core/Src/fatfs_sd.c **** 		case CTRL_SYNC:
  515:Core/Src/fatfs_sd.c **** 			if (SD_ReadyWait() == 0xFF) res = RES_OK;
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccnid9nb.s 			page 47
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\cct01AQh.s 			page 47
 
 
  1817              		.loc 1 515 4 view .LVU487
@@ -2818,7 +2818,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccnid9nb.s 			page 1
  1860 011e 08B1     		cbz	r0, .L190
  459:Core/Src/fatfs_sd.c **** 
  1861              		.loc 1 459 6 view .LVU501
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccnid9nb.s 			page 48
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\cct01AQh.s 			page 48
 
 
  1862 0120 0124     		movs	r4, #1
@@ -2878,7 +2878,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccnid9nb.s 			page 1
  1898 014a 0134     		adds	r4, r4, #1
  1899              	.LVL202:
  529:Core/Src/fatfs_sd.c **** 				{
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccnid9nb.s 			page 49
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\cct01AQh.s 			page 49
 
 
  1900              		.loc 1 529 25 is_stmt 0 discriminator 3 view .LVU513
@@ -2938,7 +2938,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccnid9nb.s 			page 1
  1942              	.LVL210:
  1943              	.L176:
  458:Core/Src/fatfs_sd.c **** 	res = RES_ERROR;
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccnid9nb.s 			page 50
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\cct01AQh.s 			page 50
 
 
  1944              		.loc 1 458 18 discriminator 1 view .LVU523
@@ -2993,76 +2993,76 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccnid9nb.s 			page 1
  2002              		.file 10 "Middlewares/Third_Party/FatFs/src/diskio.h"
  2003              		.file 11 "Core/Inc/fatfs_sd.h"
  2004              		.file 12 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h"
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccnid9nb.s 			page 51
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\cct01AQh.s 			page 51
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 fatfs_sd.c
-C:\Users\jonas\AppData\Local\Temp\ccnid9nb.s:21     .text.SD_PowerOff:00000000 $t
-C:\Users\jonas\AppData\Local\Temp\ccnid9nb.s:26     .text.SD_PowerOff:00000000 SD_PowerOff
-C:\Users\jonas\AppData\Local\Temp\ccnid9nb.s:43     .text.SD_PowerOff:00000008 $d
-C:\Users\jonas\AppData\Local\Temp\ccnid9nb.s:1966   .bss.PowerFlag:00000000 PowerFlag
-C:\Users\jonas\AppData\Local\Temp\ccnid9nb.s:48     .text.SD_CheckPower:00000000 $t
-C:\Users\jonas\AppData\Local\Temp\ccnid9nb.s:53     .text.SD_CheckPower:00000000 SD_CheckPower
-C:\Users\jonas\AppData\Local\Temp\ccnid9nb.s:68     .text.SD_CheckPower:00000008 $d
-C:\Users\jonas\AppData\Local\Temp\ccnid9nb.s:73     .text.SPI_TxBuffer:00000000 $t
-C:\Users\jonas\AppData\Local\Temp\ccnid9nb.s:78     .text.SPI_TxBuffer:00000000 SPI_TxBuffer
-C:\Users\jonas\AppData\Local\Temp\ccnid9nb.s:116    .text.SPI_TxBuffer:0000001c $d
-C:\Users\jonas\AppData\Local\Temp\ccnid9nb.s:121    .text.SPI_TxByte:00000000 $t
-C:\Users\jonas\AppData\Local\Temp\ccnid9nb.s:126    .text.SPI_TxByte:00000000 SPI_TxByte
-C:\Users\jonas\AppData\Local\Temp\ccnid9nb.s:167    .text.SPI_TxByte:00000028 $d
-C:\Users\jonas\AppData\Local\Temp\ccnid9nb.s:172    .text.SELECT:00000000 $t
-C:\Users\jonas\AppData\Local\Temp\ccnid9nb.s:177    .text.SELECT:00000000 SELECT
-C:\Users\jonas\AppData\Local\Temp\ccnid9nb.s:202    .text.SELECT:00000014 $d
-C:\Users\jonas\AppData\Local\Temp\ccnid9nb.s:207    .text.DESELECT:00000000 $t
-C:\Users\jonas\AppData\Local\Temp\ccnid9nb.s:212    .text.DESELECT:00000000 DESELECT
-C:\Users\jonas\AppData\Local\Temp\ccnid9nb.s:237    .text.DESELECT:00000014 $d
-C:\Users\jonas\AppData\Local\Temp\ccnid9nb.s:242    .text.SPI_RxByte:00000000 $t
-C:\Users\jonas\AppData\Local\Temp\ccnid9nb.s:247    .text.SPI_RxByte:00000000 SPI_RxByte
-C:\Users\jonas\AppData\Local\Temp\ccnid9nb.s:292    .text.SPI_RxByte:00000034 $d
-C:\Users\jonas\AppData\Local\Temp\ccnid9nb.s:297    .text.SD_PowerOn:00000000 $t
-C:\Users\jonas\AppData\Local\Temp\ccnid9nb.s:302    .text.SD_PowerOn:00000000 SD_PowerOn
-C:\Users\jonas\AppData\Local\Temp\ccnid9nb.s:412    .text.SD_PowerOn:00000068 $d
-C:\Users\jonas\AppData\Local\Temp\ccnid9nb.s:417    .text.SD_ReadyWait:00000000 $t
-C:\Users\jonas\AppData\Local\Temp\ccnid9nb.s:422    .text.SD_ReadyWait:00000000 SD_ReadyWait
-C:\Users\jonas\AppData\Local\Temp\ccnid9nb.s:459    .text.SD_ReadyWait:0000001c $d
-C:\Users\jonas\AppData\Local\Temp\ccnid9nb.s:1983   .bss.Timer2:00000000 Timer2
-C:\Users\jonas\AppData\Local\Temp\ccnid9nb.s:464    .text.SD_SendCmd:00000000 $t
-C:\Users\jonas\AppData\Local\Temp\ccnid9nb.s:469    .text.SD_SendCmd:00000000 SD_SendCmd
-C:\Users\jonas\AppData\Local\Temp\ccnid9nb.s:579    .text.SPI_RxBytePtr:00000000 $t
-C:\Users\jonas\AppData\Local\Temp\ccnid9nb.s:584    .text.SPI_RxBytePtr:00000000 SPI_RxBytePtr
-C:\Users\jonas\AppData\Local\Temp\ccnid9nb.s:610    .text.SD_RxDataBlock:00000000 $t
-C:\Users\jonas\AppData\Local\Temp\ccnid9nb.s:615    .text.SD_RxDataBlock:00000000 SD_RxDataBlock
-C:\Users\jonas\AppData\Local\Temp\ccnid9nb.s:699    .text.SD_RxDataBlock:00000040 $d
-C:\Users\jonas\AppData\Local\Temp\ccnid9nb.s:1990   .bss.Timer1:00000000 Timer1
-C:\Users\jonas\AppData\Local\Temp\ccnid9nb.s:704    .text.SD_TxDataBlock:00000000 $t
-C:\Users\jonas\AppData\Local\Temp\ccnid9nb.s:709    .text.SD_TxDataBlock:00000000 SD_TxDataBlock
-C:\Users\jonas\AppData\Local\Temp\ccnid9nb.s:826    .text.SD_disk_initialize:00000000 $t
-C:\Users\jonas\AppData\Local\Temp\ccnid9nb.s:832    .text.SD_disk_initialize:00000000 SD_disk_initialize
-C:\Users\jonas\AppData\Local\Temp\ccnid9nb.s:1156   .text.SD_disk_initialize:00000170 $d
-C:\Users\jonas\AppData\Local\Temp\ccnid9nb.s:1976   .data.Stat:00000000 Stat
-C:\Users\jonas\AppData\Local\Temp\ccnid9nb.s:1971   .bss.CardType:00000000 CardType
-C:\Users\jonas\AppData\Local\Temp\ccnid9nb.s:1163   .text.SD_disk_status:00000000 $t
-C:\Users\jonas\AppData\Local\Temp\ccnid9nb.s:1169   .text.SD_disk_status:00000000 SD_disk_status
-C:\Users\jonas\AppData\Local\Temp\ccnid9nb.s:1198   .text.SD_disk_status:00000010 $d
-C:\Users\jonas\AppData\Local\Temp\ccnid9nb.s:1203   .text.SD_disk_read:00000000 $t
-C:\Users\jonas\AppData\Local\Temp\ccnid9nb.s:1209   .text.SD_disk_read:00000000 SD_disk_read
-C:\Users\jonas\AppData\Local\Temp\ccnid9nb.s:1368   .text.SD_disk_read:00000090 $d
-C:\Users\jonas\AppData\Local\Temp\ccnid9nb.s:1374   .text.SD_disk_write:00000000 $t
-C:\Users\jonas\AppData\Local\Temp\ccnid9nb.s:1380   .text.SD_disk_write:00000000 SD_disk_write
-C:\Users\jonas\AppData\Local\Temp\ccnid9nb.s:1584   .text.SD_disk_write:000000bc $d
-C:\Users\jonas\AppData\Local\Temp\ccnid9nb.s:1590   .text.SD_disk_ioctl:00000000 $t
-C:\Users\jonas\AppData\Local\Temp\ccnid9nb.s:1596   .text.SD_disk_ioctl:00000000 SD_disk_ioctl
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccnid9nb.s 			page 52
+C:\Users\jonas\AppData\Local\Temp\cct01AQh.s:21     .text.SD_PowerOff:00000000 $t
+C:\Users\jonas\AppData\Local\Temp\cct01AQh.s:26     .text.SD_PowerOff:00000000 SD_PowerOff
+C:\Users\jonas\AppData\Local\Temp\cct01AQh.s:43     .text.SD_PowerOff:00000008 $d
+C:\Users\jonas\AppData\Local\Temp\cct01AQh.s:1966   .bss.PowerFlag:00000000 PowerFlag
+C:\Users\jonas\AppData\Local\Temp\cct01AQh.s:48     .text.SD_CheckPower:00000000 $t
+C:\Users\jonas\AppData\Local\Temp\cct01AQh.s:53     .text.SD_CheckPower:00000000 SD_CheckPower
+C:\Users\jonas\AppData\Local\Temp\cct01AQh.s:68     .text.SD_CheckPower:00000008 $d
+C:\Users\jonas\AppData\Local\Temp\cct01AQh.s:73     .text.SPI_TxBuffer:00000000 $t
+C:\Users\jonas\AppData\Local\Temp\cct01AQh.s:78     .text.SPI_TxBuffer:00000000 SPI_TxBuffer
+C:\Users\jonas\AppData\Local\Temp\cct01AQh.s:116    .text.SPI_TxBuffer:0000001c $d
+C:\Users\jonas\AppData\Local\Temp\cct01AQh.s:121    .text.SPI_TxByte:00000000 $t
+C:\Users\jonas\AppData\Local\Temp\cct01AQh.s:126    .text.SPI_TxByte:00000000 SPI_TxByte
+C:\Users\jonas\AppData\Local\Temp\cct01AQh.s:167    .text.SPI_TxByte:00000028 $d
+C:\Users\jonas\AppData\Local\Temp\cct01AQh.s:172    .text.SELECT:00000000 $t
+C:\Users\jonas\AppData\Local\Temp\cct01AQh.s:177    .text.SELECT:00000000 SELECT
+C:\Users\jonas\AppData\Local\Temp\cct01AQh.s:202    .text.SELECT:00000014 $d
+C:\Users\jonas\AppData\Local\Temp\cct01AQh.s:207    .text.DESELECT:00000000 $t
+C:\Users\jonas\AppData\Local\Temp\cct01AQh.s:212    .text.DESELECT:00000000 DESELECT
+C:\Users\jonas\AppData\Local\Temp\cct01AQh.s:237    .text.DESELECT:00000014 $d
+C:\Users\jonas\AppData\Local\Temp\cct01AQh.s:242    .text.SPI_RxByte:00000000 $t
+C:\Users\jonas\AppData\Local\Temp\cct01AQh.s:247    .text.SPI_RxByte:00000000 SPI_RxByte
+C:\Users\jonas\AppData\Local\Temp\cct01AQh.s:292    .text.SPI_RxByte:00000034 $d
+C:\Users\jonas\AppData\Local\Temp\cct01AQh.s:297    .text.SD_PowerOn:00000000 $t
+C:\Users\jonas\AppData\Local\Temp\cct01AQh.s:302    .text.SD_PowerOn:00000000 SD_PowerOn
+C:\Users\jonas\AppData\Local\Temp\cct01AQh.s:412    .text.SD_PowerOn:00000068 $d
+C:\Users\jonas\AppData\Local\Temp\cct01AQh.s:417    .text.SD_ReadyWait:00000000 $t
+C:\Users\jonas\AppData\Local\Temp\cct01AQh.s:422    .text.SD_ReadyWait:00000000 SD_ReadyWait
+C:\Users\jonas\AppData\Local\Temp\cct01AQh.s:459    .text.SD_ReadyWait:0000001c $d
+C:\Users\jonas\AppData\Local\Temp\cct01AQh.s:1983   .bss.Timer2:00000000 Timer2
+C:\Users\jonas\AppData\Local\Temp\cct01AQh.s:464    .text.SD_SendCmd:00000000 $t
+C:\Users\jonas\AppData\Local\Temp\cct01AQh.s:469    .text.SD_SendCmd:00000000 SD_SendCmd
+C:\Users\jonas\AppData\Local\Temp\cct01AQh.s:579    .text.SPI_RxBytePtr:00000000 $t
+C:\Users\jonas\AppData\Local\Temp\cct01AQh.s:584    .text.SPI_RxBytePtr:00000000 SPI_RxBytePtr
+C:\Users\jonas\AppData\Local\Temp\cct01AQh.s:610    .text.SD_RxDataBlock:00000000 $t
+C:\Users\jonas\AppData\Local\Temp\cct01AQh.s:615    .text.SD_RxDataBlock:00000000 SD_RxDataBlock
+C:\Users\jonas\AppData\Local\Temp\cct01AQh.s:699    .text.SD_RxDataBlock:00000040 $d
+C:\Users\jonas\AppData\Local\Temp\cct01AQh.s:1990   .bss.Timer1:00000000 Timer1
+C:\Users\jonas\AppData\Local\Temp\cct01AQh.s:704    .text.SD_TxDataBlock:00000000 $t
+C:\Users\jonas\AppData\Local\Temp\cct01AQh.s:709    .text.SD_TxDataBlock:00000000 SD_TxDataBlock
+C:\Users\jonas\AppData\Local\Temp\cct01AQh.s:826    .text.SD_disk_initialize:00000000 $t
+C:\Users\jonas\AppData\Local\Temp\cct01AQh.s:832    .text.SD_disk_initialize:00000000 SD_disk_initialize
+C:\Users\jonas\AppData\Local\Temp\cct01AQh.s:1156   .text.SD_disk_initialize:00000170 $d
+C:\Users\jonas\AppData\Local\Temp\cct01AQh.s:1976   .data.Stat:00000000 Stat
+C:\Users\jonas\AppData\Local\Temp\cct01AQh.s:1971   .bss.CardType:00000000 CardType
+C:\Users\jonas\AppData\Local\Temp\cct01AQh.s:1163   .text.SD_disk_status:00000000 $t
+C:\Users\jonas\AppData\Local\Temp\cct01AQh.s:1169   .text.SD_disk_status:00000000 SD_disk_status
+C:\Users\jonas\AppData\Local\Temp\cct01AQh.s:1198   .text.SD_disk_status:00000010 $d
+C:\Users\jonas\AppData\Local\Temp\cct01AQh.s:1203   .text.SD_disk_read:00000000 $t
+C:\Users\jonas\AppData\Local\Temp\cct01AQh.s:1209   .text.SD_disk_read:00000000 SD_disk_read
+C:\Users\jonas\AppData\Local\Temp\cct01AQh.s:1368   .text.SD_disk_read:00000090 $d
+C:\Users\jonas\AppData\Local\Temp\cct01AQh.s:1374   .text.SD_disk_write:00000000 $t
+C:\Users\jonas\AppData\Local\Temp\cct01AQh.s:1380   .text.SD_disk_write:00000000 SD_disk_write
+C:\Users\jonas\AppData\Local\Temp\cct01AQh.s:1584   .text.SD_disk_write:000000bc $d
+C:\Users\jonas\AppData\Local\Temp\cct01AQh.s:1590   .text.SD_disk_ioctl:00000000 $t
+C:\Users\jonas\AppData\Local\Temp\cct01AQh.s:1596   .text.SD_disk_ioctl:00000000 SD_disk_ioctl
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\cct01AQh.s 			page 52
 
 
-C:\Users\jonas\AppData\Local\Temp\ccnid9nb.s:1645   .text.SD_disk_ioctl:0000002e $d
-C:\Users\jonas\AppData\Local\Temp\ccnid9nb.s:1660   .text.SD_disk_ioctl:0000003c $t
-C:\Users\jonas\AppData\Local\Temp\ccnid9nb.s:1959   .text.SD_disk_ioctl:0000017c $d
-C:\Users\jonas\AppData\Local\Temp\ccnid9nb.s:1967   .bss.PowerFlag:00000000 $d
-C:\Users\jonas\AppData\Local\Temp\ccnid9nb.s:1972   .bss.CardType:00000000 $d
-C:\Users\jonas\AppData\Local\Temp\ccnid9nb.s:1980   .bss.Timer2:00000000 $d
-C:\Users\jonas\AppData\Local\Temp\ccnid9nb.s:1987   .bss.Timer1:00000000 $d
+C:\Users\jonas\AppData\Local\Temp\cct01AQh.s:1645   .text.SD_disk_ioctl:0000002e $d
+C:\Users\jonas\AppData\Local\Temp\cct01AQh.s:1660   .text.SD_disk_ioctl:0000003c $t
+C:\Users\jonas\AppData\Local\Temp\cct01AQh.s:1959   .text.SD_disk_ioctl:0000017c $d
+C:\Users\jonas\AppData\Local\Temp\cct01AQh.s:1967   .bss.PowerFlag:00000000 $d
+C:\Users\jonas\AppData\Local\Temp\cct01AQh.s:1972   .bss.CardType:00000000 $d
+C:\Users\jonas\AppData\Local\Temp\cct01AQh.s:1980   .bss.Timer2:00000000 $d
+C:\Users\jonas\AppData\Local\Temp\cct01AQh.s:1987   .bss.Timer1:00000000 $d
 
 UNDEFINED SYMBOLS
 HAL_SPI_Transmit

@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s 			page 1
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccyC9VxG.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s 			page 1
   28:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2s_ex.c ****      (#) The extension block is not a full SPI IP, it is used only as I2S slave to
   29:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2s_ex.c ****          implement full duplex mode. The extension block uses the same clock sources
   30:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2s_ex.c ****          as its master.
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s 			page 2
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccyC9VxG.s 			page 2
 
 
   31:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2s_ex.c **** 
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s 			page 1
   85:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2s_ex.c ****                 +-----------------------+
   86:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2s_ex.c ****   */
   87:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2s_ex.c **** 
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s 			page 3
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccyC9VxG.s 			page 3
 
 
   88:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2s_ex.c **** /* Includes ------------------------------------------------------------------*/
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s 			page 1
  142:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2s_ex.c **** 
  143:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2s_ex.c **** /* Private functions ---------------------------------------------------------*/
  144:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2s_ex.c **** /* Exported functions --------------------------------------------------------*/
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s 			page 4
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccyC9VxG.s 			page 4
 
 
  145:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2s_ex.c **** 
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s 			page 1
  199:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2s_ex.c ****   *         in the transaction and when a 24-bit data frame or a 32-bit data frame is selected
  200:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2s_ex.c ****   *         the Size parameter means the number of 16-bit data length.
  201:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2s_ex.c ****   * @param  Timeout Timeout duration
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s 			page 5
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccyC9VxG.s 			page 5
 
 
  202:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2s_ex.c ****   * @note   The I2S is kept enabled at the end of transaction to avoid the clock de-synchronization
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s 			page 1
  256:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2s_ex.c ****   {
  257:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2s_ex.c ****     /* Prepare the First Data before enabling the I2S */
  258:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2s_ex.c ****     hi2s->Instance->DR = (*pTxData++);
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s 			page 6
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccyC9VxG.s 			page 6
 
 
  259:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2s_ex.c ****     hi2s->TxXferCount--;
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s 			page 1
  313:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2s_ex.c ****         hi2s->RxXferCount--;
  314:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2s_ex.c **** 
  315:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2s_ex.c ****         /* Check if an overrun occurs */
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s 			page 7
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccyC9VxG.s 			page 7
 
 
  316:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2s_ex.c ****         if (__HAL_I2SEXT_GET_FLAG(hi2s, I2S_FLAG_OVR) == SET)
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s 			page 1
  370:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2s_ex.c ****           /* Set the error code */
  371:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2s_ex.c ****           SET_BIT(hi2s->ErrorCode, HAL_I2S_ERROR_UDR);
  372:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2s_ex.c ****         }
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s 			page 8
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccyC9VxG.s 			page 8
 
 
  373:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2s_ex.c ****       }
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s 			page 1
  427:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2s_ex.c **** HAL_StatusTypeDef HAL_I2SEx_TransmitReceive_IT(I2S_HandleTypeDef *hi2s,
  428:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2s_ex.c ****                                                uint16_t *pTxData,
  429:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2s_ex.c ****                                                uint16_t *pRxData,
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s 			page 9
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccyC9VxG.s 			page 9
 
 
  430:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2s_ex.c ****                                                uint16_t Size)
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s 			page 1
  484:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2s_ex.c ****     /* Transmit First data */
  485:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2s_ex.c ****     hi2s->Instance->DR = (*hi2s->pTxBuffPtr++);
  486:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2s_ex.c ****     hi2s->TxXferCount--;
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s 			page 10
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccyC9VxG.s 			page 10
 
 
  487:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2s_ex.c **** 
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s 			page 1
  541:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2s_ex.c ****                                                 uint16_t *pRxData,
  542:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2s_ex.c ****                                                 uint16_t Size)
  543:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2s_ex.c **** {
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s 			page 11
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccyC9VxG.s 			page 11
 
 
  544:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2s_ex.c ****   uint32_t *tmp = NULL;
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s 			page 1
  598:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2s_ex.c ****   hi2s->hdmatx->XferHalfCpltCallback  = NULL;
  599:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2s_ex.c **** 
  600:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2s_ex.c ****   /* Set the I2S Tx DMA transfer complete callback as NULL */
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s 			page 12
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccyC9VxG.s 			page 12
 
 
  601:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2s_ex.c ****   hi2s->hdmatx->XferCpltCallback  = NULL;
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s 			page 1
  655:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2s_ex.c ****     SET_BIT(hi2s->Instance->CR2, SPI_CR2_RXDMAEN);
  656:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2s_ex.c **** 
  657:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2s_ex.c ****     /* Check if the I2S is already enabled */
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s 			page 13
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccyC9VxG.s 			page 13
 
 
  658:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2s_ex.c ****     if ((hi2s->Instance->I2SCFGR & SPI_I2SCFGR_I2SE) != SPI_I2SCFGR_I2SE)
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s 			page 1
  712:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2s_ex.c ****       /* Clear Overrun flag */
  713:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2s_ex.c ****       __HAL_I2S_CLEAR_OVRFLAG(hi2s);
  714:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2s_ex.c **** 
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s 			page 14
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccyC9VxG.s 			page 14
 
 
  715:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2s_ex.c ****       /* Set the I2S State ready */
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s 			page 1
  769:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2s_ex.c ****       I2SEx_RxISR_I2S(hi2s);
  770:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2s_ex.c ****     }
  771:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2s_ex.c **** 
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s 			page 15
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccyC9VxG.s 			page 15
 
 
  772:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2s_ex.c ****     /* I2S Overrun error interrupt occurred -------------------------------------*/
@@ -898,7 +898,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s 			page 1
  826:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2s_ex.c ****   UNUSED(hi2s);
  827:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2s_ex.c **** 
  828:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2s_ex.c ****   /* NOTE : This function Should not be modified, when the callback is needed,
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s 			page 16
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccyC9VxG.s 			page 16
 
 
  829:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2s_ex.c ****             the HAL_I2SEx_TxRxHalfCpltCallback could be implemented in the user file
@@ -958,7 +958,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s 			page 1
  870:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2s_ex.c ****   /* Call user TxRx Half complete callback */
  871:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2s_ex.c **** #if (USE_HAL_I2S_REGISTER_CALLBACKS == 1U)
  872:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2s_ex.c ****   hi2s->TxRxHalfCpltCallback(hi2s);
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s 			page 17
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccyC9VxG.s 			page 17
 
 
   42              		.loc 1 872 3 is_stmt 1 view .LVU4
@@ -1018,7 +1018,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s 			page 1
   81 0008 F3B9     		cbnz	r3, .L4
  890:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2s_ex.c ****   {
  891:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2s_ex.c ****     if (((hi2s->Instance->I2SCFGR & SPI_I2SCFGR_I2SCFG) == I2S_MODE_MASTER_TX) || \
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s 			page 18
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccyC9VxG.s 			page 18
 
 
   82              		.loc 1 891 5 is_stmt 1 view .LVU15
@@ -1078,7 +1078,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s 			page 1
  121              		.loc 1 905 23 is_stmt 0 view .LVU30
  122 0040 4385     		strh	r3, [r0, #42]	@ movhi
  906:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2s_ex.c **** 
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s 			page 19
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccyC9VxG.s 			page 19
 
 
  907:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2s_ex.c ****     hi2s->State = HAL_I2S_STATE_READY;
@@ -1138,7 +1138,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s 			page 1
  901:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2s_ex.c ****     }
  161              		.loc 1 901 7 discriminator 1 view .LVU43
  162 0070 014A     		ldr	r2, .L15+4
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s 			page 20
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccyC9VxG.s 			page 20
 
 
  163 0072 F8E7     		b	.L9
@@ -1198,7 +1198,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s 			page 1
  206              	.L18:
  207              		.loc 1 929 3 discriminator 4 view .LVU51
  208 001a 5368     		ldr	r3, [r2, #4]
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s 			page 21
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccyC9VxG.s 			page 21
 
 
  209              		.loc 1 929 3 discriminator 8 view .LVU52
@@ -1258,7 +1258,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s 			page 1
  248              		.section	.text.I2SEx_TxISR_I2S,"ax",%progbits
  249              		.align	1
  250              		.syntax unified
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s 			page 22
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccyC9VxG.s 			page 22
 
 
  251              		.thumb
@@ -1318,7 +1318,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s 			page 1
  959:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2s_ex.c ****     /* Disable TXE and ERR interrupt */
  960:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2s_ex.c ****     __HAL_I2S_DISABLE_IT(hi2s, (I2S_IT_TXE | I2S_IT_ERR));
  292              		.loc 1 960 5 is_stmt 1 view .LVU79
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s 			page 23
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccyC9VxG.s 			page 23
 
 
  293 001e 0268     		ldr	r2, [r0]
@@ -1378,7 +1378,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s 			page 1
  328              		.loc 1 981 1 is_stmt 1 view -0
  329              		.cfi_startproc
  330              		@ args = 0, pretend = 0, frame = 0
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s 			page 24
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccyC9VxG.s 			page 24
 
 
  331              		@ frame_needed = 0, uses_anonymous_args = 0
@@ -1438,7 +1438,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s 			page 1
  377              		.loc 1 989 5 discriminator 4 view .LVU106
  378 0034 5368     		ldr	r3, [r2, #4]
  379              		.loc 1 989 5 discriminator 8 view .LVU107
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s 			page 25
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccyC9VxG.s 			page 25
 
 
  380 0036 23F0A003 		bic	r3, r3, #160
@@ -1498,7 +1498,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s 			page 1
  420              		.syntax unified
  421              		.thumb
  422              		.thumb_func
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s 			page 26
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccyC9VxG.s 			page 26
 
 
  424              	I2SEx_RxISR_I2S:
@@ -1558,7 +1558,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s 			page 1
  462              		.loc 1 1018 5 is_stmt 1 view .LVU133
  463 001e 0268     		ldr	r2, [r0]
  464 0020 5368     		ldr	r3, [r2, #4]
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s 			page 27
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccyC9VxG.s 			page 27
 
 
  465 0022 23F06003 		bic	r3, r3, #96
@@ -1618,7 +1618,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s 			page 1
  500              		@ args = 0, pretend = 0, frame = 0
  501              		@ frame_needed = 0, uses_anonymous_args = 0
  502              		.loc 1 1039 1 is_stmt 0 view .LVU144
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s 			page 28
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccyC9VxG.s 			page 28
 
 
  503 0000 08B5     		push	{r3, lr}
@@ -1678,7 +1678,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s 			page 1
  549              		.loc 1 1047 5 discriminator 8 view .LVU161
  550 0036 23F06003 		bic	r3, r3, #96
  551 003a 5360     		str	r3, [r2, #4]
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s 			page 29
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccyC9VxG.s 			page 29
 
 
 1048:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2s_ex.c **** 
@@ -1738,7 +1738,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s 			page 1
  592              		.thumb_func
  594              	I2SEx_FullDuplexWaitFlagStateUntilTimeout:
  595              	.LVL22:
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s 			page 30
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccyC9VxG.s 			page 30
 
 
  596              	.LFB147:
@@ -1798,7 +1798,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s 			page 1
 1080:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2s_ex.c ****   {
 1081:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2s_ex.c ****     /* Wait until flag is reset */
 1082:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2s_ex.c ****     while (((__HAL_I2S_GET_FLAG(hi2s, Flag)) ? SET : RESET) != State)
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s 			page 31
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccyC9VxG.s 			page 31
 
 
 1083:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2s_ex.c ****     {
@@ -1858,7 +1858,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s 			page 1
  668              		.loc 1 1082 61 is_stmt 1 view .LVU196
 1082:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2s_ex.c ****     {
  669              		.loc 1 1082 14 is_stmt 0 view .LVU197
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s 			page 32
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccyC9VxG.s 			page 32
 
 
  670 0048 3368     		ldr	r3, [r6]
@@ -1918,7 +1918,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s 			page 1
  692              		.loc 1 1106 48 discriminator 1 view .LVU205
  693 0062 A0EB0900 		sub	r0, r0, r9
 1106:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2s_ex.c ****         {
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s 			page 33
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccyC9VxG.s 			page 33
 
 
  694              		.loc 1 1106 29 discriminator 1 view .LVU206
@@ -1978,7 +1978,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s 			page 1
  733              		.loc 1 1102 14 discriminator 2 view .LVU221
  734 0094 4FF04023 		mov	r3, #1073758208
  735              	.L62:
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s 			page 34
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccyC9VxG.s 			page 34
 
 
 1102:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2s_ex.c ****     {
@@ -2038,7 +2038,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s 			page 1
  213:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2s_ex.c **** 
  785              		.loc 1 213 3 view .LVU229
  215:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2s_ex.c ****   {
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s 			page 35
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccyC9VxG.s 			page 35
 
 
  786              		.loc 1 215 3 view .LVU230
@@ -2098,7 +2098,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s 			page 1
  234:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2s_ex.c ****   {
  825              		.loc 1 234 3 is_stmt 1 view .LVU246
  234:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2s_ex.c ****   {
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s 			page 36
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccyC9VxG.s 			page 36
 
 
  826              		.loc 1 234 6 is_stmt 0 view .LVU247
@@ -2158,7 +2158,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s 			page 1
  861              		.loc 1 239 23 is_stmt 0 view .LVU266
  862 0062 6386     		strh	r3, [r4, #50]	@ movhi
  863              	.L83:
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s 			page 37
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccyC9VxG.s 			page 37
 
 
  250:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2s_ex.c ****   hi2s->State = HAL_I2S_STATE_BUSY_TX_RX;
@@ -2218,7 +2218,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s 			page 1
  901 0090 9BB2     		uxth	r3, r3
  902 0092 6385     		strh	r3, [r4, #42]	@ movhi
  262:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2s_ex.c **** 
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s 			page 38
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccyC9VxG.s 			page 38
 
 
  903              		.loc 1 262 5 is_stmt 1 view .LVU284
@@ -2278,7 +2278,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s 			page 1
  943              		.loc 1 272 7 discriminator 4 view .LVU298
  944 00ce DA68     		ldr	r2, [r3, #12]
  945 00d0 0292     		str	r2, [sp, #8]
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s 			page 39
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccyC9VxG.s 			page 39
 
 
  272:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2s_ex.c ****     }
@@ -2338,7 +2338,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s 			page 1
  985 00f4 9BB2     		uxth	r3, r3
  275:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2s_ex.c ****     {
  986              		.loc 1 275 37 view .LVU314
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s 			page 40
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccyC9VxG.s 			page 40
 
 
  987 00f6 002B     		cmp	r3, #0
@@ -2398,7 +2398,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s 			page 1
  1027              		.loc 1 289 9 is_stmt 1 view .LVU328
  289:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2s_ex.c **** 
  1028              		.loc 1 289 13 is_stmt 0 view .LVU329
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s 			page 41
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccyC9VxG.s 			page 41
 
 
  1029 0128 638D     		ldrh	r3, [r4, #42]
@@ -2458,7 +2458,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s 			page 1
  1069              		.loc 1 285 11 view .LVU343
  1070 015e DCE0     		b	.L79
  1071              	.LVL42:
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s 			page 42
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccyC9VxG.s 			page 42
 
 
  1072              	.L129:
@@ -2518,7 +2518,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s 			page 1
  316:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2s_ex.c ****         {
  1113              		.loc 1 316 13 discriminator 2 view .LVU357
  1114 0194 4FF04022 		mov	r2, #1073758208
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s 			page 43
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccyC9VxG.s 			page 43
 
 
  1115              	.L95:
@@ -2578,7 +2578,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s 			page 1
  316:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2s_ex.c ****         {
  1156              		.loc 1 316 13 discriminator 1 view .LVU371
  1157 01c8 A2F58062 		sub	r2, r2, #1024
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s 			page 44
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccyC9VxG.s 			page 44
 
 
  1158 01cc E4E7     		b	.L95
@@ -2638,7 +2638,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s 			page 1
  1198              		.loc 1 338 5 is_stmt 1 view .LVU385
  1199 01fe 2268     		ldr	r2, [r4]
  1200 0200 D369     		ldr	r3, [r2, #28]
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s 			page 45
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccyC9VxG.s 			page 45
 
 
  1201 0202 43F48063 		orr	r3, r3, #1024
@@ -2698,7 +2698,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s 			page 1
  1240 0230 638D     		ldrh	r3, [r4, #42]
  1241 0232 9BB2     		uxth	r3, r3
  350:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2s_ex.c ****       {
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s 			page 46
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccyC9VxG.s 			page 46
 
 
  1242              		.loc 1 350 10 view .LVU401
@@ -2758,7 +2758,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s 			page 1
  1283              	.LVL53:
  361:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2s_ex.c ****         hi2s->TxXferCount--;
  1284              		.loc 1 361 9 view .LVU415
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s 			page 47
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccyC9VxG.s 			page 47
 
 
  1285 0264 2168     		ldr	r1, [r4]
@@ -2818,7 +2818,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s 			page 1
  1325 029a 9B68     		ldr	r3, [r3, #8]
  1326 029c 0693     		str	r3, [sp, #24]
  368:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2s_ex.c **** 
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s 			page 48
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccyC9VxG.s 			page 48
 
 
  1327              		.loc 1 368 11 view .LVU430
@@ -2878,7 +2878,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s 			page 1
  1371 02d8 C8B9     		cbnz	r0, .L141
  385:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2s_ex.c ****         hi2s->RxXferCount--;
  1372              		.loc 1 385 9 is_stmt 1 view .LVU441
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s 			page 49
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccyC9VxG.s 			page 49
 
 
  385:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2s_ex.c ****         hi2s->RxXferCount--;
@@ -2938,7 +2938,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s 			page 1
  1411              		.loc 1 395 11 view .LVU457
  1412 0304 636C     		ldr	r3, [r4, #68]
  1413 0306 43F00203 		orr	r3, r3, #2
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s 			page 50
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccyC9VxG.s 			page 50
 
 
  1414 030a 6364     		str	r3, [r4, #68]
@@ -2998,7 +2998,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s 			page 1
  1456              		.cfi_endproc
  1457              	.LFE134:
  1459 0332 00BF     		.section	.text.HAL_I2SEx_TransmitReceive_IT,"ax",%progbits
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s 			page 51
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccyC9VxG.s 			page 51
 
 
  1460              		.align	1
@@ -3058,7 +3058,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s 			page 1
  1501 0024 C0B2     		uxtb	r0, r0
  1502 0026 0128     		cmp	r0, #1
  1503 0028 00F0B180 		beq	.L159
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s 			page 52
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccyC9VxG.s 			page 52
 
 
  447:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2s_ex.c **** 
@@ -3118,7 +3118,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s 			page 1
  1539 0054 ACF83030 		strh	r3, [ip, #48]	@ movhi
  469:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2s_ex.c ****   }
  1540              		.loc 1 469 5 is_stmt 1 view .LVU503
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s 			page 53
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccyC9VxG.s 			page 53
 
 
  469:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2s_ex.c ****   }
@@ -3178,7 +3178,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s 			page 1
  476:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2s_ex.c ****   {
  1577              		.loc 1 476 47 discriminator 1 view .LVU522
  1578 0088 002B     		cmp	r3, #0
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s 			page 54
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccyC9VxG.s 			page 54
 
 
  1579 008a 3DD1     		bne	.L151
@@ -3238,7 +3238,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s 			page 1
  1619 00c6 ACF82A30 		strh	r3, [ip, #42]	@ movhi
  488:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2s_ex.c ****     {
  1620              		.loc 1 488 5 is_stmt 1 view .LVU537
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s 			page 55
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccyC9VxG.s 			page 55
 
 
  488:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2s_ex.c ****     {
@@ -3298,7 +3298,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s 			page 1
  1663 0108 224B     		ldr	r3, .L170
  1664 010a 9942     		cmp	r1, r3
  1665 010c 31D0     		beq	.L167
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s 			page 56
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccyC9VxG.s 			page 56
 
 
  497:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2s_ex.c **** 
@@ -3358,7 +3358,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s 			page 1
  1706 014c ACF82A30 		strh	r3, [ip, #42]	@ movhi
  506:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2s_ex.c ****     {
  1707              		.loc 1 506 5 is_stmt 1 view .LVU564
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s 			page 57
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccyC9VxG.s 			page 57
 
 
  506:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2s_ex.c ****     {
@@ -3418,7 +3418,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s 			page 1
  1750              		.loc 1 437 15 view .LVU576
  1751 0184 0220     		movs	r0, #2
  1752              	.LVL82:
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s 			page 58
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccyC9VxG.s 			page 58
 
 
  1753              	.L145:
@@ -3478,7 +3478,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s 			page 1
  1800 0004 0446     		mov	r4, r0
  544:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2s_ex.c ****   uint32_t tmp1 = 0U;
  1801              		.loc 1 544 3 is_stmt 1 view .LVU586
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s 			page 59
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccyC9VxG.s 			page 59
 
 
  1802              	.LVL85:
@@ -3538,7 +3538,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s 			page 1
  1839              		.loc 1 562 20 is_stmt 0 view .LVU603
  1840 003a 6162     		str	r1, [r4, #36]
  563:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2s_ex.c **** 
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s 			page 60
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccyC9VxG.s 			page 60
 
 
  1841              		.loc 1 563 3 is_stmt 1 view .LVU604
@@ -3598,7 +3598,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s 			page 1
  572:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2s_ex.c ****     hi2s->TxXferCount = (Size << 1U);
  1877              		.loc 1 572 31 view .LVU623
  1878 005a 9BB2     		uxth	r3, r3
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s 			page 61
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccyC9VxG.s 			page 61
 
 
  572:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2s_ex.c ****     hi2s->TxXferCount = (Size << 1U);
@@ -3658,7 +3658,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s 			page 1
  1914 0078 D163     		str	r1, [r2, #60]
  595:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2s_ex.c **** 
  1915              		.loc 1 595 3 is_stmt 1 view .LVU643
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s 			page 62
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccyC9VxG.s 			page 62
 
 
  595:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2s_ex.c **** 
@@ -3718,7 +3718,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s 			page 1
  611:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2s_ex.c ****     HAL_DMA_Start_IT(hi2s->hdmarx, (uint32_t)&I2SxEXT(hi2s->Instance)->DR, *(uint32_t *)tmp, hi2s->
  1952              		.loc 1 611 5 is_stmt 1 view .LVU662
  1953              	.LVL93:
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s 			page 63
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccyC9VxG.s 			page 63
 
 
  612:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2s_ex.c **** 
@@ -3778,7 +3778,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s 			page 1
  1993              		.loc 1 619 5 view .LVU677
  1994 00ce 9BB2     		uxth	r3, r3
  1995 00d0 0C32     		adds	r2, r2, #12
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s 			page 64
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccyC9VxG.s 			page 64
 
 
  1996 00d2 2946     		mov	r1, r5
@@ -3838,7 +3838,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s 			page 1
  2038              	.L199:
  615:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2s_ex.c **** 
  2039              		.loc 1 615 5 discriminator 1 view .LVU690
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s 			page 65
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccyC9VxG.s 			page 65
 
 
  2040 0112 334A     		ldr	r2, .L205+16
@@ -3898,7 +3898,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s 			page 1
  2081 0142 264B     		ldr	r3, .L205+12
  2082 0144 9A42     		cmp	r2, r3
  2083 0146 31D0     		beq	.L203
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s 			page 66
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccyC9VxG.s 			page 66
 
 
  648:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2s_ex.c **** 
@@ -3958,7 +3958,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s 			page 1
  2123              		.loc 1 661 7 is_stmt 0 discriminator 2 view .LVU718
  2124 017e 4FF04022 		mov	r2, #1073758208
  2125              	.L186:
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s 			page 67
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccyC9VxG.s 			page 67
 
 
  661:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2s_ex.c ****       /* Enable I2S peripheral before the I2Sext */
@@ -4018,7 +4018,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s 			page 1
  661:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2s_ex.c ****       /* Enable I2S peripheral before the I2Sext */
  2168              		.loc 1 661 7 discriminator 1 view .LVU731
  2169 01b0 A2F58062 		sub	r2, r2, #1024
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s 			page 68
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccyC9VxG.s 			page 68
 
 
  2170 01b4 E5E7     		b	.L186
@@ -4078,7 +4078,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s 			page 1
  2215              		.cfi_endproc
  2216              	.LFE136:
  2218              		.section	.text.HAL_I2SEx_FullDuplex_IRQHandler,"ax",%progbits
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s 			page 69
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccyC9VxG.s 			page 69
 
 
  2219              		.align	1
@@ -4138,7 +4138,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s 			page 1
  2261 001a 5B68     		ldr	r3, [r3, #4]
  681:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2s_ex.c ****   __IO uint32_t i2sextcr2 = I2SxEXT(hi2s->Instance)->CR2;
  2262              		.loc 1 681 17 view .LVU754
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s 			page 70
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccyC9VxG.s 			page 70
 
 
  2263 001c 0393     		str	r3, [sp, #12]
@@ -4198,7 +4198,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s 			page 1
  2300              		.loc 1 696 55 discriminator 1 view .LVU771
  2301 0048 13F0400F 		tst	r3, #64
  2302 004c 58D1     		bne	.L230
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s 			page 71
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccyC9VxG.s 			page 71
 
 
  2303              	.L212:
@@ -4258,7 +4258,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s 			page 1
  2343 0086 9B68     		ldr	r3, [r3, #8]
  2344 0088 0093     		str	r3, [sp]
  713:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2s_ex.c **** 
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s 			page 72
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccyC9VxG.s 			page 72
 
 
  2345              		.loc 1 713 7 view .LVU786
@@ -4318,7 +4318,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s 			page 1
  2385 00c0 24D0     		beq	.L232
  735:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2s_ex.c **** 
  2386              		.loc 1 735 7 is_stmt 0 discriminator 2 view .LVU801
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s 			page 73
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccyC9VxG.s 			page 73
 
 
  2387 00c2 4FF04022 		mov	r2, #1073758208
@@ -4378,7 +4378,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s 			page 1
  2427              		@ sp needed
  2428 00f0 10BD     		pop	{r4, pc}
  2429              	.LVL119:
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s 			page 74
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccyC9VxG.s 			page 74
 
 
  2430              	.L228:
@@ -4438,7 +4438,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s 			page 1
  2472              		.loc 1 765 5 is_stmt 1 view .LVU827
  765:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2s_ex.c ****     {
  2473              		.loc 1 765 17 is_stmt 0 view .LVU828
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s 			page 75
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccyC9VxG.s 			page 75
 
 
  2474 0120 059B     		ldr	r3, [sp, #20]
@@ -4498,7 +4498,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s 			page 1
  782:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2s_ex.c **** 
  2514              		.loc 1 782 19 is_stmt 0 view .LVU843
  2515 015e 0123     		movs	r3, #1
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s 			page 76
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccyC9VxG.s 			page 76
 
 
  2516 0160 84F84130 		strb	r3, [r4, #65]
@@ -4558,7 +4558,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s 			page 1
  2556 019a 23F06003 		bic	r3, r3, #96
  2557 019e 5360     		str	r3, [r2, #4]
  804:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2s_ex.c **** 
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s 			page 77
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccyC9VxG.s 			page 77
 
 
  2558              		.loc 1 804 7 view .LVU858
@@ -4618,7 +4618,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s 			page 1
  2601 01d0 00380040 		.word	1073756160
  2602 01d4 00340040 		.word	1073755136
  2603              		.cfi_endproc
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s 			page 78
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccyC9VxG.s 			page 78
 
 
  2604              	.LFE137:
@@ -4676,49 +4676,49 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s 			page 1
  2655              		.file 7 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h"
  2656              		.file 8 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2s.h"
  2657              		.file 9 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h"
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s 			page 79
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccyC9VxG.s 			page 79
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 stm32f4xx_hal_i2s_ex.c
-C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s:21     .text.I2SEx_TxRxDMAHalfCplt:00000000 $t
-C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s:26     .text.I2SEx_TxRxDMAHalfCplt:00000000 I2SEx_TxRxDMAHalfCplt
-C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s:54     .text.I2SEx_TxRxDMACplt:00000000 $t
-C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s:59     .text.I2SEx_TxRxDMACplt:00000000 I2SEx_TxRxDMACplt
-C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s:167    .text.I2SEx_TxRxDMACplt:00000074 $d
-C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s:173    .text.I2SEx_TxRxDMAError:00000000 $t
-C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s:178    .text.I2SEx_TxRxDMAError:00000000 I2SEx_TxRxDMAError
-C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s:243    .text.I2SEx_TxRxDMAError:00000040 $d
-C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s:249    .text.I2SEx_TxISR_I2S:00000000 $t
-C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s:254    .text.I2SEx_TxISR_I2S:00000000 I2SEx_TxISR_I2S
-C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s:320    .text.I2SEx_TxISR_I2SExt:00000000 $t
-C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s:325    .text.I2SEx_TxISR_I2SExt:00000000 I2SEx_TxISR_I2SExt
-C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s:413    .text.I2SEx_TxISR_I2SExt:00000058 $d
-C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s:419    .text.I2SEx_RxISR_I2S:00000000 $t
-C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s:424    .text.I2SEx_RxISR_I2S:00000000 I2SEx_RxISR_I2S
-C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s:490    .text.I2SEx_RxISR_I2SExt:00000000 $t
-C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s:495    .text.I2SEx_RxISR_I2SExt:00000000 I2SEx_RxISR_I2SExt
-C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s:583    .text.I2SEx_RxISR_I2SExt:00000058 $d
-C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s:589    .text.I2SEx_FullDuplexWaitFlagStateUntilTimeout:00000000 $t
-C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s:594    .text.I2SEx_FullDuplexWaitFlagStateUntilTimeout:00000000 I2SEx_FullDuplexWaitFlagStateUntilTimeout
-C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s:751    .text.I2SEx_FullDuplexWaitFlagStateUntilTimeout:000000a8 $d
-C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s:756    .text.HAL_I2SEx_TransmitReceive:00000000 $t
-C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s:762    .text.HAL_I2SEx_TransmitReceive:00000000 HAL_I2SEx_TransmitReceive
-C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s:1357   .text.HAL_I2SEx_TransmitReceive:000002c0 $d
-C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s:1362   .text.HAL_I2SEx_TransmitReceive:000002c8 $t
-C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s:1460   .text.HAL_I2SEx_TransmitReceive_IT:00000000 $t
-C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s:1466   .text.HAL_I2SEx_TransmitReceive_IT:00000000 HAL_I2SEx_TransmitReceive_IT
-C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s:1772   .text.HAL_I2SEx_TransmitReceive_IT:00000194 $d
-C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s:1778   .text.HAL_I2SEx_TransmitReceive_DMA:00000000 $t
-C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s:1784   .text.HAL_I2SEx_TransmitReceive_DMA:00000000 HAL_I2SEx_TransmitReceive_DMA
-C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s:2210   .text.HAL_I2SEx_TransmitReceive_DMA:000001d0 $d
-C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s:2219   .text.HAL_I2SEx_FullDuplex_IRQHandler:00000000 $t
-C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s:2225   .text.HAL_I2SEx_FullDuplex_IRQHandler:00000000 HAL_I2SEx_FullDuplex_IRQHandler
-C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s:2601   .text.HAL_I2SEx_FullDuplex_IRQHandler:000001d0 $d
-C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s:2607   .text.HAL_I2SEx_TxRxHalfCpltCallback:00000000 $t
-C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s:2613   .text.HAL_I2SEx_TxRxHalfCpltCallback:00000000 HAL_I2SEx_TxRxHalfCpltCallback
-C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s:2628   .text.HAL_I2SEx_TxRxCpltCallback:00000000 $t
-C:\Users\jonas\AppData\Local\Temp\ccKbF3Uv.s:2634   .text.HAL_I2SEx_TxRxCpltCallback:00000000 HAL_I2SEx_TxRxCpltCallback
+C:\Users\jonas\AppData\Local\Temp\ccyC9VxG.s:21     .text.I2SEx_TxRxDMAHalfCplt:00000000 $t
+C:\Users\jonas\AppData\Local\Temp\ccyC9VxG.s:26     .text.I2SEx_TxRxDMAHalfCplt:00000000 I2SEx_TxRxDMAHalfCplt
+C:\Users\jonas\AppData\Local\Temp\ccyC9VxG.s:54     .text.I2SEx_TxRxDMACplt:00000000 $t
+C:\Users\jonas\AppData\Local\Temp\ccyC9VxG.s:59     .text.I2SEx_TxRxDMACplt:00000000 I2SEx_TxRxDMACplt
+C:\Users\jonas\AppData\Local\Temp\ccyC9VxG.s:167    .text.I2SEx_TxRxDMACplt:00000074 $d
+C:\Users\jonas\AppData\Local\Temp\ccyC9VxG.s:173    .text.I2SEx_TxRxDMAError:00000000 $t
+C:\Users\jonas\AppData\Local\Temp\ccyC9VxG.s:178    .text.I2SEx_TxRxDMAError:00000000 I2SEx_TxRxDMAError
+C:\Users\jonas\AppData\Local\Temp\ccyC9VxG.s:243    .text.I2SEx_TxRxDMAError:00000040 $d
+C:\Users\jonas\AppData\Local\Temp\ccyC9VxG.s:249    .text.I2SEx_TxISR_I2S:00000000 $t
+C:\Users\jonas\AppData\Local\Temp\ccyC9VxG.s:254    .text.I2SEx_TxISR_I2S:00000000 I2SEx_TxISR_I2S
+C:\Users\jonas\AppData\Local\Temp\ccyC9VxG.s:320    .text.I2SEx_TxISR_I2SExt:00000000 $t
+C:\Users\jonas\AppData\Local\Temp\ccyC9VxG.s:325    .text.I2SEx_TxISR_I2SExt:00000000 I2SEx_TxISR_I2SExt
+C:\Users\jonas\AppData\Local\Temp\ccyC9VxG.s:413    .text.I2SEx_TxISR_I2SExt:00000058 $d
+C:\Users\jonas\AppData\Local\Temp\ccyC9VxG.s:419    .text.I2SEx_RxISR_I2S:00000000 $t
+C:\Users\jonas\AppData\Local\Temp\ccyC9VxG.s:424    .text.I2SEx_RxISR_I2S:00000000 I2SEx_RxISR_I2S
+C:\Users\jonas\AppData\Local\Temp\ccyC9VxG.s:490    .text.I2SEx_RxISR_I2SExt:00000000 $t
+C:\Users\jonas\AppData\Local\Temp\ccyC9VxG.s:495    .text.I2SEx_RxISR_I2SExt:00000000 I2SEx_RxISR_I2SExt
+C:\Users\jonas\AppData\Local\Temp\ccyC9VxG.s:583    .text.I2SEx_RxISR_I2SExt:00000058 $d
+C:\Users\jonas\AppData\Local\Temp\ccyC9VxG.s:589    .text.I2SEx_FullDuplexWaitFlagStateUntilTimeout:00000000 $t
+C:\Users\jonas\AppData\Local\Temp\ccyC9VxG.s:594    .text.I2SEx_FullDuplexWaitFlagStateUntilTimeout:00000000 I2SEx_FullDuplexWaitFlagStateUntilTimeout
+C:\Users\jonas\AppData\Local\Temp\ccyC9VxG.s:751    .text.I2SEx_FullDuplexWaitFlagStateUntilTimeout:000000a8 $d
+C:\Users\jonas\AppData\Local\Temp\ccyC9VxG.s:756    .text.HAL_I2SEx_TransmitReceive:00000000 $t
+C:\Users\jonas\AppData\Local\Temp\ccyC9VxG.s:762    .text.HAL_I2SEx_TransmitReceive:00000000 HAL_I2SEx_TransmitReceive
+C:\Users\jonas\AppData\Local\Temp\ccyC9VxG.s:1357   .text.HAL_I2SEx_TransmitReceive:000002c0 $d
+C:\Users\jonas\AppData\Local\Temp\ccyC9VxG.s:1362   .text.HAL_I2SEx_TransmitReceive:000002c8 $t
+C:\Users\jonas\AppData\Local\Temp\ccyC9VxG.s:1460   .text.HAL_I2SEx_TransmitReceive_IT:00000000 $t
+C:\Users\jonas\AppData\Local\Temp\ccyC9VxG.s:1466   .text.HAL_I2SEx_TransmitReceive_IT:00000000 HAL_I2SEx_TransmitReceive_IT
+C:\Users\jonas\AppData\Local\Temp\ccyC9VxG.s:1772   .text.HAL_I2SEx_TransmitReceive_IT:00000194 $d
+C:\Users\jonas\AppData\Local\Temp\ccyC9VxG.s:1778   .text.HAL_I2SEx_TransmitReceive_DMA:00000000 $t
+C:\Users\jonas\AppData\Local\Temp\ccyC9VxG.s:1784   .text.HAL_I2SEx_TransmitReceive_DMA:00000000 HAL_I2SEx_TransmitReceive_DMA
+C:\Users\jonas\AppData\Local\Temp\ccyC9VxG.s:2210   .text.HAL_I2SEx_TransmitReceive_DMA:000001d0 $d
+C:\Users\jonas\AppData\Local\Temp\ccyC9VxG.s:2219   .text.HAL_I2SEx_FullDuplex_IRQHandler:00000000 $t
+C:\Users\jonas\AppData\Local\Temp\ccyC9VxG.s:2225   .text.HAL_I2SEx_FullDuplex_IRQHandler:00000000 HAL_I2SEx_FullDuplex_IRQHandler
+C:\Users\jonas\AppData\Local\Temp\ccyC9VxG.s:2601   .text.HAL_I2SEx_FullDuplex_IRQHandler:000001d0 $d
+C:\Users\jonas\AppData\Local\Temp\ccyC9VxG.s:2607   .text.HAL_I2SEx_TxRxHalfCpltCallback:00000000 $t
+C:\Users\jonas\AppData\Local\Temp\ccyC9VxG.s:2613   .text.HAL_I2SEx_TxRxHalfCpltCallback:00000000 HAL_I2SEx_TxRxHalfCpltCallback
+C:\Users\jonas\AppData\Local\Temp\ccyC9VxG.s:2628   .text.HAL_I2SEx_TxRxCpltCallback:00000000 $t
+C:\Users\jonas\AppData\Local\Temp\ccyC9VxG.s:2634   .text.HAL_I2SEx_TxRxCpltCallback:00000000 HAL_I2SEx_TxRxCpltCallback
 
 UNDEFINED SYMBOLS
 HAL_GetTick

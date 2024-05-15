@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccAZcdYj.s 			page 1
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\cclc6QUe.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccAZcdYj.s 			page 1
   42              		.loc 1 14 10 view .LVU2
   43              	.LVL0:
   44              		.loc 1 14 14 is_stmt 0 view .LVU3
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccAZcdYj.s 			page 2
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\cclc6QUe.s 			page 2
 
 
   45 0002 0024     		movs	r4, #0
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccAZcdYj.s 			page 1
   94 0048 00000000 		.word	0
   95 004c C0FFDF40 		.word	1088421824
   96 0050 0000703F 		.word	1064304640
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccAZcdYj.s 			page 3
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\cclc6QUe.s 			page 3
 
 
   97 0054 00000000 		.word	sineTable
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccAZcdYj.s 			page 1
   24:Core/Src/audio.c **** 
   25:Core/Src/audio.c **** void HAL_I2S_TxCpltCallback(I2S_HandleTypeDef *hi2s){
  149              		.loc 1 25 53 is_stmt 1 view -0
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccAZcdYj.s 			page 4
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\cclc6QUe.s 			page 4
 
 
  150              		.cfi_startproc
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccAZcdYj.s 			page 1
  200              		.cfi_offset 14, -4
  201 0002 51EC100B 		vmov	r0, r1, d0
   32:Core/Src/audio.c ****     static uint16_t phaseIndex = 0;                 // retain index between function calls
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccAZcdYj.s 			page 5
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\cclc6QUe.s 			page 5
 
 
  202              		.loc 1 32 5 is_stmt 1 view .LVU29
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccAZcdYj.s 			page 1
   41:Core/Src/audio.c ****         phaseIndex += phaseIncrement;
  248              		.loc 1 41 9 is_stmt 1 view .LVU45
  249              		.loc 1 41 20 is_stmt 0 view .LVU46
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccAZcdYj.s 			page 6
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\cclc6QUe.s 			page 6
 
 
  250 003a FFF7FEFF 		bl	__aeabi_i2d
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccAZcdYj.s 			page 1
  296              		.syntax unified
  297              		.thumb
  298              		.thumb_func
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccAZcdYj.s 			page 7
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\cclc6QUe.s 			page 7
 
 
  300              	fillBuffer:
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccAZcdYj.s 			page 1
  344              		.section	.bss.phaseIndex.0,"aw",%nobits
  345              		.align	1
  348              	phaseIndex.0:
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccAZcdYj.s 			page 8
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\cclc6QUe.s 			page 8
 
 
  349 0000 0000     		.space	2
@@ -459,36 +459,36 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccAZcdYj.s 			page 1
  384              		.file 7 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2s.h"
  385              		.file 8 "Core/Inc/audio.h"
  386              		.file 9 "C:/Users/jonas/AppData/Roaming/VSCodium/User/globalStorage/bmd.stm32-for-vscode/@xpack-de
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccAZcdYj.s 			page 9
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\cclc6QUe.s 			page 9
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 audio.c
-C:\Users\jonas\AppData\Local\Temp\ccAZcdYj.s:24     .text.initSineTable:00000000 $t
-C:\Users\jonas\AppData\Local\Temp\ccAZcdYj.s:30     .text.initSineTable:00000000 initSineTable
-C:\Users\jonas\AppData\Local\Temp\ccAZcdYj.s:94     .text.initSineTable:00000048 $d
-C:\Users\jonas\AppData\Local\Temp\ccAZcdYj.s:355    .bss.sineTable:00000000 sineTable
-C:\Users\jonas\AppData\Local\Temp\ccAZcdYj.s:104    .text.HAL_I2S_TxHalfCpltCallback:00000000 $t
-C:\Users\jonas\AppData\Local\Temp\ccAZcdYj.s:110    .text.HAL_I2S_TxHalfCpltCallback:00000000 HAL_I2S_TxHalfCpltCallback
-C:\Users\jonas\AppData\Local\Temp\ccAZcdYj.s:133    .text.HAL_I2S_TxHalfCpltCallback:00000010 $d
-C:\Users\jonas\AppData\Local\Temp\ccAZcdYj.s:362    .data.outBufPtr:00000000 outBufPtr
-C:\Users\jonas\AppData\Local\Temp\ccAZcdYj.s:369    .bss.dacData:00000000 dacData
-C:\Users\jonas\AppData\Local\Temp\ccAZcdYj.s:375    .bss.dataReady:00000000 dataReady
-C:\Users\jonas\AppData\Local\Temp\ccAZcdYj.s:140    .text.HAL_I2S_TxCpltCallback:00000000 $t
-C:\Users\jonas\AppData\Local\Temp\ccAZcdYj.s:146    .text.HAL_I2S_TxCpltCallback:00000000 HAL_I2S_TxCpltCallback
-C:\Users\jonas\AppData\Local\Temp\ccAZcdYj.s:169    .text.HAL_I2S_TxCpltCallback:00000010 $d
-C:\Users\jonas\AppData\Local\Temp\ccAZcdYj.s:179    .text.generateSineWave:00000000 $t
-C:\Users\jonas\AppData\Local\Temp\ccAZcdYj.s:185    .text.generateSineWave:00000000 generateSineWave
-C:\Users\jonas\AppData\Local\Temp\ccAZcdYj.s:283    .text.generateSineWave:00000068 $d
-C:\Users\jonas\AppData\Local\Temp\ccAZcdYj.s:348    .bss.phaseIndex.0:00000000 phaseIndex.0
-C:\Users\jonas\AppData\Local\Temp\ccAZcdYj.s:294    .text.fillBuffer:00000000 $t
-C:\Users\jonas\AppData\Local\Temp\ccAZcdYj.s:300    .text.fillBuffer:00000000 fillBuffer
-C:\Users\jonas\AppData\Local\Temp\ccAZcdYj.s:340    .text.fillBuffer:0000001c $d
-C:\Users\jonas\AppData\Local\Temp\ccAZcdYj.s:345    .bss.phaseIndex.0:00000000 $d
-C:\Users\jonas\AppData\Local\Temp\ccAZcdYj.s:352    .bss.sineTable:00000000 $d
-C:\Users\jonas\AppData\Local\Temp\ccAZcdYj.s:359    .data.outBufPtr:00000000 $d
-C:\Users\jonas\AppData\Local\Temp\ccAZcdYj.s:366    .bss.dacData:00000000 $d
-C:\Users\jonas\AppData\Local\Temp\ccAZcdYj.s:376    .bss.dataReady:00000000 $d
+C:\Users\jonas\AppData\Local\Temp\cclc6QUe.s:24     .text.initSineTable:00000000 $t
+C:\Users\jonas\AppData\Local\Temp\cclc6QUe.s:30     .text.initSineTable:00000000 initSineTable
+C:\Users\jonas\AppData\Local\Temp\cclc6QUe.s:94     .text.initSineTable:00000048 $d
+C:\Users\jonas\AppData\Local\Temp\cclc6QUe.s:355    .bss.sineTable:00000000 sineTable
+C:\Users\jonas\AppData\Local\Temp\cclc6QUe.s:104    .text.HAL_I2S_TxHalfCpltCallback:00000000 $t
+C:\Users\jonas\AppData\Local\Temp\cclc6QUe.s:110    .text.HAL_I2S_TxHalfCpltCallback:00000000 HAL_I2S_TxHalfCpltCallback
+C:\Users\jonas\AppData\Local\Temp\cclc6QUe.s:133    .text.HAL_I2S_TxHalfCpltCallback:00000010 $d
+C:\Users\jonas\AppData\Local\Temp\cclc6QUe.s:362    .data.outBufPtr:00000000 outBufPtr
+C:\Users\jonas\AppData\Local\Temp\cclc6QUe.s:369    .bss.dacData:00000000 dacData
+C:\Users\jonas\AppData\Local\Temp\cclc6QUe.s:375    .bss.dataReady:00000000 dataReady
+C:\Users\jonas\AppData\Local\Temp\cclc6QUe.s:140    .text.HAL_I2S_TxCpltCallback:00000000 $t
+C:\Users\jonas\AppData\Local\Temp\cclc6QUe.s:146    .text.HAL_I2S_TxCpltCallback:00000000 HAL_I2S_TxCpltCallback
+C:\Users\jonas\AppData\Local\Temp\cclc6QUe.s:169    .text.HAL_I2S_TxCpltCallback:00000010 $d
+C:\Users\jonas\AppData\Local\Temp\cclc6QUe.s:179    .text.generateSineWave:00000000 $t
+C:\Users\jonas\AppData\Local\Temp\cclc6QUe.s:185    .text.generateSineWave:00000000 generateSineWave
+C:\Users\jonas\AppData\Local\Temp\cclc6QUe.s:283    .text.generateSineWave:00000068 $d
+C:\Users\jonas\AppData\Local\Temp\cclc6QUe.s:348    .bss.phaseIndex.0:00000000 phaseIndex.0
+C:\Users\jonas\AppData\Local\Temp\cclc6QUe.s:294    .text.fillBuffer:00000000 $t
+C:\Users\jonas\AppData\Local\Temp\cclc6QUe.s:300    .text.fillBuffer:00000000 fillBuffer
+C:\Users\jonas\AppData\Local\Temp\cclc6QUe.s:340    .text.fillBuffer:0000001c $d
+C:\Users\jonas\AppData\Local\Temp\cclc6QUe.s:345    .bss.phaseIndex.0:00000000 $d
+C:\Users\jonas\AppData\Local\Temp\cclc6QUe.s:352    .bss.sineTable:00000000 $d
+C:\Users\jonas\AppData\Local\Temp\cclc6QUe.s:359    .data.outBufPtr:00000000 $d
+C:\Users\jonas\AppData\Local\Temp\cclc6QUe.s:366    .bss.dacData:00000000 $d
+C:\Users\jonas\AppData\Local\Temp\cclc6QUe.s:376    .bss.dataReady:00000000 $d
 
 UNDEFINED SYMBOLS
 __aeabi_i2d

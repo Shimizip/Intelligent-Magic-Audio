@@ -1,0 +1,377 @@
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccTvYPbe.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"cpu_time.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.file 1 "Core/Src/cpu_time.c"
+  20              		.section	.text.EnableDWT,"ax",%progbits
+  21              		.align	1
+  22              		.global	EnableDWT
+  23              		.syntax unified
+  24              		.thumb
+  25              		.thumb_func
+  27              	EnableDWT:
+  28              	.LFB134:
+   1:Core/Src/cpu_time.c **** #include "cpu_time.h"
+   2:Core/Src/cpu_time.c **** #include "stm32f4xx_hal.h"  // Adjust the header according to your specific STM32 series
+   3:Core/Src/cpu_time.c **** 
+   4:Core/Src/cpu_time.c **** // Define pointers to the DWT and other relevant registers
+   5:Core/Src/cpu_time.c **** volatile unsigned int *DWT_CYCCNT   = (volatile unsigned int *)0xE0001004;
+   6:Core/Src/cpu_time.c **** volatile unsigned int *DWT_CONTROL  = (volatile unsigned int *)0xE0001000;
+   7:Core/Src/cpu_time.c **** volatile unsigned int *DWT_LAR      = (volatile unsigned int *)0xE0001FB0;
+   8:Core/Src/cpu_time.c **** volatile unsigned int *SCB_DEMCR    = (volatile unsigned int *)0xE000EDFC;
+   9:Core/Src/cpu_time.c **** 
+  10:Core/Src/cpu_time.c **** // Global variables to store start and end cycle counts
+  11:Core/Src/cpu_time.c **** static uint32_t start_cycles = 0;
+  12:Core/Src/cpu_time.c **** static uint32_t end_cycles = 0;
+  13:Core/Src/cpu_time.c **** 
+  14:Core/Src/cpu_time.c **** void EnableDWT(void)
+  15:Core/Src/cpu_time.c **** {
+  29              		.loc 1 15 1 view -0
+  30              		.cfi_startproc
+  31              		@ args = 0, pretend = 0, frame = 0
+  32              		@ frame_needed = 0, uses_anonymous_args = 0
+  33              		@ link register save eliminated.
+  16:Core/Src/cpu_time.c ****   *SCB_DEMCR |= 0x01000000;      // Enable DWT and ITM
+  34              		.loc 1 16 3 view .LVU1
+  35 0000 0A4B     		ldr	r3, .L2
+  36 0002 1A68     		ldr	r2, [r3]
+  37 0004 1368     		ldr	r3, [r2]
+  38              		.loc 1 16 14 is_stmt 0 view .LVU2
+  39 0006 43F08073 		orr	r3, r3, #16777216
+  40 000a 1360     		str	r3, [r2]
+  17:Core/Src/cpu_time.c ****   *DWT_LAR = 0xC5ACCE55;         // Unlock DWT registers
+  41              		.loc 1 17 3 is_stmt 1 view .LVU3
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccTvYPbe.s 			page 2
+
+
+  42 000c 084B     		ldr	r3, .L2+4
+  43 000e 1B68     		ldr	r3, [r3]
+  44              		.loc 1 17 12 is_stmt 0 view .LVU4
+  45 0010 084A     		ldr	r2, .L2+8
+  46 0012 1A60     		str	r2, [r3]
+  18:Core/Src/cpu_time.c ****   *DWT_CYCCNT = 0;               // Reset the cycle counter
+  47              		.loc 1 18 3 is_stmt 1 view .LVU5
+  48 0014 084B     		ldr	r3, .L2+12
+  49 0016 1B68     		ldr	r3, [r3]
+  50              		.loc 1 18 15 is_stmt 0 view .LVU6
+  51 0018 0022     		movs	r2, #0
+  52 001a 1A60     		str	r2, [r3]
+  19:Core/Src/cpu_time.c ****   *DWT_CONTROL |= 1;             // Enable the cycle counter
+  53              		.loc 1 19 3 is_stmt 1 view .LVU7
+  54 001c 074B     		ldr	r3, .L2+16
+  55 001e 1A68     		ldr	r2, [r3]
+  56 0020 1368     		ldr	r3, [r2]
+  57              		.loc 1 19 16 is_stmt 0 view .LVU8
+  58 0022 43F00103 		orr	r3, r3, #1
+  59 0026 1360     		str	r3, [r2]
+  20:Core/Src/cpu_time.c **** }
+  60              		.loc 1 20 1 view .LVU9
+  61 0028 7047     		bx	lr
+  62              	.L3:
+  63 002a 00BF     		.align	2
+  64              	.L2:
+  65 002c 00000000 		.word	SCB_DEMCR
+  66 0030 00000000 		.word	DWT_LAR
+  67 0034 55CEACC5 		.word	-978530731
+  68 0038 00000000 		.word	DWT_CYCCNT
+  69 003c 00000000 		.word	DWT_CONTROL
+  70              		.cfi_endproc
+  71              	.LFE134:
+  73              		.section	.text.StartCycleMeasurement,"ax",%progbits
+  74              		.align	1
+  75              		.global	StartCycleMeasurement
+  76              		.syntax unified
+  77              		.thumb
+  78              		.thumb_func
+  80              	StartCycleMeasurement:
+  81              	.LFB135:
+  21:Core/Src/cpu_time.c **** 
+  22:Core/Src/cpu_time.c **** void StartCycleMeasurement(void)
+  23:Core/Src/cpu_time.c **** {
+  82              		.loc 1 23 1 is_stmt 1 view -0
+  83              		.cfi_startproc
+  84              		@ args = 0, pretend = 0, frame = 0
+  85              		@ frame_needed = 0, uses_anonymous_args = 0
+  86              		@ link register save eliminated.
+  24:Core/Src/cpu_time.c ****   start_cycles = *DWT_CYCCNT;    // Store the cycle count at the start
+  87              		.loc 1 24 3 view .LVU11
+  88              		.loc 1 24 18 is_stmt 0 view .LVU12
+  89 0000 024B     		ldr	r3, .L5
+  90 0002 1B68     		ldr	r3, [r3]
+  91 0004 1A68     		ldr	r2, [r3]
+  92              		.loc 1 24 16 view .LVU13
+  93 0006 024B     		ldr	r3, .L5+4
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccTvYPbe.s 			page 3
+
+
+  94 0008 1A60     		str	r2, [r3]
+  25:Core/Src/cpu_time.c **** }
+  95              		.loc 1 25 1 view .LVU14
+  96 000a 7047     		bx	lr
+  97              	.L6:
+  98              		.align	2
+  99              	.L5:
+ 100 000c 00000000 		.word	DWT_CYCCNT
+ 101 0010 00000000 		.word	start_cycles
+ 102              		.cfi_endproc
+ 103              	.LFE135:
+ 105              		.section	.text.StopCycleMeasurement,"ax",%progbits
+ 106              		.align	1
+ 107              		.global	StopCycleMeasurement
+ 108              		.syntax unified
+ 109              		.thumb
+ 110              		.thumb_func
+ 112              	StopCycleMeasurement:
+ 113              	.LFB136:
+  26:Core/Src/cpu_time.c **** 
+  27:Core/Src/cpu_time.c **** void StopCycleMeasurement(void)
+  28:Core/Src/cpu_time.c **** {
+ 114              		.loc 1 28 1 is_stmt 1 view -0
+ 115              		.cfi_startproc
+ 116              		@ args = 0, pretend = 0, frame = 0
+ 117              		@ frame_needed = 0, uses_anonymous_args = 0
+ 118              		@ link register save eliminated.
+  29:Core/Src/cpu_time.c ****   end_cycles = *DWT_CYCCNT;      // Store the cycle count at the end
+ 119              		.loc 1 29 3 view .LVU16
+ 120              		.loc 1 29 16 is_stmt 0 view .LVU17
+ 121 0000 024B     		ldr	r3, .L8
+ 122 0002 1B68     		ldr	r3, [r3]
+ 123 0004 1A68     		ldr	r2, [r3]
+ 124              		.loc 1 29 14 view .LVU18
+ 125 0006 024B     		ldr	r3, .L8+4
+ 126 0008 1A60     		str	r2, [r3]
+  30:Core/Src/cpu_time.c **** }
+ 127              		.loc 1 30 1 view .LVU19
+ 128 000a 7047     		bx	lr
+ 129              	.L9:
+ 130              		.align	2
+ 131              	.L8:
+ 132 000c 00000000 		.word	DWT_CYCCNT
+ 133 0010 00000000 		.word	end_cycles
+ 134              		.cfi_endproc
+ 135              	.LFE136:
+ 137              		.section	.text.GetMeasuredCycles,"ax",%progbits
+ 138              		.align	1
+ 139              		.global	GetMeasuredCycles
+ 140              		.syntax unified
+ 141              		.thumb
+ 142              		.thumb_func
+ 144              	GetMeasuredCycles:
+ 145              	.LFB137:
+  31:Core/Src/cpu_time.c **** 
+  32:Core/Src/cpu_time.c **** uint32_t GetMeasuredCycles(void)
+  33:Core/Src/cpu_time.c **** {
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccTvYPbe.s 			page 4
+
+
+ 146              		.loc 1 33 1 is_stmt 1 view -0
+ 147              		.cfi_startproc
+ 148              		@ args = 0, pretend = 0, frame = 0
+ 149              		@ frame_needed = 0, uses_anonymous_args = 0
+ 150              		@ link register save eliminated.
+  34:Core/Src/cpu_time.c ****   return end_cycles - start_cycles; // Return the difference in cycle counts
+ 151              		.loc 1 34 3 view .LVU21
+ 152              		.loc 1 34 21 is_stmt 0 view .LVU22
+ 153 0000 024B     		ldr	r3, .L11
+ 154 0002 1868     		ldr	r0, [r3]
+ 155 0004 024B     		ldr	r3, .L11+4
+ 156 0006 1B68     		ldr	r3, [r3]
+  35:Core/Src/cpu_time.c **** }
+ 157              		.loc 1 35 1 view .LVU23
+ 158 0008 C01A     		subs	r0, r0, r3
+ 159 000a 7047     		bx	lr
+ 160              	.L12:
+ 161              		.align	2
+ 162              	.L11:
+ 163 000c 00000000 		.word	end_cycles
+ 164 0010 00000000 		.word	start_cycles
+ 165              		.cfi_endproc
+ 166              	.LFE137:
+ 168              		.section	.text.CyclesToMilliseconds,"ax",%progbits
+ 169              		.align	1
+ 170              		.global	CyclesToMilliseconds
+ 171              		.syntax unified
+ 172              		.thumb
+ 173              		.thumb_func
+ 175              	CyclesToMilliseconds:
+ 176              	.LVL0:
+ 177              	.LFB138:
+  36:Core/Src/cpu_time.c **** 
+  37:Core/Src/cpu_time.c **** uint32_t CyclesToMilliseconds(uint32_t cycles)
+  38:Core/Src/cpu_time.c **** {
+ 178              		.loc 1 38 1 is_stmt 1 view -0
+ 179              		.cfi_startproc
+ 180              		@ args = 0, pretend = 0, frame = 0
+ 181              		@ frame_needed = 0, uses_anonymous_args = 0
+ 182              		.loc 1 38 1 is_stmt 0 view .LVU25
+ 183 0000 10B5     		push	{r4, lr}
+ 184              		.cfi_def_cfa_offset 8
+ 185              		.cfi_offset 4, -8
+ 186              		.cfi_offset 14, -4
+ 187 0002 0446     		mov	r4, r0
+  39:Core/Src/cpu_time.c ****   uint32_t cpu_clock_hz = HAL_RCC_GetSysClockFreq(); // Get the system clock frequency
+ 188              		.loc 1 39 3 is_stmt 1 view .LVU26
+ 189              		.loc 1 39 27 is_stmt 0 view .LVU27
+ 190 0004 FFF7FEFF 		bl	HAL_RCC_GetSysClockFreq
+ 191              	.LVL1:
+  40:Core/Src/cpu_time.c ****   return (cycles / (cpu_clock_hz / 1000));           // Convert to milliseconds
+ 192              		.loc 1 40 3 is_stmt 1 view .LVU28
+ 193              		.loc 1 40 34 is_stmt 0 view .LVU29
+ 194 0008 034A     		ldr	r2, .L15
+ 195 000a A2FB0023 		umull	r2, r3, r2, r0
+ 196 000e 9B09     		lsrs	r3, r3, #6
+  41:Core/Src/cpu_time.c **** }
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccTvYPbe.s 			page 5
+
+
+ 197              		.loc 1 41 1 view .LVU30
+ 198 0010 B4FBF3F0 		udiv	r0, r4, r3
+ 199              	.LVL2:
+ 200              		.loc 1 41 1 view .LVU31
+ 201 0014 10BD     		pop	{r4, pc}
+ 202              	.LVL3:
+ 203              	.L16:
+ 204              		.loc 1 41 1 view .LVU32
+ 205 0016 00BF     		.align	2
+ 206              	.L15:
+ 207 0018 D34D6210 		.word	274877907
+ 208              		.cfi_endproc
+ 209              	.LFE138:
+ 211              		.section	.text.CyclesToMicroseconds,"ax",%progbits
+ 212              		.align	1
+ 213              		.global	CyclesToMicroseconds
+ 214              		.syntax unified
+ 215              		.thumb
+ 216              		.thumb_func
+ 218              	CyclesToMicroseconds:
+ 219              	.LVL4:
+ 220              	.LFB139:
+  42:Core/Src/cpu_time.c **** 
+  43:Core/Src/cpu_time.c **** uint32_t CyclesToMicroseconds(uint32_t cycles)
+  44:Core/Src/cpu_time.c **** {
+ 221              		.loc 1 44 1 is_stmt 1 view -0
+ 222              		.cfi_startproc
+ 223              		@ args = 0, pretend = 0, frame = 0
+ 224              		@ frame_needed = 0, uses_anonymous_args = 0
+ 225              		.loc 1 44 1 is_stmt 0 view .LVU34
+ 226 0000 10B5     		push	{r4, lr}
+ 227              		.cfi_def_cfa_offset 8
+ 228              		.cfi_offset 4, -8
+ 229              		.cfi_offset 14, -4
+ 230 0002 0446     		mov	r4, r0
+  45:Core/Src/cpu_time.c ****   uint32_t cpu_clock_hz = HAL_RCC_GetSysClockFreq(); // Get the system clock frequency
+ 231              		.loc 1 45 3 is_stmt 1 view .LVU35
+ 232              		.loc 1 45 27 is_stmt 0 view .LVU36
+ 233 0004 FFF7FEFF 		bl	HAL_RCC_GetSysClockFreq
+ 234              	.LVL5:
+  46:Core/Src/cpu_time.c ****   return (cycles / (cpu_clock_hz / 1000000));        // Convert to microseconds
+ 235              		.loc 1 46 3 is_stmt 1 view .LVU37
+ 236              		.loc 1 46 34 is_stmt 0 view .LVU38
+ 237 0008 034A     		ldr	r2, .L19
+ 238 000a A2FB0023 		umull	r2, r3, r2, r0
+ 239 000e 9B0C     		lsrs	r3, r3, #18
+  47:Core/Src/cpu_time.c **** }...
+ 240              		.loc 1 47 1 view .LVU39
+ 241 0010 B4FBF3F0 		udiv	r0, r4, r3
+ 242              	.LVL6:
+ 243              		.loc 1 47 1 view .LVU40
+ 244 0014 10BD     		pop	{r4, pc}
+ 245              	.LVL7:
+ 246              	.L20:
+ 247              		.loc 1 47 1 view .LVU41
+ 248 0016 00BF     		.align	2
+ 249              	.L19:
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccTvYPbe.s 			page 6
+
+
+ 250 0018 83DE1B43 		.word	1125899907
+ 251              		.cfi_endproc
+ 252              	.LFE139:
+ 254              		.section	.bss.end_cycles,"aw",%nobits
+ 255              		.align	2
+ 258              	end_cycles:
+ 259 0000 00000000 		.space	4
+ 260              		.section	.bss.start_cycles,"aw",%nobits
+ 261              		.align	2
+ 264              	start_cycles:
+ 265 0000 00000000 		.space	4
+ 266              		.global	SCB_DEMCR
+ 267              		.section	.data.SCB_DEMCR,"aw"
+ 268              		.align	2
+ 271              	SCB_DEMCR:
+ 272 0000 FCED00E0 		.word	-536809988
+ 273              		.global	DWT_LAR
+ 274              		.section	.data.DWT_LAR,"aw"
+ 275              		.align	2
+ 278              	DWT_LAR:
+ 279 0000 B01F00E0 		.word	-536862800
+ 280              		.global	DWT_CONTROL
+ 281              		.section	.data.DWT_CONTROL,"aw"
+ 282              		.align	2
+ 285              	DWT_CONTROL:
+ 286 0000 001000E0 		.word	-536866816
+ 287              		.global	DWT_CYCCNT
+ 288              		.section	.data.DWT_CYCCNT,"aw"
+ 289              		.align	2
+ 292              	DWT_CYCCNT:
+ 293 0000 041000E0 		.word	-536866812
+ 294              		.text
+ 295              	.Letext0:
+ 296              		.file 2 "C:/Users/jonas/AppData/Roaming/VSCodium/User/globalStorage/bmd.stm32-for-vscode/@xpack-de
+ 297              		.file 3 "C:/Users/jonas/AppData/Roaming/VSCodium/User/globalStorage/bmd.stm32-for-vscode/@xpack-de
+ 298              		.file 4 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h"
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccTvYPbe.s 			page 7
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 cpu_time.c
+C:\Users\jonas\AppData\Local\Temp\ccTvYPbe.s:21     .text.EnableDWT:00000000 $t
+C:\Users\jonas\AppData\Local\Temp\ccTvYPbe.s:27     .text.EnableDWT:00000000 EnableDWT
+C:\Users\jonas\AppData\Local\Temp\ccTvYPbe.s:65     .text.EnableDWT:0000002c $d
+C:\Users\jonas\AppData\Local\Temp\ccTvYPbe.s:271    .data.SCB_DEMCR:00000000 SCB_DEMCR
+C:\Users\jonas\AppData\Local\Temp\ccTvYPbe.s:278    .data.DWT_LAR:00000000 DWT_LAR
+C:\Users\jonas\AppData\Local\Temp\ccTvYPbe.s:292    .data.DWT_CYCCNT:00000000 DWT_CYCCNT
+C:\Users\jonas\AppData\Local\Temp\ccTvYPbe.s:285    .data.DWT_CONTROL:00000000 DWT_CONTROL
+C:\Users\jonas\AppData\Local\Temp\ccTvYPbe.s:74     .text.StartCycleMeasurement:00000000 $t
+C:\Users\jonas\AppData\Local\Temp\ccTvYPbe.s:80     .text.StartCycleMeasurement:00000000 StartCycleMeasurement
+C:\Users\jonas\AppData\Local\Temp\ccTvYPbe.s:100    .text.StartCycleMeasurement:0000000c $d
+C:\Users\jonas\AppData\Local\Temp\ccTvYPbe.s:264    .bss.start_cycles:00000000 start_cycles
+C:\Users\jonas\AppData\Local\Temp\ccTvYPbe.s:106    .text.StopCycleMeasurement:00000000 $t
+C:\Users\jonas\AppData\Local\Temp\ccTvYPbe.s:112    .text.StopCycleMeasurement:00000000 StopCycleMeasurement
+C:\Users\jonas\AppData\Local\Temp\ccTvYPbe.s:132    .text.StopCycleMeasurement:0000000c $d
+C:\Users\jonas\AppData\Local\Temp\ccTvYPbe.s:258    .bss.end_cycles:00000000 end_cycles
+C:\Users\jonas\AppData\Local\Temp\ccTvYPbe.s:138    .text.GetMeasuredCycles:00000000 $t
+C:\Users\jonas\AppData\Local\Temp\ccTvYPbe.s:144    .text.GetMeasuredCycles:00000000 GetMeasuredCycles
+C:\Users\jonas\AppData\Local\Temp\ccTvYPbe.s:163    .text.GetMeasuredCycles:0000000c $d
+C:\Users\jonas\AppData\Local\Temp\ccTvYPbe.s:169    .text.CyclesToMilliseconds:00000000 $t
+C:\Users\jonas\AppData\Local\Temp\ccTvYPbe.s:175    .text.CyclesToMilliseconds:00000000 CyclesToMilliseconds
+C:\Users\jonas\AppData\Local\Temp\ccTvYPbe.s:207    .text.CyclesToMilliseconds:00000018 $d
+C:\Users\jonas\AppData\Local\Temp\ccTvYPbe.s:212    .text.CyclesToMicroseconds:00000000 $t
+C:\Users\jonas\AppData\Local\Temp\ccTvYPbe.s:218    .text.CyclesToMicroseconds:00000000 CyclesToMicroseconds
+C:\Users\jonas\AppData\Local\Temp\ccTvYPbe.s:250    .text.CyclesToMicroseconds:00000018 $d
+C:\Users\jonas\AppData\Local\Temp\ccTvYPbe.s:255    .bss.end_cycles:00000000 $d
+C:\Users\jonas\AppData\Local\Temp\ccTvYPbe.s:261    .bss.start_cycles:00000000 $d
+C:\Users\jonas\AppData\Local\Temp\ccTvYPbe.s:268    .data.SCB_DEMCR:00000000 $d
+C:\Users\jonas\AppData\Local\Temp\ccTvYPbe.s:275    .data.DWT_LAR:00000000 $d
+C:\Users\jonas\AppData\Local\Temp\ccTvYPbe.s:282    .data.DWT_CONTROL:00000000 $d
+C:\Users\jonas\AppData\Local\Temp\ccTvYPbe.s:289    .data.DWT_CYCCNT:00000000 $d
+
+UNDEFINED SYMBOLS
+HAL_RCC_GetSysClockFreq

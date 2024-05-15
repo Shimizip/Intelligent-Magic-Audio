@@ -26,9 +26,10 @@
 #include <stdio.h>
 #include <string.h>
 #include "math.h"
-#include <stdarg.h> //for va_list var arg functions
 #include "audio.h"
 #include "wavDecoder.h"
+#include "cpu_time.h"
+#include "util.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -65,22 +66,11 @@ static void MX_USART2_UART_Init(void);
 static void MX_SPI2_Init(void);
 static void MX_I2S3_Init(void);
 /* USER CODE BEGIN PFP */
-void myprintf(const char *fmt, ...);
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-void myprintf(const char *fmt, ...) {
-  static char buffer[256];
-  va_list args;
-  va_start(args, fmt);
-  vsnprintf(buffer, sizeof(buffer), fmt, args);
-  va_end(args);
 
-  int len = strlen(buffer);
-  HAL_UART_Transmit(&huart2, (uint8_t*)buffer, len, -1);
-
-}
 /* USER CODE END 0 */
 
 /**
@@ -100,7 +90,8 @@ int main(void)
   HAL_Init();
 
   /* USER CODE BEGIN Init */
-
+  // Init DWT Cycle Counter, for debugging purposes
+  EnableDWT();
   /* USER CODE END Init */
 
   /* Configure the system clock */
@@ -130,7 +121,7 @@ int main(void)
     //Open the file system
     fres = f_mount(&FatFs, "", 1); //1=mount now
     if (fres != FR_OK) {
-  	myprintf("f_mount error (%i)\r\n", fres);
+  	uart_printf("f_mount error (%i)\r\n", fres);
   	while(1);
     }
 
@@ -141,7 +132,7 @@ int main(void)
 
     fres = f_getfree("", &free_clusters, &getFreeFs);
     if (fres != FR_OK) {
-  	myprintf("f_getfree error (%i)\r\n", fres);
+  	uart_printf("f_getfree error (%i)\r\n", fres);
   	while(1);
     }
 
@@ -149,7 +140,7 @@ int main(void)
     total_sectors = (getFreeFs->n_fatent - 2) * getFreeFs->csize;
     free_sectors = free_clusters * getFreeFs->csize;
 
-    myprintf("SD card stats:\r\n%10lu KiB total drive space.\r\n%10lu KiB available.\r\n", total_sectors / 2, free_sectors / 2);
+    uart_printf("SD card stats:\r\n%10lu KiB total drive space.\r\n%10lu KiB available.\r\n", total_sectors / 2, free_sectors / 2);
 
     //Now let's try to open file "test.txt"
     fres = f_open(&fil, "36.wav", FA_READ);
@@ -158,9 +149,8 @@ int main(void)
     }
     checkWav(&fil);
     f_close(&fil);
-    // Start DMA Stream
-    // fillBuffer();
 
+    // Start DMA Stream
     volatile HAL_StatusTypeDef dmaStatus = HAL_I2S_Transmit_DMA(&hi2s3,(uint16_t *)dacData, BUFFER_SIZE);
     f_mount(NULL, "", 0);
     initSineTable();
@@ -171,8 +161,14 @@ int main(void)
     while (1)
     {
       if(dataReady){
-        generateSineWave(1000.0);
+        StartCycleMeasurement();
+        // generateSineWave(1000.0);
+        HAL_Delay(1);
+        StopCycleMeasurement();
         // dataReady = false;
+        uint32_t cycles = GetMeasuredCycles();
+        uint32_t us = CyclesToMicroseconds(cycles);
+        uart_printf("us (%i)\r\n", us);
       }
     /* USER CODE END WHILE */
 
