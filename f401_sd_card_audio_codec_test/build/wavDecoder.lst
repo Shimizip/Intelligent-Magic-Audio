@@ -1,0 +1,224 @@
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccUCoETa.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"wavDecoder.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.file 1 "Core/Src/wavDecoder.c"
+  20              		.section	.text.checkWav,"ax",%progbits
+  21              		.align	1
+  22              		.global	checkWav
+  23              		.syntax unified
+  24              		.thumb
+  25              		.thumb_func
+  27              	checkWav:
+  28              	.LVL0:
+  29              	.LFB134:
+   1:Core/Src/wavDecoder.c **** #include "fatfs.h"
+   2:Core/Src/wavDecoder.c **** #include "wavDecoder.h"
+   3:Core/Src/wavDecoder.c **** #include <malloc.h>
+   4:Core/Src/wavDecoder.c **** 
+   5:Core/Src/wavDecoder.c **** // check for valid .wav header
+   6:Core/Src/wavDecoder.c **** uint8_t checkWav(FIL *file){
+  30              		.loc 1 6 28 view -0
+  31              		.cfi_startproc
+  32              		@ args = 0, pretend = 0, frame = 48
+  33              		@ frame_needed = 0, uses_anonymous_args = 0
+  34              		.loc 1 6 28 is_stmt 0 view .LVU1
+  35 0000 00B5     		push	{lr}
+  36              		.cfi_def_cfa_offset 4
+  37              		.cfi_offset 14, -4
+  38 0002 8DB0     		sub	sp, sp, #52
+  39              		.cfi_def_cfa_offset 56
+   7:Core/Src/wavDecoder.c ****   uint8_t wav_OK = 1;
+  40              		.loc 1 7 3 is_stmt 1 view .LVU2
+  41              	.LVL1:
+   8:Core/Src/wavDecoder.c ****   //char WavInfo[36] = "WAV Info: ";
+   9:Core/Src/wavDecoder.c ****   wav_header_t wavHeader;
+  42              		.loc 1 9 3 view .LVU3
+  10:Core/Src/wavDecoder.c ****   UINT count = 0;
+  43              		.loc 1 10 3 view .LVU4
+  44              		.loc 1 10 8 is_stmt 0 view .LVU5
+  45 0004 0023     		movs	r3, #0
+  46 0006 0093     		str	r3, [sp]
+  11:Core/Src/wavDecoder.c **** 
+  12:Core/Src/wavDecoder.c ****   if( (f_read(file, &wavHeader, 44, &count) != FR_OK) || count<44){           // Read wav header
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccUCoETa.s 			page 2
+
+
+  47              		.loc 1 12 3 is_stmt 1 view .LVU6
+  48              		.loc 1 12 8 is_stmt 0 view .LVU7
+  49 0008 6B46     		mov	r3, sp
+  50 000a 2C22     		movs	r2, #44
+  51 000c 01A9     		add	r1, sp, #4
+  52 000e FFF7FEFF 		bl	f_read
+  53              	.LVL2:
+  54              		.loc 1 12 5 discriminator 1 view .LVU8
+  55 0012 80BB     		cbnz	r0, .L8
+  56 0014 0346     		mov	r3, r0
+  57              		.loc 1 12 63 discriminator 1 view .LVU9
+  58 0016 009A     		ldr	r2, [sp]
+  59              		.loc 1 12 55 discriminator 1 view .LVU10
+  60 0018 2B2A     		cmp	r2, #43
+  61 001a 2DD9     		bls	.L2
+  13:Core/Src/wavDecoder.c ****     return 0;
+  14:Core/Src/wavDecoder.c ****   }
+  15:Core/Src/wavDecoder.c ****   if(wavHeader.ChunkID != 0x46464952 ){   // "RIFF"
+  62              		.loc 1 15 3 is_stmt 1 view .LVU11
+  63              		.loc 1 15 5 is_stmt 0 view .LVU12
+  64 001c 0199     		ldr	r1, [sp, #4]
+  65 001e 184A     		ldr	r2, .L16
+  66 0020 9142     		cmp	r1, r2
+  67 0022 26D0     		beq	.L15
+  16:Core/Src/wavDecoder.c ****     wav_OK = 0;
+  68              		.loc 1 16 12 view .LVU13
+  69 0024 0246     		mov	r2, r0
+  70              	.L3:
+  71              	.LVL3:
+  17:Core/Src/wavDecoder.c ****   }
+  18:Core/Src/wavDecoder.c ****   if(wavHeader.Format != 0x45564157 ){    // "WAVE"
+  72              		.loc 1 18 3 is_stmt 1 view .LVU14
+  73              		.loc 1 18 5 is_stmt 0 view .LVU15
+  74 0026 0398     		ldr	r0, [sp, #12]
+  75 0028 1649     		ldr	r1, .L16+4
+  76 002a 8842     		cmp	r0, r1
+  77 002c 00D0     		beq	.L4
+  19:Core/Src/wavDecoder.c ****     wav_OK = 0;
+  78              		.loc 1 19 12 view .LVU16
+  79 002e 1A46     		mov	r2, r3
+  80              	.LVL4:
+  81              	.L4:
+  20:Core/Src/wavDecoder.c ****   }
+  21:Core/Src/wavDecoder.c ****   if(wavHeader.Subchunk1ID != 0x20746d66 ){ // "fmt "
+  82              		.loc 1 21 3 is_stmt 1 view .LVU17
+  83              		.loc 1 21 5 is_stmt 0 view .LVU18
+  84 0030 0498     		ldr	r0, [sp, #16]
+  85 0032 1549     		ldr	r1, .L16+8
+  86 0034 8842     		cmp	r0, r1
+  87 0036 00D0     		beq	.L5
+  22:Core/Src/wavDecoder.c ****     wav_OK = 0;
+  88              		.loc 1 22 12 view .LVU19
+  89 0038 1A46     		mov	r2, r3
+  90              	.LVL5:
+  91              	.L5:
+  23:Core/Src/wavDecoder.c ****   }
+  24:Core/Src/wavDecoder.c ****   if(wavHeader.Subchunk1Size != 16 ){     // Should be 16
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccUCoETa.s 			page 3
+
+
+  92              		.loc 1 24 3 is_stmt 1 view .LVU20
+  93              		.loc 1 24 15 is_stmt 0 view .LVU21
+  94 003a 0599     		ldr	r1, [sp, #20]
+  95              		.loc 1 24 5 view .LVU22
+  96 003c 1029     		cmp	r1, #16
+  97 003e 00D0     		beq	.L6
+  25:Core/Src/wavDecoder.c ****     wav_OK = 0;
+  98              		.loc 1 25 12 view .LVU23
+  99 0040 1A46     		mov	r2, r3
+ 100              	.LVL6:
+ 101              	.L6:
+  26:Core/Src/wavDecoder.c ****   }
+  27:Core/Src/wavDecoder.c ****   if(wavHeader.AudioFormat != 1 ){      // Should be 1
+ 102              		.loc 1 27 3 is_stmt 1 view .LVU24
+ 103              		.loc 1 27 15 is_stmt 0 view .LVU25
+ 104 0042 BDF81810 		ldrh	r1, [sp, #24]
+ 105              		.loc 1 27 5 view .LVU26
+ 106 0046 0129     		cmp	r1, #1
+ 107 0048 00D0     		beq	.L7
+  28:Core/Src/wavDecoder.c ****     wav_OK = 0;
+ 108              		.loc 1 28 12 view .LVU27
+ 109 004a 1A46     		mov	r2, r3
+ 110              	.LVL7:
+ 111              	.L7:
+  29:Core/Src/wavDecoder.c ****   }
+  30:Core/Src/wavDecoder.c ****   if((wavHeader.NumChannels != 2) || (wavHeader.SampleRate!=44100) || (wavHeader.BitsPerSample != 1
+ 112              		.loc 1 30 3 is_stmt 1 view .LVU28
+ 113              		.loc 1 30 16 is_stmt 0 view .LVU29
+ 114 004c BDF81A10 		ldrh	r1, [sp, #26]
+ 115              		.loc 1 30 5 view .LVU30
+ 116 0050 0229     		cmp	r1, #2
+ 117 0052 11D1     		bne	.L2
+ 118              		.loc 1 30 35 discriminator 1 view .LVU31
+ 119 0054 0798     		ldr	r0, [sp, #28]
+ 120 0056 4AF64441 		movw	r1, #44100
+ 121 005a 8842     		cmp	r0, r1
+ 122 005c 0CD1     		bne	.L2
+ 123              		.loc 1 30 81 discriminator 2 view .LVU32
+ 124 005e BDF82610 		ldrh	r1, [sp, #38]
+ 125              		.loc 1 30 68 discriminator 2 view .LVU33
+ 126 0062 1029     		cmp	r1, #16
+ 127 0064 08D1     		bne	.L2
+ 128              		.loc 1 30 104 discriminator 3 view .LVU34
+ 129 0066 0A98     		ldr	r0, [sp, #40]
+ 130 0068 0849     		ldr	r1, .L16+12
+ 131 006a 8842     		cmp	r0, r1
+ 132 006c 04D1     		bne	.L2
+ 133 006e 1346     		mov	r3, r2
+ 134 0070 02E0     		b	.L2
+ 135              	.LVL8:
+ 136              	.L15:
+   7:Core/Src/wavDecoder.c ****   //char WavInfo[36] = "WAV Info: ";
+ 137              		.loc 1 7 11 view .LVU35
+ 138 0072 0122     		movs	r2, #1
+ 139 0074 D7E7     		b	.L3
+ 140              	.L8:
+  13:Core/Src/wavDecoder.c ****   }
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccUCoETa.s 			page 4
+
+
+ 141              		.loc 1 13 12 view .LVU36
+ 142 0076 0023     		movs	r3, #0
+ 143              	.LVL9:
+ 144              	.L2:
+  31:Core/Src/wavDecoder.c ****     wav_OK = 0;
+  32:Core/Src/wavDecoder.c ****   }
+  33:Core/Src/wavDecoder.c ****   return wav_OK;
+  34:Core/Src/wavDecoder.c **** }...
+ 145              		.loc 1 34 1 view .LVU37
+ 146 0078 1846     		mov	r0, r3
+ 147 007a 0DB0     		add	sp, sp, #52
+ 148              		.cfi_def_cfa_offset 4
+ 149              		@ sp needed
+ 150 007c 5DF804FB 		ldr	pc, [sp], #4
+ 151              	.L17:
+ 152              		.align	2
+ 153              	.L16:
+ 154 0080 52494646 		.word	1179011410
+ 155 0084 57415645 		.word	1163280727
+ 156 0088 666D7420 		.word	544501094
+ 157 008c 64617461 		.word	1635017060
+ 158              		.cfi_endproc
+ 159              	.LFE134:
+ 161              		.text
+ 162              	.Letext0:
+ 163              		.file 2 "Middlewares/Third_Party/FatFs/src/integer.h"
+ 164              		.file 3 "C:/Users/jonas/AppData/Roaming/VSCodium/User/globalStorage/bmd.stm32-for-vscode/@xpack-de
+ 165              		.file 4 "C:/Users/jonas/AppData/Roaming/VSCodium/User/globalStorage/bmd.stm32-for-vscode/@xpack-de
+ 166              		.file 5 "Middlewares/Third_Party/FatFs/src/ff.h"
+ 167              		.file 6 "Core/Inc/wavDecoder.h"
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccUCoETa.s 			page 5
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 wavDecoder.c
+C:\Users\jonas\AppData\Local\Temp\ccUCoETa.s:21     .text.checkWav:00000000 $t
+C:\Users\jonas\AppData\Local\Temp\ccUCoETa.s:27     .text.checkWav:00000000 checkWav
+C:\Users\jonas\AppData\Local\Temp\ccUCoETa.s:154    .text.checkWav:00000080 $d
+
+UNDEFINED SYMBOLS
+f_read
