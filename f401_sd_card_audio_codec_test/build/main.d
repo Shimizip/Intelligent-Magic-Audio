@@ -24,14 +24,16 @@ build/main.o: Core/Src/main.c Core/Inc/main.h \
  Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2s_ex.h \
  Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h \
  Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h \
- Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h \
+ Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_sd.h \
+ Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_sdmmc.h \
  Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h FATFS/App/fatfs.h \
  Middlewares/Third_Party/FatFs/src/ff.h \
  Middlewares/Third_Party/FatFs/src/integer.h FATFS/Target/ffconf.h \
+ FATFS/Target/bsp_driver_sd.h \
  Middlewares/Third_Party/FatFs/src/ff_gen_drv.h \
  Middlewares/Third_Party/FatFs/src/diskio.h \
- Middlewares/Third_Party/FatFs/src/ff.h FATFS/Target/user_diskio.h \
- Core/Inc/audio.h Core/Inc/main.h \
+ Middlewares/Third_Party/FatFs/src/ff.h FATFS/Target/sd_diskio.h \
+ Core/Inc/audio.h Core/Inc/main.h Core/Inc/wavDecoder.h Core/Inc/audio.h \
  Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2s_ex.h \
  Core/Inc/wavDecoder.h Core/Inc/cpu_time.h Core/Inc/util.h
 Core/Inc/main.h:
@@ -62,18 +64,22 @@ Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2s.h:
 Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2s_ex.h:
 Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h:
 Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h:
-Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h:
+Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_sd.h:
+Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_sdmmc.h:
 Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:
 FATFS/App/fatfs.h:
 Middlewares/Third_Party/FatFs/src/ff.h:
 Middlewares/Third_Party/FatFs/src/integer.h:
 FATFS/Target/ffconf.h:
+FATFS/Target/bsp_driver_sd.h:
 Middlewares/Third_Party/FatFs/src/ff_gen_drv.h:
 Middlewares/Third_Party/FatFs/src/diskio.h:
 Middlewares/Third_Party/FatFs/src/ff.h:
-FATFS/Target/user_diskio.h:
+FATFS/Target/sd_diskio.h:
 Core/Inc/audio.h:
 Core/Inc/main.h:
+Core/Inc/wavDecoder.h:
+Core/Inc/audio.h:
 Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2s_ex.h:
 Core/Inc/wavDecoder.h:
 Core/Inc/cpu_time.h:

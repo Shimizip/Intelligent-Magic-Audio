@@ -50,7 +50,9 @@
 I2S_HandleTypeDef hi2s3;
 DMA_HandleTypeDef hdma_spi3_tx;
 
-SPI_HandleTypeDef hspi2;
+SD_HandleTypeDef hsd;
+DMA_HandleTypeDef hdma_sdio_rx;
+DMA_HandleTypeDef hdma_sdio_tx;
 
 UART_HandleTypeDef huart2;
 
@@ -63,8 +65,8 @@ void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
 static void MX_DMA_Init(void);
 static void MX_USART2_UART_Init(void);
-static void MX_SPI2_Init(void);
 static void MX_I2S3_Init(void);
+static void MX_SDIO_SD_Init(void);
 /* USER CODE BEGIN PFP */
 /* USER CODE END PFP */
 
@@ -106,74 +108,58 @@ int main(void)
   MX_DMA_Init();
   MX_USART2_UART_Init();
   MX_FATFS_Init();
-  MX_SPI2_Init();
   MX_I2S3_Init();
+  MX_SDIO_SD_Init();
   /* USER CODE BEGIN 2 */
 
-    
     HAL_Delay(1000); //a short delay is important to let the SD card settle
 
-    //some variables for FatFs
+    //vars for Fatfs
     FATFS FatFs; 	//Fatfs handle
     FIL fil; 		//File handle
     FRESULT fres; //Result after operations
+    //wav header
+    wav_header_t currentWav;
 
     //Open the file system
-    fres = f_mount(&FatFs, "", 1); //1=mount now
+    fres = f_mount(&FatFs, SDPath, 1); //1=mount now
     if (fres != FR_OK) {
   	uart_printf("f_mount error (%i)\r\n", fres);
-  	while(1);
+  	  while(1);
     }
-
-    //Let's get some statistics from the SD card
-    DWORD free_clusters, free_sectors, total_sectors;
-
-    FATFS* getFreeFs;
-
-    fres = f_getfree("", &free_clusters, &getFreeFs);
-    if (fres != FR_OK) {
-  	uart_printf("f_getfree error (%i)\r\n", fres);
-  	while(1);
-    }
-
-    //Formula comes from ChaN's documentation
-    total_sectors = (getFreeFs->n_fatent - 2) * getFreeFs->csize;
-    free_sectors = free_clusters * getFreeFs->csize;
-
-    uart_printf("SD card stats:\r\n%10lu KiB total drive space.\r\n%10lu KiB available.\r\n", total_sectors / 2, free_sectors / 2);
 
     //Now let's try to open file "test.txt"
-    fres = f_open(&fil, "36.wav", FA_READ);
+    fres = f_open(&fil, "letsroll.wav", FA_READ);
     if (fres != FR_OK) {
-  	while(1);
+  	  while(1);
     }
-    checkWav(&fil);
-    f_close(&fil);
 
-    // Start DMA Stream
-    volatile HAL_StatusTypeDef dmaStatus = HAL_I2S_Transmit_DMA(&hi2s3,(uint16_t *)dacData, BUFFER_SIZE);
-    f_mount(NULL, "", 0);
-    initSineTable();
+    checkWav(&fil, &currentWav);
+    // f_lseek(&fil,0);
+    // initSineTable();
+
+
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-    while (1)
-    {
-      if(dataReady){
-        StartCycleMeasurement();
-        // generateSineWave(1000.0);
-        HAL_Delay(1);
-        StopCycleMeasurement();
-        // dataReady = false;
-        uint32_t cycles = GetMeasuredCycles();
-        uint32_t us = CyclesToMicroseconds(cycles);
-        uart_printf("us (%i)\r\n", us);
-      }
-    /* USER CODE END WHILE */
+    wavPlay(&fil, &currentWav);
+    // while (1)
+    // {
+    //   if(dma_dataReady){
+    //     // StartCycleMeasurement();
+    //     // generateSineWave(1000.0);
+    //     // fillHalfBufferFromSD(&fil);
+    //     // StopCycleMeasurement();
+    //     dma_dataReady = false;
+    //     // uint32_t cycles = GetMeasuredCycles();
+    //     // uint32_t us = CyclesToMicroseconds(cycles);
+    //     // uart_printf("us (%i)\r\n", us);
+    //   }
+    // /* USER CODE END WHILE */
 
-    /* USER CODE BEGIN 3 */
-    }
+    // /* USER CODE BEGIN 3 */
+    // }
   /* USER CODE END 3 */
 }
 
@@ -258,40 +244,30 @@ static void MX_I2S3_Init(void)
 }
 
 /**
-  * @brief SPI2 Initialization Function
+  * @brief SDIO Initialization Function
   * @param None
   * @retval None
   */
-static void MX_SPI2_Init(void)
+static void MX_SDIO_SD_Init(void)
 {
 
-  /* USER CODE BEGIN SPI2_Init 0 */
+  /* USER CODE BEGIN SDIO_Init 0 */
 
-  /* USER CODE END SPI2_Init 0 */
+  /* USER CODE END SDIO_Init 0 */
 
-  /* USER CODE BEGIN SPI2_Init 1 */
+  /* USER CODE BEGIN SDIO_Init 1 */
 
-  /* USER CODE END SPI2_Init 1 */
-  /* SPI2 parameter configuration*/
-  hspi2.Instance = SPI2;
-  hspi2.Init.Mode = SPI_MODE_MASTER;
-  hspi2.Init.Direction = SPI_DIRECTION_2LINES;
-  hspi2.Init.DataSize = SPI_DATASIZE_8BIT;
-  hspi2.Init.CLKPolarity = SPI_POLARITY_LOW;
-  hspi2.Init.CLKPhase = SPI_PHASE_1EDGE;
-  hspi2.Init.NSS = SPI_NSS_SOFT;
-  hspi2.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_128;
-  hspi2.Init.FirstBit = SPI_FIRSTBIT_MSB;
-  hspi2.Init.TIMode = SPI_TIMODE_DISABLE;
-  hspi2.Init.CRCCalculation = SPI_CRCCALCULATION_DISABLE;
-  hspi2.Init.CRCPolynomial = 10;
-  if (HAL_SPI_Init(&hspi2) != HAL_OK)
-  {
-    Error_Handler();
-  }
-  /* USER CODE BEGIN SPI2_Init 2 */
+  /* USER CODE END SDIO_Init 1 */
+  hsd.Instance = SDIO;
+  hsd.Init.ClockEdge = SDIO_CLOCK_EDGE_RISING;
+  hsd.Init.ClockBypass = SDIO_CLOCK_BYPASS_DISABLE;
+  hsd.Init.ClockPowerSave = SDIO_CLOCK_POWER_SAVE_DISABLE;
+  hsd.Init.BusWide = SDIO_BUS_WIDE_1B;
+  hsd.Init.HardwareFlowControl = SDIO_HARDWARE_FLOW_CONTROL_DISABLE;
+  hsd.Init.ClockDiv = 0;
+  /* USER CODE BEGIN SDIO_Init 2 */
 
-  /* USER CODE END SPI2_Init 2 */
+  /* USER CODE END SDIO_Init 2 */
 
 }
 
@@ -336,11 +312,18 @@ static void MX_DMA_Init(void)
 
   /* DMA controller clock enable */
   __HAL_RCC_DMA1_CLK_ENABLE();
+  __HAL_RCC_DMA2_CLK_ENABLE();
 
   /* DMA interrupt init */
   /* DMA1_Stream5_IRQn interrupt configuration */
   HAL_NVIC_SetPriority(DMA1_Stream5_IRQn, 0, 0);
   HAL_NVIC_EnableIRQ(DMA1_Stream5_IRQn);
+  /* DMA2_Stream3_IRQn interrupt configuration */
+  HAL_NVIC_SetPriority(DMA2_Stream3_IRQn, 0, 0);
+  HAL_NVIC_EnableIRQ(DMA2_Stream3_IRQn);
+  /* DMA2_Stream6_IRQn interrupt configuration */
+  HAL_NVIC_SetPriority(DMA2_Stream6_IRQn, 0, 0);
+  HAL_NVIC_EnableIRQ(DMA2_Stream6_IRQn);
 
 }
 
@@ -360,6 +343,7 @@ static void MX_GPIO_Init(void)
   __HAL_RCC_GPIOH_CLK_ENABLE();
   __HAL_RCC_GPIOA_CLK_ENABLE();
   __HAL_RCC_GPIOB_CLK_ENABLE();
+  __HAL_RCC_GPIOD_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, GPIO_PIN_RESET);
@@ -386,6 +370,14 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(SD_CS_GPIO_Port, &GPIO_InitStruct);
+
+  /*Configure GPIO pins : PB13 PB14 PB15 */
+  GPIO_InitStruct.Pin = GPIO_PIN_13|GPIO_PIN_14|GPIO_PIN_15;
+  GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
+  GPIO_InitStruct.Alternate = GPIO_AF5_SPI2;
+  HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
 /* USER CODE BEGIN MX_GPIO_Init_2 */
 /* USER CODE END MX_GPIO_Init_2 */

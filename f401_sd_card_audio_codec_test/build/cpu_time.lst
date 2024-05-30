@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccTvYPbe.s 			page 1
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccU3PrZq.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccTvYPbe.s 			page 1
   40 000a 1360     		str	r3, [r2]
   17:Core/Src/cpu_time.c ****   *DWT_LAR = 0xC5ACCE55;         // Unlock DWT registers
   41              		.loc 1 17 3 is_stmt 1 view .LVU3
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccTvYPbe.s 			page 2
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccU3PrZq.s 			page 2
 
 
   42 000c 084B     		ldr	r3, .L2+4
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccTvYPbe.s 			page 1
   91 0004 1A68     		ldr	r2, [r3]
   92              		.loc 1 24 16 view .LVU13
   93 0006 024B     		ldr	r3, .L5+4
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccTvYPbe.s 			page 3
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccU3PrZq.s 			page 3
 
 
   94 0008 1A60     		str	r2, [r3]
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccTvYPbe.s 			page 1
   31:Core/Src/cpu_time.c **** 
   32:Core/Src/cpu_time.c **** uint32_t GetMeasuredCycles(void)
   33:Core/Src/cpu_time.c **** {
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccTvYPbe.s 			page 4
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccU3PrZq.s 			page 4
 
 
  146              		.loc 1 33 1 is_stmt 1 view -0
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccTvYPbe.s 			page 1
  195 000a A2FB0023 		umull	r2, r3, r2, r0
  196 000e 9B09     		lsrs	r3, r3, #6
   41:Core/Src/cpu_time.c **** }
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccTvYPbe.s 			page 5
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccU3PrZq.s 			page 5
 
 
  197              		.loc 1 41 1 view .LVU30
@@ -281,7 +281,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccTvYPbe.s 			page 1
  232              		.loc 1 45 27 is_stmt 0 view .LVU36
  233 0004 FFF7FEFF 		bl	HAL_RCC_GetSysClockFreq
  234              	.LVL5:
-  46:Core/Src/cpu_time.c ****   return (cycles / (cpu_clock_hz / 1000000));        // Convert to microseconds
+  46:Core/Src/cpu_time.c ****   return (cycles / (cpu_clock_hz / 1000000));   // Convert to microseconds
  235              		.loc 1 46 3 is_stmt 1 view .LVU37
  236              		.loc 1 46 34 is_stmt 0 view .LVU38
  237 0008 034A     		ldr	r2, .L19
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccTvYPbe.s 			page 1
  247              		.loc 1 47 1 view .LVU41
  248 0016 00BF     		.align	2
  249              	.L19:
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccTvYPbe.s 			page 6
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccU3PrZq.s 			page 6
 
 
  250 0018 83DE1B43 		.word	1125899907
@@ -337,41 +337,41 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccTvYPbe.s 			page 1
  296              		.file 2 "C:/Users/jonas/AppData/Roaming/VSCodium/User/globalStorage/bmd.stm32-for-vscode/@xpack-de
  297              		.file 3 "C:/Users/jonas/AppData/Roaming/VSCodium/User/globalStorage/bmd.stm32-for-vscode/@xpack-de
  298              		.file 4 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h"
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccTvYPbe.s 			page 7
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccU3PrZq.s 			page 7
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 cpu_time.c
-C:\Users\jonas\AppData\Local\Temp\ccTvYPbe.s:21     .text.EnableDWT:00000000 $t
-C:\Users\jonas\AppData\Local\Temp\ccTvYPbe.s:27     .text.EnableDWT:00000000 EnableDWT
-C:\Users\jonas\AppData\Local\Temp\ccTvYPbe.s:65     .text.EnableDWT:0000002c $d
-C:\Users\jonas\AppData\Local\Temp\ccTvYPbe.s:271    .data.SCB_DEMCR:00000000 SCB_DEMCR
-C:\Users\jonas\AppData\Local\Temp\ccTvYPbe.s:278    .data.DWT_LAR:00000000 DWT_LAR
-C:\Users\jonas\AppData\Local\Temp\ccTvYPbe.s:292    .data.DWT_CYCCNT:00000000 DWT_CYCCNT
-C:\Users\jonas\AppData\Local\Temp\ccTvYPbe.s:285    .data.DWT_CONTROL:00000000 DWT_CONTROL
-C:\Users\jonas\AppData\Local\Temp\ccTvYPbe.s:74     .text.StartCycleMeasurement:00000000 $t
-C:\Users\jonas\AppData\Local\Temp\ccTvYPbe.s:80     .text.StartCycleMeasurement:00000000 StartCycleMeasurement
-C:\Users\jonas\AppData\Local\Temp\ccTvYPbe.s:100    .text.StartCycleMeasurement:0000000c $d
-C:\Users\jonas\AppData\Local\Temp\ccTvYPbe.s:264    .bss.start_cycles:00000000 start_cycles
-C:\Users\jonas\AppData\Local\Temp\ccTvYPbe.s:106    .text.StopCycleMeasurement:00000000 $t
-C:\Users\jonas\AppData\Local\Temp\ccTvYPbe.s:112    .text.StopCycleMeasurement:00000000 StopCycleMeasurement
-C:\Users\jonas\AppData\Local\Temp\ccTvYPbe.s:132    .text.StopCycleMeasurement:0000000c $d
-C:\Users\jonas\AppData\Local\Temp\ccTvYPbe.s:258    .bss.end_cycles:00000000 end_cycles
-C:\Users\jonas\AppData\Local\Temp\ccTvYPbe.s:138    .text.GetMeasuredCycles:00000000 $t
-C:\Users\jonas\AppData\Local\Temp\ccTvYPbe.s:144    .text.GetMeasuredCycles:00000000 GetMeasuredCycles
-C:\Users\jonas\AppData\Local\Temp\ccTvYPbe.s:163    .text.GetMeasuredCycles:0000000c $d
-C:\Users\jonas\AppData\Local\Temp\ccTvYPbe.s:169    .text.CyclesToMilliseconds:00000000 $t
-C:\Users\jonas\AppData\Local\Temp\ccTvYPbe.s:175    .text.CyclesToMilliseconds:00000000 CyclesToMilliseconds
-C:\Users\jonas\AppData\Local\Temp\ccTvYPbe.s:207    .text.CyclesToMilliseconds:00000018 $d
-C:\Users\jonas\AppData\Local\Temp\ccTvYPbe.s:212    .text.CyclesToMicroseconds:00000000 $t
-C:\Users\jonas\AppData\Local\Temp\ccTvYPbe.s:218    .text.CyclesToMicroseconds:00000000 CyclesToMicroseconds
-C:\Users\jonas\AppData\Local\Temp\ccTvYPbe.s:250    .text.CyclesToMicroseconds:00000018 $d
-C:\Users\jonas\AppData\Local\Temp\ccTvYPbe.s:255    .bss.end_cycles:00000000 $d
-C:\Users\jonas\AppData\Local\Temp\ccTvYPbe.s:261    .bss.start_cycles:00000000 $d
-C:\Users\jonas\AppData\Local\Temp\ccTvYPbe.s:268    .data.SCB_DEMCR:00000000 $d
-C:\Users\jonas\AppData\Local\Temp\ccTvYPbe.s:275    .data.DWT_LAR:00000000 $d
-C:\Users\jonas\AppData\Local\Temp\ccTvYPbe.s:282    .data.DWT_CONTROL:00000000 $d
-C:\Users\jonas\AppData\Local\Temp\ccTvYPbe.s:289    .data.DWT_CYCCNT:00000000 $d
+C:\Users\jonas\AppData\Local\Temp\ccU3PrZq.s:21     .text.EnableDWT:00000000 $t
+C:\Users\jonas\AppData\Local\Temp\ccU3PrZq.s:27     .text.EnableDWT:00000000 EnableDWT
+C:\Users\jonas\AppData\Local\Temp\ccU3PrZq.s:65     .text.EnableDWT:0000002c $d
+C:\Users\jonas\AppData\Local\Temp\ccU3PrZq.s:271    .data.SCB_DEMCR:00000000 SCB_DEMCR
+C:\Users\jonas\AppData\Local\Temp\ccU3PrZq.s:278    .data.DWT_LAR:00000000 DWT_LAR
+C:\Users\jonas\AppData\Local\Temp\ccU3PrZq.s:292    .data.DWT_CYCCNT:00000000 DWT_CYCCNT
+C:\Users\jonas\AppData\Local\Temp\ccU3PrZq.s:285    .data.DWT_CONTROL:00000000 DWT_CONTROL
+C:\Users\jonas\AppData\Local\Temp\ccU3PrZq.s:74     .text.StartCycleMeasurement:00000000 $t
+C:\Users\jonas\AppData\Local\Temp\ccU3PrZq.s:80     .text.StartCycleMeasurement:00000000 StartCycleMeasurement
+C:\Users\jonas\AppData\Local\Temp\ccU3PrZq.s:100    .text.StartCycleMeasurement:0000000c $d
+C:\Users\jonas\AppData\Local\Temp\ccU3PrZq.s:264    .bss.start_cycles:00000000 start_cycles
+C:\Users\jonas\AppData\Local\Temp\ccU3PrZq.s:106    .text.StopCycleMeasurement:00000000 $t
+C:\Users\jonas\AppData\Local\Temp\ccU3PrZq.s:112    .text.StopCycleMeasurement:00000000 StopCycleMeasurement
+C:\Users\jonas\AppData\Local\Temp\ccU3PrZq.s:132    .text.StopCycleMeasurement:0000000c $d
+C:\Users\jonas\AppData\Local\Temp\ccU3PrZq.s:258    .bss.end_cycles:00000000 end_cycles
+C:\Users\jonas\AppData\Local\Temp\ccU3PrZq.s:138    .text.GetMeasuredCycles:00000000 $t
+C:\Users\jonas\AppData\Local\Temp\ccU3PrZq.s:144    .text.GetMeasuredCycles:00000000 GetMeasuredCycles
+C:\Users\jonas\AppData\Local\Temp\ccU3PrZq.s:163    .text.GetMeasuredCycles:0000000c $d
+C:\Users\jonas\AppData\Local\Temp\ccU3PrZq.s:169    .text.CyclesToMilliseconds:00000000 $t
+C:\Users\jonas\AppData\Local\Temp\ccU3PrZq.s:175    .text.CyclesToMilliseconds:00000000 CyclesToMilliseconds
+C:\Users\jonas\AppData\Local\Temp\ccU3PrZq.s:207    .text.CyclesToMilliseconds:00000018 $d
+C:\Users\jonas\AppData\Local\Temp\ccU3PrZq.s:212    .text.CyclesToMicroseconds:00000000 $t
+C:\Users\jonas\AppData\Local\Temp\ccU3PrZq.s:218    .text.CyclesToMicroseconds:00000000 CyclesToMicroseconds
+C:\Users\jonas\AppData\Local\Temp\ccU3PrZq.s:250    .text.CyclesToMicroseconds:00000018 $d
+C:\Users\jonas\AppData\Local\Temp\ccU3PrZq.s:255    .bss.end_cycles:00000000 $d
+C:\Users\jonas\AppData\Local\Temp\ccU3PrZq.s:261    .bss.start_cycles:00000000 $d
+C:\Users\jonas\AppData\Local\Temp\ccU3PrZq.s:268    .data.SCB_DEMCR:00000000 $d
+C:\Users\jonas\AppData\Local\Temp\ccU3PrZq.s:275    .data.DWT_LAR:00000000 $d
+C:\Users\jonas\AppData\Local\Temp\ccU3PrZq.s:282    .data.DWT_CONTROL:00000000 $d
+C:\Users\jonas\AppData\Local\Temp\ccU3PrZq.s:289    .data.DWT_CYCCNT:00000000 $d
 
 UNDEFINED SYMBOLS
 HAL_RCC_GetSysClockFreq

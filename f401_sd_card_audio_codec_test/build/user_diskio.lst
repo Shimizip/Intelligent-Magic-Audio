@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccsHAIcV.s 			page 1
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccXVJ2s5.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccsHAIcV.s 			page 1
   27:FATFS/Target/user_diskio.c ****  * the section contents can be deleted.
   28:FATFS/Target/user_diskio.c ****  */
   29:FATFS/Target/user_diskio.c **** /* USER CODE BEGIN 0 */
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccsHAIcV.s 			page 2
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccXVJ2s5.s 			page 2
 
 
   30:FATFS/Target/user_diskio.c **** /* USER CODE END 0 */
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccsHAIcV.s 			page 1
   31              		.cfi_startproc
   32              		@ args = 0, pretend = 0, frame = 0
   33              		@ frame_needed = 0, uses_anonymous_args = 0
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccsHAIcV.s 			page 3
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccXVJ2s5.s 			page 3
 
 
   34              		.loc 1 82 1 is_stmt 0 view .LVU1
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccsHAIcV.s 			page 1
   72 0006 08BD     		pop	{r3, pc}
   73              		.cfi_endproc
   74              	.LFE135:
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccsHAIcV.s 			page 4
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccXVJ2s5.s 			page 4
 
 
   76              		.section	.text.USER_read,"ax",%progbits
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccsHAIcV.s 			page 1
  113              	.LFB137:
  121:FATFS/Target/user_diskio.c **** 
  122:FATFS/Target/user_diskio.c **** /**
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccsHAIcV.s 			page 5
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccXVJ2s5.s 			page 5
 
 
  123:FATFS/Target/user_diskio.c ****   * @brief  Writes Sector(s)
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccsHAIcV.s 			page 1
  151:FATFS/Target/user_diskio.c ****   */
  152:FATFS/Target/user_diskio.c **** #if _USE_IOCTL == 1
  153:FATFS/Target/user_diskio.c **** DRESULT USER_ioctl (
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccsHAIcV.s 			page 6
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccXVJ2s5.s 			page 6
 
 
  154:FATFS/Target/user_diskio.c **** 	BYTE pdrv,      /* Physical drive nmuber (0..) */
@@ -345,24 +345,24 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccsHAIcV.s 			page 1
  179              		.file 3 "Middlewares/Third_Party/FatFs/src/diskio.h"
  180              		.file 4 "Middlewares/Third_Party/FatFs/src/ff_gen_drv.h"
  181              		.file 5 "Core/Inc/user_diskio_spi.h"
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccsHAIcV.s 			page 7
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccXVJ2s5.s 			page 7
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 user_diskio.c
-C:\Users\jonas\AppData\Local\Temp\ccsHAIcV.s:21     .text.USER_initialize:00000000 $t
-C:\Users\jonas\AppData\Local\Temp\ccsHAIcV.s:27     .text.USER_initialize:00000000 USER_initialize
-C:\Users\jonas\AppData\Local\Temp\ccsHAIcV.s:49     .text.USER_status:00000000 $t
-C:\Users\jonas\AppData\Local\Temp\ccsHAIcV.s:55     .text.USER_status:00000000 USER_status
-C:\Users\jonas\AppData\Local\Temp\ccsHAIcV.s:77     .text.USER_read:00000000 $t
-C:\Users\jonas\AppData\Local\Temp\ccsHAIcV.s:83     .text.USER_read:00000000 USER_read
-C:\Users\jonas\AppData\Local\Temp\ccsHAIcV.s:105    .text.USER_write:00000000 $t
-C:\Users\jonas\AppData\Local\Temp\ccsHAIcV.s:111    .text.USER_write:00000000 USER_write
-C:\Users\jonas\AppData\Local\Temp\ccsHAIcV.s:133    .text.USER_ioctl:00000000 $t
-C:\Users\jonas\AppData\Local\Temp\ccsHAIcV.s:139    .text.USER_ioctl:00000000 USER_ioctl
-C:\Users\jonas\AppData\Local\Temp\ccsHAIcV.s:165    .data.USER_Driver:00000000 USER_Driver
-C:\Users\jonas\AppData\Local\Temp\ccsHAIcV.s:162    .data.USER_Driver:00000000 $d
-C:\Users\jonas\AppData\Local\Temp\ccsHAIcV.s:174    .data.Stat:00000000 Stat
+C:\Users\jonas\AppData\Local\Temp\ccXVJ2s5.s:21     .text.USER_initialize:00000000 $t
+C:\Users\jonas\AppData\Local\Temp\ccXVJ2s5.s:27     .text.USER_initialize:00000000 USER_initialize
+C:\Users\jonas\AppData\Local\Temp\ccXVJ2s5.s:49     .text.USER_status:00000000 $t
+C:\Users\jonas\AppData\Local\Temp\ccXVJ2s5.s:55     .text.USER_status:00000000 USER_status
+C:\Users\jonas\AppData\Local\Temp\ccXVJ2s5.s:77     .text.USER_read:00000000 $t
+C:\Users\jonas\AppData\Local\Temp\ccXVJ2s5.s:83     .text.USER_read:00000000 USER_read
+C:\Users\jonas\AppData\Local\Temp\ccXVJ2s5.s:105    .text.USER_write:00000000 $t
+C:\Users\jonas\AppData\Local\Temp\ccXVJ2s5.s:111    .text.USER_write:00000000 USER_write
+C:\Users\jonas\AppData\Local\Temp\ccXVJ2s5.s:133    .text.USER_ioctl:00000000 $t
+C:\Users\jonas\AppData\Local\Temp\ccXVJ2s5.s:139    .text.USER_ioctl:00000000 USER_ioctl
+C:\Users\jonas\AppData\Local\Temp\ccXVJ2s5.s:165    .data.USER_Driver:00000000 USER_Driver
+C:\Users\jonas\AppData\Local\Temp\ccXVJ2s5.s:162    .data.USER_Driver:00000000 $d
+C:\Users\jonas\AppData\Local\Temp\ccXVJ2s5.s:174    .data.Stat:00000000 Stat
 
 UNDEFINED SYMBOLS
 USER_SPI_initialize

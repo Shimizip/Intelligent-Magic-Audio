@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\cclc6QUe.s 			page 1
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccuEYjoh.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -32,19 +32,21 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\cclc6QUe.s 			page 1
   30              	initSineTable:
   31              	.LFB134:
    1:Core/Src/audio.c **** #include "audio.h"
-   2:Core/Src/audio.c **** 
-   3:Core/Src/audio.c **** bool dataReady = false;
-   4:Core/Src/audio.c **** int16_t dacData[BUFFER_SIZE];
-   5:Core/Src/audio.c **** volatile int16_t *outBufPtr = &dacData[0];
-   6:Core/Src/audio.c **** 
-   7:Core/Src/audio.c **** #define SINE_TABLE_SIZE 256 // Adjust the table size as needed for your accuracy/performance tradeo
+   2:Core/Src/audio.c **** #include "fatfs.h"
+   3:Core/Src/audio.c **** #include "wavDecoder.h"
+   4:Core/Src/audio.c **** 
+   5:Core/Src/audio.c **** bool dma_dataReady = false;
+   6:Core/Src/audio.c **** int16_t dacData[BUFFER_SIZE];
+   7:Core/Src/audio.c **** volatile int16_t *outBufPtr = &dacData[0];
    8:Core/Src/audio.c **** 
-   9:Core/Src/audio.c **** // Precomputed sine wave table
-  10:Core/Src/audio.c **** int16_t sineTable[SINE_TABLE_SIZE];
-  11:Core/Src/audio.c **** 
-  12:Core/Src/audio.c **** // Populate the sine wave table during initialization
-  13:Core/Src/audio.c **** void initSineTable() {
-  32              		.loc 1 13 22 view -0
+   9:Core/Src/audio.c **** #define SINE_TABLE_SIZE 256 // Adjust the table size as needed for your accuracy/performance tradeo
+  10:Core/Src/audio.c **** 
+  11:Core/Src/audio.c **** // Precomputed sine wave table
+  12:Core/Src/audio.c **** int16_t sineTable[SINE_TABLE_SIZE];
+  13:Core/Src/audio.c **** 
+  14:Core/Src/audio.c **** // Populate the sine wave table during initialization
+  15:Core/Src/audio.c **** void initSineTable() {
+  32              		.loc 1 15 22 view -0
   33              		.cfi_startproc
   34              		@ args = 0, pretend = 0, frame = 0
   35              		@ frame_needed = 0, uses_anonymous_args = 0
@@ -52,23 +54,23 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\cclc6QUe.s 			page 1
   37              		.cfi_def_cfa_offset 8
   38              		.cfi_offset 4, -8
   39              		.cfi_offset 14, -4
-  14:Core/Src/audio.c ****     for (int i = 0; i < SINE_TABLE_SIZE; ++i) {
-  40              		.loc 1 14 5 view .LVU1
+  16:Core/Src/audio.c ****     for (int i = 0; i < SINE_TABLE_SIZE; ++i) {
+  40              		.loc 1 16 5 view .LVU1
   41              	.LBB2:
-  42              		.loc 1 14 10 view .LVU2
+  42              		.loc 1 16 10 view .LVU2
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccuEYjoh.s 			page 2
+
+
   43              	.LVL0:
-  44              		.loc 1 14 14 is_stmt 0 view .LVU3
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\cclc6QUe.s 			page 2
-
-
+  44              		.loc 1 16 14 is_stmt 0 view .LVU3
   45 0002 0024     		movs	r4, #0
-  46              		.loc 1 14 5 view .LVU4
+  46              		.loc 1 16 5 view .LVU4
   47 0004 1CE0     		b	.L2
   48              	.LVL1:
   49              	.L3:
-  15:Core/Src/audio.c ****         sineTable[i] = (int16_t)(32767 * sin(2.0 * M_PI * i / SINE_TABLE_SIZE));
-  50              		.loc 1 15 9 is_stmt 1 view .LVU5
-  51              		.loc 1 15 57 is_stmt 0 view .LVU6
+  17:Core/Src/audio.c ****         sineTable[i] = (int16_t)(32767 * sin(2.0 * M_PI * i / SINE_TABLE_SIZE));
+  50              		.loc 1 17 9 is_stmt 1 view .LVU5
+  51              		.loc 1 17 57 is_stmt 0 view .LVU6
   52 0006 2046     		mov	r0, r4
   53 0008 FFF7FEFF 		bl	__aeabi_i2d
   54              	.LVL2:
@@ -76,7 +78,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\cclc6QUe.s 			page 1
   56 000e D3E90023 		ldrd	r2, [r3]
   57 0012 FFF7FEFF 		bl	__aeabi_dmul
   58              	.LVL3:
-  59              		.loc 1 15 42 view .LVU7
+  59              		.loc 1 17 42 view .LVU7
   60 0016 0022     		movs	r2, #0
   61 0018 0D4B     		ldr	r3, .L5+8
   62 001a FFF7FEFF 		bl	__aeabi_dmul
@@ -85,42 +87,42 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\cclc6QUe.s 			page 1
   65 0022 FFF7FEFF 		bl	sin
   66              	.LVL5:
   67 0026 51EC100B 		vmov	r0, r1, d0
-  68              		.loc 1 15 40 discriminator 1 view .LVU8
+  68              		.loc 1 17 40 discriminator 1 view .LVU8
   69 002a 07A3     		adr	r3, .L5
   70 002c D3E90023 		ldrd	r2, [r3]
   71 0030 FFF7FEFF 		bl	__aeabi_dmul
   72              	.LVL6:
-  73              		.loc 1 15 24 discriminator 1 view .LVU9
+  73              		.loc 1 17 24 discriminator 1 view .LVU9
   74 0034 FFF7FEFF 		bl	__aeabi_d2iz
   75              	.LVL7:
-  76              		.loc 1 15 22 discriminator 1 view .LVU10
+  76              		.loc 1 17 22 discriminator 1 view .LVU10
   77 0038 064B     		ldr	r3, .L5+12
   78 003a 23F81400 		strh	r0, [r3, r4, lsl #1]	@ movhi
-  14:Core/Src/audio.c ****     for (int i = 0; i < SINE_TABLE_SIZE; ++i) {
-  79              		.loc 1 14 42 is_stmt 1 discriminator 3 view .LVU11
+  16:Core/Src/audio.c ****     for (int i = 0; i < SINE_TABLE_SIZE; ++i) {
+  79              		.loc 1 16 42 is_stmt 1 discriminator 3 view .LVU11
   80 003e 0134     		adds	r4, r4, #1
   81              	.LVL8:
   82              	.L2:
-  14:Core/Src/audio.c ****     for (int i = 0; i < SINE_TABLE_SIZE; ++i) {
-  83              		.loc 1 14 23 discriminator 1 view .LVU12
+  16:Core/Src/audio.c ****     for (int i = 0; i < SINE_TABLE_SIZE; ++i) {
+  83              		.loc 1 16 23 discriminator 1 view .LVU12
   84 0040 FF2C     		cmp	r4, #255
   85 0042 E0DD     		ble	.L3
   86              	.LBE2:
-  16:Core/Src/audio.c ****     }
-  17:Core/Src/audio.c **** }
-  87              		.loc 1 17 1 is_stmt 0 view .LVU13
+  18:Core/Src/audio.c ****     }
+  19:Core/Src/audio.c **** }
+  87              		.loc 1 19 1 is_stmt 0 view .LVU13
   88 0044 10BD     		pop	{r4, pc}
   89              	.LVL9:
   90              	.L6:
-  91              		.loc 1 17 1 view .LVU14
+  91              		.loc 1 19 1 view .LVU14
   92 0046 00BF     		.align	3
   93              	.L5:
   94 0048 00000000 		.word	0
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccuEYjoh.s 			page 3
+
+
   95 004c C0FFDF40 		.word	1088421824
   96 0050 0000703F 		.word	1064304640
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\cclc6QUe.s 			page 3
-
-
   97 0054 00000000 		.word	sineTable
   98 0058 182D4454 		.word	1413754136
   99 005c FB211940 		.word	1075388923
@@ -135,35 +137,35 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\cclc6QUe.s 			page 1
  110              	HAL_I2S_TxHalfCpltCallback:
  111              	.LVL10:
  112              	.LFB135:
-  18:Core/Src/audio.c **** 
-  19:Core/Src/audio.c **** // Callbacks for DMA Complete
-  20:Core/Src/audio.c **** void HAL_I2S_TxHalfCpltCallback(I2S_HandleTypeDef *hi2s){
- 113              		.loc 1 20 57 is_stmt 1 view -0
+  20:Core/Src/audio.c **** 
+  21:Core/Src/audio.c **** // Callbacks for DMA Complete
+  22:Core/Src/audio.c **** void HAL_I2S_TxHalfCpltCallback(I2S_HandleTypeDef *hi2s){
+ 113              		.loc 1 22 57 is_stmt 1 view -0
  114              		.cfi_startproc
  115              		@ args = 0, pretend = 0, frame = 0
  116              		@ frame_needed = 0, uses_anonymous_args = 0
  117              		@ link register save eliminated.
-  21:Core/Src/audio.c ****     outBufPtr = &dacData[0];
- 118              		.loc 1 21 5 view .LVU16
- 119              		.loc 1 21 15 is_stmt 0 view .LVU17
+  23:Core/Src/audio.c ****     outBufPtr = &dacData[0];
+ 118              		.loc 1 23 5 view .LVU16
+ 119              		.loc 1 23 15 is_stmt 0 view .LVU17
  120 0000 034B     		ldr	r3, .L8
  121 0002 044A     		ldr	r2, .L8+4
  122 0004 1A60     		str	r2, [r3]
-  22:Core/Src/audio.c ****     dataReady = true;
- 123              		.loc 1 22 5 is_stmt 1 view .LVU18
- 124              		.loc 1 22 15 is_stmt 0 view .LVU19
+  24:Core/Src/audio.c ****     dma_dataReady = true;
+ 123              		.loc 1 24 5 is_stmt 1 view .LVU18
+ 124              		.loc 1 24 19 is_stmt 0 view .LVU19
  125 0006 044B     		ldr	r3, .L8+8
  126 0008 0122     		movs	r2, #1
  127 000a 1A70     		strb	r2, [r3]
-  23:Core/Src/audio.c **** }
- 128              		.loc 1 23 1 view .LVU20
+  25:Core/Src/audio.c **** }
+ 128              		.loc 1 25 1 view .LVU20
  129 000c 7047     		bx	lr
  130              	.L9:
  131 000e 00BF     		.align	2
  132              	.L8:
  133 0010 00000000 		.word	outBufPtr
  134 0014 00000000 		.word	dacData
- 135 0018 00000000 		.word	dataReady
+ 135 0018 00000000 		.word	dma_dataReady
  136              		.cfi_endproc
  137              	.LFE135:
  139              		.section	.text.HAL_I2S_TxCpltCallback,"ax",%progbits
@@ -175,37 +177,37 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\cclc6QUe.s 			page 1
  146              	HAL_I2S_TxCpltCallback:
  147              	.LVL11:
  148              	.LFB136:
-  24:Core/Src/audio.c **** 
-  25:Core/Src/audio.c **** void HAL_I2S_TxCpltCallback(I2S_HandleTypeDef *hi2s){
- 149              		.loc 1 25 53 is_stmt 1 view -0
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\cclc6QUe.s 			page 4
+  26:Core/Src/audio.c **** 
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccuEYjoh.s 			page 4
 
 
+  27:Core/Src/audio.c **** void HAL_I2S_TxCpltCallback(I2S_HandleTypeDef *hi2s){
+ 149              		.loc 1 27 53 is_stmt 1 view -0
  150              		.cfi_startproc
  151              		@ args = 0, pretend = 0, frame = 0
  152              		@ frame_needed = 0, uses_anonymous_args = 0
  153              		@ link register save eliminated.
-  26:Core/Src/audio.c ****     outBufPtr = &dacData[BUFFER_SIZE/2];
- 154              		.loc 1 26 5 view .LVU22
- 155              		.loc 1 26 15 is_stmt 0 view .LVU23
+  28:Core/Src/audio.c ****     outBufPtr = &dacData[BUFFER_SIZE/2];
+ 154              		.loc 1 28 5 view .LVU22
+ 155              		.loc 1 28 15 is_stmt 0 view .LVU23
  156 0000 034B     		ldr	r3, .L11
  157 0002 044A     		ldr	r2, .L11+4
  158 0004 1A60     		str	r2, [r3]
-  27:Core/Src/audio.c ****     dataReady = true;
- 159              		.loc 1 27 5 is_stmt 1 view .LVU24
- 160              		.loc 1 27 15 is_stmt 0 view .LVU25
+  29:Core/Src/audio.c ****     dma_dataReady = true;
+ 159              		.loc 1 29 5 is_stmt 1 view .LVU24
+ 160              		.loc 1 29 19 is_stmt 0 view .LVU25
  161 0006 044B     		ldr	r3, .L11+8
  162 0008 0122     		movs	r2, #1
  163 000a 1A70     		strb	r2, [r3]
-  28:Core/Src/audio.c **** }
- 164              		.loc 1 28 1 view .LVU26
+  30:Core/Src/audio.c **** }
+ 164              		.loc 1 30 1 view .LVU26
  165 000c 7047     		bx	lr
  166              	.L12:
  167 000e 00BF     		.align	2
  168              	.L11:
  169 0010 00000000 		.word	outBufPtr
- 170 0014 80000000 		.word	dacData+128
- 171 0018 00000000 		.word	dataReady
+ 170 0014 00010000 		.word	dacData+256
+ 171 0018 00000000 		.word	dma_dataReady
  172              		.cfi_endproc
  173              	.LFE136:
  175              		.global	__aeabi_ddiv
@@ -220,14 +222,14 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\cclc6QUe.s 			page 1
  185              	generateSineWave:
  186              	.LVL12:
  187              	.LFB137:
-  29:Core/Src/audio.c **** 
-  30:Core/Src/audio.c **** // populates half of the DAC Buffer, with the help of a lookup table
-  31:Core/Src/audio.c **** void generateSineWave(double frequency) {
- 188              		.loc 1 31 41 is_stmt 1 view -0
+  31:Core/Src/audio.c **** 
+  32:Core/Src/audio.c **** // populates half of the DAC Buffer, with the help of a lookup table
+  33:Core/Src/audio.c **** void generateSineWave(double frequency) {
+ 188              		.loc 1 33 41 is_stmt 1 view -0
  189              		.cfi_startproc
  190              		@ args = 0, pretend = 0, frame = 0
  191              		@ frame_needed = 0, uses_anonymous_args = 0
- 192              		.loc 1 31 41 is_stmt 0 view .LVU28
+ 192              		.loc 1 33 41 is_stmt 0 view .LVU28
  193 0000 F8B5     		push	{r3, r4, r5, r6, r7, lr}
  194              		.cfi_def_cfa_offset 24
  195              		.cfi_offset 3, -24
@@ -236,71 +238,70 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\cclc6QUe.s 			page 1
  198              		.cfi_offset 6, -12
  199              		.cfi_offset 7, -8
  200              		.cfi_offset 14, -4
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccuEYjoh.s 			page 5
+
+
  201 0002 51EC100B 		vmov	r0, r1, d0
-  32:Core/Src/audio.c ****     static uint16_t phaseIndex = 0;                 // retain index between function calls
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\cclc6QUe.s 			page 5
-
-
- 202              		.loc 1 32 5 is_stmt 1 view .LVU29
-  33:Core/Src/audio.c ****     // double phaseIncrement = frequency * SINE_TABLE_SIZE / 44084.0;  
-  34:Core/Src/audio.c ****     double phaseIncrement = frequency * SINE_TABLE_SIZE / 44084.0;  
- 203              		.loc 1 34 5 view .LVU30
- 204              		.loc 1 34 39 is_stmt 0 view .LVU31
+  34:Core/Src/audio.c ****     static uint16_t phaseIndex = 0;                 // retain index between function calls
+ 202              		.loc 1 34 5 is_stmt 1 view .LVU29
+  35:Core/Src/audio.c ****     double phaseIncrement = frequency * SINE_TABLE_SIZE / I2S_AUDIOFREQ_44K;  
+ 203              		.loc 1 35 5 view .LVU30
+ 204              		.loc 1 35 39 is_stmt 0 view .LVU31
  205 0006 0022     		movs	r2, #0
- 206 0008 194B     		ldr	r3, .L19+8
+ 206 0008 174B     		ldr	r3, .L19+8
  207 000a FFF7FEFF 		bl	__aeabi_dmul
  208              	.LVL13:
- 209              		.loc 1 34 12 view .LVU32
- 210 000e 16A3     		adr	r3, .L19
+ 209              		.loc 1 35 12 view .LVU32
+ 210 000e 14A3     		adr	r3, .L19
  211 0010 D3E90023 		ldrd	r2, [r3]
  212 0014 FFF7FEFF 		bl	__aeabi_ddiv
  213              	.LVL14:
  214 0018 0446     		mov	r4, r0
  215 001a 0D46     		mov	r5, r1
  216              	.LVL15:
-  35:Core/Src/audio.c **** 
-  36:Core/Src/audio.c ****   for (uint8_t n = 0; n < BUFFER_SIZE / 2; n += 2) {
- 217              		.loc 1 36 3 is_stmt 1 view .LVU33
+  36:Core/Src/audio.c **** 
+  37:Core/Src/audio.c ****     for (uint8_t n = 0; n < (BUFFER_SIZE / 2) - 1; n += 2) {
+ 217              		.loc 1 37 5 is_stmt 1 view .LVU33
  218              	.LBB3:
- 219              		.loc 1 36 8 view .LVU34
- 220              		.loc 1 36 16 is_stmt 0 view .LVU35
+ 219              		.loc 1 37 10 view .LVU34
+ 220              		.loc 1 37 18 is_stmt 0 view .LVU35
  221 001c 0026     		movs	r6, #0
- 222              		.loc 1 36 3 view .LVU36
+ 222              		.loc 1 37 5 view .LVU36
  223 001e 01E0     		b	.L14
  224              	.LVL16:
  225              	.L15:
- 226              		.loc 1 36 46 is_stmt 1 discriminator 2 view .LVU37
+ 226              		.loc 1 37 54 is_stmt 1 discriminator 2 view .LVU37
  227 0020 0236     		adds	r6, r6, #2
  228              	.LVL17:
- 229              		.loc 1 36 46 is_stmt 0 discriminator 2 view .LVU38
+ 229              		.loc 1 37 54 is_stmt 0 discriminator 2 view .LVU38
  230 0022 F6B2     		uxtb	r6, r6
  231              	.LVL18:
  232              	.L14:
- 233              		.loc 1 36 25 is_stmt 1 discriminator 1 view .LVU39
- 234 0024 3F2E     		cmp	r6, #63
+ 233              		.loc 1 37 27 is_stmt 1 discriminator 1 view .LVU39
+ 234 0024 7E2E     		cmp	r6, #126
  235 0026 18D8     		bhi	.L18
-  37:Core/Src/audio.c ****         // Lookup sine value from table
-  38:Core/Src/audio.c ****         outBufPtr[n] = sineTable[phaseIndex];
- 236              		.loc 1 38 9 view .LVU40
- 237              		.loc 1 38 33 is_stmt 0 view .LVU41
- 238 0028 124F     		ldr	r7, .L19+12
+  38:Core/Src/audio.c ****         // Lookup sine value from table
+  39:Core/Src/audio.c ****         outBufPtr[n] = sineTable[phaseIndex];
+ 236              		.loc 1 39 9 view .LVU40
+ 237              		.loc 1 39 33 is_stmt 0 view .LVU41
+ 238 0028 104F     		ldr	r7, .L19+12
  239 002a 3888     		ldrh	r0, [r7]
- 240              		.loc 1 38 18 view .LVU42
- 241 002c 124B     		ldr	r3, .L19+16
+ 240              		.loc 1 39 18 view .LVU42
+ 241 002c 104B     		ldr	r3, .L19+16
  242 002e 1B68     		ldr	r3, [r3]
- 243              		.loc 1 38 33 view .LVU43
- 244 0030 124A     		ldr	r2, .L19+20
+ 243              		.loc 1 39 33 view .LVU43
+ 244 0030 104A     		ldr	r2, .L19+20
  245 0032 32F91020 		ldrsh	r2, [r2, r0, lsl #1]
- 246              		.loc 1 38 22 view .LVU44
+ 246              		.loc 1 39 22 view .LVU44
  247 0036 23F81620 		strh	r2, [r3, r6, lsl #1]	@ movhi
-  39:Core/Src/audio.c ****         
-  40:Core/Src/audio.c ****         // Increment phase index
-  41:Core/Src/audio.c ****         phaseIndex += phaseIncrement;
- 248              		.loc 1 41 9 is_stmt 1 view .LVU45
- 249              		.loc 1 41 20 is_stmt 0 view .LVU46
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\cclc6QUe.s 			page 6
+  40:Core/Src/audio.c ****         
+  41:Core/Src/audio.c ****         // Increment phase index
+  42:Core/Src/audio.c ****         phaseIndex += phaseIncrement;
+ 248              		.loc 1 42 9 is_stmt 1 view .LVU45
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccuEYjoh.s 			page 6
 
 
+ 249              		.loc 1 42 20 is_stmt 0 view .LVU46
  250 003a FFF7FEFF 		bl	__aeabi_i2d
  251              	.LVL19:
  252 003e 2246     		mov	r2, r4
@@ -311,184 +312,182 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\cclc6QUe.s 			page 1
  257              	.LVL21:
  258 004a 80B2     		uxth	r0, r0
  259 004c 3880     		strh	r0, [r7]	@ movhi
-  42:Core/Src/audio.c ****         
-  43:Core/Src/audio.c ****         // Wrap phase index if it exceeds table size
-  44:Core/Src/audio.c ****         if (phaseIndex >= SINE_TABLE_SIZE) {
- 260              		.loc 1 44 9 is_stmt 1 view .LVU47
- 261              		.loc 1 44 12 is_stmt 0 view .LVU48
+  43:Core/Src/audio.c ****         
+  44:Core/Src/audio.c ****         // Wrap phase index if it exceeds table size
+  45:Core/Src/audio.c ****         if (phaseIndex >= SINE_TABLE_SIZE) {
+ 260              		.loc 1 45 9 is_stmt 1 view .LVU47
+ 261              		.loc 1 45 12 is_stmt 0 view .LVU48
  262 004e FF28     		cmp	r0, #255
  263 0050 E6D9     		bls	.L15
-  45:Core/Src/audio.c ****             phaseIndex -= SINE_TABLE_SIZE;
- 264              		.loc 1 45 13 is_stmt 1 view .LVU49
- 265              		.loc 1 45 24 is_stmt 0 view .LVU50
+  46:Core/Src/audio.c ****             phaseIndex -= SINE_TABLE_SIZE;
+ 264              		.loc 1 46 13 is_stmt 1 view .LVU49
+ 265              		.loc 1 46 24 is_stmt 0 view .LVU50
  266 0052 A0F58070 		sub	r0, r0, #256
  267 0056 3880     		strh	r0, [r7]	@ movhi
  268 0058 E2E7     		b	.L15
  269              	.L18:
  270              	.LBE3:
-  46:Core/Src/audio.c ****         }
-  47:Core/Src/audio.c ****     }
-  48:Core/Src/audio.c ****     dataReady = false;
- 271              		.loc 1 48 5 is_stmt 1 view .LVU51
- 272              		.loc 1 48 15 is_stmt 0 view .LVU52
- 273 005a 094B     		ldr	r3, .L19+24
- 274 005c 0022     		movs	r2, #0
- 275 005e 1A70     		strb	r2, [r3]
+  47:Core/Src/audio.c ****         }
+  48:Core/Src/audio.c ****     }
   49:Core/Src/audio.c **** }
- 276              		.loc 1 49 1 view .LVU53
- 277 0060 F8BD     		pop	{r3, r4, r5, r6, r7, pc}
- 278              	.LVL22:
- 279              	.L20:
- 280              		.loc 1 49 1 view .LVU54
- 281 0062 00BFAFF3 		.align	3
- 281      0080
- 282              	.L19:
- 283 0068 00000000 		.word	0
- 284 006c 8086E540 		.word	1088784000
- 285 0070 00007040 		.word	1081081856
- 286 0074 00000000 		.word	phaseIndex.0
- 287 0078 00000000 		.word	outBufPtr
- 288 007c 00000000 		.word	sineTable
- 289 0080 00000000 		.word	dataReady
- 290              		.cfi_endproc
- 291              	.LFE137:
- 293              		.section	.text.fillBuffer,"ax",%progbits
- 294              		.align	1
- 295              		.global	fillBuffer
- 296              		.syntax unified
- 297              		.thumb
- 298              		.thumb_func
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\cclc6QUe.s 			page 7
-
-
- 300              	fillBuffer:
- 301              	.LFB138:
+ 271              		.loc 1 49 1 view .LVU51
+ 272 005a F8BD     		pop	{r3, r4, r5, r6, r7, pc}
+ 273              	.LVL22:
+ 274              	.L20:
+ 275              		.loc 1 49 1 view .LVU52
+ 276 005c AFF30080 		.align	3
+ 277              	.L19:
+ 278 0060 00000000 		.word	0
+ 279 0064 8088E540 		.word	1088784512
+ 280 0068 00007040 		.word	1081081856
+ 281 006c 00000000 		.word	phaseIndex.0
+ 282 0070 00000000 		.word	outBufPtr
+ 283 0074 00000000 		.word	sineTable
+ 284              		.cfi_endproc
+ 285              	.LFE137:
+ 287              		.section	.text.fillHalfBufferFromSD,"ax",%progbits
+ 288              		.align	1
+ 289              		.global	fillHalfBufferFromSD
+ 290              		.syntax unified
+ 291              		.thumb
+ 292              		.thumb_func
+ 294              	fillHalfBufferFromSD:
+ 295              	.LVL23:
+ 296              	.LFB138:
   50:Core/Src/audio.c **** 
-  51:Core/Src/audio.c **** void fillBuffer(){
- 302              		.loc 1 51 18 is_stmt 1 view -0
- 303              		.cfi_startproc
- 304              		@ args = 0, pretend = 0, frame = 0
- 305              		@ frame_needed = 0, uses_anonymous_args = 0
- 306              		@ link register save eliminated.
-  52:Core/Src/audio.c ****     for(uint8_t n = 0; n < (BUFFER_SIZE/2)-1; n+=2){
- 307              		.loc 1 52 5 view .LVU56
- 308              	.LBB4:
- 309              		.loc 1 52 9 view .LVU57
- 310              	.LVL23:
- 311              		.loc 1 52 17 is_stmt 0 view .LVU58
- 312 0000 0023     		movs	r3, #0
- 313              		.loc 1 52 5 view .LVU59
- 314 0002 07E0     		b	.L22
- 315              	.LVL24:
- 316              	.L23:
-  53:Core/Src/audio.c ****         // right here get Samples from SD Card
-  54:Core/Src/audio.c ****         outBufPtr[n] = 32767;
- 317              		.loc 1 54 9 is_stmt 1 view .LVU60
- 318              		.loc 1 54 18 is_stmt 0 view .LVU61
- 319 0004 054A     		ldr	r2, .L24
- 320 0006 1268     		ldr	r2, [r2]
- 321              		.loc 1 54 22 view .LVU62
- 322 0008 47F6FF71 		movw	r1, #32767
- 323 000c 22F81310 		strh	r1, [r2, r3, lsl #1]	@ movhi
-  52:Core/Src/audio.c ****     for(uint8_t n = 0; n < (BUFFER_SIZE/2)-1; n+=2){
- 324              		.loc 1 52 48 is_stmt 1 discriminator 3 view .LVU63
- 325 0010 0233     		adds	r3, r3, #2
- 326              	.LVL25:
-  52:Core/Src/audio.c ****     for(uint8_t n = 0; n < (BUFFER_SIZE/2)-1; n+=2){
- 327              		.loc 1 52 48 is_stmt 0 discriminator 3 view .LVU64
- 328 0012 DBB2     		uxtb	r3, r3
- 329              	.LVL26:
- 330              	.L22:
-  52:Core/Src/audio.c ****     for(uint8_t n = 0; n < (BUFFER_SIZE/2)-1; n+=2){
- 331              		.loc 1 52 26 is_stmt 1 discriminator 1 view .LVU65
- 332 0014 3E2B     		cmp	r3, #62
- 333 0016 F5D9     		bls	.L23
- 334              	.LBE4:
-  55:Core/Src/audio.c ****     }
-  56:Core/Src/audio.c **** 
-  57:Core/Src/audio.c **** }
- 335              		.loc 1 57 1 is_stmt 0 view .LVU66
- 336 0018 7047     		bx	lr
- 337              	.L25:
- 338 001a 00BF     		.align	2
- 339              	.L24:
- 340 001c 00000000 		.word	outBufPtr
- 341              		.cfi_endproc
- 342              	.LFE138:
- 344              		.section	.bss.phaseIndex.0,"aw",%nobits
- 345              		.align	1
- 348              	phaseIndex.0:
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\cclc6QUe.s 			page 8
+  51:Core/Src/audio.c **** uint16_t fillHalfBufferFromSD(FIL *fil){
+ 297              		.loc 1 51 40 is_stmt 1 view -0
+ 298              		.cfi_startproc
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccuEYjoh.s 			page 7
 
 
- 349 0000 0000     		.space	2
- 350              		.global	sineTable
- 351              		.section	.bss.sineTable,"aw",%nobits
- 352              		.align	2
- 355              	sineTable:
- 356 0000 00000000 		.space	512
- 356      00000000 
- 356      00000000 
- 356      00000000 
- 356      00000000 
- 357              		.global	outBufPtr
- 358              		.section	.data.outBufPtr,"aw"
- 359              		.align	2
- 362              	outBufPtr:
- 363 0000 00000000 		.word	dacData
- 364              		.global	dacData
- 365              		.section	.bss.dacData,"aw",%nobits
- 366              		.align	2
- 369              	dacData:
- 370 0000 00000000 		.space	256
- 370      00000000 
- 370      00000000 
- 370      00000000 
- 370      00000000 
- 371              		.global	dataReady
- 372              		.section	.bss.dataReady,"aw",%nobits
- 375              	dataReady:
- 376 0000 00       		.space	1
- 377              		.text
- 378              	.Letext0:
- 379              		.file 2 "C:/Users/jonas/AppData/Roaming/VSCodium/User/globalStorage/bmd.stm32-for-vscode/@xpack-de
- 380              		.file 3 "C:/Users/jonas/AppData/Roaming/VSCodium/User/globalStorage/bmd.stm32-for-vscode/@xpack-de
- 381              		.file 4 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f401xe.h"
- 382              		.file 5 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h"
- 383              		.file 6 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h"
- 384              		.file 7 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2s.h"
- 385              		.file 8 "Core/Inc/audio.h"
- 386              		.file 9 "C:/Users/jonas/AppData/Roaming/VSCodium/User/globalStorage/bmd.stm32-for-vscode/@xpack-de
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\cclc6QUe.s 			page 9
+ 299              		@ args = 0, pretend = 0, frame = 8
+ 300              		@ frame_needed = 0, uses_anonymous_args = 0
+ 301              		.loc 1 51 40 is_stmt 0 view .LVU54
+ 302 0000 00B5     		push	{lr}
+ 303              		.cfi_def_cfa_offset 4
+ 304              		.cfi_offset 14, -4
+ 305 0002 83B0     		sub	sp, sp, #12
+ 306              		.cfi_def_cfa_offset 16
+  52:Core/Src/audio.c ****     UINT bytesRead = 0;
+ 307              		.loc 1 52 5 is_stmt 1 view .LVU55
+ 308              		.loc 1 52 10 is_stmt 0 view .LVU56
+ 309 0004 0023     		movs	r3, #0
+ 310 0006 0193     		str	r3, [sp, #4]
+  53:Core/Src/audio.c ****     // fill half of the buffer (16bit Samples -> BUFFER_SIZE)
+  54:Core/Src/audio.c ****     if (f_read(fil,(void *)outBufPtr, BUFFER_SIZE, &bytesRead) != FR_OK) {
+ 311              		.loc 1 54 5 is_stmt 1 view .LVU57
+ 312              		.loc 1 54 9 is_stmt 0 view .LVU58
+ 313 0008 01AB     		add	r3, sp, #4
+ 314 000a 4FF48072 		mov	r2, #256
+ 315 000e 0549     		ldr	r1, .L25
+ 316 0010 0968     		ldr	r1, [r1]
+ 317 0012 FFF7FEFF 		bl	f_read
+ 318              	.LVL24:
+ 319              		.loc 1 54 8 discriminator 1 view .LVU59
+ 320 0016 00B1     		cbz	r0, .L22
+ 321              	.L23:
+  55:Core/Src/audio.c ****     // Error handling
+  56:Core/Src/audio.c ****         while(1);
+ 322              		.loc 1 56 9 is_stmt 1 view .LVU60
+ 323              		.loc 1 56 14 view .LVU61
+ 324 0018 FEE7     		b	.L23
+ 325              	.L22:
+  57:Core/Src/audio.c ****     }
+  58:Core/Src/audio.c ****     // for (uint8_t n = 0; n < BUFFER_SIZE / 2; n += 2) {
+  59:Core/Src/audio.c ****     //     outBufPtr[n] *= 2;
+  60:Core/Src/audio.c ****     // }
+  61:Core/Src/audio.c ****     return (uint16_t) bytesRead;
+ 326              		.loc 1 61 5 view .LVU62
+  62:Core/Src/audio.c **** }
+ 327              		.loc 1 62 1 is_stmt 0 view .LVU63
+ 328 001a BDF80400 		ldrh	r0, [sp, #4]
+ 329 001e 03B0     		add	sp, sp, #12
+ 330              		.cfi_def_cfa_offset 4
+ 331              		@ sp needed
+ 332 0020 5DF804FB 		ldr	pc, [sp], #4
+ 333              	.L26:
+ 334              		.align	2
+ 335              	.L25:
+ 336 0024 00000000 		.word	outBufPtr
+ 337              		.cfi_endproc
+ 338              	.LFE138:
+ 340              		.section	.bss.phaseIndex.0,"aw",%nobits
+ 341              		.align	1
+ 344              	phaseIndex.0:
+ 345 0000 0000     		.space	2
+ 346              		.global	sineTable
+ 347              		.section	.bss.sineTable,"aw",%nobits
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccuEYjoh.s 			page 8
+
+
+ 348              		.align	2
+ 351              	sineTable:
+ 352 0000 00000000 		.space	512
+ 352      00000000 
+ 352      00000000 
+ 352      00000000 
+ 352      00000000 
+ 353              		.global	outBufPtr
+ 354              		.section	.data.outBufPtr,"aw"
+ 355              		.align	2
+ 358              	outBufPtr:
+ 359 0000 00000000 		.word	dacData
+ 360              		.global	dacData
+ 361              		.section	.bss.dacData,"aw",%nobits
+ 362              		.align	2
+ 365              	dacData:
+ 366 0000 00000000 		.space	512
+ 366      00000000 
+ 366      00000000 
+ 366      00000000 
+ 366      00000000 
+ 367              		.global	dma_dataReady
+ 368              		.section	.bss.dma_dataReady,"aw",%nobits
+ 371              	dma_dataReady:
+ 372 0000 00       		.space	1
+ 373              		.text
+ 374              	.Letext0:
+ 375              		.file 2 "C:/Users/jonas/AppData/Roaming/VSCodium/User/globalStorage/bmd.stm32-for-vscode/@xpack-de
+ 376              		.file 3 "C:/Users/jonas/AppData/Roaming/VSCodium/User/globalStorage/bmd.stm32-for-vscode/@xpack-de
+ 377              		.file 4 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f401xe.h"
+ 378              		.file 5 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h"
+ 379              		.file 6 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h"
+ 380              		.file 7 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2s.h"
+ 381              		.file 8 "Middlewares/Third_Party/FatFs/src/integer.h"
+ 382              		.file 9 "Middlewares/Third_Party/FatFs/src/ff.h"
+ 383              		.file 10 "Core/Inc/audio.h"
+ 384              		.file 11 "C:/Users/jonas/AppData/Roaming/VSCodium/User/globalStorage/bmd.stm32-for-vscode/@xpack-d
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccuEYjoh.s 			page 9
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 audio.c
-C:\Users\jonas\AppData\Local\Temp\cclc6QUe.s:24     .text.initSineTable:00000000 $t
-C:\Users\jonas\AppData\Local\Temp\cclc6QUe.s:30     .text.initSineTable:00000000 initSineTable
-C:\Users\jonas\AppData\Local\Temp\cclc6QUe.s:94     .text.initSineTable:00000048 $d
-C:\Users\jonas\AppData\Local\Temp\cclc6QUe.s:355    .bss.sineTable:00000000 sineTable
-C:\Users\jonas\AppData\Local\Temp\cclc6QUe.s:104    .text.HAL_I2S_TxHalfCpltCallback:00000000 $t
-C:\Users\jonas\AppData\Local\Temp\cclc6QUe.s:110    .text.HAL_I2S_TxHalfCpltCallback:00000000 HAL_I2S_TxHalfCpltCallback
-C:\Users\jonas\AppData\Local\Temp\cclc6QUe.s:133    .text.HAL_I2S_TxHalfCpltCallback:00000010 $d
-C:\Users\jonas\AppData\Local\Temp\cclc6QUe.s:362    .data.outBufPtr:00000000 outBufPtr
-C:\Users\jonas\AppData\Local\Temp\cclc6QUe.s:369    .bss.dacData:00000000 dacData
-C:\Users\jonas\AppData\Local\Temp\cclc6QUe.s:375    .bss.dataReady:00000000 dataReady
-C:\Users\jonas\AppData\Local\Temp\cclc6QUe.s:140    .text.HAL_I2S_TxCpltCallback:00000000 $t
-C:\Users\jonas\AppData\Local\Temp\cclc6QUe.s:146    .text.HAL_I2S_TxCpltCallback:00000000 HAL_I2S_TxCpltCallback
-C:\Users\jonas\AppData\Local\Temp\cclc6QUe.s:169    .text.HAL_I2S_TxCpltCallback:00000010 $d
-C:\Users\jonas\AppData\Local\Temp\cclc6QUe.s:179    .text.generateSineWave:00000000 $t
-C:\Users\jonas\AppData\Local\Temp\cclc6QUe.s:185    .text.generateSineWave:00000000 generateSineWave
-C:\Users\jonas\AppData\Local\Temp\cclc6QUe.s:283    .text.generateSineWave:00000068 $d
-C:\Users\jonas\AppData\Local\Temp\cclc6QUe.s:348    .bss.phaseIndex.0:00000000 phaseIndex.0
-C:\Users\jonas\AppData\Local\Temp\cclc6QUe.s:294    .text.fillBuffer:00000000 $t
-C:\Users\jonas\AppData\Local\Temp\cclc6QUe.s:300    .text.fillBuffer:00000000 fillBuffer
-C:\Users\jonas\AppData\Local\Temp\cclc6QUe.s:340    .text.fillBuffer:0000001c $d
-C:\Users\jonas\AppData\Local\Temp\cclc6QUe.s:345    .bss.phaseIndex.0:00000000 $d
-C:\Users\jonas\AppData\Local\Temp\cclc6QUe.s:352    .bss.sineTable:00000000 $d
-C:\Users\jonas\AppData\Local\Temp\cclc6QUe.s:359    .data.outBufPtr:00000000 $d
-C:\Users\jonas\AppData\Local\Temp\cclc6QUe.s:366    .bss.dacData:00000000 $d
-C:\Users\jonas\AppData\Local\Temp\cclc6QUe.s:376    .bss.dataReady:00000000 $d
+C:\Users\jonas\AppData\Local\Temp\ccuEYjoh.s:24     .text.initSineTable:00000000 $t
+C:\Users\jonas\AppData\Local\Temp\ccuEYjoh.s:30     .text.initSineTable:00000000 initSineTable
+C:\Users\jonas\AppData\Local\Temp\ccuEYjoh.s:94     .text.initSineTable:00000048 $d
+C:\Users\jonas\AppData\Local\Temp\ccuEYjoh.s:351    .bss.sineTable:00000000 sineTable
+C:\Users\jonas\AppData\Local\Temp\ccuEYjoh.s:104    .text.HAL_I2S_TxHalfCpltCallback:00000000 $t
+C:\Users\jonas\AppData\Local\Temp\ccuEYjoh.s:110    .text.HAL_I2S_TxHalfCpltCallback:00000000 HAL_I2S_TxHalfCpltCallback
+C:\Users\jonas\AppData\Local\Temp\ccuEYjoh.s:133    .text.HAL_I2S_TxHalfCpltCallback:00000010 $d
+C:\Users\jonas\AppData\Local\Temp\ccuEYjoh.s:358    .data.outBufPtr:00000000 outBufPtr
+C:\Users\jonas\AppData\Local\Temp\ccuEYjoh.s:365    .bss.dacData:00000000 dacData
+C:\Users\jonas\AppData\Local\Temp\ccuEYjoh.s:371    .bss.dma_dataReady:00000000 dma_dataReady
+C:\Users\jonas\AppData\Local\Temp\ccuEYjoh.s:140    .text.HAL_I2S_TxCpltCallback:00000000 $t
+C:\Users\jonas\AppData\Local\Temp\ccuEYjoh.s:146    .text.HAL_I2S_TxCpltCallback:00000000 HAL_I2S_TxCpltCallback
+C:\Users\jonas\AppData\Local\Temp\ccuEYjoh.s:169    .text.HAL_I2S_TxCpltCallback:00000010 $d
+C:\Users\jonas\AppData\Local\Temp\ccuEYjoh.s:179    .text.generateSineWave:00000000 $t
+C:\Users\jonas\AppData\Local\Temp\ccuEYjoh.s:185    .text.generateSineWave:00000000 generateSineWave
+C:\Users\jonas\AppData\Local\Temp\ccuEYjoh.s:278    .text.generateSineWave:00000060 $d
+C:\Users\jonas\AppData\Local\Temp\ccuEYjoh.s:344    .bss.phaseIndex.0:00000000 phaseIndex.0
+C:\Users\jonas\AppData\Local\Temp\ccuEYjoh.s:288    .text.fillHalfBufferFromSD:00000000 $t
+C:\Users\jonas\AppData\Local\Temp\ccuEYjoh.s:294    .text.fillHalfBufferFromSD:00000000 fillHalfBufferFromSD
+C:\Users\jonas\AppData\Local\Temp\ccuEYjoh.s:336    .text.fillHalfBufferFromSD:00000024 $d
+C:\Users\jonas\AppData\Local\Temp\ccuEYjoh.s:341    .bss.phaseIndex.0:00000000 $d
+C:\Users\jonas\AppData\Local\Temp\ccuEYjoh.s:348    .bss.sineTable:00000000 $d
+C:\Users\jonas\AppData\Local\Temp\ccuEYjoh.s:355    .data.outBufPtr:00000000 $d
+C:\Users\jonas\AppData\Local\Temp\ccuEYjoh.s:362    .bss.dacData:00000000 $d
+C:\Users\jonas\AppData\Local\Temp\ccuEYjoh.s:372    .bss.dma_dataReady:00000000 $d
 
 UNDEFINED SYMBOLS
 __aeabi_i2d
@@ -498,3 +497,4 @@ sin
 __aeabi_ddiv
 __aeabi_dadd
 __aeabi_d2uiz
+f_read

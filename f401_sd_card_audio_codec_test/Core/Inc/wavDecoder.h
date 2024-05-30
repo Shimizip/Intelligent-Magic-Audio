@@ -2,14 +2,16 @@
 #define INC_WAVDECODER_H_
 
 #include <stdint.h>
+#include "fatfs.h"
+#include "audio.h"
 
 #define WAV_PCMSamples  8192
 
 typedef struct wav_header {
     // RIFF Header
-  uint32_t ChunkID;         // Contains "RIFF"
+    uint32_t ChunkID;         // Contains "RIFF"
     uint32_t ChunkSize;       // Size of the wav portion of the file, which follows the first 8 bytes. File size - 8
-    uint32_t Format;        // Contains "WAVE"
+    uint32_t Format;          // Contains "WAVE"
 
     // Format Header
     uint32_t Subchunk1ID;       // Contains "fmt " (includes trailing space)
@@ -27,10 +29,10 @@ typedef struct wav_header {
     // uint8_t bytes[];       // Remainder of wave file is bytes
 } wav_header_t;
 
+uint8_t checkWav(FIL *file, wav_header_t *wavHeader);
 
-uint8_t checkWav(FIL *file);
-uint8_t wavStart(void);
+uint8_t wavPlay(FIL *file, wav_header_t *wavHeader);
+
 void wavStop(void);
-// uint32_t wavFillBuffer(audio_t* dest, uint32_t samples);
 
 #endif /* INC_WAVDECODER_H_ */

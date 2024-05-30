@@ -1,6 +1,8 @@
 #include "audio.h"
+#include "fatfs.h"
+#include "wavDecoder.h"
 
-bool dataReady = false;
+bool dma_dataReady = false;
 int16_t dacData[BUFFER_SIZE];
 volatile int16_t *outBufPtr = &dacData[0];
 
@@ -19,21 +21,20 @@ void initSineTable() {
 // Callbacks for DMA Complete
 void HAL_I2S_TxHalfCpltCallback(I2S_HandleTypeDef *hi2s){
     outBufPtr = &dacData[0];
-    dataReady = true;
+    dma_dataReady = true;
 }
 
 void HAL_I2S_TxCpltCallback(I2S_HandleTypeDef *hi2s){
     outBufPtr = &dacData[BUFFER_SIZE/2];
-    dataReady = true;
+    dma_dataReady = true;
 }
 
 // populates half of the DAC Buffer, with the help of a lookup table
 void generateSineWave(double frequency) {
     static uint16_t phaseIndex = 0;                 // retain index between function calls
-    // double phaseIncrement = frequency * SINE_TABLE_SIZE / 44084.0;  
-    double phaseIncrement = frequency * SINE_TABLE_SIZE / 44084.0;  
+    double phaseIncrement = frequency * SINE_TABLE_SIZE / I2S_AUDIOFREQ_44K;  
 
-  for (uint8_t n = 0; n < BUFFER_SIZE / 2; n += 2) {
+    for (uint8_t n = 0; n < (BUFFER_SIZE / 2) - 1; n += 2) {
         // Lookup sine value from table
         outBufPtr[n] = sineTable[phaseIndex];
         
@@ -45,13 +46,17 @@ void generateSineWave(double frequency) {
             phaseIndex -= SINE_TABLE_SIZE;
         }
     }
-    dataReady = false;
 }
 
-void fillBuffer(){
-    for(uint8_t n = 0; n < (BUFFER_SIZE/2)-1; n+=2){
-        // right here get Samples from SD Card
-        outBufPtr[n] = 32767;
+uint16_t fillHalfBufferFromSD(FIL *fil){
+    UINT bytesRead = 0;
+    // fill half of the buffer (16bit Samples -> BUFFER_SIZE)
+    if (f_read(fil,(void *)outBufPtr, BUFFER_SIZE, &bytesRead) != FR_OK) {
+    // Error handling
+        while(1);
     }
-
+    // for (uint8_t n = 0; n < BUFFER_SIZE / 2; n += 2) {
+    //     outBufPtr[n] *= 2;
+    // }
+    return (uint16_t) bytesRead;
 }

@@ -43,5 +43,5 @@ uint32_t CyclesToMilliseconds(uint32_t cycles)
 uint32_t CyclesToMicroseconds(uint32_t cycles)
 {
   uint32_t cpu_clock_hz = HAL_RCC_GetSysClockFreq(); // Get the system clock frequency
-  return (cycles / (cpu_clock_hz / 1000000));        // Convert to microseconds
+  return (cycles / (cpu_clock_hz / 1000000));   // Convert to microseconds
 }
