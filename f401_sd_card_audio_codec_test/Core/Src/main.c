@@ -58,6 +58,8 @@ UART_HandleTypeDef huart2;
 
 /* USER CODE BEGIN PV */
 
+bool play = false;
+
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -143,23 +145,20 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-    wavPlay(&fil, &currentWav);
-    // while (1)
-    // {
-    //   if(dma_dataReady){
-    //     // StartCycleMeasurement();
-    //     // generateSineWave(1000.0);
-    //     // fillHalfBufferFromSD(&fil);
-    //     // StopCycleMeasurement();
-    //     dma_dataReady = false;
-    //     // uint32_t cycles = GetMeasuredCycles();
-    //     // uint32_t us = CyclesToMicroseconds(cycles);
-    //     // uart_printf("us (%i)\r\n", us);
-    //   }
-    // /* USER CODE END WHILE */
+    
+    // wavPlay(&fil, &currentWav);
+    // generateSineWave(1000.0);
+    while (1)
+    {
+      if(play){
+        wavPlayPitched(&fil, &currentWav);
+        // wavPlay(&fil, &currentWav);
+        play = false;
+      }
+    /* USER CODE END WHILE */
 
-    // /* USER CODE BEGIN 3 */
-    // }
+    /* USER CODE BEGIN 3 */
+    }
   /* USER CODE END 3 */
 }
 
@@ -379,11 +378,23 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Alternate = GPIO_AF5_SPI2;
   HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
+  /* EXTI interrupt init*/
+  HAL_NVIC_SetPriority(EXTI15_10_IRQn, 0, 0);
+  HAL_NVIC_EnableIRQ(EXTI15_10_IRQn);
+
 /* USER CODE BEGIN MX_GPIO_Init_2 */
 /* USER CODE END MX_GPIO_Init_2 */
 }
 
 /* USER CODE BEGIN 4 */
+
+void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin) {
+    if (GPIO_Pin == B1_Pin) {
+        // Handle the button press
+        play = true;
+    }
+}
+
 
 /* USER CODE END 4 */
 

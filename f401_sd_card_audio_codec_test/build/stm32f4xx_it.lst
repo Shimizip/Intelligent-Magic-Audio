@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccv4F7nk.s 			page 1
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\cc3ePy8S.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccv4F7nk.s 			page 1
   28:Core/Src/stm32f4xx_it.c **** /* Private typedef -----------------------------------------------------------*/
   29:Core/Src/stm32f4xx_it.c **** /* USER CODE BEGIN TD */
   30:Core/Src/stm32f4xx_it.c **** 
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccv4F7nk.s 			page 2
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\cc3ePy8S.s 			page 2
 
 
   31:Core/Src/stm32f4xx_it.c **** /* USER CODE END TD */
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccv4F7nk.s 			page 1
   78:Core/Src/stm32f4xx_it.c ****   /* USER CODE END NonMaskableInt_IRQn 0 */
   79:Core/Src/stm32f4xx_it.c ****   /* USER CODE BEGIN NonMaskableInt_IRQn 1 */
   80:Core/Src/stm32f4xx_it.c ****    while (1)
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccv4F7nk.s 			page 3
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\cc3ePy8S.s 			page 3
 
 
   36              		.loc 1 80 4 view .LVU1
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccv4F7nk.s 			page 1
   74              	.LFB136:
   99:Core/Src/stm32f4xx_it.c **** }
  100:Core/Src/stm32f4xx_it.c **** 
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccv4F7nk.s 			page 4
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\cc3ePy8S.s 			page 4
 
 
  101:Core/Src/stm32f4xx_it.c **** /**
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccv4F7nk.s 			page 1
  125:Core/Src/stm32f4xx_it.c ****   {
  126:Core/Src/stm32f4xx_it.c ****     /* USER CODE BEGIN W1_BusFault_IRQn 0 */
  127:Core/Src/stm32f4xx_it.c ****     /* USER CODE END W1_BusFault_IRQn 0 */
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccv4F7nk.s 			page 5
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\cc3ePy8S.s 			page 5
 
 
  128:Core/Src/stm32f4xx_it.c ****   }
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccv4F7nk.s 			page 1
  146:Core/Src/stm32f4xx_it.c **** /**
  147:Core/Src/stm32f4xx_it.c ****   * @brief This function handles System service call via SWI instruction.
  148:Core/Src/stm32f4xx_it.c ****   */
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccv4F7nk.s 			page 6
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\cc3ePy8S.s 			page 6
 
 
  149:Core/Src/stm32f4xx_it.c **** void SVC_Handler(void)
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccv4F7nk.s 			page 1
  180              	PendSV_Handler:
  181              	.LFB141:
  171:Core/Src/stm32f4xx_it.c **** 
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccv4F7nk.s 			page 7
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\cc3ePy8S.s 			page 7
 
 
  172:Core/Src/stm32f4xx_it.c **** /**
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccv4F7nk.s 			page 1
  198:Core/Src/stm32f4xx_it.c ****   HAL_SYSTICK_IRQHandler();
  212              		.loc 1 198 3 view .LVU28
  213 0006 FFF7FEFF 		bl	HAL_SYSTICK_IRQHandler
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccv4F7nk.s 			page 8
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\cc3ePy8S.s 			page 8
 
 
  214              	.LVL1:
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccv4F7nk.s 			page 1
  247              		.cfi_endproc
  248              	.LFE143:
  250              		.section	.text.USART2_IRQHandler,"ax",%progbits
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccv4F7nk.s 			page 9
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\cc3ePy8S.s 			page 9
 
 
  251              		.align	1
@@ -522,23 +522,23 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccv4F7nk.s 			page 1
  276 000c 00000000 		.word	huart2
  277              		.cfi_endproc
  278              	.LFE144:
- 280              		.section	.text.SDIO_IRQHandler,"ax",%progbits
+ 280              		.section	.text.EXTI15_10_IRQHandler,"ax",%progbits
  281              		.align	1
- 282              		.global	SDIO_IRQHandler
+ 282              		.global	EXTI15_10_IRQHandler
  283              		.syntax unified
  284              		.thumb
  285              		.thumb_func
- 287              	SDIO_IRQHandler:
+ 287              	EXTI15_10_IRQHandler:
  288              	.LFB145:
  236:Core/Src/stm32f4xx_it.c **** 
  237:Core/Src/stm32f4xx_it.c **** /**
- 238:Core/Src/stm32f4xx_it.c ****   * @brief This function handles SDIO global interrupt.
+ 238:Core/Src/stm32f4xx_it.c ****   * @brief This function handles EXTI line[15:10] interrupts.
  239:Core/Src/stm32f4xx_it.c ****   */
- 240:Core/Src/stm32f4xx_it.c **** void SDIO_IRQHandler(void)
+ 240:Core/Src/stm32f4xx_it.c **** void EXTI15_10_IRQHandler(void)
  241:Core/Src/stm32f4xx_it.c **** {
  289              		.loc 1 241 1 is_stmt 1 view -0
  290              		.cfi_startproc
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccv4F7nk.s 			page 10
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\cc3ePy8S.s 			page 10
 
 
  291              		@ args = 0, pretend = 0, frame = 0
@@ -547,166 +547,207 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccv4F7nk.s 			page 1
  294              		.cfi_def_cfa_offset 8
  295              		.cfi_offset 3, -8
  296              		.cfi_offset 14, -4
- 242:Core/Src/stm32f4xx_it.c ****   /* USER CODE BEGIN SDIO_IRQn 0 */
+ 242:Core/Src/stm32f4xx_it.c ****   /* USER CODE BEGIN EXTI15_10_IRQn 0 */
  243:Core/Src/stm32f4xx_it.c **** 
- 244:Core/Src/stm32f4xx_it.c ****   /* USER CODE END SDIO_IRQn 0 */
- 245:Core/Src/stm32f4xx_it.c ****   HAL_SD_IRQHandler(&hsd);
+ 244:Core/Src/stm32f4xx_it.c ****   /* USER CODE END EXTI15_10_IRQn 0 */
+ 245:Core/Src/stm32f4xx_it.c ****   HAL_GPIO_EXTI_IRQHandler(B1_Pin);
  297              		.loc 1 245 3 view .LVU37
- 298 0002 0248     		ldr	r0, .L26
- 299 0004 FFF7FEFF 		bl	HAL_SD_IRQHandler
+ 298 0002 4FF40050 		mov	r0, #8192
+ 299 0006 FFF7FEFF 		bl	HAL_GPIO_EXTI_IRQHandler
  300              	.LVL4:
- 246:Core/Src/stm32f4xx_it.c ****   /* USER CODE BEGIN SDIO_IRQn 1 */
+ 246:Core/Src/stm32f4xx_it.c ****   /* USER CODE BEGIN EXTI15_10_IRQn 1 */
  247:Core/Src/stm32f4xx_it.c **** 
- 248:Core/Src/stm32f4xx_it.c ****   /* USER CODE END SDIO_IRQn 1 */
+ 248:Core/Src/stm32f4xx_it.c ****   /* USER CODE END EXTI15_10_IRQn 1 */
  249:Core/Src/stm32f4xx_it.c **** }
  301              		.loc 1 249 1 is_stmt 0 view .LVU38
- 302 0008 08BD     		pop	{r3, pc}
- 303              	.L27:
- 304 000a 00BF     		.align	2
- 305              	.L26:
- 306 000c 00000000 		.word	hsd
- 307              		.cfi_endproc
- 308              	.LFE145:
- 310              		.section	.text.DMA2_Stream3_IRQHandler,"ax",%progbits
- 311              		.align	1
- 312              		.global	DMA2_Stream3_IRQHandler
- 313              		.syntax unified
- 314              		.thumb
- 315              		.thumb_func
- 317              	DMA2_Stream3_IRQHandler:
- 318              	.LFB146:
+ 302 000a 08BD     		pop	{r3, pc}
+ 303              		.cfi_endproc
+ 304              	.LFE145:
+ 306              		.section	.text.SDIO_IRQHandler,"ax",%progbits
+ 307              		.align	1
+ 308              		.global	SDIO_IRQHandler
+ 309              		.syntax unified
+ 310              		.thumb
+ 311              		.thumb_func
+ 313              	SDIO_IRQHandler:
+ 314              	.LFB146:
  250:Core/Src/stm32f4xx_it.c **** 
  251:Core/Src/stm32f4xx_it.c **** /**
- 252:Core/Src/stm32f4xx_it.c ****   * @brief This function handles DMA2 stream3 global interrupt.
+ 252:Core/Src/stm32f4xx_it.c ****   * @brief This function handles SDIO global interrupt.
  253:Core/Src/stm32f4xx_it.c ****   */
- 254:Core/Src/stm32f4xx_it.c **** void DMA2_Stream3_IRQHandler(void)
+ 254:Core/Src/stm32f4xx_it.c **** void SDIO_IRQHandler(void)
  255:Core/Src/stm32f4xx_it.c **** {
- 319              		.loc 1 255 1 is_stmt 1 view -0
- 320              		.cfi_startproc
- 321              		@ args = 0, pretend = 0, frame = 0
- 322              		@ frame_needed = 0, uses_anonymous_args = 0
- 323 0000 08B5     		push	{r3, lr}
- 324              		.cfi_def_cfa_offset 8
- 325              		.cfi_offset 3, -8
- 326              		.cfi_offset 14, -4
- 256:Core/Src/stm32f4xx_it.c ****   /* USER CODE BEGIN DMA2_Stream3_IRQn 0 */
+ 315              		.loc 1 255 1 is_stmt 1 view -0
+ 316              		.cfi_startproc
+ 317              		@ args = 0, pretend = 0, frame = 0
+ 318              		@ frame_needed = 0, uses_anonymous_args = 0
+ 319 0000 08B5     		push	{r3, lr}
+ 320              		.cfi_def_cfa_offset 8
+ 321              		.cfi_offset 3, -8
+ 322              		.cfi_offset 14, -4
+ 256:Core/Src/stm32f4xx_it.c ****   /* USER CODE BEGIN SDIO_IRQn 0 */
  257:Core/Src/stm32f4xx_it.c **** 
- 258:Core/Src/stm32f4xx_it.c ****   /* USER CODE END DMA2_Stream3_IRQn 0 */
- 259:Core/Src/stm32f4xx_it.c ****   HAL_DMA_IRQHandler(&hdma_sdio_rx);
- 327              		.loc 1 259 3 view .LVU40
- 328 0002 0248     		ldr	r0, .L30
- 329 0004 FFF7FEFF 		bl	HAL_DMA_IRQHandler
- 330              	.LVL5:
- 260:Core/Src/stm32f4xx_it.c ****   /* USER CODE BEGIN DMA2_Stream3_IRQn 1 */
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccv4F7nk.s 			page 11
-
-
+ 258:Core/Src/stm32f4xx_it.c ****   /* USER CODE END SDIO_IRQn 0 */
+ 259:Core/Src/stm32f4xx_it.c ****   HAL_SD_IRQHandler(&hsd);
+ 323              		.loc 1 259 3 view .LVU40
+ 324 0002 0248     		ldr	r0, .L28
+ 325 0004 FFF7FEFF 		bl	HAL_SD_IRQHandler
+ 326              	.LVL5:
+ 260:Core/Src/stm32f4xx_it.c ****   /* USER CODE BEGIN SDIO_IRQn 1 */
  261:Core/Src/stm32f4xx_it.c **** 
- 262:Core/Src/stm32f4xx_it.c ****   /* USER CODE END DMA2_Stream3_IRQn 1 */
+ 262:Core/Src/stm32f4xx_it.c ****   /* USER CODE END SDIO_IRQn 1 */
  263:Core/Src/stm32f4xx_it.c **** }
- 331              		.loc 1 263 1 is_stmt 0 view .LVU41
- 332 0008 08BD     		pop	{r3, pc}
- 333              	.L31:
- 334 000a 00BF     		.align	2
- 335              	.L30:
- 336 000c 00000000 		.word	hdma_sdio_rx
- 337              		.cfi_endproc
- 338              	.LFE146:
- 340              		.section	.text.DMA2_Stream6_IRQHandler,"ax",%progbits
- 341              		.align	1
- 342              		.global	DMA2_Stream6_IRQHandler
- 343              		.syntax unified
- 344              		.thumb
- 345              		.thumb_func
- 347              	DMA2_Stream6_IRQHandler:
- 348              	.LFB147:
+ 327              		.loc 1 263 1 is_stmt 0 view .LVU41
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\cc3ePy8S.s 			page 11
+
+
+ 328 0008 08BD     		pop	{r3, pc}
+ 329              	.L29:
+ 330 000a 00BF     		.align	2
+ 331              	.L28:
+ 332 000c 00000000 		.word	hsd
+ 333              		.cfi_endproc
+ 334              	.LFE146:
+ 336              		.section	.text.DMA2_Stream3_IRQHandler,"ax",%progbits
+ 337              		.align	1
+ 338              		.global	DMA2_Stream3_IRQHandler
+ 339              		.syntax unified
+ 340              		.thumb
+ 341              		.thumb_func
+ 343              	DMA2_Stream3_IRQHandler:
+ 344              	.LFB147:
  264:Core/Src/stm32f4xx_it.c **** 
  265:Core/Src/stm32f4xx_it.c **** /**
- 266:Core/Src/stm32f4xx_it.c ****   * @brief This function handles DMA2 stream6 global interrupt.
+ 266:Core/Src/stm32f4xx_it.c ****   * @brief This function handles DMA2 stream3 global interrupt.
  267:Core/Src/stm32f4xx_it.c ****   */
- 268:Core/Src/stm32f4xx_it.c **** void DMA2_Stream6_IRQHandler(void)
+ 268:Core/Src/stm32f4xx_it.c **** void DMA2_Stream3_IRQHandler(void)
  269:Core/Src/stm32f4xx_it.c **** {
- 349              		.loc 1 269 1 is_stmt 1 view -0
- 350              		.cfi_startproc
- 351              		@ args = 0, pretend = 0, frame = 0
- 352              		@ frame_needed = 0, uses_anonymous_args = 0
- 353 0000 08B5     		push	{r3, lr}
- 354              		.cfi_def_cfa_offset 8
- 355              		.cfi_offset 3, -8
- 356              		.cfi_offset 14, -4
- 270:Core/Src/stm32f4xx_it.c ****   /* USER CODE BEGIN DMA2_Stream6_IRQn 0 */
+ 345              		.loc 1 269 1 is_stmt 1 view -0
+ 346              		.cfi_startproc
+ 347              		@ args = 0, pretend = 0, frame = 0
+ 348              		@ frame_needed = 0, uses_anonymous_args = 0
+ 349 0000 08B5     		push	{r3, lr}
+ 350              		.cfi_def_cfa_offset 8
+ 351              		.cfi_offset 3, -8
+ 352              		.cfi_offset 14, -4
+ 270:Core/Src/stm32f4xx_it.c ****   /* USER CODE BEGIN DMA2_Stream3_IRQn 0 */
  271:Core/Src/stm32f4xx_it.c **** 
- 272:Core/Src/stm32f4xx_it.c ****   /* USER CODE END DMA2_Stream6_IRQn 0 */
- 273:Core/Src/stm32f4xx_it.c ****   HAL_DMA_IRQHandler(&hdma_sdio_tx);
- 357              		.loc 1 273 3 view .LVU43
- 358 0002 0248     		ldr	r0, .L34
- 359 0004 FFF7FEFF 		bl	HAL_DMA_IRQHandler
- 360              	.LVL6:
- 274:Core/Src/stm32f4xx_it.c ****   /* USER CODE BEGIN DMA2_Stream6_IRQn 1 */
+ 272:Core/Src/stm32f4xx_it.c ****   /* USER CODE END DMA2_Stream3_IRQn 0 */
+ 273:Core/Src/stm32f4xx_it.c ****   HAL_DMA_IRQHandler(&hdma_sdio_rx);
+ 353              		.loc 1 273 3 view .LVU43
+ 354 0002 0248     		ldr	r0, .L32
+ 355 0004 FFF7FEFF 		bl	HAL_DMA_IRQHandler
+ 356              	.LVL6:
+ 274:Core/Src/stm32f4xx_it.c ****   /* USER CODE BEGIN DMA2_Stream3_IRQn 1 */
  275:Core/Src/stm32f4xx_it.c **** 
- 276:Core/Src/stm32f4xx_it.c ****   /* USER CODE END DMA2_Stream6_IRQn 1 */
+ 276:Core/Src/stm32f4xx_it.c ****   /* USER CODE END DMA2_Stream3_IRQn 1 */
  277:Core/Src/stm32f4xx_it.c **** }
- 361              		.loc 1 277 1 is_stmt 0 view .LVU44
- 362 0008 08BD     		pop	{r3, pc}
- 363              	.L35:
- 364 000a 00BF     		.align	2
- 365              	.L34:
- 366 000c 00000000 		.word	hdma_sdio_tx
- 367              		.cfi_endproc
- 368              	.LFE147:
- 370              		.text
- 371              	.Letext0:
- 372              		.file 2 "C:/Users/jonas/AppData/Roaming/VSCodium/User/globalStorage/bmd.stm32-for-vscode/@xpack-de
- 373              		.file 3 "C:/Users/jonas/AppData/Roaming/VSCodium/User/globalStorage/bmd.stm32-for-vscode/@xpack-de
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccv4F7nk.s 			page 12
+ 357              		.loc 1 277 1 is_stmt 0 view .LVU44
+ 358 0008 08BD     		pop	{r3, pc}
+ 359              	.L33:
+ 360 000a 00BF     		.align	2
+ 361              	.L32:
+ 362 000c 00000000 		.word	hdma_sdio_rx
+ 363              		.cfi_endproc
+ 364              	.LFE147:
+ 366              		.section	.text.DMA2_Stream6_IRQHandler,"ax",%progbits
+ 367              		.align	1
+ 368              		.global	DMA2_Stream6_IRQHandler
+ 369              		.syntax unified
+ 370              		.thumb
+ 371              		.thumb_func
+ 373              	DMA2_Stream6_IRQHandler:
+ 374              	.LFB148:
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\cc3ePy8S.s 			page 12
 
 
- 374              		.file 4 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f401xe.h"
- 375              		.file 5 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h"
- 376              		.file 6 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h"
- 377              		.file 7 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_sdmmc.h"
- 378              		.file 8 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_sd.h"
- 379              		.file 9 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h"
- 380              		.file 10 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_cortex.h"
- 381              		.file 11 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h"
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccv4F7nk.s 			page 13
+ 278:Core/Src/stm32f4xx_it.c **** 
+ 279:Core/Src/stm32f4xx_it.c **** /**
+ 280:Core/Src/stm32f4xx_it.c ****   * @brief This function handles DMA2 stream6 global interrupt.
+ 281:Core/Src/stm32f4xx_it.c ****   */
+ 282:Core/Src/stm32f4xx_it.c **** void DMA2_Stream6_IRQHandler(void)
+ 283:Core/Src/stm32f4xx_it.c **** {
+ 375              		.loc 1 283 1 is_stmt 1 view -0
+ 376              		.cfi_startproc
+ 377              		@ args = 0, pretend = 0, frame = 0
+ 378              		@ frame_needed = 0, uses_anonymous_args = 0
+ 379 0000 08B5     		push	{r3, lr}
+ 380              		.cfi_def_cfa_offset 8
+ 381              		.cfi_offset 3, -8
+ 382              		.cfi_offset 14, -4
+ 284:Core/Src/stm32f4xx_it.c ****   /* USER CODE BEGIN DMA2_Stream6_IRQn 0 */
+ 285:Core/Src/stm32f4xx_it.c **** 
+ 286:Core/Src/stm32f4xx_it.c ****   /* USER CODE END DMA2_Stream6_IRQn 0 */
+ 287:Core/Src/stm32f4xx_it.c ****   HAL_DMA_IRQHandler(&hdma_sdio_tx);
+ 383              		.loc 1 287 3 view .LVU46
+ 384 0002 0248     		ldr	r0, .L36
+ 385 0004 FFF7FEFF 		bl	HAL_DMA_IRQHandler
+ 386              	.LVL7:
+ 288:Core/Src/stm32f4xx_it.c ****   /* USER CODE BEGIN DMA2_Stream6_IRQn 1 */
+ 289:Core/Src/stm32f4xx_it.c **** 
+ 290:Core/Src/stm32f4xx_it.c ****   /* USER CODE END DMA2_Stream6_IRQn 1 */
+ 291:Core/Src/stm32f4xx_it.c **** }
+ 387              		.loc 1 291 1 is_stmt 0 view .LVU47
+ 388 0008 08BD     		pop	{r3, pc}
+ 389              	.L37:
+ 390 000a 00BF     		.align	2
+ 391              	.L36:
+ 392 000c 00000000 		.word	hdma_sdio_tx
+ 393              		.cfi_endproc
+ 394              	.LFE148:
+ 396              		.text
+ 397              	.Letext0:
+ 398              		.file 2 "C:/Users/jonas/AppData/Roaming/VSCodium/User/globalStorage/bmd.stm32-for-vscode/@xpack-de
+ 399              		.file 3 "C:/Users/jonas/AppData/Roaming/VSCodium/User/globalStorage/bmd.stm32-for-vscode/@xpack-de
+ 400              		.file 4 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f401xe.h"
+ 401              		.file 5 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h"
+ 402              		.file 6 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h"
+ 403              		.file 7 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_sdmmc.h"
+ 404              		.file 8 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_sd.h"
+ 405              		.file 9 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h"
+ 406              		.file 10 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio.h"
+ 407              		.file 11 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_cortex.h"
+ 408              		.file 12 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h"
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\cc3ePy8S.s 			page 13
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 stm32f4xx_it.c
-C:\Users\jonas\AppData\Local\Temp\ccv4F7nk.s:21     .text.NMI_Handler:00000000 $t
-C:\Users\jonas\AppData\Local\Temp\ccv4F7nk.s:27     .text.NMI_Handler:00000000 NMI_Handler
-C:\Users\jonas\AppData\Local\Temp\ccv4F7nk.s:44     .text.HardFault_Handler:00000000 $t
-C:\Users\jonas\AppData\Local\Temp\ccv4F7nk.s:50     .text.HardFault_Handler:00000000 HardFault_Handler
-C:\Users\jonas\AppData\Local\Temp\ccv4F7nk.s:67     .text.MemManage_Handler:00000000 $t
-C:\Users\jonas\AppData\Local\Temp\ccv4F7nk.s:73     .text.MemManage_Handler:00000000 MemManage_Handler
-C:\Users\jonas\AppData\Local\Temp\ccv4F7nk.s:90     .text.BusFault_Handler:00000000 $t
-C:\Users\jonas\AppData\Local\Temp\ccv4F7nk.s:96     .text.BusFault_Handler:00000000 BusFault_Handler
-C:\Users\jonas\AppData\Local\Temp\ccv4F7nk.s:113    .text.UsageFault_Handler:00000000 $t
-C:\Users\jonas\AppData\Local\Temp\ccv4F7nk.s:119    .text.UsageFault_Handler:00000000 UsageFault_Handler
-C:\Users\jonas\AppData\Local\Temp\ccv4F7nk.s:136    .text.SVC_Handler:00000000 $t
-C:\Users\jonas\AppData\Local\Temp\ccv4F7nk.s:142    .text.SVC_Handler:00000000 SVC_Handler
-C:\Users\jonas\AppData\Local\Temp\ccv4F7nk.s:155    .text.DebugMon_Handler:00000000 $t
-C:\Users\jonas\AppData\Local\Temp\ccv4F7nk.s:161    .text.DebugMon_Handler:00000000 DebugMon_Handler
-C:\Users\jonas\AppData\Local\Temp\ccv4F7nk.s:174    .text.PendSV_Handler:00000000 $t
-C:\Users\jonas\AppData\Local\Temp\ccv4F7nk.s:180    .text.PendSV_Handler:00000000 PendSV_Handler
-C:\Users\jonas\AppData\Local\Temp\ccv4F7nk.s:193    .text.SysTick_Handler:00000000 $t
-C:\Users\jonas\AppData\Local\Temp\ccv4F7nk.s:199    .text.SysTick_Handler:00000000 SysTick_Handler
-C:\Users\jonas\AppData\Local\Temp\ccv4F7nk.s:221    .text.DMA1_Stream5_IRQHandler:00000000 $t
-C:\Users\jonas\AppData\Local\Temp\ccv4F7nk.s:227    .text.DMA1_Stream5_IRQHandler:00000000 DMA1_Stream5_IRQHandler
-C:\Users\jonas\AppData\Local\Temp\ccv4F7nk.s:246    .text.DMA1_Stream5_IRQHandler:0000000c $d
-C:\Users\jonas\AppData\Local\Temp\ccv4F7nk.s:251    .text.USART2_IRQHandler:00000000 $t
-C:\Users\jonas\AppData\Local\Temp\ccv4F7nk.s:257    .text.USART2_IRQHandler:00000000 USART2_IRQHandler
-C:\Users\jonas\AppData\Local\Temp\ccv4F7nk.s:276    .text.USART2_IRQHandler:0000000c $d
-C:\Users\jonas\AppData\Local\Temp\ccv4F7nk.s:281    .text.SDIO_IRQHandler:00000000 $t
-C:\Users\jonas\AppData\Local\Temp\ccv4F7nk.s:287    .text.SDIO_IRQHandler:00000000 SDIO_IRQHandler
-C:\Users\jonas\AppData\Local\Temp\ccv4F7nk.s:306    .text.SDIO_IRQHandler:0000000c $d
-C:\Users\jonas\AppData\Local\Temp\ccv4F7nk.s:311    .text.DMA2_Stream3_IRQHandler:00000000 $t
-C:\Users\jonas\AppData\Local\Temp\ccv4F7nk.s:317    .text.DMA2_Stream3_IRQHandler:00000000 DMA2_Stream3_IRQHandler
-C:\Users\jonas\AppData\Local\Temp\ccv4F7nk.s:336    .text.DMA2_Stream3_IRQHandler:0000000c $d
-C:\Users\jonas\AppData\Local\Temp\ccv4F7nk.s:341    .text.DMA2_Stream6_IRQHandler:00000000 $t
-C:\Users\jonas\AppData\Local\Temp\ccv4F7nk.s:347    .text.DMA2_Stream6_IRQHandler:00000000 DMA2_Stream6_IRQHandler
-C:\Users\jonas\AppData\Local\Temp\ccv4F7nk.s:366    .text.DMA2_Stream6_IRQHandler:0000000c $d
+C:\Users\jonas\AppData\Local\Temp\cc3ePy8S.s:21     .text.NMI_Handler:00000000 $t
+C:\Users\jonas\AppData\Local\Temp\cc3ePy8S.s:27     .text.NMI_Handler:00000000 NMI_Handler
+C:\Users\jonas\AppData\Local\Temp\cc3ePy8S.s:44     .text.HardFault_Handler:00000000 $t
+C:\Users\jonas\AppData\Local\Temp\cc3ePy8S.s:50     .text.HardFault_Handler:00000000 HardFault_Handler
+C:\Users\jonas\AppData\Local\Temp\cc3ePy8S.s:67     .text.MemManage_Handler:00000000 $t
+C:\Users\jonas\AppData\Local\Temp\cc3ePy8S.s:73     .text.MemManage_Handler:00000000 MemManage_Handler
+C:\Users\jonas\AppData\Local\Temp\cc3ePy8S.s:90     .text.BusFault_Handler:00000000 $t
+C:\Users\jonas\AppData\Local\Temp\cc3ePy8S.s:96     .text.BusFault_Handler:00000000 BusFault_Handler
+C:\Users\jonas\AppData\Local\Temp\cc3ePy8S.s:113    .text.UsageFault_Handler:00000000 $t
+C:\Users\jonas\AppData\Local\Temp\cc3ePy8S.s:119    .text.UsageFault_Handler:00000000 UsageFault_Handler
+C:\Users\jonas\AppData\Local\Temp\cc3ePy8S.s:136    .text.SVC_Handler:00000000 $t
+C:\Users\jonas\AppData\Local\Temp\cc3ePy8S.s:142    .text.SVC_Handler:00000000 SVC_Handler
+C:\Users\jonas\AppData\Local\Temp\cc3ePy8S.s:155    .text.DebugMon_Handler:00000000 $t
+C:\Users\jonas\AppData\Local\Temp\cc3ePy8S.s:161    .text.DebugMon_Handler:00000000 DebugMon_Handler
+C:\Users\jonas\AppData\Local\Temp\cc3ePy8S.s:174    .text.PendSV_Handler:00000000 $t
+C:\Users\jonas\AppData\Local\Temp\cc3ePy8S.s:180    .text.PendSV_Handler:00000000 PendSV_Handler
+C:\Users\jonas\AppData\Local\Temp\cc3ePy8S.s:193    .text.SysTick_Handler:00000000 $t
+C:\Users\jonas\AppData\Local\Temp\cc3ePy8S.s:199    .text.SysTick_Handler:00000000 SysTick_Handler
+C:\Users\jonas\AppData\Local\Temp\cc3ePy8S.s:221    .text.DMA1_Stream5_IRQHandler:00000000 $t
+C:\Users\jonas\AppData\Local\Temp\cc3ePy8S.s:227    .text.DMA1_Stream5_IRQHandler:00000000 DMA1_Stream5_IRQHandler
+C:\Users\jonas\AppData\Local\Temp\cc3ePy8S.s:246    .text.DMA1_Stream5_IRQHandler:0000000c $d
+C:\Users\jonas\AppData\Local\Temp\cc3ePy8S.s:251    .text.USART2_IRQHandler:00000000 $t
+C:\Users\jonas\AppData\Local\Temp\cc3ePy8S.s:257    .text.USART2_IRQHandler:00000000 USART2_IRQHandler
+C:\Users\jonas\AppData\Local\Temp\cc3ePy8S.s:276    .text.USART2_IRQHandler:0000000c $d
+C:\Users\jonas\AppData\Local\Temp\cc3ePy8S.s:281    .text.EXTI15_10_IRQHandler:00000000 $t
+C:\Users\jonas\AppData\Local\Temp\cc3ePy8S.s:287    .text.EXTI15_10_IRQHandler:00000000 EXTI15_10_IRQHandler
+C:\Users\jonas\AppData\Local\Temp\cc3ePy8S.s:307    .text.SDIO_IRQHandler:00000000 $t
+C:\Users\jonas\AppData\Local\Temp\cc3ePy8S.s:313    .text.SDIO_IRQHandler:00000000 SDIO_IRQHandler
+C:\Users\jonas\AppData\Local\Temp\cc3ePy8S.s:332    .text.SDIO_IRQHandler:0000000c $d
+C:\Users\jonas\AppData\Local\Temp\cc3ePy8S.s:337    .text.DMA2_Stream3_IRQHandler:00000000 $t
+C:\Users\jonas\AppData\Local\Temp\cc3ePy8S.s:343    .text.DMA2_Stream3_IRQHandler:00000000 DMA2_Stream3_IRQHandler
+C:\Users\jonas\AppData\Local\Temp\cc3ePy8S.s:362    .text.DMA2_Stream3_IRQHandler:0000000c $d
+C:\Users\jonas\AppData\Local\Temp\cc3ePy8S.s:367    .text.DMA2_Stream6_IRQHandler:00000000 $t
+C:\Users\jonas\AppData\Local\Temp\cc3ePy8S.s:373    .text.DMA2_Stream6_IRQHandler:00000000 DMA2_Stream6_IRQHandler
+C:\Users\jonas\AppData\Local\Temp\cc3ePy8S.s:392    .text.DMA2_Stream6_IRQHandler:0000000c $d
 
 UNDEFINED SYMBOLS
 HAL_IncTick
@@ -715,6 +756,7 @@ HAL_DMA_IRQHandler
 hdma_spi3_tx
 HAL_UART_IRQHandler
 huart2
+HAL_GPIO_EXTI_IRQHandler
 HAL_SD_IRQHandler
 hsd
 hdma_sdio_rx
