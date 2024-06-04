@@ -60,8 +60,8 @@ all: main-build
 main-build: f401_slide_potentiometer_test.elf secondary-outputs
 
 # Tool invocations
-f401_slide_potentiometer_test.elf f401_slide_potentiometer_test.map: $(OBJS) $(USER_OBJS) /home/shimi/Documents/ESP/STM32CubeIDE/workspace_1.15.1/f401_slide_potentiometer_test/STM32F401RETX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "f401_slide_potentiometer_test.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"/home/shimi/Documents/ESP/STM32CubeIDE/workspace_1.15.1/f401_slide_potentiometer_test/STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="f401_slide_potentiometer_test.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+f401_slide_potentiometer_test.elf f401_slide_potentiometer_test.map: $(OBJS) $(USER_OBJS) /home/shimi/Documents/ESP/STM32CubeIDE/ima/f401_slide_potentiometer_test/STM32F401RETX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "f401_slide_potentiometer_test.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"/home/shimi/Documents/ESP/STM32CubeIDE/ima/f401_slide_potentiometer_test/STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="f401_slide_potentiometer_test.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 

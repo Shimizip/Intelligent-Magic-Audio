@@ -1,0 +1,5 @@
+../Core/Src/filemanager.c:10:6:initializeFileManager	16	static
+../Core/Src/filemanager.c:16:6:addFile	16	static
+../Core/Src/filemanager.c:25:6:cursorUp	16	static
+../Core/Src/filemanager.c:33:6:cursorDown	16	static
+../Core/Src/filemanager.c:41:6:selectFile	16	static
