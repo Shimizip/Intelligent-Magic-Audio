@@ -1,0 +1,88 @@
+### Projektübersicht: KI-basierte Sortierung von Samples nach Spektrogrammen
+
+#### Basis:
+- **Microcontroller:** STM32F7-Serie
+
+#### Aufgabe:
+- **Ziel:** Bau eines Moduls zur Sortierung von Samples anhand von Spektrogrammen unter Verwendung von KI und vorgetaggten Merkmalsklassen.
+- **Mein Verantwortungsbereich:** Entwicklung des Interface und Integration der SD-Karte für Datenspeicherung und -auslesung.
+
+### Interface
+
+#### Komponenten:
+1. **Encoder**
+2. **Zwei Potentiometer als Schieberegler**
+3. **OLED-Display**
+
+#### Verbindung:
+- Komponenten sind über ein Breadboard mit dem Mikrocontroller verbunden.
+
+#### Funktionalität:
+- **Encoder:**
+  - Navigiert zwischen verschiedenen Dateien im Menü auf dem OLED-Display.
+  - Durch Drehen und Drücken des Encoders werden Interrupts ausgelöst, welche die Funktion `HAL_GPIO_EXTI_Callback` aktivieren.
+  - **Navigation:**
+    - Drehung nach oben: `cursorUp(&fm)` - Erhöht den Index, der die Position des Cursors auf dem Display angibt.
+    - Drehung nach unten: `cursorDown(&fm)` - Verringert den Index, der die Position des Cursors auf dem Display angibt.
+  - **Auswahl:**
+    - Drücken des Push Buttons löst `HAL_GPIO_EXTI_Callback` aus und ruft `renderSelectedFile()` auf, um die ausgewählte Datei anzuzeigen.
+  - **Debouncing:** Sorgt für die korrekte Funktion des Encoders durch Auswerten der Pins in `HAL_GPIO_EXTI_Callback` und if()-Abfragen.
+
+#### Pins:
+- **Encoder:**
+  - `enc_a_clk_in1_Pin`
+  - `enc_b_dt_in2_Pin`
+  - `enc_switch_in3_Pin`
+  - `GND 1/2`
+
+### Potentiometer
+
+#### Funktionalität:
+- **ADC und DMA:**
+  - Wandeln die Widerstandswerte der Potentiometer in Werte zwischen 0-4096 um.
+  - Werte werden zyklisch vom DMA in einem Array gespeichert durch `HAL_ADC_Start_DMA(&hadc1, currentValues, NUM_CHANNELS)`.
+  - **Glättung:** 10 Werte pro Potentiometer werden gespeichert und verrechnet, um einen Mittelwert zu erhalten.
+  - **Bedingungen:** Bei einer Änderung von +/- 41 wird ein neuer Wert berechnet, der den Mittelwert in Prozent darstellt.
+  - **Umrechnung in Prozent:** `Mittelwert / 41`, um Werte zwischen 1-100 zu erhalten.
+
+#### Pins:
+- **Potentiometer:**
+  - `FADER_IN1_Pin`
+  - `AFADER_IN2_Pin`
+  - `VCC 1/2`
+  - `GND 1/2`
+
+### SD-Kartenintegration
+
+#### Initiale Implementierung:
+- **Externer Treiber:**
+  - Ansteuerung der SD-Karte über einen SD-Kartenleser via SPI.
+
+#### Pins:
+- **SPI:**
+  - `CS`
+  - `MISO`
+  - `MOSI`
+  - `VCC`
+  - `GND`
+
+#### Herausforderungen:
+- Falsche SD-Karten (MMC) führten zu Schwierigkeiten beim Einbinden des Treibers.
+- Nur SD-Karten der Typen v1-v2 SSD waren kompatibel.
+- Schreib- und Leseoperationen funktionierten, jedoch war die Geschwindigkeit für Soundwiedergabe unzureichend.
+
+#### Verbesserung:
+- **SDIO Ansatz:**
+  - Verwendet 1-Bit Wide Bus für effizientere Datenübertragung mit größeren Buffern.
+
+#### Pins:
+- **SDIO:**
+  - `CD`
+  - `DI1`
+  - `VCC`
+  - `GND`
+
+#### Zukunftspläne:
+- Umstieg auf 4-Bit Wide Bus zur weiteren Verbesserung der Effizienz und Datenübertragungsrate.
+
+Dieses übersichtliche und strukturierte Dokument bietet eine detaillierte Beschreibung des Projekts, der Komponenten, deren Verbindungen und Funktionsweise. Es stellt sicher, dass die Informationen leicht verständlich und nachvollziehbar sind.
