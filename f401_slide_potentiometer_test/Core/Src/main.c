@@ -21,7 +21,7 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include <stdlib.h>
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -41,12 +41,17 @@
 
 /* Private variables ---------------------------------------------------------*/
 ADC_HandleTypeDef hadc1;
+DMA_HandleTypeDef hdma_adc1;
 
 UART_HandleTypeDef huart2;
-DMA_HandleTypeDef hdma_usart2_tx;
 
 /* USER CODE BEGIN PV */
-uint16_t potentiometer_value = 0 ;
+uint32_t potentiometer_value = 0 ;
+uint32_t adcChannels[NUM_CHANNELS] = {ADC_CHANNEL_0, ADC_CHANNEL_1};
+uint32_t currentValues[NUM_CHANNELS] = {0};
+uint16_t previousADCValue[NUM_CHANNELS] = {0};
+uint32_t smoothedValues[NUM_CHANNELS];
+uint32_t classPercentADC[NUM_CHANNELS];
 
 /* USER CODE END PV */
 
@@ -57,7 +62,10 @@ static void MX_DMA_Init(void);
 static void MX_USART2_UART_Init(void);
 static void MX_ADC1_Init(void);
 /* USER CODE BEGIN PFP */
-uint16_t readAnalogValue(void);
+uint16_t readAnalogValue(uint32_t channel, uint8_t i);
+void readAdcChannels(void);
+void valueChangedCallback(uint32_t channel, uint16_t newValue, uint16_t oldValue);
+
 
 /* USER CODE END PFP */
 
@@ -102,6 +110,7 @@ int main(void)
 
   /* USER CODE END 2 */
 
+
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
@@ -109,7 +118,7 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-	  potentiometer_value = readAnalogValue();
+	  HAL_ADC_Start_DMA(&hadc1, currentValues, NUM_CHANNELS);
   }
   /* USER CODE END 3 */
 }
@@ -173,6 +182,7 @@ static void MX_ADC1_Init(void)
   /* USER CODE END ADC1_Init 0 */
 
   ADC_ChannelConfTypeDef sConfig = {0};
+  ADC_InjectionConfTypeDef sConfigInjected = {0};
 
   /* USER CODE BEGIN ADC1_Init 1 */
 
@@ -183,13 +193,13 @@ static void MX_ADC1_Init(void)
   hadc1.Instance = ADC1;
   hadc1.Init.ClockPrescaler = ADC_CLOCK_SYNC_PCLK_DIV4;
   hadc1.Init.Resolution = ADC_RESOLUTION_12B;
-  hadc1.Init.ScanConvMode = DISABLE;
+  hadc1.Init.ScanConvMode = ENABLE;
   hadc1.Init.ContinuousConvMode = DISABLE;
   hadc1.Init.DiscontinuousConvMode = DISABLE;
   hadc1.Init.ExternalTrigConvEdge = ADC_EXTERNALTRIGCONVEDGE_NONE;
   hadc1.Init.ExternalTrigConv = ADC_SOFTWARE_START;
   hadc1.Init.DataAlign = ADC_DATAALIGN_RIGHT;
-  hadc1.Init.NbrOfConversion = 1;
+  hadc1.Init.NbrOfConversion = 2;
   hadc1.Init.DMAContinuousRequests = DISABLE;
   hadc1.Init.EOCSelection = ADC_EOC_SINGLE_CONV;
   if (HAL_ADC_Init(&hadc1) != HAL_OK)
@@ -206,8 +216,32 @@ static void MX_ADC1_Init(void)
   {
     Error_Handler();
   }
-  /* USER CODE BEGIN ADC1_Init 2 */
 
+  /** Configure for the selected ADC regular channel its corresponding rank in the sequencer and its sample time.
+  */
+  sConfig.Channel = ADC_CHANNEL_1;
+  sConfig.Rank = 2;
+  if (HAL_ADC_ConfigChannel(&hadc1, &sConfig) != HAL_OK)
+  {
+    Error_Handler();
+  }
+
+  /** Configures for the selected ADC injected channel its corresponding rank in the sequencer and its sample time
+  */
+  sConfigInjected.InjectedChannel = ADC_CHANNEL_0;
+  sConfigInjected.InjectedRank = 1;
+  sConfigInjected.InjectedNbrOfConversion = 1;
+  sConfigInjected.InjectedSamplingTime = ADC_SAMPLETIME_3CYCLES;
+  sConfigInjected.ExternalTrigInjecConvEdge = ADC_EXTERNALTRIGINJECCONVEDGE_NONE;
+  sConfigInjected.ExternalTrigInjecConv = ADC_INJECTED_SOFTWARE_START;
+  sConfigInjected.AutoInjectedConv = DISABLE;
+  sConfigInjected.InjectedDiscontinuousConvMode = DISABLE;
+  sConfigInjected.InjectedOffset = 0;
+  if (HAL_ADCEx_InjectedConfigChannel(&hadc1, &sConfigInjected) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  /* USER CODE BEGIN ADC1_Init 2 */
   /* USER CODE END ADC1_Init 2 */
 
 }
@@ -252,12 +286,12 @@ static void MX_DMA_Init(void)
 {
 
   /* DMA controller clock enable */
-  __HAL_RCC_DMA1_CLK_ENABLE();
+  __HAL_RCC_DMA2_CLK_ENABLE();
 
   /* DMA interrupt init */
-  /* DMA1_Stream6_IRQn interrupt configuration */
-  HAL_NVIC_SetPriority(DMA1_Stream6_IRQn, 0, 0);
-  HAL_NVIC_EnableIRQ(DMA1_Stream6_IRQn);
+  /* DMA2_Stream0_IRQn interrupt configuration */
+  HAL_NVIC_SetPriority(DMA2_Stream0_IRQn, 0, 0);
+  HAL_NVIC_EnableIRQ(DMA2_Stream0_IRQn);
 
 }
 
@@ -307,34 +341,60 @@ static void MX_GPIO_Init(void)
 }
 
 /* USER CODE BEGIN 4 */
-void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin) {
+uint16_t readAnalogValue(uint32_t channel,uint8_t i)
+{
+   /* ADC_ChannelConfTypeDef sConfig = {0};
 
-    // werte Encoder aus Rotor DC Motor aus
-    if(GPIO_Pin == potentiometer_adc_input_Pin){
-    	potentiometer_value = readAnalogValue();
+    //sConfig.Channel = channel;
+    //sConfig.Rank = i+1;
+    //sConfig.SamplingTime = ADC_SAMPLETIME_15CYCLES*(i+1);
+
+    if (HAL_ADC_ConfigChannel(&hadc1, &sConfig) != HAL_OK)
+    {
+        Error_Handler();
     }
+*/
+    HAL_ADC_Start(&hadc1);
+    if (HAL_ADC_PollForConversion(&hadc1, HAL_MAX_DELAY) == HAL_OK)
+    {
+        return HAL_ADC_GetValue(&hadc1);
+
+    }
+    return 0;
 }
 
-uint16_t readAnalogValue() {
-    if (HAL_ADC_Start(&hadc1) != HAL_OK) {
-        // Start Error
-        return 0;
-    }
-
-    if (HAL_ADC_PollForConversion(&hadc1, HAL_MAX_DELAY) != HAL_OK) {
-        // Polling Error
+/* void changeADCValue(void){
+    for (int i = 0; i < NUM_CHANNELS; i++)
+    {
+        uint16_t currentValue = readAnalogValue(adcChannels[i], i);
         HAL_ADC_Stop(&hadc1);
-        return 0;
+        if (abs(currentValue - previousValues[i]) >= threshold)
+        {
+            // Wert hat sich um mehr als den definierten Betrag geändert
+            previousValues[i] = currentValue;
+
+        }
     }
+    HAL_Delay(100);  // Beispielhaftes Abtastintervall
+}*/
 
-    uint16_t value = HAL_ADC_GetValue(&hadc1);
+void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc)
+{
+	if (hadc->Instance == ADC1){
+		uint8_t i;
 
-    HAL_ADC_Stop(&hadc1);
-
-    return value;
+		for (i = 0; i < NUM_CHANNELS; i++){
+            smoothedValues[i] = (uint32_t)(ALPHA * currentValues[i] + (1 - ALPHA) * smoothedValues[i]);
+			if (abs(smoothedValues[i] - previousADCValue[i]) >= THRESHOLD){
+				previousADCValue[i] = smoothedValues[i];
+				if(smoothedValues[i]>4064)
+				classPercentADC[i] = (smoothedValues[i]/THRESHOLD)+1;
+				else
+				classPercentADC[i] = (smoothedValues[i]/THRESHOLD);
+			}
+		}
+	}
 }
-
-
 
 /* USER CODE END 4 */
 

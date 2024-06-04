@@ -1,0 +1,10 @@
+16:37:42 **** Incremental Build of configuration Debug for project f401_display_encoder_fader_test ****
+make -j6 all 
+arm-none-eabi-size  f401_display_encoder_fader_test.elf 
+   text	   data	    bss	    dec	    hex	filename
+  28304	    104	   4384	  32792	   8018	f401_display_encoder_fader_test.elf
+Finished building: default.size.stdout
+ 
+
+16:37:43 Build Finished. 0 errors, 0 warnings. (took 1s.432ms)
+
