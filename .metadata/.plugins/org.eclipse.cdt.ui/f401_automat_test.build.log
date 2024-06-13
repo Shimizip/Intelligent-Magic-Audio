@@ -1,0 +1,39 @@
+15:25:44 **** Incremental Build of configuration Debug for project f401_automat_test ****
+make -j6 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc "../Core/Src/system_stm32f4xx.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/system_stm32f4xx.d" -MT"Core/Src/system_stm32f4xx.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/system_stm32f4xx.o"
+../Core/Src/main.c:69:5: error: redeclaration of enumerator 'A_index_new_samples'
+   69 |     A_index_new_samples,
+      |     ^~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:65:5: note: previous definition of 'A_index_new_samples' with type 'int'
+   65 |     A_index_new_samples,
+      |     ^~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:71:5: error: redeclaration of enumerator 'A_get_fader_pos'
+   71 |     A_get_fader_pos,
+      |     ^~~~~~~~~~~~~~~
+../Core/Src/main.c:68:5: note: previous definition of 'A_get_fader_pos' with type 'int'
+   68 |     A_get_fader_pos,
+      |     ^~~~~~~~~~~~~~~
+../Core/Src/main.c: In function 'std':
+../Core/Src/main.c:297:20: error: 'retrived_results' undeclared (first use in this function); did you mean 'retrieved_results'?
+  297 |                 if(retrived_results){
+      |                    ^~~~~~~~~~~~~~~~
+      |                    retrieved_results
+../Core/Src/main.c:297:20: note: each undeclared identifier is reported only once for each function it appears in
+../Core/Src/main.c:342:31: error: 'tri_play_button' undeclared (first use in this function); did you mean 'trig_play_button'?
+  342 |                 if(enc_down & tri_play_button){
+      |                               ^~~~~~~~~~~~~~~
+      |                               trig_play_button
+../Core/Src/main.c:371:1: error: expected declaration or statement at end of input
+  371 | }
+      | ^
+../Core/Src/main.c: At top level:
+../Core/Src/main.c:362:6: warning: 'Error_Handler' defined but not used [-Wunused-function]
+  362 | void Error_Handler(void)
+      |      ^~~~~~~~~~~~~
+make: *** [Core/Src/subdir.mk:34: Core/Src/main.o] Error 1
+make: *** Waiting for unfinished jobs....
+"make -j6 all" terminated with exit code 2. Build might be incomplete.
+
+15:25:44 Build Failed. 7 errors, 1 warnings. (took 281ms)
+

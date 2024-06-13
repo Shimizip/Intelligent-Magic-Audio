@@ -1,4 +1,4 @@
-14:38:58 **** Incremental Build of configuration Debug for project f401_slide_potentiometer_test ****
+15:25:45 **** Incremental Build of configuration Debug for project f401_slide_potentiometer_test ****
 make -j6 all 
 arm-none-eabi-size  f401_slide_potentiometer_test.elf 
    text	   data	    bss	    dec	    hex	filename
@@ -6,5 +6,5 @@ arm-none-eabi-size  f401_slide_potentiometer_test.elf
 Finished building: default.size.stdout
  
 
-14:38:58 Build Finished. 0 errors, 0 warnings. (took 238ms)
+15:25:45 Build Finished. 0 errors, 0 warnings. (took 180ms)
 

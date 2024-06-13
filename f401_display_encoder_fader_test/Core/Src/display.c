@@ -4,7 +4,7 @@
 // Define dimensions for display sections
 #define DISPLAY_WIDTH           128
 #define DISPLAY_HEIGHT          128
-#define LIST_SECTION_HEIGHT     51
+#define LIST_SECTION_HEIGHT     81
 #define SELECTED_FILE_HEIGHT    10
 #define BORDER_WIDTH            1
 #define LINE_HEIGHT             10
