@@ -1,9 +1,10 @@
 potentiometer_value
 previousValues
 adcChannels
-previousADCValue
-classPercentADC
 smoothedValues
-currentValues
 rotary_enc_count
 switch_push_button
+smoothValue
+adcBuffer
+cnt
+endValues
