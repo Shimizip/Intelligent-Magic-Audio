@@ -62,11 +62,6 @@ static void MX_DMA_Init(void);
 static void MX_USART2_UART_Init(void);
 static void MX_ADC1_Init(void);
 /* USER CODE BEGIN PFP */
-uint16_t readAnalogValue(uint32_t channel, uint8_t i);
-void readAdcChannels(void);
-void valueChangedCallback(uint32_t channel, uint16_t newValue, uint16_t oldValue);
-
-
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
