@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccW0Fnyt.s 			page 1
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccJZ1h0x.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -31,14 +31,15 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccW0Fnyt.s 			page 1
   29              	.LFB134:
    1:Core/Src/wavDecoder.c **** #include "fatfs.h"
    2:Core/Src/wavDecoder.c **** #include "wavDecoder.h"
-   3:Core/Src/wavDecoder.c **** 
-   4:Core/Src/wavDecoder.c **** // load .wav header and check for valid header members
-   5:Core/Src/wavDecoder.c **** uint8_t checkWav(FIL *file, wav_header_t *wavHeader) {
-  30              		.loc 1 5 54 view -0
+   3:Core/Src/wavDecoder.c **** #include "string.h"
+   4:Core/Src/wavDecoder.c **** 
+   5:Core/Src/wavDecoder.c **** // load .wav header and check for valid header members
+   6:Core/Src/wavDecoder.c **** uint8_t checkWav(FIL *file, wav_header_t *wavHeader) {
+  30              		.loc 1 6 54 view -0
   31              		.cfi_startproc
   32              		@ args = 0, pretend = 0, frame = 8
   33              		@ frame_needed = 0, uses_anonymous_args = 0
-  34              		.loc 1 5 54 is_stmt 0 view .LVU1
+  34              		.loc 1 6 54 is_stmt 0 view .LVU1
   35 0000 70B5     		push	{r4, r5, r6, lr}
   36              		.cfi_def_cfa_offset 16
   37              		.cfi_offset 4, -16
@@ -49,141 +50,141 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccW0Fnyt.s 			page 1
   42              		.cfi_def_cfa_offset 24
   43 0004 0546     		mov	r5, r0
   44 0006 0C46     		mov	r4, r1
-   6:Core/Src/wavDecoder.c ****     uint8_t wav_OK = 1;
-  45              		.loc 1 6 5 is_stmt 1 view .LVU2
+   7:Core/Src/wavDecoder.c ****     uint8_t wav_OK = 1;
+  45              		.loc 1 7 5 is_stmt 1 view .LVU2
   46              	.LVL1:
-   7:Core/Src/wavDecoder.c ****     UINT count = 0;
-  47              		.loc 1 7 5 view .LVU3
-  48              		.loc 1 7 10 is_stmt 0 view .LVU4
+   8:Core/Src/wavDecoder.c ****     UINT count = 0;
+  47              		.loc 1 8 5 view .LVU3
+  48              		.loc 1 8 10 is_stmt 0 view .LVU4
   49 0008 0023     		movs	r3, #0
   50 000a 0193     		str	r3, [sp, #4]
-   8:Core/Src/wavDecoder.c **** 
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccW0Fnyt.s 			page 2
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccJZ1h0x.s 			page 2
 
 
-   9:Core/Src/wavDecoder.c ****     // Read RIFF header and first Chunki
-  10:Core/Src/wavDecoder.c ****     if (f_read(file, wavHeader, sizeof(uint32_t) * 5, &count) != FR_OK) {
-  51              		.loc 1 10 5 is_stmt 1 view .LVU5
-  52              		.loc 1 10 9 is_stmt 0 view .LVU6
+   9:Core/Src/wavDecoder.c **** 
+  10:Core/Src/wavDecoder.c ****     // Read RIFF header and first Chunki
+  11:Core/Src/wavDecoder.c ****     if (f_read(file, wavHeader, sizeof(uint32_t) * 5, &count) != FR_OK) {
+  51              		.loc 1 11 5 is_stmt 1 view .LVU5
+  52              		.loc 1 11 9 is_stmt 0 view .LVU6
   53 000c 01AB     		add	r3, sp, #4
   54 000e 1422     		movs	r2, #20
   55 0010 FFF7FEFF 		bl	f_read
   56              	.LVL2:
-  57              		.loc 1 10 8 discriminator 1 view .LVU7
+  57              		.loc 1 11 8 discriminator 1 view .LVU7
   58 0014 38BB     		cbnz	r0, .L5
   59 0016 0646     		mov	r6, r0
-  11:Core/Src/wavDecoder.c ****         return 0;
-  12:Core/Src/wavDecoder.c ****     }
-  13:Core/Src/wavDecoder.c **** 
-  14:Core/Src/wavDecoder.c ****     // Check RIFF header
-  15:Core/Src/wavDecoder.c ****     if (wavHeader->ChunkID != 0x46464952 || wavHeader->Format != 0x45564157) {
-  60              		.loc 1 15 5 is_stmt 1 view .LVU8
-  61              		.loc 1 15 18 is_stmt 0 view .LVU9
+  12:Core/Src/wavDecoder.c ****         return 0;
+  13:Core/Src/wavDecoder.c ****     }
+  14:Core/Src/wavDecoder.c **** 
+  15:Core/Src/wavDecoder.c ****     // Check RIFF header
+  16:Core/Src/wavDecoder.c ****     if (wavHeader->ChunkID != 0x46464952 || wavHeader->Format != 0x45564157) {
+  60              		.loc 1 16 5 is_stmt 1 view .LVU8
+  61              		.loc 1 16 18 is_stmt 0 view .LVU9
   62 0018 2268     		ldr	r2, [r4]
-  63              		.loc 1 15 8 view .LVU10
+  63              		.loc 1 16 8 view .LVU10
   64 001a 154B     		ldr	r3, .L7
   65 001c 9A42     		cmp	r2, r3
   66 001e 23D1     		bne	.L2
-  67              		.loc 1 15 54 discriminator 1 view .LVU11
+  67              		.loc 1 16 54 discriminator 1 view .LVU11
   68 0020 A268     		ldr	r2, [r4, #8]
-  69              		.loc 1 15 42 discriminator 1 view .LVU12
+  69              		.loc 1 16 42 discriminator 1 view .LVU12
   70 0022 A3F57003 		sub	r3, r3, #15728640
   71 0026 A3F2FB73 		subw	r3, r3, #2043
   72 002a 9A42     		cmp	r2, r3
   73 002c 1CD1     		bne	.L2
   74              	.L4:
-  16:Core/Src/wavDecoder.c ****         return 0;
-  17:Core/Src/wavDecoder.c ****     }
-  18:Core/Src/wavDecoder.c **** 
-  19:Core/Src/wavDecoder.c ****     // Read additional chunks until "fmt " subchunk is found
-  20:Core/Src/wavDecoder.c ****     while (1) {
-  75              		.loc 1 20 5 is_stmt 1 view .LVU13
+  17:Core/Src/wavDecoder.c ****         return 0;
+  18:Core/Src/wavDecoder.c ****     }
+  19:Core/Src/wavDecoder.c **** 
+  20:Core/Src/wavDecoder.c ****     // Read additional chunks until "fmt " subchunk is found
+  21:Core/Src/wavDecoder.c ****     while (1) {
+  75              		.loc 1 21 5 is_stmt 1 view .LVU13
   76              	.LBB2:
-  21:Core/Src/wavDecoder.c ****         if (wavHeader->Subchunk1ID == 0x20746d66) { // "fmt "
-  77              		.loc 1 21 9 view .LVU14
-  78              		.loc 1 21 22 is_stmt 0 view .LVU15
+  22:Core/Src/wavDecoder.c ****         if (wavHeader->Subchunk1ID == 0x20746d66) { // "fmt "
+  77              		.loc 1 22 9 view .LVU14
+  78              		.loc 1 22 22 is_stmt 0 view .LVU15
   79 002e E268     		ldr	r2, [r4, #12]
-  80              		.loc 1 21 12 view .LVU16
+  80              		.loc 1 22 12 view .LVU16
   81 0030 104B     		ldr	r3, .L7+4
   82 0032 9A42     		cmp	r2, r3
   83 0034 0FD0     		beq	.L3
-  22:Core/Src/wavDecoder.c ****             // Essential "fmt " subchunk found
-  23:Core/Src/wavDecoder.c ****             break;
-  24:Core/Src/wavDecoder.c ****         }
-  25:Core/Src/wavDecoder.c **** 
-  26:Core/Src/wavDecoder.c ****         f_lseek(file, f_tell(file) + wavHeader->Subchunk1Size);
-  84              		.loc 1 26 9 is_stmt 1 view .LVU17
-  85              		.loc 1 26 23 is_stmt 0 view .LVU18
+  23:Core/Src/wavDecoder.c ****             // Essential "fmt " subchunk found
+  24:Core/Src/wavDecoder.c ****             break;
+  25:Core/Src/wavDecoder.c ****         }
+  26:Core/Src/wavDecoder.c **** 
+  27:Core/Src/wavDecoder.c ****         f_lseek(file, f_tell(file) + wavHeader->Subchunk1Size);
+  84              		.loc 1 27 9 is_stmt 1 view .LVU17
+  85              		.loc 1 27 23 is_stmt 0 view .LVU18
   86 0036 A969     		ldr	r1, [r5, #24]
-  87              		.loc 1 26 47 view .LVU19
+  87              		.loc 1 27 47 view .LVU19
   88 0038 2369     		ldr	r3, [r4, #16]
-  89              		.loc 1 26 9 view .LVU20
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccW0Fnyt.s 			page 3
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccJZ1h0x.s 			page 3
 
 
+  89              		.loc 1 27 9 view .LVU20
   90 003a 1944     		add	r1, r1, r3
   91 003c 2846     		mov	r0, r5
   92 003e FFF7FEFF 		bl	f_lseek
   93              	.LVL3:
-  27:Core/Src/wavDecoder.c **** 
-  28:Core/Src/wavDecoder.c ****         // Calculate the address of the next subchunk header
-  29:Core/Src/wavDecoder.c ****         wav_header_t* nextHeader = (wav_header_t*)((char*)wavHeader + sizeof(uint32_t) * 3);
-  94              		.loc 1 29 9 is_stmt 1 view .LVU21
-  30:Core/Src/wavDecoder.c **** 
-  31:Core/Src/wavDecoder.c ****         // Read next subchunk header / rest of the wav header
-  32:Core/Src/wavDecoder.c ****         if (f_read(file, nextHeader, sizeof(wav_header_t) - sizeof(uint32_t) * 3, &count) != FR_OK)
-  95              		.loc 1 32 9 view .LVU22
-  96              		.loc 1 32 13 is_stmt 0 view .LVU23
+  28:Core/Src/wavDecoder.c **** 
+  29:Core/Src/wavDecoder.c ****         // Calculate the address of the next subchunk header
+  30:Core/Src/wavDecoder.c ****         wav_header_t* nextHeader = (wav_header_t*)((char*)wavHeader + sizeof(uint32_t) * 3);
+  94              		.loc 1 30 9 is_stmt 1 view .LVU21
+  31:Core/Src/wavDecoder.c **** 
+  32:Core/Src/wavDecoder.c ****         // Read next subchunk header / rest of the wav header
+  33:Core/Src/wavDecoder.c ****         if (f_read(file, nextHeader, sizeof(wav_header_t) - sizeof(uint32_t) * 3, &count) != FR_OK)
+  95              		.loc 1 33 9 view .LVU22
+  96              		.loc 1 33 13 is_stmt 0 view .LVU23
   97 0042 01AB     		add	r3, sp, #4
   98 0044 2022     		movs	r2, #32
   99 0046 04F10C01 		add	r1, r4, #12
  100              	.LVL4:
- 101              		.loc 1 32 13 view .LVU24
+ 101              		.loc 1 33 13 view .LVU24
  102 004a 2846     		mov	r0, r5
  103 004c FFF7FEFF 		bl	f_read
  104              	.LVL5:
- 105              		.loc 1 32 12 discriminator 1 view .LVU25
+ 105              		.loc 1 33 12 discriminator 1 view .LVU25
  106 0050 0028     		cmp	r0, #0
  107 0052 ECD0     		beq	.L4
  108 0054 08E0     		b	.L2
  109              	.LVL6:
  110              	.L3:
- 111              		.loc 1 32 12 discriminator 1 view .LVU26
+ 111              		.loc 1 33 12 discriminator 1 view .LVU26
  112              	.LBE2:
-  33:Core/Src/wavDecoder.c ****             return 0;
-  34:Core/Src/wavDecoder.c ****         }
-  35:Core/Src/wavDecoder.c ****     }
-  36:Core/Src/wavDecoder.c **** 
-  37:Core/Src/wavDecoder.c ****     // Check essential "fmt " subchunk
-  38:Core/Src/wavDecoder.c ****     if (wavHeader->Subchunk1Size != 16 || wavHeader->AudioFormat != 1) {
- 113              		.loc 1 38 5 is_stmt 1 view .LVU27
- 114              		.loc 1 38 18 is_stmt 0 view .LVU28
+  34:Core/Src/wavDecoder.c ****             return 0;
+  35:Core/Src/wavDecoder.c ****         }
+  36:Core/Src/wavDecoder.c ****     }
+  37:Core/Src/wavDecoder.c **** 
+  38:Core/Src/wavDecoder.c ****     // Check essential "fmt " subchunk
+  39:Core/Src/wavDecoder.c ****     if (wavHeader->Subchunk1Size != 16 || wavHeader->AudioFormat != 1) {
+ 113              		.loc 1 39 5 is_stmt 1 view .LVU27
+ 114              		.loc 1 39 18 is_stmt 0 view .LVU28
  115 0056 2369     		ldr	r3, [r4, #16]
- 116              		.loc 1 38 8 view .LVU29
+ 116              		.loc 1 39 8 view .LVU29
  117 0058 102B     		cmp	r3, #16
  118 005a 05D1     		bne	.L2
- 119              		.loc 1 38 52 discriminator 1 view .LVU30
+ 119              		.loc 1 39 52 discriminator 1 view .LVU30
  120 005c A38A     		ldrh	r3, [r4, #20]
- 121              		.loc 1 38 40 discriminator 1 view .LVU31
+ 121              		.loc 1 39 40 discriminator 1 view .LVU31
  122 005e 012B     		cmp	r3, #1
  123 0060 02D1     		bne	.L2
-  39:Core/Src/wavDecoder.c ****         return 0;
-  40:Core/Src/wavDecoder.c ****     }
-  41:Core/Src/wavDecoder.c **** 
-  42:Core/Src/wavDecoder.c ****     return wav_OK;
- 124              		.loc 1 42 12 view .LVU32
+  40:Core/Src/wavDecoder.c ****         return 0;
+  41:Core/Src/wavDecoder.c ****     }
+  42:Core/Src/wavDecoder.c **** 
+  43:Core/Src/wavDecoder.c ****     return wav_OK;
+ 124              		.loc 1 43 12 view .LVU32
  125 0062 0126     		movs	r6, #1
  126 0064 00E0     		b	.L2
  127              	.L5:
-  11:Core/Src/wavDecoder.c ****     }
- 128              		.loc 1 11 16 view .LVU33
+  12:Core/Src/wavDecoder.c ****     }
+ 128              		.loc 1 12 16 view .LVU33
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccJZ1h0x.s 			page 4
+
+
  129 0066 0026     		movs	r6, #0
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccW0Fnyt.s 			page 4
-
-
  130              	.L2:
-  43:Core/Src/wavDecoder.c **** }
- 131              		.loc 1 43 1 view .LVU34
+  44:Core/Src/wavDecoder.c **** }
+ 131              		.loc 1 44 1 view .LVU34
  132 0068 3046     		mov	r0, r6
  133 006a 02B0     		add	sp, sp, #8
  134              		.cfi_def_cfa_offset 16
@@ -191,7 +192,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccW0Fnyt.s 			page 1
  136 006c 70BD     		pop	{r4, r5, r6, pc}
  137              	.LVL7:
  138              	.L8:
- 139              		.loc 1 43 1 view .LVU35
+ 139              		.loc 1 44 1 view .LVU35
  140 006e 00BF     		.align	2
  141              	.L7:
  142 0070 52494646 		.word	1179011410
@@ -207,141 +208,424 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccW0Fnyt.s 			page 1
  154              	wavPlay:
  155              	.LVL8:
  156              	.LFB135:
-  44:Core/Src/wavDecoder.c **** 
-  45:Core/Src/wavDecoder.c **** // assumes wavHeader is already populated
-  46:Core/Src/wavDecoder.c **** uint8_t wavPlay(FIL *file, wav_header_t *wavHeader){
- 157              		.loc 1 46 52 is_stmt 1 view -0
+  45:Core/Src/wavDecoder.c **** 
+  46:Core/Src/wavDecoder.c **** // assumes wavHeader is already populated
+  47:Core/Src/wavDecoder.c **** uint8_t wavPlay(FIL *file, wav_header_t *wavHeader){
+ 157              		.loc 1 47 52 is_stmt 1 view -0
  158              		.cfi_startproc
- 159              		@ args = 0, pretend = 0, frame = 8
+ 159              		@ args = 0, pretend = 0, frame = 0
  160              		@ frame_needed = 0, uses_anonymous_args = 0
- 161              		.loc 1 46 52 is_stmt 0 view .LVU37
- 162 0000 30B5     		push	{r4, r5, lr}
- 163              		.cfi_def_cfa_offset 12
- 164              		.cfi_offset 4, -12
- 165              		.cfi_offset 5, -8
- 166              		.cfi_offset 14, -4
- 167 0002 83B0     		sub	sp, sp, #12
- 168              		.cfi_def_cfa_offset 24
- 169 0004 0546     		mov	r5, r0
-  47:Core/Src/wavDecoder.c ****   uint32_t length = wavHeader->Subchunk2Size ;    // Number of bytes in data. Number of samples * n
- 170              		.loc 1 47 3 is_stmt 1 view .LVU38
- 171              		.loc 1 47 12 is_stmt 0 view .LVU39
- 172 0006 8C6A     		ldr	r4, [r1, #40]
- 173              	.LVL9:
-  48:Core/Src/wavDecoder.c ****   uint32_t remainingBytes = length;
- 174              		.loc 1 48 3 is_stmt 1 view .LVU40
-  49:Core/Src/wavDecoder.c **** 
-  50:Core/Src/wavDecoder.c ****   // Start DMA Stream
-  51:Core/Src/wavDecoder.c ****   volatile HAL_StatusTypeDef dmaStatus = HAL_I2S_Transmit_DMA(&hi2s3,(uint16_t *)dacData, BUFFER_SI
- 175              		.loc 1 51 3 view .LVU41
- 176              		.loc 1 51 42 is_stmt 0 view .LVU42
- 177 0008 4FF48072 		mov	r2, #256
- 178 000c 0B49     		ldr	r1, .L15
- 179              	.LVL10:
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccW0Fnyt.s 			page 5
+ 161              		.loc 1 47 52 is_stmt 0 view .LVU37
+ 162 0000 70B5     		push	{r4, r5, r6, lr}
+ 163              		.cfi_def_cfa_offset 16
+ 164              		.cfi_offset 4, -16
+ 165              		.cfi_offset 5, -12
+ 166              		.cfi_offset 6, -8
+ 167              		.cfi_offset 14, -4
+ 168 0002 0646     		mov	r6, r0
+  48:Core/Src/wavDecoder.c ****     uint32_t length = wavHeader->Subchunk2Size ;    // Number of bytes in data. Number of samples *
+ 169              		.loc 1 48 5 is_stmt 1 view .LVU38
+ 170              		.loc 1 48 14 is_stmt 0 view .LVU39
+ 171 0004 8C6A     		ldr	r4, [r1, #40]
+ 172              	.LVL9:
+  49:Core/Src/wavDecoder.c ****     uint32_t remainingBytes = length;
+ 173              		.loc 1 49 5 is_stmt 1 view .LVU40
+  50:Core/Src/wavDecoder.c **** 
+  51:Core/Src/wavDecoder.c ****     // Start DMA Stream
+  52:Core/Src/wavDecoder.c ****     HAL_I2S_Transmit_DMA(&hi2s3,(uint16_t *)dacData, BUFFER_SIZE);
+ 174              		.loc 1 52 5 view .LVU41
+ 175 0006 4FF48072 		mov	r2, #256
+ 176 000a 0F49     		ldr	r1, .L15
+ 177              	.LVL10:
+ 178              		.loc 1 52 5 is_stmt 0 view .LVU42
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccJZ1h0x.s 			page 5
 
 
- 180              		.loc 1 51 42 view .LVU43
- 181 000e 0C48     		ldr	r0, .L15+4
- 182              	.LVL11:
- 183              		.loc 1 51 42 view .LVU44
- 184 0010 FFF7FEFF 		bl	HAL_I2S_Transmit_DMA
- 185              	.LVL12:
- 186              		.loc 1 51 30 discriminator 1 view .LVU45
- 187 0014 8DF80700 		strb	r0, [sp, #7]
-  52:Core/Src/wavDecoder.c ****   while(remainingBytes > 0){
- 188              		.loc 1 52 3 is_stmt 1 view .LVU46
- 189              	.LVL13:
- 190              	.L11:
- 191              		.loc 1 52 24 view .LVU47
- 192 0018 5CB1     		cbz	r4, .L14
-  53:Core/Src/wavDecoder.c ****       if(dma_dataReady){
- 193              		.loc 1 53 7 view .LVU48
- 194              		.loc 1 53 10 is_stmt 0 view .LVU49
- 195 001a 0A4B     		ldr	r3, .L15+8
- 196 001c 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 197              		.loc 1 53 9 view .LVU50
- 198 001e 002B     		cmp	r3, #0
- 199 0020 FAD0     		beq	.L11
- 200              	.LBB3:
-  54:Core/Src/wavDecoder.c ****         uint16_t bytesRead = fillHalfBufferFromSD(file);
- 201              		.loc 1 54 9 is_stmt 1 view .LVU51
- 202              		.loc 1 54 30 is_stmt 0 view .LVU52
- 203 0022 2846     		mov	r0, r5
- 204 0024 FFF7FEFF 		bl	fillHalfBufferFromSD
- 205              	.LVL14:
-  55:Core/Src/wavDecoder.c ****         remainingBytes = remainingBytes - bytesRead;
- 206              		.loc 1 55 9 is_stmt 1 view .LVU53
- 207              		.loc 1 55 24 is_stmt 0 view .LVU54
- 208 0028 241A     		subs	r4, r4, r0
- 209              	.LVL15:
-  56:Core/Src/wavDecoder.c ****         dma_dataReady = false;
- 210              		.loc 1 56 9 is_stmt 1 view .LVU55
- 211              		.loc 1 56 23 is_stmt 0 view .LVU56
- 212 002a 064B     		ldr	r3, .L15+8
- 213 002c 0022     		movs	r2, #0
- 214 002e 1A70     		strb	r2, [r3]
- 215 0030 F2E7     		b	.L11
- 216              	.LVL16:
- 217              	.L14:
- 218              		.loc 1 56 23 view .LVU57
- 219              	.LBE3:
-  57:Core/Src/wavDecoder.c ****       }
-  58:Core/Src/wavDecoder.c ****   }
-  59:Core/Src/wavDecoder.c ****   HAL_I2S_DMAStop(&hi2s3);
- 220              		.loc 1 59 3 is_stmt 1 view .LVU58
- 221 0032 0348     		ldr	r0, .L15+4
- 222 0034 FFF7FEFF 		bl	HAL_I2S_DMAStop
- 223              	.LVL17:
-  60:Core/Src/wavDecoder.c **** }...
- 224              		.loc 1 60 1 is_stmt 0 view .LVU59
- 225 0038 03B0     		add	sp, sp, #12
- 226              		.cfi_def_cfa_offset 12
- 227              		@ sp needed
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccW0Fnyt.s 			page 6
+ 179 000c 0F48     		ldr	r0, .L15+4
+ 180              	.LVL11:
+ 181              		.loc 1 52 5 view .LVU43
+ 182 000e FFF7FEFF 		bl	HAL_I2S_Transmit_DMA
+ 183              	.LVL12:
+  53:Core/Src/wavDecoder.c **** 
+  54:Core/Src/wavDecoder.c ****     float left;
+ 184              		.loc 1 54 5 is_stmt 1 view .LVU44
+  55:Core/Src/wavDecoder.c **** 
+  56:Core/Src/wavDecoder.c ****     while(remainingBytes > 0){
+ 185              		.loc 1 56 5 view .LVU45
+ 186              	.L11:
+ 187              		.loc 1 56 26 view .LVU46
+ 188 0012 A4B1     		cbz	r4, .L14
+  57:Core/Src/wavDecoder.c ****         if(dma_dataReady){
+ 189              		.loc 1 57 9 view .LVU47
+ 190              		.loc 1 57 12 is_stmt 0 view .LVU48
+ 191 0014 0E4B     		ldr	r3, .L15+8
+ 192 0016 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 193              		.loc 1 57 11 view .LVU49
+ 194 0018 002B     		cmp	r3, #0
+ 195 001a FAD0     		beq	.L11
+ 196              	.LBB3:
+  58:Core/Src/wavDecoder.c ****             uint16_t bytesRead = fillHalfBufferFromSD(file, false);
+ 197              		.loc 1 58 13 is_stmt 1 view .LVU50
+ 198              		.loc 1 58 34 is_stmt 0 view .LVU51
+ 199 001c 0021     		movs	r1, #0
+ 200 001e 3046     		mov	r0, r6
+ 201 0020 FFF7FEFF 		bl	fillHalfBufferFromSD
+ 202              	.LVL13:
+ 203 0024 0546     		mov	r5, r0
+ 204              	.LVL14:
+  59:Core/Src/wavDecoder.c ****             memcpy(outBufPtr, fileReadBuf, HALF_BUFFER_SIZE * sizeof(uint16_t));
+ 205              		.loc 1 59 13 is_stmt 1 view .LVU52
+ 206 0026 4FF48072 		mov	r2, #256
+ 207 002a 0A49     		ldr	r1, .L15+12
+ 208 002c 0A4B     		ldr	r3, .L15+16
+ 209 002e 1868     		ldr	r0, [r3]
+ 210 0030 FFF7FEFF 		bl	memcpy
+ 211              	.LVL15:
+  60:Core/Src/wavDecoder.c ****             
+  61:Core/Src/wavDecoder.c ****             // for(int n = 0; n < HALF_BUFFER_SIZE; n++){
+  62:Core/Src/wavDecoder.c ****             //     left = outBufPtr[n];
+  63:Core/Src/wavDecoder.c ****             //     left = 1.0 * left;
+  64:Core/Src/wavDecoder.c ****             //     outBufPtr[n] = left;
+  65:Core/Src/wavDecoder.c ****             // }
+  66:Core/Src/wavDecoder.c ****             
+  67:Core/Src/wavDecoder.c ****             remainingBytes -= bytesRead;
+ 212              		.loc 1 67 13 view .LVU53
+ 213              		.loc 1 67 28 is_stmt 0 view .LVU54
+ 214 0034 641B     		subs	r4, r4, r5
+ 215              	.LVL16:
+  68:Core/Src/wavDecoder.c ****             dma_dataReady = false;
+ 216              		.loc 1 68 13 is_stmt 1 view .LVU55
+ 217              		.loc 1 68 27 is_stmt 0 view .LVU56
+ 218 0036 064B     		ldr	r3, .L15+8
+ 219 0038 0022     		movs	r2, #0
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccJZ1h0x.s 			page 6
 
 
- 228 003a 30BD     		pop	{r4, r5, pc}
+ 220 003a 1A70     		strb	r2, [r3]
+ 221 003c E9E7     		b	.L11
+ 222              	.LVL17:
+ 223              	.L14:
+ 224              		.loc 1 68 27 view .LVU57
+ 225              	.LBE3:
+  69:Core/Src/wavDecoder.c ****         }
+  70:Core/Src/wavDecoder.c ****     }
+  71:Core/Src/wavDecoder.c ****     HAL_I2S_DMAStop(&hi2s3);
+ 226              		.loc 1 71 5 is_stmt 1 view .LVU58
+ 227 003e 0348     		ldr	r0, .L15+4
+ 228 0040 FFF7FEFF 		bl	HAL_I2S_DMAStop
  229              	.LVL18:
- 230              	.L16:
- 231              		.loc 1 60 1 view .LVU60
- 232              		.align	2
- 233              	.L15:
- 234 003c 00000000 		.word	dacData
- 235 0040 00000000 		.word	hi2s3
- 236 0044 00000000 		.word	dma_dataReady
- 237              		.cfi_endproc
- 238              	.LFE135:
- 240              		.text
- 241              	.Letext0:
- 242              		.file 2 "Middlewares/Third_Party/FatFs/src/integer.h"
- 243              		.file 3 "C:/Users/jonas/AppData/Roaming/VSCodium/User/globalStorage/bmd.stm32-for-vscode/@xpack-de
- 244              		.file 4 "C:/Users/jonas/AppData/Roaming/VSCodium/User/globalStorage/bmd.stm32-for-vscode/@xpack-de
- 245              		.file 5 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f401xe.h"
- 246              		.file 6 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h"
- 247              		.file 7 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h"
- 248              		.file 8 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2s.h"
- 249              		.file 9 "Middlewares/Third_Party/FatFs/src/ff.h"
- 250              		.file 10 "Core/Inc/audio.h"
- 251              		.file 11 "Core/Inc/wavDecoder.h"
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccW0Fnyt.s 			page 7
+  72:Core/Src/wavDecoder.c ****     return 0;
+ 230              		.loc 1 72 5 view .LVU59
+  73:Core/Src/wavDecoder.c **** }
+ 231              		.loc 1 73 1 is_stmt 0 view .LVU60
+ 232 0044 0020     		movs	r0, #0
+ 233 0046 70BD     		pop	{r4, r5, r6, pc}
+ 234              	.LVL19:
+ 235              	.L16:
+ 236              		.loc 1 73 1 view .LVU61
+ 237              		.align	2
+ 238              	.L15:
+ 239 0048 00000000 		.word	dacData
+ 240 004c 00000000 		.word	hi2s3
+ 241 0050 00000000 		.word	dma_dataReady
+ 242 0054 00000000 		.word	fileReadBuf
+ 243 0058 00000000 		.word	outBufPtr
+ 244              		.cfi_endproc
+ 245              	.LFE135:
+ 247              		.section	.text.wavPlayPitched,"ax",%progbits
+ 248              		.align	1
+ 249              		.global	wavPlayPitched
+ 250              		.syntax unified
+ 251              		.thumb
+ 252              		.thumb_func
+ 254              	wavPlayPitched:
+ 255              	.LVL20:
+ 256              	.LFB136:
+  74:Core/Src/wavDecoder.c **** 
+  75:Core/Src/wavDecoder.c **** uint8_t wavPlayPitched(FIL *fil, wav_header_t *wavHeader) {
+ 257              		.loc 1 75 59 is_stmt 1 view -0
+ 258              		.cfi_startproc
+ 259              		@ args = 0, pretend = 0, frame = 0
+ 260              		@ frame_needed = 0, uses_anonymous_args = 0
+ 261              		.loc 1 75 59 is_stmt 0 view .LVU63
+ 262 0000 70B5     		push	{r4, r5, r6, lr}
+ 263              		.cfi_def_cfa_offset 16
+ 264              		.cfi_offset 4, -16
+ 265              		.cfi_offset 5, -12
+ 266              		.cfi_offset 6, -8
+ 267              		.cfi_offset 14, -4
+ 268 0002 2DED028B 		vpush.64	{d8}
+ 269              		.cfi_def_cfa_offset 24
+ 270              		.cfi_offset 80, -24
+ 271              		.cfi_offset 81, -20
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccJZ1h0x.s 			page 7
+
+
+ 272 0006 0646     		mov	r6, r0
+ 273 0008 0D46     		mov	r5, r1
+  76:Core/Src/wavDecoder.c ****     uint32_t length = wavHeader->Subchunk2Size;  // Number of bytes in data. Number of samples * nu
+ 274              		.loc 1 76 5 is_stmt 1 view .LVU64
+ 275              		.loc 1 76 14 is_stmt 0 view .LVU65
+ 276 000a 8C6A     		ldr	r4, [r1, #40]
+ 277              	.LVL21:
+  77:Core/Src/wavDecoder.c ****     uint32_t remainingBytes = length;
+ 278              		.loc 1 77 5 is_stmt 1 view .LVU66
+  78:Core/Src/wavDecoder.c **** 
+  79:Core/Src/wavDecoder.c ****     float currentPitchFactor = pitchFactor;
+ 279              		.loc 1 79 5 view .LVU67
+ 280              		.loc 1 79 11 is_stmt 0 view .LVU68
+ 281 000c 224B     		ldr	r3, .L28
+ 282 000e D3ED008A 		vldr.32	s17, [r3]
+ 283              	.LVL22:
+  80:Core/Src/wavDecoder.c ****     float sampleIndex = 0.0f;
+ 284              		.loc 1 80 5 is_stmt 1 view .LVU69
+  81:Core/Src/wavDecoder.c **** 
+  82:Core/Src/wavDecoder.c ****     // Start DMA Stream
+  83:Core/Src/wavDecoder.c ****     HAL_I2S_Transmit_DMA(&hi2s3, (void *)dacData, BUFFER_SIZE);
+ 285              		.loc 1 83 5 view .LVU70
+ 286 0012 4FF48072 		mov	r2, #256
+ 287 0016 2149     		ldr	r1, .L28+4
+ 288              	.LVL23:
+ 289              		.loc 1 83 5 is_stmt 0 view .LVU71
+ 290 0018 2148     		ldr	r0, .L28+8
+ 291              	.LVL24:
+ 292              		.loc 1 83 5 view .LVU72
+ 293 001a FFF7FEFF 		bl	HAL_I2S_Transmit_DMA
+ 294              	.LVL25:
+  84:Core/Src/wavDecoder.c ****     while (remainingBytes > 0) {
+ 295              		.loc 1 84 5 is_stmt 1 view .LVU73
+  80:Core/Src/wavDecoder.c ****     float sampleIndex = 0.0f;
+ 296              		.loc 1 80 11 is_stmt 0 view .LVU74
+ 297 001e 9FED218A 		vldr.32	s16, .L28+12
+ 298              	.LVL26:
+ 299              	.L19:
+ 300              		.loc 1 84 27 is_stmt 1 view .LVU75
+ 301 0022 74B3     		cbz	r4, .L27
+ 302              	.LBB4:
+  85:Core/Src/wavDecoder.c ****         uint16_t bytesRead;
+ 303              		.loc 1 85 9 view .LVU76
+  86:Core/Src/wavDecoder.c ****         uint32_t leftIndex;
+ 304              		.loc 1 86 9 view .LVU77
+  87:Core/Src/wavDecoder.c ****         if (dma_dataReady) {
+ 305              		.loc 1 87 9 view .LVU78
+ 306              		.loc 1 87 13 is_stmt 0 view .LVU79
+ 307 0024 204B     		ldr	r3, .L28+16
+ 308 0026 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 309              		.loc 1 87 12 view .LVU80
+ 310 0028 002B     		cmp	r3, #0
+ 311 002a FAD0     		beq	.L19
+  88:Core/Src/wavDecoder.c ****             bytesRead = fillHalfBufferFromSD(fil, true); // loads necessary data from sd card to fi
+ 312              		.loc 1 88 13 is_stmt 1 view .LVU81
+ 313              		.loc 1 88 25 is_stmt 0 view .LVU82
+ 314 002c 0121     		movs	r1, #1
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccJZ1h0x.s 			page 8
+
+
+ 315 002e 3046     		mov	r0, r6
+ 316 0030 FFF7FEFF 		bl	fillHalfBufferFromSD
+ 317              	.LVL27:
+  89:Core/Src/wavDecoder.c ****             remainingBytes -= bytesRead;
+ 318              		.loc 1 89 13 is_stmt 1 view .LVU83
+ 319              		.loc 1 89 28 is_stmt 0 view .LVU84
+ 320 0034 241A     		subs	r4, r4, r0
+ 321              	.LVL28:
+  90:Core/Src/wavDecoder.c **** 
+  91:Core/Src/wavDecoder.c ****             // // Update pitch factor if changed
+  92:Core/Src/wavDecoder.c ****             // if (pitchChanged) {
+  93:Core/Src/wavDecoder.c ****             //     __disable_irq();
+  94:Core/Src/wavDecoder.c ****             //     currentPitchFactor = pitchFactor;
+  95:Core/Src/wavDecoder.c ****             //     pitchChanged = false;
+  96:Core/Src/wavDecoder.c ****             //     __enable_irq();
+  97:Core/Src/wavDecoder.c ****             // }
+  98:Core/Src/wavDecoder.c **** 
+  99:Core/Src/wavDecoder.c ****             // Adjust the samples for pitch shifting by skipping or repeating samples
+ 100:Core/Src/wavDecoder.c ****             // memcpy(outBufPtr, fileReadBuf, HALF_BUFFER_SIZE * sizeof(uint16_t));
+ 101:Core/Src/wavDecoder.c ****             for (uint8_t n = 0; n < (HALF_BUFFER_SIZE) - 1; n += 2) {
+ 322              		.loc 1 101 13 is_stmt 1 view .LVU85
+ 323              	.LBB5:
+ 324              		.loc 1 101 18 view .LVU86
+ 325              		.loc 1 101 26 is_stmt 0 view .LVU87
+ 326 0036 0023     		movs	r3, #0
+ 327              		.loc 1 101 13 view .LVU88
+ 328 0038 10E0     		b	.L20
+ 329              	.LVL29:
+ 330              	.L21:
+ 102:Core/Src/wavDecoder.c ****                 // Calculate the index for left sample
+ 103:Core/Src/wavDecoder.c ****                 leftIndex = (uint32_t)sampleIndex;
+ 331              		.loc 1 103 17 is_stmt 1 view .LVU89
+ 332              		.loc 1 103 27 is_stmt 0 view .LVU90
+ 333 003a FCEEC87A 		vcvt.u32.f32	s15, s16
+ 334 003e 17EE90CA 		vmov	ip, s15	@ int
+ 335              	.LVL30:
+ 104:Core/Src/wavDecoder.c ****                 outBufPtr[n] = fileReadBuf[leftIndex];
+ 336              		.loc 1 104 17 is_stmt 1 view .LVU91
+ 337              		.loc 1 104 26 is_stmt 0 view .LVU92
+ 338 0042 1A4A     		ldr	r2, .L28+20
+ 339 0044 1268     		ldr	r2, [r2]
+ 340              		.loc 1 104 43 view .LVU93
+ 341 0046 1A49     		ldr	r1, .L28+24
+ 342 0048 31F91CC0 		ldrsh	ip, [r1, ip, lsl #1]
+ 343              	.LVL31:
+ 344              		.loc 1 104 30 view .LVU94
+ 345 004c 22F813C0 		strh	ip, [r2, r3, lsl #1]	@ movhi
+ 105:Core/Src/wavDecoder.c **** 
+ 106:Core/Src/wavDecoder.c ****                 // Calculate the index for right sample
+ 107:Core/Src/wavDecoder.c ****                 // uint32_t rightIndex = leftIndex + 1;
+ 108:Core/Src/wavDecoder.c ****                 // outBufPtr[n * 2 + 1] = fileReadBuf[rightIndex];
+ 109:Core/Src/wavDecoder.c **** 
+ 110:Core/Src/wavDecoder.c ****                 sampleIndex += currentPitchFactor * 2;
+ 346              		.loc 1 110 17 is_stmt 1 view .LVU95
+ 347              		.loc 1 110 51 is_stmt 0 view .LVU96
+ 348 0050 78EEA87A 		vadd.f32	s15, s17, s17
+ 349              	.LVL32:
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccJZ1h0x.s 			page 9
+
+
+ 350              		.loc 1 110 29 view .LVU97
+ 351 0054 38EE278A 		vadd.f32	s16, s16, s15
+ 352              	.LVL33:
+ 101:Core/Src/wavDecoder.c ****                 // Calculate the index for left sample
+ 353              		.loc 1 101 63 is_stmt 1 discriminator 3 view .LVU98
+ 354 0058 0233     		adds	r3, r3, #2
+ 355              	.LVL34:
+ 101:Core/Src/wavDecoder.c ****                 // Calculate the index for left sample
+ 356              		.loc 1 101 63 is_stmt 0 discriminator 3 view .LVU99
+ 357 005a DBB2     		uxtb	r3, r3
+ 358              	.LVL35:
+ 359              	.L20:
+ 101:Core/Src/wavDecoder.c ****                 // Calculate the index for left sample
+ 360              		.loc 1 101 35 is_stmt 1 discriminator 1 view .LVU100
+ 361 005c 7E2B     		cmp	r3, #126
+ 362 005e ECD9     		bls	.L21
+ 101:Core/Src/wavDecoder.c ****                 // Calculate the index for left sample
+ 363              		.loc 1 101 35 is_stmt 0 discriminator 1 view .LVU101
+ 364              	.LBE5:
+ 111:Core/Src/wavDecoder.c ****             }
+ 112:Core/Src/wavDecoder.c **** 
+ 113:Core/Src/wavDecoder.c ****             // Ensure sampleIndex is within the bounds
+ 114:Core/Src/wavDecoder.c ****             if (sampleIndex >= bytesRead / sizeof(uint16_t)) {
+ 365              		.loc 1 114 13 is_stmt 1 view .LVU102
+ 366              		.loc 1 114 29 is_stmt 0 view .LVU103
+ 367 0060 C0F34F00 		ubfx	r0, r0, #1, #16
+ 368              	.LVL36:
+ 369              		.loc 1 114 29 view .LVU104
+ 370 0064 07EE900A 		vmov	s15, r0	@ int
+ 371 0068 F8EE677A 		vcvt.f32.u32	s15, s15
+ 372              		.loc 1 114 16 view .LVU105
+ 373 006c F4EEC87A 		vcmpe.f32	s15, s16
+ 374 0070 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 375 0074 01D8     		bhi	.L22
+ 115:Core/Src/wavDecoder.c ****                 sampleIndex -= bytesRead / sizeof(uint16_t);
+ 376              		.loc 1 115 17 is_stmt 1 view .LVU106
+ 377              		.loc 1 115 29 is_stmt 0 view .LVU107
+ 378 0076 38EE678A 		vsub.f32	s16, s16, s15
+ 379              	.LVL37:
+ 380              	.L22:
+ 116:Core/Src/wavDecoder.c ****             }
+ 117:Core/Src/wavDecoder.c **** 
+ 118:Core/Src/wavDecoder.c ****             // Ensure sampleIndex is within the bounds
+ 119:Core/Src/wavDecoder.c ****             // if (sampleIndex >= HALF_BUFFER_SIZE) {
+ 120:Core/Src/wavDecoder.c ****             //     sampleIndex -= HALF_BUFFER_SIZE;
+ 121:Core/Src/wavDecoder.c ****             // }
+ 122:Core/Src/wavDecoder.c **** 
+ 123:Core/Src/wavDecoder.c ****             dma_dataReady = false;
+ 381              		.loc 1 123 13 is_stmt 1 view .LVU108
+ 382              		.loc 1 123 27 is_stmt 0 view .LVU109
+ 383 007a 0B4B     		ldr	r3, .L28+16
+ 384              	.LVL38:
+ 385              		.loc 1 123 27 view .LVU110
+ 386 007c 0022     		movs	r2, #0
+ 387 007e 1A70     		strb	r2, [r3]
+ 388 0080 CFE7     		b	.L19
+ 389              	.LVL39:
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccJZ1h0x.s 			page 10
+
+
+ 390              	.L27:
+ 391              		.loc 1 123 27 view .LVU111
+ 392              	.LBE4:
+ 124:Core/Src/wavDecoder.c ****         }
+ 125:Core/Src/wavDecoder.c ****     }
+ 126:Core/Src/wavDecoder.c ****     f_lseek(fil, wavHeader->Subchunk1Size);
+ 393              		.loc 1 126 5 is_stmt 1 view .LVU112
+ 394 0082 2969     		ldr	r1, [r5, #16]
+ 395 0084 3046     		mov	r0, r6
+ 396 0086 FFF7FEFF 		bl	f_lseek
+ 397              	.LVL40:
+ 127:Core/Src/wavDecoder.c ****     HAL_I2S_DMAStop(&hi2s3);
+ 398              		.loc 1 127 5 view .LVU113
+ 399 008a 0548     		ldr	r0, .L28+8
+ 400 008c FFF7FEFF 		bl	HAL_I2S_DMAStop
+ 401              	.LVL41:
+ 128:Core/Src/wavDecoder.c ****     return 0;
+ 402              		.loc 1 128 5 view .LVU114
+ 129:Core/Src/wavDecoder.c **** }...
+ 403              		.loc 1 129 1 is_stmt 0 view .LVU115
+ 404 0090 0020     		movs	r0, #0
+ 405 0092 BDEC028B 		vldm	sp!, {d8}
+ 406              		.cfi_restore 80
+ 407              		.cfi_restore 81
+ 408              		.cfi_def_cfa_offset 16
+ 409              	.LVL42:
+ 410              		.loc 1 129 1 view .LVU116
+ 411 0096 70BD     		pop	{r4, r5, r6, pc}
+ 412              	.LVL43:
+ 413              	.L29:
+ 414              		.loc 1 129 1 view .LVU117
+ 415              		.align	2
+ 416              	.L28:
+ 417 0098 00000000 		.word	pitchFactor
+ 418 009c 00000000 		.word	dacData
+ 419 00a0 00000000 		.word	hi2s3
+ 420 00a4 00000000 		.word	0
+ 421 00a8 00000000 		.word	dma_dataReady
+ 422 00ac 00000000 		.word	outBufPtr
+ 423 00b0 00000000 		.word	fileReadBuf
+ 424              		.cfi_endproc
+ 425              	.LFE136:
+ 427              		.text
+ 428              	.Letext0:
+ 429              		.file 2 "Middlewares/Third_Party/FatFs/src/integer.h"
+ 430              		.file 3 "C:/Users/jonas/AppData/Roaming/VSCodium/User/globalStorage/bmd.stm32-for-vscode/@xpack-de
+ 431              		.file 4 "C:/Users/jonas/AppData/Roaming/VSCodium/User/globalStorage/bmd.stm32-for-vscode/@xpack-de
+ 432              		.file 5 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f401xe.h"
+ 433              		.file 6 "C:/Users/jonas/AppData/Roaming/VSCodium/User/globalStorage/bmd.stm32-for-vscode/@xpack-de
+ 434              		.file 7 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h"
+ 435              		.file 8 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h"
+ 436              		.file 9 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2s.h"
+ 437              		.file 10 "Middlewares/Third_Party/FatFs/src/ff.h"
+ 438              		.file 11 "Core/Inc/audio.h"
+ 439              		.file 12 "Core/Inc/wavDecoder.h"
+ 440              		.file 13 "C:/Users/jonas/AppData/Roaming/VSCodium/User/globalStorage/bmd.stm32-for-vscode/@xpack-d
+ 441              		.file 14 "<built-in>"
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccJZ1h0x.s 			page 11
+
+
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccJZ1h0x.s 			page 12
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 wavDecoder.c
-C:\Users\jonas\AppData\Local\Temp\ccW0Fnyt.s:21     .text.checkWav:00000000 $t
-C:\Users\jonas\AppData\Local\Temp\ccW0Fnyt.s:27     .text.checkWav:00000000 checkWav
-C:\Users\jonas\AppData\Local\Temp\ccW0Fnyt.s:142    .text.checkWav:00000070 $d
-C:\Users\jonas\AppData\Local\Temp\ccW0Fnyt.s:148    .text.wavPlay:00000000 $t
-C:\Users\jonas\AppData\Local\Temp\ccW0Fnyt.s:154    .text.wavPlay:00000000 wavPlay
-C:\Users\jonas\AppData\Local\Temp\ccW0Fnyt.s:234    .text.wavPlay:0000003c $d
+C:\Users\jonas\AppData\Local\Temp\ccJZ1h0x.s:21     .text.checkWav:00000000 $t
+C:\Users\jonas\AppData\Local\Temp\ccJZ1h0x.s:27     .text.checkWav:00000000 checkWav
+C:\Users\jonas\AppData\Local\Temp\ccJZ1h0x.s:142    .text.checkWav:00000070 $d
+C:\Users\jonas\AppData\Local\Temp\ccJZ1h0x.s:148    .text.wavPlay:00000000 $t
+C:\Users\jonas\AppData\Local\Temp\ccJZ1h0x.s:154    .text.wavPlay:00000000 wavPlay
+C:\Users\jonas\AppData\Local\Temp\ccJZ1h0x.s:239    .text.wavPlay:00000048 $d
+C:\Users\jonas\AppData\Local\Temp\ccJZ1h0x.s:248    .text.wavPlayPitched:00000000 $t
+C:\Users\jonas\AppData\Local\Temp\ccJZ1h0x.s:254    .text.wavPlayPitched:00000000 wavPlayPitched
+C:\Users\jonas\AppData\Local\Temp\ccJZ1h0x.s:417    .text.wavPlayPitched:00000098 $d
 
 UNDEFINED SYMBOLS
 f_read
 f_lseek
 HAL_I2S_Transmit_DMA
 fillHalfBufferFromSD
+memcpy
 HAL_I2S_DMAStop
 dacData
 hi2s3
 dma_dataReady
+fileReadBuf
+outBufPtr
+pitchFactor

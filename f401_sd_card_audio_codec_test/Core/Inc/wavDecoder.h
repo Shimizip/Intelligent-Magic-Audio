@@ -32,6 +32,7 @@ typedef struct wav_header {
 uint8_t checkWav(FIL *file, wav_header_t *wavHeader);
 
 uint8_t wavPlay(FIL *file, wav_header_t *wavHeader);
+uint8_t wavPlayPitched(FIL *file, wav_header_t *wavHeader);
 
 void wavStop(void);
 
