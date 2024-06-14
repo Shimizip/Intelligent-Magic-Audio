@@ -139,3 +139,14 @@ void drawLine(int16_t x0, int16_t y0, int16_t x1, int16_t y1, uint16_t color) {
         }
     }
 }
+
+void drawFaderProzent(I2C_HandleTypeDef *hi2c1, const char *prozent){
+    for (uint8_t i = 0; i < DISPLAY_WIDTH; i++) {
+        for (uint8_t j = LIST_SECTION_HEIGHT + 20; j < DISPLAY_HEIGHT; j++) {
+            ssd1306_DrawPixel(i, j, Black);
+        }
+    }
+
+    ssd1306_SetCursor(0, LIST_SECTION_HEIGHT + 20); // Adjust Y position for text alignment
+    ssd1306_WriteString(prozent, Font_7x10, White);
+}
