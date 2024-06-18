@@ -25,6 +25,6 @@ SUBDIRS := \
 Core/Src \
 Core/Startup \
 Drivers/STM32F7xx_HAL_Driver/Src \
-Middlewares/ST/STM32_AI_AudioPreprocessing_Library/Src \
+STM32_AI_AudioPreprocessing_Library/Src \
 X-CUBE-AI/App \
 

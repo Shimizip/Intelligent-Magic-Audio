@@ -1,33 +1,29 @@
 {
     "_allocate_inputs": 4,
     "_allocate_outputs": 4,
-    "cli_parameters": "validate --name network_1 -m /Users/leon/Downloads/model.h5 --type keras --compression none --verbosity 1 --workspace /var/folders/jv/_zcyfzx92cg0_833lhmxrp300000gn/T/mxAI_workspace92545740428500981164257538472951 --output /Users/leon/.stm32cubemx/network_1_output --allocate-inputs --allocate-outputs",
+    "cli_parameters": "generate --name network_1 -m C:/Users/jonas/Downloads/model-2.h5 --type keras --compression none --verbosity 1 --workspace C:\\Users\\jonas\\AppData\\Local\\Temp\\mxAI_workspace2491169015390016930968428280127545 --output C:\\Users\\jonas\\.stm32cubemx\\network_1_output --allocate-inputs --allocate-outputs",
     "cli_version": {
         "major": 1,
         "micro": 0,
-        "minor": 7
+        "minor": 6
     },
-    "cli_version_str": "1.7.0",
-    "code_size": 0,
+    "cli_version_str": "1.6.0",
     "compression": {
         "factor": null,
         "layers": {}
     },
-    "date_time": "Tue Jun  4 17:58:00 2024",
+    "date_time": "Thu Jun 13 17:43:21 2024",
     "error": 0,
     "error_str": [],
-    "exec_cmd": "validate",
+    "exec_cmd": "generate",
     "exec_duration": 0.0,
-    "hash": "03fd0794ecb4cd2e703ed792f043f5ae",
+    "hash": "8a1a510bdaf66f5e80511baccb5db039",
     "inputs": [
         "input_0"
     ],
     "layers": [
         {
-            "c_id": [
-                0,
-                1
-            ],
+            "c_id": [],
             "extras": {
                 "n_macc": 0,
                 "n_params": 0,
@@ -44,7 +40,7 @@
                         1
                     ]
                 },
-                "rom_size": 640
+                "rom_size": 0
             },
             "id": 0,
             "inputs": [],
@@ -59,13 +55,13 @@
                 "n_params": 160,
                 "psize": 640,
                 "rom_output": {
-                    "c_size": 53760,
+                    "c_size": 13440,
                     "fmt": {
                         "format": "float"
                     },
                     "shape": [
-                        28,
-                        30,
+                        14,
+                        15,
                         16,
                         1
                     ]
@@ -86,18 +82,6 @@
                 "n_macc": 13440,
                 "n_params": 0,
                 "psize": 0,
-                "rom_output": {
-                    "c_size": 53760,
-                    "fmt": {
-                        "format": "float"
-                    },
-                    "shape": [
-                        28,
-                        30,
-                        16,
-                        1
-                    ]
-                },
                 "rom_size": 0
             },
             "id": 0,
@@ -110,25 +94,13 @@
         },
         {
             "c_id": [
-                2
+                0
             ],
             "extras": {
                 "n_macc": 13440,
                 "n_params": 0,
                 "psize": 0,
-                "rom_output": {
-                    "c_size": 13440,
-                    "fmt": {
-                        "format": "float"
-                    },
-                    "shape": [
-                        14,
-                        15,
-                        16,
-                        1
-                    ]
-                },
-                "rom_size": 0
+                "rom_size": 640
             },
             "id": 1,
             "inputs": [
@@ -139,27 +111,24 @@
             "type": "Pool"
         },
         {
-            "c_id": [
-                3,
-                4
-            ],
+            "c_id": [],
             "extras": {
                 "n_macc": 359440,
                 "n_params": 2320,
                 "psize": 9280,
                 "rom_output": {
-                    "c_size": 9984,
+                    "c_size": 2304,
                     "fmt": {
                         "format": "float"
                     },
                     "shape": [
-                        12,
-                        13,
+                        6,
+                        6,
                         16,
                         1
                     ]
                 },
-                "rom_size": 9280
+                "rom_size": 0
             },
             "id": 2,
             "inputs": [
@@ -175,18 +144,6 @@
                 "n_macc": 2496,
                 "n_params": 0,
                 "psize": 0,
-                "rom_output": {
-                    "c_size": 9984,
-                    "fmt": {
-                        "format": "float"
-                    },
-                    "shape": [
-                        12,
-                        13,
-                        16,
-                        1
-                    ]
-                },
                 "rom_size": 0
             },
             "id": 2,
@@ -199,25 +156,13 @@
         },
         {
             "c_id": [
-                5
+                1
             ],
             "extras": {
                 "n_macc": 2304,
                 "n_params": 0,
                 "psize": 0,
-                "rom_output": {
-                    "c_size": 2304,
-                    "fmt": {
-                        "format": "float"
-                    },
-                    "shape": [
-                        6,
-                        6,
-                        16,
-                        1
-                    ]
-                },
-                "rom_size": 0
+                "rom_size": 9280
             },
             "id": 3,
             "inputs": [
@@ -245,8 +190,8 @@
         },
         {
             "c_id": [
-                6,
-                7
+                2,
+                3
             ],
             "extras": {
                 "n_macc": 14425,
@@ -258,6 +203,8 @@
                         "format": "float"
                     },
                     "shape": [
+                        1,
+                        1,
                         25,
                         1
                     ]
@@ -284,6 +231,8 @@
                         "format": "float"
                     },
                     "shape": [
+                        1,
+                        1,
                         25,
                         1
                     ]
@@ -300,8 +249,8 @@
         },
         {
             "c_id": [
-                8,
-                9
+                4,
+                5
             ],
             "extras": {
                 "n_macc": 130,
@@ -313,6 +262,8 @@
                         "format": "float"
                     },
                     "shape": [
+                        1,
+                        1,
                         5,
                         1
                     ]
@@ -339,6 +290,8 @@
                         "format": "float"
                     },
                     "shape": [
+                        1,
+                        1,
                         5,
                         1
                     ]
@@ -355,10 +308,10 @@
         }
     ],
     "model_files": [
-        "/Users/leon/Downloads/model.h5"
+        "C:\\Users\\jonas\\Downloads\\model-2.h5"
     ],
     "model_n_params": 17035,
-    "model_name": "model",
+    "model_name": "model2",
     "model_size": 68140,
     "model_type": "keras",
     "name": "network_1",
@@ -370,8 +323,8 @@
         20
     ],
     "ram_size": [
-        57600,
-        57600
+        19328,
+        19328
     ],
     "report_version": 1.1,
     "rom_cfact": 1.0,
@@ -396,28 +349,15 @@
     "tools_api_version": {
         "major": 1,
         "micro": 0,
-        "minor": 7
+        "minor": 6
     },
     "tools_version": {
-        "extra": "19520",
-        "major": 8,
+        "extra": "RC5",
+        "major": 7,
         "micro": 0,
-        "minor": 1
+        "minor": 3
     },
-    "val_error": 4.7533134761579277e-07,
-    "val_error_desc": "x-cross (l2r) #1",
-    "val_metrics": [
-        {
-            "acc": "n.a.",
-            "cos": 1.0,
-            "desc": "X-cross #1",
-            "l2r": 4.7533134761579277e-07,
-            "mae": 1.6816193237900734e-07,
-            "mean": 3.813067550595406e-08,
-            "nse": 0.9999999999993516,
-            "rmse": 2.3042430541408976e-07,
-            "std": 2.295546153163741e-07,
-            "ts_name": "dense_1, ai_float, (1,5), m_id=[6]"
-        }
-    ]
+    "val_error": -1.0,
+    "val_error_desc": "None (None) #-1",
+    "val_metrics": []
 }

@@ -1,6 +1,6 @@
 ../Core/Src/audio_classification.c:70:6:Preprocessing_Init	1
-../Core/Src/audio_classification.c:95:6:frame_subsamples	4
-../Core/Src/audio_classification.c:112:6:preprocess_frame	5
-../Core/Src/audio_classification.c:144:6:PowerToDb	7
+../Core/Src/audio_classification.c:144:6:PowerToDb	5
 ../Core/Src/audio_classification.c:180:5:init_nn	2
 ../Core/Src/audio_classification.c:217:5:run_nn_classification	3
+../Core/Src/audio_classification.c:112:6:preprocess_frame	5
+../Core/Src/audio_classification.c:95:6:frame_subsamples	4

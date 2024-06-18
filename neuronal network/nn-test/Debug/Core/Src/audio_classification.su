@@ -1,6 +1,6 @@
 ../Core/Src/audio_classification.c:70:6:Preprocessing_Init	8	static
-../Core/Src/audio_classification.c:95:6:frame_subsamples	131104	static
+../Core/Src/audio_classification.c:144:6:PowerToDb	32	static
+../Core/Src/audio_classification.c:180:5:init_nn	24	static
+../Core/Src/audio_classification.c:217:5:run_nn_classification	8	static
 ../Core/Src/audio_classification.c:112:6:preprocess_frame	24	static
-../Core/Src/audio_classification.c:144:6:PowerToDb	40	static
-../Core/Src/audio_classification.c:180:5:init_nn	16	static
-../Core/Src/audio_classification.c:217:5:run_nn_classification	24	static
+../Core/Src/audio_classification.c:95:6:frame_subsamples	131096	static

@@ -5,5 +5,5 @@
 
 USER_OBJS :=
 
-LIBS := -larm_cortexM7lfdp_math -l:NetworkRuntime810_CM7_GCC.a
+LIBS := -larm_cortexM7lfdp_math -l:NetworkRuntime730_CM7_GCC.a
 

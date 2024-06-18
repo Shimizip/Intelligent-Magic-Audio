@@ -5,11 +5,11 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
  ../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_def.h \
  ../Drivers/CMSIS/Device/ST/STM32F7xx/Include/stm32f7xx.h \
  ../Drivers/CMSIS/Device/ST/STM32F7xx/Include/stm32f722xx.h \
- /Users/leon/STM32CubeIDE/workspace_1.14.0/nn-test/Drivers/CMSIS/Include/core_cm7.h \
- /Users/leon/STM32CubeIDE/workspace_1.14.0/nn-test/Drivers/CMSIS/Include/cmsis_version.h \
- /Users/leon/STM32CubeIDE/workspace_1.14.0/nn-test/Drivers/CMSIS/Include/cmsis_compiler.h \
- /Users/leon/STM32CubeIDE/workspace_1.14.0/nn-test/Drivers/CMSIS/Include/cmsis_gcc.h \
- /Users/leon/STM32CubeIDE/workspace_1.14.0/nn-test/Drivers/CMSIS/Include/mpu_armv7.h \
+ C:/Users/jonas/TIN/ESP/ima/neuronal\ network/nn-test/Drivers/CMSIS/Include/core_cm7.h \
+ C:/Users/jonas/TIN/ESP/ima/neuronal\ network/nn-test/Drivers/CMSIS/Include/cmsis_version.h \
+ C:/Users/jonas/TIN/ESP/ima/neuronal\ network/nn-test/Drivers/CMSIS/Include/cmsis_compiler.h \
+ C:/Users/jonas/TIN/ESP/ima/neuronal\ network/nn-test/Drivers/CMSIS/Include/cmsis_gcc.h \
+ C:/Users/jonas/TIN/ESP/ima/neuronal\ network/nn-test/Drivers/CMSIS/Include/mpu_armv7.h \
  ../Drivers/CMSIS/Device/ST/STM32F7xx/Include/system_stm32f7xx.h \
  ../Drivers/STM32F7xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h \
  ../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_rcc_ex.h \
@@ -35,17 +35,17 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
  ../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_ll_usb.h \
  ../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_pcd_ex.h \
  ../Core/Inc/audio_classification.h \
- /Users/leon/STM32CubeIDE/workspace_1.14.0/nn-test/X-CUBE-AI/App/network_1.h \
- /Users/leon/STM32CubeIDE/workspace_1.14.0/nn-test/X-CUBE-AI/App/network_1_config.h \
+ C:/Users/jonas/TIN/ESP/ima/neuronal\ network/nn-test/X-CUBE-AI/App/network_1.h \
+ C:/Users/jonas/TIN/ESP/ima/neuronal\ network/nn-test/X-CUBE-AI/App/network_1_config.h \
  ../Middlewares/ST/AI/Inc/ai_platform.h \
- /Users/leon/STM32CubeIDE/workspace_1.14.0/nn-test/X-CUBE-AI/App/network_1_data.h \
- /Users/leon/STM32CubeIDE/workspace_1.14.0/nn-test/X-CUBE-AI/App/network_1_data_params.h \
- /Users/leon/STM32CubeIDE/workspace_1.14.0/nn-test/Middlewares/ST/STM32_AI_AudioPreprocessing_Library/Inc/feature_extraction.h \
- /Users/leon/STM32CubeIDE/workspace_1.14.0/nn-test/Drivers/CMSIS/DSP/Include/arm_math.h \
- /Users/leon/STM32CubeIDE/workspace_1.14.0/nn-test/Middlewares/ST/STM32_AI_AudioPreprocessing_Library/Inc/common_tables.h \
- /Users/leon/STM32CubeIDE/workspace_1.14.0/nn-test/Middlewares/ST/STM32_AI_AudioPreprocessing_Library/Inc/dct.h \
- /Users/leon/STM32CubeIDE/workspace_1.14.0/nn-test/Middlewares/ST/STM32_AI_AudioPreprocessing_Library/Inc/mel_filterbank.h \
- /Users/leon/STM32CubeIDE/workspace_1.14.0/nn-test/Middlewares/ST/STM32_AI_AudioPreprocessing_Library/Inc/window.h \
+ C:/Users/jonas/TIN/ESP/ima/neuronal\ network/nn-test/X-CUBE-AI/App/network_1_data.h \
+ C:/Users/jonas/TIN/ESP/ima/neuronal\ network/nn-test/X-CUBE-AI/App/network_1_data_params.h \
+ C:/Users/jonas/TIN/ESP/ima/neuronal\ network/nn-test/STM32_AI_AudioPreprocessing_Library/Inc/feature_extraction.h \
+ C:/Users/jonas/TIN/ESP/ima/neuronal\ network/nn-test/Drivers/CMSIS/DSP/Include/arm_math.h \
+ C:/Users/jonas/TIN/ESP/ima/neuronal\ network/nn-test/STM32_AI_AudioPreprocessing_Library/Inc/common_tables.h \
+ C:/Users/jonas/TIN/ESP/ima/neuronal\ network/nn-test/STM32_AI_AudioPreprocessing_Library/Inc/dct.h \
+ C:/Users/jonas/TIN/ESP/ima/neuronal\ network/nn-test/STM32_AI_AudioPreprocessing_Library/Inc/mel_filterbank.h \
+ C:/Users/jonas/TIN/ESP/ima/neuronal\ network/nn-test/STM32_AI_AudioPreprocessing_Library/Inc/window.h \
  ../Core/Inc/test_audio_data.h
 ../Core/Inc/main.h:
 ../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal.h:
@@ -54,11 +54,11 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
 ../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_def.h:
 ../Drivers/CMSIS/Device/ST/STM32F7xx/Include/stm32f7xx.h:
 ../Drivers/CMSIS/Device/ST/STM32F7xx/Include/stm32f722xx.h:
-/Users/leon/STM32CubeIDE/workspace_1.14.0/nn-test/Drivers/CMSIS/Include/core_cm7.h:
-/Users/leon/STM32CubeIDE/workspace_1.14.0/nn-test/Drivers/CMSIS/Include/cmsis_version.h:
-/Users/leon/STM32CubeIDE/workspace_1.14.0/nn-test/Drivers/CMSIS/Include/cmsis_compiler.h:
-/Users/leon/STM32CubeIDE/workspace_1.14.0/nn-test/Drivers/CMSIS/Include/cmsis_gcc.h:
-/Users/leon/STM32CubeIDE/workspace_1.14.0/nn-test/Drivers/CMSIS/Include/mpu_armv7.h:
+C:/Users/jonas/TIN/ESP/ima/neuronal\ network/nn-test/Drivers/CMSIS/Include/core_cm7.h:
+C:/Users/jonas/TIN/ESP/ima/neuronal\ network/nn-test/Drivers/CMSIS/Include/cmsis_version.h:
+C:/Users/jonas/TIN/ESP/ima/neuronal\ network/nn-test/Drivers/CMSIS/Include/cmsis_compiler.h:
+C:/Users/jonas/TIN/ESP/ima/neuronal\ network/nn-test/Drivers/CMSIS/Include/cmsis_gcc.h:
+C:/Users/jonas/TIN/ESP/ima/neuronal\ network/nn-test/Drivers/CMSIS/Include/mpu_armv7.h:
 ../Drivers/CMSIS/Device/ST/STM32F7xx/Include/system_stm32f7xx.h:
 ../Drivers/STM32F7xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h:
 ../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_rcc_ex.h:
@@ -84,15 +84,15 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
 ../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_ll_usb.h:
 ../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_pcd_ex.h:
 ../Core/Inc/audio_classification.h:
-/Users/leon/STM32CubeIDE/workspace_1.14.0/nn-test/X-CUBE-AI/App/network_1.h:
-/Users/leon/STM32CubeIDE/workspace_1.14.0/nn-test/X-CUBE-AI/App/network_1_config.h:
+C:/Users/jonas/TIN/ESP/ima/neuronal\ network/nn-test/X-CUBE-AI/App/network_1.h:
+C:/Users/jonas/TIN/ESP/ima/neuronal\ network/nn-test/X-CUBE-AI/App/network_1_config.h:
 ../Middlewares/ST/AI/Inc/ai_platform.h:
-/Users/leon/STM32CubeIDE/workspace_1.14.0/nn-test/X-CUBE-AI/App/network_1_data.h:
-/Users/leon/STM32CubeIDE/workspace_1.14.0/nn-test/X-CUBE-AI/App/network_1_data_params.h:
-/Users/leon/STM32CubeIDE/workspace_1.14.0/nn-test/Middlewares/ST/STM32_AI_AudioPreprocessing_Library/Inc/feature_extraction.h:
-/Users/leon/STM32CubeIDE/workspace_1.14.0/nn-test/Drivers/CMSIS/DSP/Include/arm_math.h:
-/Users/leon/STM32CubeIDE/workspace_1.14.0/nn-test/Middlewares/ST/STM32_AI_AudioPreprocessing_Library/Inc/common_tables.h:
-/Users/leon/STM32CubeIDE/workspace_1.14.0/nn-test/Middlewares/ST/STM32_AI_AudioPreprocessing_Library/Inc/dct.h:
-/Users/leon/STM32CubeIDE/workspace_1.14.0/nn-test/Middlewares/ST/STM32_AI_AudioPreprocessing_Library/Inc/mel_filterbank.h:
-/Users/leon/STM32CubeIDE/workspace_1.14.0/nn-test/Middlewares/ST/STM32_AI_AudioPreprocessing_Library/Inc/window.h:
+C:/Users/jonas/TIN/ESP/ima/neuronal\ network/nn-test/X-CUBE-AI/App/network_1_data.h:
+C:/Users/jonas/TIN/ESP/ima/neuronal\ network/nn-test/X-CUBE-AI/App/network_1_data_params.h:
+C:/Users/jonas/TIN/ESP/ima/neuronal\ network/nn-test/STM32_AI_AudioPreprocessing_Library/Inc/feature_extraction.h:
+C:/Users/jonas/TIN/ESP/ima/neuronal\ network/nn-test/Drivers/CMSIS/DSP/Include/arm_math.h:
+C:/Users/jonas/TIN/ESP/ima/neuronal\ network/nn-test/STM32_AI_AudioPreprocessing_Library/Inc/common_tables.h:
+C:/Users/jonas/TIN/ESP/ima/neuronal\ network/nn-test/STM32_AI_AudioPreprocessing_Library/Inc/dct.h:
+C:/Users/jonas/TIN/ESP/ima/neuronal\ network/nn-test/STM32_AI_AudioPreprocessing_Library/Inc/mel_filterbank.h:
+C:/Users/jonas/TIN/ESP/ima/neuronal\ network/nn-test/STM32_AI_AudioPreprocessing_Library/Inc/window.h:
 ../Core/Inc/test_audio_data.h:
