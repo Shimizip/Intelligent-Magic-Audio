@@ -6,7 +6,9 @@
         "main.h": "c",
         "audio.h": "c",
         "fatfs.h": "c",
-        "wavdecoder.h": "c"
+        "wavdecoder.h": "c",
+        "lowpass_16kfilter.h": "c",
+        "wavplayer.h": "c"
     },
     "cortex-debug.variableUseNaturalFormat": false
 }

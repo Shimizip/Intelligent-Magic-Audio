@@ -1,42 +1,49 @@
 #include "fatfs.h"
-#include "wavDecoder.h"
+#include "wavPlayer.h"
 #include "string.h"
 
+void initPlayer(WavPlayer *player, FIL *file, wav_header_t *wavHeader) {
+    player->file = file;
+    player->wavHeader = wavHeader;
+    player->restartPlayback = false;
+    player->playbackActive = false;
+}
+
 // load .wav header and check for valid header members
-uint8_t checkWav(FIL *file, wav_header_t *wavHeader) {
+uint8_t checkWav(WavPlayer *player) {
     uint8_t wav_OK = 1;
     UINT count = 0;
 
     // Read RIFF header and first Chunki
-    if (f_read(file, wavHeader, sizeof(uint32_t) * 5, &count) != FR_OK) {
+    if (f_read(player->file, player->wavHeader, sizeof(uint32_t) * 5, &count) != FR_OK) {
         return 0;
     }
 
     // Check RIFF header
-    if (wavHeader->ChunkID != 0x46464952 || wavHeader->Format != 0x45564157) {
+    if (player->wavHeader->ChunkID != 0x46464952 || player->wavHeader->Format != 0x45564157) {
         return 0;
     }
 
     // Read additional chunks until "fmt " subchunk is found
     while (1) {
-        if (wavHeader->Subchunk1ID == 0x20746d66) { // "fmt "
+        if (player->wavHeader->Subchunk1ID == 0x20746d66) { // "fmt "
             // Essential "fmt " subchunk found
             break;
         }
 
-        f_lseek(file, f_tell(file) + wavHeader->Subchunk1Size);
+        f_lseek(player->file, f_tell(player->file) + player->wavHeader->Subchunk1Size);
 
         // Calculate the address of the next subchunk header
-        wav_header_t* nextHeader = (wav_header_t*)((char*)wavHeader + sizeof(uint32_t) * 3);
+        wav_header_t* nextHeader = (wav_header_t*)((char*)player->wavHeader + sizeof(uint32_t) * 3);
 
         // Read next subchunk header / rest of the wav header
-        if (f_read(file, nextHeader, sizeof(wav_header_t) - sizeof(uint32_t) * 3, &count) != FR_OK) {
+        if (f_read(player->file, nextHeader, sizeof(wav_header_t) - sizeof(uint32_t) * 3, &count) != FR_OK) {
             return 0;
         }
     }
 
     // Check essential "fmt " subchunk
-    if (wavHeader->Subchunk1Size != 16 || wavHeader->AudioFormat != 1) {
+    if (player->wavHeader->Subchunk1Size != 16 || player->wavHeader->AudioFormat != 1) {
         return 0;
     }
 
@@ -44,8 +51,9 @@ uint8_t checkWav(FIL *file, wav_header_t *wavHeader) {
 }
 
 // assumes wavHeader is already populated
-uint8_t wavPlay(FIL *file, wav_header_t *wavHeader){
-    uint32_t length = wavHeader->Subchunk2Size ;    // Number of bytes in data. Number of samples * num_channels * sample byte size
+uint8_t wavPlay(WavPlayer *player){
+    checkWav(player);
+    uint32_t length = player->wavHeader->Subchunk2Size ;    // Number of bytes in data. Number of samples * num_channels * sample byte size
     uint32_t remainingBytes = length;
 
     // Start DMA Stream
@@ -55,7 +63,7 @@ uint8_t wavPlay(FIL *file, wav_header_t *wavHeader){
 
     while(remainingBytes > 0){
         if(dma_dataReady){
-            uint16_t bytesRead = fillHalfBufferFromSD(file, false);
+            uint16_t bytesRead = fillHalfBufferFromSD(player->file, false);
             memcpy(outBufPtr, fileReadBuf, HALF_BUFFER_SIZE * sizeof(uint16_t));
             
             // for(int n = 0; n < HALF_BUFFER_SIZE; n++){
@@ -68,12 +76,13 @@ uint8_t wavPlay(FIL *file, wav_header_t *wavHeader){
             dma_dataReady = false;
         }
     }
+    f_lseek(player->file,0);
     HAL_I2S_DMAStop(&hi2s3);
     return 0;
 }
 
-uint8_t wavPlayPitched(FIL *fil, wav_header_t *wavHeader) {
-    uint32_t length = wavHeader->Subchunk2Size;  // Number of bytes in data. Number of samples * num_channels * sample byte size
+uint8_t wavPlayPitched(WavPlayer *player) {
+    uint32_t length = player->wavHeader->Subchunk2Size;  // Number of bytes in data. Number of samples * num_channels * sample byte size
     uint32_t remainingBytes = length;
 
     float currentPitchFactor = pitchFactor;
@@ -85,7 +94,7 @@ uint8_t wavPlayPitched(FIL *fil, wav_header_t *wavHeader) {
         uint16_t bytesRead;
         uint32_t leftIndex;
         if (dma_dataReady) {
-            bytesRead = fillHalfBufferFromSD(fil, true); // loads necessary data from sd card to fireReadBuffer
+            bytesRead = fillHalfBufferFromSD(player->file, true); // loads necessary data from sd card to fireReadBuffer
             remainingBytes -= bytesRead;
 
             // // Update pitch factor if changed
@@ -123,7 +132,7 @@ uint8_t wavPlayPitched(FIL *fil, wav_header_t *wavHeader) {
             dma_dataReady = false;
         }
     }
-    f_lseek(fil, wavHeader->Subchunk1Size);
+    f_lseek(player->file,0);
     HAL_I2S_DMAStop(&hi2s3);
     return 0;
 }

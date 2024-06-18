@@ -1,6 +1,6 @@
 #include "audio.h"
 #include "fatfs.h"
-#include "wavDecoder.h"
+#include "wavPlayer.h"
 
 bool dma_dataReady = false;
 int16_t dacData[BUFFER_SIZE];

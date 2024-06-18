@@ -1,7 +1,7 @@
 #include <stdbool.h>
 #include <math.h>
 #include "main.h"
-#include "wavDecoder.h"
+#include "wavPlayer.h"
 #include "fatfs.h"
 #include "stm32f4xx_hal_i2s_ex.h"
 

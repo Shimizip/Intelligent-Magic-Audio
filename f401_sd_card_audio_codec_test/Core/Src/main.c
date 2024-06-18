@@ -27,7 +27,7 @@
 #include <string.h>
 #include "math.h"
 #include "audio.h"
-#include "wavDecoder.h"
+#include "wavPlayer.h"
 #include "cpu_time.h"
 #include "util.h"
 /* USER CODE END Includes */
@@ -121,7 +121,11 @@ int main(void)
     FIL fil; 		//File handle
     FRESULT fres; //Result after operations
     //wav header
-    wav_header_t currentWav;
+    wav_header_t wavHeader;
+    WavPlayer player;
+
+
+
 
     //Open the file system
     fres = f_mount(&FatFs, SDPath, 1); //1=mount now
@@ -130,13 +134,15 @@ int main(void)
   	  while(1);
     }
 
+    // Init the player
+    initPlayer(&player, &fil, &wavHeader);
+
     //Now let's try to open file "test.txt"
-    fres = f_open(&fil, "letsroll.wav", FA_READ);
+    fres = f_open(player.file, "letsroll.wav", FA_READ);
     if (fres != FR_OK) {
   	  while(1);
     }
 
-    checkWav(&fil, &currentWav);
     // f_lseek(&fil,0);
     // initSineTable();
 
@@ -151,8 +157,8 @@ int main(void)
     while (1)
     {
       if(play){
-        wavPlayPitched(&fil, &currentWav);
-        // wavPlay(&fil, &currentWav);
+        // wavPlayPitched(&fil, &currentWav);
+        wavPlay(&player);
         play = false;
       }
     /* USER CODE END WHILE */

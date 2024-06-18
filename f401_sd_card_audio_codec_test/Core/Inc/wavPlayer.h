@@ -5,7 +5,6 @@
 #include "fatfs.h"
 #include "audio.h"
 
-#define WAV_PCMSamples  8192
 
 typedef struct wav_header {
     // RIFF Header
@@ -29,10 +28,19 @@ typedef struct wav_header {
     // uint8_t bytes[];       // Remainder of wave file is bytes
 } wav_header_t;
 
-uint8_t checkWav(FIL *file, wav_header_t *wavHeader);
+typedef struct {
+    volatile bool restartPlayback;
+    volatile bool playbackActive;
+    FIL *file;
+    wav_header_t *wavHeader;
+} WavPlayer;
 
-uint8_t wavPlay(FIL *file, wav_header_t *wavHeader);
-uint8_t wavPlayPitched(FIL *file, wav_header_t *wavHeader);
+void initPlayer(WavPlayer *player, FIL *file, wav_header_t *wavHeader);
+
+uint8_t checkWav(WavPlayer *player);
+
+uint8_t wavPlay(WavPlayer *player);
+uint8_t wavPlayPitched(WavPlayer *player);
 
 void wavStop(void);
 

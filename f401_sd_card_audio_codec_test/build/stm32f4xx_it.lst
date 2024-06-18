@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\cc3ePy8S.s 			page 1
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccTOnvpf.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\cc3ePy8S.s 			page 1
   28:Core/Src/stm32f4xx_it.c **** /* Private typedef -----------------------------------------------------------*/
   29:Core/Src/stm32f4xx_it.c **** /* USER CODE BEGIN TD */
   30:Core/Src/stm32f4xx_it.c **** 
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\cc3ePy8S.s 			page 2
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccTOnvpf.s 			page 2
 
 
   31:Core/Src/stm32f4xx_it.c **** /* USER CODE END TD */
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\cc3ePy8S.s 			page 1
   78:Core/Src/stm32f4xx_it.c ****   /* USER CODE END NonMaskableInt_IRQn 0 */
   79:Core/Src/stm32f4xx_it.c ****   /* USER CODE BEGIN NonMaskableInt_IRQn 1 */
   80:Core/Src/stm32f4xx_it.c ****    while (1)
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\cc3ePy8S.s 			page 3
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccTOnvpf.s 			page 3
 
 
   36              		.loc 1 80 4 view .LVU1
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\cc3ePy8S.s 			page 1
   74              	.LFB136:
   99:Core/Src/stm32f4xx_it.c **** }
  100:Core/Src/stm32f4xx_it.c **** 
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\cc3ePy8S.s 			page 4
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccTOnvpf.s 			page 4
 
 
  101:Core/Src/stm32f4xx_it.c **** /**
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\cc3ePy8S.s 			page 1
  125:Core/Src/stm32f4xx_it.c ****   {
  126:Core/Src/stm32f4xx_it.c ****     /* USER CODE BEGIN W1_BusFault_IRQn 0 */
  127:Core/Src/stm32f4xx_it.c ****     /* USER CODE END W1_BusFault_IRQn 0 */
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\cc3ePy8S.s 			page 5
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccTOnvpf.s 			page 5
 
 
  128:Core/Src/stm32f4xx_it.c ****   }
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\cc3ePy8S.s 			page 1
  146:Core/Src/stm32f4xx_it.c **** /**
  147:Core/Src/stm32f4xx_it.c ****   * @brief This function handles System service call via SWI instruction.
  148:Core/Src/stm32f4xx_it.c ****   */
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\cc3ePy8S.s 			page 6
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccTOnvpf.s 			page 6
 
 
  149:Core/Src/stm32f4xx_it.c **** void SVC_Handler(void)
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\cc3ePy8S.s 			page 1
  180              	PendSV_Handler:
  181              	.LFB141:
  171:Core/Src/stm32f4xx_it.c **** 
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\cc3ePy8S.s 			page 7
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccTOnvpf.s 			page 7
 
 
  172:Core/Src/stm32f4xx_it.c **** /**
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\cc3ePy8S.s 			page 1
  198:Core/Src/stm32f4xx_it.c ****   HAL_SYSTICK_IRQHandler();
  212              		.loc 1 198 3 view .LVU28
  213 0006 FFF7FEFF 		bl	HAL_SYSTICK_IRQHandler
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\cc3ePy8S.s 			page 8
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccTOnvpf.s 			page 8
 
 
  214              	.LVL1:
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\cc3ePy8S.s 			page 1
  247              		.cfi_endproc
  248              	.LFE143:
  250              		.section	.text.USART2_IRQHandler,"ax",%progbits
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\cc3ePy8S.s 			page 9
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccTOnvpf.s 			page 9
 
 
  251              		.align	1
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\cc3ePy8S.s 			page 1
  241:Core/Src/stm32f4xx_it.c **** {
  289              		.loc 1 241 1 is_stmt 1 view -0
  290              		.cfi_startproc
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\cc3ePy8S.s 			page 10
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccTOnvpf.s 			page 10
 
 
  291              		@ args = 0, pretend = 0, frame = 0
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\cc3ePy8S.s 			page 1
  262:Core/Src/stm32f4xx_it.c ****   /* USER CODE END SDIO_IRQn 1 */
  263:Core/Src/stm32f4xx_it.c **** }
  327              		.loc 1 263 1 is_stmt 0 view .LVU41
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\cc3ePy8S.s 			page 11
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccTOnvpf.s 			page 11
 
 
  328 0008 08BD     		pop	{r3, pc}
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\cc3ePy8S.s 			page 1
  371              		.thumb_func
  373              	DMA2_Stream6_IRQHandler:
  374              	.LFB148:
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\cc3ePy8S.s 			page 12
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccTOnvpf.s 			page 12
 
 
  278:Core/Src/stm32f4xx_it.c **** 
@@ -708,46 +708,46 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\cc3ePy8S.s 			page 1
  406              		.file 10 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio.h"
  407              		.file 11 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_cortex.h"
  408              		.file 12 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h"
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\cc3ePy8S.s 			page 13
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccTOnvpf.s 			page 13
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 stm32f4xx_it.c
-C:\Users\jonas\AppData\Local\Temp\cc3ePy8S.s:21     .text.NMI_Handler:00000000 $t
-C:\Users\jonas\AppData\Local\Temp\cc3ePy8S.s:27     .text.NMI_Handler:00000000 NMI_Handler
-C:\Users\jonas\AppData\Local\Temp\cc3ePy8S.s:44     .text.HardFault_Handler:00000000 $t
-C:\Users\jonas\AppData\Local\Temp\cc3ePy8S.s:50     .text.HardFault_Handler:00000000 HardFault_Handler
-C:\Users\jonas\AppData\Local\Temp\cc3ePy8S.s:67     .text.MemManage_Handler:00000000 $t
-C:\Users\jonas\AppData\Local\Temp\cc3ePy8S.s:73     .text.MemManage_Handler:00000000 MemManage_Handler
-C:\Users\jonas\AppData\Local\Temp\cc3ePy8S.s:90     .text.BusFault_Handler:00000000 $t
-C:\Users\jonas\AppData\Local\Temp\cc3ePy8S.s:96     .text.BusFault_Handler:00000000 BusFault_Handler
-C:\Users\jonas\AppData\Local\Temp\cc3ePy8S.s:113    .text.UsageFault_Handler:00000000 $t
-C:\Users\jonas\AppData\Local\Temp\cc3ePy8S.s:119    .text.UsageFault_Handler:00000000 UsageFault_Handler
-C:\Users\jonas\AppData\Local\Temp\cc3ePy8S.s:136    .text.SVC_Handler:00000000 $t
-C:\Users\jonas\AppData\Local\Temp\cc3ePy8S.s:142    .text.SVC_Handler:00000000 SVC_Handler
-C:\Users\jonas\AppData\Local\Temp\cc3ePy8S.s:155    .text.DebugMon_Handler:00000000 $t
-C:\Users\jonas\AppData\Local\Temp\cc3ePy8S.s:161    .text.DebugMon_Handler:00000000 DebugMon_Handler
-C:\Users\jonas\AppData\Local\Temp\cc3ePy8S.s:174    .text.PendSV_Handler:00000000 $t
-C:\Users\jonas\AppData\Local\Temp\cc3ePy8S.s:180    .text.PendSV_Handler:00000000 PendSV_Handler
-C:\Users\jonas\AppData\Local\Temp\cc3ePy8S.s:193    .text.SysTick_Handler:00000000 $t
-C:\Users\jonas\AppData\Local\Temp\cc3ePy8S.s:199    .text.SysTick_Handler:00000000 SysTick_Handler
-C:\Users\jonas\AppData\Local\Temp\cc3ePy8S.s:221    .text.DMA1_Stream5_IRQHandler:00000000 $t
-C:\Users\jonas\AppData\Local\Temp\cc3ePy8S.s:227    .text.DMA1_Stream5_IRQHandler:00000000 DMA1_Stream5_IRQHandler
-C:\Users\jonas\AppData\Local\Temp\cc3ePy8S.s:246    .text.DMA1_Stream5_IRQHandler:0000000c $d
-C:\Users\jonas\AppData\Local\Temp\cc3ePy8S.s:251    .text.USART2_IRQHandler:00000000 $t
-C:\Users\jonas\AppData\Local\Temp\cc3ePy8S.s:257    .text.USART2_IRQHandler:00000000 USART2_IRQHandler
-C:\Users\jonas\AppData\Local\Temp\cc3ePy8S.s:276    .text.USART2_IRQHandler:0000000c $d
-C:\Users\jonas\AppData\Local\Temp\cc3ePy8S.s:281    .text.EXTI15_10_IRQHandler:00000000 $t
-C:\Users\jonas\AppData\Local\Temp\cc3ePy8S.s:287    .text.EXTI15_10_IRQHandler:00000000 EXTI15_10_IRQHandler
-C:\Users\jonas\AppData\Local\Temp\cc3ePy8S.s:307    .text.SDIO_IRQHandler:00000000 $t
-C:\Users\jonas\AppData\Local\Temp\cc3ePy8S.s:313    .text.SDIO_IRQHandler:00000000 SDIO_IRQHandler
-C:\Users\jonas\AppData\Local\Temp\cc3ePy8S.s:332    .text.SDIO_IRQHandler:0000000c $d
-C:\Users\jonas\AppData\Local\Temp\cc3ePy8S.s:337    .text.DMA2_Stream3_IRQHandler:00000000 $t
-C:\Users\jonas\AppData\Local\Temp\cc3ePy8S.s:343    .text.DMA2_Stream3_IRQHandler:00000000 DMA2_Stream3_IRQHandler
-C:\Users\jonas\AppData\Local\Temp\cc3ePy8S.s:362    .text.DMA2_Stream3_IRQHandler:0000000c $d
-C:\Users\jonas\AppData\Local\Temp\cc3ePy8S.s:367    .text.DMA2_Stream6_IRQHandler:00000000 $t
-C:\Users\jonas\AppData\Local\Temp\cc3ePy8S.s:373    .text.DMA2_Stream6_IRQHandler:00000000 DMA2_Stream6_IRQHandler
-C:\Users\jonas\AppData\Local\Temp\cc3ePy8S.s:392    .text.DMA2_Stream6_IRQHandler:0000000c $d
+C:\Users\jonas\AppData\Local\Temp\ccTOnvpf.s:21     .text.NMI_Handler:00000000 $t
+C:\Users\jonas\AppData\Local\Temp\ccTOnvpf.s:27     .text.NMI_Handler:00000000 NMI_Handler
+C:\Users\jonas\AppData\Local\Temp\ccTOnvpf.s:44     .text.HardFault_Handler:00000000 $t
+C:\Users\jonas\AppData\Local\Temp\ccTOnvpf.s:50     .text.HardFault_Handler:00000000 HardFault_Handler
+C:\Users\jonas\AppData\Local\Temp\ccTOnvpf.s:67     .text.MemManage_Handler:00000000 $t
+C:\Users\jonas\AppData\Local\Temp\ccTOnvpf.s:73     .text.MemManage_Handler:00000000 MemManage_Handler
+C:\Users\jonas\AppData\Local\Temp\ccTOnvpf.s:90     .text.BusFault_Handler:00000000 $t
+C:\Users\jonas\AppData\Local\Temp\ccTOnvpf.s:96     .text.BusFault_Handler:00000000 BusFault_Handler
+C:\Users\jonas\AppData\Local\Temp\ccTOnvpf.s:113    .text.UsageFault_Handler:00000000 $t
+C:\Users\jonas\AppData\Local\Temp\ccTOnvpf.s:119    .text.UsageFault_Handler:00000000 UsageFault_Handler
+C:\Users\jonas\AppData\Local\Temp\ccTOnvpf.s:136    .text.SVC_Handler:00000000 $t
+C:\Users\jonas\AppData\Local\Temp\ccTOnvpf.s:142    .text.SVC_Handler:00000000 SVC_Handler
+C:\Users\jonas\AppData\Local\Temp\ccTOnvpf.s:155    .text.DebugMon_Handler:00000000 $t
+C:\Users\jonas\AppData\Local\Temp\ccTOnvpf.s:161    .text.DebugMon_Handler:00000000 DebugMon_Handler
+C:\Users\jonas\AppData\Local\Temp\ccTOnvpf.s:174    .text.PendSV_Handler:00000000 $t
+C:\Users\jonas\AppData\Local\Temp\ccTOnvpf.s:180    .text.PendSV_Handler:00000000 PendSV_Handler
+C:\Users\jonas\AppData\Local\Temp\ccTOnvpf.s:193    .text.SysTick_Handler:00000000 $t
+C:\Users\jonas\AppData\Local\Temp\ccTOnvpf.s:199    .text.SysTick_Handler:00000000 SysTick_Handler
+C:\Users\jonas\AppData\Local\Temp\ccTOnvpf.s:221    .text.DMA1_Stream5_IRQHandler:00000000 $t
+C:\Users\jonas\AppData\Local\Temp\ccTOnvpf.s:227    .text.DMA1_Stream5_IRQHandler:00000000 DMA1_Stream5_IRQHandler
+C:\Users\jonas\AppData\Local\Temp\ccTOnvpf.s:246    .text.DMA1_Stream5_IRQHandler:0000000c $d
+C:\Users\jonas\AppData\Local\Temp\ccTOnvpf.s:251    .text.USART2_IRQHandler:00000000 $t
+C:\Users\jonas\AppData\Local\Temp\ccTOnvpf.s:257    .text.USART2_IRQHandler:00000000 USART2_IRQHandler
+C:\Users\jonas\AppData\Local\Temp\ccTOnvpf.s:276    .text.USART2_IRQHandler:0000000c $d
+C:\Users\jonas\AppData\Local\Temp\ccTOnvpf.s:281    .text.EXTI15_10_IRQHandler:00000000 $t
+C:\Users\jonas\AppData\Local\Temp\ccTOnvpf.s:287    .text.EXTI15_10_IRQHandler:00000000 EXTI15_10_IRQHandler
+C:\Users\jonas\AppData\Local\Temp\ccTOnvpf.s:307    .text.SDIO_IRQHandler:00000000 $t
+C:\Users\jonas\AppData\Local\Temp\ccTOnvpf.s:313    .text.SDIO_IRQHandler:00000000 SDIO_IRQHandler
+C:\Users\jonas\AppData\Local\Temp\ccTOnvpf.s:332    .text.SDIO_IRQHandler:0000000c $d
+C:\Users\jonas\AppData\Local\Temp\ccTOnvpf.s:337    .text.DMA2_Stream3_IRQHandler:00000000 $t
+C:\Users\jonas\AppData\Local\Temp\ccTOnvpf.s:343    .text.DMA2_Stream3_IRQHandler:00000000 DMA2_Stream3_IRQHandler
+C:\Users\jonas\AppData\Local\Temp\ccTOnvpf.s:362    .text.DMA2_Stream3_IRQHandler:0000000c $d
+C:\Users\jonas\AppData\Local\Temp\ccTOnvpf.s:367    .text.DMA2_Stream6_IRQHandler:00000000 $t
+C:\Users\jonas\AppData\Local\Temp\ccTOnvpf.s:373    .text.DMA2_Stream6_IRQHandler:00000000 DMA2_Stream6_IRQHandler
+C:\Users\jonas\AppData\Local\Temp\ccTOnvpf.s:392    .text.DMA2_Stream6_IRQHandler:0000000c $d
 
 UNDEFINED SYMBOLS
 HAL_IncTick
