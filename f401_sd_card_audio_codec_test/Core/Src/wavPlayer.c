@@ -8,7 +8,7 @@ void initPlayer(WavPlayer *player, FIL *file, wav_header_t *wavHeader) {
     player->restartPlayback = false;
     player->playbackActive = false;
     player->headerSize = 0;
-    player->pitchFactor = 0.7;
+    player->pitchFactor = 1.3;
 }
 
 // load .wav header and check for valid header members
@@ -127,7 +127,8 @@ uint8_t wavPlayPitched(WavPlayer *player) {
     uint32_t remainingBytes = length;
 
     float currentPitchFactor = player->pitchFactor;
-    float sampleIndex = 0.0f;
+    // float sampleIndex = 0.0f;
+    uint32_t sampleIndex;
 
     // Start DMA Stream
     HAL_I2S_Transmit_DMA(&hi2s2, (void *)dacData, BUFFER_SIZE);
@@ -140,13 +141,15 @@ uint8_t wavPlayPitched(WavPlayer *player) {
             // memcpy(outBufPtr, fileReadBuf, HALF_BUFFER_SIZE * sizeof(uint16_t));
             for (uint32_t n = 0; n < (HALF_BUFFER_SIZE) - 1; n += 2) {
                 // Calculate the index for left sample
-                // outBufPtr[n] = fileReadBuf[leftIndex];
 
                 // interpolate left and right samples
                 // outBufPtr[n] = interpolate(fileReadBuf, sampleIndex);
                 // outBufPtr[n+1] = interpolate(fileReadBuf, sampleIndex + currentPitchFactor);
+
+                // round samples
+                // WITHOUT AN FPU THE MCU WONT BE FAST ENOUGH!
                 outBufPtr[n] = fileReadBuf[(uint32_t)round(sampleIndex)];
-                // outBufPtr[n+1] = fileReadBuf[(uint32_t)round(sampleIndex + currentPitchFactor)];
+                outBufPtr[n+1] = fileReadBuf[(uint32_t)round(sampleIndex + currentPitchFactor)];
 
                 sampleIndex += currentPitchFactor * 2;
             }
@@ -170,18 +173,11 @@ uint8_t wavPlayPitched(WavPlayer *player) {
                 sampleIndex -= bytesRead / sizeof(uint16_t);
             }
 
-            // Ensure sampleIndex is within the bounds
-            // if (sampleIndex >= HALF_BUFFER_SIZE) {
-            //     sampleIndex -= HALF_BUFFER_SIZE;
-            // }
-
             if(player->restartPlayback){
                 f_lseek(player->file,player->headerSize);
                 remainingBytes = length;
                 player->restartPlayback = false;
             }
-            
-
 
             dma_dataReady = false;
         }
