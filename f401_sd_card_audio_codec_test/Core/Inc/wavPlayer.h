@@ -33,9 +33,12 @@ typedef struct {
     volatile bool playbackActive;
     FIL *file;
     wav_header_t *wavHeader;
+    uint32_t headerSize;
 } WavPlayer;
 
 void initPlayer(WavPlayer *player, FIL *file, wav_header_t *wavHeader);
+
+FRESULT wavLoad(WavPlayer *player,const char *filename);
 
 uint8_t checkWav(WavPlayer *player);
 

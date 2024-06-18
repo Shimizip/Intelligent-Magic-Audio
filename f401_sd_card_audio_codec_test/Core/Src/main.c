@@ -134,13 +134,10 @@ int main(void)
     // Init the player
     initPlayer(&player, &fil, &wavHeader);
 
-    //Now let's try to open file "test.txt"
-    fres = f_open(player.file, "letsroll.wav", FA_READ);
-    if (fres != FR_OK) {
-  	  while(1);
+    if(wavLoad(&player, "letsroll.wav") != FR_OK){
+        while(1);
     }
 
-    // f_lseek(&fil,0);
     // initSineTable();
 
 

@@ -7,6 +7,7 @@ void initPlayer(WavPlayer *player, FIL *file, wav_header_t *wavHeader) {
     player->wavHeader = wavHeader;
     player->restartPlayback = false;
     player->playbackActive = false;
+    player->headerSize = 0;
 }
 
 // load .wav header and check for valid header members
@@ -14,7 +15,7 @@ uint8_t checkWav(WavPlayer *player) {
     uint8_t wav_OK = 1;
     UINT count = 0;
 
-    // Read RIFF header and first Chunki
+    // Read RIFF header and first Chunk
     if (f_read(player->file, player->wavHeader, sizeof(uint32_t) * 5, &count) != FR_OK) {
         return 0;
     }
@@ -32,6 +33,7 @@ uint8_t checkWav(WavPlayer *player) {
         }
 
         f_lseek(player->file, f_tell(player->file) + player->wavHeader->Subchunk1Size);
+        player->headerSize += player->wavHeader->Subchunk1Size;
 
         // Calculate the address of the next subchunk header
         wav_header_t* nextHeader = (wav_header_t*)((char*)player->wavHeader + sizeof(uint32_t) * 3);
@@ -40,12 +42,17 @@ uint8_t checkWav(WavPlayer *player) {
         if (f_read(player->file, nextHeader, sizeof(wav_header_t) - sizeof(uint32_t) * 3, &count) != FR_OK) {
             return 0;
         }
+        player->headerSize += count;
     }
+
 
     // Check essential "fmt " subchunk
     if (player->wavHeader->Subchunk1Size != 16 || player->wavHeader->AudioFormat != 1) {
         return 0;
     }
+
+    // save headerSize for later usage
+    player->headerSize = (uint32_t) player->file->fptr;
 
     return wav_OK;
 }
@@ -59,12 +66,23 @@ void playButtonHandler(WavPlayer *player){
     }
 }
 
+// load file via FATFS 
+// populate wavHeader and check if file is in correct format
+FRESULT wavLoad(WavPlayer *player,const char *filename){
+    FRESULT res;
+    res = f_open(player->file, filename, FA_READ);
+    if (res == FR_OK){
+        checkWav(player);
+    }
+    return res;
+}
+
 uint8_t wavPlay(WavPlayer *player){
-    // populate wavHeader and check if file is in correct format
-    checkWav(player);
+    f_lseek(player->file,player->headerSize);
+
     uint32_t length = player->wavHeader->Subchunk2Size ;    // Number of bytes in data. Number of samples * num_channels * sample byte size
     uint32_t remainingBytes = length;
-
+    
     // Start DMA Stream
     HAL_I2S_Transmit_DMA(&hi2s3,(uint16_t *)dacData, BUFFER_SIZE);
 
@@ -81,7 +99,8 @@ uint8_t wavPlay(WavPlayer *player){
             //     outBufPtr[n] = left;
             // }
             if(player->restartPlayback){
-                f_lseek(player->file,0);
+                f_lseek(player->file,player->headerSize);
+                remainingBytes = length;
                 player->restartPlayback = false;
             }
             
