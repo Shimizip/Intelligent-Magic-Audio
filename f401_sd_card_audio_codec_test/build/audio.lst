@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\cc1YYzI8.s 			page 1
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccDrGUNK.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\cc1YYzI8.s 			page 1
   38              		.cfi_offset 4, -8
   39              		.cfi_offset 14, -4
   19:Core/Src/audio.c ****     for (int i = 0; i < SINE_TABLE_SIZE; ++i) {
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\cc1YYzI8.s 			page 2
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccDrGUNK.s 			page 2
 
 
   40              		.loc 1 19 5 view .LVU1
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\cc1YYzI8.s 			page 1
   89              	.LVL9:
   90              	.L6:
   91              		.loc 1 22 1 view .LVU14
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\cc1YYzI8.s 			page 3
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccDrGUNK.s 			page 3
 
 
   92 0046 00BF     		.align	3
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\cc1YYzI8.s 			page 1
  143              		.thumb
  144              		.thumb_func
  146              	HAL_I2S_TxCpltCallback:
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\cc1YYzI8.s 			page 4
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccDrGUNK.s 			page 4
 
 
  147              	.LVL11:
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\cc1YYzI8.s 			page 1
  195              		.cfi_offset 3, -24
  196              		.cfi_offset 4, -20
  197              		.cfi_offset 5, -16
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\cc1YYzI8.s 			page 5
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccDrGUNK.s 			page 5
 
 
  198              		.cfi_offset 6, -12
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\cc1YYzI8.s 			page 1
  244              		.loc 1 44 41 view .LVU40
  245 003a 164A     		ldr	r2, .L22+28
  246 003c 32F91020 		ldrsh	r2, [r2, r0, lsl #1]
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\cc1YYzI8.s 			page 6
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccDrGUNK.s 			page 6
 
 
  247              		.loc 1 44 30 view .LVU41
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\cc1YYzI8.s 			page 1
  287              	.LBB8:
   42:Core/Src/audio.c ****                 // Lookup sine value from table
  288              		.loc 1 42 26 view .LVU54
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\cc1YYzI8.s 			page 7
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccDrGUNK.s 			page 7
 
 
  289 0072 0026     		movs	r6, #0
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\cc1YYzI8.s 			page 1
  335              		.loc 1 64 5 view .LVU60
  336              		.loc 1 64 8 is_stmt 0 view .LVU61
  337 000a E9B1     		cbz	r1, .L28
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\cc1YYzI8.s 			page 8
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccDrGUNK.s 			page 8
 
 
  338              	.LBB9:
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\cc1YYzI8.s 			page 1
  383              		.loc 1 73 8 discriminator 1 view .LVU78
  384 0044 10B1     		cbz	r0, .L26
  385              	.L27:
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\cc1YYzI8.s 			page 9
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccDrGUNK.s 			page 9
 
 
   74:Core/Src/audio.c ****     // Error handling
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\cc1YYzI8.s 			page 1
    1:Drivers/CMSIS/Include/cmsis_gcc.h **** /**************************************************************************//**
    2:Drivers/CMSIS/Include/cmsis_gcc.h ****  * @file     cmsis_gcc.h
    3:Drivers/CMSIS/Include/cmsis_gcc.h ****  * @brief    CMSIS compiler GCC header file
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\cc1YYzI8.s 			page 10
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccDrGUNK.s 			page 10
 
 
    4:Drivers/CMSIS/Include/cmsis_gcc.h ****  * @version  V5.4.1
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\cc1YYzI8.s 			page 1
   58:Drivers/CMSIS/Include/cmsis_gcc.h **** #ifndef   __WEAK
   59:Drivers/CMSIS/Include/cmsis_gcc.h ****   #define __WEAK                                 __attribute__((weak))
   60:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\cc1YYzI8.s 			page 11
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccDrGUNK.s 			page 11
 
 
   61:Drivers/CMSIS/Include/cmsis_gcc.h **** #ifndef   __PACKED
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\cc1YYzI8.s 			page 1
  115:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
  116:Drivers/CMSIS/Include/cmsis_gcc.h **** #ifndef   __COMPILER_BARRIER
  117:Drivers/CMSIS/Include/cmsis_gcc.h ****   #define __COMPILER_BARRIER()                   __ASM volatile("":::"memory")
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\cc1YYzI8.s 			page 12
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccDrGUNK.s 			page 12
 
 
  118:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\cc1YYzI8.s 			page 1
  172:Drivers/CMSIS/Include/cmsis_gcc.h **** 
  173:Drivers/CMSIS/Include/cmsis_gcc.h **** #ifndef __STACK_LIMIT
  174:Drivers/CMSIS/Include/cmsis_gcc.h **** #define __STACK_LIMIT             __StackLimit
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\cc1YYzI8.s 			page 13
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccDrGUNK.s 			page 13
 
 
  175:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\cc1YYzI8.s 			page 1
  229:Drivers/CMSIS/Include/cmsis_gcc.h **** 
  230:Drivers/CMSIS/Include/cmsis_gcc.h **** /**
  231:Drivers/CMSIS/Include/cmsis_gcc.h ****   \brief   Wait For Interrupt
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\cc1YYzI8.s 			page 14
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccDrGUNK.s 			page 14
 
 
  232:Drivers/CMSIS/Include/cmsis_gcc.h ****   \details Wait For Interrupt is a hint instruction that suspends execution until one of a number o
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\cc1YYzI8.s 			page 1
  286:Drivers/CMSIS/Include/cmsis_gcc.h **** /**
  287:Drivers/CMSIS/Include/cmsis_gcc.h ****   \brief   Reverse byte order (32 bit)
  288:Drivers/CMSIS/Include/cmsis_gcc.h ****   \details Reverses the byte order in unsigned integer value. For example, 0x12345678 becomes 0x785
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\cc1YYzI8.s 			page 15
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccDrGUNK.s 			page 15
 
 
  289:Drivers/CMSIS/Include/cmsis_gcc.h ****   \param [in]    value  Value to reverse
@@ -898,7 +898,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\cc1YYzI8.s 			page 1
  343:Drivers/CMSIS/Include/cmsis_gcc.h ****   \param [in]    op2  Number of Bits to rotate
  344:Drivers/CMSIS/Include/cmsis_gcc.h ****   \return               Rotated value
  345:Drivers/CMSIS/Include/cmsis_gcc.h ****  */
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\cc1YYzI8.s 			page 16
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccDrGUNK.s 			page 16
 
 
  346:Drivers/CMSIS/Include/cmsis_gcc.h **** __STATIC_FORCEINLINE uint32_t __ROR(uint32_t op1, uint32_t op2)
@@ -958,7 +958,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\cc1YYzI8.s 			page 1
  400:Drivers/CMSIS/Include/cmsis_gcc.h ****   \param [in]  value  Value to count the leading zeros
  401:Drivers/CMSIS/Include/cmsis_gcc.h ****   \return             number of leading zeros in value
  402:Drivers/CMSIS/Include/cmsis_gcc.h ****  */
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\cc1YYzI8.s 			page 17
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccDrGUNK.s 			page 17
 
 
  403:Drivers/CMSIS/Include/cmsis_gcc.h **** __STATIC_FORCEINLINE uint8_t __CLZ(uint32_t value)
@@ -1018,7 +1018,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\cc1YYzI8.s 			page 1
  457:Drivers/CMSIS/Include/cmsis_gcc.h **** 
  458:Drivers/CMSIS/Include/cmsis_gcc.h **** #if (__GNUC__ > 4) || (__GNUC__ == 4 && __GNUC_MINOR__ >= 8)
  459:Drivers/CMSIS/Include/cmsis_gcc.h ****    __ASM volatile ("ldrexh %0, %1" : "=r" (result) : "Q" (*addr) );
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\cc1YYzI8.s 			page 18
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccDrGUNK.s 			page 18
 
 
  460:Drivers/CMSIS/Include/cmsis_gcc.h **** #else
@@ -1078,7 +1078,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\cc1YYzI8.s 			page 1
  514:Drivers/CMSIS/Include/cmsis_gcc.h ****    __ASM volatile ("strexh %0, %2, %1" : "=&r" (result), "=Q" (*addr) : "r" ((uint32_t)value) );
  515:Drivers/CMSIS/Include/cmsis_gcc.h ****    return(result);
  516:Drivers/CMSIS/Include/cmsis_gcc.h **** }
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\cc1YYzI8.s 			page 19
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccDrGUNK.s 			page 19
 
 
  517:Drivers/CMSIS/Include/cmsis_gcc.h **** 
@@ -1138,7 +1138,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\cc1YYzI8.s 			page 1
  571:Drivers/CMSIS/Include/cmsis_gcc.h ****   \brief   Unsigned Saturate
  572:Drivers/CMSIS/Include/cmsis_gcc.h ****   \details Saturates an unsigned value.
  573:Drivers/CMSIS/Include/cmsis_gcc.h ****   \param [in]  ARG1  Value to be saturated
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\cc1YYzI8.s 			page 20
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccDrGUNK.s 			page 20
 
 
  574:Drivers/CMSIS/Include/cmsis_gcc.h ****   \param [in]  ARG2  Bit position to saturate to (0..31)
@@ -1198,7 +1198,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\cc1YYzI8.s 			page 1
  628:Drivers/CMSIS/Include/cmsis_gcc.h ****   \return        value of type uint16_t at (*ptr)
  629:Drivers/CMSIS/Include/cmsis_gcc.h ****  */
  630:Drivers/CMSIS/Include/cmsis_gcc.h **** __STATIC_FORCEINLINE uint16_t __LDRHT(volatile uint16_t *ptr)
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\cc1YYzI8.s 			page 21
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccDrGUNK.s 			page 21
 
 
  631:Drivers/CMSIS/Include/cmsis_gcc.h **** {
@@ -1258,7 +1258,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\cc1YYzI8.s 			page 1
  685:Drivers/CMSIS/Include/cmsis_gcc.h **** /**
  686:Drivers/CMSIS/Include/cmsis_gcc.h ****   \brief   STRT Unprivileged (32 bit)
  687:Drivers/CMSIS/Include/cmsis_gcc.h ****   \details Executes a Unprivileged STRT instruction for 32 bit values.
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\cc1YYzI8.s 			page 22
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccDrGUNK.s 			page 22
 
 
  688:Drivers/CMSIS/Include/cmsis_gcc.h ****   \param [in]  value  Value to store
@@ -1318,7 +1318,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\cc1YYzI8.s 			page 1
  742:Drivers/CMSIS/Include/cmsis_gcc.h ****     {
  743:Drivers/CMSIS/Include/cmsis_gcc.h ****       return 0U;
  744:Drivers/CMSIS/Include/cmsis_gcc.h ****     }
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\cc1YYzI8.s 			page 23
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccDrGUNK.s 			page 23
 
 
  745:Drivers/CMSIS/Include/cmsis_gcc.h ****   }
@@ -1378,7 +1378,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\cc1YYzI8.s 			page 1
  799:Drivers/CMSIS/Include/cmsis_gcc.h **** 
  800:Drivers/CMSIS/Include/cmsis_gcc.h **** 
  801:Drivers/CMSIS/Include/cmsis_gcc.h **** /**
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\cc1YYzI8.s 			page 24
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccDrGUNK.s 			page 24
 
 
  802:Drivers/CMSIS/Include/cmsis_gcc.h ****   \brief   Store-Release (8 bit)
@@ -1438,7 +1438,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\cc1YYzI8.s 			page 1
  856:Drivers/CMSIS/Include/cmsis_gcc.h ****   \return        value of type uint16_t at (*ptr)
  857:Drivers/CMSIS/Include/cmsis_gcc.h ****  */
  858:Drivers/CMSIS/Include/cmsis_gcc.h **** __STATIC_FORCEINLINE uint16_t __LDAEXH(volatile uint16_t *ptr)
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\cc1YYzI8.s 			page 25
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccDrGUNK.s 			page 25
 
 
  859:Drivers/CMSIS/Include/cmsis_gcc.h **** {
@@ -1498,7 +1498,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\cc1YYzI8.s 			page 1
  913:Drivers/CMSIS/Include/cmsis_gcc.h **** }
  914:Drivers/CMSIS/Include/cmsis_gcc.h **** 
  915:Drivers/CMSIS/Include/cmsis_gcc.h **** 
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\cc1YYzI8.s 			page 26
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccDrGUNK.s 			page 26
 
 
  916:Drivers/CMSIS/Include/cmsis_gcc.h **** /**
@@ -1558,7 +1558,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\cc1YYzI8.s 			page 1
  440              		.thumb
  441              		.syntax unified
  442              	.LBE11:
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\cc1YYzI8.s 			page 27
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccDrGUNK.s 			page 27
 
 
  443              	.LBE10:
@@ -1618,7 +1618,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\cc1YYzI8.s 			page 1
  491              		@ link register save eliminated.
   88:Core/Src/audio.c ****     uint32_t idx = (uint32_t)index;
  492              		.loc 1 88 5 view .LVU98
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\cc1YYzI8.s 			page 28
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccDrGUNK.s 			page 28
 
 
  493              		.loc 1 88 14 is_stmt 0 view .LVU99
@@ -1678,7 +1678,7 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\cc1YYzI8.s 			page 1
  544              		.section	.bss.phaseIndex.0,"aw",%nobits
  545              		.align	1
  548              	phaseIndex.0:
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\cc1YYzI8.s 			page 29
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccDrGUNK.s 			page 29
 
 
  549 0000 0000     		.space	2
@@ -1738,51 +1738,51 @@ ARM GAS  C:\Users\jonas\AppData\Local\Temp\cc1YYzI8.s 			page 1
  605              		.file 9 "Middlewares/Third_Party/FatFs/src/integer.h"
  606              		.file 10 "Middlewares/Third_Party/FatFs/src/ff.h"
  607              		.file 11 "Core/Inc/audio.h"
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\cc1YYzI8.s 			page 30
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccDrGUNK.s 			page 30
 
 
  608              		.file 12 "C:/Users/jonas/AppData/Roaming/VSCodium/User/globalStorage/bmd.stm32-for-vscode/@xpack-d
-ARM GAS  C:\Users\jonas\AppData\Local\Temp\cc1YYzI8.s 			page 31
+ARM GAS  C:\Users\jonas\AppData\Local\Temp\ccDrGUNK.s 			page 31
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 audio.c
-C:\Users\jonas\AppData\Local\Temp\cc1YYzI8.s:24     .text.initSineTable:00000000 $t
-C:\Users\jonas\AppData\Local\Temp\cc1YYzI8.s:30     .text.initSineTable:00000000 initSineTable
-C:\Users\jonas\AppData\Local\Temp\cc1YYzI8.s:94     .text.initSineTable:00000048 $d
-C:\Users\jonas\AppData\Local\Temp\cc1YYzI8.s:555    .bss.sineTable:00000000 sineTable
-C:\Users\jonas\AppData\Local\Temp\cc1YYzI8.s:104    .text.HAL_I2S_TxHalfCpltCallback:00000000 $t
-C:\Users\jonas\AppData\Local\Temp\cc1YYzI8.s:110    .text.HAL_I2S_TxHalfCpltCallback:00000000 HAL_I2S_TxHalfCpltCallback
-C:\Users\jonas\AppData\Local\Temp\cc1YYzI8.s:133    .text.HAL_I2S_TxHalfCpltCallback:00000010 $d
-C:\Users\jonas\AppData\Local\Temp\cc1YYzI8.s:575    .data.outBufPtr:00000000 outBufPtr
-C:\Users\jonas\AppData\Local\Temp\cc1YYzI8.s:589    .bss.dacData:00000000 dacData
-C:\Users\jonas\AppData\Local\Temp\cc1YYzI8.s:595    .bss.dma_dataReady:00000000 dma_dataReady
-C:\Users\jonas\AppData\Local\Temp\cc1YYzI8.s:140    .text.HAL_I2S_TxCpltCallback:00000000 $t
-C:\Users\jonas\AppData\Local\Temp\cc1YYzI8.s:146    .text.HAL_I2S_TxCpltCallback:00000000 HAL_I2S_TxCpltCallback
-C:\Users\jonas\AppData\Local\Temp\cc1YYzI8.s:169    .text.HAL_I2S_TxCpltCallback:00000010 $d
-C:\Users\jonas\AppData\Local\Temp\cc1YYzI8.s:179    .text.generateSineWave:00000000 $t
-C:\Users\jonas\AppData\Local\Temp\cc1YYzI8.s:185    .text.generateSineWave:00000000 generateSineWave
-C:\Users\jonas\AppData\Local\Temp\cc1YYzI8.s:294    .text.generateSineWave:00000078 $d
-C:\Users\jonas\AppData\Local\Temp\cc1YYzI8.s:548    .bss.phaseIndex.0:00000000 phaseIndex.0
-C:\Users\jonas\AppData\Local\Temp\cc1YYzI8.s:309    .text.fillHalfBufferFromSD:00000000 $t
-C:\Users\jonas\AppData\Local\Temp\cc1YYzI8.s:315    .text.fillHalfBufferFromSD:00000000 fillHalfBufferFromSD
-C:\Users\jonas\AppData\Local\Temp\cc1YYzI8.s:408    .text.fillHalfBufferFromSD:00000054 $d
-C:\Users\jonas\AppData\Local\Temp\cc1YYzI8.s:568    .data.pitchFactor:00000000 pitchFactor
-C:\Users\jonas\AppData\Local\Temp\cc1YYzI8.s:582    .bss.fileReadBuf:00000000 fileReadBuf
-C:\Users\jonas\AppData\Local\Temp\cc1YYzI8.s:415    .text.setPitchFactor:00000000 $t
-C:\Users\jonas\AppData\Local\Temp\cc1YYzI8.s:421    .text.setPitchFactor:00000000 setPitchFactor
-C:\Users\jonas\AppData\Local\Temp\cc1YYzI8.s:472    .text.setPitchFactor:00000014 $d
-C:\Users\jonas\AppData\Local\Temp\cc1YYzI8.s:561    .bss.pitchChanged:00000000 pitchChanged
-C:\Users\jonas\AppData\Local\Temp\cc1YYzI8.s:478    .text.interpolate:00000000 $t
-C:\Users\jonas\AppData\Local\Temp\cc1YYzI8.s:484    .text.interpolate:00000000 interpolate
-C:\Users\jonas\AppData\Local\Temp\cc1YYzI8.s:545    .bss.phaseIndex.0:00000000 $d
-C:\Users\jonas\AppData\Local\Temp\cc1YYzI8.s:552    .bss.sineTable:00000000 $d
-C:\Users\jonas\AppData\Local\Temp\cc1YYzI8.s:562    .bss.pitchChanged:00000000 $d
-C:\Users\jonas\AppData\Local\Temp\cc1YYzI8.s:565    .data.pitchFactor:00000000 $d
-C:\Users\jonas\AppData\Local\Temp\cc1YYzI8.s:572    .data.outBufPtr:00000000 $d
-C:\Users\jonas\AppData\Local\Temp\cc1YYzI8.s:579    .bss.fileReadBuf:00000000 $d
-C:\Users\jonas\AppData\Local\Temp\cc1YYzI8.s:586    .bss.dacData:00000000 $d
-C:\Users\jonas\AppData\Local\Temp\cc1YYzI8.s:596    .bss.dma_dataReady:00000000 $d
+C:\Users\jonas\AppData\Local\Temp\ccDrGUNK.s:24     .text.initSineTable:00000000 $t
+C:\Users\jonas\AppData\Local\Temp\ccDrGUNK.s:30     .text.initSineTable:00000000 initSineTable
+C:\Users\jonas\AppData\Local\Temp\ccDrGUNK.s:94     .text.initSineTable:00000048 $d
+C:\Users\jonas\AppData\Local\Temp\ccDrGUNK.s:555    .bss.sineTable:00000000 sineTable
+C:\Users\jonas\AppData\Local\Temp\ccDrGUNK.s:104    .text.HAL_I2S_TxHalfCpltCallback:00000000 $t
+C:\Users\jonas\AppData\Local\Temp\ccDrGUNK.s:110    .text.HAL_I2S_TxHalfCpltCallback:00000000 HAL_I2S_TxHalfCpltCallback
+C:\Users\jonas\AppData\Local\Temp\ccDrGUNK.s:133    .text.HAL_I2S_TxHalfCpltCallback:00000010 $d
+C:\Users\jonas\AppData\Local\Temp\ccDrGUNK.s:575    .data.outBufPtr:00000000 outBufPtr
+C:\Users\jonas\AppData\Local\Temp\ccDrGUNK.s:589    .bss.dacData:00000000 dacData
+C:\Users\jonas\AppData\Local\Temp\ccDrGUNK.s:595    .bss.dma_dataReady:00000000 dma_dataReady
+C:\Users\jonas\AppData\Local\Temp\ccDrGUNK.s:140    .text.HAL_I2S_TxCpltCallback:00000000 $t
+C:\Users\jonas\AppData\Local\Temp\ccDrGUNK.s:146    .text.HAL_I2S_TxCpltCallback:00000000 HAL_I2S_TxCpltCallback
+C:\Users\jonas\AppData\Local\Temp\ccDrGUNK.s:169    .text.HAL_I2S_TxCpltCallback:00000010 $d
+C:\Users\jonas\AppData\Local\Temp\ccDrGUNK.s:179    .text.generateSineWave:00000000 $t
+C:\Users\jonas\AppData\Local\Temp\ccDrGUNK.s:185    .text.generateSineWave:00000000 generateSineWave
+C:\Users\jonas\AppData\Local\Temp\ccDrGUNK.s:294    .text.generateSineWave:00000078 $d
+C:\Users\jonas\AppData\Local\Temp\ccDrGUNK.s:548    .bss.phaseIndex.0:00000000 phaseIndex.0
+C:\Users\jonas\AppData\Local\Temp\ccDrGUNK.s:309    .text.fillHalfBufferFromSD:00000000 $t
+C:\Users\jonas\AppData\Local\Temp\ccDrGUNK.s:315    .text.fillHalfBufferFromSD:00000000 fillHalfBufferFromSD
+C:\Users\jonas\AppData\Local\Temp\ccDrGUNK.s:408    .text.fillHalfBufferFromSD:00000054 $d
+C:\Users\jonas\AppData\Local\Temp\ccDrGUNK.s:568    .data.pitchFactor:00000000 pitchFactor
+C:\Users\jonas\AppData\Local\Temp\ccDrGUNK.s:582    .bss.fileReadBuf:00000000 fileReadBuf
+C:\Users\jonas\AppData\Local\Temp\ccDrGUNK.s:415    .text.setPitchFactor:00000000 $t
+C:\Users\jonas\AppData\Local\Temp\ccDrGUNK.s:421    .text.setPitchFactor:00000000 setPitchFactor
+C:\Users\jonas\AppData\Local\Temp\ccDrGUNK.s:472    .text.setPitchFactor:00000014 $d
+C:\Users\jonas\AppData\Local\Temp\ccDrGUNK.s:561    .bss.pitchChanged:00000000 pitchChanged
+C:\Users\jonas\AppData\Local\Temp\ccDrGUNK.s:478    .text.interpolate:00000000 $t
+C:\Users\jonas\AppData\Local\Temp\ccDrGUNK.s:484    .text.interpolate:00000000 interpolate
+C:\Users\jonas\AppData\Local\Temp\ccDrGUNK.s:545    .bss.phaseIndex.0:00000000 $d
+C:\Users\jonas\AppData\Local\Temp\ccDrGUNK.s:552    .bss.sineTable:00000000 $d
+C:\Users\jonas\AppData\Local\Temp\ccDrGUNK.s:562    .bss.pitchChanged:00000000 $d
+C:\Users\jonas\AppData\Local\Temp\ccDrGUNK.s:565    .data.pitchFactor:00000000 $d
+C:\Users\jonas\AppData\Local\Temp\ccDrGUNK.s:572    .data.outBufPtr:00000000 $d
+C:\Users\jonas\AppData\Local\Temp\ccDrGUNK.s:579    .bss.fileReadBuf:00000000 $d
+C:\Users\jonas\AppData\Local\Temp\ccDrGUNK.s:586    .bss.dacData:00000000 $d
+C:\Users\jonas\AppData\Local\Temp\ccDrGUNK.s:596    .bss.dma_dataReady:00000000 $d
 
 UNDEFINED SYMBOLS
 __aeabi_i2d

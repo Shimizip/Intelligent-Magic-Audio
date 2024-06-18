@@ -50,8 +50,17 @@ uint8_t checkWav(WavPlayer *player) {
     return wav_OK;
 }
 
-// assumes wavHeader is already populated
+void playButtonHandler(WavPlayer *player){
+    if(!player->playbackActive){
+        player->playbackActive = true;
+    }
+    else if(player->playbackActive){
+        player->restartPlayback = true;
+    }
+}
+
 uint8_t wavPlay(WavPlayer *player){
+    // populate wavHeader and check if file is in correct format
     checkWav(player);
     uint32_t length = player->wavHeader->Subchunk2Size ;    // Number of bytes in data. Number of samples * num_channels * sample byte size
     uint32_t remainingBytes = length;
@@ -71,13 +80,18 @@ uint8_t wavPlay(WavPlayer *player){
             //     left = 1.0 * left;
             //     outBufPtr[n] = left;
             // }
+            if(player->restartPlayback){
+                f_lseek(player->file,0);
+                player->restartPlayback = false;
+            }
             
             remainingBytes -= bytesRead;
             dma_dataReady = false;
         }
     }
-    f_lseek(player->file,0);
     HAL_I2S_DMAStop(&hi2s3);
+    f_lseek(player->file,0);
+    player->playbackActive = false;
     return 0;
 }
 

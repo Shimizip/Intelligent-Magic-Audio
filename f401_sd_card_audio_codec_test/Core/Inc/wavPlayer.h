@@ -42,6 +42,8 @@ uint8_t checkWav(WavPlayer *player);
 uint8_t wavPlay(WavPlayer *player);
 uint8_t wavPlayPitched(WavPlayer *player);
 
+void playButtonHandler(WavPlayer *player);
+
 void wavStop(void);
 
 #endif /* INC_WAVDECODER_H_ */

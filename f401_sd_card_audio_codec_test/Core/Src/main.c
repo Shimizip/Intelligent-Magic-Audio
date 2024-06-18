@@ -58,7 +58,7 @@ UART_HandleTypeDef huart2;
 
 /* USER CODE BEGIN PV */
 
-bool play = false;
+WavPlayer player;
 
 /* USER CODE END PV */
 
@@ -122,10 +122,7 @@ int main(void)
     FRESULT fres; //Result after operations
     //wav header
     wav_header_t wavHeader;
-    WavPlayer player;
-
-
-
+    
 
     //Open the file system
     fres = f_mount(&FatFs, SDPath, 1); //1=mount now
@@ -156,10 +153,9 @@ int main(void)
     // generateSineWave(1000.0);
     while (1)
     {
-      if(play){
+      if(player.playbackActive){
         // wavPlayPitched(&fil, &currentWav);
         wavPlay(&player);
-        play = false;
       }
     /* USER CODE END WHILE */
 
@@ -397,7 +393,7 @@ static void MX_GPIO_Init(void)
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin) {
     if (GPIO_Pin == B1_Pin) {
         // Handle the button press
-        play = true;
+        playButtonHandler(&player);
     }
 }
 
