@@ -4,7 +4,7 @@
 // Define dimensions for display sections
 #define DISPLAY_WIDTH           128
 #define DISPLAY_HEIGHT          128
-#define LIST_SECTION_HEIGHT     51
+#define LIST_SECTION_HEIGHT     81
 #define SELECTED_FILE_HEIGHT    10
 #define BORDER_WIDTH            1
 #define LINE_HEIGHT             10
@@ -138,4 +138,15 @@ void drawLine(int16_t x0, int16_t y0, int16_t x1, int16_t y1, uint16_t color) {
             y0 += sy;
         }
     }
+}
+
+void drawFaderProzent(I2C_HandleTypeDef *hi2c1, const char *prozent){
+    for (uint8_t i = 0; i < DISPLAY_WIDTH; i++) {
+        for (uint8_t j = LIST_SECTION_HEIGHT + 20; j < DISPLAY_HEIGHT; j++) {
+            ssd1306_DrawPixel(i, j, Black);
+        }
+    }
+
+    ssd1306_SetCursor(0, LIST_SECTION_HEIGHT + 20); // Adjust Y position for text alignment
+    ssd1306_WriteString(prozent, Font_7x10, White);
 }

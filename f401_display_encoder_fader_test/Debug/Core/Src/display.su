@@ -3,3 +3,4 @@
 ../Core/Src/display.c:66:6:scrollDown	16	static
 ../Core/Src/display.c:72:6:renderSelectedFile	24	static
 ../Core/Src/display.c:120:6:drawLine	40	static
+../Core/Src/display.c:143:6:drawFaderProzent	24	static
