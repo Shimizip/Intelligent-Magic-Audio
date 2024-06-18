@@ -8,6 +8,7 @@ void initPlayer(WavPlayer *player, FIL *file, wav_header_t *wavHeader) {
     player->restartPlayback = false;
     player->playbackActive = false;
     player->headerSize = 0;
+    player->pitchFactor = 0.7;
 }
 
 // load .wav header and check for valid header members
@@ -84,13 +85,13 @@ uint8_t wavPlay(WavPlayer *player){
     uint32_t remainingBytes = length;
     
     // Start DMA Stream
-    HAL_I2S_Transmit_DMA(&hi2s3,(uint16_t *)dacData, BUFFER_SIZE);
+    HAL_I2S_Transmit_DMA(&hi2s2,(uint16_t *)dacData, BUFFER_SIZE);
 
-    float left;
+    // float left;
 
     while(remainingBytes > 0){
         if(dma_dataReady){
-            uint16_t bytesRead = fillHalfBufferFromSD(player->file, false);
+            uint16_t bytesRead = fillHalfBufferFromSD(player, false);
             memcpy(outBufPtr, fileReadBuf, HALF_BUFFER_SIZE * sizeof(uint16_t));
             
             // for(int n = 0; n < HALF_BUFFER_SIZE; n++){
@@ -113,27 +114,48 @@ uint8_t wavPlay(WavPlayer *player){
             dma_dataReady = false;
         }
     }
-    HAL_I2S_DMAStop(&hi2s3);
-    f_lseek(player->file,0);
+    HAL_I2S_DMAStop(&hi2s2);
+    f_lseek(player->file,player->headerSize);
     player->playbackActive = false;
     return 0;
 }
 
 uint8_t wavPlayPitched(WavPlayer *player) {
+    f_lseek(player->file,player->headerSize);
+
     uint32_t length = player->wavHeader->Subchunk2Size;  // Number of bytes in data. Number of samples * num_channels * sample byte size
     uint32_t remainingBytes = length;
 
-    float currentPitchFactor = pitchFactor;
+    float currentPitchFactor = player->pitchFactor;
     float sampleIndex = 0.0f;
 
     // Start DMA Stream
-    HAL_I2S_Transmit_DMA(&hi2s3, (void *)dacData, BUFFER_SIZE);
+    HAL_I2S_Transmit_DMA(&hi2s2, (void *)dacData, BUFFER_SIZE);
     while (remainingBytes > 0) {
         uint16_t bytesRead;
-        uint32_t leftIndex;
         if (dma_dataReady) {
-            bytesRead = fillHalfBufferFromSD(player->file, true); // loads necessary data from sd card to fireReadBuffer
-            remainingBytes -= bytesRead;
+            bytesRead = fillHalfBufferFromSD(player, true); // loads necessary data from sd card to fireReadBuffer
+
+            // Adjust the samples for pitch shifting by skipping or repeating samples
+            // memcpy(outBufPtr, fileReadBuf, HALF_BUFFER_SIZE * sizeof(uint16_t));
+            for (uint32_t n = 0; n < (HALF_BUFFER_SIZE) - 1; n += 2) {
+                // Calculate the index for left sample
+                // outBufPtr[n] = fileReadBuf[leftIndex];
+
+                // interpolate left and right samples
+                // outBufPtr[n] = interpolate(fileReadBuf, sampleIndex);
+                // outBufPtr[n+1] = interpolate(fileReadBuf, sampleIndex + currentPitchFactor);
+                outBufPtr[n] = fileReadBuf[(uint32_t)round(sampleIndex)];
+                // outBufPtr[n+1] = fileReadBuf[(uint32_t)round(sampleIndex + currentPitchFactor)];
+
+                sampleIndex += currentPitchFactor * 2;
+            }
+
+            if (bytesRead > remainingBytes) {
+                break;
+            } else {
+                remainingBytes -= bytesRead;
+            }
 
             // // Update pitch factor if changed
             // if (pitchChanged) {
@@ -143,21 +165,7 @@ uint8_t wavPlayPitched(WavPlayer *player) {
             //     __enable_irq();
             // }
 
-            // Adjust the samples for pitch shifting by skipping or repeating samples
-            // memcpy(outBufPtr, fileReadBuf, HALF_BUFFER_SIZE * sizeof(uint16_t));
-            for (uint8_t n = 0; n < (HALF_BUFFER_SIZE) - 1; n += 2) {
-                // Calculate the index for left sample
-                leftIndex = (uint32_t)sampleIndex;
-                outBufPtr[n] = fileReadBuf[leftIndex];
-
-                // Calculate the index for right sample
-                // uint32_t rightIndex = leftIndex + 1;
-                // outBufPtr[n * 2 + 1] = fileReadBuf[rightIndex];
-
-                sampleIndex += currentPitchFactor * 2;
-            }
-
-            // Ensure sampleIndex is within the bounds
+            // Ensure sampleIndex is within the bounds of the read samples
             if (sampleIndex >= bytesRead / sizeof(uint16_t)) {
                 sampleIndex -= bytesRead / sizeof(uint16_t);
             }
@@ -167,10 +175,20 @@ uint8_t wavPlayPitched(WavPlayer *player) {
             //     sampleIndex -= HALF_BUFFER_SIZE;
             // }
 
+            if(player->restartPlayback){
+                f_lseek(player->file,player->headerSize);
+                remainingBytes = length;
+                player->restartPlayback = false;
+            }
+            
+
+
             dma_dataReady = false;
         }
     }
-    f_lseek(player->file,0);
-    HAL_I2S_DMAStop(&hi2s3);
+
+    HAL_I2S_DMAStop(&hi2s2);
+    f_lseek(player->file,player->headerSize);
+    player->playbackActive = false;
     return 0;
 }

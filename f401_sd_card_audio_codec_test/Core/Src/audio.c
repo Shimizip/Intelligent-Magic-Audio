@@ -1,13 +1,11 @@
 #include "audio.h"
-#include "fatfs.h"
-#include "wavPlayer.h"
 
 bool dma_dataReady = false;
 int16_t dacData[BUFFER_SIZE];
 int16_t fileReadBuf[BUFFER_SIZE]; // actually for one halfBuffer, now is = BUFFER_SIZE, to allow 2x playback speed
 volatile int16_t *outBufPtr = &dacData[0];
-volatile float pitchFactor = 1.0;
 volatile bool pitchChanged = false;
+
 
 #define SINE_TABLE_SIZE 256 // Adjust the table size as needed for your accuracy/performance tradeoff
 
@@ -36,7 +34,7 @@ void HAL_I2S_TxCpltCallback(I2S_HandleTypeDef *hi2s){
 void generateSineWave(double frequency) {
     static uint16_t phaseIndex = 0;                 // retain index between function calls
     double phaseIncrement = frequency * SINE_TABLE_SIZE / I2S_AUDIOFREQ_44K;  
-    HAL_I2S_Transmit_DMA(&hi2s3, (void *)dacData, BUFFER_SIZE);
+    HAL_I2S_Transmit_DMA(&hi2s2, (void *)dacData, BUFFER_SIZE);
     while(1){
         if(dma_dataReady){
             for (uint8_t n = 0; n < (HALF_BUFFER_SIZE) - 1; n += 2) {
@@ -58,11 +56,11 @@ void generateSineWave(double frequency) {
 
 }
 
-uint16_t fillHalfBufferFromSD(FIL *fil, bool pitched){
+uint16_t fillHalfBufferFromSD(WavPlayer *player, bool pitched){
     UINT bytesRead = 0;
     uint32_t samplesNeeded;
     if (pitched){
-        float tempSamplesNeeded = (HALF_BUFFER_SIZE * pitchFactor);
+        float tempSamplesNeeded = (HALF_BUFFER_SIZE * player->pitchFactor);
         samplesNeeded = (uint32_t) ceil(tempSamplesNeeded);
         samplesNeeded = (samplesNeeded + 1) & ~1; // make sure its an even amount
     } else {
@@ -70,7 +68,7 @@ uint16_t fillHalfBufferFromSD(FIL *fil, bool pitched){
     }
     uint32_t bytesNeeded = samplesNeeded * sizeof(uint16_t);
     // fill half of the buffer (16bit Samples -> BUFFER_SIZE)
-    if (f_read(fil, fileReadBuf, bytesNeeded, &bytesRead) != FR_OK) {
+    if (f_read(player->file, fileReadBuf, bytesNeeded, &bytesRead) != FR_OK) {
     // Error handling
         while(1);
     }
@@ -84,9 +82,11 @@ void setPitchFactor(float newPitchFactor) {
     __enable_irq(); // Re-enable interrupts
 }
 
-uint16_t interpolate(uint16_t *buffer, float index, uint32_t bufferSize) {
+int16_t interpolate(int16_t *buffer, float index) {
     uint32_t idx = (uint32_t)index;
+    // frac determines the "weight" of the interpolation
+    // given to buffer[idx] versus buffer[nextIdx]
     float frac = index - idx;
-    uint32_t nextIdx = (idx + 1) < bufferSize ? (idx + 1) : idx;
-    return (uint16_t)((1.0f - frac) * buffer[idx] + frac * buffer[nextIdx]);
+    uint32_t nextIdx = (idx + 1) < BUFFER_SIZE ? (idx + 1) : idx;
+    return (int16_t)((1.0f - frac) * buffer[idx] + frac * buffer[nextIdx]);
 }

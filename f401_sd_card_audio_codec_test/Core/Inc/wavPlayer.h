@@ -1,10 +1,9 @@
-#ifndef INC_WAVDECODER_H_
-#define INC_WAVDECODER_H_
+#ifndef INC_WAVPLAYER_H_
+#define INC_WAVPLAYER_H_
 
 #include <stdint.h>
 #include "fatfs.h"
 #include "audio.h"
-
 
 typedef struct wav_header {
     // RIFF Header
@@ -28,12 +27,13 @@ typedef struct wav_header {
     // uint8_t bytes[];       // Remainder of wave file is bytes
 } wav_header_t;
 
-typedef struct {
+typedef struct WavPlayer {
     volatile bool restartPlayback;
     volatile bool playbackActive;
     FIL *file;
     wav_header_t *wavHeader;
     uint32_t headerSize;
+    float pitchFactor;
 } WavPlayer;
 
 void initPlayer(WavPlayer *player, FIL *file, wav_header_t *wavHeader);
@@ -49,4 +49,4 @@ void playButtonHandler(WavPlayer *player);
 
 void wavStop(void);
 
-#endif /* INC_WAVDECODER_H_ */
+#endif /* INC_WAVPLAYER_H_ */
