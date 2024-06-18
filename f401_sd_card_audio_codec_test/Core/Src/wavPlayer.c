@@ -104,7 +104,12 @@ uint8_t wavPlay(WavPlayer *player){
                 player->restartPlayback = false;
             }
             
-            remainingBytes -= bytesRead;
+            if (bytesRead > remainingBytes) {
+                break;
+            } else {
+                remainingBytes -= bytesRead;
+            }
+            
             dma_dataReady = false;
         }
     }
