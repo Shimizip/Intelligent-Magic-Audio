@@ -1,2 +1,3 @@
 **/.vscode/
 **/build/
+f401_display_encoder_test/STM32F401RETX_FLASH.ld
