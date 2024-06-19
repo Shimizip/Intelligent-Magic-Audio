@@ -12,7 +12,7 @@
 #define M_PI 3.14159265358979323846
 #endif
 
-#define BUFFER_SIZE 128
+#define BUFFER_SIZE 256
 #define HALF_BUFFER_SIZE BUFFER_SIZE/2
 
 extern I2S_HandleTypeDef hi2s2;

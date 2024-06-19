@@ -8,7 +8,8 @@ void initPlayer(WavPlayer *player, FIL *file, wav_header_t *wavHeader) {
     player->restartPlayback = false;
     player->playbackActive = false;
     player->headerSize = 0;
-    player->pitchFactor = 1.3;
+    player->pitchFactor = 0.6f;
+    player->pitchChanged = false;
 }
 
 // load .wav header and check for valid header members
@@ -45,7 +46,6 @@ uint8_t checkWav(WavPlayer *player) {
         }
         player->headerSize += count;
     }
-
 
     // Check essential "fmt " subchunk
     if (player->wavHeader->Subchunk1Size != 16 || player->wavHeader->AudioFormat != 1) {
@@ -99,6 +99,7 @@ uint8_t wavPlay(WavPlayer *player){
             //     left = 1.0 * left;
             //     outBufPtr[n] = left;
             // }
+
             if(player->restartPlayback){
                 f_lseek(player->file,player->headerSize);
                 remainingBytes = length;
@@ -127,8 +128,13 @@ uint8_t wavPlayPitched(WavPlayer *player) {
     uint32_t remainingBytes = length;
 
     float currentPitchFactor = player->pitchFactor;
-    // float sampleIndex = 0.0f;
-    uint32_t sampleIndex;
+    float baseIndex = 0.0f;
+
+    int16_t lastOutBufL = 0;
+    int16_t lastOutBufR = 0;
+
+    uint32_t leftReadIndex = 0;
+    uint32_t rightReadIndex = 0;
 
     // Start DMA Stream
     HAL_I2S_Transmit_DMA(&hi2s2, (void *)dacData, BUFFER_SIZE);
@@ -143,15 +149,34 @@ uint8_t wavPlayPitched(WavPlayer *player) {
                 // Calculate the index for left sample
 
                 // interpolate left and right samples
-                // outBufPtr[n] = interpolate(fileReadBuf, sampleIndex);
-                // outBufPtr[n+1] = interpolate(fileReadBuf, sampleIndex + currentPitchFactor);
+                // outBufPtr[n] = interpolate(fileReadBuf, baseIndex);
+                // outBufPtr[n+1] = interpolate(fileReadBuf, baseIndex + currentPitchFactor);
 
-                // round samples
-                // WITHOUT AN FPU THE MCU WONT BE FAST ENOUGH!
-                outBufPtr[n] = fileReadBuf[(uint32_t)round(sampleIndex)];
-                outBufPtr[n+1] = fileReadBuf[(uint32_t)round(sampleIndex + currentPitchFactor)];
+                // round samples without interpolation
+                int32_t res = (int32_t) roundf(baseIndex) * 2;
+                if (res < 0) {
+                    outBufPtr[n] = lastOutBufL;
+                    outBufPtr[n+1] = lastOutBufR;
+                } else {
+                    leftReadIndex = (uint32_t)res;
+                    leftReadIndex = (leftReadIndex + 1) & ~1; // make sure its an even amount -- ditch the last 0b1
+                    rightReadIndex = leftReadIndex + 1;
 
-                sampleIndex += currentPitchFactor * 2;
+                    outBufPtr[n] = fileReadBuf[leftReadIndex];
+                    outBufPtr[n+1] = fileReadBuf[rightReadIndex];
+
+                    lastOutBufL = outBufPtr[n];
+                    lastOutBufR = outBufPtr[n+1];
+                }
+
+                baseIndex += currentPitchFactor;
+
+            }
+
+            if (baseIndex <= (bytesRead / sizeof(uint16_t))/2 - 1 )   {
+                baseIndex -= (bytesRead / sizeof(uint16_t)/2) - 1;
+            } else {
+                baseIndex -= (bytesRead / sizeof(uint16_t)/2);
             }
 
             if (bytesRead > remainingBytes) {
@@ -160,18 +185,15 @@ uint8_t wavPlayPitched(WavPlayer *player) {
                 remainingBytes -= bytesRead;
             }
 
-            // // Update pitch factor if changed
-            // if (pitchChanged) {
-            //     __disable_irq();
-            //     currentPitchFactor = pitchFactor;
-            //     pitchChanged = false;
-            //     __enable_irq();
-            // }
-
-            // Ensure sampleIndex is within the bounds of the read samples
-            if (sampleIndex >= bytesRead / sizeof(uint16_t)) {
-                sampleIndex -= bytesRead / sizeof(uint16_t);
+            // Update pitch factor if changed
+            if (player->pitchChanged) {
+                __disable_irq();
+                currentPitchFactor = player->pitchFactor;
+                player->pitchChanged = false;
+                __enable_irq();
             }
+
+
 
             if(player->restartPlayback){
                 f_lseek(player->file,player->headerSize);

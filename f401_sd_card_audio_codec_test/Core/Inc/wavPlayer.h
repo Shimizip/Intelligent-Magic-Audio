@@ -34,6 +34,7 @@ typedef struct WavPlayer {
     wav_header_t *wavHeader;
     uint32_t headerSize;
     float pitchFactor;
+    bool pitchChanged;
 } WavPlayer;
 
 void initPlayer(WavPlayer *player, FIL *file, wav_header_t *wavHeader);

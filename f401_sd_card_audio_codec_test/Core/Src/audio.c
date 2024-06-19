@@ -61,7 +61,7 @@ uint16_t fillHalfBufferFromSD(WavPlayer *player, bool pitched){
     uint32_t samplesNeeded;
     if (pitched){
         float tempSamplesNeeded = (HALF_BUFFER_SIZE * player->pitchFactor);
-        samplesNeeded = (uint32_t) ceil(tempSamplesNeeded);
+        samplesNeeded = (uint32_t) ceilf(tempSamplesNeeded);
         samplesNeeded = (samplesNeeded + 1) & ~1; // make sure its an even amount
     } else {
         samplesNeeded = HALF_BUFFER_SIZE;

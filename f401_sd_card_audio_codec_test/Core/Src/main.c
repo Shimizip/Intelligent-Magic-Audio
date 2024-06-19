@@ -114,6 +114,12 @@ int main(void)
   MX_I2S2_Init();
   /* USER CODE BEGIN 2 */
 
+    /* FPU settings ------------------------------------------------------------*/
+    #if (__FPU_PRESENT == 1) && (__FPU_USED == 1)
+      SCB->CPACR |= ((3UL << 10*2)|(3UL << 11*2));  /* set CP10 and CP11 Full Access */
+    #endif
+
+
     HAL_Delay(1000); //a short delay is important to let the SD card settle
 
     //vars for Fatfs
@@ -127,8 +133,8 @@ int main(void)
     //Open the file system
     fres = f_mount(&FatFs, SDPath, 1); //1=mount now
     if (fres != FR_OK) {
-  	uart_printf("f_mount error (%i)\r\n", fres);
-  	  while(1);
+        uart_printf("f_mount error (%i)\r\n", fres);
+        while(1);
     }
 
     // Init the player
