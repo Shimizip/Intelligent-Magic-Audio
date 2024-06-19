@@ -14,10 +14,11 @@
 
 #define BUFFER_SIZE 256
 #define HALF_BUFFER_SIZE BUFFER_SIZE/2
+#define BUFFER_SIZE_INPUT 4096
 
 extern I2S_HandleTypeDef hi2s2;
 extern int16_t dacData[BUFFER_SIZE];
-extern int16_t fileReadBuf[BUFFER_SIZE]; // actually for one halfBuffer, now is = BUFFER_SIZE, to allow 2x playback speed
+extern int16_t fileReadBuf[BUFFER_SIZE_INPUT]; // actually for one halfBuffer, now is = BUFFER_SIZE, to allow 2x playback speed
 extern bool dma_dataReady;
 extern volatile int16_t *outBufPtr;
 

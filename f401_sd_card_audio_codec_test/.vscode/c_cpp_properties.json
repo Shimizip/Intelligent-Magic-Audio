@@ -16,7 +16,7 @@
         "STM32F401xE",
         "USE_HAL_DRIVER"
       ],
-      "compilerPath": "/home/jonas/.config/VSCodium/User/globalStorage/bmd.stm32-for-vscode/@xpack-dev-tools/arm-none-eabi-gcc/13.2.1-1.1.1/.content/bin/arm-none-eabi-gcc"
+      "compilerPath": "C:\\USERS\\JONAS\\APPDATA\\ROAMING\\VSCODIUM\\USER\\GLOBALSTORAGE\\BMD.STM32-FOR-VSCODE\\@XPACK-DEV-TOOLS\\ARM-NONE-EABI-GCC\\13.2.1-1.1.1\\.CONTENT\\BIN\\ARM-NONE-EABI-GCC.EXE"
     }
   ],
   "version": 4

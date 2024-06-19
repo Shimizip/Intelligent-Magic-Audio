@@ -8,7 +8,7 @@ void initPlayer(WavPlayer *player, FIL *file, wav_header_t *wavHeader) {
     player->restartPlayback = false;
     player->playbackActive = false;
     player->headerSize = 0;
-    player->pitchFactor = 0.6f;
+    player->pitchFactor = 3.5f;
     player->pitchChanged = false;
 }
 

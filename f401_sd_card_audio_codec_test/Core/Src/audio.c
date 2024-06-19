@@ -2,7 +2,7 @@
 
 bool dma_dataReady = false;
 int16_t dacData[BUFFER_SIZE];
-int16_t fileReadBuf[BUFFER_SIZE]; // actually for one halfBuffer, now is = BUFFER_SIZE, to allow 2x playback speed
+int16_t fileReadBuf[BUFFER_SIZE_INPUT]; // actually for one halfBuffer, now is = BUFFER_SIZE, to allow 2x playback speed
 volatile int16_t *outBufPtr = &dacData[0];
 volatile bool pitchChanged = false;
 
