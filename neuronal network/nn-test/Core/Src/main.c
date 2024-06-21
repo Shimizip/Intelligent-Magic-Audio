@@ -22,8 +22,12 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include <stdio.h>
+#include <stdlib.h>
 #include "audio_classification.h"
 #include "test_audio_data.h"
+
+//#include "audio_classification.h"
+//#include "test_audio_data.h"
 
 /* USER CODE END Includes */
 
@@ -54,7 +58,7 @@ UART_HandleTypeDef huart3;
 PCD_HandleTypeDef hpcd_USB_OTG_FS;
 
 /* USER CODE BEGIN PV */
-
+static float32_t resampled_data[16384];
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -99,7 +103,9 @@ int main(void)
   HAL_Init();
 
   /* USER CODE BEGIN Init */
-
+  /* enabling CRC clock for using AI libraries (for checking if STM32
+  	  microprocessor is used)*/
+  __HAL_RCC_CRC_CLK_ENABLE();
   /* USER CODE END Init */
 
   /* Configure the system clock */
@@ -118,27 +124,20 @@ int main(void)
   MX_CRC_Init();
   /* USER CODE BEGIN 2 */
   __HAL_RCC_CRC_CLK_ENABLE();
-  // Initialisiere das neuronale Netz
-  if (init_nn() != 0) {
-	  printf("Failed to initialize neural network\n");
-	  return -1;
-  }
+	if (init_nn() != 0) {
+		printf("Failed to initialize neural network\n");
+		return -1;
+	}
 
-  // Configure Audio preprocessing
-  Preprocessing_Init();
+	Preprocessing_Init();
+	// Resample das Audio (Platzhalter)
+	for (int i = 0; i < audio_data_length; i++) {
+		resampled_data[i] = audio_data[i] / 32768.0f;
+	}
+//	// Frame die resampleten Daten
+	frame_subsamples(resampled_data, audio_data_length);
+	//test_call_classification(resampled_data);
 
-  // Resample das Audio (Platzhalter)
-  float32_t resampled_data[audio_data_length];
-  for (int i = 0; i < audio_data_length; i++) {
-	  resampled_data[i] = audio_data[i] / 32768.0f;
-  }
-
-  // Frame die resampleten Daten
-  frame_subsamples(resampled_data, audio_data_length);
-
-
-  // Ausgabe des Klassifikationsergebnisses
-  printf("Classification completed successfully\n");
 
 
   /* USER CODE END 2 */

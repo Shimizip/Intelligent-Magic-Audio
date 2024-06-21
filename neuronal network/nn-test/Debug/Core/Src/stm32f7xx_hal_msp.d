@@ -5,11 +5,11 @@ Core/Src/stm32f7xx_hal_msp.o: ../Core/Src/stm32f7xx_hal_msp.c \
  ../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_def.h \
  ../Drivers/CMSIS/Device/ST/STM32F7xx/Include/stm32f7xx.h \
  ../Drivers/CMSIS/Device/ST/STM32F7xx/Include/stm32f722xx.h \
- C:/Users/jonas/TIN/ESP/ima/neuronal\ network/nn-test/Drivers/CMSIS/Include/core_cm7.h \
- C:/Users/jonas/TIN/ESP/ima/neuronal\ network/nn-test/Drivers/CMSIS/Include/cmsis_version.h \
- C:/Users/jonas/TIN/ESP/ima/neuronal\ network/nn-test/Drivers/CMSIS/Include/cmsis_compiler.h \
- C:/Users/jonas/TIN/ESP/ima/neuronal\ network/nn-test/Drivers/CMSIS/Include/cmsis_gcc.h \
- C:/Users/jonas/TIN/ESP/ima/neuronal\ network/nn-test/Drivers/CMSIS/Include/mpu_armv7.h \
+ /Users/leon/STM32CubeIDE/workspace_1.14.0/nn-test/Drivers/CMSIS/Include/core_cm7.h \
+ /Users/leon/STM32CubeIDE/workspace_1.14.0/nn-test/Drivers/CMSIS/Include/cmsis_version.h \
+ /Users/leon/STM32CubeIDE/workspace_1.14.0/nn-test/Drivers/CMSIS/Include/cmsis_compiler.h \
+ /Users/leon/STM32CubeIDE/workspace_1.14.0/nn-test/Drivers/CMSIS/Include/cmsis_gcc.h \
+ /Users/leon/STM32CubeIDE/workspace_1.14.0/nn-test/Drivers/CMSIS/Include/mpu_armv7.h \
  ../Drivers/CMSIS/Device/ST/STM32F7xx/Include/system_stm32f7xx.h \
  ../Drivers/STM32F7xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h \
  ../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_rcc_ex.h \
@@ -33,7 +33,8 @@ Core/Src/stm32f7xx_hal_msp.o: ../Core/Src/stm32f7xx_hal_msp.c \
  ../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_uart_ex.h \
  ../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_pcd.h \
  ../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_ll_usb.h \
- ../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_pcd_ex.h
+ ../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_pcd_ex.h \
+ /Users/leon/STM32CubeIDE/workspace_1.14.0/nn-test/Drivers/CMSIS/DSP/Include/arm_math.h
 ../Core/Inc/main.h:
 ../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal.h:
 ../Core/Inc/stm32f7xx_hal_conf.h:
@@ -41,11 +42,11 @@ Core/Src/stm32f7xx_hal_msp.o: ../Core/Src/stm32f7xx_hal_msp.c \
 ../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_def.h:
 ../Drivers/CMSIS/Device/ST/STM32F7xx/Include/stm32f7xx.h:
 ../Drivers/CMSIS/Device/ST/STM32F7xx/Include/stm32f722xx.h:
-C:/Users/jonas/TIN/ESP/ima/neuronal\ network/nn-test/Drivers/CMSIS/Include/core_cm7.h:
-C:/Users/jonas/TIN/ESP/ima/neuronal\ network/nn-test/Drivers/CMSIS/Include/cmsis_version.h:
-C:/Users/jonas/TIN/ESP/ima/neuronal\ network/nn-test/Drivers/CMSIS/Include/cmsis_compiler.h:
-C:/Users/jonas/TIN/ESP/ima/neuronal\ network/nn-test/Drivers/CMSIS/Include/cmsis_gcc.h:
-C:/Users/jonas/TIN/ESP/ima/neuronal\ network/nn-test/Drivers/CMSIS/Include/mpu_armv7.h:
+/Users/leon/STM32CubeIDE/workspace_1.14.0/nn-test/Drivers/CMSIS/Include/core_cm7.h:
+/Users/leon/STM32CubeIDE/workspace_1.14.0/nn-test/Drivers/CMSIS/Include/cmsis_version.h:
+/Users/leon/STM32CubeIDE/workspace_1.14.0/nn-test/Drivers/CMSIS/Include/cmsis_compiler.h:
+/Users/leon/STM32CubeIDE/workspace_1.14.0/nn-test/Drivers/CMSIS/Include/cmsis_gcc.h:
+/Users/leon/STM32CubeIDE/workspace_1.14.0/nn-test/Drivers/CMSIS/Include/mpu_armv7.h:
 ../Drivers/CMSIS/Device/ST/STM32F7xx/Include/system_stm32f7xx.h:
 ../Drivers/STM32F7xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h:
 ../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_rcc_ex.h:
@@ -70,3 +71,4 @@ C:/Users/jonas/TIN/ESP/ima/neuronal\ network/nn-test/Drivers/CMSIS/Include/mpu_a
 ../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_pcd.h:
 ../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_ll_usb.h:
 ../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_pcd_ex.h:
+/Users/leon/STM32CubeIDE/workspace_1.14.0/nn-test/Drivers/CMSIS/DSP/Include/arm_math.h:
