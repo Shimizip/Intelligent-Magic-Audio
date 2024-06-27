@@ -177,12 +177,13 @@ void calculate_spectrogram_column(float* pFrame, int col_index) {
 
 // converts the Mel spectrogram power to decibels (dB)
 void spectrogram_power_to_db(float *pSpectrogram) {
-    float max_mel_energy = FLT_MIN; // Minimaler positiver Wert, um sicherzustellen, dass er überschrieben wird
+    float max_mel_energy = FLT_MIN; // initial kleinster Wert
+    float max_mel_log10;
     uint32_t rows = NUM_MEL_BANDS;
     uint32_t cols = SPECTROGRAM_COLS;
     uint32_t i, total_elements = rows * cols;
 
-    // Find MelEnergy Scaling factor
+    // Find MelEnergy Scaling factor (highest value)
     for (i = 0; i < total_elements; i++) {
         if (pSpectrogram[i] > max_mel_energy) {
             max_mel_energy = pSpectrogram[i];
@@ -198,15 +199,16 @@ void spectrogram_power_to_db(float *pSpectrogram) {
         return;
     }
 
+    // calculate log of reference once
+    max_mel_log10 = 10.0f * log10f(max_mel_energy);
+
     // Scale Mel Energies and convert to dB
     for (i = 0; i < total_elements; i++) {
-    	pSpectrogram[i] = 10.0f * log10f(pSpectrogram[i] / max_mel_energy);
-        // Threshold to -80 dB
-        if (pSpectrogram[i] < -80.0f) {
-        	pSpectrogram[i] = -80.0f;
-        }
-        // Check for nan and replace with -80
-        if (isnan(pSpectrogram[i])) {
+    	// https://librosa.org/doc/main/generated/librosa.power_to_db.html
+    	pSpectrogram[i] = 10 * log10f(pSpectrogram[i]) - max_mel_log10;
+    	//pSpectrogram[i] = 10.0f * log10f(pSpectrogram[i] / max_mel_energy);
+        // Threshold to -80 dB and check for nan
+        if (isnan(pSpectrogram[i]) || pSpectrogram[i] < -80.0f) {
         	pSpectrogram[i] = -80.0f;
         }
     }
