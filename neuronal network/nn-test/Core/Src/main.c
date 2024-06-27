@@ -129,7 +129,7 @@ int main(void)
 		return -1;
 	}
 
-	Preprocessing_Init();
+	spectrogram_generation_init();
 	// Resample das Audio (Platzhalter)
 	for (int i = 0; i < audio_data_length; i++) {
 		resampled_data[i] = audio_data[i] / 32768.0f;

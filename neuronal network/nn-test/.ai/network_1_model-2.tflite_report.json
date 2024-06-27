@@ -1,7 +1,7 @@
 {
     "_allocate_inputs": 4,
     "_allocate_outputs": 4,
-    "cli_parameters": "generate --name network_1 -m /Users/leon/Downloads/model-2.h5 --type keras --compression none --verbosity 1 --workspace /var/folders/jv/_zcyfzx92cg0_833lhmxrp300000gn/T/mxAI_workspace17600518564037513554779523034522423 --output /Users/leon/.stm32cubemx/network_1_output --allocate-inputs --series stm32f7 --allocate-outputs",
+    "cli_parameters": "generate --name network_1 -m /Users/leon/Downloads/model-2.tflite --type tflite --compression none --verbosity 1 --workspace /var/folders/jv/_zcyfzx92cg0_833lhmxrp300000gn/T/mxAI_workspace28237353032320812575828815752570289 --output /Users/leon/.stm32cubemx/network_1_output --allocate-inputs --series stm32f7 --allocate-outputs",
     "cli_version": {
         "major": 1,
         "micro": 0,
@@ -13,14 +13,14 @@
         "factor": null,
         "layers": {}
     },
-    "date_time": "Thu Jun 20 13:55:58 2024",
+    "date_time": "Thu Jun 13 15:35:59 2024",
     "error": 0,
     "error_str": [],
     "exec_cmd": "generate",
     "exec_duration": 0.0,
-    "hash": "8a1a510bdaf66f5e80511baccb5db039",
+    "hash": "03c3de1dd83410b1e767aaa2329d7371",
     "inputs": [
-        "input_0"
+        "serving_default_conv2d_input0"
     ],
     "layers": [
         {
@@ -48,8 +48,8 @@
             },
             "id": 0,
             "inputs": [],
-            "name": "input_0",
-            "original": null,
+            "name": "serving_default_conv2d_input0",
+            "original": "",
             "type": "Input"
         },
         {
@@ -74,10 +74,10 @@
             },
             "id": 0,
             "inputs": [
-                "input_0"
+                "serving_default_conv2d_input0"
             ],
-            "name": "conv2d_conv2d",
-            "original": "Conv2D",
+            "name": "conv2d_0",
+            "original": "CONV_2D",
             "type": "Conv2D"
         },
         {
@@ -102,10 +102,10 @@
             },
             "id": 0,
             "inputs": [
-                "conv2d_conv2d"
+                "conv2d_0"
             ],
-            "name": "conv2d",
-            "original": "Conv2D",
+            "name": "nl_0_nl",
+            "original": "CONV_2D",
             "type": "Nonlinearity"
         },
         {
@@ -132,10 +132,10 @@
             },
             "id": 1,
             "inputs": [
-                "conv2d"
+                "nl_0_nl"
             ],
-            "name": "max_pooling2d",
-            "original": "MaxPooling2D",
+            "name": "pool_1",
+            "original": "MAX_POOL_2D",
             "type": "Pool"
         },
         {
@@ -163,10 +163,10 @@
             },
             "id": 2,
             "inputs": [
-                "max_pooling2d"
+                "pool_1"
             ],
-            "name": "conv2d_1_conv2d",
-            "original": "Conv2D",
+            "name": "conv2d_2",
+            "original": "CONV_2D",
             "type": "Conv2D"
         },
         {
@@ -191,10 +191,10 @@
             },
             "id": 2,
             "inputs": [
-                "conv2d_1_conv2d"
+                "conv2d_2"
             ],
-            "name": "conv2d_1",
-            "original": "Conv2D",
+            "name": "nl_2_nl",
+            "original": "CONV_2D",
             "type": "Nonlinearity"
         },
         {
@@ -221,10 +221,10 @@
             },
             "id": 3,
             "inputs": [
-                "conv2d_1"
+                "nl_2_nl"
             ],
-            "name": "max_pooling2d_1",
-            "original": "MaxPooling2D",
+            "name": "pool_3",
+            "original": "MAX_POOL_2D",
             "type": "Pool"
         },
         {
@@ -237,10 +237,10 @@
             },
             "id": 4,
             "inputs": [
-                "max_pooling2d_1"
+                "pool_3"
             ],
-            "name": "flatten",
-            "original": "Flatten",
+            "name": "reshape_4",
+            "original": "RESHAPE",
             "type": "Reshape"
         },
         {
@@ -249,9 +249,37 @@
                 7
             ],
             "extras": {
+                "n_macc": 0,
+                "n_params": 14400,
+                "psize": 57600,
+                "rom_size": 57700
+            },
+            "id": 5,
+            "inputs": [],
+            "name": "sequential_dense_MatMul",
+            "original": "",
+            "type": "Placeholder"
+        },
+        {
+            "c_id": [],
+            "extras": {
+                "n_macc": 0,
+                "n_params": 25,
+                "psize": 100,
+                "rom_size": 0
+            },
+            "id": 5,
+            "inputs": [],
+            "name": "sequential_dense_BiasAdd_ReadVariableOp",
+            "original": "",
+            "type": "Placeholder"
+        },
+        {
+            "c_id": [],
+            "extras": {
                 "n_macc": 14425,
-                "n_params": 14425,
-                "psize": 57700,
+                "n_params": 0,
+                "psize": 0,
                 "rom_output": {
                     "c_size": 100,
                     "fmt": {
@@ -262,15 +290,17 @@
                         1
                     ]
                 },
-                "rom_size": 57700
+                "rom_size": 0
             },
             "id": 5,
             "inputs": [
-                "flatten"
+                "reshape_4",
+                "sequential_dense_MatMul",
+                "sequential_dense_BiasAdd_ReadVariableOp"
             ],
-            "name": "dense_dense",
-            "original": "Dense",
-            "type": "Dense"
+            "name": "gemm_5",
+            "original": "FULLY_CONNECTED",
+            "type": "Gemm"
         },
         {
             "c_id": [],
@@ -292,45 +322,46 @@
             },
             "id": 5,
             "inputs": [
-                "dense_dense"
+                "gemm_5"
             ],
-            "name": "dense",
-            "original": "Dense",
+            "name": "nl_5_nl",
+            "original": "FULLY_CONNECTED",
             "type": "Nonlinearity"
         },
         {
             "c_id": [
-                8,
-                9
+                8
             ],
             "extras": {
-                "n_macc": 130,
-                "n_params": 130,
-                "psize": 520,
-                "rom_output": {
-                    "c_size": 20,
-                    "fmt": {
-                        "format": "float"
-                    },
-                    "shape": [
-                        5,
-                        1
-                    ]
-                },
+                "n_macc": 0,
+                "n_params": 125,
+                "psize": 500,
                 "rom_size": 520
             },
             "id": 6,
-            "inputs": [
-                "dense"
-            ],
-            "name": "dense_1_dense",
-            "original": "Dense",
-            "type": "Dense"
+            "inputs": [],
+            "name": "sequential_dense_1_MatMul",
+            "original": "",
+            "type": "Placeholder"
         },
         {
             "c_id": [],
             "extras": {
-                "n_macc": 50,
+                "n_macc": 0,
+                "n_params": 5,
+                "psize": 20,
+                "rom_size": 0
+            },
+            "id": 6,
+            "inputs": [],
+            "name": "sequential_dense_1_BiasAdd_ReadVariableOp",
+            "original": "",
+            "type": "Placeholder"
+        },
+        {
+            "c_id": [],
+            "extras": {
+                "n_macc": 130,
                 "n_params": 0,
                 "psize": 0,
                 "rom_output": {
@@ -347,23 +378,53 @@
             },
             "id": 6,
             "inputs": [
-                "dense_1_dense"
+                "nl_5_nl",
+                "sequential_dense_1_MatMul",
+                "sequential_dense_1_BiasAdd_ReadVariableOp"
             ],
-            "name": "dense_1",
-            "original": "Dense",
+            "name": "gemm_6",
+            "original": "FULLY_CONNECTED",
+            "type": "Gemm"
+        },
+        {
+            "c_id": [
+                9
+            ],
+            "extras": {
+                "n_macc": 50,
+                "n_params": 0,
+                "psize": 0,
+                "rom_output": {
+                    "c_size": 20,
+                    "fmt": {
+                        "format": "float"
+                    },
+                    "shape": [
+                        5,
+                        1
+                    ]
+                },
+                "rom_size": 0
+            },
+            "id": 7,
+            "inputs": [
+                "gemm_6"
+            ],
+            "name": "nl_7",
+            "original": "LOGISTIC",
             "type": "Nonlinearity"
         }
     ],
     "model_files": [
-        "/Users/leon/Downloads/model-2.h5"
+        "/Users/leon/Downloads/model-2.tflite"
     ],
     "model_n_params": 17035,
     "model_name": "model2",
     "model_size": 68140,
-    "model_type": "keras",
+    "model_type": "tflite",
     "name": "network_1",
     "outputs": [
-        "dense_1"
+        "nl_7"
     ],
     "ram_io_size": [
         3840,
@@ -380,7 +441,7 @@
         {
             "c_size": 3840,
             "c_type": "float",
-            "name": "input_0"
+            "name": "serving_default_conv2d_input0"
         }
     ],
     "rom_n_macc": 526726,
@@ -388,7 +449,7 @@
         {
             "c_size": 20,
             "c_type": "float",
-            "name": "dense_1"
+            "name": "nl_7"
         }
     ],
     "rom_size": 68140,

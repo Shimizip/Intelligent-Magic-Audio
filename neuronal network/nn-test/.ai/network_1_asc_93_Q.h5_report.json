@@ -1,7 +1,7 @@
 {
     "_allocate_inputs": 4,
     "_allocate_outputs": 4,
-    "cli_parameters": "generate --name network_1 -m /Users/leon/Downloads/model-2.h5 --type keras --compression none --verbosity 1 --workspace /var/folders/jv/_zcyfzx92cg0_833lhmxrp300000gn/T/mxAI_workspace17600518564037513554779523034522423 --output /Users/leon/.stm32cubemx/network_1_output --allocate-inputs --series stm32f7 --allocate-outputs",
+    "cli_parameters": "generate --name network_1 -m /Users/leon/Downloads/asc_93_Q.h5 --type keras --compression none --verbosity 1 --workspace /var/folders/jv/_zcyfzx92cg0_833lhmxrp300000gn/T/mxAI_workspace2838399586496678561196200736713325 --output /Users/leon/.stm32cubemx/network_1_output --allocate-inputs --series stm32f7 --allocate-outputs",
     "cli_version": {
         "major": 1,
         "micro": 0,
@@ -13,21 +13,18 @@
         "factor": null,
         "layers": {}
     },
-    "date_time": "Thu Jun 20 13:55:58 2024",
+    "date_time": "Thu Jun 13 16:00:26 2024",
     "error": 0,
     "error_str": [],
     "exec_cmd": "generate",
     "exec_duration": 0.0,
-    "hash": "8a1a510bdaf66f5e80511baccb5db039",
+    "hash": "70ee217758c82a261fc1ed12413ca77d",
     "inputs": [
-        "input_0"
+        "quantize_conv2d_11_input"
     ],
     "layers": [
         {
-            "c_id": [
-                0,
-                1
-            ],
+            "c_id": [],
             "extras": {
                 "n_macc": 0,
                 "n_params": 0,
@@ -44,16 +41,18 @@
                         1
                     ]
                 },
-                "rom_size": 640
+                "rom_size": 0
             },
             "id": 0,
             "inputs": [],
-            "name": "input_0",
-            "original": null,
+            "name": "quantize_conv2d_11_input",
+            "original": "InputLayer",
             "type": "Input"
         },
         {
-            "c_id": [],
+            "c_id": [
+                0
+            ],
             "extras": {
                 "n_macc": 120976,
                 "n_params": 160,
@@ -70,18 +69,20 @@
                         1
                     ]
                 },
-                "rom_size": 0
+                "rom_size": 640
             },
-            "id": 0,
+            "id": 1,
             "inputs": [
-                "input_0"
+                "quantize_conv2d_11_input"
             ],
-            "name": "conv2d_conv2d",
+            "name": "quantize_conv2d_11_conv2d",
             "original": "Conv2D",
             "type": "Conv2D"
         },
         {
-            "c_id": [],
+            "c_id": [
+                1
+            ],
             "extras": {
                 "n_macc": 13440,
                 "n_params": 0,
@@ -100,12 +101,12 @@
                 },
                 "rom_size": 0
             },
-            "id": 0,
+            "id": 2,
             "inputs": [
-                "conv2d_conv2d"
+                "quantize_conv2d_11_conv2d"
             ],
-            "name": "conv2d",
-            "original": "Conv2D",
+            "name": "quantize_1",
+            "original": "Activation",
             "type": "Nonlinearity"
         },
         {
@@ -130,18 +131,17 @@
                 },
                 "rom_size": 0
             },
-            "id": 1,
+            "id": 3,
             "inputs": [
-                "conv2d"
+                "quantize_1"
             ],
-            "name": "max_pooling2d",
+            "name": "quantize_max_pooling2d_11",
             "original": "MaxPooling2D",
             "type": "Pool"
         },
         {
             "c_id": [
-                3,
-                4
+                3
             ],
             "extras": {
                 "n_macc": 359440,
@@ -161,16 +161,18 @@
                 },
                 "rom_size": 9280
             },
-            "id": 2,
+            "id": 5,
             "inputs": [
-                "max_pooling2d"
+                "quantize_max_pooling2d_11"
             ],
-            "name": "conv2d_1_conv2d",
+            "name": "quantize_conv2d_12_conv2d",
             "original": "Conv2D",
             "type": "Conv2D"
         },
         {
-            "c_id": [],
+            "c_id": [
+                4
+            ],
             "extras": {
                 "n_macc": 2496,
                 "n_params": 0,
@@ -189,12 +191,12 @@
                 },
                 "rom_size": 0
             },
-            "id": 2,
+            "id": 6,
             "inputs": [
-                "conv2d_1_conv2d"
+                "quantize_conv2d_12_conv2d"
             ],
-            "name": "conv2d_1",
-            "original": "Conv2D",
+            "name": "quantize_4",
+            "original": "Activation",
             "type": "Nonlinearity"
         },
         {
@@ -219,11 +221,11 @@
                 },
                 "rom_size": 0
             },
-            "id": 3,
+            "id": 7,
             "inputs": [
-                "conv2d_1"
+                "quantize_4"
             ],
-            "name": "max_pooling2d_1",
+            "name": "quantize_max_pooling2d_12",
             "original": "MaxPooling2D",
             "type": "Pool"
         },
@@ -235,139 +237,141 @@
                 "psize": 0,
                 "rom_size": 0
             },
-            "id": 4,
+            "id": 9,
             "inputs": [
-                "max_pooling2d_1"
+                "quantize_max_pooling2d_12"
             ],
-            "name": "flatten",
+            "name": "flatten_6",
             "original": "Flatten",
             "type": "Reshape"
         },
         {
             "c_id": [
-                6,
-                7
+                6
             ],
             "extras": {
-                "n_macc": 14425,
-                "n_params": 14425,
-                "psize": 57700,
+                "n_macc": 5193,
+                "n_params": 5193,
+                "psize": 20772,
                 "rom_output": {
-                    "c_size": 100,
+                    "c_size": 36,
                     "fmt": {
                         "format": "float"
                     },
                     "shape": [
-                        25,
+                        9,
                         1
                     ]
                 },
-                "rom_size": 57700
+                "rom_size": 20772
             },
-            "id": 5,
+            "id": 10,
             "inputs": [
-                "flatten"
+                "flatten_6"
             ],
-            "name": "dense_dense",
+            "name": "quantize_dense_11_dense",
             "original": "Dense",
             "type": "Dense"
         },
         {
-            "c_id": [],
+            "c_id": [
+                7
+            ],
             "extras": {
-                "n_macc": 25,
+                "n_macc": 9,
                 "n_params": 0,
                 "psize": 0,
                 "rom_output": {
-                    "c_size": 100,
+                    "c_size": 36,
                     "fmt": {
                         "format": "float"
                     },
                     "shape": [
-                        25,
+                        9,
                         1
                     ]
                 },
                 "rom_size": 0
             },
-            "id": 5,
+            "id": 11,
             "inputs": [
-                "dense_dense"
+                "quantize_dense_11_dense"
             ],
-            "name": "dense",
-            "original": "Dense",
+            "name": "quantize_8",
+            "original": "Activation",
             "type": "Nonlinearity"
         },
         {
             "c_id": [
-                8,
-                9
+                8
             ],
             "extras": {
-                "n_macc": 130,
-                "n_params": 130,
-                "psize": 520,
+                "n_macc": 30,
+                "n_params": 30,
+                "psize": 120,
                 "rom_output": {
-                    "c_size": 20,
+                    "c_size": 12,
                     "fmt": {
                         "format": "float"
                     },
                     "shape": [
-                        5,
+                        3,
                         1
                     ]
                 },
-                "rom_size": 520
+                "rom_size": 120
             },
-            "id": 6,
+            "id": 13,
             "inputs": [
-                "dense"
+                "quantize_8"
             ],
-            "name": "dense_1_dense",
+            "name": "quantize_dense_12_dense",
             "original": "Dense",
             "type": "Dense"
         },
         {
-            "c_id": [],
+            "c_id": [
+                9
+            ],
             "extras": {
-                "n_macc": 50,
+                "n_macc": 45,
                 "n_params": 0,
                 "psize": 0,
                 "rom_output": {
-                    "c_size": 20,
+                    "c_size": 12,
                     "fmt": {
                         "format": "float"
                     },
                     "shape": [
-                        5,
+                        3,
                         1
                     ]
                 },
                 "rom_size": 0
             },
-            "id": 6,
+            "id": 14,
             "inputs": [
-                "dense_1_dense"
+                "quantize_dense_12_dense"
             ],
-            "name": "dense_1",
-            "original": "Dense",
+            "name": "softmax_10",
+            "original": "Activation",
             "type": "Nonlinearity"
         }
     ],
     "model_files": [
-        "/Users/leon/Downloads/model-2.h5"
+        "/Users/leon/Downloads/asc_93_Q.h5"
     ],
-    "model_n_params": 17035,
-    "model_name": "model2",
-    "model_size": 68140,
+    "model_n_params": 7703,
+    "model_name": "asc_93_Q",
+    "model_size": 30812,
     "model_type": "keras",
     "name": "network_1",
     "outputs": [
-        "dense_1"
+        "softmax_10"
     ],
     "ram_io_size": [
         3840,
-        20
+        12
     ],
     "ram_size": [
         57600,
@@ -380,18 +384,18 @@
         {
             "c_size": 3840,
             "c_type": "float",
-            "name": "input_0"
+            "name": "quantize_conv2d_11_input"
         }
     ],
-    "rom_n_macc": 526726,
+    "rom_n_macc": 517373,
     "rom_outputs": [
         {
-            "c_size": 20,
+            "c_size": 12,
             "c_type": "float",
-            "name": "dense_1"
+            "name": "softmax_10"
         }
     ],
-    "rom_size": 68140,
+    "rom_size": 30812,
     "strategy": "heap_overlay",
     "tools_api_version": {
         "major": 1,

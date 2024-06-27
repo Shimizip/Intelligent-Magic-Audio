@@ -20,7 +20,14 @@ ai_buffer * ai_output;
 ai_float spectrogram[AI_NETWORK_1_IN_1_SIZE];
 
 float aiOutData[AI_NETWORK_1_OUT_1_SIZE] = {0.0, 0.0, 0.0, 0.0, 0.0};
-uint32_t spectrogram_col_index = 0;
+char aiOutDataLabels[AI_NETWORK_1_OUT_1_SIZE][10] = {
+		"bass",
+        "pitch",
+        "sustained",
+        "rhythmic",
+        "melodic"
+};
+
 float32_t mel_spectrogram_column_buffer[SPECTROGRAM_ROWS];
 
 static float32_t frame[FRAME_LENGTH];
@@ -68,22 +75,72 @@ int run_nn_classification(ai_float* pSpectrogram, ai_float* classification_resul
     return 0; // Success
 }
 
+void classify_file(FIL *fil, char* file_name) {
+	int16_t frame_buffer[FRAME_LENGTH];
+	int16_t hop_buffer[HOP_LENGTH];
+	int16_t resampled_chunk_data[FRAME_LENGTH];
 
-void test_call_classification(float* input_audio_data) {
-	for (int i = 0; i < N_FRAMES_PER_SUBSAMPLE; i++) {
-		for (int j = 0; j < 32; j++) {
-			mel_spectrogram_column_buffer[j] = j * 1.0;
-		}
+	float total_file_classification_result[AI_NETWORK_1_OUT_1_SIZE];
 
-		spectrogram_col_index++;
-		for (uint32_t k = 0; k < SPECTROGRAM_ROWS; k++) {
-			spectrogram[k * SPECTROGRAM_COLS + spectrogram_col_index] = mel_spectrogram_column_buffer[k];
+	// reset all vars
+	// TODO if necessary
+
+	uint16_t number_subsamples_in_file = get_number_subsamples();
+	float classification_results_subsamples[number_subsamples_in_file][AI_NETWORK_1_OUT_1_SIZE];
+
+	// if number subsamples in file is zero => return empty classification result
+	if (number_subsamples_in_file == 0) {
+		for (int i = 0; i < AI_NETWORK_1_OUT_1_SIZE; i++) {
+			total_file_classification_result[i] = 0.0;
 		}
 	}
-	process_subsample(spectrogram);
+
+	// loop over all subsamples of file
+	for (int subsample_count = 0; i < number_subsamples_in_file; i++) {
+		// generate spectrogram for subsample (sliding window; window size = frame size = 1024; hop size 512)
+		downsample_1024_samples(fil, resampled_chunk_data);
+		for (int spectrogram_col_index = 0; i < SPECTROGRAM_COLS; i++) {
+			if (spectrogram_col_index % 2 == 0) {
+				// mod 2 == 0 => frame buffer is the read chunk; no need to read new data
+				// copy chunk to frame buffer
+				for (int n = 0; n < FRAME_LENGTH; i++) {
+					frame_buffer[n] = resampled_chunk_data[n];
+				}
+				// hop buffer is the second half of the read chunk
+				for (int n = 512; n < FRAME_LENGTH; i++) {
+					hop_buffer[n] = resampled_chunk_data[n];
+				}
+			} else {
+				// mod 2 == 1 => frame buffer is the hop buffer plus the first half of the chunk; read new data
+				// first half of frame is the hop buffer
+				for (int n = 0; n < HOP_LENGTH; i++) {
+					frame_buffer[n] = hop_buffer[n];
+				}
+				// second half of frame is first half of newly read data
+				for (int n = 0; n < HOP_LENGTH; i++) {
+					frame_buffer[n+512] = resampled_chunk_data[n];
+				}
+				// read next chunk
+				downsample_1024_samples(fil, resampled_chunk_data);
+			}
+			calculate_spectrogram_column(frame_buffer);
+		}
+		// Convert power spectrogram to dB
+		spectrogram_power_to_db(spectrogram);
+
+		// Run the neural network classification
+		run_nn_classification(spectrogram, aiOutData);
+		for (int i = 0; i < AI_NETWORK_1_OUT_1_SIZE; i++) {
+			classification_results_subsamples[subsample_count][i] = aiOutData[i];
+		}
+	}
+
+	calculate_total_classification_result(total_file_classification_result, classification_results_subsamples, number_subsamples_in_file);
+	store_classification_result();
 }
 
-void Preprocessing_Init(void) {
+// initializes all spectrogram generation related parameters
+void spectrogram_generation_init(void) {
   /* Init RFFT */
   arm_rfft_fast_init_f32(&S_Rfft, 1024);
 
@@ -91,79 +148,38 @@ void Preprocessing_Init(void) {
   S_Spectr.pRfft    = &S_Rfft;
   S_Spectr.Type     = SPECTRUM_TYPE_POWER;
   S_Spectr.pWindow  = (float32_t *) hannWin_1024;
-  S_Spectr.SampRate = 16000;
-  S_Spectr.FrameLen = 1024;
-  S_Spectr.FFTLen   = 1024;
+  S_Spectr.SampRate = TARGET_SAMPLE_RATE;
+  S_Spectr.FrameLen = FRAME_LENGTH;
+  S_Spectr.FFTLen   = FRAME_LENGTH;
   S_Spectr.pScratch = mel_spectrogram_column_buffer;
 
   /* Init Mel filter */
   S_MelFilter.pStartIndices = (uint32_t *) melFiltersStartIndices_1024_30;
   S_MelFilter.pStopIndices  = (uint32_t *) melFiltersStopIndices_1024_30;
   S_MelFilter.pCoefficients = (float32_t *) melFilterLut_1024_30;
-  S_MelFilter.NumMels       = 30;
+  S_MelFilter.NumMels       = NUM_MEL_BANDS;
 
   /* Init MelSpectrogram */
   S_MelSpectr.SpectrogramConf = &S_Spectr;
   S_MelSpectr.MelFilter       = &S_MelFilter;
 }
 
-// splits one subsample in 1024 samples long, 512 samples overlapping frames
-void frame_subsamples(float32_t* subsample, int subsample_length) {
-    for (int i = 0; i < N_FRAMES_PER_SUBSAMPLE; i++) {
-        int start_index = i * HOP_LENGTH;
-        for (int j = 0; j < FRAME_LENGTH; j++) {
-            if (start_index + j < subsample_length) {
-                frame[j] = subsample[start_index + j];
-            } else {
-                frame[j] = 0.0f; // pad with zeros
-            }
-        }
-        preprocess_frame(frame);
-    }
-}
-
 // frame = 1 spectrogram column = 1024 samples
-void preprocess_frame(float* pFrame) {
+void calculate_spectrogram_column(float* pFrame, int col_index) {
 	// Create a Mel-scaled spectrogram column
 	MelSpectrogramColumn(&S_MelSpectr, pFrame, mel_spectrogram_column_buffer);
 
 	// Reshape and copy into output spectrogram
 	for (uint32_t i = 0; i < SPECTROGRAM_ROWS; i++) {
-		int idx = i * SPECTROGRAM_COLS + spectrogram_col_index;
-		if (idx > 960) {
-			printf("bla");
-		}
-		spectrogram[i * SPECTROGRAM_COLS + spectrogram_col_index] = mel_spectrogram_column_buffer[i];
-	}
-
-    spectrogram_col_index++;
-
-    // If we have a full spectrogram (32 columns), process it
-    if (spectrogram_col_index == SPECTROGRAM_COLS) {
-    //if (spectrogram_col_index == 1) {
-    	process_subsample(spectrogram);
-        // Reset the column index for the next spectrogram
-        spectrogram_col_index = 0;
-    }
-}
-
-void process_subsample(float* pSpectrogram) {
-	// Convert power spectrogram to dB
-	PowerToDb(spectrogram);
-
-	// Run the neural network classification
-	if (run_nn_classification(spectrogram, aiOutData) == 0) {
-		/* Output results */
-		for (uint32_t i = 0; i < AI_NETWORK_1_OUT_1_SIZE; i++) {
-		  printf("%8.6f ", aiOutData[i]);
-		}
+		spectrogram[i * SPECTROGRAM_COLS + col_index] = mel_spectrogram_column_buffer[i];
 	}
 }
 
-void PowerToDb(float *pSpectrogram) {
+// converts the Mel spectrogram power to decibels (dB)
+void spectrogram_power_to_db(float *pSpectrogram) {
     float max_mel_energy = FLT_MIN; // Minimaler positiver Wert, um sicherzustellen, dass er überschrieben wird
-    uint32_t rows = 30;
-    uint32_t cols = 32;
+    uint32_t rows = NUM_MEL_BANDS;
+    uint32_t cols = SPECTROGRAM_COLS;
     uint32_t i, total_elements = rows * cols;
 
     // Find MelEnergy Scaling factor
@@ -195,3 +211,29 @@ void PowerToDb(float *pSpectrogram) {
         }
     }
 }
+
+
+void calculate_total_classification_result(float* total_file_classification_result, float classification_results_subsamples[][AI_NETWORK_1_OUT_1_SIZE], int number_subsamples_in_file) {
+	for (int i = 0; i < AI_NETWORK_1_OUT_1_SIZE; i++) {
+		total_file_classification_result[i] = 0.0f;
+	}
+
+	// sum up result for each category
+	for (int i = 0; i < number_subsamples_in_file; i++) {
+		for (int j = 0; j < AI_NETWORK_1_OUT_1_SIZE; j++) {
+			total_file_classification_result[j] += classification_results_subsamples[i][j];
+		}
+	}
+
+	// calculate average result
+	for (int i = 0; i < AI_NETWORK_1_OUT_1_SIZE; i++) {
+		total_file_classification_result[i] /= number_subsamples_in_file;
+	}
+}
+
+void store_classification_result(float* result, char* file_name, FIL *fil) {
+	// TODO
+}
+
+
+
