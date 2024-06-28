@@ -36,6 +36,9 @@ static float32_t frame[FRAME_LENGTH];
 int init_nn() {
 	ai_error err;
 
+	// enabling CRC clock for using AI libraries
+	__HAL_RCC_CRC_CLK_ENABLE();
+
 	/* Create a local array with the addresses of the activations buffers */
 	const ai_handle act_addr[] = { activations };
 	/* Create an instance of the model */
@@ -47,6 +50,20 @@ int init_nn() {
 	ai_input = ai_network_1_inputs_get(network, NULL);
 	ai_output = ai_network_1_outputs_get(network, NULL);
 
+	return 0;
+}
+
+int de_init_nn() {
+	// disable CRC clock
+	__HAL_RCC_CRC_CLK_ENABLE();
+
+	if (network != AI_HANDLE_NULL) {
+		if (ai_network_1_destroy(network) != AI_HANDLE_NULL) {
+			printf("error destroying nn");
+			return -1;
+	    }
+		network = AI_HANDLE_NULL;
+	}
 	return 0;
 }
 

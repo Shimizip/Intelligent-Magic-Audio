@@ -30,6 +30,7 @@
 
 /* function definitions */
 int init_nn(void);
+int de_init_nn(void);
 int run_nn_classification(float* pSpectrogram, float* classification_result);
 void spectrogram_generation_init(void);
 void classify_file(FIL *fil, char* file_name)

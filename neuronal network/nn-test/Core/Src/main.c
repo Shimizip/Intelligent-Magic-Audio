@@ -103,9 +103,7 @@ int main(void)
   HAL_Init();
 
   /* USER CODE BEGIN Init */
-  /* enabling CRC clock for using AI libraries (for checking if STM32
-  	  microprocessor is used)*/
-  __HAL_RCC_CRC_CLK_ENABLE();
+
   /* USER CODE END Init */
 
   /* Configure the system clock */
