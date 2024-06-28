@@ -31,14 +31,12 @@
 /* function definitions */
 int init_nn(void);
 int run_nn_classification(float* pSpectrogram, float* classification_result);
-void test_call_classification(float* audio_data);
 void spectrogram_generation_init(void);
-int resample_audio(const short* input_data, int input_length, int input_sample_rate, float32_t* output_data, int* output_length);
 void classify_file(FIL *fil, char* file_name)
 void calculate_spectrogram_column(float* frame, int col_index);
 void calculate_total_classification_result(float* total_file_classification_result, float classification_results_subsamples[][AI_NETWORK_1_OUT_1_SIZE], int number_subsamples_in_file);
 void spectrogram_power_to_db(float32_t *spectrogram);
-void store_classification_result(float* result, char* file_name, FIL *fil);
+void store_classification_result(FIL *fil, char* file_name, float* classification_result)
 
 // Cube.AI related variables
 extern ai_handle network;

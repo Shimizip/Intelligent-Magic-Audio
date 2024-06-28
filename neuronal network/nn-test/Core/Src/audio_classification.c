@@ -75,10 +75,36 @@ int run_nn_classification(ai_float* pSpectrogram, ai_float* classification_resul
     return 0; // Success
 }
 
+// initializes all spectrogram generation related parameters
+void spectrogram_generation_init(void) {
+  /* Init RFFT */
+  arm_rfft_fast_init_f32(&S_Rfft, 1024);
+
+  /* Init Spectrogram */
+  S_Spectr.pRfft    = &S_Rfft;
+  S_Spectr.Type     = SPECTRUM_TYPE_POWER;
+  S_Spectr.pWindow  = (float32_t *) hannWin_1024;
+  S_Spectr.SampRate = TARGET_SAMPLE_RATE;
+  S_Spectr.FrameLen = FRAME_LENGTH;
+  S_Spectr.FFTLen   = FRAME_LENGTH;
+  S_Spectr.pScratch = mel_spectrogram_column_buffer;
+
+  /* Init Mel filter */
+  S_MelFilter.pStartIndices = (uint32_t *) melFiltersStartIndices_1024_30;
+  S_MelFilter.pStopIndices  = (uint32_t *) melFiltersStopIndices_1024_30;
+  S_MelFilter.pCoefficients = (float32_t *) melFilterLut_1024_30;
+  S_MelFilter.NumMels       = NUM_MEL_BANDS;
+
+  /* Init MelSpectrogram */
+  S_MelSpectr.SpectrogramConf = &S_Spectr;
+  S_MelSpectr.MelFilter       = &S_MelFilter;
+}
+
 void classify_file(FIL *fil, char* file_name) {
 	int16_t frame_buffer[FRAME_LENGTH];
 	int16_t hop_buffer[HOP_LENGTH];
 	int16_t resampled_chunk_data[FRAME_LENGTH];
+	int err;
 
 	float total_file_classification_result[AI_NETWORK_1_OUT_1_SIZE];
 
@@ -129,39 +155,20 @@ void classify_file(FIL *fil, char* file_name) {
 		spectrogram_power_to_db(spectrogram);
 
 		// Run the neural network classification
-		run_nn_classification(spectrogram, aiOutData);
-		for (int i = 0; i < AI_NETWORK_1_OUT_1_SIZE; i++) {
-			classification_results_subsamples[subsample_count][i] = aiOutData[i];
+		if (run_nn_classification(spectrogram, aiOutData) == 0) {
+			for (int i = 0; i < AI_NETWORK_1_OUT_1_SIZE; i++) {
+				classification_results_subsamples[subsample_count][i] = aiOutData[i];
+			}
+		} else {
+			for (int i = 0; i < AI_NETWORK_1_OUT_1_SIZE; i++) {
+				classification_results_subsamples[subsample_count][i] = 0.0f;
+			}
 		}
+
 	}
 
 	calculate_total_classification_result(total_file_classification_result, classification_results_subsamples, number_subsamples_in_file);
-	store_classification_result();
-}
-
-// initializes all spectrogram generation related parameters
-void spectrogram_generation_init(void) {
-  /* Init RFFT */
-  arm_rfft_fast_init_f32(&S_Rfft, 1024);
-
-  /* Init Spectrogram */
-  S_Spectr.pRfft    = &S_Rfft;
-  S_Spectr.Type     = SPECTRUM_TYPE_POWER;
-  S_Spectr.pWindow  = (float32_t *) hannWin_1024;
-  S_Spectr.SampRate = TARGET_SAMPLE_RATE;
-  S_Spectr.FrameLen = FRAME_LENGTH;
-  S_Spectr.FFTLen   = FRAME_LENGTH;
-  S_Spectr.pScratch = mel_spectrogram_column_buffer;
-
-  /* Init Mel filter */
-  S_MelFilter.pStartIndices = (uint32_t *) melFiltersStartIndices_1024_30;
-  S_MelFilter.pStopIndices  = (uint32_t *) melFiltersStopIndices_1024_30;
-  S_MelFilter.pCoefficients = (float32_t *) melFilterLut_1024_30;
-  S_MelFilter.NumMels       = NUM_MEL_BANDS;
-
-  /* Init MelSpectrogram */
-  S_MelSpectr.SpectrogramConf = &S_Spectr;
-  S_MelSpectr.MelFilter       = &S_MelFilter;
+	store_classification_result(fil, file_name, total_file_classification_result);
 }
 
 // frame = 1 spectrogram column = 1024 samples
@@ -178,7 +185,7 @@ void calculate_spectrogram_column(float* pFrame, int col_index) {
 // converts the Mel spectrogram power to decibels (dB)
 void spectrogram_power_to_db(float *pSpectrogram) {
     float max_mel_energy = FLT_MIN; // initial kleinster Wert
-    float max_mel_log10;
+
     uint32_t rows = NUM_MEL_BANDS;
     uint32_t cols = SPECTROGRAM_COLS;
     uint32_t i, total_elements = rows * cols;
@@ -199,14 +206,10 @@ void spectrogram_power_to_db(float *pSpectrogram) {
         return;
     }
 
-    // calculate log of reference once
-    max_mel_log10 = 10.0f * log10f(max_mel_energy);
-
     // Scale Mel Energies and convert to dB
     for (i = 0; i < total_elements; i++) {
     	// https://librosa.org/doc/main/generated/librosa.power_to_db.html
-    	pSpectrogram[i] = 10 * log10f(pSpectrogram[i]) - max_mel_log10;
-    	//pSpectrogram[i] = 10.0f * log10f(pSpectrogram[i] / max_mel_energy);
+    	pSpectrogram[i] = 10.0f * log10f(pSpectrogram[i] / max_mel_energy);
         // Threshold to -80 dB and check for nan
         if (isnan(pSpectrogram[i]) || pSpectrogram[i] < -80.0f) {
         	pSpectrogram[i] = -80.0f;
@@ -223,7 +226,10 @@ void calculate_total_classification_result(float* total_file_classification_resu
 	// sum up result for each category
 	for (int i = 0; i < number_subsamples_in_file; i++) {
 		for (int j = 0; j < AI_NETWORK_1_OUT_1_SIZE; j++) {
-			total_file_classification_result[j] += classification_results_subsamples[i][j];
+			// check for NaNs and ignore them (get valued as 0)
+			if (!isnan(classification_results_subsamples[i][j])) {
+			    total_file_classification_result[j] += classification_results_subsamples[i][j];
+			}
 		}
 	}
 
@@ -233,7 +239,7 @@ void calculate_total_classification_result(float* total_file_classification_resu
 	}
 }
 
-void store_classification_result(float* result, char* file_name, FIL *fil) {
+void store_classification_result(FIL *fil, char* file_name, float* classification_result) {
 	// TODO
 }
 
