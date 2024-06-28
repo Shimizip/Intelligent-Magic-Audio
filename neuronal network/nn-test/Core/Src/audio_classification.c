@@ -76,10 +76,15 @@ int run_nn_classification(ai_float* pSpectrogram, ai_float* classification_resul
     ai_output[0].data = AI_HANDLE_PTR(classification_result);
 
     if(network == AI_HANDLE_NULL)
-      {
-          return -1;
-      }
+    {
+    	return -1;
+    }
 
+    // scale features with the same scaler as in the Jupyter Notebook
+    // (for each spectrogram value: subtract mean value and divide by scaler)
+    for (int i = 0; i < AI_NETWORK_1_IN_1_SIZE; i++) {
+    	pSpectrogram[i] = (pSpectrogram[i] - feature_scaler_mean[i]) / feature_scaler_std[i];
+    }
 
     // Run the network
     batch = ai_network_1_run(network, ai_input, ai_output);

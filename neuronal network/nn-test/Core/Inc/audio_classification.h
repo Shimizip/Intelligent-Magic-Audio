@@ -10,6 +10,7 @@
 
 /* includes */
 #include "feature_extraction.h"
+#include "featurescaler.h"
 #include "network_1.h"
 #include "network_1_data.h"
 #include "network_1_config.h"
