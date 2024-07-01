@@ -30,8 +30,6 @@ char aiOutDataLabels[AI_NETWORK_1_OUT_1_SIZE][10] = {
 
 float32_t mel_spectrogram_column_buffer[SPECTROGRAM_ROWS];
 
-static float32_t frame[FRAME_LENGTH];
-
 // Function to initialize the neural network
 int init_nn() {
 	ai_error err;
@@ -55,7 +53,7 @@ int init_nn() {
 
 int de_init_nn() {
 	// disable CRC clock
-	__HAL_RCC_CRC_CLK_ENABLE();
+	__HAL_RCC_CRC_CLK_DISABLE();
 
 	if (network != AI_HANDLE_NULL) {
 		if (ai_network_1_destroy(network) != AI_HANDLE_NULL) {
@@ -90,7 +88,6 @@ int run_nn_classification(ai_float* pSpectrogram, ai_float* classification_resul
     batch = ai_network_1_run(network, ai_input, ai_output);
     if (batch != 1) {
         err = ai_network_1_get_error(network);
-        printf("AI ai_network_run error - type=%d code=%d\r\n", err.type, err.code);
         return -1;
     }
 
@@ -126,14 +123,12 @@ void classify_file(FIL *fil, char* file_name) {
 	int16_t frame_buffer[FRAME_LENGTH];
 	int16_t hop_buffer[HOP_LENGTH];
 	int16_t resampled_chunk_data[FRAME_LENGTH];
+	uint32_t number_subsamples_in_file;
 	int err;
 
 	float total_file_classification_result[AI_NETWORK_1_OUT_1_SIZE];
 
-	// reset all vars
-	// TODO if necessary
-
-	uint16_t number_subsamples_in_file = get_number_subsamples();
+	number_subsamples_in_file = get_number_subsamples();
 	float classification_results_subsamples[number_subsamples_in_file][AI_NETWORK_1_OUT_1_SIZE];
 
 	// if number subsamples in file is zero => return empty classification result
@@ -146,20 +141,21 @@ void classify_file(FIL *fil, char* file_name) {
 	// loop over all subsamples of file
 	for (int subsample_count = 0; i < number_subsamples_in_file; i++) {
 		// generate spectrogram for subsample (sliding window; window size = frame size = 1024; hop size 512)
-		downsample_1024_samples(fil, resampled_chunk_data);
 		for (int spectrogram_col_index = 0; i < SPECTROGRAM_COLS; i++) {
 			if (spectrogram_col_index % 2 == 0) {
-				// mod 2 == 0 => frame buffer is the read chunk; no need to read new data
+				// mod 2 == 0 => frame buffer is the read chunk
+				// read chunk from SD card
+				downsample_1024_samples(fil, resampled_chunk_data);
 				// copy chunk to frame buffer
 				for (int n = 0; n < FRAME_LENGTH; i++) {
 					frame_buffer[n] = resampled_chunk_data[n];
 				}
 				// hop buffer is the second half of the read chunk
-				for (int n = 512; n < FRAME_LENGTH; i++) {
-					hop_buffer[n] = resampled_chunk_data[n];
+				for (int n = 0; n < HOP_LENGTH; i++) {
+					hop_buffer[n] = resampled_chunk_data[n+512];
 				}
 			} else {
-				// mod 2 == 1 => frame buffer is the hop buffer plus the first half of the chunk; read new data
+				// mod 2 == 1 => frame buffer is the hop buffer plus the first half of the chunk
 				// first half of frame is the hop buffer
 				for (int n = 0; n < HOP_LENGTH; i++) {
 					frame_buffer[n] = hop_buffer[n];
@@ -168,11 +164,9 @@ void classify_file(FIL *fil, char* file_name) {
 				for (int n = 0; n < HOP_LENGTH; i++) {
 					frame_buffer[n+512] = resampled_chunk_data[n];
 				}
-				// read next chunk
-				downsample_1024_samples(fil, resampled_chunk_data);
 			}
 			calculate_spectrogram_column(frame_buffer);
-		}
+		}c
 		// Convert power spectrogram to dB
 		spectrogram_power_to_db(spectrogram);
 
