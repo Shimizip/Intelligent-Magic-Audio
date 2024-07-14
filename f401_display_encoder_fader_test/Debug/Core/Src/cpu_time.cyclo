@@ -1,0 +1,6 @@
+../Core/Src/cpu_time.c:14:6:EnableDWT	1
+../Core/Src/cpu_time.c:22:6:StartCycleMeasurement	1
+../Core/Src/cpu_time.c:27:6:StopCycleMeasurement	1
+../Core/Src/cpu_time.c:32:10:GetMeasuredCycles	1
+../Core/Src/cpu_time.c:37:10:CyclesToMilliseconds	1
+../Core/Src/cpu_time.c:43:10:CyclesToMicroseconds	1

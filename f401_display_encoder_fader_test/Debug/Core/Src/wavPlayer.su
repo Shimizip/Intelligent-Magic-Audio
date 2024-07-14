@@ -1,0 +1,7 @@
+../Core/Src/wavPlayer.c:5:6:initPlayer	24	static
+../Core/Src/wavPlayer.c:16:10:populateWavHeader	32	static
+../Core/Src/wavPlayer.c:54:9:checkWav	24	static
+../Core/Src/wavPlayer.c:77:6:playButtonHandler	16	static
+../Core/Src/wavPlayer.c:88:9:wavLoad	24	static
+../Core/Src/wavPlayer.c:100:9:wavPlay	32	static
+../Core/Src/wavPlayer.c:143:9:wavPlayPitched	56	static,ignoring_inline_asm
