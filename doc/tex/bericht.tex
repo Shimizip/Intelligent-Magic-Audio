@@ -1,0 +1,96 @@
+\documentclass{article}
+\usepackage[a4paper,left=25mm,right=25mm,top=20mm,bottom=15mm]{geometry}
+\usepackage[ngerman]{babel}   %   %Sprachunterstützung
+\usepackage[utf8]{inputenc}   %Eingabecodierung
+% \usepackage[T1]{fontenc}         %T1-Codierung Zeichensatz
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{textcomp}
+\usepackage{fancyhdr}
+\usepackage{siunitx}
+\usepackage{graphicx} 
+
+\usepackage{minted}
+\usepackage{caption}
+\newenvironment{code}{\captionsetup{type=listing}}{}
+\usepackage[bookmarksopen=true]{hyperref}
+\usepackage{float}
+\usepackage{listings} % Für den Code
+
+\usepackage{enumitem}
+\usepackage{wasysym}
+\usepackage{multicol} 
+\usepackage{lmodern}
+\usepackage{xcolor}
+\usepackage{helvet}
+\usepackage{tabularx}
+\usepackage{pdfpages}
+\usepackage{eurosym}
+\usepackage[htt]{hyphenat}
+\usepackage{circuitikz}
+\usepackage{tikz}
+\usetikzlibrary{arrows,automata}
+\usepackage{tikz-timing}
+\usetikztiminglibrary[rising arrows]{clockarrows}
+\usepackage{array,cellspace}
+\usepackage{wrapfig}
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}} % linksbündig mit Breitenangabe
+\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}} % zentriert mit Breitenangabe
+\newcolumntype{R}[1]{>{\raggedleft\arraybackslash}p{#1}} % rechtsbündig mit Breitenangabe
+\newcolumntype{Y}{>{\centering\arraybackslash}X}
+\newcolumntype{B}{>{\raggedright\arraybackslash}X}
+\parskip=6pt
+\setlength{\parindent}{0pt} 
+
+\renewcommand{\arraystretch}{2.0}
+\pagestyle{fancy}
+\lfoot[\thepage]{SS 2024}
+\rfoot[SS 2024]{\thepage}
+\cfoot[]{ESP}
+
+\rhead[]{\leftmark}
+\lhead[\leftmark]{}
+
+\usepackage{wrapfig}
+% \renewcommand{\familydefault}{\sfdefault}
+
+
+\begin{document}
+\begin{titlepage}
+\centering
+    % \includegraphics[width=0.15\textwidth]{pic/thlogo/logo_TH-Koeln_CMYK_22pt.pdf}\par\vspace{1cm}
+
+	{\Large I M A \par}
+	{\huge\bfseries Intelligent Magic Audio\par}
+	{Jonas Lux, Szymon Banasiak, Leon Braungardt\par}
+	\vspace{2cm}
+	{\Large\itshape Sommersemester 2024 \par}
+	\vfill
+	
+  
+\end{titlepage}
+
+
+\tableofcontents
+\listoffigures
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\input{01_Einleitung.tex}
+\input{02_detaillierte_projektbeschreibung.tex}
+\input{03_projektanforderungen.tex}
+\input{04_spezifikation.tex}
+\input{05_technische_spezifikation.tex}
+\input{06_schnittstellenbeschreibung_integration.tex}
+\input{08_durchfuehrung.tex}
+\input{10_test_validierung.tex}
+\input{11_fazit.tex}
+
+
+
+
+\appendix
+
+\newpage
+
+
+\end{document}
