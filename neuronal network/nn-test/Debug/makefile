@@ -62,8 +62,8 @@ all: main-build
 main-build: nn-test.elf secondary-outputs
 
 # Tool invocations
-nn-test.elf nn-test.map: $(OBJS) $(USER_OBJS) C:\Users\jonas\TIN\ESP\ima\neuronal\ network\nn-test\STM32F722ZETX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "nn-test.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m7 -T"C:\Users\jonas\TIN\ESP\ima\neuronal network\nn-test\STM32F722ZETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="nn-test.map" -Wl,--gc-sections -static -L../Middlewares/ST/AI/Lib -L"C:\Users\jonas\TIN\ESP\ima\neuronal network\nn-test\Drivers\CMSIS\Lib\GCC" --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+nn-test.elf nn-test.map: $(OBJS) $(USER_OBJS) /Users/leon/STM32CubeIDE/workspace_1.14.0/nn-test/STM32F722ZETX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "nn-test.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m7 -T"/Users/leon/STM32CubeIDE/workspace_1.14.0/nn-test/STM32F722ZETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="nn-test.map" -Wl,--gc-sections -static -L../Middlewares/ST/AI/Lib -L"/Users/leon/STM32CubeIDE/workspace_1.14.0/nn-test/Drivers/CMSIS/Lib/GCC" --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 

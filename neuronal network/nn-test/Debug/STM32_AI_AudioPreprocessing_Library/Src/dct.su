@@ -1,2 +1,2 @@
-../STM32_AI_AudioPreprocessing_Library/Src/dct.c:113:9:DCT_Init	64	static
-../STM32_AI_AudioPreprocessing_Library/Src/dct.c:233:6:DCT	20	static
+../STM32_AI_AudioPreprocessing_Library/Src/dct.c:113:9:DCT_Init	112	static
+../STM32_AI_AudioPreprocessing_Library/Src/dct.c:233:6:DCT	88	static

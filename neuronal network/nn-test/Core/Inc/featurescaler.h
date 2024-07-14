@@ -9,8 +9,8 @@
 #define APP_FEATURESCALER_H_
 #include "arm_math.h"
 
-extern const float featureScalerMean[960];
-extern const float featureScalerStd[960];
+extern const float feature_scaler_mean[960];
+extern const float feature_scaler_std[960];
 
 
 #endif /* APP_FEATURESCALER_H_ */
