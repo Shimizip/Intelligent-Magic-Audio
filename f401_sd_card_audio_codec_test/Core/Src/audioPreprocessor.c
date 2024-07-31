@@ -9,12 +9,33 @@ uint32_t DWT_GetCycleCount(void) {
     return DWT->CYCCNT;
 }
 
-
+/**
+ * @brief Initializes the FIR decimation filter.
+ * 
+ * Configures the FIR decimation filter using the ARM CMSIS DSP library. Sets up the filter 
+ * structure with the specified number of taps, decimation factor, filter coefficients, 
+ * state buffer, and block size.
+ * 
+ * @return Status of the filter initialization (`arm_status`).
+ */
 arm_status initFilter(){
     return arm_fir_decimate_init_f32(&FIR_F32_Struct, (uint16_t) NUM_TAPS, (uint8_t) DECIMATION_FACTOR_ROUNDED, filter_taps, firState, BLOCK_SIZE);
 }
 
-// returns the number of bytes written to resampled file
+/**
+ * @brief Resamples audio data from an input file and writes to an output file.
+ * 
+ * Reads chunks of audio data from the input file, performs downsampling and resampling, 
+ * and writes the processed data to the output file. Updates the WAV header of the 
+ * output file to reflect the new format after resampling.
+ * 
+ * @param inFil Pointer to the input file (`FIL` structure) containing original audio data.
+ * @param outFil Pointer to the output file (`FIL` structure) to write resampled audio data.
+ * @param waveHeaderInput Pointer to the WAV header of the input file.
+ * @param waveHeaderResampled Pointer to the WAV header to be written to the output file.
+ * 
+ * @return The number of bytes written to the resampled file.
+ */
 uint16_t resampleFile(FIL *inFil, FIL *outFil, wav_header_t *waveHeaderInput, wav_header_t *waveHeaderResampled){
     
     int16_t inputChunk[NUM_SAMPLES_CHUNK_IN];
@@ -90,7 +111,16 @@ uint16_t resampleFile(FIL *inFil, FIL *outFil, wav_header_t *waveHeaderInput, wa
     return bytesWritten;
 }
 
-// takes and produces int16_t
+/**
+ * @brief Performs downsampling and FIR filtering on a block of audio data.
+ * 
+ * Converts a block of 16-bit integer audio samples to floating-point format, applies 
+ * FIR filtering and decimation, and then converts the filtered samples back to 16-bit 
+ * integer format. The processed data is written to the destination buffer.
+ * 
+ * @param src Pointer to the source buffer containing 16-bit audio samples to be processed.
+ * @param dest Pointer to the destination buffer where the downsampled 16-bit audio samples will be written.
+ */
 void downsample_Block(int16_t *src, int16_t *dest){
         // Temporary buffer for float input data for l and r channel
         float32_t inputFilterMono[BLOCK_SIZE];
@@ -108,8 +138,17 @@ void downsample_Block(int16_t *src, int16_t *dest){
         arm_float_to_q15(outputFilterMono, dest, (BLOCK_SIZE /  DECIMATION_FACTOR_ROUNDED));
 }
 
-// get number of 
-// trow away floating point data after comma
+/**
+ * @brief Calculates the number of subsamples based on the WAV file data.
+ * 
+ * Determines the number of mono subsamples in a WAV file after applying downsampling. 
+ * It calculates the total number of samples based on the file's audio data size, decimation factor, 
+ * and header information, then computes the number of frames using the `HOP_SIZE` and `STEP_SIZE`.
+ * 
+ * @param file Pointer to the WAV file (`FIL` structure) from which the header information is read.
+ * 
+ * @return The number of frames after downsampling, as a `uint16_t`.
+ */
 uint16_t get_number_subsamples(FIL *file){
     wav_header_t header;
     populateWavHeader(file, &header);
@@ -122,9 +161,19 @@ uint16_t get_number_subsamples(FIL *file){
     return num_frames;
 }
 
-// takes an input sample array with number of samples:  
-// NUM_SAMPLES_CHUNK_OUT * DECIMATION_FACTOR_ROUNDED = NUM_SAMPLES_CHUNK_IN
-// returns the actual number of samples downsampled 
+/**
+ * @brief Downsamples a chunk of audio data to 1024 samples.
+ * 
+ * Reads a chunk of audio data from the specified file, converts stereo samples to mono, 
+ * and then performs downsampling. The processed samples are written to the `outChunk` buffer.
+ * The function processes data in blocks and returns the number of downsampled samples.
+ * NUM_SAMPLES_CHUNK_OUT * DECIMATION_FACTOR_ROUNDED = NUM_SAMPLES_CHUNK_IN
+ * 
+ * @param file Pointer to the input file (`FIL` structure) containing audio data.
+ * @param outChunk Array to store the downsampled audio samples.
+ * 
+ * @return The actual number of samples written to the `outChunk` buffer.
+ */
 uint32_t downsample_chunk_to_1024_samples(FIL *file, int16_t outChunk[NUM_SAMPLES_CHUNK_OUT]){
         
         // input buffers
@@ -155,5 +204,4 @@ uint32_t downsample_chunk_to_1024_samples(FIL *file, int16_t outChunk[NUM_SAMPLE
             // Move to the next block
             block_index++;
         }
-        // return 
 }

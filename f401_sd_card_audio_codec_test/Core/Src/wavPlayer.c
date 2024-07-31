@@ -2,6 +2,16 @@
 #include "wavPlayer.h"
 #include "string.h"
 
+/**
+ * @brief Initializes a WAV player with specified file and header.
+ * 
+ * Sets up the `WavPlayer` structure with the given file pointer and WAV header.
+ * Initializes playback control flags, header size, and pitch factor to default values.
+ * 
+ * @param player Pointer to the `WavPlayer` structure to initialize.
+ * @param file Pointer to the `FIL` object representing the WAV file.
+ * @param wavHeader Pointer to the `wav_header_t` structure containing the WAV file header.
+ */
 void initPlayer(WavPlayer *player, FIL *file, wav_header_t *wavHeader) {
     player->file = file;
     player->wavHeader = wavHeader;
@@ -12,7 +22,17 @@ void initPlayer(WavPlayer *player, FIL *file, wav_header_t *wavHeader) {
     player->pitchChanged = false;
 }
 
-// populates wavHeader and returns the size of the wavHeader as uint32_t
+/**
+ * @brief Reads and populates the WAV header from a file.
+ * 
+ * This function reads the WAV file header and fills the provided `wav_header_t` structure.
+ * It continues reading chunks until it finds the "fmt " subchunk and returns the total
+ * size of the WAV header.
+ * 
+ * @param file Pointer to the `FIL` object representing the WAV file.
+ * @param wavHeader Pointer to the `wav_header_t` structure to be populated with header data.
+ * @return Size of the WAV header in bytes, or 0 on error.
+ */
 uint32_t populateWavHeader(FIL *file, wav_header_t *wavHeader){
     UINT count = 0;
     uint32_t headerSize = 0;
@@ -52,7 +72,16 @@ uint32_t populateWavHeader(FIL *file, wav_header_t *wavHeader){
     }
 }
 
-// load .wav header and check for valid header members
+/**
+ * @brief Validates the WAV file header for correctness.
+ * 
+ * This function reads the WAV header from the `WavPlayer` structure and checks for
+ * validity based on key header fields. It verifies the RIFF header and essential
+ * "fmt " subchunk to ensure the WAV file conforms to expected formats.
+ * 
+ * @param player Pointer to the `WavPlayer` structure containing the WAV file and header.
+ * @return `1` if the WAV header is valid, `0` otherwise.
+ */
 uint8_t checkWav(WavPlayer *player) {
     uint8_t wav_OK = 1;
 
@@ -76,6 +105,15 @@ uint8_t checkWav(WavPlayer *player) {
     return wav_OK;
 }
 
+/**
+ * @brief Handles the play button action for audio playback.
+ * 
+ * This function toggles the playback state of the `WavPlayer`. If playback is not active,
+ * it sets the `playbackActive` flag to `true`. If playback is already active, it sets
+ * the `restartPlayback` flag to `true` to restart playback.
+ * 
+ * @param player Pointer to the `WavPlayer` structure managing the audio playback.
+ */
 void playButtonHandler(WavPlayer *player){
     if(!player->playbackActive){
         player->playbackActive = true;
@@ -85,8 +123,17 @@ void playButtonHandler(WavPlayer *player){
     }
 }
 
-// load file via FATFS 
-// populate wavHeader and check if file is in correct format
+/**
+ * @brief Loads a WAV file and validates its header format.
+ * 
+ * This function opens a WAV file using FATFS, populates the `wav_header_t` structure
+ * in the `WavPlayer`, and checks if the file format is correct. It returns the result
+ * of the file opening operation.
+ * 
+ * @param player Pointer to the `WavPlayer` structure that will be used to manage the WAV file.
+ * @param filename Name of the WAV file to be loaded.
+ * @return `FR_OK` if the file is successfully opened and format is valid, or an error code from FATFS otherwise.
+ */
 FRESULT wavLoad(WavPlayer *player,const char *filename){
     FRESULT res;
     res = f_open(player->file, filename, FA_READ);
@@ -96,6 +143,17 @@ FRESULT wavLoad(WavPlayer *player,const char *filename){
     return res;
 }
 
+/**
+ * @brief Plays the WAV file from the given `WavPlayer`.
+ * 
+ * This function initializes the DMA stream for I2S transmission, reads data from
+ * the WAV file, and plays it through the DAC. It handles playback restarting and
+ * manages the remaining bytes of audio data. The function also resets the playback
+ * state upon completion.
+ * 
+ * @param player Pointer to the `WavPlayer` structure containing the WAV file and header.
+ * @return `0` on successful playback completion. Non-zero return values are reserved for error handling.
+ */
 uint8_t wavPlay(WavPlayer *player){
     f_lseek(player->file,player->headerSize);
 
@@ -139,6 +197,16 @@ uint8_t wavPlay(WavPlayer *player){
     return 0;
 }
 
+/**
+ * @brief Plays a WAV file with pitch shifting applied.
+ * 
+ * This function plays a WAV file with pitch adjustment using DMA for I2S transmission. 
+ * It reads audio data from the file, applies pitch shifting by adjusting the playback speed,
+ * and handles playback restarting. The function updates the pitch factor dynamically if changed.
+ * 
+ * @param player Pointer to the `WavPlayer` structure managing the WAV file and playback.
+ * @return `0` on successful playback completion. Non-zero return values are reserved for error handling.
+ */
 uint8_t wavPlayPitched(WavPlayer *player) {
     f_lseek(player->file,player->headerSize);
 
@@ -165,11 +233,8 @@ uint8_t wavPlayPitched(WavPlayer *player) {
             // memcpy(outBufPtr, fileReadBuf, HALF_BUFFER_SIZE * sizeof(uint16_t));
             for (uint32_t n = 0; n < (HALF_BUFFER_SIZE) - 1; n += 2) {
                 // Calculate the index for left sample
-
-                // interpolate left and right samples
-                // outBufPtr[n] = interpolate(fileReadBuf, baseIndex);
-                // outBufPtr[n+1] = interpolate(fileReadBuf, baseIndex + currentPitchFactor);
-
+                
+                // interpolation may give even better results
                 // round samples without interpolation
                 int32_t res = (int32_t) roundf(baseIndex) * 2;
                 if (res < 0) {

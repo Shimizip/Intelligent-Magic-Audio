@@ -5,6 +5,13 @@
 #include "fatfs.h"
 #include "audio.h"
 
+/**
+ * @brief Represents the header of a WAV file.
+ * 
+ * This structure defines the layout of the WAV file header, which includes information
+ * about the RIFF chunk, format details, and the data chunk. It provides essential metadata
+ * for interpreting the WAV file's audio data.
+ */
 typedef struct wav_header_t {
     // RIFF Header
     uint32_t ChunkID;         // Contains "RIFF"
@@ -27,6 +34,12 @@ typedef struct wav_header_t {
     // uint8_t bytes[];       // Remainder of wave file is bytes
 } wav_header_t;
 
+/**
+ * @brief Represents a WAV audio player with playback control and state management.
+ * 
+ * This structure contains information and control flags related to WAV audio playback,
+ * including file handling, playback status, and pitch adjustment.
+ */
 typedef struct WavPlayer {
     volatile bool restartPlayback;
     volatile bool playbackActive;
