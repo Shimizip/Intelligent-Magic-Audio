@@ -8,52 +8,70 @@ void initPlayer(WavPlayer *player, FIL *file, wav_header_t *wavHeader) {
     player->restartPlayback = false;
     player->playbackActive = false;
     player->headerSize = 0;
-    player->pitchFactor = 3.5f;
+    player->pitchFactor = 1.0f;
     player->pitchChanged = false;
+}
+
+// populates wavHeader and returns the size of the wavHeader as uint32_t
+uint32_t populateWavHeader(FIL *file, wav_header_t *wavHeader){
+    UINT count = 0;
+    uint32_t headerSize = 0;
+    
+    f_lseek(file, 0);
+    // Read RIFF header and first Chunk
+    volatile FRESULT res;
+
+    res = f_read(file, wavHeader, sizeof(uint32_t) * 5, &count);
+    // if (res != FR_OK) {
+    //     volatile int dummy = 0; 
+    //     return 0;
+    // }
+    headerSize += count;
+
+    // Read additional chunks until "fmt " subchunk is found
+    while (1) {
+        if (wavHeader->Subchunk1ID == 0x20746d66) { // "fmt "
+            // Essential "fmt " subchunk found
+            volatile int dummy = 0; 
+            return headerSize;
+        }
+
+        f_lseek(file, f_tell(file) + wavHeader->Subchunk1Size);
+        headerSize += wavHeader->Subchunk1Size;
+
+        // Calculate the address of the next subchunk header
+        wav_header_t* nextHeader = (wav_header_t*)((char*)wavHeader + sizeof(uint32_t) * 3);
+
+        // Read next subchunk header / rest of the wav header
+        res = f_read(file, nextHeader, sizeof(wav_header_t) - sizeof(uint32_t) * 3, &count);
+        if (res != FR_OK) {
+            volatile int dummy = 0; 
+            return 0;
+        }
+        headerSize += count;
+    }
 }
 
 // load .wav header and check for valid header members
 uint8_t checkWav(WavPlayer *player) {
     uint8_t wav_OK = 1;
-    UINT count = 0;
 
-    // Read RIFF header and first Chunk
-    if (f_read(player->file, player->wavHeader, sizeof(uint32_t) * 5, &count) != FR_OK) {
-        return 0;
-    }
-
+    player->headerSize = populateWavHeader(player->file, player->wavHeader);
     // Check RIFF header
     if (player->wavHeader->ChunkID != 0x46464952 || player->wavHeader->Format != 0x45564157) {
         return 0;
     }
-
-    // Read additional chunks until "fmt " subchunk is found
-    while (1) {
-        if (player->wavHeader->Subchunk1ID == 0x20746d66) { // "fmt "
-            // Essential "fmt " subchunk found
-            break;
-        }
-
-        f_lseek(player->file, f_tell(player->file) + player->wavHeader->Subchunk1Size);
-        player->headerSize += player->wavHeader->Subchunk1Size;
-
-        // Calculate the address of the next subchunk header
-        wav_header_t* nextHeader = (wav_header_t*)((char*)player->wavHeader + sizeof(uint32_t) * 3);
-
-        // Read next subchunk header / rest of the wav header
-        if (f_read(player->file, nextHeader, sizeof(wav_header_t) - sizeof(uint32_t) * 3, &count) != FR_OK) {
-            return 0;
-        }
-        player->headerSize += count;
-    }
-
-    // Check essential "fmt " subchunk
+        // Check essential "fmt " subchunk
     if (player->wavHeader->Subchunk1Size != 16 || player->wavHeader->AudioFormat != 1) {
         return 0;
     }
-
-    // save headerSize for later usage
-    player->headerSize = (uint32_t) player->file->fptr;
+    // other header Checks, to ensure correct format:
+    // - check for max duration 
+    // here also Codec clock and mono/stereo may be dynamically set, depending on the .wav file
+    // this would allow for different file formats
+    // e.g. 
+    // - different samplerate
+    // - different channel numbers (mono/stereo) 
 
     return wav_OK;
 }
@@ -192,8 +210,6 @@ uint8_t wavPlayPitched(WavPlayer *player) {
                 player->pitchChanged = false;
                 __enable_irq();
             }
-
-
 
             if(player->restartPlayback){
                 f_lseek(player->file,player->headerSize);

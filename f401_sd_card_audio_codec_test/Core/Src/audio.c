@@ -6,7 +6,6 @@ int16_t fileReadBuf[BUFFER_SIZE_INPUT]; // actually for one halfBuffer, now is =
 volatile int16_t *outBufPtr = &dacData[0];
 volatile bool pitchChanged = false;
 
-
 #define SINE_TABLE_SIZE 256 // Adjust the table size as needed for your accuracy/performance tradeoff
 
 // Precomputed sine wave table
@@ -51,9 +50,7 @@ void generateSineWave(double frequency) {
             }
             dma_dataReady = false;   
         }
-
     }
-
 }
 
 uint16_t fillHalfBufferFromSD(WavPlayer *player, bool pitched){

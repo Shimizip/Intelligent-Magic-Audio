@@ -20,7 +20,8 @@ floatAbi: -mfloat-abi=hard
 ldscript: STM32F401RETx_FLASH.ld # linker script
 
 # Compiler definitions. The -D prefix for the compiler will be automatically added.
-cDefinitions: []
+cDefinitions: 
+  - ARM_MATH_CM4
 cxxDefinitions: []
 asDefinitions: []
 
@@ -52,9 +53,11 @@ linkerFlags:
 libraries: 
   - c
   - m
+  - arm_cortexM4lf_math
 
 # Library directories. Folders can be added here that contain custom libraries.
-libraryDirectories: []
+libraryDirectories: 
+  - Middlewares/ST/ARM/DSP/Lib
 
 # Files or folders that will be excluded from compilation.
 # Glob patterns (https://www.wikiwand.com/en/Glob_(programming)) can be used.

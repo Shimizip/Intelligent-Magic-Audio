@@ -5,7 +5,7 @@
 #include "fatfs.h"
 #include "audio.h"
 
-typedef struct wav_header {
+typedef struct wav_header_t {
     // RIFF Header
     uint32_t ChunkID;         // Contains "RIFF"
     uint32_t ChunkSize;       // Size of the wav portion of the file, which follows the first 8 bytes. File size - 8
@@ -41,6 +41,7 @@ void initPlayer(WavPlayer *player, FIL *file, wav_header_t *wavHeader);
 
 FRESULT wavLoad(WavPlayer *player,const char *filename);
 
+uint32_t populateWavHeader(FIL *file, wav_header_t *wavHeader);
 uint8_t checkWav(WavPlayer *player);
 
 uint8_t wavPlay(WavPlayer *player);

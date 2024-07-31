@@ -18,6 +18,7 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
+#include "fatfs.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
@@ -28,6 +29,8 @@
 #include "display.h"
 #include "filemanager.h"
 #include "audio.h"
+#include "interface.h"
+#include "util.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -51,6 +54,11 @@ DMA_HandleTypeDef hdma_adc1;
 
 I2C_HandleTypeDef hi2c1;
 
+SD_HandleTypeDef hsd;
+DMA_HandleTypeDef hdma_sdio_rx;
+DMA_HandleTypeDef hdma_sdio_tx;
+
+TIM_HandleTypeDef htim3;
 TIM_HandleTypeDef htim5;
 
 UART_HandleTypeDef huart2;
@@ -58,16 +66,25 @@ UART_HandleTypeDef huart2;
 /* USER CODE BEGIN PV */
 // Filemanager
 FileManager fm;
-uint32_t rotary_enc_count = 0;
-bool switch_push_button = false;
-bool debounce = false;
-uint8_t cnt;
-uint32_t potentiometer_value = 0 ;
+FileManager fmCopy;
+char lfn[MAX_FILENAME_LENGTH];
+FILINFO fno;
+FATFS FatFs; 	//Fatfs handle
+FIL file;        // File-Objekt für FatFs
+UINT bytesWritten; // Anzahl der geschriebenen Bytes
+FRESULT fres; //Result after operations
+DIR dir; //Directory
+
+
+char fileNamesSDCard[MAX_FILES][MAX_FILENAME_LENGTH];
+int fileCount = 0;
+
+bool adcDmaFlag = false;
+bool updateScreenFlag = false;
+//bool sortFilesFlag = false;
+
 uint32_t adcBuffer[NUM_CHANNELS] = {0};
-uint32_t smoothValue[NUM_CHANNELS] = {0};
-uint32_t classPercentADC[NUM_CHANNELS] = {0};
-uint32_t endValues[NUM_CHANNELS] = {0};
-char faderProzent[50];
+
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -78,8 +95,10 @@ static void MX_USART2_UART_Init(void);
 static void MX_I2C1_Init(void);
 static void MX_TIM5_Init(void);
 static void MX_ADC1_Init(void);
+static void MX_TIM3_Init(void);
+static void MX_SDIO_SD_Init(void);
 /* USER CODE BEGIN PFP */
-
+void writeStringToFile(const char *filename, const char *str);
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
@@ -104,7 +123,7 @@ int main(void)
   HAL_Init();
 
   /* USER CODE BEGIN Init */
-  //HAL_ADC_Start_DMA(&hadc1, adcBuffer, NUM_CHANNELS);
+
   /* USER CODE END Init */
 
   /* Configure the system clock */
@@ -121,37 +140,35 @@ int main(void)
   MX_I2C1_Init();
   MX_TIM5_Init();
   MX_ADC1_Init();
+  MX_TIM3_Init();
+  MX_SDIO_SD_Init();
+  MX_FATFS_Init();
   /* USER CODE BEGIN 2 */
+  //Start DMA for Read Faders
   HAL_ADC_Start_DMA(&hadc1, adcBuffer, NUM_CHANNELS);
 
-  // Init lcd using one of the stm32HAL i2c typedefs
-  if (ssd1306_Init(&hi2c1) != 0) {
-    Error_Handler();
+
+  //Open the file system
+  fres = f_mount(&FatFs, SDPath, 1); //1=mount now
+  if (fres != FR_OK) {
+      //uart_printf("f_mount error (%i)\r\n", fres);
+      while(1);
   }
-  HAL_Delay(1000);
+  //creatFileManagerFile();
 
-  ssd1306_Fill(Black);
-  ssd1306_UpdateScreen(&hi2c1);
+  listFiles("/");
+  writeStringToFile("/test.txt", "hallo hallo");
+  // Close the file system
+  /*fres = f_mount(NULL, "", 0);
+  if (fres != FR_OK) {
+      //uart_printf("f_mount error (%i)\r\n", fres);
+      while(1);
+  }*/
+  // Init lcd using one of the stm32HAL i2c typedefs
+  screenInit(fileNamesSDCard);
 
-  HAL_Delay(1000);
-
-
-  initializeFileManager(&fm);
-
-  // Adding some dummy files
-  addFile(&fm, "bird.wav");
-  addFile(&fm, "child.wav");
-  addFile(&fm, "waterfall.wav");
-  addFile(&fm, "samba.wav");
-  addFile(&fm, "mixer.wav");
-  addFile(&fm, "disco.wav");
-  addFile(&fm, "leon.wav");
-  addFile(&fm, "jonas.wav");
-  addFile(&fm, "shimi.wav");
-  addFile(&fm, "bass.wav");
-  addFile(&fm, "smooth.wav");
-  addFile(&fm, "car.wav");
-
+  __HAL_TIM_CLEAR_FLAG(&htim3, TIM_FLAG_UPDATE);
+  HAL_TIM_Base_Start_IT(&htim3);
   // uint32_t num_samples = 2000;
   // int16_t samples[num_samples];
   // generateWaveform(samples, num_samples);
@@ -162,18 +179,23 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   { 
-	//Start DMA for Read Faders
     // Displaying the files
-    char *filenames[MAX_FILES];
-    for (int i = 0; i < fm.num_files; i++) {
-        filenames[i] = fm.files[i].filename; // Extracting filenames from File structures
-    }
-    char *currentFileName = fm.files[fm.current_file_index].filename;
-
-    displayStrings(&hi2c1, filenames, fm.num_files, fm.cursor_index);
-    renderSelectedFile(&hi2c1, currentFileName);
-    // Update display
-    ssd1306_UpdateScreen(&hi2c1);
+	if(updateScreenFlag){
+		compareADCValues();
+		updateScreenFlag = false;
+		if(sortFilesFlag == true){
+		sortFiles();
+		setCursor(&fm);
+		sortFilesFlag = false;
+		}
+		updateScreen();
+		writeFileManagerOnSD();
+		readFileManagerFromSD();
+		if(adcDmaFlag){
+	    HAL_ADC_Start_DMA(&hadc1, adcBuffer, NUM_CHANNELS);
+	    adcDmaFlag = false;
+		}
+	}
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
@@ -257,7 +279,7 @@ static void MX_ADC1_Init(void)
   hadc1.Init.ExternalTrigConvEdge = ADC_EXTERNALTRIGCONVEDGE_NONE;
   hadc1.Init.ExternalTrigConv = ADC_SOFTWARE_START;
   hadc1.Init.DataAlign = ADC_DATAALIGN_RIGHT;
-  hadc1.Init.NbrOfConversion = 2;
+  hadc1.Init.NbrOfConversion = 5;
   hadc1.Init.DMAContinuousRequests = ENABLE;
   hadc1.Init.EOCSelection = ADC_EOC_SINGLE_CONV;
   if (HAL_ADC_Init(&hadc1) != HAL_OK)
@@ -279,6 +301,33 @@ static void MX_ADC1_Init(void)
   */
   sConfig.Channel = ADC_CHANNEL_7;
   sConfig.Rank = 2;
+  if (HAL_ADC_ConfigChannel(&hadc1, &sConfig) != HAL_OK)
+  {
+    Error_Handler();
+  }
+
+  /** Configure for the selected ADC regular channel its corresponding rank in the sequencer and its sample time.
+  */
+  sConfig.Channel = ADC_CHANNEL_8;
+  sConfig.Rank = 3;
+  if (HAL_ADC_ConfigChannel(&hadc1, &sConfig) != HAL_OK)
+  {
+    Error_Handler();
+  }
+
+  /** Configure for the selected ADC regular channel its corresponding rank in the sequencer and its sample time.
+  */
+  sConfig.Channel = ADC_CHANNEL_9;
+  sConfig.Rank = 4;
+  if (HAL_ADC_ConfigChannel(&hadc1, &sConfig) != HAL_OK)
+  {
+    Error_Handler();
+  }
+
+  /** Configure for the selected ADC regular channel its corresponding rank in the sequencer and its sample time.
+  */
+  sConfig.Channel = ADC_CHANNEL_10;
+  sConfig.Rank = 5;
   if (HAL_ADC_ConfigChannel(&hadc1, &sConfig) != HAL_OK)
   {
     Error_Handler();
@@ -336,6 +385,91 @@ static void MX_I2C1_Init(void)
   /* USER CODE BEGIN I2C1_Init 2 */
 
   /* USER CODE END I2C1_Init 2 */
+
+}
+
+/**
+  * @brief SDIO Initialization Function
+  * @param None
+  * @retval None
+  */
+static void MX_SDIO_SD_Init(void)
+{
+
+  /* USER CODE BEGIN SDIO_Init 0 */
+
+  /* USER CODE END SDIO_Init 0 */
+
+  /* USER CODE BEGIN SDIO_Init 1 */
+
+  /* USER CODE END SDIO_Init 1 */
+  hsd.Instance = SDIO;
+  hsd.Init.ClockEdge = SDIO_CLOCK_EDGE_RISING;
+  hsd.Init.ClockBypass = SDIO_CLOCK_BYPASS_DISABLE;
+  hsd.Init.ClockPowerSave = SDIO_CLOCK_POWER_SAVE_DISABLE;
+  hsd.Init.BusWide = SDIO_BUS_WIDE_1B;
+  hsd.Init.HardwareFlowControl = SDIO_HARDWARE_FLOW_CONTROL_DISABLE;
+  hsd.Init.ClockDiv = 0;
+  /* USER CODE BEGIN SDIO_Init 2 */
+  if (HAL_SD_Init(&hsd) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  if (HAL_SD_ConfigWideBusOperation(&hsd, SDIO_BUS_WIDE_4B) != HAL_OK)
+  {
+    Error_Handler();
+  }
+
+  /* USER CODE END SDIO_Init 2 */
+
+}
+
+/**
+  * @brief TIM3 Initialization Function
+  * @param None
+  * @retval None
+  */
+static void MX_TIM3_Init(void)
+{
+
+  /* USER CODE BEGIN TIM3_Init 0 */
+
+  /* USER CODE END TIM3_Init 0 */
+
+  TIM_ClockConfigTypeDef sClockSourceConfig = {0};
+  TIM_MasterConfigTypeDef sMasterConfig = {0};
+
+  /* USER CODE BEGIN TIM3_Init 1 */
+
+  /* USER CODE END TIM3_Init 1 */
+  htim3.Instance = TIM3;
+  htim3.Init.Prescaler = 1680;
+  htim3.Init.CounterMode = TIM_COUNTERMODE_UP;
+  htim3.Init.Period = 5000;
+  htim3.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
+  htim3.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
+  if (HAL_TIM_Base_Init(&htim3) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  sClockSourceConfig.ClockSource = TIM_CLOCKSOURCE_INTERNAL;
+  if (HAL_TIM_ConfigClockSource(&htim3, &sClockSourceConfig) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  if (HAL_TIM_OnePulse_Init(&htim3, TIM_OPMODE_SINGLE) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  sMasterConfig.MasterOutputTrigger = TIM_TRGO_RESET;
+  sMasterConfig.MasterSlaveMode = TIM_MASTERSLAVEMODE_DISABLE;
+  if (HAL_TIMEx_MasterConfigSynchronization(&htim3, &sMasterConfig) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  /* USER CODE BEGIN TIM3_Init 2 */
+
+  /* USER CODE END TIM3_Init 2 */
 
 }
 
@@ -434,6 +568,12 @@ static void MX_DMA_Init(void)
   /* DMA2_Stream0_IRQn interrupt configuration */
   HAL_NVIC_SetPriority(DMA2_Stream0_IRQn, 0, 0);
   HAL_NVIC_EnableIRQ(DMA2_Stream0_IRQn);
+  /* DMA2_Stream3_IRQn interrupt configuration */
+  HAL_NVIC_SetPriority(DMA2_Stream3_IRQn, 0, 0);
+  HAL_NVIC_EnableIRQ(DMA2_Stream3_IRQn);
+  /* DMA2_Stream6_IRQn interrupt configuration */
+  HAL_NVIC_SetPriority(DMA2_Stream6_IRQn, 0, 0);
+  HAL_NVIC_EnableIRQ(DMA2_Stream6_IRQn);
 
 }
 
@@ -453,6 +593,7 @@ static void MX_GPIO_Init(void)
   __HAL_RCC_GPIOH_CLK_ENABLE();
   __HAL_RCC_GPIOA_CLK_ENABLE();
   __HAL_RCC_GPIOB_CLK_ENABLE();
+  __HAL_RCC_GPIOD_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(LD2_GPIO_Port, LD2_Pin, GPIO_PIN_RESET);
@@ -498,57 +639,34 @@ static void MX_GPIO_Init(void)
 }
 
 /* USER CODE BEGIN 4 */
-void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin) {
-
-    // werte Encoder aus Rotor DC Motor aus
-    if (GPIO_Pin == enc_a_clk_in1_Pin && !debounce) {
-          __HAL_TIM_CLEAR_FLAG(&htim5, TIM_FLAG_UPDATE);
-          HAL_TIM_Base_Start_IT(&htim5);
-          debounce = true;
-       //wenn A High und B High, increment Encoder Count
-        if (HAL_GPIO_ReadPin(enc_b_dt_in2_GPIO_Port, enc_b_dt_in2_Pin)) {
-          rotary_enc_count--;
-          cursorDown(&fm);
-        } else {
-          // wenn A High und B Low, decrement Encoder Count
-            rotary_enc_count++;
-            cursorUp(&fm);
-        }
-    }
-
-    if(GPIO_Pin == enc_switch_in3_Pin && !debounce){
-      __HAL_TIM_CLEAR_FLAG(&htim5, TIM_FLAG_UPDATE);
-      HAL_TIM_Base_Start_IT(&htim5);
-      debounce = true;
-      switch_push_button =true;
-      selectFile(&fm);
-    }
-}
-void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim) {
-    // reset debounce flag nach Timer5 elapsed
-    if (htim == &htim5) {
-        HAL_TIM_Base_Stop_IT(&htim5);
-        debounce = false;
-    }
-}
-
-void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc)
+void writeStringToFile(const char *filename, const char *str)
 {
-	if (hadc->Instance == ADC1){
-		cnt++;
-		smoothValue[0]+=adcBuffer[0];
-		smoothValue[1]+=adcBuffer[1];
-		//HAL_ADC_Start_DMA(&hadc1, adcBuffer, NUM_CHANNELS);
-		if(cnt == 10){
-			endValues[0]=smoothValue[0]/10;
-			endValues[1]=smoothValue[1]/10;
-			smoothValue[0]=0;
-			smoothValue[1]=0;
-			cnt=0;
-		    sprintf(faderProzent, "F1: %lu F2: %lu",endValues[0], endValues[1]);
-		    drawFaderProzent(&hi2c1, faderProzent);
-		}
-	}
+	FIL file;        // FatFs File-Objekt
+	FRESULT res;     // FatFs Ergebniscode
+	UINT bytesWritten; // Anzahl der geschriebenen Bytes
+
+    // Datei im Schreibmodus öffnen oder erstellen
+    res = f_open(&file, "test.txt", FA_WRITE | FA_CREATE_ALWAYS);
+    if (res != FR_OK)
+    {
+        printf("Fehler beim Öffnen/Erstellen der Datei %s: %d\n", filename, res);
+        return;
+    }
+
+    // String in die Datei schreiben
+    res = f_write(&file, "Das", 4, &bytesWritten);
+
+ if (res != FR_OK || bytesWritten != strlen(str))
+    {
+        printf("Fehler beim Schreiben der Daten in die Datei %s\n", filename);
+        f_close(&file);
+        return;
+    }
+
+    // Datei schließen
+    f_close(&file);
+
+    printf("String erfolgreich in Datei '%s' geschrieben.\n", filename);
 }
 /* USER CODE END 4 */
 

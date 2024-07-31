@@ -10,21 +10,22 @@ import keyboard
 
 from audio_player import AudioPlayer
 
-tag1 = 'Drum'
-tag2 = 'Vocal'
-tag3 = 'Harmonic'
-tag4 = 'Percussive'
+tag1 = 'bass'
+tag2 = 'pitched'
+tag3 = 'sustained'
+tag4 = 'rhythmic'
+tag5 = 'melodic'
 
 class FileInfo:
     def __init__(self, file_path, file_name):
-        self.tags = {tag1: '', tag2: '', tag3: '', tag4: ''}
+        self.tags = {tag1: '', tag2: '', tag3: '', tag4: '', tag5: ''}
         self.added_to_csv = False
         self.uid = None
         self.file_path = file_path
         self.file_name = file_name
 
 class Learner:
-    fieldnames = ['UID', 'File', tag1, tag2, tag3, tag4]
+    fieldnames = ['UID', 'File', tag1, tag2, tag3, tag4, tag5]
     def __init__(self, version):
         # curses init
         self.stdscr = curses.initscr()
@@ -172,7 +173,8 @@ class Learner:
                                 tag1: file_info.tags[tag1],
                                 tag2: file_info.tags[tag2],
                                 tag3: file_info.tags[tag3],
-                                tag4: file_info.tags[tag4]})
+                                tag4: file_info.tags[tag4],
+                                tag5: file_info.tags[tag5]})
             self.file_info_dict[file_path].added_to_csv = True
         else:
             self.display_status_message("No tags assigned to the current file. Skipping saving to CSV.")
@@ -190,7 +192,7 @@ class Learner:
                     self.file_info_dict[file_path] = FileInfo(file_path, file_name)
                     self.file_info_dict[file_path].added_to_csv = True
                     self.file_info_dict[file_path].uid = uid
-                    for i, tag in enumerate([tag1, tag2, tag3, tag4], start=2):
+                    for i, tag in enumerate([tag1, tag2, tag3, tag4, tag5], start=2):
                         # Check if the tag value is not empty
                         if row[i] and row[i] != '':
                             # Convert the value to int and set the corresponding tag value in file_info_dict
@@ -244,8 +246,8 @@ class Learner:
                     self.play_current_audio()
                     self.redraw = True
                     self.waiting_for_play_sig = True
-                elif keyboard.is_pressed('1') or keyboard.is_pressed('2') or keyboard.is_pressed('3') or keyboard.is_pressed('4'):
-                    self.tag_file(tag1 if keyboard.is_pressed('1') else (tag2 if keyboard.is_pressed('2') else (tag3 if keyboard.is_pressed('3') else tag4)))
+                elif keyboard.is_pressed('1') or keyboard.is_pressed('2') or keyboard.is_pressed('3') or keyboard.is_pressed('4') or keyboard.is_pressed('5'):
+                    self.tag_file(tag1 if keyboard.is_pressed('1') else (tag2 if keyboard.is_pressed('2') else (tag3 if keyboard.is_pressed('3') else (tag4 if keyboard.is_pressed('4') else tag5))))
                     self.redraw = True
                 elif keyboard.is_pressed('enter'):
                     # self.save_tags_to_csv()
@@ -256,6 +258,6 @@ class Learner:
                     self.redraw = True
 
 if __name__ == "__main__":
-    learner = Learner("0.1c")
+    learner = Learner("0.2a")
     learner.load_existing_tags_from_csv()
     learner.run()

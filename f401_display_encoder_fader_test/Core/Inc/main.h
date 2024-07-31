@@ -86,7 +86,7 @@ void Error_Handler(void);
 #define SWO_GPIO_Port GPIOB
 
 /* USER CODE BEGIN Private defines */
-#define NUM_CHANNELS 2
+#define NUM_CHANNELS 5
 #define ALPHA 0.1
 #define THRESHOLD 41
 #define FIRST_CHANNEL 6
