@@ -1,0 +1,11 @@
+../Core/Src/interface.c:39:6:HAL_GPIO_EXTI_Callback	6
+../Core/Src/interface.c:83:6:HAL_TIM_PeriodElapsedCallback	3
+../Core/Src/interface.c:111:6:HAL_ADC_ConvCpltCallback	5
+../Core/Src/interface.c:146:6:screenInit	5
+../Core/Src/interface.c:190:6:sortFiles	8
+../Core/Src/interface.c:246:6:updateScreen	3
+../Core/Src/interface.c:285:6:compareADCValues	4
+../Core/Src/interface.c:312:6:resetShownFiles	1
+../Core/Src/interface.c:332:6:listFiles	7
+../Core/Src/interface.c:370:6:writeFileManagerOnSD	4
+../Core/Src/interface.c:399:6:readFileManagerFromSD	4
