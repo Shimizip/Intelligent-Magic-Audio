@@ -191,9 +191,12 @@ void drawLine(int16_t x0, int16_t y0, int16_t x1, int16_t y1, uint16_t color) {
     }
 }
 
+<<<<<<< HEAD:f401_display_encoder_fader_audio_test/Core/Src/display.c
 <<<<<<< HEAD:f401_display_encoder_fader_audio_integration/Core/Src/display.c
 void drawFaderProzent(I2C_HandleTypeDef *hi2c1, const char *prozent, int multiplikator){
 =======
+=======
+>>>>>>> c7ea2e0bfee7c0fb2f2219cbbc4721e5d281f12d:f401_display_encoder_fader_test/Core/Src/display.c
 /**
  * @brief Draws the fader percentage on the OLED screen at a specified vertical position.
  *
@@ -212,14 +215,21 @@ void drawFaderProzent(I2C_HandleTypeDef *hi2c1, const char *prozent, int multipl
  */
 void drawFaderProzent(I2C_HandleTypeDef *hi2c1, const char *prozent, int multiplikator){
     // Clear the selected file section of the screen
+<<<<<<< HEAD:f401_display_encoder_fader_audio_test/Core/Src/display.c
+>>>>>>> c7ea2e0bfee7c0fb2f2219cbbc4721e5d281f12d:f401_display_encoder_fader_test/Core/Src/display.c
+=======
 >>>>>>> c7ea2e0bfee7c0fb2f2219cbbc4721e5d281f12d:f401_display_encoder_fader_test/Core/Src/display.c
     for (uint8_t i = 0; i < DISPLAY_WIDTH; i++) {
         for (uint8_t j = LIST_SECTION_HEIGHT + (18 * multiplikator); j < DISPLAY_HEIGHT; j++) {
             ssd1306_DrawPixel(i, j, Black);
         }
     }
+<<<<<<< HEAD:f401_display_encoder_fader_audio_test/Core/Src/display.c
 <<<<<<< HEAD:f401_display_encoder_fader_audio_integration/Core/Src/display.c
 
+=======
+    // Write the selected file name in the selected file section
+>>>>>>> c7ea2e0bfee7c0fb2f2219cbbc4721e5d281f12d:f401_display_encoder_fader_test/Core/Src/display.c
 =======
     // Write the selected file name in the selected file section
 >>>>>>> c7ea2e0bfee7c0fb2f2219cbbc4721e5d281f12d:f401_display_encoder_fader_test/Core/Src/display.c

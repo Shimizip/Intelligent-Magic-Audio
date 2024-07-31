@@ -1,5 +1,6 @@
 #include "interface.h"
 
+<<<<<<< HEAD:f401_display_encoder_fader_audio_test/Core/Src/interface.c
 <<<<<<< HEAD:f401_display_encoder_fader_audio_integration/Core/Src/interface.c
 uint32_t rotary_enc_count = 0;
 
@@ -9,6 +10,8 @@ bool init = false;
 bool sortFilesFlag = false;
 
 =======
+=======
+>>>>>>> c7ea2e0bfee7c0fb2f2219cbbc4721e5d281f12d:f401_display_encoder_fader_test/Core/Src/interface.c
 // Count Var for Debugging
 uint32_t rotary_enc_count = 0;
 
@@ -21,6 +24,9 @@ bool init = false;
 bool sortFilesFlag = false;
 
 // Count to smooth the fader values
+<<<<<<< HEAD:f401_display_encoder_fader_audio_test/Core/Src/interface.c
+>>>>>>> c7ea2e0bfee7c0fb2f2219cbbc4721e5d281f12d:f401_display_encoder_fader_test/Core/Src/interface.c
+=======
 >>>>>>> c7ea2e0bfee7c0fb2f2219cbbc4721e5d281f12d:f401_display_encoder_fader_test/Core/Src/interface.c
 uint16_t cnt;
 uint32_t potentiometer_value = 0 ;
@@ -30,12 +36,15 @@ uint8_t currentClassPercentADC[NUM_CHANNELS] = {0};
 uint16_t endValues[NUM_CHANNELS] = {0};
 char faderProzent[2][50];
 
+<<<<<<< HEAD:f401_display_encoder_fader_audio_test/Core/Src/interface.c
 <<<<<<< HEAD:f401_display_encoder_fader_audio_integration/Core/Src/interface.c
 
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin) {
 
     // werte Encoder aus Rotor DC Motor aus
 =======
+=======
+>>>>>>> c7ea2e0bfee7c0fb2f2219cbbc4721e5d281f12d:f401_display_encoder_fader_test/Core/Src/interface.c
 /**
  * @brief Callback function that responds to encoder signals.
  *
@@ -55,13 +64,20 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin) {
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin) {
 
     // Change the cnt the Position of Cursor and debounce the encoder with &tim5
+<<<<<<< HEAD:f401_display_encoder_fader_audio_test/Core/Src/interface.c
+>>>>>>> c7ea2e0bfee7c0fb2f2219cbbc4721e5d281f12d:f401_display_encoder_fader_test/Core/Src/interface.c
+=======
 >>>>>>> c7ea2e0bfee7c0fb2f2219cbbc4721e5d281f12d:f401_display_encoder_fader_test/Core/Src/interface.c
     if (GPIO_Pin == enc_a_clk_in1_Pin && !debounce) {
           __HAL_TIM_CLEAR_FLAG(&htim5, TIM_FLAG_UPDATE);
           HAL_TIM_Base_Start_IT(&htim5);
           debounce = true;
+<<<<<<< HEAD:f401_display_encoder_fader_audio_test/Core/Src/interface.c
 <<<<<<< HEAD:f401_display_encoder_fader_audio_integration/Core/Src/interface.c
        //wenn A High und B High, increment Encoder Count
+=======
+       //wenn A High und B High, decrement Encoder Count and increment the cursor position of the display
+>>>>>>> c7ea2e0bfee7c0fb2f2219cbbc4721e5d281f12d:f401_display_encoder_fader_test/Core/Src/interface.c
 =======
        //wenn A High und B High, decrement Encoder Count and increment the cursor position of the display
 >>>>>>> c7ea2e0bfee7c0fb2f2219cbbc4721e5d281f12d:f401_display_encoder_fader_test/Core/Src/interface.c
@@ -69,8 +85,12 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin) {
           rotary_enc_count--;
           cursorDown(&fm);
         } else {
+<<<<<<< HEAD:f401_display_encoder_fader_audio_test/Core/Src/interface.c
 <<<<<<< HEAD:f401_display_encoder_fader_audio_integration/Core/Src/interface.c
           // wenn A High und B Low, decrement Encoder Count
+=======
+          // wenn A High und B Low, increment Encoder Count and decrement the cursor position of the display
+>>>>>>> c7ea2e0bfee7c0fb2f2219cbbc4721e5d281f12d:f401_display_encoder_fader_test/Core/Src/interface.c
 =======
           // wenn A High und B Low, increment Encoder Count and decrement the cursor position of the display
 >>>>>>> c7ea2e0bfee7c0fb2f2219cbbc4721e5d281f12d:f401_display_encoder_fader_test/Core/Src/interface.c
@@ -78,8 +98,12 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin) {
             cursorUp(&fm);
         }
     }
+<<<<<<< HEAD:f401_display_encoder_fader_audio_test/Core/Src/interface.c
 <<<<<<< HEAD:f401_display_encoder_fader_audio_integration/Core/Src/interface.c
 
+=======
+    // If the switch is pushed selectFile and debounce the encoder with &tim5
+>>>>>>> c7ea2e0bfee7c0fb2f2219cbbc4721e5d281f12d:f401_display_encoder_fader_test/Core/Src/interface.c
 =======
     // If the switch is pushed selectFile and debounce the encoder with &tim5
 >>>>>>> c7ea2e0bfee7c0fb2f2219cbbc4721e5d281f12d:f401_display_encoder_fader_test/Core/Src/interface.c
@@ -92,8 +116,11 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin) {
       init = false;
     }
 }
+<<<<<<< HEAD:f401_display_encoder_fader_audio_test/Core/Src/interface.c
 <<<<<<< HEAD:f401_display_encoder_fader_audio_integration/Core/Src/interface.c
 =======
+=======
+>>>>>>> c7ea2e0bfee7c0fb2f2219cbbc4721e5d281f12d:f401_display_encoder_fader_test/Core/Src/interface.c
 
 /**
  * @brief Callback function triggered when a timer expires.
@@ -111,6 +138,9 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin) {
  * @param[in] htim Pointer to the TIM_HandleTypeDef structure for the current timer.
  */
 
+<<<<<<< HEAD:f401_display_encoder_fader_audio_test/Core/Src/interface.c
+>>>>>>> c7ea2e0bfee7c0fb2f2219cbbc4721e5d281f12d:f401_display_encoder_fader_test/Core/Src/interface.c
+=======
 >>>>>>> c7ea2e0bfee7c0fb2f2219cbbc4721e5d281f12d:f401_display_encoder_fader_test/Core/Src/interface.c
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim) {
     // reset debounce flag nach Timer5 elapsed
@@ -118,7 +148,11 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim) {
         HAL_TIM_Base_Stop_IT(&htim5);
         debounce = false;
     }
+<<<<<<< HEAD:f401_display_encoder_fader_audio_test/Core/Src/interface.c
 <<<<<<< HEAD:f401_display_encoder_fader_audio_integration/Core/Src/interface.c
+=======
+    // stop timer set flags for dma and screen update and set a new timer for new refresh interval
+>>>>>>> c7ea2e0bfee7c0fb2f2219cbbc4721e5d281f12d:f401_display_encoder_fader_test/Core/Src/interface.c
 =======
     // stop timer set flags for dma and screen update and set a new timer for new refresh interval
 >>>>>>> c7ea2e0bfee7c0fb2f2219cbbc4721e5d281f12d:f401_display_encoder_fader_test/Core/Src/interface.c
@@ -131,10 +165,13 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim) {
     }
 }
 
+<<<<<<< HEAD:f401_display_encoder_fader_audio_test/Core/Src/interface.c
 <<<<<<< HEAD:f401_display_encoder_fader_audio_integration/Core/Src/interface.c
 void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc)
 {
 =======
+=======
+>>>>>>> c7ea2e0bfee7c0fb2f2219cbbc4721e5d281f12d:f401_display_encoder_fader_test/Core/Src/interface.c
 /**
  * @brief Callback function for the ADC conversion.
  *
@@ -149,18 +186,24 @@ void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc)
  */
 void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc)
 {	// Calculation of the smooth values for alle channels od the ADC
+<<<<<<< HEAD:f401_display_encoder_fader_audio_test/Core/Src/interface.c
+>>>>>>> c7ea2e0bfee7c0fb2f2219cbbc4721e5d281f12d:f401_display_encoder_fader_test/Core/Src/interface.c
+=======
 >>>>>>> c7ea2e0bfee7c0fb2f2219cbbc4721e5d281f12d:f401_display_encoder_fader_test/Core/Src/interface.c
 	if (hadc->Instance == ADC1){
 		cnt++;
 		for(int i = 0; i < NUM_CHANNELS; i++){
 			smoothValue[i]+=adcBuffer[i];
 		}
+<<<<<<< HEAD:f401_display_encoder_fader_audio_test/Core/Src/interface.c
 <<<<<<< HEAD:f401_display_encoder_fader_audio_integration/Core/Src/interface.c
 		if(cnt >= SMOOTHING_HEIGHT){
 			HAL_ADC_Stop_DMA(&hadc1);
 			for(int j = 0; j < NUM_CHANNELS; j++){
 				currentClassPercentADC[j]=(smoothValue[j]/SMOOTHING_HEIGHT)/41;
 =======
+=======
+>>>>>>> c7ea2e0bfee7c0fb2f2219cbbc4721e5d281f12d:f401_display_encoder_fader_test/Core/Src/interface.c
 		// Calculation of the average values for the diplay and the compare operations
 		if(cnt >= SMOOTHING_HEIGHT){
 			HAL_ADC_Stop_DMA(&hadc1);
@@ -168,13 +211,20 @@ void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc)
 				//Shown values
 				currentClassPercentADC[j]=(smoothValue[j]/SMOOTHING_HEIGHT)/41;
 				//Compare values for the Sortalgorythm
+<<<<<<< HEAD:f401_display_encoder_fader_audio_test/Core/Src/interface.c
+>>>>>>> c7ea2e0bfee7c0fb2f2219cbbc4721e5d281f12d:f401_display_encoder_fader_test/Core/Src/interface.c
+=======
 >>>>>>> c7ea2e0bfee7c0fb2f2219cbbc4721e5d281f12d:f401_display_encoder_fader_test/Core/Src/interface.c
 				fm.fader_Class[j] = ((smoothValue[j]/SMOOTHING_HEIGHT)/4096.0f);
 				smoothValue[j]=0;
 			}
 			cnt=0;
+<<<<<<< HEAD:f401_display_encoder_fader_audio_test/Core/Src/interface.c
 <<<<<<< HEAD:f401_display_encoder_fader_audio_integration/Core/Src/interface.c
 
+=======
+			//Initialisation of the char array that are shown on Display
+>>>>>>> c7ea2e0bfee7c0fb2f2219cbbc4721e5d281f12d:f401_display_encoder_fader_test/Core/Src/interface.c
 =======
 			//Initialisation of the char array that are shown on Display
 >>>>>>> c7ea2e0bfee7c0fb2f2219cbbc4721e5d281f12d:f401_display_encoder_fader_test/Core/Src/interface.c
@@ -183,8 +233,11 @@ void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc)
 		}
 	}
 }
+<<<<<<< HEAD:f401_display_encoder_fader_audio_test/Core/Src/interface.c
 <<<<<<< HEAD:f401_display_encoder_fader_audio_integration/Core/Src/interface.c
 =======
+=======
+>>>>>>> c7ea2e0bfee7c0fb2f2219cbbc4721e5d281f12d:f401_display_encoder_fader_test/Core/Src/interface.c
 
 //InIt Funktion for the Display
 
@@ -196,6 +249,9 @@ void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc)
  * 
  * @param[in] fileNames Array of file names to be added to the file manager.
  */
+<<<<<<< HEAD:f401_display_encoder_fader_audio_test/Core/Src/interface.c
+>>>>>>> c7ea2e0bfee7c0fb2f2219cbbc4721e5d281f12d:f401_display_encoder_fader_test/Core/Src/interface.c
+=======
 >>>>>>> c7ea2e0bfee7c0fb2f2219cbbc4721e5d281f12d:f401_display_encoder_fader_test/Core/Src/interface.c
 void screenInit(char (*fileNames)[MAX_FILENAME_LENGTH]){
   if (ssd1306_Init(&hi2c1) != 0) {
@@ -209,6 +265,7 @@ void screenInit(char (*fileNames)[MAX_FILENAME_LENGTH]){
   HAL_Delay(1000);
 
   init = true;
+<<<<<<< HEAD:f401_display_encoder_fader_audio_test/Core/Src/interface.c
 <<<<<<< HEAD:f401_display_encoder_fader_audio_integration/Core/Src/interface.c
 
   float fileClasses[MAX_FILES][MAX_CLASSES] = {
@@ -239,6 +296,8 @@ void screenInit(char (*fileNames)[MAX_FILENAME_LENGTH]){
   };*/
   for (int i = 1; i < 11; i++) {
 =======
+=======
+>>>>>>> c7ea2e0bfee7c0fb2f2219cbbc4721e5d281f12d:f401_display_encoder_fader_test/Core/Src/interface.c
   //Initialisation of the Class Percentage for System Tests with random Values between 0.0-1.0
   float fileClasses[MAX_FILES][MAX_CLASSES];
 
@@ -254,6 +313,9 @@ void screenInit(char (*fileNames)[MAX_FILENAME_LENGTH]){
   }
   // Add Files to the Filemanger
   for (int i = 1; i < MAX_FILES; i++) {
+<<<<<<< HEAD:f401_display_encoder_fader_audio_test/Core/Src/interface.c
+>>>>>>> c7ea2e0bfee7c0fb2f2219cbbc4721e5d281f12d:f401_display_encoder_fader_test/Core/Src/interface.c
+=======
 >>>>>>> c7ea2e0bfee7c0fb2f2219cbbc4721e5d281f12d:f401_display_encoder_fader_test/Core/Src/interface.c
       addFile(&fm, fileNames[i], fileClasses[i]);
   }
@@ -261,8 +323,11 @@ void screenInit(char (*fileNames)[MAX_FILENAME_LENGTH]){
   updateScreen();
 }
 
+<<<<<<< HEAD:f401_display_encoder_fader_audio_test/Core/Src/interface.c
 <<<<<<< HEAD:f401_display_encoder_fader_audio_integration/Core/Src/interface.c
 =======
+=======
+>>>>>>> c7ea2e0bfee7c0fb2f2219cbbc4721e5d281f12d:f401_display_encoder_fader_test/Core/Src/interface.c
 /**
  * @brief Sorts filenames for display based on fader settings.
  *
@@ -274,6 +339,9 @@ void screenInit(char (*fileNames)[MAX_FILENAME_LENGTH]){
  *
  * @param[in] void
  */
+<<<<<<< HEAD:f401_display_encoder_fader_audio_test/Core/Src/interface.c
+>>>>>>> c7ea2e0bfee7c0fb2f2219cbbc4721e5d281f12d:f401_display_encoder_fader_test/Core/Src/interface.c
+=======
 >>>>>>> c7ea2e0bfee7c0fb2f2219cbbc4721e5d281f12d:f401_display_encoder_fader_test/Core/Src/interface.c
 void sortFiles(void){
 	bool classFulfilled;
@@ -282,8 +350,13 @@ void sortFiles(void){
 	char* compareFile;
 	char* shownFile;
 	int res;
+<<<<<<< HEAD:f401_display_encoder_fader_audio_test/Core/Src/interface.c
 <<<<<<< HEAD:f401_display_encoder_fader_audio_integration/Core/Src/interface.c
 
+=======
+	//Comparsion of the fileclasses and the fader settings
+	//whether the class is fullfilled with a threashold of 0.1
+>>>>>>> c7ea2e0bfee7c0fb2f2219cbbc4721e5d281f12d:f401_display_encoder_fader_test/Core/Src/interface.c
 =======
 	//Comparsion of the fileclasses and the fader settings
 	//whether the class is fullfilled with a threashold of 0.1
@@ -299,7 +372,11 @@ void sortFiles(void){
 				break;
 			}
 		}
+<<<<<<< HEAD:f401_display_encoder_fader_audio_test/Core/Src/interface.c
 <<<<<<< HEAD:f401_display_encoder_fader_audio_integration/Core/Src/interface.c
+=======
+		//Comparsion of the allready added filenames und the new one
+>>>>>>> c7ea2e0bfee7c0fb2f2219cbbc4721e5d281f12d:f401_display_encoder_fader_test/Core/Src/interface.c
 =======
 		//Comparsion of the allready added filenames und the new one
 >>>>>>> c7ea2e0bfee7c0fb2f2219cbbc4721e5d281f12d:f401_display_encoder_fader_test/Core/Src/interface.c
@@ -316,7 +393,11 @@ void sortFiles(void){
 				}
 			}
 		}
+<<<<<<< HEAD:f401_display_encoder_fader_audio_test/Core/Src/interface.c
 <<<<<<< HEAD:f401_display_encoder_fader_audio_integration/Core/Src/interface.c
+=======
+		//Add of the file from all existing files to the filemanegers shownFiles
+>>>>>>> c7ea2e0bfee7c0fb2f2219cbbc4721e5d281f12d:f401_display_encoder_fader_test/Core/Src/interface.c
 =======
 		//Add of the file from all existing files to the filemanegers shownFiles
 >>>>>>> c7ea2e0bfee7c0fb2f2219cbbc4721e5d281f12d:f401_display_encoder_fader_test/Core/Src/interface.c
@@ -328,8 +409,11 @@ void sortFiles(void){
 	sortFilesFlag = false;
 }
 
+<<<<<<< HEAD:f401_display_encoder_fader_audio_test/Core/Src/interface.c
 <<<<<<< HEAD:f401_display_encoder_fader_audio_integration/Core/Src/interface.c
 =======
+=======
+>>>>>>> c7ea2e0bfee7c0fb2f2219cbbc4721e5d281f12d:f401_display_encoder_fader_test/Core/Src/interface.c
 /**
  * @brief Updates the display with filenames, the currently selected file, and fader settings.
  *
@@ -343,6 +427,9 @@ void sortFiles(void){
  *
  * @note The function relies on global variables and external functions to interact with the display.
  */
+<<<<<<< HEAD:f401_display_encoder_fader_audio_test/Core/Src/interface.c
+>>>>>>> c7ea2e0bfee7c0fb2f2219cbbc4721e5d281f12d:f401_display_encoder_fader_test/Core/Src/interface.c
+=======
 >>>>>>> c7ea2e0bfee7c0fb2f2219cbbc4721e5d281f12d:f401_display_encoder_fader_test/Core/Src/interface.c
 void updateScreen(void){
 	char *filenames[MAX_FILES];
@@ -350,7 +437,11 @@ void updateScreen(void){
 	for (int i = 0; i < fm.num_files; i++) {
 		filenames[i] = fm.shownFiles[i].filename; // Extracting filenames from File structures
 	}
+<<<<<<< HEAD:f401_display_encoder_fader_audio_test/Core/Src/interface.c
 <<<<<<< HEAD:f401_display_encoder_fader_audio_integration/Core/Src/interface.c
+=======
+	//Case if the init is not fullfiled
+>>>>>>> c7ea2e0bfee7c0fb2f2219cbbc4721e5d281f12d:f401_display_encoder_fader_test/Core/Src/interface.c
 =======
 	//Case if the init is not fullfiled
 >>>>>>> c7ea2e0bfee7c0fb2f2219cbbc4721e5d281f12d:f401_display_encoder_fader_test/Core/Src/interface.c
@@ -358,12 +449,15 @@ void updateScreen(void){
 		currentFileName = "";
 	}
 	else{
+<<<<<<< HEAD:f401_display_encoder_fader_audio_test/Core/Src/interface.c
 <<<<<<< HEAD:f401_display_encoder_fader_audio_integration/Core/Src/interface.c
 	currentFileName = fm.shownFiles[fm.current_file_index].filename;
 	}
 	displayStrings(&hi2c1, filenames, fm.num_matched_files, fm.cursor_index);
 	renderSelectedFile(&hi2c1, currentFileName);
 =======
+=======
+>>>>>>> c7ea2e0bfee7c0fb2f2219cbbc4721e5d281f12d:f401_display_encoder_fader_test/Core/Src/interface.c
 	//To display the chosen filename
 	currentFileName = fm.shownFiles[fm.current_file_index].filename;
 	}
@@ -372,6 +466,9 @@ void updateScreen(void){
 	//To display the chosen filename
 	renderSelectedFile(&hi2c1, currentFileName);
 	//Show the Fader Settings on Display
+<<<<<<< HEAD:f401_display_encoder_fader_audio_test/Core/Src/interface.c
+>>>>>>> c7ea2e0bfee7c0fb2f2219cbbc4721e5d281f12d:f401_display_encoder_fader_test/Core/Src/interface.c
+=======
 >>>>>>> c7ea2e0bfee7c0fb2f2219cbbc4721e5d281f12d:f401_display_encoder_fader_test/Core/Src/interface.c
 	drawFaderProzent(&hi2c1, faderProzent[0], 1);
 	drawFaderProzent(&hi2c1, faderProzent[1], 2);
@@ -381,11 +478,14 @@ void updateScreen(void){
 	ssd1306_UpdateScreen(&hi2c1);
 }
 
+<<<<<<< HEAD:f401_display_encoder_fader_audio_test/Core/Src/interface.c
 <<<<<<< HEAD:f401_display_encoder_fader_audio_integration/Core/Src/interface.c
 void compareADCValues(void){
 	bool faderSettingsChanged= false;
 
 =======
+=======
+>>>>>>> c7ea2e0bfee7c0fb2f2219cbbc4721e5d281f12d:f401_display_encoder_fader_test/Core/Src/interface.c
 /**
  * @brief Checks if fader settings have changed and updates accordingly.
  *
@@ -401,6 +501,9 @@ void compareADCValues(void){
 void compareADCValues(void){
 	bool faderSettingsChanged= false;
     //Compare the current und the past fader settings
+<<<<<<< HEAD:f401_display_encoder_fader_audio_test/Core/Src/interface.c
+>>>>>>> c7ea2e0bfee7c0fb2f2219cbbc4721e5d281f12d:f401_display_encoder_fader_test/Core/Src/interface.c
+=======
 >>>>>>> c7ea2e0bfee7c0fb2f2219cbbc4721e5d281f12d:f401_display_encoder_fader_test/Core/Src/interface.c
 	for(int i = 0; i < NUM_CHANNELS; i++){
 		if(pastClassPercentADC[i] != currentClassPercentADC[i]){
@@ -409,7 +512,11 @@ void compareADCValues(void){
 			sortFilesFlag = true;
 		}
 	}
+<<<<<<< HEAD:f401_display_encoder_fader_audio_test/Core/Src/interface.c
 <<<<<<< HEAD:f401_display_encoder_fader_audio_integration/Core/Src/interface.c
+=======
+	//The current filename get safed and the shownFiles array get cleared
+>>>>>>> c7ea2e0bfee7c0fb2f2219cbbc4721e5d281f12d:f401_display_encoder_fader_test/Core/Src/interface.c
 =======
 	//The current filename get safed and the shownFiles array get cleared
 >>>>>>> c7ea2e0bfee7c0fb2f2219cbbc4721e5d281f12d:f401_display_encoder_fader_test/Core/Src/interface.c
@@ -419,8 +526,11 @@ void compareADCValues(void){
 		faderSettingsChanged = false;
 	}
 }
+<<<<<<< HEAD:f401_display_encoder_fader_audio_test/Core/Src/interface.c
 <<<<<<< HEAD:f401_display_encoder_fader_audio_integration/Core/Src/interface.c
 =======
+=======
+>>>>>>> c7ea2e0bfee7c0fb2f2219cbbc4721e5d281f12d:f401_display_encoder_fader_test/Core/Src/interface.c
 /**
  * @brief Resets the `shownFiles` array and updates the number of matched files.
  *
@@ -431,17 +541,23 @@ void compareADCValues(void){
  *
  * @note This function is used to clear the list of files currently displayed on the screen.
  */
+<<<<<<< HEAD:f401_display_encoder_fader_audio_test/Core/Src/interface.c
+>>>>>>> c7ea2e0bfee7c0fb2f2219cbbc4721e5d281f12d:f401_display_encoder_fader_test/Core/Src/interface.c
+=======
 >>>>>>> c7ea2e0bfee7c0fb2f2219cbbc4721e5d281f12d:f401_display_encoder_fader_test/Core/Src/interface.c
 void resetShownFiles(void) {
     memset(fm.shownFiles, 0, sizeof(fm.shownFiles)); // Setzt den gesamten Speicherbereich auf 0
     fm.num_matched_files = 0;
 }
 
+<<<<<<< HEAD:f401_display_encoder_fader_audio_test/Core/Src/interface.c
 <<<<<<< HEAD:f401_display_encoder_fader_audio_integration/Core/Src/interface.c
 void listFiles(const char *path)
 {
     // Öffnen des Verzeichnisses
 =======
+=======
+>>>>>>> c7ea2e0bfee7c0fb2f2219cbbc4721e5d281f12d:f401_display_encoder_fader_test/Core/Src/interface.c
 /**
  * @brief Lists all filenames with a .wav extension from the specified directory on the SD card.
  *
@@ -460,12 +576,16 @@ void listFiles(const char *path)
 void listFiles(const char *path)
 {
     // Open the Directory
+<<<<<<< HEAD:f401_display_encoder_fader_audio_test/Core/Src/interface.c
+>>>>>>> c7ea2e0bfee7c0fb2f2219cbbc4721e5d281f12d:f401_display_encoder_fader_test/Core/Src/interface.c
+=======
 >>>>>>> c7ea2e0bfee7c0fb2f2219cbbc4721e5d281f12d:f401_display_encoder_fader_test/Core/Src/interface.c
     fres = f_opendir(&dir, "/SamplePool");
     if (fres == FR_OK)
     {
         while (fileCount < MAX_FILES)
         {
+<<<<<<< HEAD:f401_display_encoder_fader_audio_test/Core/Src/interface.c
 <<<<<<< HEAD:f401_display_encoder_fader_audio_integration/Core/Src/interface.c
             // Lesen eines Eintrags
             fres = f_readdir(&dir, &fno);
@@ -482,6 +602,8 @@ void listFiles(const char *path)
                 {
                     // Datei mit .wav Erweiterung, speichern im Array
 =======
+=======
+>>>>>>> c7ea2e0bfee7c0fb2f2219cbbc4721e5d281f12d:f401_display_encoder_fader_test/Core/Src/interface.c
             // Read the entry in the directory
             fres = f_readdir(&dir, &fno);
             if (fres != FR_OK || fno.fname[0] == 0) break;
@@ -496,6 +618,9 @@ void listFiles(const char *path)
                 if (strstr(fileName, ".wav") != NULL)
                 {
                     // File with extension .wav get Safed
+<<<<<<< HEAD:f401_display_encoder_fader_audio_test/Core/Src/interface.c
+>>>>>>> c7ea2e0bfee7c0fb2f2219cbbc4721e5d281f12d:f401_display_encoder_fader_test/Core/Src/interface.c
+=======
 >>>>>>> c7ea2e0bfee7c0fb2f2219cbbc4721e5d281f12d:f401_display_encoder_fader_test/Core/Src/interface.c
                     strncpy(fileNamesSDCard[fileCount + 1], fileName, MAX_FILENAME_LENGTH - 1);
                     fileNamesSDCard[fileCount][MAX_FILENAME_LENGTH - 1] = '\0'; // Null-terminieren
@@ -508,13 +633,19 @@ void listFiles(const char *path)
 }
 
 
+<<<<<<< HEAD:f401_display_encoder_fader_audio_test/Core/Src/interface.c
 <<<<<<< HEAD:f401_display_encoder_fader_audio_integration/Core/Src/interface.c
 =======
+=======
+>>>>>>> c7ea2e0bfee7c0fb2f2219cbbc4721e5d281f12d:f401_display_encoder_fader_test/Core/Src/interface.c
 
 //-------------------------------------------------------------------------------------------------------------------
 
 
 
+<<<<<<< HEAD:f401_display_encoder_fader_audio_test/Core/Src/interface.c
+>>>>>>> c7ea2e0bfee7c0fb2f2219cbbc4721e5d281f12d:f401_display_encoder_fader_test/Core/Src/interface.c
+=======
 >>>>>>> c7ea2e0bfee7c0fb2f2219cbbc4721e5d281f12d:f401_display_encoder_fader_test/Core/Src/interface.c
 void writeFileManagerOnSD(void)
 {
