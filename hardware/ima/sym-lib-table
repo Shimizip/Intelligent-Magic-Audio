@@ -1,0 +1,6 @@
+(sym_lib_table
+  (version 7)
+  (lib (name "New_Library")(type "KiCad")(uri "C:/Users/jonas/TIN/ESP/ima/hardware/kicad_lib/PCM5102a_breakout/New_Library.kicad_sym")(options "")(descr ""))
+  (lib (name "NUCLEO-F401RE")(type "KiCad")(uri "C:/Users/jonas/TIN/ESP/ima/hardware/kicad_lib/NUCLEO-F401RE/NUCLEO-F401RE.kicad_sym")(options "")(descr ""))
+  (lib (name "NUCLEO-F401RE_new")(type "Legacy")(uri "C:/Users/jonas/TIN/ESP/ima/hardware/kicad_lib/UNK_STMicroelectronics_NUCLEO-F401RE/eec.lib")(options "")(descr ""))
+)
