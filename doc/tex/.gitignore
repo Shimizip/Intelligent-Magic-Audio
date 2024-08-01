@@ -1,0 +1,43 @@
+# LaTeX temporary files
+*.aux
+*.log
+*.out
+*.toc
+*.pdf
+*.synctex.gz
+
+# LaTeX backup files
+*.bbl
+*.blg
+*.fls
+*.fdb_latexmk
+*.gz
+*.dvi
+
+# LaTeX source backup files
+*.bak
+*.swp
+*.swo
+*.tmp
+*.log
+*.synctex.gz
+*.synctex
+
+# Ignore compiled files
+*.pdf
+*.ps
+*.dvi
+*.bbl
+*.blg
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.toc
+*.gz
+
+# Ignore editor backup files
+*~
+*.bak
+*.swp
+*.swo
