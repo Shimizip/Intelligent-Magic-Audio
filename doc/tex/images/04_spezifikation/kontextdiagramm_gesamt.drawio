@@ -1,6 +1,6 @@
-<mxfile host="Electron" modified="2024-08-02T09:59:05.612Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/22.0.3 Chrome/114.0.5735.289 Electron/25.8.4 Safari/537.36" etag="vSsAvocuJmnBv4LoIKsP" version="22.0.3" type="device">
+<mxfile host="Electron" modified="2024-08-02T11:03:17.300Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/22.0.3 Chrome/114.0.5735.289 Electron/25.8.4 Safari/537.36" etag="KW52h9S1VzNC6M1S9f9R" version="22.0.3" type="device">
   <diagram name="Seite-1" id="00pDsmjtND-n7SUzU1SD">
-    <mxGraphModel dx="2440" dy="1407" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="1430" dy="825" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -12,11 +12,11 @@
         </mxCell>
         <object label="" id="HaPshGFiGsYCy_S7ym-9-52">
           <mxCell style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;dashed=1;strokeColor=#1BA1E2;shape=partialRectangle;bottom=0;" vertex="1" parent="1">
-            <mxGeometry x="540" y="123.4" width="260" height="310" as="geometry" />
+            <mxGeometry x="520" y="70" width="280" height="363.4" as="geometry" />
           </mxCell>
         </object>
         <mxCell id="HaPshGFiGsYCy_S7ym-9-20" value="Audioverarbeitung" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#1BA1E2;" vertex="1" parent="1">
-          <mxGeometry x="690" y="123.4" width="110" height="30" as="geometry" />
+          <mxGeometry x="690" y="70" width="110" height="30" as="geometry" />
         </mxCell>
         <mxCell id="HaPshGFiGsYCy_S7ym-9-19" value="Interface" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#1BA1E2;" vertex="1" parent="1">
           <mxGeometry x="80" y="433.4" width="60" height="30" as="geometry" />
@@ -42,7 +42,7 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="HaPshGFiGsYCy_S7ym-9-7" value="CMSIS DSP Library" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="610" y="160" width="80" height="80" as="geometry" />
+          <mxGeometry x="610" y="100" width="80" height="80" as="geometry" />
         </mxCell>
         <mxCell id="HaPshGFiGsYCy_S7ym-9-8" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.75;exitDx=0;exitDy=0;entryX=0.011;entryY=0.401;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="HaPshGFiGsYCy_S7ym-9-4" target="HaPshGFiGsYCy_S7ym-9-1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
@@ -68,10 +68,10 @@
           <mxGeometry x="410" y="498.4" width="80" height="80" as="geometry" />
         </mxCell>
         <mxCell id="HaPshGFiGsYCy_S7ym-9-14" value="Audio Codec" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="680" y="260" width="80" height="80" as="geometry" />
+          <mxGeometry x="690" y="230" width="80" height="80" as="geometry" />
         </mxCell>
         <mxCell id="HaPshGFiGsYCy_S7ym-9-15" value="Button" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="550" y="490" width="80" height="80" as="geometry" />
+          <mxGeometry x="530" y="480" width="80" height="80" as="geometry" />
         </mxCell>
         <mxCell id="HaPshGFiGsYCy_S7ym-9-16" value="SD Karte" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="670" y="400" width="80" height="80" as="geometry" />
