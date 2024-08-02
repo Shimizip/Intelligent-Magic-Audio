@@ -76,7 +76,7 @@ ecfad96b740844c3
 \label{tab:audiodaten}
 \end{table}
 
-Bei der Auswahl der Audiosamples wurde darauf geachtet, dass die Daten annähernd gleich verteilt sind, um eine ausgewogene Trainingsbasis zu schaffen. Ein Ungleichgewicht in den Daten kann sich negativ auf das Training und die Klassifikationsergebnisse auswirken. Überrepräsentierte Merkmale könnten die Klassifikationsschwellenwerte beeinflussen, sodass die häufiger vorkommenden Klassen später bevorzugt erkannt werden. Wie in \textbf{\autoref{tab:img-class-spread-graph}} zu sehen, ist die Gleichverteilung jedoch zugegebenermaßen nur mäßig gelungen und hätte einen größeren Zeitaufwand erfordert.
+Bei der Auswahl der Audiosamples wurde darauf geachtet, dass die Daten annähernd gleich verteilt sind, um eine ausgewogene Trainingsbasis zu schaffen. Ein Ungleichgewicht in den Daten kann sich negativ auf das Training und die Klassifikationsergebnisse auswirken. Überrepräsentierte Merkmale könnten die Klassifikationsschwellenwerte beeinflussen, sodass die häufiger vorkommenden Klassen später bevorzugt erkannt werden. Wie in \textbf{\autoref{fig:img-class-spread-graph}} zu sehen, ist die Gleichverteilung jedoch zugegebenermaßen nur begrenzt gelungen, mit deutlich überrepräsentierten Eingabedaten mit dem Merkmal "melodic".
 
 \begin{figure}[h!]
 \centering
@@ -85,20 +85,16 @@ Bei der Auswahl der Audiosamples wurde darauf geachtet, dass die Daten annähern
 \label{fig:img-class-spread-graph}
 \end{figure}
 
-Zudem wurde sichergestellt, dass der Variationsbereich jeder Klasse möglichst umfassend abgedeckt ist. Dies umfasst sowohl reine Formen jeder Klasse – beispielsweise bei „pitched“ Audiosamples ausschließlich mit Tönen aus dem hohen Frequenzbereich – als auch Mischformen, die Merkmale mehrerer Klassen kombinieren.
+Zudem wurde versucht sicherzustellen, dass der Variationsbereich jeder Klasse möglichst umfassend abgedeckt ist. Dies umfasst sowohl reine Formen jeder Klasse – beispielsweise bei „pitched“ Audiosamples ausschließlich mit Tönen aus dem hohen Frequenzbereich – als auch Mischformen, die Merkmale mehrerer Klassen kombinieren.
 
-Insgesamt wurden 207 Audiosamples unterschiedlicher Länge mit Labels versehen.
+Insgesamt wurden 209 Audiosamples unterschiedlicher Länge mit Labels versehen. Diese wurden in 2.837 Audiosubsamples aufgeteilt. Für das eigentliche Training wurden 1.701 Datensätze verwendet. Eine Visualisierung der Datenaufteilung ist in \textbf{\autoref{fig:img-input-data-graph}} abgebildet.
 
-Insgesamt wu
-TODO:
-
-- wie viele Eingabe-Audiosamples
-
-- wie viele Trainingsdatensätze
-
-- Aufteilung der Daten (Grafik)
-
-- Quellen
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.95\textwidth]{images/08_durchfuehrung/input-data-graph.png}
+\caption{Aufteilung der Eingabedaten in Trainings- Validierungs- und Testdaten}
+\label{fig:img-input-data-graph}
+\end{figure}
 
 \subsubsection{Datenvorverarbeitung}
 
