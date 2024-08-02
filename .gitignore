@@ -1,3 +1,46 @@
 **/.vscode/
 **/build/
 f401_display_encoder_test/STM32F401RETX_FLASH.ld
+
+# LaTeX-specific
+*.aux
+*.bbl
+*.blg
+*.idx
+*.ind
+*.lof
+*.log
+*.lot
+*.out
+*.toc
+*.acn
+*.acr
+*.alg
+*.glg
+*.glo
+*.gls
+*.ist
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.synctex(busy)
+
+# output files
+*.dvi
+*.pdf
+*.ps
+
+# Editor backup files
+*~
+*.swp
+*.bak
+
+# other files that are created by latex packages
+*.nav
+*.snm
+*.vrb
+*.soc
+*.cut
+
+# Ignore .pdf files in the root of the project directory, but allow them in subfolders
+/*.pdf
