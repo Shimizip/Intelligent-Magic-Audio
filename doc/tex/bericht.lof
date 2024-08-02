@@ -7,3 +7,6 @@
 \contentsline {figure}{\numberline {6}{\ignorespaces Repräsentation der verschiedenen Merkmalsklassen in den Entwicklungsdaten}}{17}{figure.caption.26}%
 \contentsline {figure}{\numberline {7}{\ignorespaces Darstellung der Unterteilung der Audiosamples in Audiosubsamples und Frames}}{18}{figure.caption.27}%
 \contentsline {figure}{\numberline {8}{\ignorespaces Darstellung des Sliding Window Prinzips}}{18}{figure.caption.28}%
+\contentsline {figure}{\numberline {9}{\ignorespaces Digitaler Audio Signalfluss}}{20}{figure.caption.29}%
+\contentsline {figure}{\numberline {10}{\ignorespaces Double Buffering mit DMA und DSP}}{21}{figure.caption.32}%
+\contentsline {figure}{\numberline {11}{\ignorespaces CubeMX FATFS SDIO Einbindung}}{22}{figure.caption.33}%
