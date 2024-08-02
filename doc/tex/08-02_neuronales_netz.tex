@@ -87,22 +87,18 @@ Bei der Auswahl der Audiosamples wurde darauf geachtet, dass die Daten annähern
 
 Zudem wurde versucht sicherzustellen, dass der Variationsbereich jeder Klasse möglichst umfassend abgedeckt ist. Dies umfasst sowohl reine Formen jeder Klasse – beispielsweise bei „pitched“ Audiosamples ausschließlich mit Tönen aus dem hohen Frequenzbereich – als auch Mischformen, die Merkmale mehrerer Klassen kombinieren.
 
-Insgesamt wurden 209 Audiosamples unterschiedlicher Länge mit Labels versehen. Diese wurden in 2.837 Audiosubsamples aufgeteilt. Für das eigentliche Training wurden 1.701 Datensätze verwendet. Eine Visualisierung der Datenaufteilung ist in \textbf{\autoref{fig:img-input-data-graph}} abgebildet.
-
-\begin{figure}[h!]
-\centering
-\includegraphics[width=0.95\textwidth]{images/08_durchfuehrung/input-data-graph.png}
-\caption{Aufteilung der Eingabedaten in Trainings- Validierungs- und Testdaten}
-\label{fig:img-input-data-graph}
-\end{figure}
+Insgesamt wurden 209 Audiosamples unterschiedlicher Länge mit Labels versehen.
 
 \subsubsection{Datenvorverarbeitung}
+\label{sec:data-preprocessing}
 
 Für die Datenvorverarbeitung und das Training des neuronalen Netzes wird ein Jupyter-Notebook verwendet. Dieses ermöglicht eine Kombination aus formatiertem Text und Python-Code, was die Lesbarkeit und Nachvollziehbarkeit des Codes erleichtert.
 
 Damit die gelabelten Daten für das Training des neuronalen Netzes verwendet werden können, müssen sie zunächst aufbereitet bzw. vorverarbeitet werden. Um die zu verarbeitenden Datenmengen sinnvoll zu verringern, wird zunächst die Samplerate aller Audiosamples auf 16 kHz reduziert.
 
 Wie im Abschnitt \ref{sec:input-data-generation} erwähnt, liegen die Audiosamples als WAVE-Dateien unterschiedlicher Längen vor. Die in Abschnitt \ref{sec:approach-audio-classification} beschriebenen Dimensionen der durch das neuronale Netz klassifizierbaren Mel-Spektrogramme betragen 32x30 Pixel. Um bei unterschiedlich langen Audiosamples die zeitliche Abhängigkeit zu bewahren und auch bei längeren Audiosamples wichtige Informationen im Spektrogramm abzubilden, müssen die Audiosamples in Sektionen gleicher Länge unterteilt werden, wobei später aus jeder Sektion ein Spektrogramm erstellt wird. Diese Sektionen werden im Folgenden als „Audiosubsamples“ bezeichnet.
+
+Aus den in \ref{sec:input-data-generation} erwähnten 209 gelabelten Audiosamples wurden durch deren Aufteilung insgesamt 2.837 Audiosubsamples gewonnen.
 
 Ein Audiosubsample, also ein Mel-Spektrogramm, entspricht dabei 16.896 Samples, was bei einer Samplerate von 16 kHz etwas mehr als einer Sekunde entspricht. Analog zum Beispielprojekt „Acoustic Scene Classification“ \cite{stm-asc}\cite{stm-asc-2} werden die Audiosubsamples anschließend mittels eines „Sliding Window“ in 1024 Samples lange, um 512 Samples überlappende, Frames unterteilt.  Diese Überlappung stellt sicher, dass Informationen zu den Anfangs- und Endzeitpunkten der Frames nicht durch das „Abschneiden“ verloren gehen. Aus den 16.896 Samples eines Audiosubsamples lassen sich dadurch 32 Frames gewinnen. Die Aufteilung der Audiosamples in Audiosubsamples und Frames wird in \textbf{\autoref{fig:img-audiosubsamples-frames-overview}} visualisiert.
 
@@ -124,28 +120,89 @@ Das Sliding Window Prinzip, mit dem Audiosubsamples in überlappende Frames unte
 
 Nun können die Mel-Spektrogramme erstellt werden. Eine Spalte des Spektrogramms wird dabei aus einem Frame berechnet. Setzt man die 32 in einem Audiosubsample enthaltenen Frames, also Spektrogramm-Spalten, zusammen, erhält man das 32x30 Pixel große Spektrogramm für ein Subsample.
 
-Abschließend müssen die erhaltenen Daten standardisiert, also mittelwertfrei gemacht werden. Dies ist beim maschinellen Lernen üblich und sorgt dafür, dass das Modell schneller und effizienter konvergiert, indem es die Varianz in den Eingabedaten reduziert und eine gleichmäßige Verteilung der Werte gewährleistet. Damit diese Standardisierung später beim Einsatz des neuronalen Netzes auf dem Mikrocontroller nachgeahmt werden kann, werden die Werte des Scalers, der die standardisierten Werte berechnet, exportiert.
+Abschließend müssen die erhaltenen Daten standardisiert, also mittelwertfrei gemacht werden. Dies ist bei maschinellen Lernen üblich und trägt dazu bei, dass das Modell schneller und effizienter konvergiert. Durch die Reduzierung der Varianz in den Eingabedaten und die Sicherstellung einer gleichmäßigen Verteilung der Werte verbessert sich die Modellleistung. Um diese Standardisierung auch später beim Einsatz des neuronalen Netzes auf dem Mikrocontroller nachzuahmen, werden die Werte des Scalers, der zur Berechnung der standardisierten Werte verwendet wird, exportiert. Bei den Werten des Scalers handelt es sich um Fließkommazahlen, jeweils eine für jeden Eingabevektorwert. Diese Werte werden dann später mit den Eingabevektorwerten multipliziert, um den standardisierten Wert zu simulieren.
 
 
 \subsubsection{Aufteilen der Eingabedaten in Trainings- Test und Validierungsdaten}
+Wie in \ref{sec:input-data-generation} beschrieben, wurden 209 Audiosamples mit Labeln versehen. Diese  in 2.837 Audiosubsamples aufgeteilt. Für das Training des neuronalen Netzes werden die Daten wie üblich in Trainingsdaten, Validierungsdaten und Testdaten aufgeteilt.
+
+\textbf{Trainingsdaten} (1.701 Datensätze) werden direkt für das Training des neuronalen Netzes genutzt.
+
+\textbf{Validierungsdaten} (568 Datensätze) dienen dazu, den Fortschritt und Erfolg des Trainings über die verschiedenen Durchläufe (Epochen) hinweg zu überwachen.
+
+\textbf{Testdaten} (568 Datensätze) werden nach dem Abschluss des Trainingsvorgangs eingesetzt, um die Genauigkeit und Zuverlässigkeit der Klassifikation zu bewerten.
+
+Eine Visualisierung der Datenaufteilung ist in \textbf{\autoref{fig:img-input-data-graph}} dargestellt.
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.95\textwidth]{images/08_durchfuehrung/input-data-graph.png}
+\caption{Aufteilung der Eingabedaten in Trainings- Validierungs- und Testdaten (erstellt mit sankeydiagram.net)}
+\label{fig:img-input-data-graph}
+\end{figure}
 
 \subsubsection{Training des Neuronalen Netzes}
 
-TODO:
+Nach der Datenvorverarbeitung beginnt das eigentliche Training des neuronalen Netzes. Typischerweise bestehen Convolutional Neural Networks (CNNs) aus mehreren Faltungsschichten (Convolutional Layers), die der Vorverarbeitung der Eingabedaten und der Merkmalsextraktion dienen. Die Faltungsmasken, die über das Eingabebild gefaltet werden, stellen die Neuronen dar, die trainiert werden. Jede Faltungsschicht wird in der Regel von einer Pooling-Schicht (Pooling Layer) gefolgt, welche die Datenmenge reduziert und die Dimensionalität des Ausgabebildes sinnvoll verkleinert.
 
-- Topologie
+``Normale`` neuronale Netze, oft als ``Dense`` oder ``Fully Connected Networks`` bezeichnet, können nur Vektoren verarbeiten. Eine sogenannte ``Flattening``-Schicht wandelt die zweidimensionale Ausgabematrix des CNNs in einen eindimensionalen Vektor um. Nach dieser Transformation übernehmen zwei ``Dense-Layers`` die eigentliche Klassifikation. An der Ausgabe des zweiten Dense-Layers, die einen Vektor mit fünf Werten zurückgibt, kann das Klassifikationsergebnis abgelesen werden.
 
-- Trainignsparameter und warum (Adam (?), Learning Rate, no. epochs, etc.)
+Im folgenden Codeausschnitt des Jupyter-Notebooks wird die Struktur des neuronale Netzes definiert. Die Parameter der add-Funktion beziehen sich auf die Art der Schicht, der Anzahl bzw. Dimensionierung der Ausgabematrix und die Aktivierungsfunktion.
 
-- erklären wann Training zu Ende
+\begin{minted}{python}
+model = models.Sequential()
+model.add(layers.Conv2D(16, (3, 3), activation='relu', 
+		input_shape=(30, 32, 1), data_format='channels_last'))
+model.add(layers.MaxPooling2D((2, 2)))
+model.add(layers.Conv2D(16, (3, 3), activation='relu'))
+model.add(layers.MaxPooling2D((2, 2)))
+model.add(layers.Flatten())
+model.add(layers.Dense(25, activation='relu'))
+model.add(layers.Dense(5, activation='sigmoid'))	
+\end{minted}
 
-- accuracy bla graph
+Bei der Aktivierungsfunktion ist zu beachten, dass bei allen Schichten des CNNs sich die ReLu Funktion und deren Abwandlungen (z.B. Leaky-ReLu) bewährt haben, da sie die Performance des Modells aus unterschiedlichen Gründen verbessern. In den Dense-Layern, insbesondere in der Ausgabeschicht, ist die sigmoidale Aktivierungsfunktion besonders geeignet, da sie die Ergebnisse der einzelnen Ausgabeneuronen als Ähnlichkeiten interpretiert. Diese Ähnlichkeiten liegen im Bereich zwischen 0 und 1 und sind ideal für mehrklassige Klassifikationsaufgaben, bei denen jedes Ausgabeneuron eine spezifische Klasse repräsentiert.
 
-- confusion matrix
+In folgender Zeile Code wird das neuronale Netz trainiert.
 
-- model.h5
+\begin{minted}{python}
+history = model.fit(x_train_r, y_train, validation_data=(x_val_r, y_val),
+                    batch_size=1, epochs=100, verbose=2)
+\end{minted}
 
-(und in Validierng einfach nur eigene samples eingeben und schauen bzw. hier drauf verweisen)
+\begin{mdframed}
+
+\textbf{x\_train\_r}: Eingabedaten, die für das Training des Modells verwendet werden.
+
+\textbf{y\_train}: SOLL-Ausgabedaten (Labels), die die tatsächlichen Klassen der Trainingsdaten repräsentieren.
+
+\textbf{validation\_data}: Validierungsdaten (x\_val\_r) und zugehörige Labels (y\_val). Sie dienen dazu, die Klassifierung des Modells zu überprüfen und zu verhindern, dass das Modell einfach nur die Trainingsdaten ``auswendig lernt`` (Overfitting).
+
+\textbf{batch\_size}: Anzahl der Datensätze, die durch das neuronale Netz verarbeitet werden, bevor eine Gewichtsanpassung der Neuronen erfolgt. Eine Batch-Size von 1 bedeutet, dass nach jedem Datensatz die Gewichte aktualisiert werden, was dem sogenannten Stochastic Gradient Descent entspricht.
+
+\textbf{epochs}: Gibt an, wie oft der gesamte Satz der Trainingsdaten durch das Modell verarbeitet wird. Hier werden die Trainingsdaten insgesamt 100 Mal durchlaufen.
+
+\end{mdframed}
+
+\begin{wrapfigure}{r}{0.4\textwidth} % Increase the width of the figure environment
+	\vspace{-20pt + 0.02\textwidth}
+	\hspace{0.02\textwidth} % Add horizontal space
+	\fbox{\includegraphics[width=0.4\textwidth]{images/08_durchfuehrung/nn_learning_curve.png}}
+	\caption{Darstellung des Loss-Werts über den Verlauf der Epochen}
+	\label{fig:img-training-graph}
+\end{wrapfigure}
+
+\textbf{\autoref{fig:img-training-graph}} veranschaulicht, wie sich der ``Verlust-Wert`` (Loss) während des Trainingsprozesses des neuronalen Netzes über die Epochen hinweg verändert. Der rote Graph repräsentiert die Trainingsdaten und der grüne Graph die Validierungsdaten. Der Loss-Wert gibt an, wie stark die Vorhersagen des Netzwerks von den tatsächlichen Daten abweichen. Eine hohe Abweichung bedeutet, dass das Netzwerk nicht gut vorhersagt, während eine niedrige Abweichung auf bessere Vorhersagen hinweist.
+
+Wie sich erkennen lässt, ``lernt`` das neuronale Netz im Laufe der Epochen, die Eingabedaten besser zu klassifizieren, was sich in einem sinkenden Loss-Wert niederschlägt. Da der Loss-Wert der Validierungsdaten ebenfalls sinkt, ist gewährleistet, dass das neuronale Netz nicht einfach nur die Trainingsdaten auswendig lernt, sondern tatsächlich generalisiert.
+
+
+
+
+
+
+
+
 
 
 
