@@ -10,9 +10,11 @@
         "Drivers/STM32F4xx_HAL_Driver/Inc/Legacy",
         "FATFS/App",
         "FATFS/Target",
+        "Middlewares/ST/ARM/DSP/Inc",
         "Middlewares/Third_Party/FatFs/src"
       ],
       "defines": [
+        "ARM_MATH_CM4",
         "STM32F401xE",
         "USE_HAL_DRIVER"
       ],

@@ -18,6 +18,24 @@
 static uint8_t first_visible_index = 0;
 static uint8_t num_visible_lines = LIST_SECTION_HEIGHT / LINE_HEIGHT;
 
+/**
+ * @brief Displays a list of strings on the OLED screen with cursor highlighting.
+ *
+ * This function renders a list of strings on the OLED display, highlighting the current selection with a cursor. 
+ * It also manages the display of strings based on the current cursor position and adjusts the visible portion of the list as needed.
+ *
+ * - Clears the screen before drawing new content.
+ * - Calculates the visible range of strings based on the `cursor_index` and ensures that the cursor is within the visible range.
+ * - Draws each string on the display, with the current selection highlighted by a cursor.
+ * - Draws a border around the list section of the screen.
+ *
+ * @param[in] hi2c1 Pointer to the I2C handle used for communication with the OLED display.
+ * @param[in] strings Array of string pointers to be displayed.
+ * @param[in] numStrings Total number of strings in the array.
+ * @param[in] cursor_index Index of the currently selected string, which will be highlighted on the display.
+ *
+ * @note Ensure that the `strings` array is correctly populated and `numStrings` reflects the actual number of valid strings. The display dimensions and font sizes should be configured to match the display hardware.
+ */
 void displayStrings(I2C_HandleTypeDef *hi2c1, char** strings, uint8_t numStrings, uint8_t cursor_index) {
     // Clear screen
     ssd1306_Fill(Black);
@@ -55,19 +73,52 @@ void displayStrings(I2C_HandleTypeDef *hi2c1, char** strings, uint8_t numStrings
     }
 }
 
-// Scroll the list up by one line
+/**
+ * @brief Scrolls the list up by one line.
+ *
+ * This function updates the `first_visible_index` to scroll the displayed list upward by one line. 
+ * It ensures that the `first_visible_index` does not go below zero, which would be out of bounds for the visible portion of the list.
+ *
+ * @note If `first_visible_index` is already at the top of the list (i.e., 0), 
+ * the function does nothing to avoid invalid index access.
+ */
 void scrollUp() {
     if (first_visible_index > 0) {
         first_visible_index--;
     }
 }
 
-// Scroll the list down by one line
+/**
+ * @brief Scrolls the list down by one line.
+ *
+ * This function updates the `first_visible_index` to scroll the displayed list downward by one line. 
+ * 
+ * It ensures that the `first_visible_index` does not exceed the number of available strings (`numStrings`), 
+ * preventing it from scrolling beyond the end of the list.
+ *
+ * @param[in] numStrings Total number of strings available in the list.
+ *
+ * @note If scrolling down would cause the `first_visible_index` to go beyond the last item in the list, 
+ * the function does nothing to avoid invalid index access.
+ */
+
 void scrollDown(uint8_t numStrings) {
     if (first_visible_index + num_visible_lines < numStrings) {
         first_visible_index++;
     }
 }
+/**
+ * @brief Renders the selected file name on the OLED screen.
+ *
+ * This function updates the display to show the currently selected file name in a dedicated section of the screen. 
+ * It first clears the area designated for displaying the selected file name, and then writes the file name at the appropriate position.
+ *
+ * @param[in] hi2c1 Pointer to the I2C handle used for communication with the OLED display.
+ * @param[in] filename Pointer to a null-terminated string representing the name of the selected file to be displayed.
+ *
+ * @note Ensure that the `filename` is properly null-terminated and that the display dimensions 
+ * and font settings are configured correctly to match the hardware.
+ */
 
 void renderSelectedFile(I2C_HandleTypeDef *hi2c1, const char *filename) {
     // Clear the selected file section of the screen
@@ -140,13 +191,30 @@ void drawLine(int16_t x0, int16_t y0, int16_t x1, int16_t y1, uint16_t color) {
     }
 }
 
-void drawFaderProzent(I2C_HandleTypeDef *hi2c1, const char *prozent){
+/**
+ * @brief Draws the fader percentage on the OLED screen at a specified vertical position.
+ *
+ * This function updates the display to show the fader percentage in a designated area of the screen. 
+ * It first clears the region where the fader percentage will be displayed, and then writes the percentage at a vertical position determined by the `multiplikator`.
+ *
+ * The `multiplikator` parameter is used to calculate the vertical offset from a base position on the screen. 
+ * This allows for the display of multiple fader percentages at different vertical positions.
+ *
+ * @param[in] hi2c1 Pointer to the I2C handle used for communication with the OLED display.
+ * @param[in] prozent Pointer to a null-terminated string representing the fader percentage to be displayed.
+ * @param[in] multiplikator Integer value used to adjust the vertical position on the screen, affecting where the percentage is drawn.
+ *
+ * @note Ensure that the `prozent` string is properly null-terminated and that the display dimensions and font settings are configured correctly to match the hardware. 
+ * The `multiplikator` should be set appropriately to ensure that the displayed text does not overlap with other screen elements.
+ */
+void drawFaderProzent(I2C_HandleTypeDef *hi2c1, const char *prozent, int multiplikator){
+    // Clear the selected file section of the screen
     for (uint8_t i = 0; i < DISPLAY_WIDTH; i++) {
-        for (uint8_t j = LIST_SECTION_HEIGHT + 20; j < DISPLAY_HEIGHT; j++) {
+        for (uint8_t j = LIST_SECTION_HEIGHT + (18 * multiplikator); j < DISPLAY_HEIGHT; j++) {
             ssd1306_DrawPixel(i, j, Black);
         }
     }
-
-    ssd1306_SetCursor(0, LIST_SECTION_HEIGHT + 20); // Adjust Y position for text alignment
+    // Write the selected file name in the selected file section
+    ssd1306_SetCursor(0, LIST_SECTION_HEIGHT + (18 * multiplikator)); // Adjust Y position for text alignment
     ssd1306_WriteString(prozent, Font_7x10, White);
 }

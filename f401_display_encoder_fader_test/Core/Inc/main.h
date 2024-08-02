@@ -60,6 +60,8 @@ void Error_Handler(void);
 #define B1_Pin GPIO_PIN_13
 #define B1_GPIO_Port GPIOC
 #define B1_EXTI_IRQn EXTI15_10_IRQn
+#define FADER_IN5_Pin GPIO_PIN_0
+#define FADER_IN5_GPIO_Port GPIOC
 #define enc_a_clk_in1_Pin GPIO_PIN_0
 #define enc_a_clk_in1_GPIO_Port GPIOA
 #define enc_a_clk_in1_EXTI_IRQn EXTI0_IRQn
@@ -86,7 +88,7 @@ void Error_Handler(void);
 #define SWO_GPIO_Port GPIOB
 
 /* USER CODE BEGIN Private defines */
-#define NUM_CHANNELS 2
+#define NUM_CHANNELS 5
 #define ALPHA 0.1
 #define THRESHOLD 41
 #define FIRST_CHANNEL 6

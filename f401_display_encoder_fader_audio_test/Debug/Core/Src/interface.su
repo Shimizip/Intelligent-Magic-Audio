@@ -1,0 +1,31 @@
+<<<<<<< HEAD:f401_display_encoder_fader_audio_test/Debug/Core/Src/interface.su
+<<<<<<< HEAD:f401_display_encoder_fader_audio_integration/Debug/Core/Src/interface.su
+../Core/Src/interface.c:19:6:HAL_GPIO_EXTI_Callback	16	static
+../Core/Src/interface.c:46:6:HAL_TIM_PeriodElapsedCallback	16	static
+../Core/Src/interface.c:61:6:HAL_ADC_ConvCpltCallback	24	static
+../Core/Src/interface.c:82:6:screenInit	424	static
+../Core/Src/interface.c:128:6:sortFiles	56	static
+../Core/Src/interface.c:168:6:updateScreen	216	static
+../Core/Src/interface.c:190:6:compareADCValues	16	static
+../Core/Src/interface.c:206:6:resetShownFiles	8	static
+../Core/Src/interface.c:211:6:listFiles	24	static
+../Core/Src/interface.c:244:6:writeFileManagerOnSD	4160	static
+../Core/Src/interface.c:273:6:readFileManagerFromSD	4160	static
+=======
+=======
+>>>>>>> c7ea2e0bfee7c0fb2f2219cbbc4721e5d281f12d:f401_display_encoder_fader_test/Debug/Core/Src/interface.su
+../Core/Src/interface.c:39:6:HAL_GPIO_EXTI_Callback	16	static
+../Core/Src/interface.c:83:6:HAL_TIM_PeriodElapsedCallback	16	static
+../Core/Src/interface.c:111:6:HAL_ADC_ConvCpltCallback	24	static
+../Core/Src/interface.c:146:6:screenInit	8040	static
+../Core/Src/interface.c:190:6:sortFiles	56	static
+../Core/Src/interface.c:246:6:updateScreen	2016	static
+../Core/Src/interface.c:285:6:compareADCValues	16	static
+../Core/Src/interface.c:312:6:resetShownFiles	8	static
+../Core/Src/interface.c:332:6:listFiles	24	static
+../Core/Src/interface.c:370:6:writeFileManagerOnSD	4160	static
+../Core/Src/interface.c:399:6:readFileManagerFromSD	4160	static
+<<<<<<< HEAD:f401_display_encoder_fader_audio_test/Debug/Core/Src/interface.su
+>>>>>>> c7ea2e0bfee7c0fb2f2219cbbc4721e5d281f12d:f401_display_encoder_fader_test/Debug/Core/Src/interface.su
+=======
+>>>>>>> c7ea2e0bfee7c0fb2f2219cbbc4721e5d281f12d:f401_display_encoder_fader_test/Debug/Core/Src/interface.su

@@ -30,6 +30,8 @@
 #include "wavPlayer.h"
 #include "cpu_time.h"
 #include "util.h"
+#include "audioPreprocessor.h"
+
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -119,12 +121,12 @@ int main(void)
       SCB->CPACR |= ((3UL << 10*2)|(3UL << 11*2));  /* set CP10 and CP11 Full Access */
     #endif
 
-
     HAL_Delay(1000); //a short delay is important to let the SD card settle
 
     //vars for Fatfs
     FATFS FatFs; 	//Fatfs handle
     FIL fil; 		//File handle
+    FIL filResample; 		//File handle
     FRESULT fres; //Result after operations
     //wav header
     wav_header_t wavHeader;
@@ -137,11 +139,35 @@ int main(void)
         while(1);
     }
 
+    // enable CPU Timer Register
+    EnableDWT();
+
     // Init the player
     initPlayer(&player, &fil, &wavHeader);
 
     if(wavLoad(&player, "letsroll.wav") != FR_OK){
         while(1);
+    }
+
+    // create new header
+    wav_header_t resampledHeader;  
+
+    FRESULT res;
+    UINT bw;
+    res = f_open(&filResample, "letsroll_resampled.wav", FA_CREATE_ALWAYS | FA_WRITE);
+    if (res == FR_OK){
+      // write wavHeader to resampled wav
+      arm_status status = initFilter();
+      if(status){
+        printf("fart");
+      }
+
+      StartCycleMeasurement();
+      uint16_t dataSize = resampleFile(player.file, &filResample, player.wavHeader, &resampledHeader);
+      StopCycleMeasurement();
+      volatile uint32_t millis = CyclesToMilliseconds(GetMeasuredCycles());
+
+      f_close(&filResample);
     }
 
     // initSineTable();

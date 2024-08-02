@@ -132,6 +132,7 @@ AS_DEFS =
 
 # C defines
 C_DEFS =  \
+-DARM_MATH_CM4 \
 -DSTM32F401xE \
 -DUSE_HAL_DRIVER
 
@@ -154,6 +155,7 @@ C_INCLUDES =  \
 -IDrivers/STM32F4xx_HAL_Driver/Inc/Legacy \
 -IFATFS/App \
 -IFATFS/Target \
+-IMiddlewares/ST/ARM/DSP/Inc \
 -IMiddlewares/Third_Party/FatFs/src
 
 
@@ -186,8 +188,9 @@ CXXFLAGS += -MMD -MP -MF"$(@:%.o=%.d)"
 LDSCRIPT = STM32F401RETx_FLASH.ld
 
 # libraries
-LIBS = -lc -lm -lnosys 
+LIBS = -larm_cortexM4lf_math -lc -lm -lnosys 
 LIBDIR = \
+-LMiddlewares/ST/ARM/DSP/Lib
 
 
 # Additional LD Flags from config file
