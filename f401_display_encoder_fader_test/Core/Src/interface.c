@@ -1,24 +1,32 @@
 #include "interface.h"
 
-// Count Var for Debugging
-uint32_t rotary_enc_count = 0;
+/**
+ * @brief Global variables for debugging, debouncing, initialization, and managing fader settings.
+ *
+ * These variables are used for various purposes throughout the program, including debugging, debouncing encoder inputs,
+ * initializing states, sorting file names, smoothing ADC values, and displaying fader settings on the LCD.
+ */
 
-// Bool to verify if the encode is pushed
-bool switch_push_button = false;
-// Flag to debounce encoder
-bool debounce = false;
-bool init = false;
-// Flag to regroup the shownfile names
-bool sortFilesFlag = false;
+uint32_t rotary_enc_count = 0; ///< Count variable for debugging purposes.
 
-// Count to smooth the fader values
-uint16_t cnt;
-uint32_t potentiometer_value = 0 ;
-uint32_t smoothValue[NUM_CHANNELS] = {0};
-uint8_t pastClassPercentADC[NUM_CHANNELS] = {0};
-uint8_t currentClassPercentADC[NUM_CHANNELS] = {0};
-uint16_t endValues[NUM_CHANNELS] = {0};
-char faderProzent[2][50];
+bool switch_push_button = false; ///< Boolean to verify if the encoder switch is pushed.
+
+bool debounce = false; ///< Flag to debounce the encoder.
+
+bool init = false; ///< Flag to check if initialization is done.
+
+bool sortFilesFlag = false; ///< Flag to regroup the shown file names.
+
+uint16_t cnt; ///< Counter to smooth the fader values.
+
+uint32_t smoothValue[NUM_CHANNELS] = {0}; ///< Array to store smoothed values of the ADC buffer outputs.
+
+uint8_t pastClassPercentADC[NUM_CHANNELS] = {0}; ///< Array to cache the previous fader settings.
+
+uint8_t currentClassPercentADC[NUM_CHANNELS] = {0}; ///< Array to store the current fader settings in percentage.
+
+char faderProzent[2][50]; ///< Array to hold fader percentage strings for display on the LCD.
+
 
 /**
  * @brief Callback function that responds to encoder signals.

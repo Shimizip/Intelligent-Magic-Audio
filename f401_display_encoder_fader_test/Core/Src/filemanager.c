@@ -1,12 +1,24 @@
+/**
+  ******************************************************************************
+  * @file           : filemanager.c
+  * @brief          : File management functions for handling files and cursor operations
+  ******************************************************************************
+  * @attention
+  *
+  * This file contains the definitions and functions for managing files within the
+  * FileManager structure, including adding files, updating cursor positions, and
+  * handling file selection. It serves as the core for file management operations.
+  *
+  ******************************************************************************
+  */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include "filemanager.h"
 #include "display.h"
 
-#define MAX_FILES 500
-#define MAX_FILENAME_LENGTH 30
-#define MAX_CLASSES 4
+
 /**
  * @brief Initializes default values for the FileManager.
  *
@@ -37,7 +49,8 @@ void addFile(FileManager *fm, const char *filename, const float *classes){
     if (fm->num_files < MAX_FILES) {
         strcpy(fm->files[fm->num_files].filename, filename);
         for(int i = 0; i < MAX_CLASSES; i++){
-            fm->files[fm->num_files].classes[i] = classes[i];        }
+            fm->files[fm->num_files].classes[i] = classes[i];
+        }
         fm->num_files++;
         if(fm->num_files == 1)
             fm->cursor_index = 0;
