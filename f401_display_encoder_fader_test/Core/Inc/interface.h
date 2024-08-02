@@ -8,13 +8,28 @@
 #include "ff.h"
 #include "util.h"
 
-#define THREASHOLD 0.1f
-#define EXISTS 0
-#define NOT_EXISTS -1
-#define SAME 0
-#define NOT_SAME -1
-#define SMOOTHING_HEIGHT 30000
+/**
+ * @brief Definitions for thresholds, existence checks, comparison results, and smoothing height.
+ *
+ * These macros are used for setting thresholds, checking existence, comparing results, and defining
+ * the height for smoothing calculations.
+ */
 
+#define THREASHOLD               0.1f ///< Threashold value for class comparison
+
+#define EXISTS                  0 ///< Value indicating existence
+
+#define NOT_EXISTS              -1 ///< Value indicating non-existence
+
+#define SAME                    0 ///< Value indicating comparison result is the same
+
+#define NOT_SAME                -1 ///< Value indicating comparison result is different
+
+#define SMOOTHING_HEIGHT        30000 ///< Height value used for smoothing calculations
+
+
+//extern parameters from main
+//--------------------------------------------------------------------------
 
 extern ADC_HandleTypeDef hadc1;
 extern DMA_HandleTypeDef hdma_adc1;
@@ -27,12 +42,11 @@ extern FileManager fmCopy;
 
 extern FATFS FatFs;
 extern FILINFO fno;
-extern DIR dir; //Directory
+extern DIR dir;
 extern FRESULT fres;
-extern FIL file;        // File-Objekt für FatFs
+extern FIL file;
 
 
-//extern Filemanager fm;
 extern uint32_t adcBuffer[NUM_CHANNELS];
 extern char fileNamesSDCard[MAX_FILES][MAX_FILENAME_LENGTH];
 extern int fileCount;
@@ -41,6 +55,7 @@ extern bool adcDmaFlag;
 extern bool updateScreenFlag;
 extern bool sortFilesFlag;
 
+//---------------------------------------------------------------------------
 
 void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc);
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin);
