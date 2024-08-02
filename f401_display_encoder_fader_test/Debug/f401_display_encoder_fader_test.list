@@ -39,13 +39,13 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY, DEBUGGING, OCTETS
  17 .debug_line   0002739c  00000000  00000000  000559c1  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 18 .debug_str    000a8171  00000000  00000000  0007cd5d  2**0
+ 18 .debug_str    000a81c2  00000000  00000000  0007cd5d  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 19 .comment      00000043  00000000  00000000  00124ece  2**0
+ 19 .comment      00000043  00000000  00000000  00124f1f  2**0
                   CONTENTS, READONLY
- 20 .debug_frame  0000817c  00000000  00000000  00124f14  2**2
+ 20 .debug_frame  0000817c  00000000  00000000  00124f64  2**2
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 21 .debug_line_str 00000065  00000000  00000000  0012d090  2**0
+ 21 .debug_line_str 00000065  00000000  00000000  0012d0e0  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
 
 Disassembly of section .text:
@@ -3015,9 +3015,9 @@ static void MX_TIM3_Init(void)
  80016fa:	4b1f      	ldr	r3, [pc, #124]	@ (8001778 <MX_TIM3_Init+0xa8>)
  80016fc:	2200      	movs	r2, #0
  80016fe:	609a      	str	r2, [r3, #8]
-  htim3.Init.Period = 5000;
+  htim3.Init.Period = 2500;
  8001700:	4b1d      	ldr	r3, [pc, #116]	@ (8001778 <MX_TIM3_Init+0xa8>)
- 8001702:	f241 3288 	movw	r2, #5000	@ 0x1388
+ 8001702:	f640 12c4 	movw	r2, #2500	@ 0x9c4
  8001706:	60da      	str	r2, [r3, #12]
   htim3.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
  8001708:	4b1b      	ldr	r3, [pc, #108]	@ (8001778 <MX_TIM3_Init+0xa8>)
@@ -4719,9 +4719,9 @@ void HAL_ADC_MspInit(ADC_HandleTypeDef* hadc)
     HAL_NVIC_EnableIRQ(ADC_IRQn);
  8002166:	2012      	movs	r0, #18
  8002168:	f001 fcfb 	bl	8003b62 <HAL_NVIC_EnableIRQ>
-  /* USER CODE BEGIN ADC1_MspInit 1 */
 
   /* USER CODE END ADC1_MspInit 1 */
+
   }
 
 }
@@ -4819,9 +4819,9 @@ void HAL_I2C_MspInit(I2C_HandleTypeDef* hi2c)
  8002202:	f403 1300 	and.w	r3, r3, #2097152	@ 0x200000
  8002206:	60fb      	str	r3, [r7, #12]
  8002208:	68fb      	ldr	r3, [r7, #12]
-  /* USER CODE BEGIN I2C1_MspInit 1 */
 
   /* USER CODE END I2C1_MspInit 1 */
+
   }
 
 }
@@ -5072,9 +5072,9 @@ void HAL_I2S_MspInit(I2S_HandleTypeDef* hi2s)
     HAL_NVIC_EnableIRQ(SPI2_IRQn);
  8002394:	2024      	movs	r0, #36	@ 0x24
  8002396:	f001 fbe4 	bl	8003b62 <HAL_NVIC_EnableIRQ>
-  /* USER CODE BEGIN SPI2_MspInit 1 */
 
   /* USER CODE END SPI2_MspInit 1 */
+
   }
 
 }
@@ -5382,9 +5382,9 @@ void HAL_SD_MspInit(SD_HandleTypeDef* hsd)
     HAL_NVIC_EnableIRQ(SDIO_IRQn);
  800258e:	2031      	movs	r0, #49	@ 0x31
  8002590:	f001 fae7 	bl	8003b62 <HAL_NVIC_EnableIRQ>
-  /* USER CODE BEGIN SDIO_MspInit 1 */
 
   /* USER CODE END SDIO_MspInit 1 */
+
   }
 
 }
@@ -5580,9 +5580,9 @@ void HAL_UART_MspInit(UART_HandleTypeDef* huart)
     HAL_NVIC_EnableIRQ(USART2_IRQn);
  80026cc:	2026      	movs	r0, #38	@ 0x26
  80026ce:	f001 fa48 	bl	8003b62 <HAL_NVIC_EnableIRQ>
-  /* USER CODE BEGIN USART2_MspInit 1 */
 
   /* USER CODE END USART2_MspInit 1 */
+
   }
 
 }
@@ -23431,6 +23431,11 @@ void HAL_UART_IRQHandler(UART_HandleTypeDef *huart)
  80089f8:	681b      	ldr	r3, [r3, #0]
  80089fa:	3314      	adds	r3, #20
  80089fc:	f8c7 309c 	str.w	r3, [r7, #156]	@ 0x9c
+ */
+__STATIC_FORCEINLINE uint32_t __LDREXW(volatile uint32_t *addr)
+{
+    uint32_t result;
+
    __ASM volatile ("ldrex %0, %1" : "=r" (result) : "Q" (*addr) );
  8008a00:	f8d7 309c 	ldr.w	r3, [r7, #156]	@ 0x9c
  8008a04:	e853 3f00 	ldrex	r3, [r3]
@@ -23445,6 +23450,11 @@ void HAL_UART_IRQHandler(UART_HandleTypeDef *huart)
  8008a1e:	f8d7 20d0 	ldr.w	r2, [r7, #208]	@ 0xd0
  8008a22:	f8c7 20a8 	str.w	r2, [r7, #168]	@ 0xa8
  8008a26:	f8c7 30a4 	str.w	r3, [r7, #164]	@ 0xa4
+ */
+__STATIC_FORCEINLINE uint32_t __STREXW(uint32_t value, volatile uint32_t *addr)
+{
+   uint32_t result;
+
    __ASM volatile ("strex %0, %2, %1" : "=&r" (result), "=Q" (*addr) : "r" (value) );
  8008a2a:	f8d7 10a4 	ldr.w	r1, [r7, #164]	@ 0xa4
  8008a2e:	f8d7 20a8 	ldr.w	r2, [r7, #168]	@ 0xa8

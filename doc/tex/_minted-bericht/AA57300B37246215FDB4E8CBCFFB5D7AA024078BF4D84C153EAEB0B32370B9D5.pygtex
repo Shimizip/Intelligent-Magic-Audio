@@ -1,0 +1,3 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{+w}{ }\PYG{n}{HAL\PYGZus{}ADC\PYGZus{}ConvCpltCallback}\PYG{p}{(}\PYG{n}{ADC\PYGZus{}HandleTypeDef}\PYG{o}{*}\PYG{+w}{ }\PYG{n}{hadc}\PYG{p}{)}
+\end{Verbatim}

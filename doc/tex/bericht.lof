@@ -11,3 +11,6 @@
 \contentsline {figure}{\numberline {10}{\ignorespaces Digitaler Audio Signalfluss}}{20}{figure.caption.30}%
 \contentsline {figure}{\numberline {11}{\ignorespaces Double Buffering mit DMA und DSP}}{21}{figure.caption.33}%
 \contentsline {figure}{\numberline {12}{\ignorespaces CubeMX FATFS SDIO Einbindung}}{22}{figure.caption.34}%
+\contentsline {figure}{\numberline {13}{\ignorespaces Phasenverschiebung A und B}}{23}{figure.caption.35}%
+\contentsline {figure}{\numberline {14}{\ignorespaces ADC Conversion}}{24}{figure.caption.36}%
+\contentsline {figure}{\numberline {15}{\ignorespaces DMA ADC FADER Bus System}}{24}{figure.caption.37}%
