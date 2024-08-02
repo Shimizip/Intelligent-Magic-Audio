@@ -1,22 +1,49 @@
+/**
+  ******************************************************************************
+  * @file           : display.c
+  * @brief          : Display handling functions for OLED screen
+  ******************************************************************************
+  * @attention
+  *
+  * This file contains the definitions and functions for managing the OLED display,
+  * including displaying lists, handling cursor positions, and drawing various elements on the screen.
+  *
+  ******************************************************************************
+  */
+
 #include "display.h" 
 #include <stdio.h>
 
-// Define dimensions for display sections
-#define DISPLAY_WIDTH           128
-#define DISPLAY_HEIGHT          128
-#define LIST_SECTION_HEIGHT     81
-#define SELECTED_FILE_HEIGHT    10
-#define BORDER_WIDTH            1
-#define LINE_HEIGHT             10
-#define CURSOR                  '>'
-#define WAVEFORM_TOP        0
-#define WAVEFORM_BOTTOM     (LIST_SECTION_HEIGHT - BORDER_WIDTH)
+/**
+ * @brief Definitions for display dimensions and global variables for managing the visible portion of the list.
+ *
+ * These definitions and variables control the layout and display sections of the OLED screen, as well as
+ * manage the portion of the file list that is visible on the screen.
+ */
 
-#define SAMPLE_SKIP             2
+#define DISPLAY_WIDTH           128 ///< Width of the display in pixels
 
-// Global variables to keep track of the visible portion of the list
-static uint8_t first_visible_index = 0;
-static uint8_t num_visible_lines = LIST_SECTION_HEIGHT / LINE_HEIGHT;
+#define DISPLAY_HEIGHT          128 ///< Height of the display in pixels
+
+#define LIST_SECTION_HEIGHT     81 ///< Height of the section that lists files in pixels
+
+#define SELECTED_FILE_HEIGHT    10 ///< Height of the section that displays the selected file in pixels
+
+#define BORDER_WIDTH            1 ///< Width of the border around display sections in pixels
+
+#define LINE_HEIGHT             10 ///< Height of each line of text in pixels
+
+#define CURSOR                  '>' ///< Character used to indicate the cursor position
+
+#define WAVEFORM_TOP            0 ///< Top position for waveform display
+
+#define WAVEFORM_BOTTOM         (LIST_SECTION_HEIGHT - BORDER_WIDTH) ///< Bottom position for waveform display
+
+#define SAMPLE_SKIP             2 ///< Number of samples to skip when drawing the waveform
+
+static uint8_t first_visible_index = 0; ///< First visible index in the list
+
+static uint8_t num_visible_lines = LIST_SECTION_HEIGHT / LINE_HEIGHT; ///< Number of visible lines in the list section
 
 /**
  * @brief Displays a list of strings on the OLED screen with cursor highlighting.

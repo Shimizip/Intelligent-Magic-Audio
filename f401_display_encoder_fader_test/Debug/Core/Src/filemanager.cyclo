@@ -1,7 +1,7 @@
-../Core/Src/filemanager.c:18:6:initializeFileManager	1
-../Core/Src/filemanager.c:36:6:addFile	4
-../Core/Src/filemanager.c:55:6:cursorUp	2
-../Core/Src/filemanager.c:71:6:cursorDown	2
-../Core/Src/filemanager.c:89:6:safeCurrentFileName	1
-../Core/Src/filemanager.c:110:6:setCursor	5
-../Core/Src/filemanager.c:146:6:selectFile	1
+../Core/Src/filemanager.c:30:6:initializeFileManager	1
+../Core/Src/filemanager.c:48:6:addFile	4
+../Core/Src/filemanager.c:68:6:cursorUp	2
+../Core/Src/filemanager.c:84:6:cursorDown	2
+../Core/Src/filemanager.c:102:6:safeCurrentFileName	1
+../Core/Src/filemanager.c:123:6:setCursor	5
+../Core/Src/filemanager.c:159:6:selectFile	1

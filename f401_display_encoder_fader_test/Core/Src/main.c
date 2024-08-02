@@ -28,7 +28,6 @@
 #include "fonts.h"
 #include "display.h"
 #include "filemanager.h"
-#include "audio.h"
 #include "interface.h"
 #include "util.h"
 /* USER CODE END Includes */
@@ -67,31 +66,56 @@ TIM_HandleTypeDef htim5;
 UART_HandleTypeDef huart2;
 
 /* USER CODE BEGIN PV */
-// Filemanager
-FileManager fm;
-// Filemanger Copy for Testing
-FileManager fmCopy;
-// String für Filename
-char lfn[MAX_FILENAME_LENGTH];
-// FileInfo Handle for the Filename Displaying
-FILINFO fno;
-FATFS FatFs; 	//Fatfs handle
-FIL file;        // File-Objekt für FatFs
-UINT bytesWritten; // Anzahl der geschriebenen Bytes
-FRESULT fres; //Result after operations
-DIR dir; //Directory
+/**
+ * @brief FileManager instances for managing and testing files.
+ *
+ * These variables are used to manage files, including the main FileManager and a copy for testing purposes.
+ */
+FileManager fm;            ///< Main FileManager instance.
+FileManager fmCopy;        ///< Copy of FileManager for testing purposes.
 
-//List of all filnames on the SD Card with .wav ending
-char fileNamesSDCard[MAX_FILES][MAX_FILENAME_LENGTH];
-int fileCount = 0;
-// Flag to Manage the time interval in which the dma is working
-bool adcDmaFlag = false;
-// Update Flag to manage the time interval in which is the display get refreshed
-bool updateScreenFlag = false;
-//bool sortFilesFlag = false;
+/**
+ * @brief Buffer for the filename string.
+ *
+ * This buffer stores filenames with a maximum length defined by MAX_FILENAME_LENGTH.
+ */
+char lfn[MAX_FILENAME_LENGTH];   ///< Buffer for storing a filename string.
 
-// Buffer for the ADC Polling
-uint32_t adcBuffer[NUM_CHANNELS] = {0};
+/**
+ * @brief FATFS file system objects and handles.
+ *
+ * These variables are used for managing file operations and directory access with the FATFS library.
+ */
+FILINFO fno;          ///< FileInfo handle for displaying filenames.
+FATFS FatFs;          ///< FATFS handle for the file system.
+FIL file;             ///< File object for FATFS.
+UINT bytesWritten;    ///< Number of bytes written in file operations.
+FRESULT fres;         ///< Result of FATFS operations.
+DIR dir;              ///< Directory handle for directory operations.
+
+/**
+ * @brief List of filenames on the SD card with .wav extension.
+ *
+ * This array stores the filenames of all .wav files found on the SD card.
+ */
+char fileNamesSDCard[MAX_FILES][MAX_FILENAME_LENGTH];   ///< Array of filenames on the SD card with .wav extension.
+int fileCount = 0;    ///< Counter for the number of .wav files found on the SD card.
+
+/**
+ * @brief Flags for managing time intervals and DMA operations.
+ *
+ * These flags are used to manage the intervals at which DMA operations and display updates occur.
+ */
+bool adcDmaFlag = false;        ///< Flag to manage the time interval for ADC DMA operations.
+bool updateScreenFlag = false;  ///< Flag to manage the time interval for display updates.
+
+/**
+ * @brief Buffer for ADC polling.
+ *
+ * This buffer stores the values read from the ADC channels.
+ */
+uint32_t adcBuffer[NUM_CHANNELS] = {0};   ///< Buffer for storing ADC channel values.
+
 
 /* USER CODE END PV */
 
@@ -491,7 +515,7 @@ static void MX_TIM3_Init(void)
   htim3.Instance = TIM3;
   htim3.Init.Prescaler = 1680;
   htim3.Init.CounterMode = TIM_COUNTERMODE_UP;
-  htim3.Init.Period = 5000;
+  htim3.Init.Period = 2500;
   htim3.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
   htim3.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
   if (HAL_TIM_Base_Init(&htim3) != HAL_OK)

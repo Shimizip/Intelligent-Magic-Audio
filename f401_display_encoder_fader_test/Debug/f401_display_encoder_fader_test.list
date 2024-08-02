@@ -27,25 +27,25 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   ALLOC
  11 .ARM.attributes 00000030  00000000  00000000  00010074  2**0
                   CONTENTS, READONLY
- 12 .debug_info   0002005b  00000000  00000000  000100a4  2**0
+ 12 .debug_info   0002002a  00000000  00000000  000100a4  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 13 .debug_abbrev 00004790  00000000  00000000  000300ff  2**0
+ 13 .debug_abbrev 00004791  00000000  00000000  000300ce  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 14 .debug_aranges 00001c00  00000000  00000000  00034890  2**3
+ 14 .debug_aranges 00001c00  00000000  00000000  00034860  2**3
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 15 .debug_rnglists 000015c5  00000000  00000000  00036490  2**0
+ 15 .debug_rnglists 000015c5  00000000  00000000  00036460  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 16 .debug_macro  0001c5a0  00000000  00000000  00037a55  2**0
+ 16 .debug_macro  0001df9c  00000000  00000000  00037a25  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 17 .debug_line   000273a5  00000000  00000000  00053ff5  2**0
+ 17 .debug_line   0002739c  00000000  00000000  000559c1  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 18 .debug_str    000a81c0  00000000  00000000  0007b39a  2**0
+ 18 .debug_str    000a8171  00000000  00000000  0007cd5d  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 19 .comment      00000043  00000000  00000000  0012355a  2**0
+ 19 .comment      00000043  00000000  00000000  00124ece  2**0
                   CONTENTS, READONLY
- 20 .debug_frame  0000817c  00000000  00000000  001235a0  2**2
+ 20 .debug_frame  0000817c  00000000  00000000  00124f14  2**2
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 21 .debug_line_str 0000006f  00000000  00000000  0012b71c  2**0
+ 21 .debug_line_str 00000065  00000000  00000000  0012d090  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
 
 Disassembly of section .text:
@@ -615,11 +615,11 @@ void displayStrings(I2C_HandleTypeDef *hi2c1, char** strings, uint8_t numStrings
  8000708:	20000004 	.word	0x20000004
 
 0800070c <renderSelectedFile>:
- * @param[in] filename Pointer to a null-terminated string representing the name of the selected file to be displayed.
  *
  * @note Ensure that the `filename` is properly null-terminated and that the display dimensions 
  * and font settings are configured correctly to match the hardware.
  */
+
 void renderSelectedFile(I2C_HandleTypeDef *hi2c1, const char *filename) {
  800070c:	b580      	push	{r7, lr}
  800070e:	b084      	sub	sp, #16
@@ -678,11 +678,11 @@ void renderSelectedFile(I2C_HandleTypeDef *hi2c1, const char *filename) {
  8000768:	20000004 	.word	0x20000004
 
 0800076c <drawFaderProzent>:
-        }
-    }
-}
-
-//
+ * @param[in] multiplikator Integer value used to adjust the vertical position on the screen, affecting where the percentage is drawn.
+ *
+ * @note Ensure that the `prozent` string is properly null-terminated and that the display dimensions and font settings are configured correctly to match the hardware. 
+ * The `multiplikator` should be set appropriately to ensure that the displayed text does not overlap with other screen elements.
+ */
 void drawFaderProzent(I2C_HandleTypeDef *hi2c1, const char *prozent, int multiplikator){
  800076c:	b580      	push	{r7, lr}
  800076e:	b086      	sub	sp, #24
@@ -791,7 +791,7 @@ void addFile(FileManager *fm, const char *filename, const float *classes){
  8000826:	2300      	movs	r3, #0
  8000828:	617b      	str	r3, [r7, #20]
  800082a:	e017      	b.n	800085c <addFile+0x70>
-            fm->files[fm->num_files].classes[i] = classes[i];        }
+            fm->files[fm->num_files].classes[i] = classes[i];
  800082c:	697b      	ldr	r3, [r7, #20]
  800082e:	009b      	lsls	r3, r3, #2
  8000830:	687a      	ldr	r2, [r7, #4]
@@ -818,6 +818,7 @@ void addFile(FileManager *fm, const char *filename, const float *classes){
  800085c:	697b      	ldr	r3, [r7, #20]
  800085e:	2b03      	cmp	r3, #3
  8000860:	dde4      	ble.n	800082c <addFile+0x40>
+        }
         fm->num_files++;
  8000862:	68fb      	ldr	r3, [r7, #12]
  8000864:	f503 4330 	add.w	r3, r3, #45056	@ 0xb000
