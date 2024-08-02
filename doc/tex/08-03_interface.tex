@@ -79,10 +79,30 @@ Diese Glättung sorgt dafür, dass die Messwerte stabiler und weniger anfällig 
 Eine andere möglichkeit des Spannungs inkonsitenz könnte mit Kondensatoren umgesetzt werden was jedoch nicht umgesetzt würde aus zeitlichen Gründen.
 
 \subsubsection{Display, SD1306 Treiber und I2C}
-Das Display ist die zentrale Komponente des Interfaces, da es visuelles Feedback auf die Benutzerinteraktionen bietet. Die Ansteuerung des Displays erfolgt über den SD1306-Treiber, der als Schnittstelle zwischen dem Mikrocontroller Nucleo F401RE und dem LCD-Display fungiert. Dieser Treiber ermöglicht die Kommunikation und Befehlsübertragung, indem er die erforderlichen Initialisierungsbefehle an das Display sendet. Für die Unterstützung von SH1103-kompatiblen Bildschirmen würde die Initialisierungssequenz entsprechend angepasst.
 
-Die Kommunikation zwischen dem Nucleo F401RE-Mikrocontroller und dem Display erfolgt über das I2C-Protokoll. Der Mikrocontroller übernimmt die Rolle des Masters, der den Bus steuert, während das Display als Slave agiert. Die Datenübertragung erfolgt über die beiden I2C-Leitungen: SDA (Datenleitung) und SCL (Taktleitung). Der Master beginnt die Kommunikation mit einer Start-Bedingung, gefolgt von der Übertragung der Adresse des Displays und der entsprechenden Daten in Bytes. Diese Daten werden durch die Taktimpulse auf der SCL-Leitung synchronisiert und auf der SDA-Leitung übertragen und bestätigt. Die Kommunikation endet mit einer Stop-Bedingung. Das I2C-Protokoll ermöglicht eine effiziente und koordinierte Datenübertragung zwischen der MCU und dem Display.
+Das Display ist die zentrale Komponente des Interfaces, da es visuelles Feedback auf die Benutzerinteraktionen bietet. Die Kommunikation zwischen dem Nucleo F401RE-Mikrocontroller und dem Display erfolgt über das I2C-Protokoll. Der Mikrocontroller übernimmt die Rolle des Masters, der den Bus steuert, während das Display als Slave agiert. Die Datenübertragung erfolgt über die beiden I2C-Leitungen: SDA (Datenleitung) und SCL (Taktleitung). Der Master beginnt die Kommunikation mit einer Start-Bedingung, gefolgt von der Übertragung der Adresse des Displays und der entsprechenden Daten in Bytes. Diese Daten werden durch die Taktimpulse auf der SCL-Leitung synchronisiert und auf der SDA-Leitung übertragen und bestätigt. Die Kommunikation endet mit einer Stop-Bedingung. Das I2C-Protokoll ermöglicht eine effiziente und koordinierte Datenübertragung zwischen der MCU und dem Display.
 
+Die Ansteuerung des Displays erfolgt über den SD1306-Treiber, der als Schnittstelle zwischen dem Mikrocontroller Nucleo F401RE und dem LCD-Display fungiert. Dieser Treiber ermöglicht die Kommunikation und Befehlsübertragung, indem er die erforderlichen Initialisierungsbefehle an das Display sendet. Für die Unterstützung von SH1103-kompatiblen Bildschirmen würde die Initialisierungssequenz entsprechend angepasst.
+
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1.0\textwidth]{images/08_durchfuehrung/interface/Display SD1306 Treiber I2C.drawio}
+	\caption{Display SD1306 I2C Kommunikation}
+	\label{fig:Display SD1306 I2C}
+\end{figure}
+
+\newpage
+
+\textcolor{red}{TODO: Begründung der Auswahl des Protokolls}
+
+\textcolor{red}{TODO: Erklärung des Ablaufs mit Codeschnipsel (Aufs wesentliche beziehen)}
+
+
+
+\subsubsection{Filesystem}
+
+\textcolor{red}{TODO: Erklärung der Komponente FileManager/File}
 
 
 
