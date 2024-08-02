@@ -1,0 +1,11 @@
+../Core/Src/interface.c:19:6:HAL_GPIO_EXTI_Callback	16	static
+../Core/Src/interface.c:46:6:HAL_TIM_PeriodElapsedCallback	16	static
+../Core/Src/interface.c:61:6:HAL_ADC_ConvCpltCallback	24	static
+../Core/Src/interface.c:82:6:screenInit	424	static
+../Core/Src/interface.c:128:6:sortFiles	56	static
+../Core/Src/interface.c:168:6:updateScreen	216	static
+../Core/Src/interface.c:190:6:compareADCValues	16	static
+../Core/Src/interface.c:206:6:resetShownFiles	8	static
+../Core/Src/interface.c:211:6:listFiles	24	static
+../Core/Src/interface.c:244:6:writeFileManagerOnSD	4160	static
+../Core/Src/interface.c:273:6:readFileManagerFromSD	4160	static

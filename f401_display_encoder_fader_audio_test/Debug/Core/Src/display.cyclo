@@ -1,6 +1,0 @@
-../Core/Src/display.c:39:6:displayStrings	12
-../Core/Src/display.c:85:6:scrollUp	2
-../Core/Src/display.c:105:6:scrollDown	2
-../Core/Src/display.c:122:6:renderSelectedFile	3
-../Core/Src/display.c:170:6:drawLine	7
-../Core/Src/display.c:194:6:drawFaderProzent	3
