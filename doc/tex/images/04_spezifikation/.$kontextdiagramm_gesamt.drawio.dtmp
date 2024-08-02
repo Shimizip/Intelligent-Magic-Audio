@@ -1,6 +1,6 @@
-<mxfile host="Electron" modified="2024-08-02T11:03:17.300Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/22.0.3 Chrome/114.0.5735.289 Electron/25.8.4 Safari/537.36" etag="KW52h9S1VzNC6M1S9f9R" version="22.0.3" type="device">
+<mxfile host="Electron" modified="2024-08-02T13:33:10.657Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/22.0.3 Chrome/114.0.5735.289 Electron/25.8.4 Safari/537.36" etag="GOq5Ct0NgnJICdLoqhX3" version="22.0.3" type="device">
   <diagram name="Seite-1" id="00pDsmjtND-n7SUzU1SD">
-    <mxGraphModel dx="1430" dy="825" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="870" dy="983" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -18,7 +18,7 @@
         <mxCell id="HaPshGFiGsYCy_S7ym-9-20" value="Audioverarbeitung" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#1BA1E2;" vertex="1" parent="1">
           <mxGeometry x="690" y="70" width="110" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="HaPshGFiGsYCy_S7ym-9-19" value="Interface" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#1BA1E2;" vertex="1" parent="1">
+        <mxCell id="HaPshGFiGsYCy_S7ym-9-19" value="Interface/Filemanagment" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#1BA1E2;" vertex="1" parent="1">
           <mxGeometry x="80" y="433.4" width="60" height="30" as="geometry" />
         </mxCell>
         <mxCell id="HaPshGFiGsYCy_S7ym-9-18" value="Klassifizierung" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#1BA1E2;" vertex="1" parent="1">
@@ -59,7 +59,7 @@
           <mxGeometry x="180" y="50" width="80" height="80" as="geometry" />
         </mxCell>
         <mxCell id="HaPshGFiGsYCy_S7ym-9-11" value="SD1306&lt;br&gt;Display Driver" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="130" y="473.4" width="80" height="80" as="geometry" />
+          <mxGeometry x="170" y="490" width="80" height="80" as="geometry" />
         </mxCell>
         <mxCell id="HaPshGFiGsYCy_S7ym-9-12" value="Encoder" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="270" y="498.4" width="80" height="80" as="geometry" />
@@ -170,7 +170,7 @@
             <mxPoint x="530" y="160" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="HaPshGFiGsYCy_S7ym-9-45" value="Downsamplingdata[33] (Block)" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="HaPshGFiGsYCy_S7ym-9-43">
+        <mxCell id="HaPshGFiGsYCy_S7ym-9-45" value="Downsamplingdata[33] &lt;br&gt;(Block)" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="HaPshGFiGsYCy_S7ym-9-43">
           <mxGeometry x="-0.0646" y="-2" relative="1" as="geometry">
             <mxPoint x="12" y="1" as="offset" />
           </mxGeometry>
@@ -181,7 +181,7 @@
             <mxPoint x="590" y="150" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="HaPshGFiGsYCy_S7ym-9-47" value="Downsampeddata[11] (Block)" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="HaPshGFiGsYCy_S7ym-9-44">
+        <mxCell id="HaPshGFiGsYCy_S7ym-9-47" value="Downsampeddata[11] &lt;br&gt;(Block)" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="HaPshGFiGsYCy_S7ym-9-44">
           <mxGeometry x="-0.0724" relative="1" as="geometry">
             <mxPoint x="-1" y="-5" as="offset" />
           </mxGeometry>
