@@ -1,1 +1,12 @@
 \babel@toc {ngerman}{}\relax 
+\contentsline {figure}{\numberline {1}{\ignorespaces Gepatchtes Eurorack 3U Rack (einreihig)}}{4}{figure.caption.3}%
+\contentsline {figure}{\numberline {2}{\ignorespaces Panel Design Mockup }}{5}{figure.caption.4}%
+\contentsline {figure}{\numberline {3}{\ignorespaces Aufbau des künstlichen Neurons. Quelle: Thieling, Lothar: “Neuronale Netze (Vorlesungsskript ML)”, Kapitel F, Seite 6.}}{15}{figure.caption.22}%
+\contentsline {figure}{\numberline {4}{\ignorespaces Darstellung eines PCM Audiosignals, Quelle: https://huggingface.co/learn/audio-course/chapter1/audio\_data TODO }}{16}{figure.caption.23}%
+\contentsline {figure}{\numberline {5}{\ignorespaces Darstellung eines Audiosignals als Spektrogramm, Quelle: https://huggingface.co/learn/audio-course/chapter1/audio\_data TODO }}{16}{figure.caption.24}%
+\contentsline {figure}{\numberline {6}{\ignorespaces Repräsentation der verschiedenen Merkmalsklassen in den Entwicklungsdaten}}{17}{figure.caption.26}%
+\contentsline {figure}{\numberline {7}{\ignorespaces Darstellung der Unterteilung der Audiosamples in Audiosubsamples und Frames}}{18}{figure.caption.27}%
+\contentsline {figure}{\numberline {8}{\ignorespaces Darstellung des Sliding Window Prinzips}}{18}{figure.caption.28}%
+\contentsline {figure}{\numberline {9}{\ignorespaces Digitaler Audio Signalfluss}}{20}{figure.caption.29}%
+\contentsline {figure}{\numberline {10}{\ignorespaces Double Buffering mit DMA und DSP}}{21}{figure.caption.32}%
+\contentsline {figure}{\numberline {11}{\ignorespaces CubeMX FATFS SDIO Einbindung}}{22}{figure.caption.33}%
