@@ -39,9 +39,20 @@ Anhand des Index des Files kann der Names des Files ermittelt werden.
 
 	
 \inputminted[firstline=159, lastline=161]{c}{../../f401_display_encoder_fader_test/Core/Src/filemanager.c}
-  
- 
+
+\textbf{Problematik:}
+
+Beim Drücken des Knopfes kann es in Systemen zu Mehrfachauslösungen kommen. Dies war auch beim Schalter des Encoders der Fall.
+
+\textbf{Lösung:}
+
+Um Mehrfachauslösungen zu verhindern, wurde ein Debouncing-Mechanismus implementiert. Dieser Mechanismus verwendet ein Flag und einen Timer, um wiederholte Auslösungen zu verhindern. Beim Drücken des Knopfes wird ein Interrupt ausgelöst, der eine Callback-Funktion aufruft. In dieser Callback-Funktion wird ein Flag gesetzt und ein Timer gestartet. Der Timer sorgt dafür, dass weitere Auslösungen innerhalb einer definierten Zeitspanne ignoriert werden, wodurch Mehrfachauslösungen effektiv verhindert werden.
+
+Erst nach dem Ablauf des Timers war ist ein möglich den Knopf wieder zu betätigen.
+
 \subsubsection{Schiebenpotentiometer, ADC und DMA}
+
+\textbf{Grundfunktionalität:}\\
 
 \textbf{Schiebepotentiometer} erfassen analoge Spannungen, die vom \textbf{Analog-Digital-Wandler (ADC)} in digitale Werte umgewandelt werden. Er nimmt in regelmäßigen Intervallen Proben des analogen Signals. Die Auflösung in 12 Bits 15 ADC Clock Cycles hat sich als am effizientesten herrausgestelt.
 
@@ -62,7 +73,15 @@ Der \textbf{Direct Memory Access (DMA)-Controller} übernimmt anschließend die 
 \end{figure}
 
 Die DMA ist ein eigener Controller dadurch entlasstet die den Prozessor bei der Datenübertragung direkt zwischen Speicher und Peripheriegeräten.
-ADCs sorgen für echtzeitsystemnahe Digitalisierung von analogen Signalen, was eine genaue Messwertverarbeitung ermöglicht. Potentiometer bieten eine benutzerfreundliche Anpassungsmöglichkeiten für Spannungswerte. Das Bussystem dient dann als eine nahtlose Kommunikation zwischen den Komponenten, was zu einer konsistenten und zuverlässigen Datenverarbeitung führt.
+ADCs sorgen für echtzeitsystemnahe Digitalisierung von analogen Signalen, was eine genaue Messwertverarbeitung ermöglicht. Potentiometer bieten eine benutzerfreundliche Anpassungsmöglichkeiten für Spannungswerte. Das Bussystem dient dann als eine nahtlose Kommunikation zwischen den Komponenten, was zu einer konsistenten und zuverlässigen Datenverarbeitung führt.\\
+
+\textbf{Problematik:}
+
+Bei der Implementierung der DMA traten Probleme auf, die dazu führten, dass der Bildschirm einfrohr und das Bedienen der Interfaces unmöglich wurde. Das Problem entstand, weil die DMA fortlaufend Daten übertrug und die CPU dadurch vollständig beansprucht wurde, um die Daten, die von der DMA übertragen wurden, zu verarbeiten. Dies führte zu einer Überlastung der CPU, da sie gezwungen war, sich auf die Verarbeitung der von der DMA bereitgestellten Daten zu konzentrieren, anstatt andere Aufgaben zu bewältigen. Infolgedessen konnten keine weiteren Systeminteraktionen durchgeführt werden, da die CPU keine Ressourcen mehr für andere Aufgaben zur Verfügung hatte.
+
+\textbf{Lösung:}
+
+Um das Problem zu beheben, wurde ein Timer implementiert, der die DMA-Übertragung steuert. Der Timer sorgt dafür, dass die DMA in regelmäßigen Intervallen gestartet und gestoppt wird. Diese Maßnahme ermöglicht es der CPU, sich ausreichend um andere Aufgaben zu kümmern, indem sie nicht kontinuierlich mit der Datenverarbeitung durch die DMA beschäftigt ist. Der Einsatz des Timers verhindert, dass die DMA die CPU überlastet und gewährleistet eine ausgewogene Nutzung der Systemressourcen.
 
 \newpage
 Die Auswertung und Verarbeitung der Signale erfolgt in der  \mintinline{c}| HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc)|.
