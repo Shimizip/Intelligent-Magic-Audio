@@ -1,4 +1,4 @@
-\subsection{Klassifizierung von Audiodateien durch ein Neuronales Netz}
+\subsection{Klassifizierung von Audiodateien durch ein neuronales Netz}
 Durch das neuronale Netz sollen digitale Audiodateien (Audiosamples) mit variabler Länge in fünf Merkmalsklassen klassifiziert werden. Dabei kann ein Datenpunkt, also ein Audiosample, mehreren Merkmalsklassen zugehörig sein. Dies wird als ``Multi-Label-Klassifizierung`` bezeichnet \cite{multilabel-classification}. Wird eine Audiodatei (Eingabevektor) zur Klassifizierung in das neuronale Netz eingegeben, erhält man als Ausgabe einen Ausgabevektor von fünf Werten zwischen 0.00 und 1.00, wobei jeder der fünf Werte  die Ähnlichkeit mit einer der fünf Merkmalsklassen repräsentiert (0.00 $\equiv$ keine Ähnlichkeit, 1.00 $\equiv$ Übereinstimmung). Die Merkmalsklassen werden wie folgt definiert:
     \begin{itemize}
         \item \textbf{bass:} Das Audiosample enthält Töne aus dem tiefen Frequenzspektrum
@@ -199,18 +199,18 @@ Wie sich erkennen lässt, ``lernt`` das neuronale Netz im Laufe der Epochen, die
 Abschließend kann das trainierte Modell als ``Tensorflow-Lite``-Dateiformat (Dateiendung ``.tflite``) exportiert werden. Die ``model.tflite``-Datei enthält sowohl die Architektur, als auch die Gewichte der einzelnen Neuronen \cite{tflite-file}.
 
 
-\subsubsection{Betrieb des Neuronalen Netzes auf dem STM32 Microcontroller}
+\subsubsection{Betrieb des neuronalen Netzes auf dem STM32 Microcontroller}
 
 Für den Betrieb des Neuronalen Netzes wird ``STM32Cube.AI`` verwendet, um das in der ``model.tflite`` Datei definierte Neuronale Netz in C-Code nachzubilden. Um jedoch Audiodateien klassifizieren zu können, müssen zunächst sämtliche Schritte der Datenvorverarbeitung, die im Jupyter-Notebook gemacht wurden, wiederholt werden.
 
 \textbf{Einlesen der Datei und Datenvorverarbeitung}
 
 
-Zum Einlesen der Datei wird die in \textbf{Abschnitt \ref{sec:audio-downsampling}} beschriebene Funktion \mintinline{c}|downsample_1024_samples()| verwendet. Diese reduziert die Datenmenge um den Faktor 3, was bei einer Eingabe-Samplerate von 44.1 kHz zu einer Ausgabe-Samplerate von 14.700 kHz (statt 16.000 kHz) führt. Die resultierende Abweichung von $\approx$ 8.8\% wird jedoch als vernachlässigbar für das Klassifizierungsergebnis eingeschätzt.
+Zum Einlesen der Datei wird die in \textbf{Abschnitt \ref{sec:audio-downsampling}} beschriebene Funktion \mintinline{c}|downsample_1024_samples()| verwendet. Diese reduziert die Datenmenge um den Faktor 3, was bei einer Eingabe-Samplerate von 44.1 kHz zu einer Ausgabe-Samplerate von 14.700 kHz (statt 16.000 kHz) führt. Die resultierende Abweichung von $\approx$ 8.8\% wird jedoch als vernachlässigbar für das Klassifikationsergebnis eingeschätzt.
 
 Für die Berechnung der Mel-Spektrogramme wird die Bibliothek ``STM32\_AI\_AudioPreprocessing\_Library`` verwendet. Diese ist Teil des ``FP-AI-SENSING1`` Function Packs \cite{fp-ai-sensing1}. Mit dieser lassen sich einzelne Spektrogrammspalten berechnen, deren Amplitudenwerte müssen jedoch im Anschluss noch in Dezibel (dB) umgerechnet werden.
 
-\textbf{Übersetzen des Neuronalen Netzes mit STM32Cube.AI}
+\textbf{Übersetzen des neuronalen Netzes mit STM32Cube.AI}
 
 
 \begin{wrapfigure}{r}{0.4\textwidth} % Increase the width of the figure environment
@@ -232,7 +232,7 @@ Total Ram  		21.844 B (21.37 KiB)
 
 Die Nutzung von STM32Cube.AI wird anhand eines Beispiels in der Dokumentation beschrieben \cite{stm32-cube-ai-documentation}. Obwohl das Beispiel auf einer älteren Version basiert, hat sich der grundlegende Umgang mit der Software nicht verändert. Da die Nutzung der Funktionen und Zeck der einzelnen Variablen dort im Detail  beschrieben sind, wird dies im folgenden Abschnitt nur kurz zusammengefasst.
 
-Zur Nutzung von STM32Cube.AI ist ein Handle vom Typ \mintinline{c}|ai_handle| erforderlich. Dieses erhält man durch den Aufruf der Initialisierungsfunktion \mintinline{c}|ai_network_1_create_and_init()|. Anschließend werden Input- und Outputbuffer vom Typ \mintinline{c}|ai_buffer| initialisiert, die zur Eingabe von Daten in das neuronale Netz und zur Rückgabe des Klassifizierungsergebnisses verwendet werden. Diese Initialisierungsschritte werden im Code des Projekts in der Funktion \mintinline{c}|init_nn()| durchgeführt:
+Zur Nutzung von STM32Cube.AI ist ein Handle vom Typ \mintinline{c}|ai_handle| erforderlich. Dieses erhält man durch den Aufruf der Initialisierungsfunktion \mintinline{c}|ai_network_1_create_and_init()|. Anschließend werden Input- und Outputbuffer vom Typ \mintinline{c}|ai_buffer| initialisiert, die zur Eingabe von Daten in das neuronale Netz und zur Rückgabe des Klassifikationsergebnisses verwendet werden. Diese Initialisierungsschritte werden im Code des Projekts in der Funktion \mintinline{c}|init_nn()| durchgeführt:
 
 \begin{minted}{c}
 int init_nn() {
