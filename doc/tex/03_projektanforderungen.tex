@@ -17,21 +17,21 @@ Die nicht-funktionalen Anforderungen spezifizieren Qualitätsmerkmale, die das S
 \subsection{Performance}
 
 \begin{table}[h!]
-	\begin{tabularx}{\textwidth}{|l|X|}
-		\hline
-		\textbf{/LQ1/} & \textbf{Latenz} \\ \hline
-		\textbf{Kategorie} & Performance \\ \hline
-		\textbf{Beschreibung} & Die Latenzzeit zwischen der Aufnahme eines Audio-Samples und dessen Wiedergabe sollte minimal sein (z.B. <10ms), um eine reibungslose Benutzererfahrung zu gewährleisten. \\ \hline
-	\end{tabularx}
+\begin{tabularx}{13cm}{|l|X|}
+\hline
+\textbf{/LQ1/} & \textbf{Latenz} \\ \hline
+\textbf{Kategorie} & Performance \\ \hline
+\textbf{Beschreibung} & Die Latenzzeit zwischen der Aufnahme eines Audio-Samples und dessen Wiedergabe sollte minimal sein (z.B. <10ms), um eine reibungslose Benutzererfahrung zu gewährleisten. \\ \hline
+\end{tabularx}
 \end{table}
 
 \begin{table}[h!]
-	\begin{tabularx}{\textwidth}{|l|X|}
-		\hline
-		\textbf{/LQ2/} & \textbf{Echtzeitverarbeitung} \\ \hline
-		\textbf{Kategorie} & Performance \\ \hline
-		\textbf{Beschreibung} & Das System muss in der Lage sein, Audio-Daten in Echtzeit zu verarbeiten, um eine sofortige Rückmeldung und Sampleklassifizierung zu ermöglichen. \\ \hline
-	\end{tabularx}
+\begin{tabularx}{13cm}{|l|X|}
+\hline
+\textbf{/LQ2/} & \textbf{Echtzeitverarbeitung} \\ \hline
+\textbf{Kategorie} & Performance \\ \hline
+\textbf{Beschreibung} & Das System muss in der Lage sein, Audio-Daten in Echtzeit zu verarbeiten, um eine sofortige Rückmeldung und Sampleklassifizierung zu ermöglichen. \\ \hline
+\end{tabularx}
 \end{table}
 
 \begin{table}[h!]
@@ -46,33 +46,113 @@ Die nicht-funktionalen Anforderungen spezifizieren Qualitätsmerkmale, die das S
 \subsection{Benutzerfreundlichkeit}
 
 \begin{table}[h!]
-	\begin{tabularx}{\textwidth}{|l|X|}
-		\hline
-		\textbf{/LQ4/} & \textbf{Intuitive Benutzeroberfläche} \\ \hline
-		\textbf{Kategorie} & Benutzerfreundlichkeit \\ \hline
-		\textbf{Beschreibung} & Die Benutzeroberfläche muss intuitiv und leicht bedienbar sein, damit Nutzer ohne umfangreiche Schulung schnell damit arbeiten können. \\ \hline
-	\end{tabularx}
+\begin{tabularx}{13cm}{|l|X|}
+\hline
+\textbf{/LQ4/} & \textbf{Fehlertoleranz} \\ \hline
+\textbf{Kategorie} & Zuverlässigkeit \\ \hline
+\textbf{Beschreibung} & Das System sollte fehlertolerant sein und sich bei Hardware- oder Softwarefehlern selbstständig erholen können, um Datenverluste zu vermeiden. \\ \hline
+\end{tabularx}
 \end{table}
 
 \begin{table}[h!]
-	\begin{tabularx}{\textwidth}{|l|X|}
-		\hline
-		\textbf{/LQ5/} & \textbf{Feedback-Mechanismen} \\ \hline
-		\textbf{Kategorie} & Benutzerfreundlichkeit \\ \hline
-		\textbf{Beschreibung} & Das System sollte klares und sofortiges Feedback auf Benutzeraktionen geben, um Fehlbedienungen zu minimieren. \\ \hline
-	\end{tabularx}
+\begin{tabularx}{13cm}{|l|X|}
+\hline
+\textbf{/LQ5/} & \textbf{Systemverfügbarkeit} \\ \hline
+\textbf{Kategorie} & Zuverlässigkeit \\ \hline
+\textbf{Beschreibung} & Das Gerät muss eine hohe Verfügbarkeit (z.B. 99,9\%) gewährleisten, besonders in Live-Performance-Umgebungen. \\ \hline
+\end{tabularx}
 \end{table}
 
 \newpage
-\subsection{Effizienz}
+\subsubsection{Benutzerfreundlichkeit}
 
 \begin{table}[h!]
-	\begin{tabularx}{\textwidth}{|l|X|}
-		\hline
-		\textbf{/LQ6/} & \textbf{Ressourcennutzung} \\ \hline
-		\textbf{Kategorie} & Effizienz \\ \hline
-		\textbf{Beschreibung} & Das System sollte sparsam mit den verfügbaren Ressourcen (CPU, Speicher, Energie) umgehen, um eine lange Betriebsdauer und Stabilität zu gewährleisten. \\ \hline
-	\end{tabularx}
+\begin{tabularx}{13cm}{|l|X|}
+\hline
+\textbf{/LQ6/} & \textbf{Intuitive Benutzeroberfläche} \\ \hline
+\textbf{Kategorie} & Benutzerfreundlichkeit \\ \hline
+\textbf{Beschreibung} & Die UI muss intuitiv und leicht bedienbar sein, damit Nutzer ohne umfangreiche Schulung schnell damit arbeiten können. \\ \hline
+\end{tabularx}
+\end{table}
+
+\begin{table}[h!]
+\begin{tabularx}{13cm}{|l|X|}
+\hline
+\textbf{/LQ7/} & \textbf{Feedback-Mechanismen} \\ \hline
+\textbf{Kategorie} & Benutzerfreundlichkeit \\ \hline
+\textbf{Beschreibung} & Das System sollte klares und sofortiges Feedback auf Benutzeraktionen geben, um Fehlbedienungen zu minimieren. \\ \hline
+\end{tabularx}
+\end{table}
+
+\subsubsection{Sicherheit}
+
+\begin{table}[h!]
+\begin{tabularx}{13cm}{|l|X|}
+\hline
+\textbf{/LQ8/} & \textbf{Datenintegrität} \\ \hline
+\textbf{Kategorie} & Sicherheit \\ \hline
+\textbf{Beschreibung} & Die Integrität der Audio-Daten muss zu jeder Zeit gewährleistet sein, insbesondere bei der Speicherung und Übertragung. \\ \hline
+\end{tabularx}
+\end{table}
+
+\begin{table}[h!]
+\begin{tabularx}{13cm}{|l|X|}
+\hline
+\textbf{/LQ9/} & \textbf{Zugriffskontrollen} \\ \hline
+\textbf{Kategorie} & Sicherheit \\ \hline
+\textbf{Beschreibung} & Nur autorisierte Benutzer sollten auf bestimmte Funktionen und Daten zugreifen können. \\ \hline
+\end{tabularx}
+\end{table}
+
+\subsubsection{Wartbarkeit}
+
+\begin{table}[h!]
+\begin{tabularx}{13cm}{|l|X|}
+\hline
+\textbf{/LQ10/} & \textbf{Modularität} \\ \hline
+\textbf{Kategorie} & Wartbarkeit \\ \hline
+\textbf{Beschreibung} & Die Software- und Hardwarekomponenten sollten modular aufgebaut sein, um einfache Wartung und Updates zu ermöglichen. \\ \hline
+\end{tabularx}
+\end{table}
+
+\begin{table}[h!]
+\begin{tabularx}{13cm}{|l|X|}
+\hline
+\textbf{/LQ11/} & \textbf{Dokumentation} \\ \hline
+\textbf{Kategorie} & Wartbarkeit \\ \hline
+\textbf{Beschreibung} & Umfassende und verständliche Dokumentation für Entwickler und Benutzer sollte vorhanden sein, um Wartung und Weiterentwicklung zu erleichtern. \\ \hline
+\end{tabularx}
+\end{table}
+
+\subsubsection{Portabilität}
+
+\begin{table}[h!]
+\begin{tabularx}{13cm}{|l|X|}
+\hline
+\textbf{/LQ12/} & \textbf{Plattformunabhängigkeit} \\ \hline
+\textbf{Kategorie} & Portabilität \\ \hline
+\textbf{Beschreibung} & Die Middleware sollte auf verschiedenen Hardwareplattformen laufen können, um die Flexibilität und Wiederverwendbarkeit zu erhöhen. \\ \hline
+\end{tabularx}
+\end{table}
+
+\begin{table}[h!]
+\begin{tabularx}{13cm}{|l|X|}
+\hline
+\textbf{/LQ13/} & \textbf{Einfache Installation} \\ \hline
+\textbf{Kategorie} & Portabilität \\ \hline
+\textbf{Beschreibung} & Das System sollte einfach zu installieren und zu konfigurieren sein, um den Einsatz in verschiedenen Umgebungen zu erleichtern. \\ \hline
+\end{tabularx}
+\end{table}
+
+\subsubsection{Effizienz}
+
+\begin{table}[h!]
+\begin{tabularx}{13cm}{|l|X|}
+\hline
+\textbf{/LQ14/} & \textbf{Ressourcennutzung} \\ \hline
+\textbf{Kategorie} & Effizienz \\ \hline
+\textbf{Beschreibung} & Das System sollte sparsam mit den verfügbaren Ressourcen (CPU, Speicher, Energie) umgehen, um eine lange Betriebsdauer und Stabilität zu gewährleisten. \\ \hline
+\end{tabularx}
 \end{table}
 
 \begin{table}[h!]
@@ -82,4 +162,24 @@ Die nicht-funktionalen Anforderungen spezifizieren Qualitätsmerkmale, die das S
 		\textbf{Kategorie} & Effizienz \\ \hline
 		\textbf{Beschreibung} & Algorithmen für die Audioverarbeitung und Klassifizierung sollten so optimiert sein, dass sie minimale Rechenressourcen benötigen, ohne die Genauigkeit zu beeinträchtigen. \\ \hline
 	\end{tabularx}
+\end{table}
+
+\subsubsection{Kompatibilität}
+
+\begin{table}[h!]
+\begin{tabularx}{13cm}{|l|X|}
+\hline
+\textbf{/LQ16/} & \textbf{Schnittstellen} \\ \hline
+\textbf{Kategorie} & Kompatibilität \\ \hline
+\textbf{Beschreibung} & Das System sollte mit gängigen Schnittstellen und Protokollen kompatibel sein, um eine einfache Integration in bestehende Setups zu ermöglichen. \\ \hline
+\end{tabularx}
+\end{table}
+
+\begin{table}[h!]
+\begin{tabularx}{13cm}{|l|X|}
+\hline
+\textbf{/LQ17/} & \textbf{Erweiterbarkeit} \\ \hline
+\textbf{Kategorie} & Kompatibilität \\ \hline
+\textbf{Beschreibung} & Das Gerät sollte leicht erweiterbar sein, um zukünftige Funktionalitäten und Verbesserungen zu unterstützen. \\ \hline
+\end{tabularx}
 \end{table}

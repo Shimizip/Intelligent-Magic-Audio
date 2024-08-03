@@ -28,7 +28,7 @@ Der Audio Codec wandelt die digitalen PCM Signale in eine analoges Signal mit Li
 
 \subsubsection{Latenzen}
 
-%TODO: TEST MIT MESSUNG IN TESTS (pulse an gpio geben, und audioausgang mit osci messen)
+
 
 Echtzeitfähigkeit ist ein kritischer Aspekt bei elektronischen Audioinstrumenten. 
 Eine niedrige Latenz ist entscheidend, um rhythmisch präzise und ``tight`` zu spielen, besonders wenn mehrere Instrumente miteinander synchronisiert werden müssen.
@@ -76,6 +76,12 @@ In den Callback-Funktionen \mintinline{c}|HAL_I2S_TxHalfCpltCallback()| und \min
 Diese Callbacks, werden systembedingt aufgerufen, sobald die DMA die erste Hälfte oder den gesamten Buffer übertragen hat. Sie eignen sich daher sehr gut um den Pointer zu setzen.
 
 "Sobald das Flag \mintinline{c}|dma_dataReady == true| gesetzt ist, wird die nächste Bufferhälfte von der SD-Karte gelesen."
+
+\paragraph{Latenzmessung}
+
+Im Abschnitt\ref{test-latenzmessung} wird eine Latenzmessung durchgeführt, wobei die gemessene Latenz von Trigger Input bis Audioausgang, mit \SI{6.7}{\milli\second} mehr als zufriedenstellend ist.
+
+Somit kann der Audiosampler unter Betrachtung der Latenz ein sehr erfolgreiches Zusammenspiel mit anderen elektronischen Instrumenten erzielen.
 
 \subsubsection{PCM5102a und I2S}
 
