@@ -15,15 +15,15 @@ Der Audio-Codec, sowie der SD-Kartenleser müssen wie im Schaltplan(TODO: REFERE
 	\item Positionierung zweier Mess-Cursor: einer auf die erste Flanke des Trigger-Input-Signals und der andere auf den Beginn des Audio-Ausgangssignals.
 \end{enumerate}
 \paragraph{Erwartete Werte}
-	Die erwartet Latenz errechnet sich wie folgt:
+	Die erwartete Latenz errechnet sich wie folgt:
 	
-	Gegeben:
+	\textit{Gegeben:}
 	\begin{align*}
 		\text{Samplerate} &= \SI{44.1}{\kilo\hertz} = 44{,}100 \, \text{Samples pro Sekunde} \\
 		\text{Puffergröße} &= 256 \, \text{Samples}
 	\end{align*}
 	
-	\paragraph*{Berechnung der Latenz}
+	\textit{Berechnung der Latenz:}
 	
 	\[
 	\text{Zeit pro Sample} = \frac{1 \, \text{Sekunde}}{44{,}100 \, \text{Samples}} \approx \SI{22.68}{\micro\second}
@@ -33,18 +33,19 @@ Der Audio-Codec, sowie der SD-Kartenleser müssen wie im Schaltplan(TODO: REFERE
 	\text{Zeit für einen Puffer} = 256 \, \text{Samples} \times \SI{22.68}{\micro\second} \approx \SI{5.8}{\milli\second}
 	\]
 	
-	Die Latenz für ein System mit den angegebenen Parametern beträgt also etwa \( \SI{5.8}{\milli\second} \).
+	Die Latenz für das System mit den angegebenen Parametern beträgt also im Idealfall \( \SI{5.8}{\milli\second} \).
+	
 \paragraph{Testergebnisse}
 
 \begin{itemize}
 	\item Gemessene Latenz von \SI{6.4}{\milli\second} (\textbf{BX-AX} in Abbildung  \ref{fig:audio-latency-test}).
-	\item Die Abweichung von der erwarteten Latenz ist wahrscheinlich auf die Verarbeitungszeiten des Audio-Codecs zurückzuführen sein.
+	\item Die Abweichung von der erwarteten Latenz ist wahrscheinlich auf die Verarbeitungszeiten des Audio-Codecs zurückzuführen.
 	\item Sehr praktikabler Latenzwert für Audioinstrument.
 \end{itemize}
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.6\textwidth]{images/10_test_validierung/audio/audio-latency-test.png}
-	\caption{Latenzmessung von Trigger (Blau) bis Audioausgang (Gelb)}
+	\caption{Oszilloskopansicht der Latenzmessung von Trigger (Blau) bis Audioausgang (Gelb)}
 	\label{fig:audio-latency-test}
 \end{figure}
