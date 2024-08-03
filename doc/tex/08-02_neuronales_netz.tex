@@ -206,7 +206,7 @@ Für den Betrieb des Neuronalen Netzes wird ``STM32Cube.AI`` verwendet, um das i
 \textbf{Einlesen der Datei und Datenvorverarbeitung}
 
 
-Zum Einlesen der Datei wird die in \textbf{— Abschnitt TODO —} beschriebene Funktion \mintinline{c}|downsample_1024_samples()| verwendet. Diese reduziert die Datenmenge um den Faktor 3, was bei einer Eingabe-Samplerate von 44.1 kHz zu einer Ausgabe-Samplerate von 14.700 kHz (statt 16.000 kHz) führt. Die resultierende Abweichung von $\approx$ 8.8\% wird jedoch als vernachlässigbar für das Klassifizierungsergebnis eingeschätzt.
+Zum Einlesen der Datei wird die in \textbf{Abschnitt \ref{sec:audio-downsampling}} beschriebene Funktion \mintinline{c}|downsample_1024_samples()| verwendet. Diese reduziert die Datenmenge um den Faktor 3, was bei einer Eingabe-Samplerate von 44.1 kHz zu einer Ausgabe-Samplerate von 14.700 kHz (statt 16.000 kHz) führt. Die resultierende Abweichung von $\approx$ 8.8\% wird jedoch als vernachlässigbar für das Klassifizierungsergebnis eingeschätzt.
 
 Für die Berechnung der Mel-Spektrogramme wird die Bibliothek ``STM32\_AI\_AudioPreprocessing\_Library`` verwendet. Diese ist Teil des ``FP-AI-SENSING1`` Function Packs \cite{fp-ai-sensing1}. Mit dieser lassen sich einzelne Spektrogrammspalten berechnen, deren Amplitudenwerte müssen jedoch im Anschluss noch in Dezibel (dB) umgerechnet werden.
 
