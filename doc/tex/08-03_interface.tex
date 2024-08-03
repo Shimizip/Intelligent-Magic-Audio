@@ -37,7 +37,8 @@ erhöht. Wenn A High und B Low ist, wird die Cursor-Position auf dem Display dur
 \newpage  
 Anhand des Index des Files kann der Names des Files ermittelt werden.
 
-    \inputminted[firstline=159, lastline=161]{c}{../../f401_display_encoder_fader_test/Core/Src/filemanager.c}
+	
+\inputminted[firstline=159, lastline=161]{c}{../../f401_display_encoder_fader_test/Core/Src/filemanager.c}
   
  
 \subsubsection{Schiebenpotentiometer, ADC und DMA}
@@ -69,6 +70,8 @@ Die Auswertung und Verarbeitung der Signale erfolgt in der  \mintinline{c}| HAL_
 Im laufe der Implementation des ADC könnte man Schwankungen an den Ausgangssignalen des ADCs festellen, was die Genaugigkeit der Potentiometer einstellung beeinflüsste. Diese Schwankungen würden behoben in dem man ein Glättung der Werte eingeführt hat.
 
 Zunächst werden die geglätteten Werte für alle Kanäle des ADC berechnet.
+
+\textcolor{red}{TODO: Code Verschieben}
 
  \inputminted[firstline=121, lastline=135]{c}{../../f401_display_encoder_fader_test/Core/Src/interface.c}
 
