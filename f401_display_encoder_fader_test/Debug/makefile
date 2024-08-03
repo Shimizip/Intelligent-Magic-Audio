@@ -64,8 +64,8 @@ all: main-build
 main-build: f401_display_encoder_fader_test.elf secondary-outputs
 
 # Tool invocations
-f401_display_encoder_fader_test.elf f401_display_encoder_fader_test.map: $(OBJS) $(USER_OBJS) D:\ESP\ for\ TEX\TEX\ima\f401_display_encoder_fader_test\STM32F401RETX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "f401_display_encoder_fader_test.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"D:\ESP for TEX\TEX\ima\f401_display_encoder_fader_test\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="f401_display_encoder_fader_test.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+f401_display_encoder_fader_test.elf f401_display_encoder_fader_test.map: $(OBJS) $(USER_OBJS) C:\Users\szymo\Documents\ESP\ima_merge\ima\f401_display_encoder_fader_test\STM32F401RETX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "f401_display_encoder_fader_test.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\szymo\Documents\ESP\ima_merge\ima\f401_display_encoder_fader_test\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="f401_display_encoder_fader_test.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 

@@ -1,0 +1,164 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+cm}{/**}
+\PYG{c+cm}{  ******************************************************************************}
+\PYG{c+cm}{  * @file           : filemanager.c}
+\PYG{c+cm}{  * @brief          : File management functions for handling files and cursor operations}
+\PYG{c+cm}{  ******************************************************************************}
+\PYG{c+cm}{  * @attention}
+\PYG{c+cm}{  *}
+\PYG{c+cm}{  * This file contains the definitions and functions for managing files within the}
+\PYG{c+cm}{  * FileManager structure, including adding files, updating cursor positions, and}
+\PYG{c+cm}{  * handling file selection. It serves as the core for file management operations.}
+\PYG{c+cm}{  *}
+\PYG{c+cm}{  ******************************************************************************}
+\PYG{c+cm}{  */}
+
+\PYG{c+cp}{\PYGZsh{}include}\PYG{+w}{ }\PYG{c+cpf}{\PYGZlt{}stdio.h\PYGZgt{}}
+\PYG{c+cp}{\PYGZsh{}include}\PYG{+w}{ }\PYG{c+cpf}{\PYGZlt{}stdlib.h\PYGZgt{}}
+\PYG{c+cp}{\PYGZsh{}include}\PYG{+w}{ }\PYG{c+cpf}{\PYGZlt{}string.h\PYGZgt{}}
+\PYG{c+cp}{\PYGZsh{}include}\PYG{+w}{ }\PYG{c+cpf}{\PYGZdq{}filemanager.h\PYGZdq{}}
+\PYG{c+cp}{\PYGZsh{}include}\PYG{+w}{ }\PYG{c+cpf}{\PYGZdq{}display.h\PYGZdq{}}
+
+
+\PYG{c+cm}{/**}
+\PYG{c+cm}{ * @brief Initializes default values for the FileManager.}
+\PYG{c+cm}{ *}
+\PYG{c+cm}{ * This function sets default values for the given `FileManager` structure.}
+\PYG{c+cm}{ * It initializes various fields to prepare the file manager for use. }
+\PYG{c+cm}{ * }
+\PYG{c+cm}{ * @param[in] fm Pointer to the `FileManager` structure to be initialized.}
+\PYG{c+cm}{ */}
+\PYG{k+kt}{void}\PYG{+w}{ }\PYG{n+nf}{initializeFileManager}\PYG{p}{(}\PYG{n}{FileManager}\PYG{+w}{ }\PYG{o}{*}\PYG{n}{fm}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{    }\PYG{n}{fm}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{num\PYGZus{}files}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mi}{0}\PYG{p}{;}
+\PYG{+w}{    }\PYG{n}{fm}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{num\PYGZus{}matched\PYGZus{}files}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mi}{0}\PYG{p}{;}
+\PYG{+w}{    }\PYG{n}{fm}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{current\PYGZus{}file\PYGZus{}index}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mi}{\PYGZhy{}1}\PYG{p}{;}
+\PYG{+w}{    }\PYG{n}{fm}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{cursor\PYGZus{}index}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mi}{\PYGZhy{}1}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+\PYG{c+cm}{/**}
+\PYG{c+cm}{ * @brief Adds a file to the FileManager.}
+\PYG{c+cm}{ *}
+\PYG{c+cm}{ * This function adds a file to the `files[]` array within the `FileManager` structure. It associates the given file name with its corresponding class values and updates the file manager accordingly.}
+\PYG{c+cm}{ *}
+\PYG{c+cm}{ * @param[in] fm Pointer to the `FileManager` structure to which the file will be added.}
+\PYG{c+cm}{ * @param[in] filename The name of the file to be added to the `FileManager`.}
+\PYG{c+cm}{ * @param[in] classes Array of float values representing the file\PYGZsq{}s class percentages.}
+\PYG{c+cm}{ *}
+\PYG{c+cm}{ * @note Ensure that the `FileManager` has sufficient capacity in the `files[]` array to accommodate new files.}
+\PYG{c+cm}{ */}
+
+\PYG{k+kt}{void}\PYG{+w}{ }\PYG{n+nf}{addFile}\PYG{p}{(}\PYG{n}{FileManager}\PYG{+w}{ }\PYG{o}{*}\PYG{n}{fm}\PYG{p}{,}\PYG{+w}{ }\PYG{k}{const}\PYG{+w}{ }\PYG{k+kt}{char}\PYG{+w}{ }\PYG{o}{*}\PYG{n}{filename}\PYG{p}{,}\PYG{+w}{ }\PYG{k}{const}\PYG{+w}{ }\PYG{k+kt}{float}\PYG{+w}{ }\PYG{o}{*}\PYG{n}{classes}\PYG{p}{)\PYGZob{}}
+\PYG{+w}{    }\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{fm}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{num\PYGZus{}files}\PYG{+w}{ }\PYG{o}{\PYGZlt{}}\PYG{+w}{ }\PYG{n}{MAX\PYGZus{}FILES}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{        }\PYG{n}{strcpy}\PYG{p}{(}\PYG{n}{fm}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{files}\PYG{p}{[}\PYG{n}{fm}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{num\PYGZus{}files}\PYG{p}{].}\PYG{n}{filename}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{filename}\PYG{p}{);}
+\PYG{+w}{        }\PYG{k}{for}\PYG{p}{(}\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{i}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mi}{0}\PYG{p}{;}\PYG{+w}{ }\PYG{n}{i}\PYG{+w}{ }\PYG{o}{\PYGZlt{}}\PYG{+w}{ }\PYG{n}{MAX\PYGZus{}CLASSES}\PYG{p}{;}\PYG{+w}{ }\PYG{n}{i}\PYG{o}{++}\PYG{p}{)\PYGZob{}}
+\PYG{+w}{            }\PYG{n}{fm}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{files}\PYG{p}{[}\PYG{n}{fm}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{num\PYGZus{}files}\PYG{p}{].}\PYG{n}{classes}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{classes}\PYG{p}{[}\PYG{n}{i}\PYG{p}{];}
+\PYG{+w}{        }\PYG{p}{\PYGZcb{}}
+\PYG{+w}{        }\PYG{n}{fm}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{num\PYGZus{}files}\PYG{o}{++}\PYG{p}{;}
+\PYG{+w}{        }\PYG{k}{if}\PYG{p}{(}\PYG{n}{fm}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{num\PYGZus{}files}\PYG{+w}{ }\PYG{o}{==}\PYG{+w}{ }\PYG{l+m+mi}{1}\PYG{p}{)}
+\PYG{+w}{            }\PYG{n}{fm}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{cursor\PYGZus{}index}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mi}{0}\PYG{p}{;}
+\PYG{+w}{    }\PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{}}
+\PYG{c+cm}{/**}
+\PYG{c+cm}{ * @brief Decrements the cursor index in the FileManager.}
+\PYG{c+cm}{ *}
+\PYG{c+cm}{ * This function decrements the `cursor\PYGZus{}index` within the `FileManager` }
+\PYG{c+cm}{ * structure to move the cursor visually higher on the LCD display. }
+\PYG{c+cm}{ *  }
+\PYG{c+cm}{ * @param[in] fm Pointer to the `FileManager` structure whose `cursor\PYGZus{}index` is to be decremented.}
+\PYG{c+cm}{ *}
+\PYG{c+cm}{*/}
+\PYG{k+kt}{void}\PYG{+w}{ }\PYG{n+nf}{cursorUp}\PYG{p}{(}\PYG{n}{FileManager}\PYG{+w}{ }\PYG{o}{*}\PYG{n}{fm}\PYG{p}{)\PYGZob{}}
+\PYG{+w}{    }\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{fm}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{cursor\PYGZus{}index}\PYG{+w}{ }\PYG{o}{\PYGZgt{}}\PYG{+w}{ }\PYG{l+m+mi}{0}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{        }\PYG{n}{fm}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{cursor\PYGZus{}index}\PYG{o}{\PYGZhy{}\PYGZhy{}}\PYG{p}{;}
+\PYG{+w}{    }\PYG{p}{\PYGZcb{}}\PYG{+w}{ }\PYG{k}{else}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{        }\PYG{n}{fm}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{cursor\PYGZus{}index}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{fm}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{num\PYGZus{}matched\PYGZus{}files}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{+w}{ }\PYG{l+m+mi}{1}\PYG{+w}{ }\PYG{p}{;}
+\PYG{+w}{    }\PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{}}
+\PYG{c+cm}{/**}
+\PYG{c+cm}{ * @brief Increments the cursor index in the FileManager.}
+\PYG{c+cm}{ *}
+\PYG{c+cm}{ * This function increments the `cursor\PYGZus{}index` within the `FileManager` }
+\PYG{c+cm}{ * structure to move the cursor visually lower on the LCD display. }
+\PYG{c+cm}{ *  }
+\PYG{c+cm}{ * @param[in] fm Pointer to the `FileManager` structure whose `cursor\PYGZus{}index` is to be incremented.}
+\PYG{c+cm}{ *}
+\PYG{c+cm}{*/}
+\PYG{k+kt}{void}\PYG{+w}{ }\PYG{n+nf}{cursorDown}\PYG{p}{(}\PYG{n}{FileManager}\PYG{+w}{ }\PYG{o}{*}\PYG{n}{fm}\PYG{p}{)\PYGZob{}}
+\PYG{+w}{    }\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{fm}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{cursor\PYGZus{}index}\PYG{+w}{ }\PYG{o}{\PYGZlt{}}\PYG{+w}{ }\PYG{n}{fm}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{num\PYGZus{}matched\PYGZus{}files}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{+w}{ }\PYG{l+m+mi}{1}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{        }\PYG{n}{fm}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{cursor\PYGZus{}index}\PYG{o}{++}\PYG{p}{;}
+\PYG{+w}{    }\PYG{p}{\PYGZcb{}}\PYG{+w}{ }\PYG{k}{else}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{        }\PYG{n}{fm}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{cursor\PYGZus{}index}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mi}{0}\PYG{p}{;}
+\PYG{+w}{    }\PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{}}
+\PYG{c+cm}{/**}
+\PYG{c+cm}{ * @brief Saves the filename at the current cursor index.}
+\PYG{c+cm}{ *}
+\PYG{c+cm}{ * This function copies the filename of the file currently pointed to by `cursor\PYGZus{}index` in the `FileManager` structure to `current\PYGZus{}cursor\PYGZus{}filename`. }
+\PYG{c+cm}{ * It updates the `current\PYGZus{}cursor\PYGZus{}filename` with the filename from the `shownFiles` array at the position indicated by `cursor\PYGZus{}index`.}
+\PYG{c+cm}{ *}
+\PYG{c+cm}{ * @param[in] fm Pointer to the `FileManager` structure from which the filename is retrieved and stored.}
+\PYG{c+cm}{ *}
+\PYG{c+cm}{ * @note Ensure that `cursor\PYGZus{}index` is within the valid range of indices in the `shownFiles` array to avoid out\PYGZhy{}of\PYGZhy{}bounds access. }
+\PYG{c+cm}{ * The `current\PYGZus{}cursor\PYGZus{}filename` should have sufficient space allocated to store the filename.}
+\PYG{c+cm}{ */}
+\PYG{k+kt}{void}\PYG{+w}{ }\PYG{n+nf}{safeCurrentFileName}\PYG{p}{(}\PYG{n}{FileManager}\PYG{+w}{ }\PYG{o}{*}\PYG{n}{fm}\PYG{p}{)\PYGZob{}}
+\PYG{+w}{	}\PYG{n}{strcpy}\PYG{p}{(}\PYG{n}{fm}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{current\PYGZus{}cursor\PYGZus{}filename}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{fm}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{shownFiles}\PYG{p}{[}\PYG{n}{fm}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{cursor\PYGZus{}index}\PYG{p}{].}\PYG{n}{filename}\PYG{p}{);}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{c+cm}{/**}
+\PYG{c+cm}{ * @brief Sets the cursor position based on the currently displayed files in the FileManager.}
+\PYG{c+cm}{ *}
+\PYG{c+cm}{ * This function adjusts the `cursor\PYGZus{}index` in the `FileManager` based on the currently displayed files and their relevance to the fader settings. The behavior of the function is as follows:}
+\PYG{c+cm}{ * }
+\PYG{c+cm}{ * \PYGZhy{} If no files match the fader settings (`num\PYGZus{}matched\PYGZus{}files` is 0):}
+\PYG{c+cm}{ *   \PYGZhy{} The cursor is set to the start (index 0).}
+\PYG{c+cm}{ * \PYGZhy{} If the `current\PYGZus{}cursor\PYGZus{}filename` matches one of the filenames in `shownFiles`:}
+\PYG{c+cm}{ *   \PYGZhy{} The cursor is positioned at the index of the matching file in the `shownFiles` array.}
+\PYG{c+cm}{ * \PYGZhy{} If the `current\PYGZus{}cursor\PYGZus{}filename` no longer exists in `shownFiles`:}
+\PYG{c+cm}{ *   \PYGZhy{} The `current\PYGZus{}cursor\PYGZus{}filename` is updated to the filename at the position indicated by `current\PYGZus{}file\PYGZus{}index`.}
+\PYG{c+cm}{ * \PYGZhy{} If `cursor\PYGZus{}index` is larger than the number of matched files:}
+\PYG{c+cm}{ *   \PYGZhy{} The `cursor\PYGZus{}index` is set to the last position in the list.}
+\PYG{c+cm}{ * }
+\PYG{c+cm}{ * @param[in] fm Pointer to the `FileManager` structure used to adjust the cursor position.}
+\PYG{c+cm}{ */}
+
+\PYG{k+kt}{void}\PYG{+w}{ }\PYG{n+nf}{setCursor}\PYG{p}{(}\PYG{n}{FileManager}\PYG{+w}{ }\PYG{o}{*}\PYG{n}{fm}\PYG{p}{)\PYGZob{}}
+\PYG{+w}{	}\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{res}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{NOT\PYGZus{}EXISTS}\PYG{p}{;}
+\PYG{+w}{	}\PYG{c+c1}{//If no file match with the fader settings}
+\PYG{+w}{	}\PYG{k}{if}\PYG{p}{(}\PYG{+w}{ }\PYG{n}{fm}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{num\PYGZus{}matched\PYGZus{}files}\PYG{+w}{ }\PYG{o}{==}\PYG{+w}{ }\PYG{l+m+mi}{0}\PYG{p}{)\PYGZob{}}
+\PYG{+w}{		}\PYG{n}{fm}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{cursor\PYGZus{}index}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mi}{0}\PYG{p}{;}
+\PYG{+w}{		}\PYG{k}{return}\PYG{p}{;}
+\PYG{+w}{	}\PYG{p}{\PYGZcb{}}
+\PYG{+w}{	}\PYG{c+c1}{//If the current current\PYGZus{}cursor\PYGZus{}filename match with one of the shownFiles on a position in array}
+\PYG{+w}{	}\PYG{c+c1}{//set the cursor with the position}
+\PYG{+w}{	}\PYG{k}{for}\PYG{p}{(}\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{i}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mi}{0}\PYG{p}{;}\PYG{+w}{ }\PYG{n}{i}\PYG{+w}{ }\PYG{o}{\PYGZlt{}}\PYG{+w}{ }\PYG{n}{fm}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{num\PYGZus{}matched\PYGZus{}files}\PYG{p}{;}\PYG{+w}{ }\PYG{n}{i}\PYG{o}{++}\PYG{p}{)\PYGZob{}}
+\PYG{+w}{		}\PYG{n}{res}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{strcmp}\PYG{p}{(}\PYG{n}{fm}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{current\PYGZus{}cursor\PYGZus{}filename}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{fm}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{shownFiles}\PYG{p}{[}\PYG{n}{i}\PYG{p}{].}\PYG{n}{filename}\PYG{p}{);}
+\PYG{+w}{		}\PYG{k}{if}\PYG{p}{(}\PYG{n}{res}\PYG{+w}{ }\PYG{o}{==}\PYG{+w}{ }\PYG{n}{EXISTS}\PYG{p}{)\PYGZob{}}
+\PYG{+w}{			}\PYG{n}{fm}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{cursor\PYGZus{}index}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{i}\PYG{p}{;}
+\PYG{+w}{			}\PYG{n}{fm}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{current\PYGZus{}file\PYGZus{}index}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{i}\PYG{p}{;}
+\PYG{+w}{			}\PYG{k}{return}\PYG{p}{;}
+\PYG{+w}{		}\PYG{p}{\PYGZcb{}}
+\PYG{+w}{	}\PYG{p}{\PYGZcb{}}
+\PYG{+w}{	}\PYG{c+c1}{//If the file is not exists anymore in shownFiles set the current\PYGZus{}cursor\PYGZus{}filename with the name}
+\PYG{+w}{	}\PYG{c+c1}{//of the file on the same position that the current\PYGZus{}file\PYGZus{}index is.}
+\PYG{+w}{	}\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{fm}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{num\PYGZus{}matched\PYGZus{}files}\PYG{+w}{ }\PYG{o}{\PYGZgt{}=}\PYG{+w}{ }\PYG{n}{fm}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{cursor\PYGZus{}index}\PYG{p}{)\PYGZob{}}
+\PYG{+w}{		}\PYG{n}{strcpy}\PYG{p}{(}\PYG{n}{fm}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{current\PYGZus{}cursor\PYGZus{}filename}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{fm}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{shownFiles}\PYG{p}{[}\PYG{n}{fm}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{current\PYGZus{}file\PYGZus{}index}\PYG{p}{].}\PYG{n}{filename}\PYG{p}{);}
+\PYG{+w}{	}\PYG{p}{\PYGZcb{}}
+\PYG{+w}{	}\PYG{k}{else}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{		}\PYG{c+c1}{// when cursor\PYGZus{}index is bigger than the list set him as the end position of the list}
+\PYG{+w}{		}\PYG{n}{fm}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{cursor\PYGZus{}index}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{fm}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{num\PYGZus{}matched\PYGZus{}files}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{+w}{ }\PYG{l+m+mi}{1}\PYG{p}{;}
+\PYG{+w}{	}\PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{}}
+\PYG{c+cm}{/**}
+\PYG{c+cm}{ * @brief Sets the current file index to the cursor position.}
+\PYG{c+cm}{ *}
+\PYG{c+cm}{ * This function updates the `current\PYGZus{}file\PYGZus{}index` in the `FileManager` to the current position of the `cursor\PYGZus{}index`. }
+\PYG{c+cm}{ * This allows the file at the cursor position to be marked as the selected file, which can then be processed or displayed as needed.}
+\PYG{c+cm}{ *}
+\PYG{c+cm}{ * @param[in] fm Pointer to the `FileManager` structure in which the `current\PYGZus{}file\PYGZus{}index` will be set to the value of `cursor\PYGZus{}index`.}
+\PYG{c+cm}{ */}
+
+\PYG{k+kt}{void}\PYG{+w}{ }\PYG{n+nf}{selectFile}\PYG{p}{(}\PYG{n}{FileManager}\PYG{+w}{ }\PYG{o}{*}\PYG{n}{fm}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{	}\PYG{n}{fm}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{current\PYGZus{}file\PYGZus{}index}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{fm}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{cursor\PYGZus{}index}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+
+\end{Verbatim}

@@ -1,13 +1,18 @@
+\subsubsection{Downsampling für die Verarbeitung von Audio durch das Neuronalen Netzes}
+
+
+
 \subsection{Audio Engine des Samplers}
 
 
 Die Hauptfunktionalität eines Audiosamplers ist natürlich das Aufnehmen und Abspielen von Audiosamples. 
 
-Der ausgesuchte PCM5102a Audio Codec verfügt lediglich über einen Ausgabestream, was eine Neubestellung eines Codecs mit In- und Output Stream erfordern würde.
+Der ausgesuchte PCM5102a Audio Codec bietet leider nur einen Ausgabestream, was eine Neubestellung eines Codecs mit In/Output Stream bedeuten würde, um auch die Aufnahme zu implementieren.
 
-Angesichts des ohnehin schon ambitionierten Featureumfangs und der damit verbundenen Zeitknappheit, wurde die Aufnahmefunktion gestrichen, sodass der Prototyp zu einer reinen ``Sample-Playback`` Maschine wird. (TODO Verweis auf Lastenfall)
+Angesichts des eh schon ambitionierten Featureumfangs und der damit verbundenen Zeitknappheit, wurde die also Aufnahmefunktion gekürzt, sodass der Prototyp zu einer reinen ``Sample-Playback`` Maschine wird. (TODO Verweis auf Lastenfall)
 
-Das folgende Kapitel befasst sich mit der Implementierung und Ansteuerung der Audiowiedergabe über den Audio Codec und aller verbundenen DSP-Operationen.
+
+Das folgende Kapitel befasst sich mit der Implementierung und Ansteuerung der Audiowiedergabe über den Audio Codec.
 
 Zunächst folgt eine Erläuterung des grundlegenden Signalfluss der Audioengine:
 
@@ -17,11 +22,11 @@ Alle Audiosamples werden auf einer angeschlossen \textbf{SD Karte} persistent ge
 
 Von hier aus reicht die \textbf{DMA} den Buffer per \textbf{I2S} Protokoll an den \textbf{Audio Codec} weiter. 
 
-Der Audio Codec wandelt die digitalen PCM Signale in eine analoges Signal mit Line-Level. %(TODO: Line Pegel elektrisch angeben). evtl auf Datenblatt verweisen?
+Der Audio Codec wandelt die digitalen PCM Signale in eine analoges Signal mit Line-Level (TODO: Line Pegel elektrisch angeben).
 
 \begin{figure}[h!]
 	\centering
-	\includegraphics[width=0.9\textwidth]{images/08_durchfuehrung/audio/audio_signalflow.drawio.png}
+	\includegraphics[width=0.6\textwidth]{images/08_durchfuehrung/audio/audio_signalflow.drawio.png}
 	\caption{Digitaler Audio Signalfluss}
 	\label{fig:audio_signalflow}
 \end{figure}
@@ -29,7 +34,7 @@ Der Audio Codec wandelt die digitalen PCM Signale in eine analoges Signal mit Li
 
 \subsubsection{Latenzen}
 
-
+TODO: TEST MIT MESSUNG IN TESTS (pulse an gpio geben, und audioausgang mit osci messen)
 
 Echtzeitfähigkeit ist ein kritischer Aspekt bei elektronischen Audioinstrumenten. 
 Eine niedrige Latenz ist entscheidend, um rhythmisch präzise und ``tight`` zu spielen, besonders wenn mehrere Instrumente miteinander synchronisiert werden müssen.
@@ -62,7 +67,7 @@ Double Buffering ermöglicht es, Daten in einem Pufferspeicher zu verarbeiten, w
 \end{figure}
 
 
-Bei I M A wird wird der Audiobuffer halbiert. %TODO: besser formulieren
+Bei I M A wird wird der Audiobuffer halbiert. 
 Durch den Pointer \mintinline{c}|int16_t *outBufPtr| wird mit der DSP die Hälfte bearbeitet, die gerade nicht von der DMA übertragen wird.
 
 In den Callback-Funktionen \mintinline{c}|HAL_I2S_TxHalfCpltCallback()| und \mintinline{c}|HAL_I2S_TxCpltCallback()| wird der Pointer auf die jeweilige Hälfte des Buffers, also auf (wie in  \textbf{\autoref{fig:double_buffering}} beschrieben:
@@ -74,19 +79,13 @@ In den Callback-Funktionen \mintinline{c}|HAL_I2S_TxHalfCpltCallback()| und \min
 \inputminted[firstline=40, lastline=43]{c}{../../f401_sd_card_audio_codec_test/Core/Src/audio.c}
 
 
-Diese Callbacks, werden systembedingt aufgerufen, sobald die DMA die erste Hälfte oder den gesamten Buffer übertragen hat. Sie eignen sich daher sehr gut um den Pointer zu setzen.
+Diese Callbacks, werden automatisch aufgerufen, sobald die DMA die erste Hälfte, oder den gesamten Buffer übertragen hat. Sie eignen sich also sehr gut für die Setzung des Pointers.
 
-"Sobald das Flag \mintinline{c}|dma_dataReady == true| gesetzt ist, wird die nächste Bufferhälfte von der SD-Karte gelesen."
-
-\paragraph{Latenzmessung}
-
-Im Abschnitt\ref{test-latenzmessung} wird eine Latenzmessung durchgeführt, wobei die gemessene Latenz von Trigger Input bis Audioausgang, mit \SI{6.7}{\milli\second} mehr als zufriedenstellend ist.
-
-Somit kann der Audiosampler unter Betrachtung der Latenz ein sehr erfolgreiches Zusammenspiel mit anderen elektronischen Instrumenten erzielen.
+Sobald das Flag \mintinline{c}|dma_dataReady == true| ist, wird die nächste Bufferhälfte von der SD Karte gelesen. 
 
 \subsubsection{PCM5102a und I2S}
 
-Ein sehr weit verbreitetes Protokoll zur digitalen Audioübertragung ist I2S. Viele Codecs, so auch der PCM5102a, unterstützen dieses Protokoll.
+Ein sehr populäres Protokoll zur digitalen Audioübertragung ist I2S. Viele Codecs, so auch der PCM5102a unterstützen dieses Protokoll.
 
 I2S (Inter-IC Sound) ist ein Standard für die digitale Übertragung von Audiodaten zwischen integrierten Schaltkreisen (ICs). Es wurde entwickelt, um die Kommunikation von digitalen Audiodaten zwischen verschiedenen Komponenten wie Mikrofonen, DACs (Digital-Analog-Wandler) und ADCs (Analog-Digital-Wandler) zu ermöglichen. 
 
@@ -165,8 +164,5 @@ CODE
 
 CODE 
 
-
-\subsubsection{Downsampling für die Verarbeitung von Audio durch das Neuronalen Netzes}
-\label{sec:audio-downsampling}
 
 
