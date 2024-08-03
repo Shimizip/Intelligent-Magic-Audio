@@ -3,23 +3,24 @@
 \contentsline {figure}{\numberline {2}{\ignorespaces Panel Design Mockup }}{6}{figure.caption.5}%
 \contentsline {figure}{\numberline {3}{\ignorespaces Kontextdiagramm des Gesamtsystems}}{12}{figure.caption.13}%
 \contentsline {figure}{\numberline {4}{\ignorespaces Zustandsautomat des Systems}}{13}{figure.caption.14}%
-\contentsline {figure}{\numberline {5}{\ignorespaces Komponentendiagramm}}{13}{figure.caption.15}%
-\contentsline {figure}{\numberline {6}{\ignorespaces Rotary-Encoder}}{15}{figure.caption.16}%
-\contentsline {figure}{\numberline {7}{\ignorespaces LCD-Display}}{15}{figure.caption.17}%
-\contentsline {figure}{\numberline {8}{\ignorespaces Potentiometer}}{16}{figure.caption.18}%
+\contentsline {figure}{\numberline {5}{\ignorespaces Rotary-Encoder}}{15}{figure.caption.15}%
+\contentsline {figure}{\numberline {6}{\ignorespaces LCD-Display}}{15}{figure.caption.16}%
+\contentsline {figure}{\numberline {7}{\ignorespaces Potentiometer}}{16}{figure.caption.17}%
+\contentsline {figure}{\numberline {8}{\ignorespaces Komponentendiagramm}}{18}{figure.caption.18}%
 \contentsline {figure}{\numberline {9}{\ignorespaces Digitaler Audio Signalfluss}}{19}{figure.caption.19}%
 \contentsline {figure}{\numberline {10}{\ignorespaces Double Buffering mit DMA und DSP}}{20}{figure.caption.22}%
-\contentsline {figure}{\numberline {11}{\ignorespaces CubeMX FATFS SDIO Einbindung}}{21}{figure.caption.23}%
-\contentsline {figure}{\numberline {12}{\ignorespaces Aufbau des künstlichen Neurons. Quelle: Thieling, Lothar: “Neuronale Netze (Vorlesungsskript ML)”, Kapitel F, Seite 6.}}{23}{figure.caption.24}%
-\contentsline {figure}{\numberline {13}{\ignorespaces Darstellung eines PCM Audiosignals \blx@tocontentsinit {0}\cite {cite-img-spectrogram}}}{24}{figure.caption.25}%
-\contentsline {figure}{\numberline {14}{\ignorespaces Darstellung eines Audiosignals als Spektrogramm \blx@tocontentsinit {0}\cite {cite-img-spectrogram}}}{24}{figure.caption.26}%
-\contentsline {figure}{\numberline {15}{\ignorespaces Repräsentation der verschiedenen Merkmalsklassen in den Entwicklungsdaten}}{25}{figure.caption.28}%
-\contentsline {figure}{\numberline {16}{\ignorespaces Darstellung der Unterteilung der Audiosamples in Audiosubsamples und Frames}}{26}{figure.caption.29}%
-\contentsline {figure}{\numberline {17}{\ignorespaces Darstellung des Sliding Window Prinzips}}{26}{figure.caption.30}%
-\contentsline {figure}{\numberline {18}{\ignorespaces Aufteilung der Eingabedaten in Trainings- Validierungs- und Testdaten (erstellt mit sankeydiagram.net)}}{27}{figure.caption.31}%
-\contentsline {figure}{\numberline {19}{\ignorespaces Darstellung des Loss-Werts über den Verlauf der Epochen}}{28}{figure.caption.32}%
-\contentsline {figure}{\numberline {20}{\ignorespaces Konfiguration von STM32Cube.AI in CubeMX}}{29}{figure.caption.33}%
-\contentsline {figure}{\numberline {21}{\ignorespaces Phasenverschiebung A und B}}{31}{figure.caption.34}%
-\contentsline {figure}{\numberline {22}{\ignorespaces ADC Conversion}}{32}{figure.caption.35}%
-\contentsline {figure}{\numberline {23}{\ignorespaces DMA ADC FADER Bus System}}{33}{figure.caption.36}%
-\contentsline {figure}{\numberline {24}{\ignorespaces Display SD1306 I2C Kommunikation}}{34}{figure.caption.37}%
+\contentsline {figure}{\numberline {11}{\ignorespaces CubeMX FATFS SDIO Einbindung}}{21}{figure.caption.24}%
+\contentsline {figure}{\numberline {12}{\ignorespaces Aufbau des künstlichen Neurons. Quelle: Thieling, Lothar: “Neuronale Netze (Vorlesungsskript ML)”, Kapitel F, Seite 6.}}{23}{figure.caption.25}%
+\contentsline {figure}{\numberline {13}{\ignorespaces Darstellung eines PCM Audiosignals \blx@tocontentsinit {0}\cite {cite-img-spectrogram}}}{24}{figure.caption.26}%
+\contentsline {figure}{\numberline {14}{\ignorespaces Darstellung eines Audiosignals als Spektrogramm \blx@tocontentsinit {0}\cite {cite-img-spectrogram}}}{24}{figure.caption.27}%
+\contentsline {figure}{\numberline {15}{\ignorespaces Repräsentation der verschiedenen Merkmalsklassen in den Entwicklungsdaten}}{25}{figure.caption.29}%
+\contentsline {figure}{\numberline {16}{\ignorespaces Darstellung der Unterteilung der Audiosamples in Audiosubsamples und Frames}}{26}{figure.caption.30}%
+\contentsline {figure}{\numberline {17}{\ignorespaces Darstellung des Sliding Window Prinzips}}{26}{figure.caption.31}%
+\contentsline {figure}{\numberline {18}{\ignorespaces Aufteilung der Eingabedaten in Trainings- Validierungs- und Testdaten (erstellt mit sankeydiagram.net)}}{27}{figure.caption.32}%
+\contentsline {figure}{\numberline {19}{\ignorespaces Darstellung des Loss-Werts über den Verlauf der Epochen}}{28}{figure.caption.33}%
+\contentsline {figure}{\numberline {20}{\ignorespaces Konfiguration von STM32Cube.AI in CubeMX}}{29}{figure.caption.34}%
+\contentsline {figure}{\numberline {21}{\ignorespaces Phasenverschiebung A und B}}{31}{figure.caption.35}%
+\contentsline {figure}{\numberline {22}{\ignorespaces ADC Conversion}}{32}{figure.caption.36}%
+\contentsline {figure}{\numberline {23}{\ignorespaces DMA ADC FADER Bus System}}{33}{figure.caption.37}%
+\contentsline {figure}{\numberline {24}{\ignorespaces Display SD1306 I2C Kommunikation}}{34}{figure.caption.38}%
+\contentsline {figure}{\numberline {25}{\ignorespaces Oszilloskopansicht der Latenzmessung von Trigger (Blau) bis Audioausgang (Gelb)}}{38}{figure.caption.42}%
