@@ -65,6 +65,7 @@
 
 \begin{document}
 \begin{titlepage}
+\thispagestyle{empty} % Keine Seitenzahl
 \centering
     % \includegraphics[width=0.15\textwidth]{pic/thlogo/logo_TH-Koeln_CMYK_22pt.pdf}\par\vspace{1cm}
 
@@ -72,9 +73,10 @@
 	{\huge\bfseries Intelligent Magic Audio\par}
 	{Jonas Lux, Szymon Banasiak, Leon Braungardt\par}
 	\vspace{2cm}
+	{\Large\itshape Ein Projekt aus dem Modul ESP an der TH Köln im \par}
 	{\Large\itshape Sommersemester 2024 \par}
 	
-	\vspace{6cm}
+	\vspace{4.5cm}
 	\begin{figure}[h!]
 		\centering
 		\includegraphics[width=0.45\textwidth]{images/titelbild-xD.jpg}
@@ -87,10 +89,13 @@
   
 \end{titlepage}
 
-
+\thispagestyle{empty} % Keine Seitenzahl
 \tableofcontents
+\thispagestyle{empty} % Keine Seitenzahl
 \listoffigures
+\thispagestyle{empty} % Keine Seitenzahl
 \newpage
+\setcounter{page}{1} % Beginne Seitenzahl bei 1
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \input{01_Einleitung.tex}
 \input{02_detaillierte_projektbeschreibung.tex}
@@ -103,6 +108,7 @@
 \input{11_fazit.tex}
 
 \printbibliography[title=Literaturverzeichnis]
+
 
 \appendix
 
