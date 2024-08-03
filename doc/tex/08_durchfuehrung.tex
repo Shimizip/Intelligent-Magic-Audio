@@ -1,11 +1,27 @@
 \newpage
 \section{Durchführung}
+Im Anschluss an die Spezifikation des Systems folgt die Beschreibung der Umsetzung der einzelnen Komponenten. In diesem Abschnitt werden die angewandten Ansätze und Methodiken erörtert, die zur Realisierung der einzelnen Komponenten genutzt wurden. Weiterhin wird die Herangehensweise beschrieben, sowie wichtige Erkenntnisse und aufgetretene Probleme während der Implementierungsphase dokumentiert. Abschließend wird die Thematik der Gesamtintegration behandelt, einschließlich der Herausforderungen und der Gründe, warum eine vollständige Integration nicht erreicht wurde.
+
 \input{08-01_audio}
 \include{08-02_neuronales_netz}
 \include{08-03_interface}
 
 
 
+\subsection{Integration der einzelnen Komponenten in das Gesamtsystem}
+\label{sec:no-gesamtintegration}
+
+\textbf{TODO muss noch überarbeitet/ergänzt werden!}
+Leider konnte aufgrund von Zeitmangel die Integration der einzelnen Komponenten in ein Gesamtsystem nicht realisiert werden. Verschiedene Ursachen trugen zu diesen zeitlichen Verzögerungen bei.
+
+Wie bereits in den vorherigen Abschnitten erwähnt, führten Probleme bei der Implementierung zu erheblichen Zeitverlusten. Insbesondere verursachte ein ``Hard-Fault``-Fehler in der Klassifizierungskomponente lange Verzögerungen, da die Ursache schwer zu identifizieren war. Zusätzlich gab es anfängliche Schwierigkeiten beim Lesen von der SD-Karte \textbf{TODO}, welche die Leistung beeinträchtigten, obwohl sie letztendlich behoben wurden.
+
+Ein weiteres Hindernis war die Verfügbarkeit nur eines Nucleo-F7-Boards für das gesamte Team, welches bis zuletzt durch die Implementierung des neuronalen Netzes in Anspruch genommen wurde. Die Entwicklung der übrigen Komponenten erfolgte daher auf Nucleo-F4-Boards. Die Portierung dieser Projekte auf das F7-Board gestaltete sich dann wesentlich aufwendiger als angenommen. \textbf{TODO: das und das war anders/schwieriger usw. 1 Satz}
+
+Obwohl einzelne Komponenten schließlich für die Integration in das Gesamtsystem vorbereitet wurden, kam es zu keiner tatsächlichen Zusammenführung in einem einheitlichen Projekt.
+
+
+% TODO weg:
 \begin{itemize}
 
 	\item Implementierung der Komponenten:

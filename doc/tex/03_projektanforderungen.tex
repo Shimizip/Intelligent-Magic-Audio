@@ -1,102 +1,61 @@
 \newpage
 \section{Projektanforderungen}
-\begin{itemize}
-    \item Lastenheft: Welche Anforderungen gibt es? Falls nicht-funktionale Anforderungen existieren: in funktionale und nicht-funktionale unterteilen; LF nummeriert.
-    \item (Pflichtenheft wird in Spezifikation integriert)
-\end{itemize}
+
+Basierend auf dem zuvor entwickelten Produktkonzept wurden funktionale und nicht-funktionale Anforderungen abgeleitet. Sie bilden das Lastenheft des Projekts und werden in den folgenden zwei Abschnitten näher beschrieben.
 
 \subsection{Funktionale Anforderungen}
+Die funktionalen Anforderungen definieren die Funktionen, die dem Benutzer zur Verfügung gestellt werden sollen. Jede dieser Anforderungen wird mit dem Kürzel „LF“ für Lastenfall, gefolgt von einer fortlaufenden Nummer, gekennzeichnet.
 
-\subsubsection{LF1: Steuerung des Cursors und Auswahl eines Samples}
-
-\begin{longtable}[c]{|p{3cm}|p{13cm}|}
-\hline
-\textbf{Priorität} & Muss \\
-\hline
-\textbf{Akteur} & Benutzer \\
-\hline
-\textbf{Beschreibung} & 
-\begin{tabularx}{13cm}{X}
-\textbf{1. Cursor Bewegung:} \\
-\textbf{Aktion:} Der Benutzer dreht den Encoder. \\
-\textbf{Reaktion:} Der Cursor auf dem LCD-Display bewegt sich nach oben oder unten entsprechend den Stepperschritten des Encoders. \\
-\textbf{Details:} \\
-- Der Cursor bewegt sich um eine Position in der Liste pro Schritt des Encoders. \\
-- Der Cursor kann den Beginn oder das Ende der Liste erreichen, ohne die Liste über die Grenzen hinaus zu bewegen. Er spring von daher am Anfang oder Ende der Liste. \\
-\\
-\textbf{2. Sample Auswahl:} \\
-\textbf{Aktion:} Der Benutzer drückt den Switch des Encoders. \\
-\textbf{Reaktion:} Das aktuell ausgewählte Sample wird hervorgehoben und sein Name wird unter der Liste auf dem LCD-Display angezeigt. \\
-\textbf{Details:} \\
-- Der Name des ausgewählten Samples wird deutlich unter der Liste angezeigt. \\
-- Der Name sollte in einem Format angezeigt werden, das gut lesbar ist und keine Abkürzungen oder Unklarheiten aufweist. \\
-\end{tabularx} \\
-\hline
-\end{longtable}
+\include{LF Interface}
 
 \newpage
-\subsubsection{LF2: Verhalten der Fader und des Displays}
 
-\begin{longtable}[c]{|p{3cm}|p{13cm}|}
-\hline
-\textbf{Priorität} & Muss \\
-\hline
-\textbf{Akteur} & Benutzer \\
-\hline
-\textbf{Beschreibung} & 
-\begin{tabularx}{13cm}{X}
-\textbf{1. Anzeige der Fader-Werte:} \\
-\textbf{Aktion:} Der Benutzer bewegt die Schiebepotentiometer. \\
-\textbf{Reaktion:} Die prozentuale Angabe der Spannung, in der sich der Potentiometer befindet, wird angezeigt. \\
-\textbf{Details:} \\
-- Die prozentualen Ausgaben spiegeln die Klassen wider, wie Rhythmic, Sustained, usw., sowie die Einstellung des Threasholds \\
-- Die Prozentsätze sollen klar und deutlich angezeigt werden, ohne Verzögerung. \\
-\\
-\textbf{2. Filtern der Samples:} \\
-\textbf{Aktion:} Der Benutzer bewegt die Schiebepotentiometer. \\
-\textbf{Reaktion:} In der Liste auf dem Display werden die Samples angezeigt dessen Audio Klassen nach der Klassiefiezierung, die den Prozentsatz der Potentiometereinstellung nicht mehr als einen bestimmten Schwellenwert überschreiten. \\
-\textbf{Details:} \\
-- Die Anzeige der Samples soll dynamisch aktualisiert werden, basierend auf den aktuellen Fader-Werten. \\
-- Der Schwellenwert kann angepasst werden, um eine präzise Filterung der Samples zu ermöglichen. \\
-\end{tabularx} \\
-\hline
-\end{longtable}
-
-\newpage
 \subsection{Nicht-Funktionale Anforderungen}
+Die nicht-funktionalen Anforderungen spezifizieren Qualitätsmerkmale, die das System erfüllen muss, aber nicht direkt mit den spezifischen Funktionen verbunden sind. Diese Anforderungen werden mit dem Kürzel „LQ“, gefolgt von einer fortlaufenden Nummer, gekennzeichnet.
 
-\textcolor{red}{TODO: Auf wesentliche Nicht-Funktionale Anforderungen beschränken.}
 
-\subsubsection{Performance}
+\subsection{Performance}
 
 \begin{table}[h!]
-\begin{tabularx}{13cm}{|l|X|}
-\hline
-\textbf{/LQ1/} & \textbf{Latenz} \\ \hline
-\textbf{Kategorie} & Performance \\ \hline
-\textbf{Beschreibung} & Die Latenzzeit zwischen der Aufnahme eines Audio-Samples und dessen Wiedergabe sollte minimal sein (z.B. <20ms), um eine reibungslose Benutzererfahrung zu gewährleisten. \\ \hline
-\end{tabularx}
+\begin{tabularx}{\textwidth}{|l|X|}
+		\hline
+		\textbf{/LQ1/} & \textbf{Latenz} \\ \hline
+		\textbf{Kategorie} & Performance \\ \hline
+		\textbf{Beschreibung} & Die Latenzzeit zwischen dem Triggern des Abspielmechanismus (Play-Button oder TRIG IN) und der Audiowiedergabe soll minimal sein (unter \SI{20}{\milli\second}), um die Funktionalität als Musikinstrument für die Live-Performance zu gewährleisten. \\ \hline
+	\end{tabularx}
 \end{table}
 
 \begin{table}[h!]
-\begin{tabularx}{13cm}{|l|X|}
-\hline
-\textbf{/LQ2/} & \textbf{Echtzeitverarbeitung} \\ \hline
-\textbf{Kategorie} & Performance \\ \hline
-\textbf{Beschreibung} & Das System muss in der Lage sein, Audio-Daten in Echtzeit zu verarbeiten, um eine sofortige Rückmeldung und Sampleklassifizierung zu ermöglichen. \\ \hline
-\end{tabularx}
+	\begin{tabularx}{\textwidth}{|l|X|}
+		\hline
+		\textbf{/LQ2/} & \textbf{Schnelle Sampleklassifizierung} \\ \hline
+		\textbf{Kategorie} & Performance \\ \hline
+		\textbf{Beschreibung} & Das System muss in der Lage sein, Audio-Daten schnell zu Klassifizieren, damit der Nutzer nicht aus dem Kreativ-Fluss gezogen wird. \\ \hline
+	\end{tabularx}
 \end{table}
 
 \begin{table}[h!]
-\begin{tabularx}{13cm}{|l|X|}
-\hline
-\textbf{/LQ3/} & \textbf{Datenübertragungsrate} \\ \hline
-\textbf{Kategorie} & Performance \\ \hline
-\textbf{Beschreibung} & Die Middleware muss hohe Datenübertragungsraten unterstützen, um eine kontinuierliche und verlustfreie Audioübertragung zu gewährleisten. \\ \hline
-\end{tabularx}
+	\begin{tabularx}{\textwidth}{|l|X|}
+		\hline
+		\textbf{/LQ3/} & \textbf{Datenübertragungsrate} \\ \hline
+		\textbf{Kategorie} & Performance \\ \hline
+		\textbf{Beschreibung} & Die Middleware muss hohe Datenübertragungsraten unterstützen, um eine kontinuierliche und verlustfreie Audioübertragung zu gewährleisten. \\ \hline
+	\end{tabularx}
 \end{table}
 
-\subsubsection{Benutzerfreundlichkeit}
+\subsection{Benutzerfreundlichkeit}
+
+\begin{table}[h!]
+	\begin{tabularx}{\textwidth}{|l|X|}
+		\hline
+		\textbf{/LQ4/} & \textbf{Intuitive Benutzeroberfläche} \\ \hline
+		\textbf{Kategorie} & Benutzerfreundlichkeit \\ \hline
+		\textbf{Beschreibung} & Die Benutzeroberfläche muss intuitiv und leicht bedienbar sein, damit Nutzer direkt damit arbeiten können, ohne eine Dokumentation lesen zu müssen. \\ \hline
+	\end{tabularx}
+\end{table}
+
+\newpage
+\subsection{Effizienz}
 
 \begin{table}[h!]
 \begin{tabularx}{13cm}{|l|X|}
@@ -120,10 +79,10 @@
 \end{table}
 
 \begin{table}[h!]
-\begin{tabularx}{13cm}{|l|X|}
-\hline
-\textbf{/LQ15/} & \textbf{Optimierung der Audioverarbeitung} \\ \hline
-\textbf{Kategorie} & Effizienz \\ \hline
-\textbf{Beschreibung} & Algorithmen für die Audioverarbeitung und Klassifizierung sollten so optimiert sein, dass sie minimale Rechenressourcen benötigen, ohne die Genauigkeit zu beeinträchtigen. \\ \hline
-\end{tabularx}
+	\begin{tabularx}{\textwidth}{|l|X|}
+		\hline
+		\textbf{/LQ7/} & \textbf{Optimierung der Audioverarbeitung} \\ \hline
+		\textbf{Kategorie} & Effizienz \\ \hline
+		\textbf{Beschreibung} & Algorithmen für die Audioverarbeitung und Klassifizierung sollten so optimiert sein, dass sie minimale Rechenressourcen benötigen, ohne die Genauigkeit zu beeinträchtigen. \\ \hline
+	\end{tabularx}
 \end{table}

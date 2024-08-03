@@ -1,0 +1,58 @@
+\subsection{Testprotokoll: LF01 LF02 SD-Karten SPI-Schnittstelle}
+
+\subsubsection{Testzielsetzung}
+Dieser Test überprüft die Funktionalität der Lese- und Schreibfunktionen für die SD-Karte über die SPI-Schnittstelle.
+
+\subsubsection{Testdurchführung}
+
+\begin{itemize}
+	\item \textbf{Mounten des Dateisystems:}
+	\begin{itemize}
+		\item Die Funktion \texttt{f\_mount} wurde aufgerufen, um das Dateisystem der SD-Karte zu mounten.
+		\item Der Rückgabewert (\texttt{fres}) wurde überprüft. Im Fehlerfall wurde eine Meldung ausgegeben und der Test abgebrochen.
+	\end{itemize}
+	
+	\item \textbf{SD-Karten-Statistiken:}
+	\begin{itemize}
+		\item Die Funktion \texttt{f\_getfree} wurde aufgerufen, um die freien Cluster, freien Sektoren und Gesamtsektoren der SD-Karte zu ermitteln.
+		\item Im Fehlerfall wurde eine Meldung ausgegeben und der Test abgebrochen.
+		\item Die Gesamt- und freien Speicherplatzwerte wurden berechnet und über \texttt{myprintf} ausgegeben.
+	\end{itemize}
+	
+	\item \textbf{Lesen einer Datei:}
+	\begin{itemize}
+		\item Die Datei \texttt{test.txt} wurde mit der Funktion \texttt{f\_open} im Lesemodus geöffnet.
+		\item Der Rückgabewert (\texttt{fres}) wurde überprüft. Im Fehlerfall wurde eine Meldung ausgegeben und der Test abgebrochen.
+		\item Es wurde versucht, 30 Bytes aus der Datei zu lesen (\texttt{f\_gets}).
+		\item Gelingt das Lesen, wurde der Inhalt der gelesenen Daten über \texttt{myprintf} ausgegeben.
+		\item Im Fehlerfall wurde eine Meldung ausgegeben.
+		\item Die Datei wurde mit \texttt{f\_close} geschlossen.
+	\end{itemize}
+	
+	\item \textbf{Schreiben einer Datei:}
+	\begin{itemize}
+		\item Die Datei \texttt{write.txt} wurde mit der Funktion \texttt{f\_open} im Schreibmodus und mit Flags zum Anlegen der Datei geöffnet.
+		\item Der Rückgabewert (\texttt{fres}) wurde überprüft. Im Fehlerfall wurde eine Meldung ausgegeben.
+		\item Ein String (\texttt{"a new file is made!"}) wurde in den Puffer \texttt{readBuf} kopiert.
+		\item Die Daten aus \texttt{readBuf} wurden mit \texttt{f\_write} in die Datei geschrieben.
+		\item Die Anzahl der geschriebenen Bytes wurde über \texttt{myprintf} ausgegeben.
+		\item Im Fehlerfall wurde eine Meldung ausgegeben.
+		\item Die Datei wurde mit \texttt{f\_close} geschlossen.
+	\end{itemize}
+	
+	\item \textbf{Dismounten des Dateisystems:}
+	\begin{itemize}
+		\item Die Funktion \texttt{f\_mount} wurde mit \texttt{NULL} aufgerufen, um das Dateisystem der SD-Karte zu dismounten.
+	\end{itemize}
+\end{itemize}
+
+\subsubsection{Auswertung}
+Der Test verlief erfolgreich:
+
+\begin{itemize}
+	\item Das Mounten und Dismounten des Dateisystems wurden erfolgreich durchgeführt.
+	\item Die SD-Karten-Statistiken stimmten mit den Erwartungen überein.
+	\item Das Lesen und Schreiben von .txt Dateien funktionierte einwandfrei.
+\end{itemize}
+
+Es wurde festgestellt, dass das Schreiben eines `struct` nicht möglich war. Eine zukünftige Lösung wird angestrebt.
