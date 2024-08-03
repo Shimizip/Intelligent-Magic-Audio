@@ -12,7 +12,7 @@ Dieses neuronale Netz wird mit selbst generierten Trainingsdaten trainiert und a
 
 \begin{wrapfigure}{r}{0.4\textwidth}
     \centering
-    \includegraphics[width=0.4\textwidth]{images/08_durchfuehrung/neuron-aufbau.png}
+    \includegraphics[width=0.4\textwidth]{images/08_durchfuehrung/nn/neuron-aufbau.png}
     \caption{Aufbau des künstlichen Neurons. Quelle: Thieling, Lothar: “Neuronale Netze (Vorlesungsskript ML)”, Kapitel F, Seite 6.}
     \label{fig:img-aufbau-neuron}
 \end{wrapfigure}
@@ -34,7 +34,7 @@ Die Audiosamples liegen als WAVE-Dateien (Dateiendung .wav) vor. Diese enthalten
 
 \begin{figure}[h!]
 \centering
-\includegraphics[width=0.6\textwidth]{images/08_durchfuehrung/waveform_plot.png}
+\includegraphics[width=0.6\textwidth]{images/08_durchfuehrung/nn/waveform_plot.png}
 \caption{Darstellung eines PCM Audiosignals, Quelle:  https://huggingface.co/learn/audio-course/chapter1/audio\_data TODO }
 \label{fig:img-pcm-graph}
 \end{figure}
@@ -45,7 +45,7 @@ Deutlich geeigneter ist es, die Daten als Spektrogramm (Amplitude der verschiede
 
 \begin{figure}[h!]
 \centering
-\includegraphics[width=0.75\textwidth]{images/08_durchfuehrung/spectrogram_plot.png}
+\includegraphics[width=0.75\textwidth]{images/08_durchfuehrung/nn/spectrogram_plot.png}
 \caption{Darstellung eines Audiosignals als Spektrogramm, Quelle:  https://huggingface.co/learn/audio-course/chapter1/audio\_data TODO }
 \label{fig:img-spectrogram}
 \end{figure}
@@ -80,7 +80,7 @@ Bei der Auswahl der Audiosamples wurde darauf geachtet, dass die Daten annähern
 
 \begin{figure}[h!]
 \centering
-\includegraphics[width=0.75\textwidth]{images/08_durchfuehrung/class_spread_plot.png}
+\includegraphics[width=0.75\textwidth]{images/08_durchfuehrung/nn/class_spread_plot.png}
 \caption{Repräsentation der verschiedenen Merkmalsklassen in den Entwicklungsdaten}
 \label{fig:img-class-spread-graph}
 \end{figure}
@@ -96,15 +96,15 @@ Für die Datenvorverarbeitung und das Training des neuronalen Netzes wird ein Ju
 
 Damit die gelabelten Daten für das Training des neuronalen Netzes verwendet werden können, müssen sie zunächst aufbereitet bzw. vorverarbeitet werden. Um die zu verarbeitenden Datenmengen sinnvoll zu verringern, wird zunächst die Samplerate aller Audiosamples auf 16 kHz reduziert.
 
-Wie im Abschnitt \ref{sec:input-data-generation} erwähnt, liegen die Audiosamples als WAVE-Dateien unterschiedlicher Längen vor. Die in Abschnitt \ref{sec:approach-audio-classification} beschriebenen Dimensionen der durch das neuronale Netz klassifizierbaren Mel-Spektrogramme betragen 32x30 Pixel. Um bei unterschiedlich langen Audiosamples die zeitliche Abhängigkeit zu bewahren und auch bei längeren Audiosamples wichtige Informationen im Spektrogramm abzubilden, müssen die Audiosamples in Sektionen gleicher Länge unterteilt werden, wobei später aus jeder Sektion ein Spektrogramm erstellt wird. Diese Sektionen werden im Folgenden als „Audiosubsamples“ bezeichnet.
+Wie im \textbf{Abschnitt \ref{sec:input-data-generation}} erwähnt, liegen die Audiosamples als WAVE-Dateien unterschiedlicher Längen vor. Die in \textbf{Abschnitt \ref{sec:approach-audio-classification}} beschriebenen Dimensionen der durch das neuronale Netz klassifizierbaren Mel-Spektrogramme betragen 32x30 Pixel. Um bei unterschiedlich langen Audiosamples die zeitliche Abhängigkeit zu bewahren und auch bei längeren Audiosamples wichtige Informationen im Spektrogramm abzubilden, müssen die Audiosamples in Sektionen gleicher Länge unterteilt werden, wobei später aus jeder Sektion ein Spektrogramm erstellt wird. Diese Sektionen werden im Folgenden als „Audiosubsamples“ bezeichnet.
 
-Aus den in \ref{sec:input-data-generation} erwähnten 209 gelabelten Audiosamples wurden durch deren Aufteilung insgesamt 2.837 Audiosubsamples gewonnen.
+Aus den in \textbf{Abschnitt \ref{sec:input-data-generation} }erwähnten 209 gelabelten Audiosamples wurden durch deren Aufteilung insgesamt 2.837 Audiosubsamples gewonnen.
 
 Ein Audiosubsample, also ein Mel-Spektrogramm, entspricht dabei 16.896 Samples, was bei einer Samplerate von 16 kHz etwas mehr als einer Sekunde entspricht. Analog zum Beispielprojekt „Acoustic Scene Classification“ \cite{stm-asc}\cite{stm-asc-2} werden die Audiosubsamples anschließend mittels eines „Sliding Window“ in 1024 Samples lange, um 512 Samples überlappende, Frames unterteilt.  Diese Überlappung stellt sicher, dass Informationen zu den Anfangs- und Endzeitpunkten der Frames nicht durch das „Abschneiden“ verloren gehen. Aus den 16.896 Samples eines Audiosubsamples lassen sich dadurch 32 Frames gewinnen. Die Aufteilung der Audiosamples in Audiosubsamples und Frames wird in \textbf{\autoref{fig:img-audiosubsamples-frames-overview}} visualisiert.
 
 \begin{figure}[h!]
 \centering
-\includegraphics[width=0.8\textwidth]{images/08_durchfuehrung/audiosubsamples_frames_overview.png}
+\includegraphics[width=0.8\textwidth]{images/08_durchfuehrung/nn/audiosubsamples_frames_overview.png}
 \caption{Darstellung der Unterteilung der Audiosamples in Audiosubsamples und Frames}
 \label{fig:img-audiosubsamples-frames-overview}
 \end{figure}
@@ -113,7 +113,7 @@ Das Sliding Window Prinzip, mit dem Audiosubsamples in überlappende Frames unte
 
 \begin{figure}[h!]
 \centering
-\includegraphics[width=0.7\textwidth]{images/08_durchfuehrung/sliding_window.png}
+\includegraphics[width=0.7\textwidth]{images/08_durchfuehrung/nn/sliding_window.png}
 \caption{Darstellung des Sliding Window Prinzips}
 \label{fig:img-sliding-window}
 \end{figure}
@@ -124,7 +124,7 @@ Abschließend müssen die erhaltenen Daten standardisiert, also mittelwertfrei g
 
 
 \subsubsection{Aufteilen der Eingabedaten in Trainings- Test und Validierungsdaten}
-Wie in \ref{sec:input-data-generation} beschrieben, wurden 209 Audiosamples mit Labeln versehen. Diese  in 2.837 Audiosubsamples aufgeteilt. Für das Training des neuronalen Netzes werden die Daten wie üblich in Trainingsdaten, Validierungsdaten und Testdaten aufgeteilt.
+Wie in \textbf{Abschnitt \ref{sec:input-data-generation} }beschrieben, wurden 209 Audiosamples mit Labeln versehen. Diese  in 2.837 Audiosubsamples aufgeteilt. Für das Training des neuronalen Netzes werden die Daten wie üblich in Trainingsdaten, Validierungsdaten und Testdaten aufgeteilt.
 
 \textbf{Trainingsdaten} (1.701 Datensätze) werden direkt für das Training des neuronalen Netzes genutzt.
 
@@ -136,7 +136,7 @@ Eine Visualisierung der Datenaufteilung ist in \textbf{\autoref{fig:img-input-da
 
 \begin{figure}[h!]
 \centering
-\includegraphics[width=0.95\textwidth]{images/08_durchfuehrung/input-data-graph.png}
+\includegraphics[width=0.95\textwidth]{images/08_durchfuehrung/nn/input-data-graph.png}
 \caption{Aufteilung der Eingabedaten in Trainings- Validierungs- und Testdaten (erstellt mit sankeydiagram.net)}
 \label{fig:img-input-data-graph}
 \end{figure}
@@ -161,9 +161,9 @@ model.add(layers.Dense(25, activation='relu'))
 model.add(layers.Dense(5, activation='sigmoid'))	
 \end{minted}
 
-Bei der Aktivierungsfunktion ist zu beachten, dass bei allen Schichten des CNNs sich die ReLu Funktion und deren Abwandlungen (z.B. Leaky-ReLu) bewährt haben, da sie die Performance des Modells aus unterschiedlichen Gründen verbessern. In den Dense-Layern, insbesondere in der Ausgabeschicht, ist die sigmoidale Aktivierungsfunktion besonders geeignet, da sie die Ergebnisse der einzelnen Ausgabeneuronen als Ähnlichkeiten interpretiert. Diese Ähnlichkeiten liegen im Bereich zwischen 0 und 1 und sind ideal für mehrklassige Klassifikationsaufgaben, bei denen jedes Ausgabeneuron eine spezifische Klasse repräsentiert.
+Bei der Aktivierungsfunktion ist zu beachten, dass bei allen Schichten des CNNs sich die ReLu Funktion und deren Abwandlungen (z.B. Leaky-ReLu) bewährt haben, da sie die Performance des Modells aus unterschiedlichen Gründen verbessern. In den Dense-Layern, insbesondere in der Ausgabeschicht, ist die sigmoidale Aktivierungsfunktion besonders geeignet, da sie die Ergebnisse der einzelnen Ausgabeneuronen als Ähnlichkeiten interpretiert. Diese Ähnlichkeiten liegen im Bereich zwischen 0 und 1 und sind ideal für mehrklassige Klassifikationsaufgaben, bei denen jedes Ausgabeneuron eine Merkmalsklasse repräsentiert.
 
-In folgender Zeile Code wird das neuronale Netz trainiert.
+In der folgenden Zeile Code geschieht das Training des zuvor definierten neuronalen Netzes durch.
 
 \begin{minted}{python}
 history = model.fit(x_train_r, y_train, validation_data=(x_val_r, y_val),
@@ -174,7 +174,7 @@ history = model.fit(x_train_r, y_train, validation_data=(x_val_r, y_val),
 
 \textbf{x\_train\_r}: Eingabedaten, die für das Training des Modells verwendet werden.
 
-\textbf{y\_train}: SOLL-Ausgabedaten (Labels), die die tatsächlichen Klassen der Trainingsdaten repräsentieren.
+\textbf{y\_train}: Soll-Ausgabedaten (Labels), die die tatsächlichen Klassen der Trainingsdaten repräsentieren.
 
 \textbf{validation\_data}: Validierungsdaten (x\_val\_r) und zugehörige Labels (y\_val). Sie dienen dazu, die Klassifierung des Modells zu überprüfen und zu verhindern, dass das Modell einfach nur die Trainingsdaten ``auswendig lernt`` (Overfitting).
 
@@ -187,7 +187,7 @@ history = model.fit(x_train_r, y_train, validation_data=(x_val_r, y_val),
 \begin{wrapfigure}{r}{0.4\textwidth} % Increase the width of the figure environment
 	\vspace{-20pt + 0.02\textwidth}
 	\hspace{0.02\textwidth} % Add horizontal space
-	\fbox{\includegraphics[width=0.4\textwidth]{images/08_durchfuehrung/nn_learning_curve.png}}
+	\fbox{\includegraphics[width=0.4\textwidth]{images/08_durchfuehrung/nn/nn_learning_curve.png}}
 	\caption{Darstellung des Loss-Werts über den Verlauf der Epochen}
 	\label{fig:img-training-graph}
 \end{wrapfigure}
@@ -196,26 +196,96 @@ history = model.fit(x_train_r, y_train, validation_data=(x_val_r, y_val),
 
 Wie sich erkennen lässt, ``lernt`` das neuronale Netz im Laufe der Epochen, die Eingabedaten besser zu klassifizieren, was sich in einem sinkenden Loss-Wert niederschlägt. Da der Loss-Wert der Validierungsdaten ebenfalls sinkt, ist gewährleistet, dass das neuronale Netz nicht einfach nur die Trainingsdaten auswendig lernt, sondern tatsächlich generalisiert.
 
-
-
-
-
-
-
-
-
-
+Abschließend kann das trainierte Modell als ``Tensorflow-Lite``-Dateiformat (Dateiendung ``.tflite``) exportiert werden. Die ``model.tflite``-Datei enthält sowohl die Architektur, als auch die Gewichte der einzelnen Neuronen.
 
 
 \subsubsection{Betrieb des Neuronalen Netzes auf dem STM32 Microcontroller}
-TODO:
 
-- wieder Datenvorverarbeitung
+Für den Betrieb des Neuronalen Netzes wird ``STM32Cube.AI`` verwendet, um das in der ``model.tflite`` Datei definierte Neuronale Netz in C-Code nachzubilden. Um jedoch Audiodateien klassifizieren zu können, müssen zunächst sämtliche Schritte der Datenvorverarbeitung, die im Jupyter-Notebook gemacht wurden, wiederholt werden.
 
-- Scaler
+\textbf{Einlesen der Datei und Datenvorverarbeitung}
 
-- Vorgehen Cube.AI (model.h5)
 
-- Inference Zeit
+Zum Einlesen der Datei wird die in \textbf{— Abschnitt TODO —} beschriebene Funktion \mintinline{c}|downsample_1024_samples()| verwendet. Diese reduziert die Datenmenge um den Faktor 3, was bei einer Eingabe-Samplerate von 44.1 kHz zu einer Ausgabe-Samplerate von 14.700 kHz (statt 16.000 kHz) führt. Die resultierende Abweichung von $\approx$ 8.8\% wird jedoch als vernachlässigbar für das Klassifizierungsergebnis eingeschätzt.
 
-- Verweis auf Validierungs-Kapitel
+Für die Berechnung der Mel-Spektrogramme wird die Bibliothek ``STM32\_AI\_AudioPreprocessing\_Library`` verwendet. Diese ist Teil des ``FP-AI-SENSING1`` Function Packs \cite{fp-ai-sensing1}. Mit dieser lassen sich einzelne Spektrogrammspalten berechnen, deren Amplitudenwerte müssen jedoch im Anschluss noch in Dezibel (dB) umgerechnet werden.
+
+\textbf{Übersetzen des Neuronalen Netzes mit STM32Cube.AI}
+
+
+\begin{wrapfigure}{r}{0.4\textwidth} % Increase the width of the figure environment
+	\vspace{-20pt + 0.02\textwidth}
+	\hspace{0.02\textwidth} % Add horizontal space
+	\fbox{\includegraphics[width=0.4\textwidth]{images/08_durchfuehrung/nn/cube_ai_config.png}}
+	\caption{Konfiguration von STM32Cube.AI in CubeMX}
+	\label{fig:img-training-graph}
+\end{wrapfigure}
+
+Für die Nutzung von STM32Cube.AI muss zunächst in der CubeMX-Datei das Software Package ``X-CUBE-AI`` in Version 9.0.0 heruntergeladen werden. Im Reiter ``Configuration`` lässt sich ein Name für das Modell festlegen, welcher später im Code zur Referenzierung verwendet wird. Hier wird ebenfalls die Modell-Datei ``model.tflite`` eingebunden. Durch einen Klick auf ``Analyze`` wird das Modell in C-Code übersetzt und ein Bericht zur Ressourcennutzung erstellt. Dieser bestätigt, dass die Ressourcenlimits des verwendeten Nucleo-Boards eingehalten werden. Der folgende Auszug gibt einen Überblick über die genutzten Ressourcen:
+
+\begin{minted}{text}
+Total Flash		82.050 B (80.13 KiB)
+Total Ram  		21.844 B (21.37 KiB)
+\end{minted}
+
+\textbf{Nutzung von STM32Cube.AI}
+
+Die Nutzung von STM32Cube.AI wird anhand eines Beispiels in der Dokumentation beschrieben \cite{stm32-cube-ai-documentation}. Obwohl das Beispiel auf einer älteren Version basiert, hat sich der grundlegende Umgang mit der Software nicht verändert. Da die Nutzung der Funktionen und Zeck der einzelnen Variablen dort im Detail  beschrieben sind, wird dies im folgenden Abschnitt nur kurz zusammengefasst.
+
+Zur Nutzung von STM32Cube.AI ist ein Handle vom Typ \mintinline{c}|ai_handle| erforderlich. Dieses erhält man durch den Aufruf der Initialisierungsfunktion \mintinline{c}|ai_network_1_create_and_init()|. Anschließend werden Input- und Outputbuffer vom Typ \mintinline{c}|ai_buffer| initialisiert, die zur Eingabe von Daten in das neuronale Netz und zur Rückgabe des Klassifizierungsergebnisses verwendet werden. Diese Initialisierungsschritte werden im Code des Projekts in der Funktion \mintinline{c}|init_nn()| durchgeführt:
+
+\begin{minted}{c}
+int init_nn() {
+	ai_error err;
+
+	const ai_handle act_addr[] = { activations };
+
+	err = ai_network_1_create_and_init(&network, act_addr, NULL);
+	if (err.type != AI_ERROR_NONE) {
+		return -1;
+	}
+	ai_input = ai_network_1_inputs_get(network, NULL);
+	ai_output = ai_network_1_outputs_get(network, NULL);
+
+	return 0;
+}
+\end{minted}
+
+Hat man den Handle, kann man Daten durch das neuronale Netz klassifizieren lassen. Dazu müssen zunächst Pointer auf die Eingabe- bzw. Ausgabedaten in das \mintinline{c}|data| Feld der Input- und Outputbuffer gesetzt werden. Die Klassifizierung wird durch den Aufruf der Funktion \mintinline{c}|ai_network_1_run()| initiiert. Das Ergebnis der Klassifizierung wird anschließend in der Variable verfügbar, die durch den zuvor übergebenen Output-Pointer referenziert wurde. Dieser Prozess ist im Code in der Funktion \mintinline{c}|run_nn_classification| implementiert. Da vor der Klassifizierung die Standardisierung mit den exportierten Scaler-Werten erforderlich ist, wird diese in der Funktion vor dem Klassifizierungsvorgang umgesetzt.
+
+\begin{minted}{c}
+int run_nn_classification(ai_float* pSpectrogram, ai_float* classification_result) {
+    ai_i32 batch;
+    ai_error err;
+
+    ai_input[0].data = AI_HANDLE_PTR(pSpectrogram);
+    ai_output[0].data = AI_HANDLE_PTR(classification_result);
+
+    if(network == AI_HANDLE_NULL) { return -1; }
+
+    for (int i = 0; i < AI_NETWORK_1_IN_1_SIZE; i++) {
+    	pSpectrogram[i] = (pSpectrogram[i] - feature_scaler_mean[i]) / feature_scaler_std[i];
+    }
+
+    batch = ai_network_1_run(network, ai_input, ai_output);
+    if (batch != 1) {
+        return -1;
+    }
+
+    return 0;
+}
+
+\end{minted}
+
+\textbf{Erfahrungswerte bei der Nutzung von STM32Cube.AI}
+
+Insgesamt konnte für die Klassifikation eines Spektrogramms, also eines Audiosubsamples, eine Inferenz von 17 ms gemessen werden. Die Inferenz gibt an, wie viel Zeit die Klassifizierung eines Datensatzes benötigt.
+
+Während der Nutzung von STM32Cube.AI trat im Projektverlauf ein ``HardFault``-Fehler bei der Ausführung der Funktion \mintinline{c}|ai_network_1_run()| auf. Dies konnte darauf zurückgeführt werden, dass eine fehlerhafte Deklaration einer Variable im Header der aktuellen Datei vorlag. Sie war nicht als \mintinline{c}|extern| gekennzeichnet. Obwohl die aufgerufene externe STM32Cube.AI-Bibliothek nicht direkt auf diese Variable zugriff, führte das Fehlen der extern-Deklaration vermutlich zu einer inkonsistenten Referenz beim Linken der Module.
+
+Leider konnte die Klassifizierung durch das neuronale Netz aus zeitlichen Gründen nicht in das Gesamtprojekt integriert werden. Daher sind im Anhang die folgenden zwei CubeMX-Projekte enthalten:
+
+\begin{itemize}
+\item \textbf{esp\_cubeai\_test}: Dieses Projekt diente der Überprüfung und Validierung der Funktionen von STM32Cube.AI, der Spektrogramm-Berechnungsbibliothek sowie der selbst entwickelten Funktionen für das Aufteilen in Frames. Als Datenbasis dient ein Audiosubsample, das in einer C-Datei als 16.896 \mintinline{c}|short|-Werte gespeichert ist. Dadurch konnte der Ablauf der Klassifikation unabhängig von anderen Komponenten getestet werden. Weitere Details zur Validierung und zu den Tests sind im \textbf{Abschnitt \ref{sec:test-validation}} zu finden.
+\item \textbf{esp\_cubeai\_for\_integration}: Dieses Projekt enthält Code, der für die Integration in das Gesamtprojekt vorbereitet und strukturiert wurde. Der Code wurde jedoch noch nicht getestet und könnte Fehler enthalten. Zusätzlich wurde das Auffüllen von Audiosamples (``zero-padding``), die weniger als 16.896 Samples enthalten, noch nicht implementiert.
+\end{itemize}
