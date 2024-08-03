@@ -76,7 +76,7 @@ ecfad96b740844c3
 \label{tab:audiodaten}
 \end{table}
 
-Bei der Auswahl der Audiosamples wurde darauf geachtet, dass die Daten annähernd gleich verteilt sind, um eine ausgewogene Trainingsbasis zu schaffen. Ein Ungleichgewicht in den Daten kann sich negativ auf das Training und die Klassifikationsergebnisse auswirken. Überrepräsentierte Merkmale könnten die Klassifikationsschwellenwerte beeinflussen, sodass die häufiger vorkommenden Klassen später bevorzugt erkannt werden. Wie in \textbf{\autoref{fig:img-class-spread-graph}} zu sehen, ist die Gleichverteilung jedoch zugegebenermaßen nur begrenzt gelungen, mit deutlich überrepräsentierten Eingabedaten mit dem Merkmal "melodic".
+Bei der Auswahl der Audiosamples wurde darauf geachtet, dass die Daten annähernd gleich verteilt sind, um eine ausgewogene Trainingsbasis zu schaffen. Ein Ungleichgewicht in den Daten kann sich negativ auf das Training und die Klassifikationsergebnisse auswirken. Überrepräsentierte Merkmale könnten die Klassifikationsschwellenwerte beeinflussen, sodass die häufiger vorkommenden Klassen später bevorzugt erkannt werden \cite{nn-imbalance-input-data}. Wie in \textbf{\autoref{fig:img-class-spread-graph}} zu sehen, ist die Gleichverteilung jedoch zugegebenermaßen nur begrenzt gelungen, mit deutlich überrepräsentierten Eingabedaten mit dem Merkmal "melodic".
 
 \begin{figure}[h!]
 \centering
@@ -92,7 +92,7 @@ Insgesamt wurden 209 Audiosamples unterschiedlicher Länge mit Labels versehen.
 \subsubsection{Datenvorverarbeitung}
 \label{sec:data-preprocessing}
 
-Für die Datenvorverarbeitung und das Training des neuronalen Netzes wird ein Jupyter-Notebook verwendet. Dieses ermöglicht eine Kombination aus formatiertem Text und Python-Code, was die Lesbarkeit und Nachvollziehbarkeit des Codes erleichtert.
+Für die Datenvorverarbeitung und das Training des neuronalen Netzes wird ein Jupyter-Notebook verwendet. Dieses ermöglicht eine Kombination aus formatiertem Text und Code, in diesem Fall Python, was die Lesbarkeit und Nachvollziehbarkeit des Codes erleichtert.
 
 Damit die gelabelten Daten für das Training des neuronalen Netzes verwendet werden können, müssen sie zunächst aufbereitet bzw. vorverarbeitet werden. Um die zu verarbeitenden Datenmengen sinnvoll zu verringern, wird zunächst die Samplerate aller Audiosamples auf 16 kHz reduziert.
 
@@ -120,11 +120,11 @@ Das Sliding Window Prinzip, mit dem Audiosubsamples in überlappende Frames unte
 
 Nun können die Mel-Spektrogramme erstellt werden. Eine Spalte des Spektrogramms wird dabei aus einem Frame berechnet. Setzt man die 32 in einem Audiosubsample enthaltenen Frames, also Spektrogramm-Spalten, zusammen, erhält man das 32x30 Pixel große Spektrogramm für ein Subsample.
 
-Abschließend müssen die erhaltenen Daten standardisiert, also mittelwertfrei gemacht werden. Dies ist bei maschinellen Lernen üblich und trägt dazu bei, dass das Modell schneller und effizienter konvergiert. Durch die Reduzierung der Varianz in den Eingabedaten und die Sicherstellung einer gleichmäßigen Verteilung der Werte verbessert sich die Modellleistung. Um diese Standardisierung auch später beim Einsatz des neuronalen Netzes auf dem Mikrocontroller nachzuahmen, werden die Werte des Scalers, der zur Berechnung der standardisierten Werte verwendet wird, exportiert. Bei den Werten des Scalers handelt es sich um Fließkommazahlen, jeweils eine für jeden Eingabevektorwert. Diese Werte werden dann später mit den Eingabevektorwerten multipliziert, um den standardisierten Wert zu simulieren.
+Abschließend müssen die erhaltenen Daten standardisiert, also mittelwertfrei gemacht werden. Dies ist bei maschinellen Lernen üblich und trägt dazu bei, dass das Modell schneller und effizienter konvergiert. Durch die Reduzierung der Varianz in den Eingabedaten und die Sicherstellung einer gleichmäßigen Verteilung der Werte verbessert sich die Modellleistung \cite{ml-standardization-reason}. Um diese Standardisierung auch später beim Einsatz des neuronalen Netzes auf dem Mikrocontroller nachzuahmen, werden die Werte des Scalers, der zur Berechnung der standardisierten Werte verwendet wird, exportiert. Bei den Werten des Scalers handelt es sich um Fließkommazahlen, jeweils eine für jeden Eingabevektorwert. Diese Werte werden dann später mit den Eingabevektorwerten multipliziert, um den standardisierten Wert zu simulieren.
 
 
 \subsubsection{Aufteilen der Eingabedaten in Trainings- Test und Validierungsdaten}
-Wie in \textbf{Abschnitt \ref{sec:input-data-generation} }beschrieben, wurden 209 Audiosamples mit Labeln versehen. Diese  in 2.837 Audiosubsamples aufgeteilt. Für das Training des neuronalen Netzes werden die Daten wie üblich in Trainingsdaten, Validierungsdaten und Testdaten aufgeteilt.
+Wie in \textbf{Abschnitt \ref{sec:input-data-generation} }beschrieben, wurden 209 Audiosamples mit Labeln versehen. Diese  in 2.837 Audiosubsamples aufgeteilt. Für das Training des neuronalen Netzes werden die Daten wie üblich in Trainingsdaten, Validierungsdaten und Testdaten aufgeteilt \cite{ml-data-splitting-reason}.
 
 \textbf{Trainingsdaten} (1.701 Datensätze) werden direkt für das Training des neuronalen Netzes genutzt.
 
@@ -143,11 +143,11 @@ Eine Visualisierung der Datenaufteilung ist in \textbf{\autoref{fig:img-input-da
 
 \subsubsection{Training des Neuronalen Netzes}
 
-Nach der Datenvorverarbeitung beginnt das eigentliche Training des neuronalen Netzes. Typischerweise bestehen Convolutional Neural Networks (CNNs) aus mehreren Faltungsschichten (Convolutional Layers), die der Vorverarbeitung der Eingabedaten und der Merkmalsextraktion dienen. Die Faltungsmasken, die über das Eingabebild gefaltet werden, stellen die Neuronen dar, die trainiert werden. Jede Faltungsschicht wird in der Regel von einer Pooling-Schicht (Pooling Layer) gefolgt, welche die Datenmenge reduziert und die Dimensionalität des Ausgabebildes sinnvoll verkleinert.
+Nach der Datenvorverarbeitung beginnt das eigentliche Training des neuronalen Netzes. Typischerweise bestehen Convolutional Neural Networks (CNNs) aus mehreren Faltungsschichten (Convolutional Layers), die der Vorverarbeitung der Eingabedaten und der Merkmalsextraktion dienen. Die Faltungsmasken, die über das Eingabebild gefaltet werden, stellen die Neuronen dar, die trainiert werden. Jede Faltungsschicht wird in der Regel von einer Pooling-Schicht (Pooling Layer) gefolgt, welche die Datenmenge reduziert und die Dimensionalität des Ausgabebildes sinnvoll verkleinert. \cite{how-cnn-work}
 
-``Normale`` neuronale Netze, oft als ``Dense`` oder ``Fully Connected Networks`` bezeichnet, können nur Vektoren verarbeiten. Eine sogenannte ``Flattening``-Schicht wandelt die zweidimensionale Ausgabematrix des CNNs in einen eindimensionalen Vektor um. Nach dieser Transformation übernehmen zwei ``Dense-Layers`` die eigentliche Klassifikation. An der Ausgabe des zweiten Dense-Layers, die einen Vektor mit fünf Werten zurückgibt, kann das Klassifikationsergebnis abgelesen werden.
+``Normale`` neuronale Netze, oft als ``Dense`` oder ``Fully Connected Networks`` bezeichnet, können nur Vektoren verarbeiten. Eine sogenannte ``Flattening``-Schicht wandelt die zweidimensionale Ausgabematrix des CNNs in einen eindimensionalen Vektor um. Nach dieser Transformation übernehmen zwei ``Dense-Layers`` die eigentliche Klassifikation. An der Ausgabe des zweiten Dense-Layers, die einen Vektor mit fünf Werten zurückgibt, kann das Klassifikationsergebnis abgelesen werden. \cite{how-cnn-work}
 
-Im folgenden Codeausschnitt des Jupyter-Notebooks wird die Struktur des neuronale Netzes definiert. Die Parameter der add-Funktion beziehen sich auf die Art der Schicht, der Anzahl bzw. Dimensionierung der Ausgabematrix und die Aktivierungsfunktion.
+Im folgenden Codeausschnitt des Jupyter-Notebooks wird die Struktur des neuronale Netzes definiert. Die Parameter der \mintinline{python}|add|-Funktion beziehen sich auf die Art der Schicht, der Anzahl bzw. Dimensionierung der Ausgabematrix und die Aktivierungsfunktion.
 
 \begin{minted}{python}
 model = models.Sequential()
@@ -161,7 +161,7 @@ model.add(layers.Dense(25, activation='relu'))
 model.add(layers.Dense(5, activation='sigmoid'))	
 \end{minted}
 
-Bei der Aktivierungsfunktion ist zu beachten, dass bei allen Schichten des CNNs sich die ReLu Funktion und deren Abwandlungen (z.B. Leaky-ReLu) bewährt haben, da sie die Performance des Modells aus unterschiedlichen Gründen verbessern. In den Dense-Layern, insbesondere in der Ausgabeschicht, ist die sigmoidale Aktivierungsfunktion besonders geeignet, da sie die Ergebnisse der einzelnen Ausgabeneuronen als Ähnlichkeiten interpretiert. Diese Ähnlichkeiten liegen im Bereich zwischen 0 und 1 und sind ideal für mehrklassige Klassifikationsaufgaben, bei denen jedes Ausgabeneuron eine Merkmalsklasse repräsentiert.
+Bei der Aktivierungsfunktion ist zu beachten, dass bei allen Schichten des CNNs sich die ReLu Funktion und deren Abwandlungen (z.B. Leaky-ReLu) bewährt haben, da sie die Performance des Modells aus unterschiedlichen Gründen verbessern. In den Dense-Layern, insbesondere in der Ausgabeschicht, ist die sigmoidale Aktivierungsfunktion besonders geeignet, da sie die Ergebnisse der einzelnen Ausgabeneuronen als Ähnlichkeiten interpretiert. Diese Ähnlichkeiten liegen im Bereich zwischen 0 und 1 und sind ideal für mehrklassige Klassifikationsaufgaben, bei denen jedes Ausgabeneuron eine Merkmalsklasse repräsentiert. \cite{cnn-relu-sigmoid}
 
 In der folgenden Zeile Code geschieht das Training des zuvor definierten neuronalen Netzes durch.
 
@@ -196,7 +196,7 @@ history = model.fit(x_train_r, y_train, validation_data=(x_val_r, y_val),
 
 Wie sich erkennen lässt, ``lernt`` das neuronale Netz im Laufe der Epochen, die Eingabedaten besser zu klassifizieren, was sich in einem sinkenden Loss-Wert niederschlägt. Da der Loss-Wert der Validierungsdaten ebenfalls sinkt, ist gewährleistet, dass das neuronale Netz nicht einfach nur die Trainingsdaten auswendig lernt, sondern tatsächlich generalisiert.
 
-Abschließend kann das trainierte Modell als ``Tensorflow-Lite``-Dateiformat (Dateiendung ``.tflite``) exportiert werden. Die ``model.tflite``-Datei enthält sowohl die Architektur, als auch die Gewichte der einzelnen Neuronen.
+Abschließend kann das trainierte Modell als ``Tensorflow-Lite``-Dateiformat (Dateiendung ``.tflite``) exportiert werden. Die ``model.tflite``-Datei enthält sowohl die Architektur, als auch die Gewichte der einzelnen Neuronen \cite{tflite-file}.
 
 
 \subsubsection{Betrieb des Neuronalen Netzes auf dem STM32 Microcontroller}
