@@ -1,4 +1,5 @@
 \subsection{Klassifizierung von Audiodateien durch ein neuronales Netz}
+\label{sec:classification-intro}
 Durch das neuronale Netz sollen digitale Audiodateien (Audiosamples) mit variabler Länge in fünf Merkmalsklassen klassifiziert werden. Dabei kann ein Datenpunkt, also ein Audiosample, mehreren Merkmalsklassen zugehörig sein. Dies wird als ``Multi-Label-Klassifizierung`` bezeichnet \cite{multilabel-classification}. Wird eine Audiodatei (Eingabevektor) zur Klassifizierung in das neuronale Netz eingegeben, erhält man als Ausgabe einen Ausgabevektor von fünf Werten zwischen 0.00 und 1.00, wobei jeder der fünf Werte  die Ähnlichkeit mit einer der fünf Merkmalsklassen repräsentiert (0.00 $\equiv$ keine Ähnlichkeit, 1.00 $\equiv$ Übereinstimmung). Die Merkmalsklassen werden wie folgt definiert:
     \begin{itemize}
         \item \textbf{bass:} Das Audiosample enthält Töne aus dem tiefen Frequenzspektrum
@@ -55,6 +56,9 @@ Der limitierende Faktor beim Einsatz eines CNN auf einem Microcontroller sind di
 Aufgrund der fehlenden Erfahrungswerte der Teammitglieder mit der möglichen Komplexität von neuronalen Netzen, die mit den Hardwareressourcen eines Microcontrollers betrieben werden können, wird sich auf ein Beispielprojekt von STMicroelectornics gestützt. Dieses heißt ``Acoustic Scene Classification`` \cite{stm-asc}\cite{stm-asc-2}. Kern ist die Klassifizierung von 30x32 px großen Mel-Spektrogrammen mit einem zwei Schichten CNN, die einen Eingabevektor von \textit{32 x 30 = 960} Werten ergeben. 
 
 Sowohl die Dimensionierung der Spektrogramme, als auch die Topologie des Neuronalen Netzes, die Anzahl der Neuronen je Schicht und Elemente der Datenvorverarbeitung wurden aus diesem Projekt übernommen. Damit ist sicher gestellt, dass das Neuronale Netz am Ende nicht die Ressourcen des Microcontrollers übersteigt.
+
+Um die in \textbf{Abschnitt \ref{sec:classification-intro}} beschriebenen Merkmalsklassen zu definieren, wurden zunächst Kategorien überlegt, die für die Musikproduktion relevant sind. Anschließend wurden Spektrogramme dieser Klassen in der vorgesehenen Auflösung erstellt und analysiert. Ziel war es zu prüfen, ob das menschliche Auge bzw. Gehirn in der Lage ist, die Merkmalsklassen anhand der Spektrogramme zu differenzieren. Diese Überprüfung diente dazu, die grundsätzliche Machbarkeit der Klassifikation in die Merkmalsklassen durch das neuronale Netz zu bestätigen.
+
 
 \subsubsection{Generieren der Eingabedaten}
 \label{sec:input-data-generation}
@@ -198,7 +202,6 @@ Wie sich erkennen lässt, ``lernt`` das neuronale Netz im Laufe der Epochen, die
 
 Abschließend kann das trainierte Modell als ``Tensorflow-Lite``-Dateiformat (Dateiendung ``.tflite``) exportiert werden. Die ``model.tflite``-Datei enthält sowohl die Architektur, als auch die Gewichte der einzelnen Neuronen \cite{tflite-file}.
 
-
 \subsubsection{Betrieb des neuronalen Netzes auf dem STM32 Microcontroller}
 
 Für den Betrieb des Neuronalen Netzes wird ``STM32Cube.AI`` verwendet, um das in der ``model.tflite`` Datei definierte Neuronale Netz in C-Code nachzubilden. Um jedoch Audiodateien klassifizieren zu können, müssen zunächst sämtliche Schritte der Datenvorverarbeitung, die im Jupyter-Notebook gemacht wurden, wiederholt werden.
@@ -239,13 +242,11 @@ Zur Nutzung von STM32Cube.AI ist ein Handle vom Typ \mintinline{c}|ai_handle| er
 \begin{minted}{c}
 int init_nn() {
 	ai_error err;
-
 	const ai_handle act_addr[] = { activations };
 
 	err = ai_network_1_create_and_init(&network, act_addr, NULL);
-	if (err.type != AI_ERROR_NONE) {
-		return -1;
-	}
+	if (err.type != AI_ERROR_NONE) { return -1; }
+	
 	ai_input = ai_network_1_inputs_get(network, NULL);
 	ai_output = ai_network_1_outputs_get(network, NULL);
 
@@ -263,20 +264,17 @@ int run_nn_classification(ai_float* pSpectrogram, ai_float* classification_resul
     ai_input[0].data = AI_HANDLE_PTR(pSpectrogram);
     ai_output[0].data = AI_HANDLE_PTR(classification_result);
 
-    if(network == AI_HANDLE_NULL) { return -1; }
+    if (network == AI_HANDLE_NULL) { return -1; }
 
     for (int i = 0; i < AI_NETWORK_1_IN_1_SIZE; i++) {
     	pSpectrogram[i] = (pSpectrogram[i] - feature_scaler_mean[i]) / feature_scaler_std[i];
     }
 
     batch = ai_network_1_run(network, ai_input, ai_output);
-    if (batch != 1) {
-        return -1;
-    }
+    if (batch != 1) { return -1; }
 
     return 0;
 }
-
 \end{minted}
 
 \textbf{Erfahrungswerte bei der Nutzung von STM32Cube.AI}
@@ -285,7 +283,7 @@ Insgesamt konnte für die Klassifikation eines Spektrogramms, also eines Audiosu
 
 Während der Nutzung von STM32Cube.AI trat im Projektverlauf ein ``HardFault``-Fehler bei der Ausführung der Funktion \mintinline{c}|ai_network_1_run()| auf. Dies konnte darauf zurückgeführt werden, dass eine fehlerhafte Deklaration einer Variable im Header der aktuellen Datei vorlag. Sie war nicht als \mintinline{c}|extern| gekennzeichnet. Obwohl die aufgerufene externe STM32Cube.AI-Bibliothek nicht direkt auf diese Variable zugriff, führte das Fehlen der extern-Deklaration vermutlich zu einer inkonsistenten Referenz beim Linken der Module.
 
-Leider konnte die Klassifizierung durch das neuronale Netz aus zeitlichen Gründen nicht in das Gesamtprojekt integriert werden. Daher sind im Anhang die folgenden zwei CubeMX-Projekte enthalten:
+Leider konnte die Klassifizierung durch das neuronale Netz aus zeitlichen Gründen nicht in das Gesamtprojekt integriert werden. Daher sind für die Komponente ``Neuronales Netz`` im Anhang zwei CubeMX-Projekte enthalten:
 
 \begin{itemize}
 \item \textbf{esp\_cubeai\_test}: Dieses Projekt diente der Überprüfung und Validierung der Funktionen von STM32Cube.AI, der Spektrogramm-Berechnungsbibliothek sowie der selbst entwickelten Funktionen für das Aufteilen in Frames. Als Datenbasis dient ein Audiosubsample, das in einer C-Datei als 16.896 \mintinline{c}|short|-Werte gespeichert ist. Dadurch konnte der Ablauf der Klassifikation unabhängig von anderen Komponenten getestet werden. Weitere Details zur Validierung und zu den Tests sind im \textbf{Abschnitt \ref{sec:test-validation}} zu finden.
