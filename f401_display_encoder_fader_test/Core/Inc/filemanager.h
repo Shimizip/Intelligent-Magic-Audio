@@ -31,7 +31,8 @@
 /**
  * @brief Structure representing a file with its name and classification classes.
  *
- * This structure stores information about a file, including its name and its classification classes.
+ * This structure stores information about a file,
+ * including its name and its classification classes.
  */
 typedef struct {
     char filename[MAX_FILENAME_LENGTH];    ///< The name of the file.
@@ -41,17 +42,19 @@ typedef struct {
 /**
  * @brief Structure to manage the files and their display on the LCD.
  *
- * This structure is used to manage files, including storing all files, filtering files based on fader settings, and keeping track of the current selection.
+ * This structure is used to manage files, including storing all files,
+ * filtering files based on fader settings,
+ * and keeping track of the current selection.
  */
 typedef struct {
-    File files[MAX_FILES];                 ///< Array to store all files that have been classified.
-    File shownFiles[MAX_FILES];            ///< Array to store files that match the fader settings.
-    char current_cursor_filename[25];      ///< The filename of the file currently selected by the user.
-    int num_files;                         ///< The total number of files.
-    int num_matched_files;                 ///< The number of files that match the fader settings.
-    int cursor_index;                      ///< The index of the current cursor position.
-    int current_file_index;                ///< The index position of the selected file.
-    float fader_Class[MAX_CLASSES];        ///< The classification classes after the file has been classified.
+	File files[MAX_FILES];             ///< Array to store all files that have been classified.
+	File shownFiles[MAX_FILES];        ///< Array to store files that match the fader settings.
+	char current_cursor_filename[25];  ///< The filename of the selected by the user.
+	int num_files;                     ///< The total number of files.
+	int num_matched_files;             ///< The number of files that match the fader settings.
+	int cursor_index;                  ///< The index of the current cursor position.
+	int current_file_index;            ///< The index position of the selected file.
+	float fader_Class[MAX_CLASSES];    ///< The settings from fader.
 } FileManager;
 
 void initializeFileManager(FileManager *fm);

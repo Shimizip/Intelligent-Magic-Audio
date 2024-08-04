@@ -21,6 +21,7 @@
 \contentsline {figure}{\numberline {20}{\ignorespaces Konfiguration von STM32Cube.AI in CubeMX}}{27}{figure.caption.34}%
 \contentsline {figure}{\numberline {21}{\ignorespaces Phasenverschiebung A und B}}{29}{figure.caption.35}%
 \contentsline {figure}{\numberline {22}{\ignorespaces ADC Conversion}}{30}{figure.caption.36}%
-\contentsline {figure}{\numberline {23}{\ignorespaces DMA ADC FADER Bus System}}{31}{figure.caption.37}%
-\contentsline {figure}{\numberline {24}{\ignorespaces Display SD1306 I2C Kommunikation}}{32}{figure.caption.38}%
-\contentsline {figure}{\numberline {25}{\ignorespaces Oszilloskopansicht der Latenzmessung von Trigger (Blau) bis Audioausgang (Gelb)}}{36}{figure.caption.42}%
+\contentsline {figure}{\numberline {23}{\ignorespaces DMA ADC FADER Bus System}}{30}{figure.caption.37}%
+\contentsline {figure}{\numberline {24}{\ignorespaces I2C Kommunikation}}{32}{figure.caption.38}%
+\contentsline {figure}{\numberline {25}{\ignorespaces Display SD1306 I2C Kommunikation}}{33}{figure.caption.39}%
+\contentsline {figure}{\numberline {26}{\ignorespaces Oszilloskopansicht der Latenzmessung von Trigger (Blau) bis Audioausgang (Gelb)}}{37}{figure.caption.43}%

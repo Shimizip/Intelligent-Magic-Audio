@@ -67,7 +67,7 @@ Der \textbf{Direct Memory Access (DMA)-Controller} übernimmt anschließend die 
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=1.0\textwidth]{images/08_durchfuehrung/interface/DMA_ADC_MEM.drawio.png}
+\includegraphics[width=0.8\textwidth]{images/08_durchfuehrung/interface/DMA_ADC_MEM.drawio.png}
 \caption{DMA ADC FADER Bus System}
 \label{fig:DMA ADC FADER}
 \end{figure}
@@ -81,9 +81,8 @@ Bei der Implementierung der DMA traten Probleme auf, die dazu führten, dass der
 
 \textbf{Lösung:}
 
-Um das Problem zu beheben, wurde ein Timer implementiert, der die DMA-Übertragung steuert. Der Timer sorgt dafür, dass die DMA in regelmäßigen Intervallen gestartet und gestoppt wird. Diese Maßnahme ermöglicht es der CPU, sich ausreichend um andere Aufgaben zu kümmern, indem sie nicht kontinuierlich mit der Datenverarbeitung durch die DMA beschäftigt ist. Der Einsatz des Timers verhindert, dass die DMA die CPU überlastet und gewährleistet eine ausgewogene Nutzung der Systemressourcen.
+Um das Problem zu beheben, wurde ein Timer implementiert, der die DMA-Übertragung steuert. Der Timer sorgt dafür, dass die DMA in regelmäßigen Intervallen gestartet und gestoppt wird. Diese Maßnahme ermöglicht es der CPU, sich ausreichend um andere Aufgaben zu kümmern, indem sie nicht kontinuierlich mit der Datenverarbeitung durch die DMA beschäftigt ist. Der Einsatz des Timers verhindert, dass die DMA die CPU überlastet und gewährleistet eine ausgewogene Nutzung der Systemressourcen. \\
 
-\newpage
 Die Auswertung und Verarbeitung der Signale erfolgt in der  \mintinline{c}| HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc)|.
 
 Im laufe der Implementation des ADC könnte man Schwankungen an den Ausgangssignalen des ADCs festellen, was die Genaugigkeit der Potentiometer einstellung beeinflüsste. Diese Schwankungen würden behoben in dem man ein Glättung der Werte eingeführt hat.
@@ -100,11 +99,38 @@ Diese Glättung sorgt dafür, dass die Messwerte stabiler und weniger anfällig 
  
 Eine andere möglichkeit des Spannungs inkonsitenz könnte mit Kondensatoren umgesetzt werden was jedoch nicht umgesetzt würde aus zeitlichen Gründen.
 
+\newpage
 \subsubsection{Display, SD1306 Treiber und I2C}
 
-Das Display ist die zentrale Komponente des Interfaces, da es visuelles Feedback auf die Benutzerinteraktionen bietet. Die Kommunikation zwischen dem Nucleo F401RE-Mikrocontroller und dem Display erfolgt über das I2C-Protokoll. Der Mikrocontroller übernimmt die Rolle des Masters, der den Bus steuert, während das Display als Slave agiert. Die Datenübertragung erfolgt über die beiden I2C-Leitungen: SDA (Datenleitung) und SCL (Taktleitung). Der Master beginnt die Kommunikation mit einer Start-Bedingung, gefolgt von der Übertragung der Adresse des Displays und der entsprechenden Daten in Bytes. Diese Daten werden durch die Taktimpulse auf der SCL-Leitung synchronisiert und auf der SDA-Leitung übertragen und bestätigt. Die Kommunikation endet mit einer Stop-Bedingung. Das I2C-Protokoll ermöglicht eine effiziente und koordinierte Datenübertragung zwischen der MCU und dem Display.
+\textbf{I2C}
 
-Die Ansteuerung des Displays erfolgt über den SD1306-Treiber, der als Schnittstelle zwischen dem Mikrocontroller Nucleo F401RE und dem LCD-Display fungiert. Dieser Treiber ermöglicht die Kommunikation und Befehlsübertragung, indem er die erforderlichen Initialisierungsbefehle an das Display sendet. Für die Unterstützung von SH1103-kompatiblen Bildschirmen würde die Initialisierungssequenz entsprechend angepasst.
+I2C (Inter-Integrated Circuit) ist ein Kommunikationsprotokoll, das über zwei Leitungen arbeitet: SDA (Serial Data Line) und SCL (Serial Clock Line). Es verwendet eine Master-Slave-Architektur, bei der der Master die Kommunikation steuert und die Slaves Daten empfangen oder senden. Die Datenübertragung erfolgt in Byte-Paketen, wobei der Master eine Start-Bedingung sendet, gefolgt von der Adresse des Slaves und den Daten. Nach dem Empfang eines Datenbytes sendet der Slave ein Bestätigungsbit (ACK). Die Kommunikation endet mit einer Stop-Bedingung.
+
+\textbf{Vorteile}
+
+\begin{itemize}
+	\item \textbf{Einfache Verkabelung}: Es werden nur zwei Leitungen für die Kommunikation benötigt, was den Verkabelungsaufwand erheblich reduziert.
+	\item \textbf{Geringe Hardware-Kosten}: Die Implementierung von I2C ist kostengünstig und benötigt wenig zusätzliche Hardware, da die Logik für das Protokoll minimal ist.
+	\item \textbf{Fehlererkennung}: I2C bietet einfache Methoden zur Fehlererkennung, wie das Bestätigungsbit (ACK), um sicherzustellen, dass Daten erfolgreich übertragen wurden.
+	\item \textbf{Unterstützung von Standard-Bibliotheken}: Viele Mikrocontroller und Entwicklungsplattformen bieten Standard-Bibliotheken für I2C, was die Implementierung und Fehlerbehebung erleichtert.
+\end{itemize}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.8\textwidth]{images/08_durchfuehrung/interface/I2C.drawio.png}
+	\caption{I2C Kommunikation}
+	\label{fig:I2C}
+\end{figure}
+
+\newpage	
+\textbf{Display}	
+
+
+Das Display ist die zentrale Komponente des Interfaces, da es visuelles Feedback auf die Benutzerinteraktionen bietet. Die Kommunikation zwischen dem Nucleo F401RE-Mikrocontroller und dem Display erfolgt über das I2C-Protokoll. Der Mikrocontroller übernimmt dabei die Rolle des Masters, der den Bus steuert, während das Display als Slave agiert.
+
+Die Ansteuerung des Displays erfolgt über den SD1306-Treiber, der als Schnittstelle zwischen dem Mikrocontroller Nucleo F401RE und dem LCD-Display fungiert. Der Treiber nutzt das I2C-Protokoll, um Befehle und Daten effizient zu übermitteln. Er sendet die erforderlichen Befehle an das Display und übernimmt die Kommunikation gemäß den I2C-Spezifikationen. Bei Bedarf kann die Initialisierungssequenz des Treibers angepasst werden, um auch SH1103-kompatible Bildschirme zu unterstützen.
+
+Zusammenfassend ermöglicht der SD1306-Treiber die vollständige Integration des Displays in das System, indem er die I2C-Kommunikation zwischen Mikrocontroller und Display umsetzt.
 
 
 \begin{figure}[H]
@@ -116,17 +142,29 @@ Die Ansteuerung des Displays erfolgt über den SD1306-Treiber, der als Schnittst
 
 \newpage
 
-\textcolor{red}{TODO: Begründung der Auswahl des Protokolls}
-
 \textcolor{red}{TODO: Erklärung des Ablaufs mit Codeschnipsel (Aufs wesentliche beziehen)}
 
+\subsubsection{Dateisystem}
 
+Das Dateisystem fungiert als zentrale Schnittstelle zwischen der Audio-Wiedergabe, dem neuronalen Netzwerk zur Klassifizierung und der Benutzeroberfläche. Es organisiert und verwaltet die Audiodateien, die vom neuronalen Netzwerk analysiert und klassifiziert werden. Nach der Klassifizierung speichert das Dateisystem die Ergebnisse und gewährleistet, dass nur relevante und korrekt kategorisierte Dateien im Interface angezeigt werden. Das Dateisystem besteht aus zwei Hauptstrukturen: File und FileManager welche Ihnen im folgenden nähr gebracht werden.
 
-\subsubsection{Filesystem}
+\vspace{1em}
+\textbf{File}
+\vspace{1em}
+
+Die File-Struktur repräsentiert einzelne Audiodateien im System. Sie enthält den Dateinamen, der sowohl für das Abspielen der Audiodatei als auch für die Anzeige in einer Liste von Samples verwendet wird. Zusätzlich speichert die Struktur Klassifizierungsdaten, die vom neuronalen Netzwerk bereitgestellt werden.
 
 \textcolor{red}{TODO: Erklärung der Komponente FileManager/File}
 
+ \inputminted[firstline=37, lastline=41]{c}{../../f401_display_encoder_fader_test/Core/Inc/filemanager.h}
+ 
+\vspace{1em}
+\textbf{FileManager}
+\vspace{1em}
 
+Die FileManager-Struktur repräsentiert das Dateisystem selbst. Sie ist verantwortlich für die Verwaltung und Speicherung von Dateien und umfasst wesentliche Elemente, die für die Visualisierung der Dateien auf dem LCD-Display erforderlich sind.
+ 
+ \inputminted[firstline=49, lastline=58]{c}{../../f401_display_encoder_fader_test/Core/Inc/filemanager.h}
 
 
 
