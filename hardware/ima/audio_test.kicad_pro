@@ -1,14 +1,6 @@
 {
   "board": {
     "3dviewports": [],
-    "design_settings": {
-      "defaults": {},
-      "diff_pair_dimensions": [],
-      "drc_exclusions": [],
-      "rules": {},
-      "track_widths": [],
-      "via_dimensions": []
-    },
     "ipc2581": {
       "dist": "",
       "distpn": "",
@@ -224,7 +216,7 @@
       "no_connect_dangling": "warning",
       "pin_not_connected": "error",
       "pin_not_driven": "error",
-      "pin_to_pin": "error",
+      "pin_to_pin": "warning",
       "power_pin_not_driven": "error",
       "similar_labels": "warning",
       "simulation_model_issue": "ignore",
@@ -239,7 +231,7 @@
     "pinned_symbol_libs": []
   },
   "meta": {
-    "filename": "ima.kicad_pro",
+    "filename": "audio_test.kicad_pro",
     "version": 1
   },
   "net_settings": {
@@ -383,12 +375,8 @@
   },
   "sheets": [
     [
-      "efd43d7c-3c18-45dd-8fa5-4bf32165850f",
+      "02d7d27a-e8e8-41b7-a4fa-9b1e33b33f81",
       "Root"
-    ],
-    [
-      "a884fdec-86d8-4124-a352-7b892911ad57",
-      "Interface"
     ]
   ],
   "text_variables": {}

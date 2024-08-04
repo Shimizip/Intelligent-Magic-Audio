@@ -79,9 +79,8 @@ Diese Callbacks, werden systembedingt aufgerufen, sobald die DMA die erste Hälf
 
 \paragraph{Latenzmessung}
 
-Im Abschnitt\ref{test-latenzmessung} wird eine Latenzmessung durchgeführt, wobei die gemessene Latenz von Trigger Input bis Audioausgang, mit \SI{6.7}{\milli\second} mehr als zufriedenstellend ist.
+Die Latenzmessung im Abschnitt \ref{test-latenzmessung} zeigt, dass die gemessene Latenz von Trigger Input bis Audioausgang mit \SI{6.7}{\milli\second} sehr zufriedenstellend ist, was ein erfolgreiches Zusammenspiel mit anderen elektronischen Instrumenten ermöglicht.
 
-Somit kann der Audiosampler unter Betrachtung der Latenz ein sehr erfolgreiches Zusammenspiel mit anderen elektronischen Instrumenten erzielen.
 
 \subsubsection{PCM5102a und I2S}
 
@@ -134,9 +133,8 @@ Um die SDIO-Schnittstelle in das FATFS-Dateisystem zu integrieren, mussten zunä
 In der Praxis stellte sich jedoch heraus, dass der Audiobuffer nicht schnell genug gefüllt worden ist, was starke Knackser und Störgeräusche mit sich gebracht hat.
 
 \begin{wrapfigure}{r}{0.3\textwidth} % Increase the width of the figure environment
-	\vspace{-30pt + 0.02\textwidth}
-	\hspace{0.02\textwidth} % Add horizontal space
-	\fbox{\includegraphics[width=0.28\textwidth]{images/08_durchfuehrung/audio/cubemx_sdio.png}}
+	\vspace{-20pt}
+	\fbox{\includegraphics[width=0.3\textwidth]{images/08_durchfuehrung/audio/cubemx_sdio.png}}
 	\caption{CubeMX FATFS SDIO Einbindung}
 	\label{fig:cubemx_sdio}
 \end{wrapfigure}
@@ -145,27 +143,62 @@ Dies erwies sich als äußerst vorteilhaft, da die SDIO-Implementierung zusammen
 
 \subsubsection{Playback und Pitched Playback}
 
+Der Audioplayer unterstützt das Abspielen von WAV-Dateien mit Tonhöhenanpassung. Dies wird durch die Verwendung von DMA zur Übertragung über I2S erreicht. Die Audiowiedergabe erfolgt mit dynamischer Anpassung der Abspielgeschwindigkeit, was eine Echtzeit-Tonhöhenänderung ermöglicht.
 
-TODO Umsetzung im Code
+Die Funktion \mintinline{c}|wavPlayPitched(WavPlayer *player)| liest Audiodaten von der SD-Karte:
 
-CODE 
+\mint{c}|bytesRead = fillHalfBufferFromSD(player, true);|
 
-CODE 
+wobei die Funktion \mintinline{c}|fillHalfBufferFromSD()|, die Anzahl der benötigten Samples für den Buffer, dynamisch anhand der Abspielgeschwindigkeit errechnet.
 
-CODE 
+\paragraph{Pitchfaktor}
 
-CODE 
+Ein Pitchfaktor größer als 1.0 bedeutet, dass die Wiedergabegeschwindigkeit erhöht wird. Um diese höhere Geschwindigkeit zu kompensieren, müssen mehr Samples in den Puffer geladen werden. Das liegt daran, dass mehr Daten pro Zeiteinheit benötigt werden, um die schnellere Wiedergabe zu unterstützen.
 
-CODE 
+Ein Pitchfaktor kleiner als 1.0 reduziert die Wiedergabegeschwindigkeit. In diesem Fall werden weniger Samples benötigt, weil sich die Daten im Puffer wiederholen. Das bedeutet, dass der Puffer nicht so schnell gefüllt werden muss, da die Audio-Daten langsamer abgespielt werden.
 
-CODE 
+\paragraph{PCM-Stereocodierung}
 
-CODE
+Beim Füllen des Audiobuffers mit einem Pitchfaktor \( \neq 0 \) muss darauf geachtet werden, dass die PCM Stereo-Codierung korrekt beachtet wird. 
+Im PCM Stereo-Format repräsentieren alle geraden Samples im Buffer den linken Kanal, während die ungeraden Samples den rechten Kanal darstellen.
 
-CODE 
+Wenn der Pitchfaktor verändert wird, können Samples entweder übersprungen oder doppelt abgespielt werden. Dabei ist es entscheidend, dass die richtigen Samples für den linken und rechten Kanal ausgewählt werden. Der folgende Code sorgt dafür, dass diese Auswahl korrekt erfolgt:
+
+\begin{minted}{c}
+	leftReadIndex = (leftReadIndex + 1) & ~1;
+	rightReadIndex = leftReadIndex + 1;
+\end{minted}
+
+
+\noindent
+Hier ist eine detaillierte Erklärung dieser Operationen:
+
+\begin{enumerate}
+	\item \textbf{Sicherstellung eines geraden Indexes:} \\
+	Der Code:
+	\begin{quote}
+		\mintinline{c}|leftReadIndex = (leftReadIndex + 1) & ~1;|
+	\end{quote}
+	sorgt dafür, dass \mintinline{c}|leftReadIndex| immer eine gerade Zahl ist. Zunächst wird \mintinline{c}|1| zu \mintinline{c}|leftReadIndex| addiert, um eine gerade Zahl zu erhalten. 
+	
+	Die bitweise UND-Operation mit \mintinline{c}|~1| (der negierten Zahl 1) entfernt das niedrigstwertige Bit von \mintinline{c}|leftReadIndex + 1|, wodurch der Wert zu einer geraden Zahl wird. 
+	
+	Zum Beispiel wird aus 5 (ungerade) 6 (gerade), und aus 7 (ungerade) wird ebenfalls 6 (gerade).
+	
+	\item \textbf{Berechnung des \mintinline{c}|rightReadIndex|:} \\
+	Der Index für das rechte Sample wird durch die folgende Zeile berechnet:
+	\begin{quote}
+		\mintinline{c}|rightReadIndex = leftReadIndex + 1;|
+	\end{quote}
+	Nachdem \mintinline{c}|leftReadIndex| als gerade Zahl festgelegt wurde, ist \mintinline{c}|rightReadIndex| automatisch der nächste Index, der ungerade ist. Dies entspricht dem Format von PCM Stereo-Samples, bei dem gerade Indizes für den linken Kanal und ungerade Indizes für den rechten Kanal verwendet werden.
+\end{enumerate}
+
+Diese Schritte stellen sicher, dass die berechneten Indizes korrekt auf die im Stereo-PCM-Format erwarteten Positionen verweisen, indem sie sicherstellen, dass der Puffer die richtigen Daten für den linken und rechten Kanal enthält.
 
 
 \subsubsection{Downsampling für die Verarbeitung von Audio durch das Neuronalen Netzes}
 \label{sec:audio-downsampling}
+
+TODO: DOWNSAMPLINGS
 
 

@@ -3353,7 +3353,7 @@
 		(uuid 5011c635-8153-4ef9-8156-034834e0dc4b)
 	)
 	(rectangle
-		(start 54.61 102.87)
+		(start 66.04 100.33)
 		(end 116.84 147.32)
 		(stroke
 			(width 0)
@@ -3388,7 +3388,7 @@
 	)
 	(text "SD Card Reader\n"
 		(exclude_from_sim no)
-		(at 70.358 105.664 0)
+		(at 83.058 103.886 0)
 		(effects
 			(font
 				(size 2.54 2.54)
@@ -4435,8 +4435,8 @@
 		)
 	)
 	(sheet
-		(at 22.86 226.06)
-		(size 246.38 133.35)
+		(at 6.35 218.44)
+		(size 288.29 133.35)
 		(fields_autoplaced yes)
 		(stroke
 			(width 0.1524)
@@ -4446,8 +4446,8 @@
 			(color 0 0 0 0.0000)
 		)
 		(uuid "a884fdec-86d8-4124-a352-7b892911ad57")
-		(property "Sheetname" "Voltage"
-			(at 22.86 225.3484 0)
+		(property "Sheetname" "Interface"
+			(at 6.35 217.7284 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4455,8 +4455,8 @@
 				(justify left bottom)
 			)
 		)
-		(property "Sheetfile" "untitled.kicad_sch"
-			(at 22.86 359.9946 0)
+		(property "Sheetfile" "interface.kicad_sch"
+			(at 6.35 352.3746 0)
 			(effects
 				(font
 					(size 1.27 1.27)
