@@ -1,6 +1,8 @@
 \subsection{Klassifizierung von Audiodateien durch ein neuronales Netz}
 \label{sec:classification-intro}
 Durch das neuronale Netz sollen digitale Audiodateien (Audiosamples) mit variabler Länge in fünf Merkmalsklassen klassifiziert werden. Dabei kann ein Datenpunkt, also ein Audiosample, mehreren Merkmalsklassen zugehörig sein. Dies wird als ``Multi-Label-Klassifizierung`` bezeichnet \cite{multilabel-classification}. Wird eine Audiodatei (Eingabevektor) zur Klassifizierung in das neuronale Netz eingegeben, erhält man als Ausgabe einen Ausgabevektor von fünf Werten zwischen 0.00 und 1.00, wobei jeder der fünf Werte  die Ähnlichkeit mit einer der fünf Merkmalsklassen repräsentiert (0.00 $\equiv$ keine Ähnlichkeit, 1.00 $\equiv$ Übereinstimmung). Die Merkmalsklassen werden wie folgt definiert:
+
+	\hypertarget{nn-classes}{}
     \begin{itemize}
         \item \textbf{bass:} Das Audiosample enthält Töne aus dem tiefen Frequenzspektrum
        	\item \textbf{pitched:} Das Audiosample enthält Töne aus dem hohen Frequenzspektrum
@@ -211,6 +213,7 @@ Wie sich erkennen lässt, ``lernt`` das neuronale Netz im Laufe der Epochen, die
 Abschließend kann das trainierte Modell als ``Tensorflow-Lite``-Dateiformat (Dateiendung ``.tflite``) exportiert werden. Die ``model.tflite``-Datei enthält sowohl die Architektur, als auch die Gewichte der einzelnen Neuronen \cite{tflite-file}.
 
 \subsubsection{Betrieb des neuronalen Netzes auf dem STM32 Microcontroller}
+\label{stm32-cube-ai}
 
 Für den Betrieb des Neuronalen Netzes wird ``STM32Cube.AI`` verwendet, um das in der ``model.tflite`` Datei definierte Neuronale Netz in C-Code nachzubilden. Um jedoch Audiodateien klassifizieren zu können, müssen zunächst sämtliche Schritte der Datenvorverarbeitung, die im Jupyter-Notebook gemacht wurden, wiederholt werden.
 
