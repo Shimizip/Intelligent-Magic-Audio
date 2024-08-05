@@ -9,7 +9,7 @@ Durch das neuronale Netz sollen digitale Audiodateien (Audiosamples) mit variabl
         \item \textbf{sustained:} Das Audiosample enthält ``flächige`` Elemente, also ``langgezogene`` Töne
     \end{itemize}
 
-Dieses neuronale Netz wird mit selbst generierten Trainingsdaten trainiert und anschließend als fertiges Modell mittels dem STM32 proprietären Tool ``STM32Cube.AI`` in C-Code umgewandelt. Damit kann das Neuronale Netz im eigenen Code als normale C-Funktion verwendet werden, mit dem Eingabevektor (Audiodaten) als Funktionsparameter und dem Ausgabevektor (Klassifikationsergebnis) als Rückgabewert. \cite{stm32-cube-ai-documentation}
+Dieses neuronale Netz wird mit selbst generierten Trainingsdaten trainiert und anschließend als fertiges Modell mittels dem STM32 proprietären Tool ``STM32Cube.AI`` in C-Code umgewandelt. Damit kann das Neuronale Netz im eigenen Code als normale C-Funktion verwendet werden, mit dem Eingabevektor (Audiodaten) als Funktionsparameter und dem Ausgabevektor (Klassifikationsergebnis) als Rückgabewert \cite{stm32-cube-ai-documentation}.
 
 \begin{wrapfigure}{r}{0.4\textwidth}
     \centering
@@ -167,7 +167,7 @@ model.add(layers.Dense(5, activation='sigmoid'))
 
 Bei der Aktivierungsfunktion ist zu beachten, dass bei allen Schichten des CNNs sich die ReLu Funktion und deren Abwandlungen (z.B. Leaky-ReLu) bewährt haben, da sie die Performance des Modells aus unterschiedlichen Gründen verbessern. In den Dense-Layern, insbesondere in der Ausgabeschicht, ist die sigmoidale Aktivierungsfunktion besonders geeignet, da sie die Ergebnisse der einzelnen Ausgabeneuronen als Ähnlichkeiten interpretiert. Diese Ähnlichkeiten liegen im Bereich zwischen 0 und 1 und sind ideal für mehrklassige Klassifikationsaufgaben, bei denen jedes Ausgabeneuron eine Merkmalsklasse repräsentiert. \cite{cnn-relu-sigmoid}
 
-In der folgenden Zeile Code geschieht das Training des zuvor definierten neuronalen Netzes durch.
+In der folgenden Zeile Code geschieht das Training des zuvor definierten neuronalen Netzes.
 
 \begin{minted}{python}
 history = model.fit(x_train_r, y_train, validation_data=(x_val_r, y_val),
@@ -195,7 +195,7 @@ history = model.fit(x_train_r, y_train, validation_data=(x_val_r, y_val),
 	\label{fig:img-training-graph}
 \end{wrapfigure}
 
-\textbf{\autoref{fig:img-training-graph}} veranschaulicht, wie sich der ``Verlust-Wert`` (Loss) während des Trainingsprozesses des neuronalen Netzes über die Epochen hinweg verändert. Der rote Graph repräsentiert die Trainingsdaten und der grüne Graph die Validierungsdaten. Der Loss-Wert gibt an, wie stark die Vorhersagen des Netzwerks von den tatsächlichen Daten abweichen. Eine hohe Abweichung bedeutet, dass das Netzwerk nicht gut vorhersagt, während eine niedrige Abweichung auf bessere Vorhersagen hinweist.
+\textbf{\autoref{fig:img-training-graph}} veranschaulicht, wie sich der ``Verlust-Wert`` (Loss) während des Trainingsprozesses des neuronalen Netzes über die Epochen hinweg verändert. Der rote Graph repräsentiert die Trainingsdaten und der grüne Graph die Validierungsdaten. Der Loss-Wert gibt an, wie stark die Vorhersagen des Netzwerks von den tatsächlichen Daten abweichen \cite{neural-network-basics}. Eine hohe Abweichung bedeutet, dass das Netzwerk nicht gut vorhersagt, während eine niedrige Abweichung auf bessere Vorhersagen hinweist.
 
 Wie sich erkennen lässt, ``lernt`` das neuronale Netz im Laufe der Epochen, die Eingabedaten besser zu klassifizieren, was sich in einem sinkenden Loss-Wert niederschlägt. Da der Loss-Wert der Validierungsdaten ebenfalls sinkt, ist gewährleistet, dass das neuronale Netz nicht einfach nur die Trainingsdaten auswendig lernt, sondern tatsächlich generalisiert.
 
