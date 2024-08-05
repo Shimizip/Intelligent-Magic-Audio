@@ -1,58 +1,13 @@
 \subsection{Testprotokoll: /LF01/}
-
-\subsubsection{Stromversorgung}
-\begin{itemize}
-	\item \textbf{Testfall:} Überprüfung der Stromversorgung des Encoders.
-	\item \textbf{Schritte:}
-	\begin{enumerate}
-		\item Das System würde an eine stabile Stromquelle angeschlossen. Verbindung über einen ST-Link vom Laptop.
-		\item Die Spannung an den Versorgungsanschlüssen des Encoders würde mithilfe eines Multimeters gemessen.
-	\end{enumerate}
-	\item \textbf{Erwartete Werte:}
-	\begin{itemize}
-		\item Spannung: 3.3 V ± 5%.
-		\item Stromstärke: Im spezifizierten Bereich des Encoders.
-	\end{itemize}
-	\item \textbf{Testergebnisse:}
-	\begin{itemize}
-		\item Die gemessene Spannung betrug 3.31 V, was innerhalb des erwarteten Bereichs von 3.3 V ± 5% liegt.
-		\item Die Stromstärke lag ebenfalls im spezifizierten Bereich des Encoders.
-	\end{itemize}
-\end{itemize}
-
-\textbf{Vorgehensbeschreibung:}
-Zuerst würde  das System an über ST-Link ans Laptop angeschlossen, um eine konstante Spannungsversorgung zu gewährleisten. Mit einem Multimeter würde die Spannung an den Versorgungsanschlüssen des Encoders gemessen, um sicherzustellen, dass sie im erwarteten Bereich liegt.
-
-\subsubsection{Verbindung}
-\begin{itemize}
-	\item \textbf{Testfall:} Überprüfung der physischen Verbindung zwischen Encoder und Mikrocontroller.
-	\item \textbf{Schritte:}
-	\begin{enumerate}
-		\item Die Kabelverbindungen würden mit einem Multimeter überprüft.
-		\item Es würde sichergestellt, dass alle Pins korrekt verbunden sind.
-	\end{enumerate}
-	\item \textbf{Erwartete Werte:}
-	\begin{itemize}
-		\item Kontinuität und korrekte Verbindung an allen relevanten Pins.
-	\end{itemize}
-	\item \textbf{Testergebnisse:}
-	\begin{itemize}
-		\item Alle Kabelverbindungen zeigten Kontinuität.
-		\item Alle relevanten Pins waren korrekt verbunden und funktionsfähig.
-	\end{itemize}
-\end{itemize}
-
-
-\textbf{Vorgehensbeschreibung:}
-Um die Verbindung zu überprüfen, haben wir zunächst ein Multimeter verwendet, um die Kontinuität der Kabelverbindungen zu testen. Die Pins des Encoders würden geprüft, um sicherzustellen, dass alle Verbindungen durchgehend und korrekt mit dem Mikrocontroller verbunden sind. Alle relevanten Pins zeigten eine korrekte Verbindung.
+\textbf{\hyperlink{LF01_Link}{LF01}} \\
 
 \subsubsection{Auswertung der Drehung des Encoders}
 \begin{itemize}
 	\item \textbf{Testfall:} Prüfung des Drehverhaltens
 	\item \textbf{Schritte:}
 	\begin{enumerate}
-		\item Der Encoder würde schnell und langsam in beide Richtungen gedreht.
-		\item Dabei würde die Zählvariable \texttt{rotary\_enc\_count} beobachtet.
+		\item Der Encoder wird schnell und langsam in beide Richtungen gedreht.
+		\item Dabei wird die Zählvariable \texttt{rotary\_enc\_count} beobachtet.
 	\end{enumerate}
 	\item \textbf{Erwartete Werte:}
 	\begin{itemize}
@@ -68,7 +23,7 @@ Um die Verbindung zu überprüfen, haben wir zunächst ein Multimeter verwendet,
 
 
 
-\textbf{Vorgehensbeschreibung:}
+\textbf{Beschreibung des Vorgehens:}
 Um das Drehverhalten des Encoders zu testen, würde de Encoder an das System angeschlossen und die Funktionalität überprüft. Anschließend haben wir den Encoder in beiden Richtungen, sowohl schnell als auch langsam, gedreht und die Zählvariable 
 Die Zählvariable \texttt{rotary\_enc\_count} stand dabei unter Beobachtung, um sicherzustellen, dass sie ausschließlich durch die \texttt{HAL\_GPIO\_EXTI\_Callback} beeinflusst wird.
 
@@ -78,9 +33,10 @@ Die Zählvariable \texttt{rotary\_enc\_count} stand dabei unter Beobachtung, um 
 	\item \textbf{Testfall:} Prüfung der Funktionalität des Push-Buttons.
 	\item \textbf{Schritte:}
 	\begin{enumerate}
-		\item Drücken des Push-Button gedrückt.
+		\item Erstellung einer Zähl Variable \boldinline{cnt}
+		\item Drücken des Push-Button.
 		\item Prüfen ob der Interrupt korrekt ausgelöst wird.
-		\item Das korrekte Verhalten des Entprellen würde geprüft.
+		\item Das korrekte Verhalten des Entprellen prüfen.
 	\end{enumerate}
 	\item \textbf{Erwartete Werte:}
 	\begin{itemize}
@@ -90,12 +46,12 @@ Die Zählvariable \texttt{rotary\_enc\_count} stand dabei unter Beobachtung, um 
 	\item \textbf{Testergebnisse:}
 	\begin{itemize}
 		\item Der Interrupt wurde bei jedem Drücken zuverlässig und eindeutig ausgelöst.
-		\item Es traten keine Prellen oder Mehrfachauslösungen auf.
+		\item Es traten keine Prellen oder Mehrfachauslösungen auf. Die \boldinline{cnt} hat korrekt hochgezählt.
 	\end{itemize}
 \end{itemize}
 
 
-\textbf{Vorgehensbeschreibung:}
+\textbf{Beschreibung des Vorgehens:}
 Der Push-Button würde mehrmals gedrückt und dabei beobachtet, ob der Interrupt korrekt ausgelöst wurde. Während des Tests wird darauf geachtet, ob der Button prellte oder Mehrfachauslösungen verursachte in dem ein Zähl Variable \texttt{cnt} im Debugger beobachte würde. Die Ergebnisse bestätigten, dass der Interrupt zuverlässig und ohne Prellen funktionierte.
 
 \subsubsection{Menünavigation}
@@ -103,8 +59,8 @@ Der Push-Button würde mehrmals gedrückt und dabei beobachtet, ob der Interrupt
 	\item \textbf{Testfall:} Testen der Navigation im Menü mithilfe des Encoders.
 	\item \textbf{Schritte:}
 	\begin{enumerate}
-		\item Den Encoder wird in beide Richtungen gedreht und die Cursor-Bewegung beobachtet. Die cursor Variable \texttt{cursor\_index} des Filemanagers würde im Debugger geprüft auf deren Zählverhalten.
-		\item Der Push-Button wird gedrückt, um eine Auswahl zu treffen. Der Flag switch\_push\_button würde geprüft um die Validierung des korrekten Verhaltens beim drücken zu bestätigen.
+		\item Den Encoder wird in beide Richtungen gedreht und die Cursor-Bewegung beobachtet. Die cursor Variable \texttt{cursor\_index} des Filemanagers  im Debugger prüfen auf deren Zählverhalten.
+		\item Der Push-Button wird gedrückt, um eine Auswahl zu treffen. Der Flag switch\_push\_button prüfen um die Validierung des korrekten Verhaltens beim drücken zu bestätigen.
 	\end{enumerate}
 	\item \textbf{Erwartete Werte:}
 	\begin{itemize}

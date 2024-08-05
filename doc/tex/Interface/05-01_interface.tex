@@ -26,8 +26,8 @@
 
 
 
-Zur Auswahl der Samples und zum Navigieren durch das Menü wir ein Rotary-Encoder mit einem Switch Button eingesetzt.Das Empfangen der A und B Signale des Encoders erfolgt über die Pins \boldinline{PA0} und \boldinline{PA1}. Der Encoder ist so konfiguriert das wen \boldinline{PA0} und \boldinline{PA1} auf high sind der Encoder den Cursor incrementiert. Wenn \boldinline{PA0} high ist und \boldinline{PA1} low wird der Cursor runtergezählt.
-Das Drücken des Switch über den Pin \boldinline{PA4}. Durch das drücken des Switch-Buttons wird der Pin \boldinline{PA4} auf high gesetzt und die Auswahl des Samples wird übernommen.
+Zur Auswahl der Samples und zum Navigieren durch das Menü wir ein Rotary-Encoder mit einem Switch Button eingesetzt.Das Empfangen der A und B Signale des Encoders erfolgt über die Pins \boldinline{PA0} und \boldinline{PA1}.
+Das Drücken des Switch über den Pin \boldinline{PA4}. Durch das drücken des Switch-Buttons wird der Pin \boldinline{PA4} auf high gesetzt.
 
 \begin{itemize}
 	\item \textbf{Präzise Steuerung:} Der Encoder ermöglicht eine präzise Steuerung des Cursors auf dem Display.
@@ -99,7 +99,7 @@ Für die Filterfunktion benötigen wir 5 Potentiometer. Es wird zyklisch die Aus
 
 \textbf{(ADC)}\\
 
-\textbf{ADC} (Analog Digital Converter) wird benutzt, um die Ausgangsspannung an den Schleifern zu digitalisieren und in Zahlen zu fassen. Dies erfolgt über die Pins \boldinline{PA6, PA7, PB0, PB1, PC0}, die als Schnittstellen parallel der Reihenfolge der Channels \boldinline{6, 7, 8, 9, 10} dienen. Jedes Mal, wenn an der Ausgangsspannung eines der Schleifer eine Veränderung wahrgenommen wird, startet eine Interrupt Service Routine, die auf einer Callback-Methode basiert. Diese berechnet dann einen geglätteten Endwert für die Ausgangsspannung. 
+\textbf{ADC} (Analog Digital Converter) wird benutzt, um die Ausgangsspannung an den Schleifern zu digitalisieren und in Zahlen zu fassen. Dies erfolgt über die Pins \boldinline{PA6, PA7, PB0, PB1, PC0}, die als Schnittstellen parallel der Reihenfolge der Channels \boldinline{6, 7, 8, 9, 10} dienen. Jedes Mal, wenn an der Ausgangsspannung eines der Schleifer eine Veränderung wahrgenommen wird, startet eine Interrupt Service Routine.
 
 \textbf{Configuration}
 
