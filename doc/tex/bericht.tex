@@ -48,7 +48,7 @@
 \usepackage{wrapfig}
 
 
-
+\newcommand{\boldinline}[1]{\textbf{\mintinline{sh}|#1|}}
 
 \newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}} % linksbündig mit Breitenangabe
 \newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}} % zentriert mit Breitenangabe
@@ -66,7 +66,6 @@
 	top=30mm,
 	bottom=30mm
 }
-
 
 \renewcommand{\arraystretch}{2.0}
 \pagestyle{fancy}
@@ -127,8 +126,8 @@
 \input{02_detaillierte_projektbeschreibung.tex}
 \input{03_projektanforderungen.tex}
 \input{04_spezifikation.tex}
-\input{05_technische_spezifikation.tex}
-\input{06_schnittstellenbeschreibung_integration.tex}
+\input{05_schnittstellenbeschreibung_integration.tex}
+\input{06_technische_spezifikation.tex}
 \input{08_durchfuehrung.tex}
 \input{10_test_validierung.tex}
 \input{11_fazit.tex}
