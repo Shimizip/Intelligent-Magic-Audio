@@ -113,13 +113,14 @@
   
 \end{titlepage}
 
-\thispagestyle{empty} % Keine Seitenzahl
+\addtocontents{toc}{\protect\thispagestyle{empty}}
 \tableofcontents
+\thispagestyle{empty}
 \newpage
-\thispagestyle{empty} % Keine Seitenzahl
 \listoffigures
 \thispagestyle{empty} % Keine Seitenzahl
 \newpage
+\pagestyle{fancy}
 \setcounter{page}{1} % Beginne Seitenzahl bei 1
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \input{01_Einleitung.tex}

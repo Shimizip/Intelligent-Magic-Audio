@@ -1,8 +1,17 @@
 
 \textbf{Komponenten/LF1/:} \\
 
+\begin{wrapfigure}{r}{0.4\textwidth} % Increase the width of the figure environment
+	\vspace{-60pt + 0.02\textwidth}
+	\hspace{0.07\textwidth} % Add horizontal space
+	\includegraphics[width=0.2\textwidth]{images/05_technische_spezifikation/Interface/Encoder.png} % Keep the image size the same
+	\caption{Rotary-Encoder}
+	\label{fig:rotary_encoder}
+	\vspace{-100pt}
+\end{wrapfigure}
 
 \textbf{(Encoder)} \\
+
 
 \textbf{Model} RIC11-22S16D5M-TH
 
@@ -15,14 +24,7 @@
 	\item Schalter (SW)
 \end{itemize} 
 
-	\begin{wrapfigure}{r}{0.4\textwidth} % Increase the width of the figure environment
-	\vspace{-250pt + 0.02\textwidth}
-	\hspace{0.07\textwidth} % Add horizontal space
-	\includegraphics[width=0.2\textwidth]{images/05_technische_spezifikation/Interface/Encoder.png} % Keep the image size the same
-	\caption{Rotary-Encoder}
-	\label{fig:rotary_encoder}
-	\vspace{-20pt}
-\end{wrapfigure}
+
 
 Zur Auswahl der Samples und zum Navigieren durch das Menü wir ein Rotary-Encoder mit einem Switch Button eingesetzt.Das Empfangen der A und B Signale des Encoders erfolgt über die Pins \boldinline{PA0} und \boldinline{PA1}. Der Encoder ist so konfiguriert das wen \boldinline{PA0} und \boldinline{PA1} auf high sind der Encoder den Cursor incrementiert. Wenn \boldinline{PA0} high ist und \boldinline{PA1} low wird der Cursor runtergezählt.
 Das Drücken des Switch über den Pin \boldinline{PA4}. Durch das drücken des Switch-Buttons wird der Pin \boldinline{PA4} auf high gesetzt und die Auswahl des Samples wird übernommen.
@@ -35,6 +37,16 @@ Das Drücken des Switch über den Pin \boldinline{PA4}. Durch das drücken des S
 
 \vspace{3em}
 
+\begin{wrapfigure}{r}{0.4\textwidth} % Increase the width of the figure environment
+	\vspace{-20pt + 0.02\textwidth}
+	\hspace{0.07\textwidth} % Add horizontal space
+	\includegraphics[width=0.25\textwidth]{images/05_technische_spezifikation/Interface/Display.png} % Keep the image size the same
+	\caption{LCD-Display}
+	\label{fig:lcd_display}
+	\vspace{-20pt}
+\end{wrapfigure}
+
+
 \textbf{(LCD-Display)} \\
 
 \textbf{Model:} GME128128-01-ii2
@@ -45,14 +57,6 @@ Das Drücken des Switch über den Pin \boldinline{PA4}. Durch das drücken des S
 
 \textbf{Spannung} 5.0V \\ \\
 
-	\begin{wrapfigure}{r}{0.4\textwidth} % Increase the width of the figure environment
-	\vspace{-160pt + 0.02\textwidth}
-	\hspace{0.07\textwidth} % Add horizontal space
-	\includegraphics[width=0.25\textwidth]{images/05_technische_spezifikation/Interface/Display.png} % Keep the image size the same
-	\caption{LCD-Display}
-	\label{fig:lcd_display}
-	\vspace{-20pt}
-\end{wrapfigure}
 
 
 Zur Visualiesierung der Sampels haben wir einen Monochronen LCD-Display benutzt. Im zusammenspiel mit dem Encoder ermöglicht es eine gute Navigation durch den gewünschten Samplepool. Die Daten werden über den Output Pin  \boldinline{PB7} an den SDA des Displays übertragen. Der Takt wird über den Pin  \boldinline{PB6} an den SCL übertragen. Das Display wird mit 20 FPS betrieben und mit hilfe von \boldinline{Timer tim5} geupdated.

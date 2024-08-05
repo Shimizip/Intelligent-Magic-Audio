@@ -66,6 +66,13 @@ Für das Training des neuronalen Netzes sind Trainingsdaten erforderlich. Diese 
 
 Da online keine kostenlosen und bereits mit den passenden Labels versehene Datensätze gefunden werden konnten, wurden eigene Daten generiert. Grundlage hierfür bildet eine private Audiosample-Bibliothek. Ein eigens entwickeltes Python-Skript ermöglicht es, Audiosamples auszuwählen, abzuspielen und zeiteffizient zu labeln.
 
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.75\textwidth]{images/08_durchfuehrung/nn/training_script_screenshot.png}
+	\caption{Python Script zum manuellen Tagging der Trainingsdaten}
+	\label{fig:training_script_screenshot}
+\end{figure}
+
 Für jedes manuell gelabelte Audiosample wird eine eindeutige Identifikationsnummer (UID) generiert. Die zugehörigen Labels werden in einer CSV-Datei gespeichert. Ein Beispiel für einen solchen Datensatz zeigt \textbf{\autoref{tab:audiodaten}}. Außerdem wird eine Kopie des Audiosamples unter dem Namen der UID im Ausgabeordner des Skripts abgelegt. Diese Dateien werden später vom Jupyter-Notebook für das Training verwendet.
 
 \begin{table}[h!]
