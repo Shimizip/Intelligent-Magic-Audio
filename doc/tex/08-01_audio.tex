@@ -4,7 +4,7 @@ Die Hauptfunktionalität eines Audiosamplers ist natürlich das Aufnehmen und Ab
 
 Der ausgesuchte PCM5102a Audio Codec verfügt lediglich über einen Ausgabestream, was eine Neubestellung eines Codecs mit In- und Output Stream erfordern würde.
 
-Angesichts des ohnehin schon ambitionierten Featureumfangs und der damit verbundenen Zeitknappheit, wurde die Aufnahmefunktion gestrichen, sodass der Prototyp zu einer reinen ``Sample-Playback`` Maschine wird. (TODO Verweis auf Lastenfall)
+Angesichts des ohnehin schon ambitionierten Featureumfangs und der damit verbundenen Zeitknappheit, wurde die Aufnahmefunktion \textbf{\hyperlink{lf-audiorecord}{LF04}} gestrichen, sodass der Prototyp zu einer reinen ``Sample-Playback`` Maschine wird. 
 
 Das folgende Kapitel befasst sich mit der Implementierung und Ansteuerung der Audiowiedergabe über den Audio Codec und aller verbundenen DSP-Operationen.
 
@@ -28,18 +28,16 @@ Der Audio Codec wandelt die digitalen PCM Signale in eine analoges Signal mit Li
 
 \subsubsection{Latenzen}
 
-
-
 Echtzeitfähigkeit ist ein kritischer Aspekt bei elektronischen Audioinstrumenten. 
 Eine niedrige Latenz ist entscheidend, um rhythmisch präzise und ``tight`` zu spielen, besonders wenn mehrere Instrumente miteinander synchronisiert werden müssen.
 
-Die maximale Latenz, die ein menschlicher Profimusiker noch akzeptieren kann, liegt bei etwa 20ms. Diese Richtwert basiert auf der Wahrnehmungsgrenze, bei der Musiker und Live-Performern keine signifikante zeitliche Verzögerung zwischen dem Triggern eines Samples und dessen tatsächlichem Output am Ausgang spüren (https://www.highfidelity.com/backlog/how-much-latency-can-live-musicians-tolerate-da8e2ebe587a)
+Die maximale Latenz, die ein menschlicher Profimusiker noch akzeptieren kann, liegt bei etwa 20ms. Diese Richtwert basiert auf der Wahrnehmungsgrenze, bei der Musiker und Live-Performern keine signifikante zeitliche Verzögerung zwischen dem Triggern eines Samples und dessen tatsächlichem Output am Ausgang spüren. \cite{latency-experiment}
 
 Um die Latenz auf ein Minimum zu reduzieren und sicherzustellen, dass elektronische Audioinstrumente reaktionsschnell und synchronisiert sind, können folgende Methoden angewendet werden:
 
 \paragraph{Dimensionierung der Buffersize}\
 
-Die erste Stellschraube ist die \textit{Buffersize}.
+Die erste Einstellungsmöglichkeit ist die \textit{Buffersize}.
 Das ist die Größe (in Bytes) des Audiobuffers.
 Je kleiner der Audiobuffer, desto öfter pro Sekunde gibt die DMA dessen Inhalt an den Audio Codec weiter.
 
@@ -51,7 +49,7 @@ Nach Experimentieren hat sich ein Wert von \textbf{128 Bytes} als adäquat herau
 
 \paragraph{Verwendung von Double Buffering}\
 
-Double Buffering ermöglicht es, Daten in einem Pufferspeicher zu verarbeiten, während gleichzeitig ein anderer Puffer für die Eingabe oder Ausgabe verwendet wird. Dies reduziert Verzögerungen und ermöglicht eine nahtlose Datenverarbeitung, da der Prozessor nicht auf das Ende einer Übertragung oder Berechnung warten muss, bevor er fortfahren kann. (Quelle: https://www.eetimes.com/fundamentals-of-embedded-audio-part-3/)
+Double Buffering ermöglicht es, Daten in einem Pufferspeicher zu verarbeiten, während gleichzeitig ein anderer Puffer für die Eingabe oder Ausgabe verwendet wird. Dies reduziert Verzögerungen und ermöglicht eine nahtlose Datenverarbeitung, da der Prozessor nicht auf das Ende einer Übertragung oder Berechnung warten muss, bevor er fortfahren kann. \cite{double-buffering}
 
 \begin{figure}[H]
 	\centering
@@ -86,16 +84,23 @@ Die Latenzmessung im Abschnitt \ref{test-latenzmessung} zeigt, dass die gemessen
 
 Ein sehr weit verbreitetes Protokoll zur digitalen Audioübertragung ist I2S. Viele Codecs, so auch der PCM5102a, unterstützen dieses Protokoll.
 
-I2S (Inter-IC Sound) ist ein Standard für die digitale Übertragung von Audiodaten zwischen integrierten Schaltkreisen (ICs). Es wurde entwickelt, um die Kommunikation von digitalen Audiodaten zwischen verschiedenen Komponenten wie Mikrofonen, DACs (Digital-Analog-Wandler) und ADCs (Analog-Digital-Wandler) zu ermöglichen. 
-
-TODO: PCM5102a Signale erklären (SCK, LCK, BCK, DIN)
+I2S (Inter-IC Sound) ist ein Standard für die digitale Übertragung von Audiodaten zwischen integrierten Schaltkreisen (ICs). Es wurde entwickelt, um die Kommunikation von digitalen Audiodaten zwischen verschiedenen Komponenten wie Mikrofonen, DACs (Digital-Analog-Wandler) und ADCs (Analog-Digital-Wandler) zu ermöglichen. \cite{i2s-reference}
 
 Der PCM5102a erkennt komfortablerweise die eingehende Samplerate anhand der Bitclock.
 Anders als bei vielen Audio Codecs ist keine zusätzliche Konfiguration des Chips über ein Kommunikationsprotokoll, wie I2C notwending.
-Somit fallen auch keine Treiber für diesen Chip an.
 
-- Der Einfachheit halber, festgelegte Samplerate und nur Stereo Samples! vllt eher zum DSP/Playback Part
+Somit fallen auch keine Treiber für diesen Chip an, was die Einbindung sehr vereinfacht.
 
+Die I2S Signale des PCM5102a sind:
+
+\begin{itemize}
+	\item \textbf{SCK (System Clock)}: Dieser Takt wird für den Betrieb des internen Digitalfilters und des DAC-Kerns verwendet. Er kann entweder extern bereitgestellt oder intern vom PCM5102a erzeugt werden.
+	\item \textbf{BCK (Bit Clock)}: Dieser Takt signalisiert den Beginn jedes Bits im Datenwort. Der BCK wird verwendet, um die Daten auf der Datenleitung (DIN) zu takten.
+	\item \textbf{LCK (Left/Right Clock)}: Auch als Word Select oder Frame Sync bekannt. Dieser Takt signalisiert den Beginn eines neuen Audioframes und zeigt an, ob die aktuellen Daten den linken oder rechten Kanal darstellen.
+	\item \textbf{DIN (Digital Input)}: Dies ist die Datenleitung, über die die PCM-Audiodaten übertragen werden.
+\end{itemize}
+
+Der Einfachheit halber wird eine festgelegte Samplerate und nur Stereo-Samples verwendet.
 
 \subsubsection{SD Karte}
 
@@ -196,9 +201,35 @@ Hier ist eine detaillierte Erklärung dieser Operationen:
 Diese Schritte stellen sicher, dass die berechneten Indizes korrekt auf die im Stereo-PCM-Format erwarteten Positionen verweisen, indem sie sicherstellen, dass der Puffer die richtigen Daten für den linken und rechten Kanal enthält.
 
 
-\subsubsection{Downsampling für die Verarbeitung von Audio durch das Neuronalen Netzes}
+\subsubsection{Downsampling eines Audiochunks für die Verarbeitung von Audio durch das Neuronalen Netzes}
 \label{sec:audio-downsampling}
 
-TODO: DOWNSAMPLINGS
+
+Damit die proprietäre ``STM32\_AI\_AudioPreprocessing\_Library`` (Abschnitt \ref{stm32-cube-ai}) die Audiodaten in Spektrogramme umwandeln kann, müssen die Daten zunächst ins korrekte Format gebracht werden. Für die Umwandlung erwartet die Library \SI{16}{\kilo\hertz} Samplerate, Mono Dateien.
+
+In der Datei
+\path{/f401_sd_card_audio_codec_test/Core/Src/audioPreprocessor.c}
+finden sich alle Funktionen, die das Audiopreprocessing der Audiodatei für die Klassifizierung betreffen.
+
+Die Funktion 
+\mint{c}|uint32_t downsample_to_1024_samples(FIL *file, int16_t outChunk[NUM_SAMPLES_CHUNK_OUT])|
+liest einen Audiochunk aus einer Datei von der SD Karte, konvertiert die Stereo-Samples in Mono und führt anschließend eine Abtastratenreduktion (Downsampling) durch. Die verarbeiteten Samples werden im \mintinline{c}|outChunk|-Buffer gespeichert. Die Funktion arbeitet blockweise und gibt die Anzahl der heruntergesampelten Samples zurück. 
+
+Zunächst werden die Eingabedaten in den Puffer \mintinline{c}|inputChunk| eingelesen. Die Stereo-Samples werden durch Mittelung der linken und rechten Kanäle in Mono umgewandelt und in den Puffer \mintinline{c}|currentInBlockMono| geschrieben. Anschließend wird die Funktion \mintinline{c}|downsample_Block| aufgerufen, die die eigentliche Abtastratenreduktion und FIR-Filterung durchführt.
+
+Die Funktion \mintinline{c}|downsample_Block| konvertiert die 16-Bit-Integer-Audiodaten in ein Fließkommaformat, führt FIR-Filterung und Dezimierung durch und konvertiert die gefilterten Samples zurück in das 16-Bit-Integer-Format. Die verarbeiteten Daten werden dann in den Zielpuffer geschrieben.
+
+Um Aliasing beim heruntergesampleten Audiomaterial zu vermeiden, werden die benötigten Samples vor dem Downsampling mit einem FIR Highcut geglättet. 
+Die Koeffizienten können mit Filterdesign-Softwares, wie \url{http://t-filter.engineerjs.com} generiert werden. Es wurde ein Filter mit 57 Koeffizienten gewählt, der eine gute Balance zwischen Performance und Ripple bietet. 
+Wie in Abbildung \ref{fig:fir-filter} zu sehen, bietet der Filter ab \SI{16}{\kilo\hertz} eine recht steile Flanke bis \SI{-45}{\deci\bel} Abschwächung.
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.7\textwidth]{images/08_durchfuehrung/audio/fir_lowpass.png}
+	\caption{Anti-Aliasing FIR Lowpass Filter}
+	\label{fig:fir-filter}
+\end{figure}
+
+Die Open Source CMSIS DSP Library (Link) bietet direkt eine optimierte Funktion, welche die FIR-Filterung, sowie das eigentliche Downsampling kombiniert: \mintinline{c}|arm_fir_decimate_f32|.
 
 

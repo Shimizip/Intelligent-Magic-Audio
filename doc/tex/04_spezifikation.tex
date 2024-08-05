@@ -22,19 +22,19 @@ In Abbildung \ref{fig:context_diagram_gesamt} wird diese Interaktion durch ein K
 
 \paragraph{Klassifizierung}
 
-Die Klassifizierung durch das Neuronale Netz setzt die proprietäre \textbf{STM32.CubeAI} Umgebung voraus (näheres dazu im Abschnitt \ref{stm32-cube-ai}). Das neuronale Netz erhält als Eingabewert ein Spektrogramm mit 960 Reihen, und liefert daraufhin ein Klassifikationsergebnis mit den \hyperlink{nn-classes}{5 Klassen} zurück
+Die Klassifizierung durch das Neuronale Netz setzt die proprietäre \textbf{STM32.CubeAI} Umgebung voraus (näheres dazu im Abschnitt \ref{stm32-cube-ai}). Das neuronale Netz erhält als Eingabewert ein Spektrogramm mit 960 Reihen, und liefert daraufhin ein Klassifikationsergebnis mit den \hyperlink{nn-classes}{5 Klassen} zurück.
 
 Da das Neuronale Netz die Klassifizierung über ein Spektrogramm, und nicht mit den rohen Audiosamples vollzieht, müssen die Audiodaten zunächst in ein solches Spektrogramm umgewandelt werden. Das geschieht Reihenweise, wie in Abschnitt \ref{sec:approach-audio-classification} beschrieben. Die Bibliothek für diese Umwandlung ist die ebenfalls proprietäre \textbf{STM32\_AI\_Audio\_Preprocessing\_Libray}. Der Input der Umwandlungsfunktion ist ein Buffer von 1024 Samples(\mintinline{c}|frame[1024]|). Der Rückgabewert ist eine Reihe des Spektrogramms (\mintinline{c}|mel_spectrogram_column_buffer[30]|).
 
 \paragraph{Audioverarbeitung}
 
-Um sicherzustellen, dass die \textbf{STM32\_AI\_Audio\_Preprocessing\_Libray} die zu klassifizierenden Audiodaten im richtigen Format erhält, müssen diese zuerst umgewandelt werden. Wie in Abschnitt \ref{sec:audio-downsampling} beschrieben, sind dafür ein Downsampling von 44.1kHz und die Umwandlung von Stereo auf Mono erforderlich. Für diese Schritte wird die Open-Source \textbf{CMSIS DSP Library} verwendet.
+Um sicherzustellen, dass die \textbf{STM32\_AI\_Audio\_Preprocessing\_Libray} die zu klassifizierenden Audiodaten im richtigen Format erhält, müssen diese zuerst umgewandelt werden. Wie in Abschnitt \ref{sec:audio-downsampling} beschrieben, sind dafür Downsampling von 44.1kHz auf 16kHz Samplerate und die Umwandlung von Stereo auf Mono erforderlich. Für diese Schritte wird die Open-Source \textbf{CMSIS DSP Library} verwendet.
 
 Bei der Audiowiedergabe erhält der Audio Codec pro Iteration den gesamten Audiobuffer \mintinline{c}|dacData[256]|.
 
 \paragraph{Interface}
 
-Um das Menü anzuzeigen, erhält der Treiber des Displays Schrift, sowie Linieninformationen in Form von Pixeldaten. 
+Um das Menü anzuzeigen, erhält der Treiber des Displays Strings, welche er intern in Pixeldaten umwandelt, sowie Linieninformationen in Form von Pixeldaten. 
 
 Es sind 3 GPIO Inputs für die Nutzung des Encoders erforderlich. \mintinline{c}|enc_clk_in1| und \mintinline{c}|enc_dt_in2| sind für die Auswertung des Drehimpulsgebers nötig. \mintinline{c}|enc_switch_in3| dient für die Push-Button Funktion des Encoders.
 
@@ -60,6 +60,7 @@ Die Struktur und die Übergänge dieses Zustandsautomaten sind in Abbildung \ref
    	\caption{Zustandsautomat des Systems}
    	\label{fig:fsm}
 \end{figure}
+% TODO: FORMULIEREN
 
 Nach dem Initialisierungszustand \textbf{Init} beginnt der Automat im \textbf{Indexing}-Zustand. In diesem Zustand wird überprüft, ob noch unklassifizierte Samples vorhanden sind. Falls ja, wechselt der Automat in den \textbf{Classification}-Zustand, um das unklassifizierte Sample zu klassifizieren. 
 
