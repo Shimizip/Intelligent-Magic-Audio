@@ -1,5 +1,5 @@
 _minted-bericht/
-
+*.lof
 # LaTeX temporary files
 *.aux
 *.log
