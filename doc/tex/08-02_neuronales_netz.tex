@@ -64,12 +64,12 @@ Um die in \textbf{Abschnitt \ref{sec:classification-intro}} beschriebenen Merkma
 \label{sec:input-data-generation}
 Für das Training des neuronalen Netzes sind Trainingsdaten erforderlich. Diese bestehen aus Eingabedaten, die bereits mit den korrekten Klassifikationsergebnissen, also Labels, versehen sind. Um das Training des neuronalen Netzes während des Trainings einschätzen und nach Abschluss des Trainings validieren zu können, werden die Eingabedaten in drei Segmente aufgeteilt.
 
-Da online keine kostenlosen und bereits mit den passenden Labels versehene Datensätze gefunden werden konnten, wurden eigene Daten generiert. Grundlage hierfür bildet eine private Audiosample-Bibliothek. Ein eigens entwickeltes Python-Skript ermöglicht es, Audiosamples auszuwählen, abzuspielen und zeiteffizient zu labeln.
+Da online keine kostenlosen und bereits mit den passenden Labels versehene Datensätze gefunden werden konnten, wurden eigene Daten generiert. Grundlage hierfür bildet eine private Audiosample-Bibliothek. Ein eigens entwickeltes Python-Skript ermöglicht es, Audiosamples auszuwählen, abzuspielen und zeiteffizient zu labeln. Ein Screenshot des Labeling-Prozesses mit dem Script ist in \textbf{Abbildung \ref{fig:training_script_screenshot}} abgebildet.
 
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=0.75\textwidth]{images/08_durchfuehrung/nn/training_script_screenshot.png}
-	\caption{Python Script zum manuellen Tagging der Trainingsdaten}
+	\caption{Python-script zum manuellen Auswählen Labeln der Trainingsdaten}
 	\label{fig:training_script_screenshot}
 \end{figure}
 
@@ -145,6 +145,8 @@ Wie in \textbf{Abschnitt \ref{sec:input-data-generation} }beschrieben, wurden 20
 
 Eine Visualisierung der Datenaufteilung ist in \textbf{\autoref{fig:img-input-data-graph}} dargestellt.
 
+Hierbei muss festgehalten werden, dass die Datenaufteilung einen methodischen Fehler enthält, der erst zu spätem Zeitpunkt aufgefallen ist und nicht mit geringem Zeitaufwand behoben werden konnte. Die einzelnen Audiosamples werden wie zuvor beschrieben erst in Audiosubsamples aufteteilt und dann randomisiert auf die drei Kategorien aufgeteilt. Der Gedanke hierbei war, dass so auch bei stark unterschiedlicher Länge der Audiosamples gewährleistet ist, dass jede Kategorie immer eine bestimmte Anzahl an Audiosubsamples enthält. Ein Nebeneffekt davon ist allerdings, dass dadurch Audiosubsamples der gleichen Datei in allen drei Kategorien verteilt sein können. Da es nahe liegt, dass sich Audiosubsamples der gleichen Datei immer ähneln, wird dadurch die Genauigkeit der Klassifizierung ggf. verfälscht dargestellt.
+
 \begin{figure}[h!]
 \centering
 \includegraphics[width=0.95\textwidth]{images/08_durchfuehrung/nn/input-data-graph.png}
@@ -214,11 +216,20 @@ Für den Betrieb des Neuronalen Netzes wird ``STM32Cube.AI`` verwendet, um das i
 
 \textbf{Einlesen der Datei und Datenvorverarbeitung}
 
-
 Zum Einlesen der Datei wird die in \textbf{Abschnitt \ref{sec:audio-downsampling}} beschriebene Funktion \mintinline{c}|downsample_1024_samples()| verwendet. Diese reduziert die Datenmenge um den Faktor 3, was bei einer Eingabe-Samplerate von 44.1 kHz zu einer Ausgabe-Samplerate von 14.700 kHz (statt 16.000 kHz) führt. Die resultierende Abweichung von $\approx$ 8.8\% wird jedoch als vernachlässigbar für das Klassifikationsergebnis eingeschätzt.
 
 Für die Berechnung der Mel-Spektrogramme wird die Bibliothek ``STM32\_AI\_AudioPreprocessing\_Library`` verwendet. Diese ist Teil des ``FP-AI-SENSING1`` Function Packs \cite{fp-ai-sensing1}. Mit dieser lassen sich einzelne Spektrogrammspalten berechnen, deren Amplitudenwerte müssen jedoch im Anschluss noch in Dezibel (dB) umgerechnet werden.
 
+Ein Ablaufdiagramm, das den geplanten Prozess der Datenvorverarbeitung und der Klassifizierung der Audiosamples im Zusammenspiel mit den anderen Komponenten veranschaulicht, ist in \textbf{Abbildung \ref{fig:img-nn-ablaufdiagramm}} dargestellt.
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.85\textwidth]{images/08_durchfuehrung/nn/ablauf_klassifizierung_c.png}
+\caption{Ablauf der Datenvorverarbeitung und Klassifizierung einer Datei im C-Code}
+\label{fig:img-nn-ablaufdiagramm}
+\end{figure}
+
+\newpage
 \textbf{Übersetzen des neuronalen Netzes mit STM32Cube.AI}
 
 
@@ -238,7 +249,7 @@ Total Ram  		21.844 B (21.37 KiB)
 \end{minted}
 
 
-
+\newpage
 \textbf{Nutzung von STM32Cube.AI}
 
 Die Nutzung von STM32Cube.AI wird anhand eines Beispiels in der Dokumentation beschrieben \cite{stm32-cube-ai-documentation}. Obwohl das Beispiel auf einer älteren Version basiert, hat sich der grundlegende Umgang mit der Software nicht verändert. Da die Nutzung der Funktionen und Zeck der einzelnen Variablen dort im Detail  beschrieben sind, wird dies im folgenden Abschnitt nur kurz zusammengefasst.
