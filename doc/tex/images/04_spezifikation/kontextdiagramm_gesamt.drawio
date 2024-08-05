@@ -1,28 +1,28 @@
-<mxfile host="Electron" modified="2024-08-05T13:23:46.036Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/22.0.3 Chrome/114.0.5735.289 Electron/25.8.4 Safari/537.36" etag="RDtgDTcQnoLVxVEyRd7H" version="22.0.3" type="device">
+<mxfile host="Electron" modified="2024-08-05T13:27:23.734Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/22.0.3 Chrome/114.0.5735.289 Electron/25.8.4 Safari/537.36" etag="3nndXy0kOSdJga-DIBhq" version="22.0.3" type="device">
   <diagram name="Seite-1" id="00pDsmjtND-n7SUzU1SD">
-    <mxGraphModel dx="1659" dy="957" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="1419" dy="814" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
         <mxCell id="HaPshGFiGsYCy_S7ym-9-50" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;dashed=1;strokeColor=#1ba1e2;" parent="1" vertex="1">
-          <mxGeometry x="80" y="433.4" width="720" height="160" as="geometry" />
+          <mxGeometry x="60" y="433.4" width="550" height="160" as="geometry" />
         </mxCell>
-        <mxCell id="zexmHtpzjjBF8JNYSFhR-3" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=default;strokeColor=#1ba1e2;dashed=1;" vertex="1" parent="1">
-          <mxGeometry x="630" y="360" width="170" height="130" as="geometry" />
+        <mxCell id="zexmHtpzjjBF8JNYSFhR-3" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#1ba1e2;dashed=1;" parent="1" vertex="1">
+          <mxGeometry x="630" y="350" width="170" height="130" as="geometry" />
         </mxCell>
         <mxCell id="HaPshGFiGsYCy_S7ym-9-48" value="" style="whiteSpace=wrap;html=1;aspect=fixed;fillColor=none;dashed=1;fontColor=#ffffff;strokeColor=#1ba1e2;" parent="1" vertex="1">
           <mxGeometry x="40" y="30" width="260" height="260" as="geometry" />
         </mxCell>
         <object label="" id="HaPshGFiGsYCy_S7ym-9-52">
-          <mxCell style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;dashed=1;strokeColor=#1BA1E2;shape=partialRectangle;bottom=0;" parent="1" vertex="1">
-            <mxGeometry x="520" y="70" width="280" height="363.4" as="geometry" />
+          <mxCell style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;dashed=1;strokeColor=#1BA1E2;" parent="1" vertex="1">
+            <mxGeometry x="500" y="50" width="280" height="260" as="geometry" />
           </mxCell>
         </object>
         <mxCell id="HaPshGFiGsYCy_S7ym-9-20" value="Audioverarbeitung" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#1BA1E2;" parent="1" vertex="1">
-          <mxGeometry x="690" y="70" width="110" height="30" as="geometry" />
+          <mxGeometry x="670" y="50" width="110" height="30" as="geometry" />
         </mxCell>
         <mxCell id="HaPshGFiGsYCy_S7ym-9-19" value="Interface" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#1BA1E2;" parent="1" vertex="1">
-          <mxGeometry x="80" y="433.4" width="60" height="30" as="geometry" />
+          <mxGeometry x="60" y="433.4" width="60" height="30" as="geometry" />
         </mxCell>
         <mxCell id="HaPshGFiGsYCy_S7ym-9-18" value="Klassifizierung" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#1BA1E2;" parent="1" vertex="1">
           <mxGeometry x="40" y="30" width="90" height="30" as="geometry" />
@@ -45,7 +45,7 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="HaPshGFiGsYCy_S7ym-9-7" value="CMSIS DSP Library" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="610" y="100" width="80" height="80" as="geometry" />
+          <mxGeometry x="590" y="80" width="80" height="80" as="geometry" />
         </mxCell>
         <mxCell id="HaPshGFiGsYCy_S7ym-9-8" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.75;exitDx=0;exitDy=0;entryX=0.011;entryY=0.401;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="HaPshGFiGsYCy_S7ym-9-4" target="HaPshGFiGsYCy_S7ym-9-1" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
@@ -62,22 +62,22 @@
           <mxGeometry x="180" y="50" width="80" height="80" as="geometry" />
         </mxCell>
         <mxCell id="HaPshGFiGsYCy_S7ym-9-11" value="SD1306&lt;br&gt;Display Driver" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="130" y="473.4" width="80" height="80" as="geometry" />
+          <mxGeometry x="110" y="473.4" width="80" height="80" as="geometry" />
         </mxCell>
         <mxCell id="HaPshGFiGsYCy_S7ym-9-12" value="Encoder" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="270" y="498.4" width="80" height="80" as="geometry" />
+          <mxGeometry x="250" y="498.4" width="80" height="80" as="geometry" />
         </mxCell>
         <mxCell id="HaPshGFiGsYCy_S7ym-9-13" value="Fader" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="410" y="498.4" width="80" height="80" as="geometry" />
+          <mxGeometry x="390" y="498.4" width="80" height="80" as="geometry" />
         </mxCell>
         <mxCell id="HaPshGFiGsYCy_S7ym-9-14" value="Audio Codec" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="690" y="230" width="80" height="80" as="geometry" />
+          <mxGeometry x="670" y="210" width="80" height="80" as="geometry" />
         </mxCell>
         <mxCell id="HaPshGFiGsYCy_S7ym-9-15" value="Button" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="530" y="480" width="80" height="80" as="geometry" />
+          <mxGeometry x="510" y="480" width="80" height="80" as="geometry" />
         </mxCell>
         <mxCell id="HaPshGFiGsYCy_S7ym-9-16" value="SD Karte" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="670" y="400" width="80" height="80" as="geometry" />
+          <mxGeometry x="670" y="390" width="80" height="80" as="geometry" />
         </mxCell>
         <mxCell id="HaPshGFiGsYCy_S7ym-9-22" value="" style="endArrow=none;html=1;rounded=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;exitX=0.404;exitY=-0.001;exitDx=0;exitDy=0;exitPerimeter=0;startArrow=classic;startFill=1;endFill=0;" parent="1" source="HaPshGFiGsYCy_S7ym-9-1" target="HaPshGFiGsYCy_S7ym-9-10" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
@@ -222,8 +222,8 @@
             <mxPoint x="-25" y="14" as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="zexmHtpzjjBF8JNYSFhR-4" value="Dateimanagement" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#1BA1E2;" vertex="1" parent="1">
-          <mxGeometry x="690" y="360" width="110" height="30" as="geometry" />
+        <mxCell id="zexmHtpzjjBF8JNYSFhR-4" value="Dateimanagement" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#1BA1E2;" parent="1" vertex="1">
+          <mxGeometry x="690" y="350" width="110" height="30" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
