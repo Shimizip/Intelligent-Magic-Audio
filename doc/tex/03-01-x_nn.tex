@@ -1,9 +1,12 @@
-\subsubsection{LF03: Klassifikation von Audiosamples durch ein neuronales Netz}
+\subsubsection{LF03: Festlegen geeigneter Merkmalsklassen für Audiosamples}
+\label{sec:lf-nn-01}
 Ein neuronales Netz soll Audiosamples effektiv in für die Musikproduktion relevante Kategorien klassifizieren, wie z.B. Genre, Instrumententyp oder Klangfarbe. Diese Kategorien sollten zum einen sinnvoll bei der Musikproduktion sein, zum anderen auch mit der genutzten Hardware klassifizierbar und damit realistisch sein.
 
-\subsubsection{LF04: Ausgabe sinnvoller Ergebnisse durch das neuronale Netz}
-Das System muss in der Lage sein, annährend zutreffende Klassifizierungsergebnisse auszugeben. Ziel ist ein Accuracy-Wert von über 50\%. Zum Vergleich läge der Accuracy-Wert bei \textit{$\frac{1}{5} = 20\%$}, wenn das neuronale Netz rein zufällige Ergebnisse ausgeben würde. Gleichzeitig ist dieses Ziel von 50\% realistisch erreichbar. Um dieses Ziel zu erreichen, muss das neuronale Netz ausreichend mit relevanten Daten trainiert werden.
+\subsubsection{LF04: Entwicklung und Training des neuronalen Netzes}
+\label{sec:lf-nn-02}
+Ein neuronales Netz soll Audiosamples in die durch \ref{sec:lf-nn-01} festgelegten Merkmalsklassen zu klassifizieren. Dieses muss in der Lage sein, annährend zutreffende Klassifizierungsergebnisse auszugeben. Ziel ist ein Accuracy-Wert von über 50\%. Zum Vergleich läge der Accuracy-Wert bei \textit{$\frac{1}{5} = 20\%$}, wenn das neuronale Netz rein zufällige Ergebnisse ausgeben würde. Gleichzeitig ist dieses Ziel von 50\% realistisch erreichbar. Um dieses Ziel zu erreichen, muss das neuronale Netz ausreichend mit relevanten Daten trainiert werden.
 Weiterhin sollte die Confusion-Matrix eine klare Tendenz in der korrekten Klassifizierung der Kategorien aufzeigen. Darüber hinaus sollten auch manuell eingegebene Samples, wie beispielsweise ein Rock-Song, zuverlässig den entsprechenden Kategorien zugeordnet werden können. 
 
 \subsubsection{LF05: Betrieb des neuronalen Netzes auf dem Nucleo-F7 Board}
+\label{sec:lf-nn-03}
 Das neuronale Netz, einschließlich aller vor- und nachgelagerten Datenvorverarbeitungsschritte und der Generierung der Spektrogramme, muss auf einem Nucleo-F7 Board laufen können.
