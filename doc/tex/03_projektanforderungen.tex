@@ -6,7 +6,7 @@ Basierend auf dem zuvor entwickelten Produktkonzept wurden funktionale und nicht
 \subsection{Funktionale Anforderungen}
 Die funktionalen Anforderungen definieren die Funktionen, die dem Benutzer zur Verfügung gestellt werden sollen. Jede dieser Anforderungen wird mit dem Kürzel „LF“ für Lastenfall, gefolgt von einer fortlaufenden Nummer, gekennzeichnet.
 
-\include{Interface/LF Interface}
+\input{Interface/LF Interface}
 \include{03-01-x_nn.tex}
 \include{03-02-audio.tex}
 
@@ -56,22 +56,13 @@ Die nicht-funktionalen Anforderungen spezifizieren Qualitätsmerkmale, die das S
 	\end{tabularx}
 \end{table}
 
-\begin{table}[h!]
-	\begin{tabularx}{\textwidth}{|l|X|}
-		\hline
-		\textbf{/LQ5/} & \textbf{Feedback-Mechanismen} \\ \hline
-		\textbf{Kategorie} & Benutzerfreundlichkeit \\ \hline
-		\textbf{Beschreibung} & Das System sollte klares und sofortiges Feedback auf Benutzeraktionen geben, um Fehlbedienungen zu minimieren. \\ \hline
-	\end{tabularx}
-\end{table}
-
 \newpage
 \subsubsection{Effizienz}
 
 \begin{table}[h!]
 	\begin{tabularx}{\textwidth}{|l|X|}
 		\hline
-		\textbf{/LQ6/} & \textbf{Ressourcennutzung} \\ \hline
+		\textbf{/LQ5/} & \textbf{Ressourcennutzung} \\ \hline
 		\textbf{Kategorie} & Effizienz \\ \hline
 		\textbf{Beschreibung} & Das System sollte sparsam mit den verfügbaren Ressourcen (CPU, Speicher, Energie) umgehen, um eine lange Betriebsdauer und Stabilität zu gewährleisten. \\ \hline
 	\end{tabularx}
@@ -80,7 +71,7 @@ Die nicht-funktionalen Anforderungen spezifizieren Qualitätsmerkmale, die das S
 \begin{table}[h!]
 	\begin{tabularx}{\textwidth}{|l|X|}
 		\hline
-		\textbf{/LQ7/} & \textbf{Optimierung der Audioverarbeitung} \\ \hline
+		\textbf{/LQ6/} & \textbf{Optimierung der Audioverarbeitung} \\ \hline
 		\textbf{Kategorie} & Effizienz \\ \hline
 		\textbf{Beschreibung} & Algorithmen für die Audioverarbeitung und Klassifizierung sollten so optimiert sein, dass sie minimale Rechenressourcen benötigen, ohne die Genauigkeit zu beeinträchtigen. \\ \hline
 	\end{tabularx}
