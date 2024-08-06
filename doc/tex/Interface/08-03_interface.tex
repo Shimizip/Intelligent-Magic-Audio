@@ -1,4 +1,4 @@
-\subsection{Interface}
+\subsection{Interface}\label{sec:interface}
 
 Ein\textbf{ User Interface (UI)} in eingebetteten Systemen ermöglicht eine Interaktion zwischen Benutzer und Gerät.
 
@@ -8,8 +8,8 @@ Das \textbf{Interface} besteht aus \textbf{Encodern}, \textbf{Schiebepotentiomet
 Im folgenden Kapitel wird Ihnen die Funktionalität, Implementierung, Ansteuerung, sowie das Zusammenspiel der Komponenten untereinander nähergebracht: 
 
 \subsubsection{Encoder}
-\textbf{Komponente \hyperlink{LF01_Link}{/LF01/}} \\
-
+\textbf{\hyperlink{LF01_Link}{/LF01/}} \\
+\textbf{\hyperlink{Encoder}{Encoder-TS}} \\
 \textbf{Grundfunktionalität:} \\
 
 
@@ -28,7 +28,7 @@ Die Auswertung dieser Signale erfolgt dann in der Callback  \mintinline{c}|HAL_G
 	\label{fig:phase_verschiebung}
 \end{figure}
 
-Wenn A und B beide High sind, wird die Cursor-Position welche in auf dem Display durch den Methodenaufruf \mintinline{c}|cursorUp(FileManager *fm)|
+Wenn A und B beide High sind\cite{rotary-encoder}, wird die Cursor-Position welche in auf dem Display durch den Methodenaufruf \mintinline{c}|cursorUp(FileManager *fm)|
 erhöht. Wenn  \textbf{\autoref{fig:phase_verschiebung}} A High und B Low ist, wird die Cursor-Position auf dem Display durch \mintinline{c}|cursorDown(FileManager *fm)| verringert. Wenn der Schalter gedrückt wird, wird die Datei durch \mintinline{c}|selectFile(FileManager *fm)| der Index des Files gespeichert. 
 
 \newpage 
@@ -36,7 +36,7 @@ erhöht. Wenn  \textbf{\autoref{fig:phase_verschiebung}} A High und B Low ist, w
  
   \inputminted[firstline=84, lastline=90]{c}{../../f401_display_encoder_fader_test/Core/Src/filemanager.c}
   
-Anhand des Index des Files kann der Names des Files ermittelt werden.
+Anhand des Index des Files kann der Names des Files ermittelt werden aus dem Filemanager.
 
 	
 \inputminted[firstline=159, lastline=161]{c}{../../f401_display_encoder_fader_test/Core/Src/filemanager.c}
@@ -53,11 +53,24 @@ Erst nach dem Ablauf des Timers war ist ein möglich den Knopf wieder zu betäti
 
 \newpage
 \subsubsection{Schiebenpotentiometer, ADC und DMA}
-\textbf{Komponenten\hyperlink{LF02_Link}{/LF02/}} \\
+\textbf{\hyperlink{LF02_Link}{/LF02/}} \\
 
 \textbf{Grundfunktionalität:}\\
 
-\textbf{Schiebepotentiometer} erfassen analoge Spannungen, die vom \textbf{Analog-Digital-Wandler (ADC)} in digitale Werte umgewandelt werden\textbf{\autoref{fig:conversion}}. Er nimmt in regelmäßigen Intervallen Proben des analogen Signals. Die Auflösung in 12 Bits 15 ADC Clock Cycles hat sich als am effizientesten herrausgestelt. ()\textbf{Wertebereich} 0-4096).
+\textbf{\hypertarget{ADC}{ADC}} \\
+
+Die an den Schleifer des \textbf{\hyperlink{Potentiometer}{Schiebepotentiometers}} erfassten analogen Spannungen, werden vom \textbf{Analog-Digital-Wandler} \textbf{\hyperlink{ADC}{ADC}} erfasst.\textbf{\autoref{fig:conversion}}. 
+
+\textbf{ADC}\cite{adc} (Analog Digital Converter) wird benutzt, um die Ausgangsspannung an den Schleifern zu digitalisieren und in Zahlen zu fassen. Er nimmt in regelmäßigen Intervallen mit Hilfe des DMA Proben des analogen Signals. Die Auflösung in 12 Bits 15 ADC Clock Cycles hat sich als am effizientesten herrausgestelt.
+Dies erfolgt über die Pins \boldinline{PA6, PA7, PB0, PB1, PC0}, die als Schnittstellen parallel der Reihenfolge der Channels \boldinline{6, 7, 8, 9, 10} dienen. Jedes Mal, wenn an der Ausgangsspannung eines der Schleifer eine Veränderung wahrgenommen wird, startet eine Interrupt Service Routine.
+
+\textbf{Configuration}
+
+\textbf{Resolution:} 12Bit divided 15 ADC ClockCycles (Wertebereich: 0-4096) \\
+\textbf{Mode:} Scan Mode und Continues Convervion Mode \\
+\textbf{DMA:} DMA Continuous Requests Enable \\
+\textbf{Conversions:} 5 \\
+\textbf{Sampling Time:} 3 Cycles  \\
 
 \begin{figure}[H]
 	\centering
@@ -66,7 +79,15 @@ Erst nach dem Ablauf des Timers war ist ein möglich den Knopf wieder zu betäti
 	\label{fig:conversion}
 \end{figure}
 
+\textbf{\hypertarget{DMA}{DMA}} \\
+
 Der \textbf{Direct Memory Access (DMA)-Controller} übernimmt anschließend die direkte Übertragung dieser digitalen Werte in den Speicher, konkret in  \mintinline{c}|adcBuffer[NUM_CHANNELS]|.
+
+\textbf{DMA} (Direct Memory Access) wird gestartet, um die Werte, die an den Pins des ADC liegen, zyklisch zu pollen. Er wird zeitbasiert mit einem \textbf{Timer tim5} gestartet und in der Callback nach der Glättung der kumulierten ADC-Werte gestoppt.
+
+\textbf{Timer:} Timer5, Internal Clock, One Pulse Mode \\
+\textbf{Data Width:} Word Übertragung von 32-Bit-Datenblöcken \\
+\textbf{Mode:} Circular \\
 
 \begin{figure}[H]
 \centering
@@ -75,9 +96,8 @@ Der \textbf{Direct Memory Access (DMA)-Controller} übernimmt anschließend die 
 \label{fig:DMA_ADC_FADER}
 \end{figure}
 
-Der Direct Memory Access (DMA)-Controller ermöglicht die direkte Datenübertragung zwischen Speicher und Peripheriegeräten, wodurch die Prozessorbelastung reduziert wird. Analoge-Digital-Wandler (ADCs) sorgen für die schnelle Digitalisierung analoger Signale, was eine präzise Verarbeitung der Messdaten ermöglicht. Potentiometer bieten die Möglichkeit zur benutzerfreundlichen Anpassung von Spannungswerten. Das Bussystem sorgt für eine effiziente Kommunikation zwischen den verschiedenen Komponenten und gewährleistet eine konsistente und zuverlässige Datenverarbeitung. \textbf{\autoref{fig:DMA_ADC_FADER}} \\
+Der Direct Memory Access \textbf{\hyperlink{DMA}{DMA}}-Controller ermöglicht die direkte Datenübertragung zwischen Speicher und Peripheriegeräten, wodurch die Prozessorbelastung reduziert wird. Analoge-Digital-Wandler (ADCs) sorgen für die schnelle Digitalisierung analoger Signale, was eine präzise Verarbeitung der Messdaten ermöglicht. Potentiometer bieten die Möglichkeit zur benutzerfreundlichen Anpassung von Spannungswerten. Das Bussystem sorgt für eine effiziente Kommunikation zwischen den verschiedenen Komponenten und gewährleistet eine konsistente und zuverlässige Datenverarbeitung. \textbf{\autoref{fig:DMA_ADC_FADER}}\cite{dma-adc-work} \\
 
-\newpage
 \textbf{Problematik:}
 
 \textbf{No.1}
@@ -94,6 +114,7 @@ Im laufe der Implementation des ADC könnte man Schwankungen an den Ausgangssign
 
 Um das Problem zu beheben, wurde ein \textbf{Timer} \mintinline{c}|tim5| implementiert, der die DMA-Übertragung steuert. Der Timer sorgt dafür, dass die DMA in regelmäßigen Intervallen gestartet und gestoppt wird. Diese Maßnahme ermöglicht es der CPU, sich ausreichend um andere Aufgaben zu kümmern, indem sie nicht kontinuierlich mit der Datenverarbeitung durch die DMA beschäftigt ist. Der Einsatz des Timers verhindert, dass die DMA die CPU überlastet und gewährleistet eine ausgewogene Nutzung der Systemressourcen. \\
 
+\newpage
 \textbf{Lösung No.2:}
 
 Diese Schwankungen würden behoben in dem man ein Glättung der Werte eingeführt hat.
@@ -112,10 +133,18 @@ Eine andere möglichkeit des Spannungs inkonsitenz könnte mit Kondensatoren umg
 
 \newpage
 \subsubsection{Display, SD1306 Treiber und I2C}
+\textbf{\hyperlink{LF01_Link}{/LF01/}} \\
+\textbf{\hyperlink{LF02_Link}{/LF02/}} \\
 
-\textbf{I2C} \\
+\hypertarget{I2C_target}{\textbf{I2C}} \\
 
-\textbf{I2C} (Inter-Integrated Circuit) ist ein Kommunikationsprotokoll, das über zwei Leitungen arbeitet: \textbf{SDA} (Serial Data Line) und \textbf{SCL} (Serial Clock Line). Es verwendet eine Master-Slave-Architektur, bei der der Master die Kommunikation steuert und die Slaves Daten empfangen oder senden. Die Datenübertragung erfolgt in Byte-Paketen, wobei der Master eine Start-Bedingung sendet, gefolgt von der Adresse des Slaves und den Daten. Nach dem Empfang eines Datenbytes sendet der Slave ein Bestätigungsbit (ACK). Die Kommunikation endet mit einer Stop-Bedingung \textbf{\autoref{fig:I2C}}. \\
+\textbf{I2C}\cite{ic2-reference} (Inter-Integrated Circuit) ist ein Kommunikationsprotokoll, das über zwei Leitungen arbeitet: \textbf{SDA} (Serial Data Line) und \textbf{SCL} (Serial Clock Line). Es verwendet eine Master-Slave-Architektur, bei der der Master die Kommunikation steuert und die Slaves Daten empfangen oder senden. Die Datenübertragung erfolgt in Byte-Paketen, wobei der Master eine Start-Bedingung sendet, gefolgt von der Adresse des Slaves und den Daten. Nach dem Empfang eines Datenbytes sendet der Slave ein Bestätigungsbit (ACK). Die Kommunikation endet mit einer Stop-Bedingung \textbf{\autoref{fig:I2C}}. \\
+
+\begin{itemize}
+	\item \textbf{SDA (Serial Data Line)}: Überträgt die Daten zwischen Master und Slave.
+	\item \textbf{SCL (Serial Clock Line)}: Taktet die Datenübertragung, gesteuert vom Master.
+\end{itemize}
+
 
 \textbf{Vorteile}\\
 
@@ -134,12 +163,11 @@ Eine andere möglichkeit des Spannungs inkonsitenz könnte mit Kondensatoren umg
 \end{figure}
 
 \newpage	
-\textbf{Display} \\	
+\textbf{\hyperlink{Display}{Display}} \\
 
+Das Display ist die zentrale Komponente des Interfaces, da es visuelles Feedback auf die Benutzerinteraktionen bietet. Die Kommunikation zwischen dem Nucleo F401RE-Mikrocontroller und dem Display erfolgt über das \textbf{\hyperlink{I2C_target}{I2C}}-Protokoll. Der Mikrocontroller übernimmt dabei die Rolle des Masters, der den Bus steuert, während das Display als Slave agiert.
 
-Das Display ist die zentrale Komponente des Interfaces, da es visuelles Feedback auf die Benutzerinteraktionen bietet. Die Kommunikation zwischen dem Nucleo F401RE-Mikrocontroller und dem Display erfolgt über das I2C-Protokoll. Der Mikrocontroller übernimmt dabei die Rolle des Masters, der den Bus steuert, während das Display als Slave agiert.
-
-Die Ansteuerung des Displays erfolgt über den SD1306-Treiber, der als Schnittstelle zwischen dem Mikrocontroller Nucleo F401RE und dem LCD-Display fungiert. Der Treiber nutzt das I2C-Protokoll, um Befehle und Daten effizient zu übermitteln. Er sendet die erforderlichen Befehle an das Display und übernimmt die Kommunikation gemäß den I2C-Spezifikationen. Bei Bedarf kann die Initialisierungssequenz des Treibers angepasst werden, um auch SH1103-kompatible Bildschirme zu unterstützen \textbf{\autoref{fig:Display SD1306 I2C}}.
+Die Ansteuerung des Displays erfolgt über den SD1306-Treiber \cite{sd1306-driver}, der als Schnittstelle zwischen dem Mikrocontroller Nucleo F401RE und dem LCD-Display fungiert. Der Treiber nutzt das I2C-Protokoll, um Befehle und Daten effizient zu übermitteln. Er sendet die erforderlichen Befehle an das Display und übernimmt die Kommunikation gemäß den I2C-Spezifikationen. Bei Bedarf kann die Initialisierungssequenz des Treibers angepasst werden, um auch SH1103-kompatible Bildschirme zu unterstützen \textbf{\autoref{fig:Display SD1306 I2C}}.
 
 Zusammenfassend ermöglicht der SD1306-Treiber die vollständige Integration des Displays in das System, indem er die I2C-Kommunikation zwischen Mikrocontroller und Display umsetzt. \\ 
 
@@ -160,7 +188,7 @@ Die beiden Hauptfunktionen zur Darstellung auf dem OLED-Bildschirm sind:
  \mintinline{c}|drawFaderProzent| ähnliche funktionsweiße wie  \mintinline{c}|renderSelectedFile|. 
 
 
-In der Funktion \mintinline{c}|displayStrings| werden die `ssd1306`-Funktionen verwendet, um die Strings auf dem LCD-Display darzustellen. Die Funktion \mintinline{c}|ssd1306_SetCursor| legt die Position für die Anzeige fest, und \mintinline{c}|ssd1306_WriteString| wird verwendet, um die Strings auf dem Display auszugeben. Bei der Anzeige des ausgewählten Strings wird zusätzlich ein Cursor-Symbol integriert.
+In der Funktion \mintinline{c}|displayStrings| werden die `ssd1306 Treiber`-Funktionen verwendet, um die Strings auf dem LCD-Display darzustellen. Die Funktion \mintinline{c}|ssd1306_SetCursor| legt die Position für die Anzeige fest, und \mintinline{c}|ssd1306_WriteString| wird verwendet, um die Strings auf dem Display auszugeben. Bei der Anzeige des ausgewählten Strings wird zusätzlich ein Cursor-Symbol integriert.
 
 In der Funktion \mintinline{c}|renderSelectedFile| wie bei \mintinline{c}|displayStrings| `ssd1306`-Funktionen verwendet, um den Namen der ausgewählten Datei auf dem OLED-Display darzustellen. Die Funktion \mintinline{c}|ssd1306_DrawPixel| wird verwendet, um den Bereich für die Dateianzeige zu löschen. Anschließend legt \mintinline{c}|ssd1306_SetCursor| die Position für die Textausgabe fest, und \mintinline{c}|ssd1306_WriteString| gibt den Namen der ausgewählten Datei auf dem Display aus. \\
 
@@ -176,7 +204,7 @@ Die Anpassung der Definitionskonstanten, die als Befehle über I2C an das Displa
 
 \subsubsection{Dateisystem} 
 \vspace{1em}
-
+\hypertarget{Dateisystem}{}
 Das Dateisystem fungiert als zentrale Schnittstelle zwischen der Audio-Wiedergabe, dem neuronalen Netzwerk zur Klassifizierung und der Benutzeroberfläche. Es organisiert und verwaltet die Audiodateien, die vom neuronalen Netzwerk analysiert und klassifiziert werden. Nach der Klassifizierung speichert das Dateisystem die Ergebnisse und gewährleistet, dass nur relevante und korrekt kategorisierte Dateien im Interface angezeigt werden. Das Dateisystem besteht aus zwei Hauptstrukturen: File und FileManager welche Ihnen im folgenden nähr gebracht werden.
 
 \vspace{1em}

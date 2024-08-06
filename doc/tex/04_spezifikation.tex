@@ -44,7 +44,7 @@ Der Play-Button schaltet das GPIO Signal \mintinline{c}|playbackActive|, womit d
 
 \paragraph{Dateimanagement}
 
-Das Dateimanagement der Applikation wird über ein die C-Struktur \mintinline{c}|struct Filemanager| realisiert, das die Dateizugriffe auf die Audiodateien organisiert und die persistente Speicherung der Klassifizierungsdaten durchführt.  
+Das \hyperlink{Dateisystem}{Dateimanagement} der Applikation wird über ein die C-Struktur \mintinline{c}|struct Filemanager| realisiert, das die Dateizugriffe auf die Audiodateien organisiert und die persistente Speicherung der Klassifizierungsdaten durchführt.  
 
 Um die Klassifizierungsdaten zu speichern, wird eine neue Datei erstellt oder eine bestehende Datei geöffnet. Die Daten werden dann im ASCII- oder Binärformat in die Datei geschrieben. Der Filemanager-Struct verwaltet dabei die Datei-Handles und stellt sicher, dass die Datei nach dem Schreibvorgang ordnungsgemäß geschlossen wird.
 
@@ -71,6 +71,10 @@ Sobald alle Samples klassifiziert sind, wechselt der Automat in den \textbf{Idle
 Wird ein neues Sample (\textbf{Recording}-Zustand) aufgenommen, erfolgt die Klassifikation wie nach Intialisierung des Systems über den \textbf{Indexing-Zustand}.
 
 Nach Änderung der Faderstellung, wird der Suchfilter wieder angewandt (\textbf{Apply-Searchfilter}-Zustand).
+
+TODO: Wegen Ressourcenknappheit auf dem Eingebetteten System, entweder KLassifizierung oder Playback Part
+
+TODO: Playback-Navigate-Idle Loop beschreiben
 
 \subsection{Arbeitspakete}
 
