@@ -44,7 +44,7 @@ Der Play-Button schaltet das GPIO Signal \mintinline{c}|playbackActive|, womit d
 
 \paragraph{Dateimanagement}
 
-Das \hyperlink{Dateisystem}{Dateimanagement} der Applikation wird über ein die C-Struktur \mintinline{c}|struct Filemanager| realisiert, das die Dateizugriffe auf die Audiodateien organisiert und die persistente Speicherung der Klassifizierungsdaten durchführt.  
+Das Dateimanagement der Applikation wird über ein die C-Struktur \mintinline{c}|struct Filemanager| realisiert, das die Dateizugriffe auf die Audiodateien organisiert und die persistente Speicherung der Klassifizierungsdaten durchführt.  
 
 Um die Klassifizierungsdaten zu speichern, wird eine neue Datei erstellt oder eine bestehende Datei geöffnet. Die Daten werden dann im ASCII- oder Binärformat in die Datei geschrieben. Der Filemanager-Struct verwaltet dabei die Datei-Handles und stellt sicher, dass die Datei nach dem Schreibvorgang ordnungsgemäß geschlossen wird.
 
@@ -60,7 +60,6 @@ Die Struktur und die Übergänge dieses Zustandsautomaten sind in Abbildung \ref
    	\caption{Zustandsautomat des Systems}
    	\label{fig:fsm}
 \end{figure}
-% TODO: FORMULIEREN
 
 Nach dem Initialisierungszustand \textbf{Init} beginnt der Automat im \textbf{Indexing}-Zustand. In diesem Zustand wird überprüft, ob noch unklassifizierte Samples vorhanden sind. Falls ja, wechselt der Automat in den \textbf{Classification}-Zustand, um das unklassifizierte Sample zu klassifizieren. 
 
@@ -72,18 +71,54 @@ Wird ein neues Sample (\textbf{Recording}-Zustand) aufgenommen, erfolgt die Klas
 
 Nach Änderung der Faderstellung, wird der Suchfilter wieder angewandt (\textbf{Apply-Searchfilter}-Zustand).
 
-TODO: Wegen Ressourcenknappheit auf dem Eingebetteten System, entweder KLassifizierung oder Playback Part
-
-TODO: Playback-Navigate-Idle Loop beschreiben
-
 \subsection{Arbeitspakete}
 
-    \begin{figure}[H]
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=1.0\textwidth]{images/04_spezifikation/gantt.png}
 	\caption{GANTT Diagramm}
 	\label{fig:gantt}
 \end{figure}
 
+\textbf{Arbeitspakete Aufteilung} \\
 
-Aufgabenaufteilung erläutern
+\begin{longtable}[c]{|p{5cm}|p{5cm}|p{5cm}|}
+	\hline
+	\textbf{Leon} & \textbf{Jonas} & \textbf{Szymon}\\
+	\hline
+	\endfirsthead
+	\hline
+	\textbf{Leon} & \textbf{Jonas} & \textbf{Szymon}\\
+	\hline
+	\endhead
+	\hline
+	\endfoot
+	\hline
+	\endlastfoot
+	
+	\begin{itemize}[left=0pt]
+		\item Neuronales Netz Topologie entwickeln
+		\item NN Trainieren und Anpassen
+		\item Portierung für STM32CubeAI
+		\item Algorithmus - Spektrogramm aus Audio Datei erstellen
+	\end{itemize} &
+	\begin{itemize}[left=0pt]
+		\item Sample Record
+		\item Sample Playback
+		\item LearnData Generation (Aufbereitung der Lerndaten)
+		\item Hardware Design
+		\item Resampling
+	\end{itemize} &
+	\begin{itemize}[left=0pt]
+		\item Fader
+		\item Encoder
+		\item LCD-Display
+		\item ADC
+		\item Dateisystem für Nutzdaten
+		\begin{itemize}[label=--, left=1em]
+			\item SD-Card Read/Write
+		\end{itemize}
+		\item Hardware Design
+	\end{itemize} \\
+	\hline
+\end{longtable}

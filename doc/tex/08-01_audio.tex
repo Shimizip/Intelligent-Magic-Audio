@@ -16,7 +16,7 @@ Alle Audiosamples werden auf einer angeschlossen \textbf{SD Karte} persistent ge
 
 Von hier aus reicht die \textbf{DMA} den Buffer per \textbf{I2S} Protokoll an den \textbf{Audio Codec} weiter. 
 
-Der Audio Codec wandelt die digitalen PCM Signale in eine analoges Signal mit Line-Level. %(TODO: Line Pegel elektrisch angeben). evtl auf Datenblatt verweisen?
+Der Audio Codec wandelt die digitalen PCM Signale in eine analoges Signal mit Line-Level (\SI{\pm 1.7}{\volt_{rms}}).
 
 \begin{figure}[h!]
 	\centering
@@ -59,8 +59,8 @@ Double Buffering ermöglicht es, Daten in einem Pufferspeicher zu verarbeiten, w
 \end{figure}
 
 
-Bei I M A wird wird der Audiobuffer halbiert. %TODO: besser formulieren
-Durch den Pointer \mintinline{c}|int16_t *outBufPtr| wird mit der DSP die Hälfte bearbeitet, die gerade nicht von der DMA übertragen wird.
+Bei I M A wird wird der Audiobuffer in zwei Hälften unterteilt.
+Durch den Pointer \mintinline{c}|int16_t *outBufPtr|, welcher jeweils auf die erste oder zweiter Hälfte zeigt, wird mit der DSP die Hälfte bearbeitet, die gerade nicht von der DMA übertragen wird.
 
 In den Callback-Funktionen \mintinline{c}|HAL_I2S_TxHalfCpltCallback()| und \mintinline{c}|HAL_I2S_TxCpltCallback()| wird der Pointer auf die jeweilige Hälfte des Buffers, also auf (wie in  \textbf{\autoref{fig:double_buffering}} beschrieben:
 \textbf{Buffer~A} und \textbf{Buffer~B}) gesetzt.
