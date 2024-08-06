@@ -1,3 +1,25 @@
+/**
+  ******************************************************************************
+  * @file           : display.h
+  * @brief          : Header file for display functions and graphics rendering
+  ******************************************************************************
+  * @attention
+  *
+  * This file contains the function prototypes for managing and rendering graphics
+  * on the display. It includes functions for:
+  * - Displaying a list of strings on the screen (`displayStrings`).
+  * - Rendering the currently selected file name (`renderSelectedFile`).
+  * - Drawing waveforms based on sample data (`drawWaveform`).
+  * - Drawing lines on the display (`drawLine`).
+  * - Displaying fader percentage values (`drawFaderProzent`).
+  *
+  * These functions interact with the SSD1306 display using I2C communication and
+  * are crucial for visual representation of data and user interface elements.
+  *
+  *******************************************************************************
+  */
+
+
 #include <math.h>
 #include <stdlib.h>
 #include "ssd1306.h"

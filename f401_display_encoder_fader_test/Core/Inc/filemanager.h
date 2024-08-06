@@ -1,3 +1,26 @@
+/**
+  ******************************************************************************
+  * @file           : filemanager.h
+  * @brief          : Header file for file management functions and structures
+  ******************************************************************************
+  * @attention
+  *
+  * This file contains the definitions for managing files within the file management system.
+  * It includes:
+  * - Constants defining limits and statuses for files.
+  * - Structures for storing file information and managing file operations.
+  * - Function prototypes for initializing the file manager, adding files, handling
+  *   file selection, and managing cursor operations.
+  *
+  * The `FileManager` structure handles the storage and management of files, including
+  * their classification and display. This file serves as an interface for interacting
+  * with the file management system, providing functions to manipulate file lists and
+  * update file selections.
+  *
+  *******************************************************************************
+  */
+
+
 #ifndef FILE_MANAGER_H
 #define FILE_MANAGER_H
 
