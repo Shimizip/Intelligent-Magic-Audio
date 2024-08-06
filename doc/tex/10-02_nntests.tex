@@ -4,8 +4,8 @@
 \textbf{\hyperlink{lf-nn-01}{LF03}}
 
 \subsubsection{Validierung der Sinnhaftigkeit der Merkmalsklassen}
-Sie Sinnhaftigkeit und Relevanz der ausgewählten Merkmalsklassen wurden durch eine musikaffine Person, die gleichzeitig ein Gruppenmitglied ist, bestätigt.
-Da die Relevanz der ausgewählten Merkmalsklassen für die Musikproduktion jedoch nicht sachlich sinnvoll in einem Testfall validiert werden kann, wird stattdessen die Fähigkeit zur Klassifizierung auf der Grundlage der auf einem Mikrocontroller verarbeitbaren Spektrogrammauflösung in die ausgewählten Merkmalsklassen betrachtet. Dabei wird ausschließlich die thoretische Umsetzbarkeit vor dem Training des neuronalen Netzes geprüft.
+Die Sinnhaftigkeit und Relevanz der ausgewählten Merkmalsklassen wurden durch eine musikaffine Person, die gleichzeitig ein Gruppenmitglied ist, bestätigt.
+Da die Relevanz der ausgewählten Merkmalsklassen für die Musikproduktion jedoch nicht sachlich sinnvoll in einem Testfall validiert werden kann, wird stattdessen die Fähigkeit zur Klassifizierung auf der Grundlage der auf einem Mikrocontroller verarbeitbaren Spektrogrammauflösung in die ausgewählten Merkmalsklassen betrachtet. Dabei wird zunächst ausschließlich die theoretische Umsetzbarkeit vor dem Training des neuronalen Netzes geprüft.
 
 \paragraph{Testfall: Testen der Umsetzbarkeit der Merkmalsklassen vor dem Training}\mbox{}\\
 \begin{adjustwidth}{0.5cm}{0cm}
@@ -25,7 +25,7 @@ Für jede Merkmalsklasse sind bestimmte Merkmale in den generierten Spektrogramm
 \begin{itemize}
   \item \textbf{bass}: Überwiegend hell gefärbt (hohe Dezibel Zahl) in den tiefen Frequenzbereichen.
   \item \textbf{pitched}: Überwiegend hell gefärbt (hohe Dezibel Zahl) in den hohen Frequenzbereichen.
-  \item \textbf{rhytmic}: Im zeitliche Verlauf immer wieder vertikale ``Trennlinien``.
+  \item \textbf{rhythmic}: Im zeitliche Verlauf immer wieder vertikale ``Trennlinien``.
   \item \textbf{sustained}: Im zeitliche Verlauf häufig durchgehende Linien für eine bestimmte Frequenz.
   \item \textbf{melodic}: Oft sind überlagerte, hell gefärbte und wellenförmige Segmente zu sehen.
 \end{itemize}
@@ -55,10 +55,10 @@ Damit ist die theoreitische Umsetzbarkeit der Klassifizierung dieser Merkmalskla
 \textbf{Erwartetes Ergebnis:} 
 \begin{itemize}
 	\item Der Accuracy-Wert liegt bei 50\% oder höher.
-	\item In der COnfusion-Matrix lässt sich auf der Diagonalen (links oben - rechts unten) eine Tendenz bei der Klassifikation ableiten, also dass die Merkmalsklassen tendenziell richtig erkannt werden.
+	\item In der Confusion-Matrix lässt sich auf der Diagonalen (links oben - rechts unten) eine Tendenz bei der Klassifikation ableiten, also dass die Merkmalsklassen tendenziell richtig erkannt werden.
 \end{itemize}
-\textbf{Tatsächliches Ergebnis:}
-Der Accuracy-Wert liegt bei den Testdaten bei 71\% und damit höher als angestrebt. Dabei muss jedoch der in \textbf{Abschnitt \ref{sec:nn-data-split}} beschriebene methodische Fehler bei der Datenaufteilung im Hinterkopf behalten werden.
+
+\textbf{Tatsächliches Ergebnis:} Der Accuracy-Wert liegt bei den Testdaten bei 71\% und damit höher als angestrebt. Dabei muss jedoch der in \textbf{Abschnitt \ref{sec:nn-data-split}} beschriebene methodische Fehler bei der Datenaufteilung im Hinterkopf behalten werden.
 
 In der Confusion-Matrix, die in \textbf{Abbildung \ref{fig:img-confusion-matrix}} dargestellt ist, lässt sich insgesamt auf der beschriebenen Diagonalen eine Tendenz für die korrekte Klassifikation jeder Merkmalsklasse ableiten. Auf der Ordinate stehen Merkmalsklassen, die in das System eingegeben wurden (IST-Wert), auf der Abszisse lässt sich dann das tatsächliche Klassifikationsergebnis ablesen. Wie hier zu sehen ist, werden sowohl die Klassen ``melodic`` als auch ``rhythmic`` fast immer korrekt erkannt (Wert nahe 1.0). Tendenziell richtig werden ``bass`` und ``pitched`` erkannt. Die Klasse ``sustained`` wird dagegen nicht gut erkannt und wird oft fälschlicherweise als ``melodic`` erkannt.
 
@@ -67,7 +67,7 @@ Die Performance des neuronalen Netzes könnte mit weiteren Trainingsdaten für d
 \begin{figure}[h!]
 \centering
 \includegraphics[width=0.65\textwidth]{images/10_test_validierung/nn/nn-confusion-matrix.png}
-\caption{Confision-Matrix des trainierten neuronalen Netzes}
+\caption{Confusion-Matrix” des trainierten neuronalen Netzes}
 \label{fig:img-confusion-matrix}
 \end{figure}
 
@@ -84,7 +84,7 @@ Die Performance des neuronalen Netzes könnte mit weiteren Trainingsdaten für d
 	\item Die Klassifikationsergebnisse werden betrachtet und mit den notierten SOLL-Merkmalsklassen verglichen.
 \end{enumerate}
 
-\textbf{Erwartetes Ergebnis:} Die tatsächlichen Klassifikationsergebnisse (SOLL-Werte) decken sich mit den notierten Klassifikationsergebnissen (IST-Werte). Dabei wird ein Klassifikationsergebnis je Merkmalsklasse, das $\geq$ 0,5 ist, als ``erkannt`` gewertet.
+\textbf{Erwartetes Ergebnis:} Die tatsächlichen Klassifikationsergebnisse (SOLL-Werte) decken sich mit den notierten Klassifikationsergebnissen (IST-Werte). Dabei wird ein Output-Wert je Merkmalsklasse, der $\geq$ 0,5 ist, als ``erkannt`` gewertet.
 
 \newpage
 
@@ -161,9 +161,11 @@ Wie in den Beispielen erkennbar ist, werden Merkmalsklassen nicht immer gut erka
 	\item Die Werte des Arrays werden mit den Spektrogramm-Werten des ersten Audiosubsamples im Jupyter-Notebook verglichen.
 \end{enumerate}
 
-\textbf{Erwartetes Ergebnis:} Es gibt keine bzw. kaum Abweichungen zwischen den Spektrogramm-Werten im Debugger  und den Werten aus dem Jupyter-Notebook.
+\textbf{Erwartetes Ergebnis:} 
+Es gibt keine bzw. kaum Abweichungen zwischen den Spektrogramm-Werten im Debugger  und den Werten aus dem Jupyter-Notebook.
 
-\textbf{Tatsächliches Ergebnis:} Von den Werten 0 bis 700 wurden keine Abweichungen festgestellt. Nach diesem Bereich treten jedoch leichte Abweichungen auf. Diese können darauf zurückgeführt werden, dass die höheren Indizes des \mintinline{c}|spectrogram|-Arrays die Dezibel-Werte der höheren Frequenzbereiche enthalten. Es lässt sich daraus schließen, dass die verwendete Bibliothek zur Spektrogramm-Berechnung die höheren Frequenz-Werte anders skaliert. Insgesamt kann der Test mit einem positiven Ergebnis bewertet werden, wobei darauf hingewiesen werden muss, dass die leichten Abweichungen in der Spektrogramm-Berechnung zu geringfügigen Abweichungen in den Klassifikationsergebnissen führen könnten.
+\textbf{Tatsächliches Ergebnis:}
+Von den Werten 0 bis 700 wurden keine Abweichungen festgestellt. Nach diesem Bereich treten jedoch leichte Abweichungen auf. Diese können darauf zurückgeführt werden, dass die höheren Indizes des \mintinline{c}|spectrogram|-Arrays die Dezibel-Werte der höheren Frequenzbereiche enthalten. Es lässt sich daraus schließen, dass die verwendete Bibliothek zur Spektrogramm-Berechnung die höheren Frequenz-Werte anders skaliert. Insgesamt kann der Test mit einem positiven Ergebnis bewertet werden, wobei darauf hingewiesen werden muss, dass die leichten Abweichungen in der Spektrogramm-Berechnung zu geringfügigen Abweichungen in den Klassifikationsergebnissen führen könnten.
 \end{adjustwidth}
 
 
