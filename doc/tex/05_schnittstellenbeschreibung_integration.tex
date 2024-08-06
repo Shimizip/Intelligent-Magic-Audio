@@ -22,9 +22,13 @@
     
 \end{itemize}
 
-Das Dateimanagement ist der zentrale Knotenpunkt des Gesamtsystems. Es dient zunächst als Zugriffspunkt auf die Samples anhand ihrer Namen. 
+Das \textbf{Dateimanagement} ist der zentrale Knotenpunkt des Gesamtsystems. Es dient zunächst als Zugriffspunkt auf die Samples anhand ihrer Namen. 
 
-Beim Hinzufügen neuer \textbf{Samples} in das Dateisystem werden diese zunächst als \boldinline{unclassified_file Fil} an die \boldinline{Klassifizierung} übergeben. Dieser wird an die Audioverarbeitung weiter gegeben. 
+Beim Hinzufügen neuer \textbf{Samples} in das \textbf{Dateisystem} werden diese zunächst als \boldinline{unclassified_file Fil} an die \boldinline{Klassifizierung} übergeben. Dieser wird an die Audioverarbeitung weiter gegeben.\textbf{TODO: Beschreibe die Übergabe der Downsampling Daten.}
+
+Die für das Spektrogramm benötigten heruntergesampelten Daten werden zur \textbf{Klassifizierung} weitergeleitet. Basierend auf dem Spektrogramm werden die Dateien anhand ihrer Klangmerkmale klassifiziert. Die Ergebnisse dieser Klassifikation werden in \boldinline{classification_result[5]} gespeichert. Dieses Array wird anschließend an das Dateimanagement übergeben und wird dem Sample zugeordent.
  
-Diese gibt ein \boldinline{classification_result[5]} zurück, welcher den Dateien zugeordnet wird.
+Das Interface ruft alle Dateien aus dem \boldinline{FileManager Struct} in \boldinline{files[MAX_FILES]} ab. Es filtert die Dateien basierend auf den festgelegten Filtereinstellungen und speichert die übereinstimmenden Dateien in \boldinline{shownFiles[MAX_FILES]}.
+
+Beim Auswählen eines Samples wird dessen Name in \boldinline{current_cursor_filename} gespeichert welcher ein Part den \boldinline{FileManager} ist. Die \boldinline{Audioverarbeitung} greift auf diesen Namen zu, um das Sample zu laden und abzuspielen.
 
