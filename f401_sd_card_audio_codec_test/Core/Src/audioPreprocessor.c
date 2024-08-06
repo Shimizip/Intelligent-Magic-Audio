@@ -174,7 +174,7 @@ uint16_t get_number_subsamples(FIL *file){
  * 
  * @return The actual number of samples written to the `outChunk` buffer.
  */
-uint32_t downsample_chunk_to_1024_samples(FIL *file, int16_t outChunk[NUM_SAMPLES_CHUNK_OUT]){
+uint32_t downsample_to_1024_samples(FIL *file, int16_t outChunk[NUM_SAMPLES_CHUNK_OUT]){
         
         // input buffers
         int16_t inputChunk[NUM_SAMPLES_CHUNK_IN];

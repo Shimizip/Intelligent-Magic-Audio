@@ -1,5 +1,5 @@
 
-\textbf{Komponenten/LF1/:} \\
+\textbf{Komponenten\hyperlink{LF01_Link}{/LF01/}} \\
 
 \begin{wrapfigure}{r}{0.4\textwidth} % Increase the width of the figure environment
 	\vspace{-60pt + 0.02\textwidth}
@@ -39,13 +39,14 @@ Das Drücken des Switch über den Pin \boldinline{PA4}. Durch das drücken des S
 
 \begin{wrapfigure}{r}{0.4\textwidth} % Increase the width of the figure environment
 	\vspace{-20pt + 0.02\textwidth}
-	\hspace{0.07\textwidth} % Add horizontal space
+	\hspace{0.06\textwidth} % Add horizontal space
 	\includegraphics[width=0.25\textwidth]{images/05_technische_spezifikation/Interface/Display.png} % Keep the image size the same
 	\caption{LCD-Display}
 	\label{fig:lcd_display}
-	\vspace{-20pt}
+	\vspace{-50pt}
 \end{wrapfigure}
 
+\newpage
 
 \textbf{(LCD-Display)} \\
 
@@ -67,7 +68,7 @@ Zur Visualiesierung der Sampels haben wir einen Monochronen LCD-Display benutzt.
 \end{itemize}
 
 \newpage
-\textbf{Komponenten/LF2/:}\\
+\textbf{Komponenten\hyperlink{LF02_Link}{/LF02/}} \\
 
 \textbf{(Schiebe-Potentiometer)}\\
 
@@ -102,24 +103,24 @@ Für die Filterfunktion benötigen wir 5 Potentiometer. Es wird zyklisch die Aus
 
 \textbf{Configuration}
 
-\textbf{\textcolor{red}{Resolution:}} 12Bit divided 15 ADC ClockCycles \\
-\textbf{\textcolor{red}{Mode:}} Scan Mode und Continues Convervion Mode \\
-\textbf{\textcolor{red}{DMA:}} DMA Continuous Requests Enable \\
-\textbf{\textcolor{red}{Conversions:}} 5 \\
-\textbf{\textcolor{red}{Sampling Time:}} 3 Cycles  
+\textbf{Resolution:} 12Bit divided 15 ADC ClockCycles \\
+\textbf{Mode:} Scan Mode und Continues Convervion Mode \\
+\textbf{DMA:} DMA Continuous Requests Enable \\
+\textbf{Conversions:} 5 \\
+\textbf{Sampling Time:} 3 Cycles  
 \\
 
 \textbf{(DMA)}\\
 
-\textbf{DMA} (Direct Memory Access) wird gestartet, um die Werte, die an den Pins des ADC liegen, zyklisch zu pollen. Er wird zeitbasiert mit einem \textcolor{red}{Timer tim5} gestartet und in der Callback nach der Glättung der kumulierten ADC-Werte gestoppt.
+\textbf{DMA} (Direct Memory Access) wird gestartet, um die Werte, die an den Pins des ADC liegen, zyklisch zu pollen. Er wird zeitbasiert mit einem \textbf{Timer tim5} gestartet und in der Callback nach der Glättung der kumulierten ADC-Werte gestoppt.
 
-\textbf{\textcolor{red}{Timer:}} Timer5, Internal Clock, One Pulse Mode \\
-\textbf{\textcolor{red}{Data Width:}} Word Übertragung von 32-Bit-Datenblöcken \\
-\textbf{\textcolor{red}{Mode:}} Circular \\
+\textbf{Timer:} Timer5, Internal Clock, One Pulse Mode \\
+\textbf{Data Width:} Word Übertragung von 32-Bit-Datenblöcken \\
+\textbf{Mode:} Circular \\
 
 \textbf{(LCD-Display)}\\
 
-Der LCD-Display ist der gleiche wie im \textcolor{red}{/LF01/} beschrieben. Dieser dient zur Darstellung der Fader Einstellung in prozentualer Form.
+Der LCD-Display ist der gleiche wie im \boldinline{/LF01/} beschrieben. Dieser dient zur Darstellung der Fader Einstellung in prozentualer Form.
 
 \newpage
 
