@@ -10,8 +10,7 @@
 	\vspace{-100pt}
 \end{wrapfigure}
 
-\textbf{(Encoder)} \\
-
+\textbf{\hypertarget{Encoder}{Encoder}} \\
 
 \textbf{Model} RIC11-22S16D5M-TH
 
@@ -46,7 +45,7 @@ Das Drücken des Switch über den Pin \boldinline{PA4}. Durch das drücken des S
 	\vspace{-50pt}
 \end{wrapfigure}
 
-\textbf{(LCD-Display)} \\
+\textbf{\hypertarget{Display}{LCD-Display}} \\
 
 \textbf{Model:} GME128128-01-ii2
 
@@ -68,7 +67,7 @@ Zur Visualiesierung der Sampels haben wir einen Monochronen LCD-Display benutzt.
 \newpage
 \textbf{Komponenten\hyperlink{LF02_Link}{/LF02/}} \\
 
-\textbf{(Schiebe-Potentiometer)}\\
+\textbf{\hypertarget{Potentiometer}{Schiebe-Potentiometer}}\\
 
 \textbf{Model} Bourns PTL45-15R0-103B2
 
@@ -95,9 +94,9 @@ Für die Filterfunktion benötigen wir 5 Potentiometer. Es wird zyklisch die Aus
 	\item \textbf{Direkte visuelle Rückmeldung:} Durch die sofortige visuelle Rückmeldung auf dem LCD-Display kann der Benutzer sofort sehen, wie sich die Bewegung des Potentiometers auf die Position des Cursors auswirkt.
 \end{itemize}
 
-\textbf{(ADC)}\\
+\textbf{\hypertarget{ADC}{ADC}} \\
 
-\textbf{ADC} (Analog Digital Converter) wird benutzt, um die Ausgangsspannung an den Schleifern zu digitalisieren und in Zahlen zu fassen. Dies erfolgt über die Pins \boldinline{PA6, PA7, PB0, PB1, PC0}, die als Schnittstellen parallel der Reihenfolge der Channels \boldinline{6, 7, 8, 9, 10} dienen. Jedes Mal, wenn an der Ausgangsspannung eines der Schleifer eine Veränderung wahrgenommen wird, startet eine Interrupt Service Routine.
+\textbf{ADC}\cite{adc} (Analog Digital Converter) wird benutzt, um die Ausgangsspannung an den Schleifern zu digitalisieren und in Zahlen zu fassen. Dies erfolgt über die Pins \boldinline{PA6, PA7, PB0, PB1, PC0}, die als Schnittstellen parallel der Reihenfolge der Channels \boldinline{6, 7, 8, 9, 10} dienen. Jedes Mal, wenn an der Ausgangsspannung eines der Schleifer eine Veränderung wahrgenommen wird, startet eine Interrupt Service Routine.
 
 \textbf{Configuration}
 
@@ -108,7 +107,7 @@ Für die Filterfunktion benötigen wir 5 Potentiometer. Es wird zyklisch die Aus
 \textbf{Sampling Time:} 3 Cycles  
 \\
 
-\textbf{(DMA)}\\
+\textbf{\hypertarget{DMA}{DMA}} \\
 
 \textbf{DMA} (Direct Memory Access) wird gestartet, um die Werte, die an den Pins des ADC liegen, zyklisch zu pollen. Er wird zeitbasiert mit einem \textbf{Timer tim5} gestartet und in der Callback nach der Glättung der kumulierten ADC-Werte gestoppt.
 

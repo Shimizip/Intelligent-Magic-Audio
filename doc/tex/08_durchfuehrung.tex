@@ -10,16 +10,21 @@ Im Anschluss an die Spezifikation des Systems folgt die Beschreibung der Umsetzu
 
 \subsection{Integration der einzelnen Komponenten in das Gesamtsystem}
 \label{sec:no-gesamtintegration}
+\vspace{1em}
 
-\textbf{TODO muss noch überarbeitet/ergänzt werden!}
 Leider konnte aufgrund von Zeitmangel die Integration der einzelnen Komponenten in ein Gesamtsystem nicht realisiert werden. Verschiedene Ursachen trugen zu diesen zeitlichen Verzögerungen bei.
 
-Wie bereits in den vorherigen Abschnitten erwähnt, führten Probleme bei der Implementierung zu erheblichen Zeitverlusten. Insbesondere verursachte ein ``Hard-Fault``-Fehler in der Klassifizierungskomponente lange Verzögerungen, da die Ursache schwer zu identifizieren war. Zusätzlich gab es anfängliche Schwierigkeiten beim Lesen von der SD-Karte \textbf{TODO}, welche die Leistung beeinträchtigten, obwohl sie letztendlich behoben wurden.
+Wie bereits in den vorherigen Abschnitten erwähnt, führten Probleme bei der Implementierung zu erheblichen Zeitverlusten. Insbesondere verursachte ein "Hard-Fault"-Fehler in der Klassifizierungskomponente lange Verzögerungen, da die Ursache schwer zu identifizieren war.
 
-Ein weiteres Hindernis war die Verfügbarkeit nur eines Nucleo-F7-Boards für das gesamte Team, welches bis zuletzt durch die Implementierung des neuronalen Netzes in Anspruch genommen wurde. Die Entwicklung der übrigen Komponenten erfolgte daher auf Nucleo-F4-Boards. Die Portierung dieser Projekte auf das F7-Board gestaltete sich dann wesentlich aufwendiger als angenommen. \textbf{TODO: das und das war anders/schwieriger usw. 1 Satz}
+Anfänglich gab es auch Schwierigkeiten beim Auslesen der SD-Karte, da der zunächst verwendete Treiber\cite{spi-sd-card} nicht für die Nutzung von SD-Karten der Version 3 ausgelegt war. Der Einsatz von älteren SD-Karten-Versionen erwies sich als erfolgreich. Allerdings war die Datenübertragung über SPI aufgrund des verwendeten Treibers nicht effizient genug, was letztlich zum Umstieg auf die SDIO-Schnittstelle führte.
+
+Ein weiteres Hindernis war die Verfügbarkeit nur eines Nucleo-F7-Boards für das gesamte Team, welches bis zuletzt durch die Implementierung des neuronalen Netzes in Anspruch genommen wurde. Die Entwicklung der übrigen Komponenten erfolgte daher auf Nucleo-F4-Boards. Die Portierung dieser Projekte auf das F7-Board gestaltete sich dann wesentlich aufwendiger als angenommen. Das DMA-Verhalten auf dem F7-Board entsprach nicht den Erwartungen, und aufgrund der begrenzten Zeit konnte dieses Problem nicht gelöst werden. Dies erschwerte die Integration der Teilprojekte erheblich.
+
+Der Versuch, die Teilprojekte Audio und Interface auf das F4-Board zu portieren, scheiterte ebenfalls aufgrund von Pointer-Problemen bei der Auswahl der abzuspielenden Datei. Eine Lösung des Problems stand in Aussicht, musste allerdings wieder aufgrund von Zeitmangel eingestellt werden.
 
 Obwohl einzelne Komponenten schließlich für die Integration in das Gesamtsystem vorbereitet wurden, kam es zu keiner tatsächlichen Zusammenführung in einem einheitlichen Projekt.
 
+Unsere größten Schwierigkeiten bei der Integration waren die Nutzung uns zuvor unbekannter Technologien wie CUBE.AI, der Mangel an Ressourcen in Bezug auf die Verfügbarkeit des F7-Boards und vor allem die Zeit als kritischer Faktor, der die verspätete Portierung von Projekten verursachte.
 
 % TODO weg:
 \begin{itemize}
