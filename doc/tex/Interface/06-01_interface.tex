@@ -94,26 +94,6 @@ Für die Filterfunktion benötigen wir 5 Potentiometer. Es wird zyklisch die Aus
 	\item \textbf{Direkte visuelle Rückmeldung:} Durch die sofortige visuelle Rückmeldung auf dem LCD-Display kann der Benutzer sofort sehen, wie sich die Bewegung des Potentiometers auf die Position des Cursors auswirkt.
 \end{itemize}
 
-\textbf{\hypertarget{ADC}{ADC}} \\
-
-\textbf{ADC}\cite{adc} (Analog Digital Converter) wird benutzt, um die Ausgangsspannung an den Schleifern zu digitalisieren und in Zahlen zu fassen. Dies erfolgt über die Pins \boldinline{PA6, PA7, PB0, PB1, PC0}, die als Schnittstellen parallel der Reihenfolge der Channels \boldinline{6, 7, 8, 9, 10} dienen. Jedes Mal, wenn an der Ausgangsspannung eines der Schleifer eine Veränderung wahrgenommen wird, startet eine Interrupt Service Routine.
-
-\textbf{Configuration}
-
-\textbf{Resolution:} 12Bit divided 15 ADC ClockCycles \\
-\textbf{Mode:} Scan Mode und Continues Convervion Mode \\
-\textbf{DMA:} DMA Continuous Requests Enable \\
-\textbf{Conversions:} 5 \\
-\textbf{Sampling Time:} 3 Cycles  
-\\
-
-\textbf{\hypertarget{DMA}{DMA}} \\
-
-\textbf{DMA} (Direct Memory Access) wird gestartet, um die Werte, die an den Pins des ADC liegen, zyklisch zu pollen. Er wird zeitbasiert mit einem \textbf{Timer tim5} gestartet und in der Callback nach der Glättung der kumulierten ADC-Werte gestoppt.
-
-\textbf{Timer:} Timer5, Internal Clock, One Pulse Mode \\
-\textbf{Data Width:} Word Übertragung von 32-Bit-Datenblöcken \\
-\textbf{Mode:} Circular \\
 
 \textbf{(LCD-Display)}\\
 
@@ -122,6 +102,9 @@ Der LCD-Display ist der gleiche wie im \boldinline{/LF01/} beschrieben. Dieser d
 \newpage
 
 \subsubsection{Pinout}
+
+\textbf{Interface}
+
 \begin{longtable}[c]{|p{2.5cm}|p{1cm}|p{2.5cm}|p{2.5cm}|p{2.5cm}|p{3cm}|}
 	\hline
 	\textbf{Komponente} & \textbf{PIN} & \textbf{Signal-On-PIN} &  \textbf{GPIO-Mode} & \textbf{GPIO-Pull-Up/Pull-Down } & \textbf{User-Label}\\
@@ -158,6 +141,34 @@ Der LCD-Display ist der gleiche wie im \boldinline{/LF01/} beschrieben. Dieser d
 	\hline
 	& PD2 & SDIO\_CMD & AFPP & PULL UP & n/a \\
 	\hline
+\end{longtable}
+
+\textbf{EIMRETD} = External Interrupt Mode and Rising Edge Trigger Detection 		
+
+\textbf{AFOD} = Alternate Function Open Drain
+
+\textbf{NPU NPD} = No Pull Up No Pull Down		
+
+\textbf{AFPP} = Alternate Function Push Pull
+
+\newpage
+\textbf{Audio}
+\begin{longtable}[c]{|p{2.5cm}|p{1cm}|p{2.5cm}|p{2.5cm}|p{2.5cm}|p{3cm}|}
+	\hline
+	\textbf{Komponente} & \textbf{PIN} & \textbf{Signal-On-PIN} &  \textbf{GPIO-Mode} & \textbf{GPIO-Pull-Up/Pull-Down } & \textbf{User-Label}\\
+	\hline
+	SDIO & PC8 & SDIO\_D0 & AFPP & PULL UP & n/a \\
+	\hline
+	& PC9 & SDIO\_D1 & AFPP & PULL UP & n/a \\
+	\hline
+	& PC10 & SDIO\_D2 & AFPP & PULL UP & n/a \\
+	\hline
+	& PC11 & SDIO\_D3 & AFPP & PULL UP & n/a \\
+	\hline
+	& PC12 & SDIO\_CK & AFPP & NPU NPD & n/a \\
+	\hline
+	& PD2 & SDIO\_CMD & AFPP & PULL UP & n/a \\
+	\hline
 	I2S & PB10 & IS2\_CK & AFPP  & NPU NPD & n/a \\
 	\hline
 	& PB12 & IS2\_WS & AFPP & NPU NPD & n/a \\
@@ -167,10 +178,6 @@ Der LCD-Display ist der gleiche wie im \boldinline{/LF01/} beschrieben. Dieser d
 	& PC6 & IS2\_MCK & AFPP & NPU NPD &  n/a \\
 	\hline
 \end{longtable}
-
-\textbf{EIMRETD} = External Interrupt Mode and Rising Edge Trigger Detection 		
-
-\textbf{AFOD} = Alternate Function Open Drain
 
 \textbf{NPU NPD} = No Pull Up No Pull Down		
 
