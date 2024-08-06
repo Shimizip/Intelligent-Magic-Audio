@@ -3,7 +3,7 @@
 
 \subsubsection{Validierung der Sinnhaftigkeit der Merkmalsklassen}
 Sie Sinnhaftigkeit und Relevanz der ausgewählten Merkmalsklassen wurden durch eine musikaffine Person, die gleichzeitig ein Gruppenmitglied ist, bestätigt.
-Da die Relevanz der ausgewählten Merkmalsklassen für die Musikproduktion jedoch nicht sachlich sinnvoll in einem Testfall validiert werden kann, wird stattdessen die Fähigkeit zur Klassifizierung auf der Grundlage der auf einem Mikrocontroller verarbeitbaren Spektrogrammauflösung in die ausgewählten Merkmalsklassen betrachtet. Dabei wird einerseits die Umsetzbarkeit vor dem Training des neuronalen Netzes geprüft, außerdem im Anschluss wie gut das neuronale Netz die einzelnen Merkmalsklassen dann im Anschluss an das Training klassifiziert
+Da die Relevanz der ausgewählten Merkmalsklassen für die Musikproduktion jedoch nicht sachlich sinnvoll in einem Testfall validiert werden kann, wird stattdessen die Fähigkeit zur Klassifizierung auf der Grundlage der auf einem Mikrocontroller verarbeitbaren Spektrogrammauflösung in die ausgewählten Merkmalsklassen betrachtet. Dabei wird ausschließlich die thoretische Umsetzbarkeit vor dem Training des neuronalen Netzes geprüft.
 
 \paragraph{Testfall: Testen der Umsetzbarkeit der Merkmalsklassen vor dem Training}\mbox{}\\
 \begin{adjustwidth}{0.5cm}{0cm}
@@ -11,7 +11,7 @@ Da die Relevanz der ausgewählten Merkmalsklassen für die Musikproduktion jedoc
 
 \begin{enumerate}
 	\item Für jede Merkmalsklasse (bass, pitched, rhythmic, sustained, melodic) werden 1-3 passende Audiosamples ermittelt.
-	\item Diese Audiosamples werden in Audiosubsamples zerteilt und Spektrogramme in der festgelegten Auflösung (32x30 Pixel) generiert. Dies geschieht mit dem ``ESP\_IMA\_validation`` Jupyter Notebook.
+	\item Diese Audiosamples werden in Audiosubsamples zerteilt und Spektrogramme in der festgelegten Auflösung (32x30 Pixel) generiert. Dies geschieht mit dem ``ESP\_IMA\_validation`` Jupyter-Notebook.
 	\item Anschließend wird manuell geprüft, ob mit dem menschlichen Auge bestimmte Muster sichtbar sind, anhand derer man als Mensch die Spektrogramme einer Merkmalsklasse zuordnen könnte.
 \end{enumerate}
 
@@ -21,13 +21,139 @@ Für jede Merkmalsklasse sind bestimmte Merkmale in den generierten Spektrogramm
 \textbf{Tatsächliches Ergebnis:} Für jede Merkmalsklasse lassen sich in den Spektrogrammen die folgenden Merkmale erkennen:
 
 \begin{itemize}
-  \item \textbf{bass}: Überwiegend hell gefärbt (hohe Dezibel Zahl) in den tiefen Frequenzbereichen
-  \item \textbf{pitched}: Überwiegend hell gefärbt (hohe Dezibel Zahl) in den hohen Frequenzbereichen
-  \item \textbf{rhytmic}: Im zeitliche Verlauf immer wieder vertikale ``Trennlinien``
-  \item \textbf{sustained}: Im zeitliche Verlauf häufig durchgehende Linien für eine bestimmte Frequenz
-  \item \textbf{melodic}: Oft sind überlagerte, hell gefärbte und wellenförmige Segmente zu sehen
+  \item \textbf{bass}: Überwiegend hell gefärbt (hohe Dezibel Zahl) in den tiefen Frequenzbereichen.
+  \item \textbf{pitched}: Überwiegend hell gefärbt (hohe Dezibel Zahl) in den hohen Frequenzbereichen.
+  \item \textbf{rhytmic}: Im zeitliche Verlauf immer wieder vertikale ``Trennlinien``.
+  \item \textbf{sustained}: Im zeitliche Verlauf häufig durchgehende Linien für eine bestimmte Frequenz.
+  \item \textbf{melodic}: Oft sind überlagerte, hell gefärbte und wellenförmige Segmente zu sehen.
 \end{itemize}
 
 Damit ist die theoreitische Umsetzbarkeit der Klassifizierung dieser Merkmalsklassen auf Basis von Spektrogrammen mit der Auflösung 32x30 Pixel gewährleistet.
 
 \end{adjustwidth}
+
+
+
+%
+%
+%
+%
+
+\subsubsection{Validierung des erfolgreichen Training des neuronalen Netzes}
+\label{sec:nn-validation}
+
+\paragraph{Testfall: Überprüfen der Ausgabeparameter des Trainings}\mbox{}\\
+\begin{adjustwidth}{0.5cm}{0cm}
+\textbf{Schritte:}
+\begin{enumerate}
+	\item Das neuronale Netz wird im Jupyter-Notebook ``ESP\_IMA\_dev`` trainiert.
+	\item Die Ausgabeparameter werden betrachtet: Accuracy, Confusion-Matrix.
+\end{enumerate}
+
+\textbf{Erwartetes Ergebnis:} 
+\begin{itemize}
+	\item Der Accuracy-Wert liegt bei 50\% oder höher.
+	\item In der COnfusion-Matrix lässt sich auf der Diagonalen (links oben - rechts unten) eine Tendenz bei der Klassifikation ableiten, also dass die Merkmalsklassen tendenziell richtig erkannt werden.
+\end{itemize}
+\textbf{Tatsächliches Ergebnis:}
+Der Accuracy-Wert liegt bei den Testdaten bei 71\% und damit höher als angestrebt. Dabei muss jedoch der in \textbf{Abschnitt \ref{sec:nn-data-split}} beschriebene methodische Fehler bei der Datenaufteilung im Hinterkopf behalten werden.
+
+In der Confusion-Matrix, die in \textbf{Abbildung \ref{fig:img-confusion-matrix}} dargestellt ist, lässt sich insgesamt auf der beschriebenen Diagonalen eine Tendenz für die korrekte Klassifikation jeder Merkmalsklasse ableiten. Auf der Ordinate stehen Merkmalsklassen, die in das System eingegeben wurden (IST-Wert), auf der Abszisse lässt sich dann das tatsächliche Klassifikationsergebnis ablesen. Wie hier zu sehen ist, werden sowohl die Klassen ``melodic`` als auch ``rhythmic`` fast immer korrekt erkannt (Wert nahe 1.0). Tendenziell richtig werden ``bass`` und ``pitched`` erkannt. Die Klasse ``sustained`` wird dagegen nicht gut erkannt und wird oft fälschlicherweise als ``melodic`` erkannt.
+
+Die Performance des neuronalen Netzes könnte mit weiteren Trainingsdaten für die Merkmalsklassen ``bass``, ``pitched`` und ``sustained`` noch einmal verbessert werden, indem diese Trainingsdaten die jeweilige Klasse möglichst in Reinform enthalten.
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.65\textwidth]{images/10_test_validierung/nn/nn-confusion-matrix.png}
+\caption{Confision-Matrix des trainierten neuronalen Netzes}
+\label{fig:img-confusion-matrix}
+\end{figure}
+
+\end{adjustwidth}
+
+
+\paragraph{Testfall: Überprüfen der Sinnhaftigkeit des Klassifikationsergebnisses}\mbox{}\\
+\begin{adjustwidth}{0.5cm}{0cm}
+\textbf{Schritte:}
+\begin{enumerate}
+	\item Es werden vier Audiosamples ermittelt, die nicht in den Trainingsdaten enthalten waren.
+	\item Die Audiosamples werden wiedergegeben und notiert, welchen Merkmalsklassen sie jeweils zugeordnet sein sollten.
+	\item Die fünf Audiosamples werden nacheinander mit dem Jupyter-Notebook ``ESP\_IMA\_validation`` klassifiziert.
+	\item Die Klassifikationsergebnisse werden betrachtet und mit den notierten SOLL-Merkmalsklassen verglichen.
+\end{enumerate}
+
+\textbf{Erwartetes Ergebnis:} Die tatsächlichen Klassifikationsergebnisse (SOLL-Werte) decken sich mit den notierten Klassifikationsergebnissen (IST-Werte). Dabei wird ein Klassifikationsergebnis je Merkmalsklasse, das $\geq$ 0,5 ist, als ``erkannt`` gewertet.
+
+\newpage
+
+\textbf{Tatsächliches Ergebnis:}
+
+1. Rock-Song
+
+\begin{tabular}{|c|c|c|c|c|c|}
+    \hline
+    IST/SOLL & bass & pitched & rhythmic & sustained & melodic \\ \hline
+    SOLL-Ausgabe & 0 & 0 & 1 & 0 & 1 \\ \hline
+    IST-Ausgabe & 0.09 & 0.28 & 0.48 & 0.31 & 0.76 \\ \hline
+\end{tabular}
+
+2. Klaviermusik
+
+\begin{tabular}{|c|c|c|c|c|c|}
+    \hline
+    IST/SOLL & bass & pitched & rhythmic & sustained & melodic \\ \hline
+    SOLL-Ausgabe & 0 & 0 & 0 & 1 & 1 \\ \hline
+    IST-Ausgabe & 0.14 & 0.14 & 0.01 & 0.85 & 0.92 \\ \hline
+\end{tabular}
+
+3. Schlagzeug-Solo
+
+\begin{tabular}{|c|c|c|c|c|c|}
+    \hline
+    IST/SOLL & bass & pitched & rhythmic & sustained & melodic \\ \hline
+    SOLL-Ausgabe & 0 & 0 & 1 & 0 & 0 \\ \hline
+    IST-Ausgabe & 0.16 & 0.24 & 0.91 & 0.00 & 0.10 \\ \hline
+\end{tabular}
+
+4. Action-Song
+
+\begin{tabular}{|c|c|c|c|c|c|}
+    \hline
+    IST/SOLL & bass & pitched & rhythmic & sustained & melodic \\ \hline
+    SOLL-Ausgabe & 1 & 0 & 1 & 0 & 0 \\ \hline
+    IST-Ausgabe & 0.41 & 0.23 & 0.97 & 0.03 & 0.36 \\ \hline
+\end{tabular}
+
+Wie in den Beispielen erkennbar ist, werden Merkmalsklassen nicht immer gut erkannt, jedoch lässt sich auch hier eine Tendenz ableiten. Beim Rock-Song beispielsweise liegt der Ähnlichkeitswert für die Klasse ``rhythmic`` mit 0,48 nur knapp unterhalb der Schwelle von 0,5. Beim Action-Song wird das Merkmal ``bass`` mit einer Ähnlichkeit von 0,41 erkannt, was auch nicht allzu weit weg ist vom Schwellenwert. Dennoch bleibt wie zuvor erwähnt nich Optimierungspotenzial mit mehr Trainingsdaten für bestimmte Klassen, um das Merkmalsspektrum besser abzubilden.
+
+\end{adjustwidth}
+
+%
+%
+%
+%
+
+\subsubsection{Validierung der korrekten Funktion der Klassifikation auf dem STM32 Microcontroller}
+\paragraph{Testfall: Überprüfen der berechneten Spektrogramm-Werte}\mbox{}\\
+\begin{adjustwidth}{0.5cm}{0cm}
+\textbf{Schritte:}
+\begin{enumerate}
+	\item blubb
+\end{enumerate}
+
+\textbf{Erwartetes Ergebnis:} 
+\textbf{Tatsächliches Ergebnis:}
+\end{adjustwidth}
+
+
+\paragraph{Testfall: Überprüfen des Klassifikationsergebnisses}\mbox{}\\
+\begin{adjustwidth}{0.5cm}{0cm}
+\textbf{Schritte:}
+\begin{enumerate}
+	\item blubb
+\end{enumerate}
+
+\textbf{Erwartetes Ergebnis:} 
+\textbf{Tatsächliches Ergebnis:}
+\end{adjustwidth}
+
