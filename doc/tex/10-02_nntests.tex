@@ -138,11 +138,17 @@ Wie in den Beispielen erkennbar ist, werden Merkmalsklassen nicht immer gut erka
 \begin{adjustwidth}{0.5cm}{0cm}
 \textbf{Schritte:}
 \begin{enumerate}
-	\item blubb
+	\item Ein Audiosample wird in das Jupyter-Notebook ``ESP\_IMA\_validation`` geladen und auf 16 kHz heruntergesampled.
+	\item Die ersten 16.896 Samples (das erste Audiosubsample) des Audiosamples wird in Form von C-Code in Datei \mintinline{c}|test_audio_data.c| im CubeMX Projekt ``esp-cubeai-test`` geladen.
+	\item Ein Breakpoint wird vor der Standardisierung der Eingabewerte gesetzt.
+	\item Der Code wird via Debugger auf das Nucleo-Board geflashed.
+	\item Es wird zu dem gesetzten Breakpoint gegangen und in CubemMX eine Expression für die Variable \mintinline{c}|spectrogram| gesetzt.
+	\item Die Werte des Arrays werden mit den Spektrogramm-Werten des ersten Audiosubsamples im Jupyter-Notebook verglichen.
 \end{enumerate}
 
-\textbf{Erwartetes Ergebnis:} 
-\textbf{Tatsächliches Ergebnis:}
+\textbf{Erwartetes Ergebnis:} Es gibt keine bzw. kaum Abweichungen zwischen den Spektrogramm-Werten im Debugger  und den Werten aus dem Jupyter-Notebook.
+
+\textbf{Tatsächliches Ergebnis:} Von den Werten 0 bis 700 wurden keine Abweichungen festgestellt. Nach diesem Bereich treten jedoch leichte Abweichungen auf. Diese können darauf zurückgeführt werden, dass die höheren Indizes des \mintinline{c}|spectrogram|-Arrays die Dezibel-Werte der höheren Frequenzbereiche enthalten. Es lässt sich daraus schließen, dass die verwendete Bibliothek zur Spektrogramm-Berechnung die höheren Frequenz-Werte anders skaliert. Insgesamt kann der Test mit einem positiven Ergebnis bewertet werden, wobei darauf hingewiesen werden muss, dass die leichten Abweichungen in der Spektrogramm-Berechnung zu geringfügigen Abweichungen in den Klassifikationsergebnissen führen könnten.
 \end{adjustwidth}
 
 
@@ -150,10 +156,35 @@ Wie in den Beispielen erkennbar ist, werden Merkmalsklassen nicht immer gut erka
 \begin{adjustwidth}{0.5cm}{0cm}
 \textbf{Schritte:}
 \begin{enumerate}
-	\item blubb
+	\item Ein Audiosample wird in das Jupyter-Notebook ``ESP\_IMA\_validation`` geladen und auf 16 kHz heruntergesampled.
+	\item Die ersten 16.896 Samples (das erste Audiosubsample) des Audiosamples wird in Form von C-Code in Datei \mintinline{c}|test_audio_data.c| im CubeMX Projekt ``esp-cubeai-test`` geladen.
+	\item Ein Breakpoint wird nach der Zeile des Funktionsaufrufs von \mintinline{c}|ai_network_1_run()| gesetzt.
+	\item Der Code wird via Debugger auf das Nucleo-Board geflashed.
+	\item Es wird zu dem gesetzten Breakpoint gegangen und in CubemMX eine Expression für die Variable \mintinline{c}|ai_out_data| gesetzt.
+	\item Die Werte des Arrays werden mit dem Klassifikationsergebnis des ersten Audiosubsamples im Jupyter-Notebook verglichen.
 \end{enumerate}
 
-\textbf{Erwartetes Ergebnis:} 
+\textbf{Erwartetes Ergebnis:} Es gibt kaum Abweichungen zwischen den Werten im Debugger und den Werten aus dem Jupyter-Notebook. Eine geringe Abweichung ist zu erwarten, da wie im Ergebnis des vorherigen Testfalls beschrieben die berechneten Spektrogramm-Werte nicht identisch sind.
+
+
 \textbf{Tatsächliches Ergebnis:}
+Folgende IST-Werte wurden aus dem Debugger ausgelesen. Ein Screenshot Tabs ``Expressions``, in dem die Variableninhalte zur Laufzeit gezeigt werden, ist in \textbf{Abbildung \ref{fig:img-stm-classification-result}} zu sehen.
+
+\begin{tabular}{|c|c|c|c|c|c|}
+    \hline
+    IST/SOLL & bass & pitched & sustained & rhythmic & melodic \\ \hline
+    SOLL-Ausgabe & 0.12 & 0.28 & 0.06 & 0.93 & 0.37 \\ \hline
+    IST-Ausgabe & 0.13 & 0.33 & 0.048 & 0.95 & 0.31 \\ \hline
+\end{tabular}
+
+Wie erwartet gibt es leichte Abweichungen im Klassifikationsergebnis. Dies ist wie zuvor erwähnt auf die abweichenden Spektrogramm-Werte zurückzuführen. Das Testergebnis ist als positiv zu beurteilen. 
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.45\textwidth]{images/10_test_validierung/nn/nn-debuger-classification-result.png}
+\caption{Screenshot vom CubeAI Debugger. In den Elementen des ``aiOutData``-Arrays kann das Klassifikationsergebnis abgelesen werden.}
+\label{fig:img-stm-classification-result}
+\end{figure}
+
 \end{adjustwidth}
 
