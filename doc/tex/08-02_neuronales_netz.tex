@@ -206,7 +206,7 @@ history = model.fit(x_train_r, y_train, validation_data=(x_val_r, y_val),
 	\hspace{5pt}
 	\vspace{-10pt + 0.02\textwidth}
 	\fbox{\includegraphics[width=0.4\textwidth]{images/08_durchfuehrung/nn/nn_learning_curve.png}}
-	\caption{Darstellung des Loss-Werts über den Verlauf der Epochen}
+	\caption{Darstellung des Loss-Werts über den Verlauf der Epochen hinweg}
 	\label{fig:img-training-graph}
 \end{wrapfigure}
 
@@ -254,15 +254,17 @@ Ein Ablaufdiagramm, das den geplanten Prozess der Datenvorverarbeitung und der K
 \textbf{Übersetzen des neuronalen Netzes mit STM32Cube.AI}
 
 
-\begin{wrapfigure}{r}{0.4\textwidth} % Increase the width of the figure environment
-	\vspace{-20pt + 0.02\textwidth}
-	\hspace{0.02\textwidth} % Add horizontal space
+\begin{wrapfigure}{r}{0.43\textwidth} % Increase the width of the figure environment
+	\hspace{5pt}
+	\vspace{-10pt + 0.02\textwidth}
 	\fbox{\includegraphics[width=0.4\textwidth]{images/08_durchfuehrung/nn/cube_ai_config.png}}
 	\caption{Konfiguration von STM32Cube.AI in CubeMX}
-	\label{fig:img-training-graph}
+	\label{fig:img-cubeai-config}
 \end{wrapfigure}
 
-Für die Nutzung von STM32Cube.AI muss zunächst in der CubeMX-Datei das Software Package ``X-CUBE-AI`` in Version 9.0.0 heruntergeladen werden. Im Reiter ``Configuration`` lässt sich ein Name für das Modell festlegen, welcher später im Code zur Referenzierung verwendet wird. Hier wird ebenfalls die Modell-Datei ``model.tflite`` eingebunden. Durch einen Klick auf ``Analyze`` wird das Modell in C-Code übersetzt und ein Bericht zur Ressourcennutzung erstellt. Dieser bestätigt, dass die Ressourcenlimits des verwendeten Nucleo-Boards eingehalten werden. Der folgende Auszug gibt einen Überblick über die genutzten Ressourcen:
+Für die Nutzung von STM32Cube.AI muss zunächst in der CubeMX-Datei das Software Package ``X-CUBE-AI`` in Version 9.0.0 heruntergeladen werden. Im Reiter ``Configuration`` lässt sich ein Name für das Modell festlegen, welcher später im Code zur Referenzierung verwendet wird. Hier wird ebenfalls die Modell-Datei ``model.tflite`` eingebunden. Ein Ausschnitt des Konfigurationsfensters ist in \textbf{Abbildung \ref{fig:img-cubeai-config}} dargestellt. Durch einen Klick auf ``Analyze`` wird das Modell in C-Code übersetzt und ein Bericht zur Ressourcennutzung erstellt. Dieser bestätigt, dass die Ressourcenlimits des verwendeten Nucleo-Boards eingehalten werden.
+
+Der folgende Auszug gibt einen Überblick über die genutzten Ressourcen:
 
 \begin{minted}{text}
 Total Flash		82.050 B (80.13 KiB)
