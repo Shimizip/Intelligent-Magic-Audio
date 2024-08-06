@@ -1,0 +1,8 @@
+../Core/Src/audio_classification.c:34:5:init_nn	2
+../Core/Src/audio_classification.c:52:5:run_nn_classification	4
+../Core/Src/audio_classification.c:80:6:test_call_classification	4
+../Core/Src/audio_classification.c:94:6:Preprocessing_Init	1
+../Core/Src/audio_classification.c:119:6:frame_subsamples	4
+../Core/Src/audio_classification.c:135:6:preprocess_frame	4
+../Core/Src/audio_classification.c:159:6:process_subsample	3
+../Core/Src/audio_classification.c:178:6:PowerToDb	8
