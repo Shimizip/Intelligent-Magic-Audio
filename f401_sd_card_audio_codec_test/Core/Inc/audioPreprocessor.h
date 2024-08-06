@@ -34,6 +34,6 @@ arm_status initFilter();
 uint16_t resampleFile(FIL *inFil, FIL *outFil, wav_header_t *waveHeaderInput, wav_header_t *waveHeaderResampled);
 void downsample_Block(int16_t *src, int16_t *dest);
 uint16_t get_number_subsamples(FIL *file);
-uint32_t downsample_chunk_to_1024_samples(FIL *file, int16_t outChunk[NUM_SAMPLES_CHUNK_OUT]);
+uint32_t downsample_to_1024_samples(FIL *file, int16_t outChunk[NUM_SAMPLES_CHUNK_OUT]);
 
 #endif // RESAMPLE_H

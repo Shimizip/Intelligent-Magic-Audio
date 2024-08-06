@@ -1,0 +1,8 @@
+../Core/Src/audio_classification.c:34:5:init_nn	16	static
+../Core/Src/audio_classification.c:52:5:run_nn_classification	32	static
+../Core/Src/audio_classification.c:80:6:test_call_classification	32	static
+../Core/Src/audio_classification.c:94:6:Preprocessing_Init	8	static
+../Core/Src/audio_classification.c:119:6:frame_subsamples	32	static
+../Core/Src/audio_classification.c:135:6:preprocess_frame	24	static
+../Core/Src/audio_classification.c:159:6:process_subsample	24	static
+../Core/Src/audio_classification.c:178:6:PowerToDb	40	static

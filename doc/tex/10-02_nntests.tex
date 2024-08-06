@@ -1,8 +1,33 @@
-\subsubsection{Testprotokoll: /LFNeuronales Netz}
-\label{test-latenzmessung}
+\subsection{Testprotokoll zu /LF03/}
+\textbf{\hyperlink{lf-nn-01}{LF03}}
+
+\subsubsection{Validierung der Sinnhaftigkeit der Merkmalsklassen}
+Sie Sinnhaftigkeit und Relevanz der ausgewählten Merkmalsklassen wurden durch eine musikaffine Person, die gleichzeitig ein Gruppenmitglied ist, bestätigt.
+Da die Relevanz der ausgewählten Merkmalsklassen für die Musikproduktion jedoch nicht sachlich sinnvoll in einem Testfall validiert werden kann, wird stattdessen die Fähigkeit zur Klassifizierung auf der Grundlage der auf einem Mikrocontroller verarbeitbaren Spektrogrammauflösung in die ausgewählten Merkmalsklassen betrachtet. Dabei wird einerseits die Umsetzbarkeit vor dem Training des neuronalen Netzes geprüft, außerdem im Anschluss wie gut das neuronale Netz die einzelnen Merkmalsklassen dann im Anschluss an das Training klassifiziert
+
+\paragraph{Testfall: Testen der Umsetzbarkeit der Merkmalsklassen vor dem Training}\mbox{}\\
+\begin{adjustwidth}{0.5cm}{0cm}
+\textbf{Schritte:}
+
+\begin{enumerate}
+	\item Für jede Merkmalsklasse (bass, pitched, rhythmic, sustained, melodic) werden 1-3 passende Audiosamples ermittelt.
+	\item Diese Audiosamples werden in Audiosubsamples zerteilt und Spektrogramme in der festgelegten Auflösung (32x30 Pixel) generiert. Dies geschieht mit dem ``ESP\_IMA\_validation`` Jupyter Notebook.
+	\item Anschließend wird manuell geprüft, ob mit dem menschlichen Auge bestimmte Muster sichtbar sind, anhand derer man als Mensch die Spektrogramme einer Merkmalsklasse zuordnen könnte.
+\end{enumerate}
+
+\textbf{Erwartetes Ergebnis:} 
+Für jede Merkmalsklasse sind bestimmte Merkmale in den generierten Spektrogrammen sichtbar, die diese Merkmalsklasse deutlich von anderen Merkmalsklassen unterscheidet. Dadurch ist die theoretische Umsetzbarkeit durch ein neuronales Netz gewährleistet.
+
+\textbf{Tatsächliches Ergebnis:} Für jede Merkmalsklasse lassen sich in den Spektrogrammen die folgenden Merkmale erkennen:
 
 \begin{itemize}
-	\item Gemessene Latenz von \SI{6.4}{\milli\second} (\textbf{BX-AX} in Abbildung  \ref{fig:audio-latency-test}).
-	\item Die Abweichung von der erwarteten Latenz ist wahrscheinlich auf die Verarbeitungszeiten des Audio-Codecs zurückzuführen.
-	\item Sehr praktikabler Latenzwert für Audioinstrument.
+  \item \textbf{bass}: Überwiegend hell gefärbt (hohe Dezibel Zahl) in den tiefen Frequenzbereichen
+  \item \textbf{pitched}: Überwiegend hell gefärbt (hohe Dezibel Zahl) in den hohen Frequenzbereichen
+  \item \textbf{rhytmic}: Im zeitliche Verlauf immer wieder vertikale ``Trennlinien``
+  \item \textbf{sustained}: Im zeitliche Verlauf häufig durchgehende Linien für eine bestimmte Frequenz
+  \item \textbf{melodic}: Oft sind überlagerte, hell gefärbte und wellenförmige Segmente zu sehen
 \end{itemize}
+
+Damit ist die theoreitische Umsetzbarkeit der Klassifizierung dieser Merkmalsklassen auf Basis von Spektrogrammen mit der Auflösung 32x30 Pixel gewährleistet.
+
+\end{adjustwidth}

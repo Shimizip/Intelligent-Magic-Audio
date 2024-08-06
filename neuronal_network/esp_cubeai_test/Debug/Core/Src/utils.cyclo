@@ -1,0 +1,6 @@
+../Core/Src/utils.c:22:6:EnableDWT	1
+../Core/Src/utils.c:30:6:StartCycleMeasurement	1
+../Core/Src/utils.c:35:6:StopCycleMeasurement	1
+../Core/Src/utils.c:40:10:GetMeasuredCycles	1
+../Core/Src/utils.c:45:10:CyclesToMilliseconds	1
+../Core/Src/utils.c:51:10:CyclesToMicroseconds	1
