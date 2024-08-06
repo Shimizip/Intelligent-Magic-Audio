@@ -162,7 +162,7 @@ Wie in den Beispielen erkennbar ist, werden Merkmalsklassen nicht immer gut erka
 	\item Die ersten 16.896 Samples (das erste Audiosubsample) des Audiosamples wird in Form von C-Code in Datei \mintinline{c}|test_audio_data.c| im CubeMX Projekt ``esp-cubeai-test`` geladen.
 	\item Ein Breakpoint wird nach der Zeile des Funktionsaufrufs von \mintinline{c}|ai_network_1_run()| gesetzt.
 	\item Der Code wird via Debugger auf das Nucleo-Board geflashed.
-	\item Es wird zu dem gesetzten Breakpoint gegangen und in CubemMX eine Expression für die Variable \mintinline{c}|ai_out_data| gesetzt.
+	\item Es wird zu dem gesetzten Breakpoint gegangen und im CubemMX Debugger eine Expression für die Variable \mintinline{c}|aiOutData| gesetzt.
 	\item Die Werte des Arrays werden mit dem Klassifikationsergebnis des ersten Audiosubsamples im Jupyter-Notebook verglichen.
 \end{enumerate}
 
@@ -184,7 +184,7 @@ Wie erwartet gibt es leichte Abweichungen im Klassifikationsergebnis. Dies ist w
 \begin{figure}[h!]
 \centering
 \includegraphics[width=0.45\textwidth]{images/10_test_validierung/nn/nn-debuger-classification-result.png}
-\caption{Screenshot vom CubeMX Debugger. In den Elementen des ``aiOutData``-Arrays kann das Klassifikationsergebnis abgelesen werden.}
+\caption{Screenshot vom CubeMX Debugger. In den Elementen des `\mintinline{c}|aiOutData|-Arrays kann das Klassifikationsergebnis abgelesen werden.}
 \label{fig:img-stm-classification-result}
 \end{figure}
 
