@@ -47,7 +47,7 @@ Beim Drücken des Knopfes kann es in Systemen zu Mehrfachauslösungen kommen. Di
 
 \textbf{Lösung:}
 
-Um Mehrfachauslösungen zu verhindern, wurde ein Debouncing-Mechanismus implementiert. Dieser Mechanismus verwendet ein Flag \mintinline{c}|debounce| und einen Timer \mintinline{c}|tim5|, um wiederholte Auslösungen zu verhindern. Beim Drücken des Knopfes wird ein Interrupt ausgelöst, der eine Callback-Funktion \mintinline{c}|HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)| aufruft. In dieser Callback-Funktion wird ein Flag gesetzt und ein Timer gestartet. Der Timer sorgt dafür, dass weitere Auslösungen innerhalb einer definierten Zeitspanne ignoriert werden, wodurch Mehrfachauslösungen effektiv verhindert werden.
+Um Mehrfachauslösungen zu verhindern, wurde ein Debouncing-Mechanismus implementiert. Dieser Mechanismus verwendet ein Flag \mintinline{c}|debounce| und einen Timer \mintinline{c}|tim3|, um wiederholte Auslösungen zu verhindern. Beim Drücken des Knopfes wird ein Interrupt ausgelöst, der eine Callback-Funktion \mintinline{c}|HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)| aufruft. In dieser Callback-Funktion wird ein Flag gesetzt und ein Timer gestartet. Der Timer sorgt dafür, dass weitere Auslösungen innerhalb einer definierten Zeitspanne ignoriert werden, wodurch Mehrfachauslösungen effektiv verhindert werden.
 
 Erst nach dem Ablauf des Timers war ist ein möglich den Knopf wieder zu betätigen.
 
@@ -57,7 +57,7 @@ Erst nach dem Ablauf des Timers war ist ein möglich den Knopf wieder zu betäti
 
 \textbf{Grundfunktionalität:}\\
 
-\textbf{Schiebepotentiometer} erfassen analoge Spannungen, die vom \textbf{Analog-Digital-Wandler (ADC)} in digitale Werte umgewandelt werden\textbf{\autoref{fig:fig:conversion}}. Er nimmt in regelmäßigen Intervallen Proben des analogen Signals. Die Auflösung in 12 Bits 15 ADC Clock Cycles hat sich als am effizientesten herrausgestelt. ()\textbf{Wertebereich} 0-4096).
+\textbf{Schiebepotentiometer} erfassen analoge Spannungen, die vom \textbf{Analog-Digital-Wandler (ADC)} in digitale Werte umgewandelt werden\textbf{\autoref{fig:conversion}}. Er nimmt in regelmäßigen Intervallen Proben des analogen Signals. Die Auflösung in 12 Bits 15 ADC Clock Cycles hat sich als am effizientesten herrausgestelt. ()\textbf{Wertebereich} 0-4096).
 
 \begin{figure}[H]
 	\centering
@@ -75,22 +75,30 @@ Der \textbf{Direct Memory Access (DMA)-Controller} übernimmt anschließend die 
 \label{fig:DMA_ADC_FADER}
 \end{figure}
 
-Der Direct Memory Access (DMA)-Controller übernimmt die Datenübertragung direkt zwischen dem Speicher und Peripheriegeräten, wodurch der Prozessor von diesen Aufgaben entlastet wird. Analoge-Digital-Wandler (ADCs) ermöglichen die zeitnahe Digitalisierung von analogen Signalen, was eine präzise Verarbeitung der Messwerte sicherstellt. Potentiometer ermöglichen eine benutzerfreundliche Anpassung von Spannungswerten. Das Bussystem gewährleistet eine effiziente Kommunikation zwischen den verschiedenen Komponenten und trägt zu einer konsistenten und zuverlässigen Datenverarbeitung bei. \textbf{\autoref{fig:DMA_ADC_FADER}} \\
+Der Direct Memory Access (DMA)-Controller ermöglicht die direkte Datenübertragung zwischen Speicher und Peripheriegeräten, wodurch die Prozessorbelastung reduziert wird. Analoge-Digital-Wandler (ADCs) sorgen für die schnelle Digitalisierung analoger Signale, was eine präzise Verarbeitung der Messdaten ermöglicht. Potentiometer bieten die Möglichkeit zur benutzerfreundlichen Anpassung von Spannungswerten. Das Bussystem sorgt für eine effiziente Kommunikation zwischen den verschiedenen Komponenten und gewährleistet eine konsistente und zuverlässige Datenverarbeitung. \textbf{\autoref{fig:DMA_ADC_FADER}} \\
 
 \newpage
 \textbf{Problematik:}
 
+\textbf{No.1}
+
 Bei der Implementierung der DMA traten Probleme auf, die dazu führten, dass der Bildschirm einfrohr und das Bedienen der Interfaces unmöglich wurde. Das Problem entstand, weil die DMA fortlaufend Daten übertrug und die CPU dadurch vollständig beansprucht wurde, um die Daten, die von der DMA übertragen wurden, zu verarbeiten. Dies führte zu einer Überlastung der CPU, da sie gezwungen war, sich auf die Verarbeitung der von der DMA bereitgestellten Daten zu konzentrieren, anstatt andere Aufgaben zu bewältigen. Infolgedessen konnten keine weiteren Systeminteraktionen durchgeführt werden, da die CPU keine Ressourcen mehr für andere Aufgaben zur Verfügung hatte.
 
-\textbf{Lösung:}
+\textbf{No.2}
 
-Um das Problem zu beheben, wurde ein Timer implementiert, der die DMA-Übertragung steuert. Der Timer sorgt dafür, dass die DMA in regelmäßigen Intervallen gestartet und gestoppt wird. Diese Maßnahme ermöglicht es der CPU, sich ausreichend um andere Aufgaben zu kümmern, indem sie nicht kontinuierlich mit der Datenverarbeitung durch die DMA beschäftigt ist. Der Einsatz des Timers verhindert, dass die DMA die CPU überlastet und gewährleistet eine ausgewogene Nutzung der Systemressourcen. \\
+Die Auswertung und Verarbeitung der Signale erfolgt in der \mintinline{c}| HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc)|.
 
-Die Auswertung und Verarbeitung der Signale erfolgt in der  \mintinline{c}| HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc)|.
+Im laufe der Implementation des ADC könnte man Schwankungen an den Ausgangssignalen des ADCs festellen, was die Genaugigkeit der Potentiometer einstellung beeinflüsste. 
 
-Im laufe der Implementation des ADC könnte man Schwankungen an den Ausgangssignalen des ADCs festellen, was die Genaugigkeit der Potentiometer einstellung beeinflüsste. Diese Schwankungen würden behoben in dem man ein Glättung der Werte eingeführt hat.
+\textbf{Lösung No.1:}
 
-Zunächst werden die geglätteten Werte für alle Kanäle des ADC berechnet.
+Um das Problem zu beheben, wurde ein \textbf{Timer} \mintinline{c}|tim5| implementiert, der die DMA-Übertragung steuert. Der Timer sorgt dafür, dass die DMA in regelmäßigen Intervallen gestartet und gestoppt wird. Diese Maßnahme ermöglicht es der CPU, sich ausreichend um andere Aufgaben zu kümmern, indem sie nicht kontinuierlich mit der Datenverarbeitung durch die DMA beschäftigt ist. Der Einsatz des Timers verhindert, dass die DMA die CPU überlastet und gewährleistet eine ausgewogene Nutzung der Systemressourcen. \\
+
+\textbf{Lösung No.2:}
+
+Diese Schwankungen würden behoben in dem man ein Glättung der Werte eingeführt hat.
+
+Zunächst werden des \mintinline{c}|adcBuffer[i]| in \mintinline{c}|smoothValue[i]| aufeinander addiert. Dann wird derren Durchschnittswerte berechnet. Die geglätteten Werte werden für alle Kanäle des ADC berechnet. 
 
 \textcolor{red}{TODO: Code Verschieben}
 
@@ -142,6 +150,19 @@ Zusammenfassend ermöglicht der SD1306-Treiber die vollständige Integration des
 	\caption{Display SD1306 I2C Kommunikation}
 	\label{fig:Display SD1306 I2C}
 \end{figure}
+
+Die beiden Hauptfunktionen zur Darstellung auf dem OLED-Bildschirm sind:
+
+ \mintinline{c}|void  displayStrings(I2C_HandleTypeDef *hi2c1, char** strings, uint8_t numStrings, uint8_t cursor_index)|
+ 
+ \mintinline{c}|void renderSelectedFile(I2C_HandleTypeDef *hi2c1, const char *filename)| bzw. 
+ 
+ \mintinline{c}|drawFaderProzent| ähnliche funktionsweiße wie  \mintinline{c}|renderSelectedFile|. 
+
+
+In der Funktion \mintinline{c}|displayStrings| werden die `ssd1306`-Funktionen verwendet, um die Strings auf dem LCD-Display darzustellen. Die Funktion \mintinline{c}|ssd1306_SetCursor| legt die Position für die Anzeige fest, und \mintinline{c}|ssd1306_WriteString| wird verwendet, um die Strings auf dem Display auszugeben. Bei der Anzeige des ausgewählten Strings wird zusätzlich ein Cursor-Symbol integriert.
+
+In der Funktion \mintinline{c}|renderSelectedFile| wie bei \mintinline{c}|displayStrings| `ssd1306`-Funktionen verwendet, um den Namen der ausgewählten Datei auf dem OLED-Display darzustellen. Die Funktion \mintinline{c}|ssd1306_DrawPixel| wird verwendet, um den Bereich für die Dateianzeige zu löschen. Anschließend legt \mintinline{c}|ssd1306_SetCursor| die Position für die Textausgabe fest, und \mintinline{c}|ssd1306_WriteString| gibt den Namen der ausgewählten Datei auf dem Display aus. \\
 
 \textbf{Problematik:} \\
 
