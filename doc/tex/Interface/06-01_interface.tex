@@ -55,16 +55,18 @@ Das Drücken des Switch über den Pin \boldinline{PA4}. Durch das drücken des S
 
 \textbf{Spannung} 5.0V \\ \\
 
+Zur Visualisierung der Samples haben wir ein monochromes LCD-Display verwendet. Dieses Display wird über das \textbf{\hyperlink{I2C_target}{I2C}}-Protokoll angesteuert. Der Datenpin \textbf{PB7} ist mit dem SDA-Pin des Displays verbunden, während der Taktpin \textbf{PB6} an den SCL-Pin des Displays angeschlossen ist. 
+	
+Im Zusammenspiel mit dem Encoder ermöglicht das Display eine präzise Navigation durch den gewünschten Samplepool. Das Display wird mit einer Aktualisierungsrate von 20 FPS betrieben. Die Aktualisierungen werden mithilfe des Timers \textbf{TIM5} durchgeführt, der regelmäßig ausgelöst wird, um die Anzeige auf dem LCD zu aktualisieren.
+	
 
 
-Zur Visualiesierung der Sampels haben wir einen Monochronen LCD-Display benutzt. Im zusammenspiel mit dem Encoder ermöglicht es eine gute Navigation durch den gewünschten Samplepool. Die Daten werden über den Output Pin  \boldinline{PB7} an den SDA des Displays übertragen. Der Takt wird über den Pin  \boldinline{PB6} an den SCL übertragen. Das Display wird mit 20 FPS betrieben und mit hilfe von \boldinline{Timer tim5} geupdated.
 
 \begin{itemize}
 	\item \textbf{Klare Visualisierung:} LCD-Displays bieten eine klare und gut lesbare Darstellung von Text und Grafiken.
 	\item \textbf{Anpassbarkeit:} Sie können einfach an verschiedene Layouts und Designs angepasst werden.
 \end{itemize}
 
-\newpage
 \textbf{Komponenten\hyperlink{LF02_Link}{/LF02/}} \\
 
 \textbf{\hypertarget{Potentiometer}{Schiebe-Potentiometer}}\\
