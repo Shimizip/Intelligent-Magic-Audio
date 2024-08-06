@@ -1,8 +1,8 @@
 \subsection{Audio Engine des Samplers}\label{sec:audio-engine}
 
-Die Hauptfunktionalität eines Audiosamplers ist natürlich das Aufnehmen und Abspielen von Audiosamples. 
+Die Hauptfunktionalität eines Audiosamplers ist das Aufnehmen und Abspielen von Audiosamples. 
 
-Der ausgesuchte PCM5102a Audio Codec verfügt lediglich über einen Ausgabestream, was eine Neubestellung eines Codecs mit In- und Output Stream erfordern würde.
+Der gewählte PCM5102a Audio Codec verfügt lediglich über einen Ausgabestream, was eine Neubestellung eines Codecs mit In- und Output Stream erfordern würde.
 
 Angesichts des ohnehin schon ambitionierten Featureumfangs und der damit verbundenen Zeitknappheit, wurde die Aufnahmefunktion \textbf{\hyperlink{lf-audiorecord}{LF04}} gestrichen, sodass der Prototyp zu einer reinen ``Sample-Playback`` Maschine wird. 
 
@@ -80,7 +80,7 @@ Diese Callbacks, werden systembedingt aufgerufen, sobald die DMA die erste Hälf
 Die Latenzmessung im Abschnitt \ref{test-latenzmessung} zeigt, dass die gemessene Latenz von Trigger Input bis Audioausgang mit \SI{6.7}{\milli\second} sehr zufriedenstellend ist, was ein erfolgreiches Zusammenspiel mit anderen elektronischen Instrumenten ermöglicht.
 
 
-\subsubsection{PCM5102a und I2S}
+\subsubsection{PCM5102a und I2S}\label{sec:pcm5102a-und-i2s}
 
 Ein sehr weit verbreitetes Protokoll zur digitalen Audioübertragung ist I2S. Viele Codecs, so auch der PCM5102a, unterstützen dieses Protokoll.
 
@@ -102,7 +102,8 @@ Die I2S Signale des PCM5102a sind:
 
 Der Einfachheit halber wird eine festgelegte Samplerate und nur Stereo-Samples verwendet.
 
-\subsubsection{SD Karte}
+\subsubsection{Audiostream von SD-Karte}
+\label{sec:sd-card-audio}
 
 Durch den sehr begrenzter RAM-Speicher des NUCLEO F401re Boards , ist es notwendig die Daten in Echtzeit von der SD-Karte zu streamen. Das setzt bei Stereo PCM Dateien, mit den gängigen Parametern, eine bestimmte Datenrate \( R \) voraus:
 
@@ -111,7 +112,6 @@ Durch den sehr begrenzter RAM-Speicher des NUCLEO F401re Boards , ist es notwend
 	\item Bit-Tiefe: 16 Bit
 	\item Kanäle: 2 (Stereo)
 \end{itemize}
-
 
 Die Datenrate \( R \) berechnet sich aus:
 
@@ -134,15 +134,13 @@ Theoretisch hätte eine Implementierung des FATFS-Dateisystems über SPI ausreic
 
 Um die SDIO-Schnittstelle in das FATFS-Dateisystem zu integrieren, mussten zunächst Treiber entwickelt werden. Diese Treiber mappen die üblichen Dateioperationen wie \mintinline{c}|f_open()|, \mintinline{c}|f_read()| usw. über die SPI-Schnittstelle.
 
-
-In der Praxis stellte sich jedoch heraus, dass der Audiobuffer nicht schnell genug gefüllt worden ist, was starke Knackser und Störgeräusche mit sich gebracht hat.
-
 \begin{wrapfigure}{r}{0.3\textwidth} % Increase the width of the figure environment
-	\vspace{-20pt}
 	\fbox{\includegraphics[width=0.3\textwidth]{images/08_durchfuehrung/audio/cubemx_sdio.png}}
 	\caption{CubeMX FATFS SDIO Einbindung}
 	\label{fig:cubemx_sdio}
 \end{wrapfigure}
+
+In der Praxis stellte sich jedoch heraus, dass der Audiobuffer nicht schnell genug gefüllt worden ist, was starke Knackser und Störgeräusche mit sich gebracht hat.
 
 Dies erwies sich als äußerst vorteilhaft, da die SDIO-Implementierung zusammen mit FATFS direkt im Konfigurationstool von STM, \textbf{CubeMX}, ausgewählt werden kann. Die benötigten Treiber werden von CubeMX automatisch generiert und integrieren sich problemlos in das Dateisystem.
 
