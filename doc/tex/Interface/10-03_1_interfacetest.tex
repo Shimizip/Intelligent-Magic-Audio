@@ -9,15 +9,22 @@
 		\item Der Encoder wird schnell und langsam in beide Richtungen gedreht.
 		\item Dabei wird die Zählvariable \texttt{rotary\_enc\_count} beobachtet.
 	\end{enumerate}
-	\item \textbf{Erwartete Werte:}
-	\begin{itemize}
-		\item Die Zählvariable zählt wie erwartet hoch und runter.
-		\item Nur beim Betreten der \texttt{HAL\_GPIO\_EXTI\_Callback} soll die Variable hochgezählt werden.
-	\end{itemize}
-	\begin{itemize}
-		\item Es traten keine Mehrfachauslösungen auf.
-		\item Die Zählvariable zählte korrekt und reagierte wie erwartet auf schnelle und langsame Drehungen in beide Richtungen.
-	\end{itemize}
+\item \textbf{Testergebnisse:}
+\begin{itemize}
+	\item Die Zählvariable zählt wie erwartet hoch und runter.
+	\item Nur beim Betreten der \texttt{HAL\_GPIO\_EXTI\_Callback} soll die Variable hochgezählt werden.
+\end{itemize}
+
+\textbf{Gemessene Ergebnisse:}
+\begin{itemize}
+	\item Während der Tests wurde beobachtet, dass die Zählvariable korrekt hoch- und runtergezählt hat. Bei jeder Interaktion mit dem Encoder hat sich der Wert der Zählvariable entsprechend erhöht oder verringert.
+	\item Die Zählvariable wurde ausschließlich beim Betreten der \texttt{HAL\_GPIO\_EXTI\_Callback} Funktion verändert. In allen anderen Fällen blieb die Zählvariable unverändert.
+\end{itemize}
+
+\begin{itemize}
+	\item Es wurden keine Mehrfachauslösungen festgestellt. Jede Drehung des Encoders, sowohl schnell als auch langsam, führte zu einer einzigen Zähländerung, wie erwartet.
+\end{itemize}
+
 \end{itemize}
 
 

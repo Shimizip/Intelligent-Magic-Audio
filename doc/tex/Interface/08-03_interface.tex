@@ -62,9 +62,9 @@ Erst nach dem Ablauf des Timers war ist ein möglich den Knopf wieder zu betäti
 Die an den Schleifer des \textbf{\hyperlink{Potentiometer}{Schiebepotentiometers}} erfassten analogen Spannungen, werden vom \textbf{Analog-Digital-Wandler} \textbf{\hyperlink{ADC}{ADC}} erfasst.\textbf{\autoref{fig:conversion}}. 
 
 \textbf{ADC}\cite{adc} (Analog Digital Converter) wird benutzt, um die Ausgangsspannung an den Schleifern zu digitalisieren und in Zahlen zu fassen. Er nimmt in regelmäßigen Intervallen mit Hilfe des DMA Proben des analogen Signals. Die Auflösung in 12 Bits 15 ADC Clock Cycles hat sich als am effizientesten herrausgestelt.
-Dies erfolgt über die Pins \boldinline{PA6, PA7, PB0, PB1, PC0}, die als Schnittstellen parallel der Reihenfolge der Channels \boldinline{6, 7, 8, 9, 10} dienen. Jedes Mal, wenn an der Ausgangsspannung eines der Schleifer eine Veränderung wahrgenommen wird, startet eine Interrupt Service Routine.
+Dies erfolgt über die Pins \boldinline{PA6, PA7, PB0, PB1, PC0}, die als Schnittstellen parallel der Reihenfolge der Channels \boldinline{6, 7, 8, 9, 10} dienen. Jedes Mal, wenn an der Ausgangsspannung eines der Schleifer eine Veränderung wahrgenommen wird, startet eine Interrupt Service Routine.\\
 
-\textbf{Configuration}
+\textbf{Configuration}\\
 
 \textbf{Resolution:} 12Bit divided 15 ADC ClockCycles (Wertebereich: 0-4096) \\
 \textbf{Mode:} Scan Mode und Continues Convervion Mode \\
@@ -83,7 +83,9 @@ Dies erfolgt über die Pins \boldinline{PA6, PA7, PB0, PB1, PC0}, die als Schnit
 
 Der \textbf{Direct Memory Access (DMA)-Controller} übernimmt anschließend die direkte Übertragung dieser digitalen Werte in den Speicher, konkret in  \mintinline{c}|adcBuffer[NUM_CHANNELS]|.
 
-\textbf{DMA} (Direct Memory Access) wird gestartet, um die Werte, die an den Pins des ADC liegen, zyklisch zu pollen. Er wird zeitbasiert mit einem \textbf{Timer tim5} gestartet und in der Callback nach der Glättung der kumulierten ADC-Werte gestoppt.
+\textbf{DMA} (Direct Memory Access) wird gestartet, um die Werte, die an den Pins des ADC liegen, zyklisch zu pollen. Er wird zeitbasiert mit einem \textbf{Timer tim5} gestartet und in der Callback nach der Glättung der kumulierten ADC-Werte gestoppt. \\
+
+\textbf{Configuration}\\
 
 \textbf{Timer:} Timer5, Internal Clock, One Pulse Mode \\
 \textbf{Data Width:} Word Übertragung von 32-Bit-Datenblöcken \\
@@ -123,7 +125,7 @@ Zunächst werden des \mintinline{c}|adcBuffer[i]| in \mintinline{c}|smoothValue[
 
 \textcolor{red}{TODO: Code Verschieben}
 
- \inputminted[firstline=121, lastline=135]{c}{../../f401_display_encoder_fader_test/Core/Src/interface.c}
+ \inputminted[firstline=142, lastline=156]{c}{../../f401_display_encoder_fader_test/Core/Src/interface.c}
 
 Diese Glättung sorgt dafür, dass die Messwerte stabiler und weniger anfällig für zufällige Schwankungen sind. Anschließend werden die Durchschnittswerte ermittelt. Diese Durchschnittswerte dienen zwei Zwecken: Einerseits werden sie zur Anzeige auf dem Bildschirm verwendet  \mintinline{c}|currentClassPercentADC[]|
 , andererseits sind sie für Vergleichsoperationen innerhalb des Sortieralgorithmus von Bedeutung  \mintinline{c}|fm.fader_Class[]|.
@@ -214,7 +216,7 @@ Das Dateisystem fungiert als zentrale Schnittstelle zwischen der Audio-Wiedergab
 Die \boldinline{File}-Struktur repräsentiert einzelne Audiodateien im System. Sie enthält den Dateinamen, der sowohl für das Abspielen der Audiodatei als auch für die Anzeige in einer Liste von Samples verwendet wird. Zusätzlich speichert die Struktur Klassifizierungsdaten, die vom neuronalen Netzwerk bereitgestellt werden.
 
 
- \inputminted[firstline=37, lastline=41]{c}{../../f401_display_encoder_fader_test/Core/Inc/filemanager.h}
+ \inputminted[firstline=60, lastline=63]{c}{../../f401_display_encoder_fader_test/Core/Inc/filemanager.h}
  
 \vspace{1em}
 \textbf{FileManager}
@@ -222,14 +224,26 @@ Die \boldinline{File}-Struktur repräsentiert einzelne Audiodateien im System. S
 
 Die \boldinline{FileManager}-Struktur repräsentiert das Dateisystem selbst. Sie ist verantwortlich für die Verwaltung und Speicherung von Dateien und umfasst wesentliche Elemente, die für die Visualisierung der Dateien auf dem LCD-Display erforderlich sind.
  
- \inputminted[firstline=49, lastline=58]{c}{../../f401_display_encoder_fader_test/Core/Inc/filemanager.h}
+ \inputminted[firstline=72, lastline=81]{c}{../../f401_display_encoder_fader_test/Core/Inc/filemanager.h}
  
 \vspace{1em} 
 \textbf{Problematik:} \\
 
+\newpage
+\textbf{Problematik:} \\
+Das Schreiben und Lesen des \boldinline{FileManager}-Struktur auf der SD-Karte war zunächst nicht möglich und konnte aus zeitlichen Gründen nicht behoben werden.
+
+\textbf{Teillösung:} \\
+Das Lesen der Namen der Samples und Übertragen in den \boldinline{FileManager} hat geklappt und hat somit eine Visualisierung auf dem Display ermöglicht.
+
+Das Rausholen der Namen könnte über \boldinline{FILINFO fno} in der Methode \mintinline{c}|listFiles(const char *path)| realisiert werden, indem man als Pfad den im Root-Verzeichnis befindlichen Ordner \textbf{"/SamplePool"} übergeben hat.
 
 
-Das Schreiben der \boldinline{FileManager}-Struktur auf die SD-Karte war zunächst nicht möglich und konnte aus zeitlichen Gründen nicht behoben werden.
+ \inputminted[firstline=373, lastline=387]{c}{../../f401_display_encoder_fader_test/Core/Src/interface.c}
+ 
+ Das \boldinline{fileNamesSDCard} würde bei der Initialisieung des Displays weiter verwendet. 
+ 
+
 
 
 
