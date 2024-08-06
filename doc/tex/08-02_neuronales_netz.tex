@@ -79,11 +79,11 @@ Für jedes manuell gelabelte Audiosample wird eine eindeutige Identifikationsnum
 
 \begin{table}[h!]
 \centering
-\begin{tabular}{|m{2.8cm}|m{4.5cm}|m{0.8cm}|m{1.2cm}|m{1.5cm}|m{1.5cm}|m{1.3cm}|}
+\begin{tabular}{|m{2.8cm}|m{4.0cm}|m{0.8cm}|m{1.2cm}|m{1.5cm}|m{1.5cm}|m{1.3cm}|}
 \hline
 \textbf{UID} & \textbf{File} & \textbf{bass} & \textbf{pitched} & \textbf{sustained} & \textbf{rhythmic} & \textbf{melodic} \\ \hline
 ecfad96b740844c3
-9c96127279f22cf6 &  BD 606 Long MPC60 01.wav & 1 & 0 & 0 & 1 & 0 \\ \hline
+9c96127279f22cf6 &  BD 606 Long MPC60.wav & 1 & 0 & 0 & 1 & 0 \\ \hline
 \end{tabular}
 \caption{Beispielhafter Datensatz eines Audiosamples}
 \label{tab:audiodaten}
@@ -202,8 +202,9 @@ history = model.fit(x_train_r, y_train, validation_data=(x_val_r, y_val),
 
 \end{mdframed}
 
-\begin{wrapfigure}{r}{0.4\textwidth} % Increase the width of the figure environment
-	\vspace{-20pt + 0.02\textwidth}
+\begin{wrapfigure}{r}{0.43\textwidth} % Increase the width of the figure environment
+	\hspace{5pt}
+	\vspace{-10pt + 0.02\textwidth}
 	\fbox{\includegraphics[width=0.4\textwidth]{images/08_durchfuehrung/nn/nn_learning_curve.png}}
 	\caption{Darstellung des Loss-Werts über den Verlauf der Epochen}
 	\label{fig:img-training-graph}
