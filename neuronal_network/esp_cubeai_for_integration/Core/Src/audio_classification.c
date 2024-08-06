@@ -1,10 +1,14 @@
-/*
- * audio_classification.c
+/**
+ * @file audio_classification.c
+ * @brief Audio classification implementation for embedded systems via stm32cube.ai (for integration into the system). Everything is untested!
  *
- *  Created on: Jun 20, 2024
- *      Author: leon
+ * This file includes the complete integration of audio classification functions tailored for an embedded environment using STM32 hardware. It covers the initialization and de-initialization of neural network components, the generation and processing of spectrograms from audio data, classification of these spectrograms, and the handling of classification results. The code supports operations on audio data that involve feature scaling, neural network inference, and post-processing to interpret the network's output.
+ *
+ * Functions in this file demonstrate the full pipeline from reading raw audio data, converting it into Mel-spectrogram columns, classifying these spectrograms using a pre-trained neural network, and storing the results.
+ *
+ * @date June 20, 2024
+ * @author Leon Braungardt
  */
-
 #include "audio_classification.h"
 #include <math.h>
 #include "feature_extraction.h"
@@ -13,13 +17,48 @@
 #include "network_1_config.h"
 #include "network_1_data_params.h"
 
+/**
+ * @var ai_handle network
+ * @brief Handle to the neural network (stm32cube.ai) instance used for audio classification.
+ */
 ai_handle network;
+
+/**
+ * @var ai_u8 activations[AI_NETWORK_1_DATA_ACTIVATIONS_SIZE]
+ * @brief Buffer for storing activation data required by stm32cube.ai.
+ */
 ai_u8 activations[AI_NETWORK_1_DATA_ACTIVATIONS_SIZE];
+
+/**
+ * @var ai_buffer* ai_input
+ * @brief Pointer to the input buffer of the stm32cube.ai.
+ */
 ai_buffer * ai_input;
+
+/**
+ * @var ai_buffer* ai_output
+ * @brief Pointer to the output buffer of stm32cube.ai, where classification results are stored.
+ */
 ai_buffer * ai_output;
+
+/**
+ * @var ai_float spectrogram[AI_NETWORK_1_IN_1_SIZE]
+ * @brief Array to hold the input spectrogram data that feeds into the neural network.
+ */
 ai_float spectrogram[AI_NETWORK_1_IN_1_SIZE];
 
+/**
+ * @var float aiOutData[AI_NETWORK_1_OUT_1_SIZE]
+ * @brief Output data from the neural network, containing classification results.
+ */
 float aiOutData[AI_NETWORK_1_OUT_1_SIZE] = {0.0, 0.0, 0.0, 0.0, 0.0};
+
+/**
+ * @var char aiOutDataLabels[AI_NETWORK_1_OUT_1_SIZE][10]
+ * @brief Labels for the classification outputs of the neural network.
+ *
+ * This array stores string labels corresponding to the classification categories of the neural network outputs.
+ */
 char aiOutDataLabels[AI_NETWORK_1_OUT_1_SIZE][10] = {
 		"bass",
         "pitched",
@@ -28,9 +67,23 @@ char aiOutDataLabels[AI_NETWORK_1_OUT_1_SIZE][10] = {
         "melodic"
 };
 
+/**
+ * @var float32_t mel_spectrogram_column_buffer[SPECTROGRAM_ROWS]
+ * @brief Buffer to store a single column of the Mel spectrogram during preprocessing.
+ */
 float32_t mel_spectrogram_column_buffer[SPECTROGRAM_ROWS];
 
-// Function to initialize the neural network
+
+
+/**
+ * @brief Initializes the neural network for audio classification.
+ *
+ * This function sets up the neural network by creating an instance of the model and initializing it with the required activation buffers. It retrieves the necessary input and output buffers for processing the audio data. Error handling is incorporated to manage potential initialization failures.
+ *
+ * @return int Returns 0 on successful initialization, or -1 if an error occurs during the network creation or initialization.
+ *
+ * @note Drived from https://wiki.st.com/stm32mcu/wiki/AI:How_to_perform_motion_sensing_on_STM32L4_IoTnode#Create_an_STM32Cube-AI_application_using_X-CUBE-AI
+ */
 int init_nn() {
 	ai_error err;
 
@@ -51,6 +104,15 @@ int init_nn() {
 	return 0;
 }
 
+
+/**
+ * @brief De-initializes the neural network and disables necessary hardware configurations.
+ *
+ * This function is responsible for safely shutting down the neural network instance by destroying it and deallocating any associated resources. Additionally, it disables the CRC (Cyclic Redundancy Check) clock used by the STM32Cube.AI library.
+ *
+ * @return int Returns 0 on successful de-initialization or -1 if an error occurs during the destruction of the neural network.
+ *
+ */
 int de_init_nn() {
 	// disable CRC clock
 	__HAL_RCC_CRC_CLK_DISABLE();
@@ -65,7 +127,17 @@ int de_init_nn() {
 	return 0;
 }
 
-// Function to run the neural network and classify input data
+/**
+ * @brief Runs the neural network to classify audio data based on the provided spectrogram.
+ *
+ * This function takes a pointer to a spectrogram array, processes it by normalizing with pre-calculated mean and standard deviation values, and then feeds it into the neural network. The output from the neural network is stored in the provided classification_result array.
+ *
+ * @param ai_float* pSpectrogram Pointer to the input spectrogram array.
+ * @param ai_float* classification_result Pointer to the array where the neural network's output (classification results) will be stored.
+ *
+ * @return int Returns 0 on successful classification, or -1 if an error occurs during the network run or if the network handle is null.
+ *
+ */
 int run_nn_classification(ai_float* pSpectrogram, ai_float* classification_result) {
     ai_i32 batch;
     ai_error err;
@@ -91,10 +163,16 @@ int run_nn_classification(ai_float* pSpectrogram, ai_float* classification_resul
         return -1;
     }
 
-    return 0; // Success
+    return 0;
 }
 
-// initializes all spectrogram generation related parameters
+/**
+ * @brief Initializes the mel-spectrogram calculation lib which is part of the audio preprocessing.
+ *
+ * This function sets up the components needed for generating Mel spectrograms from audio data.
+ *
+ * @note Derived from the FP-AI-SENSING feature pack: https://www.st.com/en/embedded-software/fp-ai-sensing1.html
+ */
 void spectrogram_generation_init(void) {
   /* Init RFFT */
   arm_rfft_fast_init_f32(&S_Rfft, 1024);
@@ -119,6 +197,14 @@ void spectrogram_generation_init(void) {
   S_MelSpectr.MelFilter       = &S_MelFilter;
 }
 
+/**
+ * @brief Classifies audio data from a single file using a neural network.
+ *
+ * This function processes an audio file and splits it into audiosubsamples. It handles reading data from the file, generating spectrogram columns, converting them to dB, running neural network classifications, and aggregating the results. The entire classification result for the file is stored afterwards.
+ *
+ * @param FIL *fil Pointer to the file on the SD card.
+ * @param char* file_name Name of the file being classified, used for storing results.
+ */
 void classify_file(FIL *fil, char* file_name) {
 	int16_t frame_buffer[FRAME_LENGTH];
 	int16_t hop_buffer[HOP_LENGTH];
@@ -188,7 +274,13 @@ void classify_file(FIL *fil, char* file_name) {
 	store_classification_result(fil, file_name, total_file_classification_result);
 }
 
-// frame = 1 spectrogram column = 1024 samples
+/**
+ * @brief Generates a Mel-scaled spectrogram column from a frame (1024 samples) and inserts it into a spectrogram array.
+ *
+ * @param float* pFrame Pointer to the audio frame.
+ * @param int col_index Index at which the spectrogram column will be inserted into the main spectrogram array.
+ *
+ */
 void calculate_spectrogram_column(float* pFrame, int col_index) {
 	// Create a Mel-scaled spectrogram column
 	MelSpectrogramColumn(&S_MelSpectr, pFrame, mel_spectrogram_column_buffer);
@@ -199,15 +291,21 @@ void calculate_spectrogram_column(float* pFrame, int col_index) {
 	}
 }
 
-// converts the Mel spectrogram power to decibels (dB)
+/**
+ * @brief Converts power values in a spectrogram to decibels (dB).
+ *
+ * This function scans the spectrogram for the maximum power value to use as a reference for converting all power values to dB scale. It handles special cases where the maximum power is zero (silence) by setting all dB values to -80 dB to avoid division by zero. Values below -80 dB or resulting in NaN are also set to -80 dB to ensure numerical stability.
+ *
+ * @param float *pSpectrogram Pointer to the spectrogram data array.
+ *
+ */
 void spectrogram_power_to_db(float *pSpectrogram) {
-    float max_mel_energy = FLT_MIN; // initial kleinster Wert
-
-    uint32_t rows = NUM_MEL_BANDS;
+    float max_mel_energy = FLT_MIN; // Minimaler positiver Wert, um sicherzustellen, dass er überschrieben wird
+    uint32_t rows = SPECTROGRAM_ROWS;
     uint32_t cols = SPECTROGRAM_COLS;
     uint32_t i, total_elements = rows * cols;
 
-    // Find MelEnergy Scaling factor (highest value)
+    // Find MelEnergy Scaling factor
     for (i = 0; i < total_elements; i++) {
         if (pSpectrogram[i] > max_mel_energy) {
             max_mel_energy = pSpectrogram[i];
@@ -225,16 +323,28 @@ void spectrogram_power_to_db(float *pSpectrogram) {
 
     // Scale Mel Energies and convert to dB
     for (i = 0; i < total_elements; i++) {
-    	// https://librosa.org/doc/main/generated/librosa.power_to_db.html
     	pSpectrogram[i] = 10.0f * log10f(pSpectrogram[i] / max_mel_energy);
-        // Threshold to -80 dB and check for nan
-        if (isnan(pSpectrogram[i]) || pSpectrogram[i] < -80.0f) {
+        // Threshold to -80 dB
+        if (pSpectrogram[i] < -80.0f) {
+        	pSpectrogram[i] = -80.0f;
+        }
+        // Check for nan and replace with -80
+        if (isnan(pSpectrogram[i])) {
         	pSpectrogram[i] = -80.0f;
         }
     }
 }
 
-
+/**
+ * @brief Aggregates classification results from subsamples into a total result.
+ *
+ * This function calculates the total classification results by summing and then averaging the results of individual subsamples.
+ *
+ * @param float* total_file_classification_result Array to store the final averaged classification results.
+ * @param float classification_results_subsamples[][AI_NETWORK_1_OUT_1_SIZE] Two-dimensional array containing classification results for each subsample.
+ * @param int number_subsamples_in_file The total number of subsamples processed, used for averaging.
+ *
+ */
 void calculate_total_classification_result(float* total_file_classification_result, float classification_results_subsamples[][AI_NETWORK_1_OUT_1_SIZE], int number_subsamples_in_file) {
 	for (int i = 0; i < AI_NETWORK_1_OUT_1_SIZE; i++) {
 		total_file_classification_result[i] = 0.0f;
@@ -256,8 +366,19 @@ void calculate_total_classification_result(float* total_file_classification_resu
 	}
 }
 
+/**
+ * @brief Stores the classification results into struct saved to a file.
+ *
+ * This function is intended to write the classification results for an audiosample to the file containing the struct with all classification results as an object.
+ *
+ * @param FIL *fil Pointer to the file structure representing the file containing the struct (with all classification results) as an object.
+ * @param char* file_name Name of the file where the classification results will be stored.
+ * @param float* classification_result Array containing the neural network's classification results to be stored.
+ *
+ * @note Unfortunately, this function was not implemented due to the full system integration never happening because the project reached its time limit.
+ */
 void store_classification_result(FIL *fil, char* file_name, float* classification_result) {
-	// TODO
+	// TODO implementation
 }
 
 
