@@ -122,6 +122,7 @@ Ein Audiosubsample, also ein Mel-Spektrogramm, entspricht dabei 16.896 Samples, 
 \label{fig:img-audiosubsamples-frames-overview}
 \end{figure}
 
+\newpage
 Das Sliding Window Prinzip, mit dem Audiosubsamples in überlappende Frames unterteilt werden, ist in \textbf{\autoref{fig:img-sliding-window}} dargestellt.
 
 \begin{figure}[h!]
@@ -158,6 +159,7 @@ Hierbei muss festgehalten werden, dass die Datenaufteilung einen methodischen Fe
 \end{figure}
 
 \subsubsection{Training des neuronalen Netzes}
+\label{sec:nn-training-of-nn-jupyter}
 
 Nach der Datenvorverarbeitung beginnt das eigentliche Training des neuronalen Netzes. Typischerweise bestehen Convolutional Neural Networks (CNNs) aus mehreren Faltungsschichten (Convolutional Layers), die der Vorverarbeitung der Eingabedaten und der Merkmalsextraktion dienen. Die Faltungsmasken, die über das Eingabebild gefaltet werden, stellen die Neuronen dar, die trainiert werden. Jede Faltungsschicht wird in der Regel von einer Pooling-Schicht (Pooling Layer) gefolgt, welche die Datenmenge reduziert und die Dimensionalität des Ausgabebildes sinnvoll verkleinert. \cite{how-cnn-work}
 
@@ -213,8 +215,22 @@ Wie sich erkennen lässt, ``lernt`` das neuronale Netz im Laufe der Epochen, die
 
 Abschließend kann das trainierte Modell als ``Tensorflow-Lite``-Dateiformat (Dateiendung ``.tflite``) exportiert werden. Die ``model.tflite``-Datei enthält sowohl die Architektur, als auch die Gewichte der einzelnen Neuronen \cite{tflite-file}.
 
+Im Anhang sind zwei Jupyter-Notebooks vorzufinden:
+\begin{itemize}
+  \item \textbf{ESP\_IMA\_dev.ipynb}: In diesem Notebook wird die gesamte Datenvorverarbeitung und das Training des neuronalen Netzes durchgeführt.
+  \item \textbf{ESP\_IMA\_validation.ipynb}: Dieses Notebook wurde für die Testfälle in \textbf{Abschnitt \ref{sec:nn-test-protocol}} verwendet. Es nimmt das bereits trainierte neuronale Netz und den Scaler und ermöglicht es, eigene WAVE-Dateien klassifizieren zu lassen.
+\end{itemize}
+
+Möchte man diese Jupyter-Notebooks bei sich selbst ausführen, ist der leichteste Weg der folgende:
+\begin{enumerate}
+  \item Im Anhang ist im Unterordner ``neuronal\_network`` die Datei ``jupyter\_notebooks\_with\_dir\_structure.zip`` zu finden. Diese muss zunächst entpackt werden.
+  \item Anschließend muss der Ordner in das Root-Verzeichnis des eigenen Google Drive Accounts hochgeladen werden.
+\end{enumerate}
+
+\newpage
+
 \subsubsection{Betrieb des neuronalen Netzes auf dem STM32 Microcontroller}
-\label{stm32-cube-ai}
+\label{sec:stm32-cube-ai}
 
 Für den Betrieb des Neuronalen Netzes wird ``STM32Cube.AI`` verwendet, um das in der ``model.tflite`` Datei definierte Neuronale Netz in C-Code nachzubilden. Um jedoch Audiodateien klassifizieren zu können, müssen zunächst sämtliche Schritte der Datenvorverarbeitung, die im Jupyter-Notebook gemacht wurden, wiederholt werden.
 
@@ -228,7 +244,7 @@ Ein Ablaufdiagramm, das den geplanten Prozess der Datenvorverarbeitung und der K
 
 \begin{figure}[h!]
 \centering
-\includegraphics[width=0.85\textwidth]{images/08_durchfuehrung/nn/ablauf_klassifizierung_c.png}
+\includegraphics[width=0.75\textwidth]{images/08_durchfuehrung/nn/ablauf_klassifizierung_c.png}
 \caption{Ablauf der Datenvorverarbeitung und Klassifizierung einer Datei im C-Code}
 \label{fig:img-nn-ablaufdiagramm}
 \end{figure}
@@ -252,8 +268,6 @@ Total Flash		82.050 B (80.13 KiB)
 Total Ram  		21.844 B (21.37 KiB)
 \end{minted}
 
-
-\newpage
 \textbf{Nutzung von STM32Cube.AI}
 
 Die Nutzung von STM32Cube.AI wird anhand eines Beispiels in der Dokumentation beschrieben \cite{stm32-cube-ai-documentation}. Obwohl das Beispiel auf einer älteren Version basiert, hat sich der grundlegende Umgang mit der Software nicht verändert. Da die Nutzung der Funktionen und Zeck der einzelnen Variablen dort im Detail  beschrieben sind, wird dies im folgenden Abschnitt nur kurz zusammengefasst.
@@ -300,7 +314,20 @@ int run_nn_classification(ai_float* pSpectrogram, ai_float* classification_resul
 
 \textbf{Erfahrungswerte bei der Nutzung von STM32Cube.AI}
 
-Insgesamt konnte für die Klassifikation eines Spektrogramms, also eines Audiosubsamples, eine Inferenz von 17 ms gemessen werden. Die Inferenz gibt an, wie viel Zeit die Klassifizierung eines Datensatzes benötigt.
+Insgesamt konnte für die Klassifikation eines Spektrogramms, also eines Audiosubsamples, eine Inferenz von 17 ms gemessen werden. Die Inferenz gibt an, wie viel Zeit die Klassifizierung eines Datensatzes benötigt. Damit ist auch \textbf{\hyperlink{lq-nn-01}{LQ02}} validiert. Ausgehend von einem 30 Sekunden langen Audiosample ergibt sich bei einer Samplerate von 14,7 kHz eine reine Klassifikationszeit wie folgt:
+
+
+\begin{align*}
+\text{Anzahl der Audiosubsamples} &= \frac{441000 \text{ Samples}}{16896 \text{ Samples/Subsample}} \\
+&\approx 26 \text{ Audiosubsamples}
+\end{align*}
+
+Die reine Klassifikationszeit ergibt::
+
+\begin{align*}
+\text{Klassifikationszeit} &= 26 \text{ Audiosubsamples} \times 17 \text{ ms/Subsample} \\
+&= 442 \text{ ms}
+\end{align*}
 
 Während der Nutzung von STM32Cube.AI trat im Projektverlauf ein ``HardFault``-Fehler bei der Ausführung der Funktion \mintinline{c}|ai_network_1_run()| auf. Dies konnte darauf zurückgeführt werden, dass eine fehlerhafte Deklaration einer Variable im Header der aktuellen Datei vorlag. Sie war nicht als \mintinline{c}|extern| gekennzeichnet. Obwohl die aufgerufene externe STM32Cube.AI-Bibliothek nicht direkt auf diese Variable zugriff, führte das Fehlen der extern-Deklaration vermutlich zu einer inkonsistenten Referenz beim Linken der Module.
 
