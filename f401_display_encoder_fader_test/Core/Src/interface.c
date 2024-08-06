@@ -1,3 +1,24 @@
+/**
+  ******************************************************************************
+  * @file           : interface.c
+  * @brief          : Interface functions for handling user inputs, file management, and display updates
+  ******************************************************************************
+  * @attention
+  *
+  * This file contains functions for handling user inputs through encoders and switches,
+  * updating the display, and managing file operations. Key functionalities include:
+  * - Handling encoder signals and debouncing.
+  * - Updating screen display based on file names and fader settings.
+  * - Sorting files based on fader values.
+  * - Managing file lists and file selection.
+  * - Interacting with the ADC for smooth value calculations.
+  *
+  * This file is essential for the interaction between the user interface and the file management system,
+  * ensuring that the display is updated with relevant information and user inputs are processed correctly.
+  *
+  *******************************************************************************
+  */
+
 #include "interface.h"
 
 /**

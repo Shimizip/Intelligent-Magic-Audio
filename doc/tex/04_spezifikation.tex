@@ -80,5 +80,45 @@ Nach Änderung der Faderstellung, wird der Suchfilter wieder angewandt (\textbf{
 	\label{fig:gantt}
 \end{figure}
 
+\textbf{Arbeitspakete Aufteilung} \\
 
-Aufgabenaufteilung erläutern
+\begin{longtable}[c]{|p{5cm}|p{5cm}|p{5cm}|}
+	\hline
+	\textbf{Leon} & \textbf{Jonas} & \textbf{Szymon}\\
+	\hline
+	\endfirsthead
+	\hline
+	\textbf{Leon} & \textbf{Jonas} & \textbf{Szymon}\\
+	\hline
+	\endhead
+	\hline
+	\endfoot
+	\hline
+	\endlastfoot
+	
+	\begin{itemize}[left=0pt]
+		\item Neuronales Netz Topologie entwickeln
+		\item NN Trainieren und Anpassen
+		\item Portierung für STM32CubeAI
+		\item Algorithmus - Spektrogramm aus Audio Datei erstellen
+	\end{itemize} &
+	\begin{itemize}[left=0pt]
+		\item Sample Record
+		\item Sample Playback
+		\item LearnData Generation (Aufbereitung der Lerndaten)
+		\item Hardware Design
+		\item Resampling
+	\end{itemize} &
+	\begin{itemize}[left=0pt]
+		\item Fader
+		\item Encoder
+		\item LCD-Display
+		\item ADC
+		\item Dateisystem für Nutzdaten
+		\begin{itemize}[label=--, left=1em]
+			\item SD-Card Read/Write
+		\end{itemize}
+		\item Hardware Design
+	\end{itemize} \\
+	\hline
+\end{longtable}

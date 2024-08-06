@@ -1,3 +1,23 @@
+/**
+  ******************************************************************************
+  * @file           : interface.h
+  * @brief          : Header file for interface functions and global definitions
+  ******************************************************************************
+  * @attention
+  *
+  * This file contains function prototypes and global definitions for managing
+  * user inputs, file operations, and display updates. It includes:
+  * - Function prototypes for handling ADC conversions, GPIO interrupts, and timer callbacks.
+  * - Functions for initializing the display, updating the screen, sorting files,
+  *   comparing ADC values, resetting displayed files, and managing file storage on SD.
+  * - Global variables and external references related to ADC, I2C, timer, file management,
+  *   and display operations.
+  *
+  * These functions and definitions are crucial for interfacing between the user inputs,
+  * display rendering, and file management system, ensuring smooth operation of the application.
+  *
+  *******************************************************************************
+  */
 #include <stdlib.h>
 #include <stdbool.h>
 #include "ssd1306.h"
