@@ -92,39 +92,52 @@ Die Performance des neuronalen Netzes könnte mit weiteren Trainingsdaten für d
 
 1. Rock-Song
 
+\begin{table}[h!]
+\centering
 \begin{tabular}{|c|c|c|c|c|c|}
     \hline
-    IST/SOLL & bass & pitched & rhythmic & sustained & melodic \\ \hline
-    SOLL-Ausgabe & 0 & 0 & 1 & 0 & 1 \\ \hline
-    IST-Ausgabe & 0.09 & 0.28 & 0.48 & 0.31 & 0.76 \\ \hline
+     & \textbf{bass} & \textbf{pitched} & \textbf{rhythmic} & \textbf{sustained} & \textbf{melodic} \\ \hline
+    \textbf{SOLL-Ausgabe} & 0 & 0 & 1 & 0 & 1 \\ \hline
+    \textbf{IST-Ausgabe} & 0.09 & 0.28 & 0.48 & 0.31 & 0.76 \\ \hline
 \end{tabular}
+\end{table}
+
 
 2. Klaviermusik
 
+\begin{table}[h!]
+\centering
 \begin{tabular}{|c|c|c|c|c|c|}
     \hline
-    IST/SOLL & bass & pitched & rhythmic & sustained & melodic \\ \hline
-    SOLL-Ausgabe & 0 & 0 & 0 & 1 & 1 \\ \hline
-    IST-Ausgabe & 0.14 & 0.14 & 0.01 & 0.85 & 0.92 \\ \hline
+     & \textbf{bass} & \textbf{pitched} & \textbf{rhythmic} & \textbf{sustained} & \textbf{melodic} \\ \hline
+    \textbf{SOLL-Ausgabe} & 0 & 0 & 0 & 1 & 1 \\ \hline
+    \textbf{IST-Ausgabe} & 0.14 & 0.14 & 0.01 & 0.85 & 0.92 \\ \hline
 \end{tabular}
+\end{table}
 
 3. Schlagzeug-Solo
 
+\begin{table}[h!]
+\centering
 \begin{tabular}{|c|c|c|c|c|c|}
     \hline
-    IST/SOLL & bass & pitched & rhythmic & sustained & melodic \\ \hline
-    SOLL-Ausgabe & 0 & 0 & 1 & 0 & 0 \\ \hline
-    IST-Ausgabe & 0.16 & 0.24 & 0.91 & 0.00 & 0.10 \\ \hline
+     & \textbf{bass} & \textbf{pitched} & \textbf{rhythmic} & \textbf{sustained} & \textbf{melodic} \\ \hline
+    \textbf{SOLL-Ausgabe} & 0 & 0 & 1 & 0 & 0 \\ \hline
+    \textbf{IST-Ausgabe} & 0.16 & 0.24 & 0.91 & 0.00 & 0.10 \\ \hline
 \end{tabular}
+\end{table}
 
 4. Action-Song
 
+\begin{table}[h!]
+\centering
 \begin{tabular}{|c|c|c|c|c|c|}
     \hline
-    IST/SOLL & bass & pitched & rhythmic & sustained & melodic \\ \hline
-    SOLL-Ausgabe & 1 & 0 & 1 & 0 & 0 \\ \hline
-    IST-Ausgabe & 0.41 & 0.23 & 0.97 & 0.03 & 0.36 \\ \hline
+     & \textbf{bass} & \textbf{pitched} & \textbf{rhythmic} & \textbf{sustained} & \textbf{melodic} \\ \hline
+    \textbf{SOLL-Ausgabe} & 1 & 0 & 1 & 0 & 0 \\ \hline
+    \textbf{IST-Ausgabe} & 0.41 & 0.23 & 0.97 & 0.03 & 0.36 \\ \hline
 \end{tabular}
+\end{table}
 
 Wie in den Beispielen erkennbar ist, werden Merkmalsklassen nicht immer gut erkannt, jedoch lässt sich auch hier eine Tendenz ableiten. Beim Rock-Song beispielsweise liegt der Ähnlichkeitswert für die Klasse ``rhythmic`` mit 0,48 nur knapp unterhalb der Schwelle von 0,5. Beim Action-Song wird das Merkmal ``bass`` mit einer Ähnlichkeit von 0,41 erkannt, was auch nicht allzu weit weg ist vom Schwellenwert. Dennoch bleibt wie zuvor erwähnt nich Optimierungspotenzial mit mehr Trainingsdaten für bestimmte Klassen, um das Merkmalsspektrum besser abzubilden.
 
@@ -172,19 +185,22 @@ Wie in den Beispielen erkennbar ist, werden Merkmalsklassen nicht immer gut erka
 \textbf{Tatsächliches Ergebnis:}
 Folgende IST-Werte wurden aus dem Debugger ausgelesen. Ein Screenshot Tabs ``Expressions``, in dem die Variableninhalte zur Laufzeit gezeigt werden, ist in \textbf{Abbildung \ref{fig:img-stm-classification-result}} zu sehen.
 
+\begin{table}[h!]
+\centering
 \begin{tabular}{|c|c|c|c|c|c|}
     \hline
-    IST/SOLL & bass & pitched & sustained & rhythmic & melodic \\ \hline
-    SOLL-Ausgabe & 0.12 & 0.28 & 0.06 & 0.93 & 0.37 \\ \hline
-    IST-Ausgabe & 0.13 & 0.33 & 0.048 & 0.95 & 0.31 \\ \hline
+     & \textbf{bass} & \textbf{pitched} & \textbf{rhythmic} & \textbf{sustained} & \textbf{melodic} \\ \hline
+    \textbf{SOLL-Ausgabe} & 0.12 & 0.28 & 0.06 & 0.93 & 0.37 \\ \hline
+    \textbf{IST-Ausgabe }& 0.13 & 0.33 & 0.048 & 0.95 & 0.31 \\ \hline
 \end{tabular}
+\end{table}
 
 Wie erwartet gibt es leichte Abweichungen im Klassifikationsergebnis. Dies ist wie zuvor erwähnt auf die abweichenden Spektrogramm-Werte zurückzuführen. Das Testergebnis ist als positiv zu beurteilen. 
 
 \begin{figure}[h!]
 \centering
 \includegraphics[width=0.45\textwidth]{images/10_test_validierung/nn/nn-debuger-classification-result.png}
-\caption{Screenshot vom CubeMX Debugger. In den Elementen des \mintinline{c}|aiOutData|-Arrays kann das Klassifikationsergebnis abgelesen werden.}
+\caption{Screenshot vom CubeMX Debugger. In den Elementen des ``aiOutData``-Arrays kann das Klassifikationsergebnis abgelesen werden}
 \label{fig:img-stm-classification-result}
 \end{figure}
 
