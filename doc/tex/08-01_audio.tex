@@ -203,7 +203,7 @@ Diese Schritte stellen sicher, dass die berechneten Indizes korrekt auf die im S
 \label{sec:audio-downsampling}
 
 
-Damit die proprietäre ``STM32\_AI\_AudioPreprocessing\_Library`` (Abschnitt \ref{stm32-cube-ai}) die Audiodaten in Spektrogramme umwandeln kann, müssen die Daten zunächst ins korrekte Format gebracht werden. Für die Umwandlung erwartet die Library \SI{16}{\kilo\hertz} Samplerate, Mono Dateien.
+Damit die proprietäre ``STM32\_AI\_AudioPreprocessing\_Library`` (Abschnitt \ref{sec:stm32-cube-ai}) die Audiodaten in Spektrogramme umwandeln kann, müssen die Daten zunächst ins korrekte Format gebracht werden. Für die Umwandlung erwartet die Library \SI{16}{\kilo\hertz} Samplerate, Mono Dateien.
 
 In der Datei
 \path{/f401_sd_card_audio_codec_test/Core/Src/audioPreprocessor.c}
@@ -228,6 +228,20 @@ Wie in Abbildung \ref{fig:fir-filter} zu sehen, bietet der Filter ab \SI{16}{\ki
 	\label{fig:fir-filter}
 \end{figure}
 
-Die Open Source CMSIS DSP Library (Link) bietet direkt eine optimierte Funktion, welche die FIR-Filterung, sowie das eigentliche Downsampling kombiniert: \mintinline{c}|arm_fir_decimate_f32|.
+Die Open Source CMSIS DSP Library \cite{cmsis-dsp}, für ARM Architekturen, bietet direkt eine optimierte Funktion, welche die FIR-Filterung, sowie das eigentliche Downsampling kombiniert: \mintinline{c}|arm_fir_decimate_f32|.
+Diese Funktion akzeptiert jedoch nur ganze Downsampling-Faktoren.
+
+Der benötigte Downsampling-Faktor ist:
+
+\[
+\frac{44{,}100 \text{ Hz}}{16{,}000 \text{ Hz}} = 2{,}75625
+\]
+
+Daher wird auf \(3.0\) aufgerundet, um einen ganzzahligen Faktor zu erreichen. 
+Die resultierende neue Samplerate des heruntergesampleten Samples beträgt:
+
+\[
+\frac{44{,}100 \text{ Hz}}{3.0} = 14{,}700 \text{ Hz}
+\]
 
 
