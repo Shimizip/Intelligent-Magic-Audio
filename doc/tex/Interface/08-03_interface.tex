@@ -59,7 +59,7 @@ Erst nach dem Ablauf des Timers war ist ein möglich den Knopf wieder zu betäti
 
 \textbf{\hypertarget{ADC}{ADC}} \\
 
-Die an den Schleifer des \textbf{\hyperlink{Potentiometer}{Schiebepotentiometers}} erfassten analogen Spannungen, werden vom \textbf{Analog-Digital-Wandler} \textbf{\hyperlink{ADC}{ADC}} erfasst.\textbf{\autoref{fig:conversion}}. 
+Die an den Schleifer des \textbf{\hyperlink{Potentiometer}{Schiebepotentiometers}} erfassten analogen Spannungen abhängig von derren Position auf dem Weg, werden vom \textbf{Analog-Digital-Wandler} \textbf{\hyperlink{ADC}{ADC}} erfasst.\textbf{\autoref{fig:conversion}}. 
 
 \textbf{ADC}\cite{adc} (Analog Digital Converter) wird benutzt, um die Ausgangsspannung an den Schleifern zu digitalisieren und in Zahlen zu fassen. Er nimmt in regelmäßigen Intervallen mit Hilfe des DMA Proben des analogen Signals. Die Auflösung in 12 Bits 15 ADC Clock Cycles hat sich als am effizientesten herrausgestelt.
 Dies erfolgt über die Pins \boldinline{PA6, PA7, PB0, PB1, PC0}, die als Schnittstellen parallel der Reihenfolge der Channels \boldinline{6, 7, 8, 9, 10} dienen. Jedes Mal, wenn an der Ausgangsspannung eines der Schleifer eine Veränderung wahrgenommen wird, startet eine Interrupt Service Routine.\\
@@ -98,7 +98,7 @@ Der \textbf{Direct Memory Access (DMA)-Controller} übernimmt anschließend die 
 \label{fig:DMA_ADC_FADER}
 \end{figure}
 
-Der Direct Memory Access \textbf{\hyperlink{DMA}{DMA}}-Controller ermöglicht die direkte Datenübertragung zwischen Speicher und Peripheriegeräten, wodurch die Prozessorbelastung reduziert wird. Analoge-Digital-Wandler (ADCs) sorgen für die schnelle Digitalisierung analoger Signale, was eine präzise Verarbeitung der Messdaten ermöglicht. Potentiometer bieten die Möglichkeit zur benutzerfreundlichen Anpassung von Spannungswerten. Das Bussystem sorgt für eine effiziente Kommunikation zwischen den verschiedenen Komponenten und gewährleistet eine konsistente und zuverlässige Datenverarbeitung. \textbf{\autoref{fig:DMA_ADC_FADER}}\cite{dma-adc-work} \\
+Der Direct Memory Access \textbf{\hyperlink{DMA}{DMA}}-Controller ermöglicht die direkte Datenübertragung zwischen Speicher und Peripheriegeräten, wodurch die Prozessorbelastung reduziert wird. Analoge-Digital-Wandler (ADCs) sorgen für die schnelle Digitalisierung analoger Signale, was eine präzise Verarbeitung der Messdaten ermöglicht. Das Bussystem sorgt für eine effiziente Kommunikation zwischen den verschiedenen Komponenten und gewährleistet eine konsistente und zuverlässige Datenverarbeitung. \textbf{\autoref{fig:DMA_ADC_FADER}}\cite{dma-adc-work} \\
 
 \textbf{Problematik:}
 
@@ -226,15 +226,16 @@ Die \boldinline{FileManager}-Struktur repräsentiert das Dateisystem selbst. Sie
  
  \inputminted[firstline=72, lastline=81]{c}{../../f401_display_encoder_fader_test/Core/Inc/filemanager.h}
  
-\vspace{1em} 
-\textbf{Problematik:} \\
+
 
 \newpage
 \textbf{Problematik:} \\
+
 Das Schreiben und Lesen des \boldinline{FileManager}-Struktur auf der SD-Karte war zunächst nicht möglich und konnte aus zeitlichen Gründen nicht behoben werden.
 
 \textbf{Teillösung:} \\
-Das Lesen der Namen der Samples und Übertragen in den \boldinline{FileManager} hat geklappt und hat somit eine Visualisierung auf dem Display ermöglicht.
+
+Das Lesen der Namen der Samples und Übertragen in den \boldinline{FileManager} auf den Flash Speicher der MCU hat geklappt und hat somit eine Visualisierung auf dem Display ermöglicht.
 
 Das Rausholen der Namen könnte über \boldinline{FILINFO fno} in der Methode \mintinline{c}|listFiles(const char *path)| realisiert werden, indem man als Pfad den im Root-Verzeichnis befindlichen Ordner \textbf{"/SamplePool"} übergeben hat.
 
