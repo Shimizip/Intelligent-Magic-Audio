@@ -38,7 +38,7 @@ Um das Menü anzuzeigen, erhält der Treiber des Displays Strings, welche er int
 
 Es sind 3 GPIO Inputs für die Nutzung des Encoders erforderlich. \mintinline{c}|enc_clk_in1| und \mintinline{c}|enc_dt_in2| sind für die Auswertung des Drehimpulsgebers nötig. \mintinline{c}|enc_switch_in3| dient für die Push-Button Funktion des Encoders.
 
-Die 5 Fader werden über das Array \mintinline{c}|adcBuffer[5]| vom ADC über die DMA befüllt.
+Die 5 Fader Spannungen werden in das Array \mintinline{c}|adcBuffer[5]| vom ADC über die DMA befüllt.
 
 Der Play-Button schaltet das GPIO Signal \mintinline{c}|playbackActive|, womit die Audio Wiedergabe gestartet wird.
 
