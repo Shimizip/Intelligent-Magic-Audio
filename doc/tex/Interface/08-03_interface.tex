@@ -49,7 +49,7 @@ Beim Drücken des Knopfes kann es in Systemen zu Mehrfachauslösungen kommen. Di
 
 Um Mehrfachauslösungen zu verhindern, wurde ein Debouncing-Mechanismus implementiert. Dieser Mechanismus verwendet ein Flag \mintinline{c}|debounce| und einen Timer \mintinline{c}|tim3|, um wiederholte Auslösungen zu verhindern. Beim Drücken des Knopfes wird ein Interrupt ausgelöst, der eine Callback-Funktion \mintinline{c}|HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)| aufruft. In dieser Callback-Funktion wird ein Flag gesetzt und ein Timer gestartet. Der Timer sorgt dafür, dass weitere Auslösungen innerhalb einer definierten Zeitspanne ignoriert werden, wodurch Mehrfachauslösungen effektiv verhindert werden.
 
-Erst nach dem Ablauf des Timers war ist ein möglich den Knopf wieder zu betätigen.
+Erst nach dem Ablauf des Timers ist es wieder möglich den Knopf zu betätigen.
 
 \newpage
 \subsubsection{Schiebenpotentiometer, ADC und DMA}
