@@ -7,7 +7,7 @@ Durch das neuronale Netz sollen digitale Audiodateien (Audiosamples) mit variabl
         \item \textbf{bass:} Das Audiosample enthält Töne aus dem tiefen Frequenzspektrum
        	\item \textbf{pitched:} Das Audiosample enthält Töne aus dem hohen Frequenzspektrum
         \item \textbf{melodic:} Das Audiosample enthält melodische Elemente
-        \item \textbf{rhythmic:} Das Audiosample enthält rhytmische Elemente
+        \item \textbf{rhythmic:} Das Audiosample enthält rhythmische Elemente
         \item \textbf{sustained:} Das Audiosample enthält ``flächige`` Elemente, also ``langgezogene`` Töne
     \end{itemize}
 
@@ -20,7 +20,7 @@ Dieses neuronale Netz wird mit selbst generierten Trainingsdaten trainiert und a
     \label{fig:img-aufbau-neuron}
 \end{wrapfigure}
 
-Die Umwandlung in C-Code ist mögich, da ein künstliches Neuron, wie in \textbf{\autoref{fig:img-aufbau-neuron}} dargestellt, aus aus mehreren Gewichten (\textit{W\textsubscript{x}}) in Form eines Vektors besteht, der mit dem Eingabevektor (\textit{X\textsubscript{n}}) des Neurons multipliziert wird. Beide Vektoren sind Fließkommazahlen. Anschließend werden diese Produkte aufaddiert und als Eingabewert einer mathematischen Funktion, der sog. ``Aktivierungsfunktion`` (\textit{f}) verwendet. Der Ausgabewert dieser Funktion ist die Ausgabe des Neurons. \cite{neural-network-basics}
+Die Umwandlung in C-Code ist möglich, da ein künstliches Neuron, wie in \textbf{\autoref{fig:img-aufbau-neuron}} dargestellt, aus aus mehreren Gewichten (\textit{W\textsubscript{x}}) in Form eines Vektors besteht, der mit dem Eingabevektor (\textit{X\textsubscript{n}}) des Neurons multipliziert wird. Beide Vektoren sind Fließkommazahlen. Anschließend werden diese Produkte aufaddiert und als Eingabewert einer mathematischen Funktion, der sog. ``Aktivierungsfunktion`` (\textit{f}) verwendet. Der Ausgabewert dieser Funktion ist die Ausgabe des Neurons. \cite{neural-network-basics}
 
 Bei einem neuronalen Netz werden die Neuronen in Schichten hinterheinander angeordnet, die Neuronen der benachbarten Schichten werden vereinfacht gesagt miteinander verbunden, also die Eingabe des einen Neurons bildet eine der Eingaben des nachfolgenden Neurons. \cite{neural-network-basics}
 
@@ -79,11 +79,11 @@ Für jedes manuell gelabelte Audiosample wird eine eindeutige Identifikationsnum
 
 \begin{table}[h!]
 \centering
-\begin{tabular}{|m{2.8cm}|m{4.5cm}|m{0.8cm}|m{1.2cm}|m{1.5cm}|m{1.5cm}|m{1.3cm}|}
+\begin{tabular}{|m{2.8cm}|m{4.0cm}|m{0.8cm}|m{1.2cm}|m{1.5cm}|m{1.5cm}|m{1.3cm}|}
 \hline
 \textbf{UID} & \textbf{File} & \textbf{bass} & \textbf{pitched} & \textbf{sustained} & \textbf{rhythmic} & \textbf{melodic} \\ \hline
 ecfad96b740844c3
-9c96127279f22cf6 &  BD 606 Long MPC60 01.wav & 1 & 0 & 0 & 1 & 0 \\ \hline
+9c96127279f22cf6 &  BD 606 Long MPC60.wav & 1 & 0 & 0 & 1 & 0 \\ \hline
 \end{tabular}
 \caption{Beispielhafter Datensatz eines Audiosamples}
 \label{tab:audiodaten}
@@ -194,7 +194,7 @@ history = model.fit(x_train_r, y_train, validation_data=(x_val_r, y_val),
 
 \textbf{y\_train}: Soll-Ausgabedaten (Labels), die die tatsächlichen Klassen der Trainingsdaten repräsentieren.
 
-\textbf{validation\_data}: Validierungsdaten (x\_val\_r) und zugehörige Labels (y\_val). Sie dienen dazu, die Klassifierung des Modells zu überprüfen und zu verhindern, dass das Modell einfach nur die Trainingsdaten ``auswendig lernt`` (Overfitting).
+\textbf{validation\_data}: Validierungsdaten (x\_val\_r) und zugehörige Labels (y\_val). Sie dienen dazu, die Klassifizierung des Modells zu überprüfen und zu verhindern, dass das Modell einfach nur die Trainingsdaten ``auswendig lernt`` (Overfitting).
 
 \textbf{batch\_size}: Anzahl der Datensätze, die durch das neuronale Netz verarbeitet werden, bevor eine Gewichtsanpassung der Neuronen erfolgt. Eine Batch-Size von 1 bedeutet, dass nach jedem Datensatz die Gewichte aktualisiert werden, was dem sogenannten Stochastic Gradient Descent entspricht.
 
@@ -202,10 +202,11 @@ history = model.fit(x_train_r, y_train, validation_data=(x_val_r, y_val),
 
 \end{mdframed}
 
-\begin{wrapfigure}{r}{0.4\textwidth} % Increase the width of the figure environment
-	\vspace{-20pt + 0.02\textwidth}
+\begin{wrapfigure}{r}{0.43\textwidth} % Increase the width of the figure environment
+	\hspace{5pt}
+	\vspace{-10pt + 0.02\textwidth}
 	\fbox{\includegraphics[width=0.4\textwidth]{images/08_durchfuehrung/nn/nn_learning_curve.png}}
-	\caption{Darstellung des Loss-Werts über den Verlauf der Epochen}
+	\caption{Darstellung des Loss-Werts über den Verlauf der Epochen hinweg}
 	\label{fig:img-training-graph}
 \end{wrapfigure}
 
@@ -245,7 +246,7 @@ Ein Ablaufdiagramm, das den geplanten Prozess der Datenvorverarbeitung und der K
 \begin{figure}[h!]
 \centering
 \includegraphics[width=0.75\textwidth]{images/08_durchfuehrung/nn/ablauf_klassifizierung_c.png}
-\caption{Ablauf der Datenvorverarbeitung und Klassifizierung einer Datei im C-Code}
+\caption{Ablauf der Datenvorverarbeitung und Klassifizierung eines Audiosamples im C-Code}
 \label{fig:img-nn-ablaufdiagramm}
 \end{figure}
 
@@ -253,15 +254,17 @@ Ein Ablaufdiagramm, das den geplanten Prozess der Datenvorverarbeitung und der K
 \textbf{Übersetzen des neuronalen Netzes mit STM32Cube.AI}
 
 
-\begin{wrapfigure}{r}{0.4\textwidth} % Increase the width of the figure environment
-	\vspace{-20pt + 0.02\textwidth}
-	\hspace{0.02\textwidth} % Add horizontal space
+\begin{wrapfigure}{r}{0.43\textwidth} % Increase the width of the figure environment
+	\hspace{5pt}
+	\vspace{-10pt + 0.02\textwidth}
 	\fbox{\includegraphics[width=0.4\textwidth]{images/08_durchfuehrung/nn/cube_ai_config.png}}
 	\caption{Konfiguration von STM32Cube.AI in CubeMX}
-	\label{fig:img-training-graph}
+	\label{fig:img-cubeai-config}
 \end{wrapfigure}
 
-Für die Nutzung von STM32Cube.AI muss zunächst in der CubeMX-Datei das Software Package ``X-CUBE-AI`` in Version 9.0.0 heruntergeladen werden. Im Reiter ``Configuration`` lässt sich ein Name für das Modell festlegen, welcher später im Code zur Referenzierung verwendet wird. Hier wird ebenfalls die Modell-Datei ``model.tflite`` eingebunden. Durch einen Klick auf ``Analyze`` wird das Modell in C-Code übersetzt und ein Bericht zur Ressourcennutzung erstellt. Dieser bestätigt, dass die Ressourcenlimits des verwendeten Nucleo-Boards eingehalten werden. Der folgende Auszug gibt einen Überblick über die genutzten Ressourcen:
+Für die Nutzung von STM32Cube.AI muss zunächst in der CubeMX-Datei das Software Package ``X-CUBE-AI`` in Version 9.0.0 heruntergeladen werden. Im Reiter ``Configuration`` lässt sich ein Name für das Modell festlegen, welcher später im Code zur Referenzierung verwendet wird. Hier wird ebenfalls die Modell-Datei ``model.tflite`` eingebunden. Ein Ausschnitt des Konfigurationsfensters ist in \textbf{Abbildung \ref{fig:img-cubeai-config}} dargestellt. Durch einen Klick auf ``Analyze`` wird das Modell in C-Code übersetzt und ein Bericht zur Ressourcennutzung erstellt. Dieser bestätigt, dass die Ressourcenlimits des verwendeten Nucleo-Boards eingehalten werden.
+
+Der folgende Auszug gibt einen Überblick über die genutzten Ressourcen:
 
 \begin{minted}{text}
 Total Flash		82.050 B (80.13 KiB)
@@ -270,7 +273,7 @@ Total Ram  		21.844 B (21.37 KiB)
 
 \textbf{Nutzung von STM32Cube.AI}
 
-Die Nutzung von STM32Cube.AI wird anhand eines Beispiels in der Dokumentation beschrieben \cite{stm32-cube-ai-documentation}. Obwohl das Beispiel auf einer älteren Version basiert, hat sich der grundlegende Umgang mit der Software nicht verändert. Da die Nutzung der Funktionen und Zeck der einzelnen Variablen dort im Detail  beschrieben sind, wird dies im folgenden Abschnitt nur kurz zusammengefasst.
+Die Dokumentation zu STM32Cube.AI beschreibt detailliert die Nutzung anhand eines Beispiels \cite{stm32-cube-ai-documentation}. Obwohl das Beispiel auf einer älteren Version basiert, hat sich der grundlegende Umgang mit der Software nicht verändert. Da die Nutzung der Funktionen und Zeck der einzelnen Variablen dort im Detail  beschrieben sind, wird dies im folgenden Abschnitt nur kurz zusammengefasst.
 
 Zur Nutzung von STM32Cube.AI ist ein Handle vom Typ \mintinline{c}|ai_handle| erforderlich. Dieses erhält man durch den Aufruf der Initialisierungsfunktion \mintinline{c}|ai_network_1_create_and_init()|. Anschließend werden Input- und Outputbuffer vom Typ \mintinline{c}|ai_buffer| initialisiert, die zur Eingabe von Daten in das neuronale Netz und zur Rückgabe des Klassifikationsergebnisses verwendet werden. Diese Initialisierungsschritte werden im Code des Projekts in der Funktion \mintinline{c}|init_nn()| durchgeführt:
 
@@ -314,7 +317,7 @@ int run_nn_classification(ai_float* pSpectrogram, ai_float* classification_resul
 
 \textbf{Erfahrungswerte bei der Nutzung von STM32Cube.AI}
 
-Insgesamt konnte für die Klassifikation eines Spektrogramms, also eines Audiosubsamples, eine Inferenz von 17 ms gemessen werden. Die Inferenz gibt an, wie viel Zeit die Klassifizierung eines Datensatzes benötigt. Damit ist auch \textbf{\hyperlink{lq-nn-01}{LQ02}} validiert. Ausgehend von einem 30 Sekunden langen Audiosample ergibt sich bei einer Samplerate von 14,7 kHz eine reine Klassifikationszeit wie folgt:
+Insgesamt konnte für die Klassifikation eines Spektrogramms, also eines Audiosubsamples, eine Inferenz von 17 ms gemessen werden. Die Inferenz gibt an, wie viel Zeit die Klassifizierung eines Datensatzes benötigt. Damit ist auch die nicht-funktionale Anforderung \textbf{\hyperlink{lq-nn-01}{LQ02}} validiert. Ausgehend von einem 30 Sekunden langen Audiosample ergibt sich bei einer Samplerate von 14,7 kHz eine reine Klassifikationszeit wie folgt:
 
 
 \begin{align*}

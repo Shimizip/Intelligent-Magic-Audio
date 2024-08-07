@@ -130,14 +130,14 @@ int main(void)
   }
 
   Preprocessing_Init();
-  // Resample das Audio (Platzhalter)
+  // Platzhalter fuer Audio Resampling. Hier: Umwandeln von Short in Float
   for (int i = 0; i < audio_data_length; i++) {
     resampled_data[i] = audio_data[i] / 32768.0f;
   }
 
 
   // Frame die resampleten Daten
-  frame_subsamples(resampled_data, audio_data_length);
+  frame_subsamples(resampled_data);
   //test_call_classification(resampled_data);
 
 
