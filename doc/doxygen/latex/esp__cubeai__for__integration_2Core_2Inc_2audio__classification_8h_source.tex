@@ -1,0 +1,70 @@
+\doxysection{audio\+\_\+classification.\+h}
+\hypertarget{esp__cubeai__for__integration_2Core_2Inc_2audio__classification_8h_source}{}\label{esp__cubeai__for__integration_2Core_2Inc_2audio__classification_8h_source}\index{neuronal\_network/esp\_cubeai\_for\_integration/Core/Inc/audio\_classification.h@{neuronal\_network/esp\_cubeai\_for\_integration/Core/Inc/audio\_classification.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ *\ audio\_classification.h}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00004\ \textcolor{comment}{\ *\ \ Created\ on:\ Jun\ 20,\ 2024}}
+\DoxyCodeLine{00005\ \textcolor{comment}{\ *\ \ \ \ \ \ Author:\ leon}}
+\DoxyCodeLine{00006\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#ifndef\ AUDIO\_CLASSIFICATION\_H\_}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ AUDIO\_CLASSIFICATION\_H\_}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{comment}{/*\ includes\ */}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}feature\_extraction.h"{}}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ "{}featurescaler.h"{}}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ "{}network\_1.h"{}}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ "{}network\_1\_data.h"{}}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ "{}network\_1\_config.h"{}}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ "{}network\_1\_data\_params.h"{}}}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \textcolor{comment}{/*\ defines\ */}}
+\DoxyCodeLine{00020\ \textcolor{comment}{//\ define\ spectrogram\ dimensions}}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#define\ NUM\_MEL\_BANDS\ 30}}
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#define\ SPECTROGRAM\_ROWS\ NUM\_MEL\_BANDS}}
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#define\ SPECTROGRAM\_COLS\ 32}}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \textcolor{comment}{//\ define\ data\ preprocessing\ variables}}
+\DoxyCodeLine{00026\ \textcolor{preprocessor}{\#define\ TARGET\_SAMPLE\_RATE\ 16000}}
+\DoxyCodeLine{00027\ \textcolor{preprocessor}{\#define\ FRAME\_LENGTH\ 1024}}
+\DoxyCodeLine{00028\ \textcolor{preprocessor}{\#define\ HOP\_LENGTH\ 512}}
+\DoxyCodeLine{00029\ \textcolor{preprocessor}{\#define\ N\_SAMPLES\_PER\_SUBSAMPLE\ 16896}}
+\DoxyCodeLine{00030\ \textcolor{preprocessor}{\#define\ N\_FRAMES\_PER\_SUBSAMPLE\ SPECTROGRAM\_COLS}}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \textcolor{comment}{/*\ function\ definitions\ */}}
+\DoxyCodeLine{00034\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{esp__cubeai__for__integration_2Core_2Src_2audio__classification_8c_adb2fd0c7b1a7e587cae71795dbe373fd}{init\_nn}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00035\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{esp__cubeai__for__integration_2Core_2Src_2audio__classification_8c_a40483ac3257ee8a4b986fd6ff6fb8b1c}{de\_init\_nn}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00036\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{esp__cubeai__for__integration_2Core_2Src_2audio__classification_8c_a32ec07122bc40c96ca43c55ce75a2c28}{run\_nn\_classification}}(\textcolor{keywordtype}{float}*\ pSpectrogram,\ \textcolor{keywordtype}{float}*\ classification\_result);}
+\DoxyCodeLine{00037\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{esp__cubeai__for__integration_2Core_2Src_2audio__classification_8c_a0421a114e64f016885a043c9a5ea49ca}{spectrogram\_generation\_init}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00038\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{esp__cubeai__for__integration_2Core_2Src_2audio__classification_8c_ab353c6864a0e779783dafdc415a356bb}{classify\_file}}(FIL\ *fil,\ \textcolor{keywordtype}{char}*\ file\_name)}
+\DoxyCodeLine{00039\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{esp__cubeai__for__integration_2Core_2Src_2audio__classification_8c_a26571aa118be866db187b4e41ac99559}{calculate\_spectrogram\_column}}(\textcolor{keywordtype}{float}*\ frame,\ \textcolor{keywordtype}{int}\ col\_index);}
+\DoxyCodeLine{00040\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{esp__cubeai__for__integration_2Core_2Src_2audio__classification_8c_a7b90c348ba72a00ce37282328444d907}{calculate\_total\_classification\_result}}(\textcolor{keywordtype}{float}*\ total\_file\_classification\_result,\ \textcolor{keywordtype}{float}\ classification\_results\_subsamples[][AI\_NETWORK\_1\_OUT\_1\_SIZE],\ \textcolor{keywordtype}{int}\ number\_subsamples\_in\_file);}
+\DoxyCodeLine{00041\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{esp__cubeai__for__integration_2Core_2Src_2audio__classification_8c_a8e249478d750eacf9d22e5605bb7225d}{spectrogram\_power\_to\_db}}(float32\_t\ *spectrogram);}
+\DoxyCodeLine{00042\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{esp__cubeai__for__integration_2Core_2Src_2audio__classification_8c_aaf1303bfdc898203ebb6bb0bee0870ff}{store\_classification\_result}}(FIL\ *fil,\ \textcolor{keywordtype}{char}*\ file\_name,\ \textcolor{keywordtype}{float}*\ classification\_result)}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \textcolor{comment}{//\ stm32cube.ai\ related\ variables}}
+\DoxyCodeLine{00045\ \textcolor{keyword}{extern}\ ai\_handle\ \mbox{\hyperlink{esp__cubeai__for__integration_2Core_2Src_2audio__classification_8c_acaab4df7cc0db52d6db6dd43a6d355ad}{network}};}
+\DoxyCodeLine{00046\ \textcolor{keyword}{extern}\ ai\_u8\ \mbox{\hyperlink{esp__cubeai__for__integration_2Core_2Src_2audio__classification_8c_ad77044b96e2a27076019a13bd946f376}{activations}}[AI\_NETWORK\_1\_DATA\_ACTIVATIONS\_SIZE];}
+\DoxyCodeLine{00047\ \textcolor{keyword}{extern}\ ai\_buffer\ *\ \mbox{\hyperlink{esp__cubeai__for__integration_2Core_2Src_2audio__classification_8c_a8b50f4d34c488810a349fcdc358221a6}{ai\_input}};}
+\DoxyCodeLine{00048\ \textcolor{keyword}{extern}\ ai\_buffer\ *\ \mbox{\hyperlink{esp__cubeai__for__integration_2Core_2Src_2audio__classification_8c_a8b53e90f2beb83b673adad35da65d713}{ai\_output}};}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00050\ \textcolor{comment}{//\ own\ input\ and\ output\ variables\ for\ nn\ classification}}
+\DoxyCodeLine{00051\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{esp__cubeai__for__integration_2Core_2Src_2audio__classification_8c_a503416647290a6138d19561b0b4c0757}{spectrogram}}[AI\_NETWORK\_1\_IN\_1\_SIZE];}
+\DoxyCodeLine{00052\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{esp__cubeai__for__integration_2Core_2Src_2audio__classification_8c_aa3bea72754aa19c752200ed543b8709f}{aiOutData}}[AI\_NETWORK\_1\_OUT\_1\_SIZE];}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ \textcolor{comment}{//\ variable\ for\ mapping\ aiOutData\ indices\ to\ the\ actual\ labels}}
+\DoxyCodeLine{00055\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{char}\ \mbox{\hyperlink{esp__cubeai__for__integration_2Core_2Src_2audio__classification_8c_a936fcc9e9022ff72e207fdd1b44ecfa5}{aiOutDataLabels}}[AI\_NETWORK\_1\_OUT\_1\_SIZE][10];}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00058\ \textcolor{comment}{//\ variables\ for\ spectrogram\ generation\ parameters}}
+\DoxyCodeLine{00059\ \textcolor{keyword}{static}\ arm\_rfft\_fast\_instance\_f32\ S\_Rfft;}
+\DoxyCodeLine{00060\ \textcolor{keyword}{static}\ SpectrogramTypeDef\ \ \ \ \ \ \ \ \ S\_Spectr;}
+\DoxyCodeLine{00061\ \textcolor{keyword}{static}\ MelSpectrogramTypeDef\ \ \ \ \ \ S\_MelSpectr;}
+\DoxyCodeLine{00062\ \textcolor{keyword}{static}\ MelFilterTypeDef\ \ \ \ \ \ \ \ \ \ \ S\_MelFilter;}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00064\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

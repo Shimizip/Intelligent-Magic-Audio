@@ -1,0 +1,107 @@
+\doxysection{neuronal\+\_\+network/esp\+\_\+cubeai\+\_\+test/\+Core/\+Src/main.c File Reference}
+\hypertarget{neuronal__network_2esp__cubeai__test_2Core_2Src_2main_8c}{}\label{neuronal__network_2esp__cubeai__test_2Core_2Src_2main_8c}\index{neuronal\_network/esp\_cubeai\_test/Core/Src/main.c@{neuronal\_network/esp\_cubeai\_test/Core/Src/main.c}}
+
+
+\+: Main program body  
+
+
+{\ttfamily \#include "{}main.\+h"{}}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include "{}audio\+\_\+classification.\+h"{}}\newline
+{\ttfamily \#include "{}test\+\_\+audio\+\_\+data.\+h"{}}\newline
+{\ttfamily \#include "{}utils.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{neuronal__network_2esp__cubeai__test_2Core_2Src_2main_8c_a70af21c671abfcc773614a9a4f63d920}{System\+Clock\+\_\+\+Config}} (void)
+\begin{DoxyCompactList}\small\item\em System Clock Configuration. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{neuronal__network_2esp__cubeai__test_2Core_2Src_2main_8c_a840291bc02cba5474a4cb46a9b9566fe}{main}} (void)
+\begin{DoxyCompactList}\small\item\em The application entry point. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{neuronal__network_2esp__cubeai__test_2Core_2Src_2main_8c_a1730ffe1e560465665eb47d9264826f9}{Error\+\_\+\+Handler}} (void)
+\begin{DoxyCompactList}\small\item\em This function is executed in case of error occurrence. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{neuronal__network_2esp__cubeai__test_2Core_2Src_2main_8c_ae3358c54a01c6487322df1275618d6b1}\label{neuronal__network_2esp__cubeai__test_2Core_2Src_2main_8c_ae3358c54a01c6487322df1275618d6b1} 
+CRC\+\_\+\+Handle\+Type\+Def {\bfseries hcrc}
+\item 
+\Hypertarget{neuronal__network_2esp__cubeai__test_2Core_2Src_2main_8c_a2c80fd5510e2990a59a5c90d745c716c}\label{neuronal__network_2esp__cubeai__test_2Core_2Src_2main_8c_a2c80fd5510e2990a59a5c90d745c716c} 
+TIM\+\_\+\+Handle\+Type\+Def {\bfseries htim2}
+\item 
+\Hypertarget{neuronal__network_2esp__cubeai__test_2Core_2Src_2main_8c_aac3d2c59ee0e3bbae1b99529a154eb62}\label{neuronal__network_2esp__cubeai__test_2Core_2Src_2main_8c_aac3d2c59ee0e3bbae1b99529a154eb62} 
+TIM\+\_\+\+Handle\+Type\+Def {\bfseries htim3}
+\item 
+\Hypertarget{neuronal__network_2esp__cubeai__test_2Core_2Src_2main_8c_ab7c63c1b0f65db92b6a4ea19edf957e1}\label{neuronal__network_2esp__cubeai__test_2Core_2Src_2main_8c_ab7c63c1b0f65db92b6a4ea19edf957e1} 
+UART\+\_\+\+Handle\+Type\+Def {\bfseries huart3}
+\item 
+\Hypertarget{neuronal__network_2esp__cubeai__test_2Core_2Src_2main_8c_a3ec0d70a6cb9406d997fb3d006cc940d}\label{neuronal__network_2esp__cubeai__test_2Core_2Src_2main_8c_a3ec0d70a6cb9406d997fb3d006cc940d} 
+PCD\+\_\+\+Handle\+Type\+Def {\bfseries hpcd\+\_\+\+USB\+\_\+\+OTG\+\_\+\+FS}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\+: Main program body 
+
+\begin{DoxyAttention}{Attention}
+
+\end{DoxyAttention}
+Copyright (c) 2024 STMicroelectronics. All rights reserved.
+
+This software is licensed under terms that can be found in the LICENSE file in the root directory of this software component. If no LICENSE file comes with this software, it is provided AS-\/\+IS. 
+
+\doxysubsection{Function Documentation}
+\Hypertarget{neuronal__network_2esp__cubeai__test_2Core_2Src_2main_8c_a1730ffe1e560465665eb47d9264826f9}\index{main.c@{main.c}!Error\_Handler@{Error\_Handler}}
+\index{Error\_Handler@{Error\_Handler}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{Error\_Handler()}{Error\_Handler()}}
+{\footnotesize\ttfamily \label{neuronal__network_2esp__cubeai__test_2Core_2Src_2main_8c_a1730ffe1e560465665eb47d9264826f9} 
+void Error\+\_\+\+Handler (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+This function is executed in case of error occurrence. 
+
+
+\begin{DoxyRetVals}{Return values}
+{\em None} & \\
+\hline
+\end{DoxyRetVals}
+\Hypertarget{neuronal__network_2esp__cubeai__test_2Core_2Src_2main_8c_a840291bc02cba5474a4cb46a9b9566fe}\index{main.c@{main.c}!main@{main}}
+\index{main@{main}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily \label{neuronal__network_2esp__cubeai__test_2Core_2Src_2main_8c_a840291bc02cba5474a4cb46a9b9566fe} 
+int main (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+The application entry point. 
+
+
+\begin{DoxyRetVals}{Return values}
+{\em int} & \\
+\hline
+\end{DoxyRetVals}
+\Hypertarget{neuronal__network_2esp__cubeai__test_2Core_2Src_2main_8c_a70af21c671abfcc773614a9a4f63d920}\index{main.c@{main.c}!SystemClock\_Config@{SystemClock\_Config}}
+\index{SystemClock\_Config@{SystemClock\_Config}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{SystemClock\_Config()}{SystemClock\_Config()}}
+{\footnotesize\ttfamily \label{neuronal__network_2esp__cubeai__test_2Core_2Src_2main_8c_a70af21c671abfcc773614a9a4f63d920} 
+void System\+Clock\+\_\+\+Config (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+System Clock Configuration. 
+
+
+\begin{DoxyRetVals}{Return values}
+{\em None} & \\
+\hline
+\end{DoxyRetVals}
+Configure LSE Drive Capability
+
+Configure the main internal regulator output voltage
+
+Initializes the RCC Oscillators according to the specified parameters in the RCC\+\_\+\+Osc\+Init\+Type\+Def structure.
+
+Activate the Over-\/\+Drive mode
+
+Initializes the CPU, AHB and APB buses clocks

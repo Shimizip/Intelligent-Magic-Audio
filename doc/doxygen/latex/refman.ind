@@ -2,43 +2,49 @@
 
   \item {adcBuffer}
     \subitem {interface.h}, \hyperpage{23}
-    \subitem {main.c}, \hyperpage{68}
+    \subitem {main.c}, \hyperpage{70}
   \item {adcDmaFlag}
     \subitem {interface.h}, \hyperpage{23}
-    \subitem {main.c}, \hyperpage{68}
+    \subitem {main.c}, \hyperpage{70}
   \item {addFile}
     \subitem {filemanager.c}, \hyperpage{30}
     \subitem {filemanager.h}, \hyperpage{13}
   \item {aiOutDataLabels}
-    \subitem {audio\_classification.c}, \hyperpage{79}
+    \subitem {audio\_classification.c}, \hyperpage{85}
   \item {audio.c}
-    \subitem {fillHalfBufferFromSD}, \hyperpage{57}
-    \subitem {generateSineWave}, \hyperpage{58}
-    \subitem {HAL\_I2S\_TxCpltCallback}, \hyperpage{58}
-    \subitem {HAL\_I2S\_TxHalfCpltCallback}, \hyperpage{58}
-    \subitem {setPitchFactor}, \hyperpage{59}
+    \subitem {fillHalfBufferFromSD}, \hyperpage{60}
+    \subitem {generateSineWave}, \hyperpage{60}
+    \subitem {HAL\_I2S\_TxCpltCallback}, \hyperpage{61}
+    \subitem {HAL\_I2S\_TxHalfCpltCallback}, \hyperpage{61}
+    \subitem {setPitchFactor}, \hyperpage{61}
   \item {audio.h}
     \subitem {fillHalfBufferFromSD}, \hyperpage{40}
     \subitem {generateSineWave}, \hyperpage{40}
     \subitem {HAL\_I2S\_TxHalfCpltCallback}, \hyperpage{41}
     \subitem {setPitchFactor}, \hyperpage{41}
   \item {audio\_classification.c}
-    \subitem {aiOutDataLabels}, \hyperpage{79}
-    \subitem {calculate\_spectrogram\_column}, \hyperpage{76}
-    \subitem {calculate\_total\_classification\_result}, \hyperpage{77}
-    \subitem {classify\_file}, \hyperpage{77}
-    \subitem {de\_init\_nn}, \hyperpage{77}
-    \subitem {init\_nn}, \hyperpage{77}
-    \subitem {run\_nn\_classification}, \hyperpage{78}
-    \subitem {spectrogram\_generation\_init}, \hyperpage{78}
-    \subitem {spectrogram\_power\_to\_db}, \hyperpage{78}
-    \subitem {store\_classification\_result}, \hyperpage{79}
+    \subitem {aiOutDataLabels}, \hyperpage{85}
+    \subitem {calculate\_spectrogram\_column}, \hyperpage{82}
+    \subitem {calculate\_total\_classification\_result}, \hyperpage{82}
+    \subitem {classify\_file}, \hyperpage{83}
+    \subitem {de\_init\_nn}, \hyperpage{83}
+    \subitem {frame\_subsamples}, \hyperpage{87}
+    \subitem {init\_nn}, \hyperpage{83}, \hyperpage{87}
+    \subitem {PowerToDb}, \hyperpage{87}
+    \subitem {preprocess\_frame}, \hyperpage{88}
+    \subitem {Preprocessing\_Init}, \hyperpage{88}
+    \subitem {process\_subsample}, \hyperpage{88}
+    \subitem {run\_nn\_classification}, \hyperpage{83}, \hyperpage{90}
+    \subitem {spectrogram\_generation\_init}, \hyperpage{84}
+    \subitem {spectrogram\_power\_to\_db}, \hyperpage{84}
+    \subitem {store\_classification\_result}, \hyperpage{85}
+    \subitem {test\_call\_classification}, \hyperpage{90}
   \item {audioPreprocessor.c}
-    \subitem {downsample\_Block}, \hyperpage{60}
-    \subitem {downsample\_to\_1024\_samples}, \hyperpage{60}
-    \subitem {get\_number\_subsamples}, \hyperpage{60}
-    \subitem {initFilter}, \hyperpage{61}
-    \subitem {resampleFile}, \hyperpage{61}
+    \subitem {downsample\_Block}, \hyperpage{62}
+    \subitem {downsample\_to\_1024\_samples}, \hyperpage{63}
+    \subitem {get\_number\_subsamples}, \hyperpage{63}
+    \subitem {initFilter}, \hyperpage{63}
+    \subitem {resampleFile}, \hyperpage{64}
   \item {audioPreprocessor.h}
     \subitem {downsample\_Block}, \hyperpage{43}
     \subitem {downsample\_to\_1024\_samples}, \hyperpage{43}
@@ -50,24 +56,24 @@
   \indexspace
 
   \item {calculate\_spectrogram\_column}
-    \subitem {audio\_classification.c}, \hyperpage{76}
+    \subitem {audio\_classification.c}, \hyperpage{82}
   \item {calculate\_total\_classification\_result}
-    \subitem {audio\_classification.c}, \hyperpage{77}
+    \subitem {audio\_classification.c}, \hyperpage{82}
   \item {checkWav}
-    \subitem {wavPlayer.c}, \hyperpage{72}
-    \subitem {wavPlayer.h}, \hyperpage{53}
+    \subitem {wavPlayer.c}, \hyperpage{76}
+    \subitem {wavPlayer.h}, \hyperpage{56}
   \item {classify\_file}
-    \subitem {audio\_classification.c}, \hyperpage{77}
+    \subitem {audio\_classification.c}, \hyperpage{83}
   \item {compareADCValues}
     \subitem {interface.c}, \hyperpage{35}
     \subitem {interface.h}, \hyperpage{19}
   \item {cpu\_time.c}
-    \subitem {CyclesToMicroseconds}, \hyperpage{62}
-    \subitem {CyclesToMilliseconds}, \hyperpage{63}
-    \subitem {EnableDWT}, \hyperpage{63}
-    \subitem {GetMeasuredCycles}, \hyperpage{63}
-    \subitem {StartCycleMeasurement}, \hyperpage{63}
-    \subitem {StopCycleMeasurement}, \hyperpage{64}
+    \subitem {CyclesToMicroseconds}, \hyperpage{65}
+    \subitem {CyclesToMilliseconds}, \hyperpage{65}
+    \subitem {EnableDWT}, \hyperpage{66}
+    \subitem {GetMeasuredCycles}, \hyperpage{66}
+    \subitem {StartCycleMeasurement}, \hyperpage{66}
+    \subitem {StopCycleMeasurement}, \hyperpage{66}
   \item {cursorDown}
     \subitem {filemanager.c}, \hyperpage{31}
     \subitem {filemanager.h}, \hyperpage{14}
@@ -75,14 +81,14 @@
     \subitem {filemanager.c}, \hyperpage{31}
     \subitem {filemanager.h}, \hyperpage{14}
   \item {CyclesToMicroseconds}
-    \subitem {cpu\_time.c}, \hyperpage{62}
+    \subitem {cpu\_time.c}, \hyperpage{65}
   \item {CyclesToMilliseconds}
-    \subitem {cpu\_time.c}, \hyperpage{63}
+    \subitem {cpu\_time.c}, \hyperpage{65}
 
   \indexspace
 
   \item {de\_init\_nn}
-    \subitem {audio\_classification.c}, \hyperpage{77}
+    \subitem {audio\_classification.c}, \hyperpage{83}
   \item {display.c}
     \subitem {DISPLAY\_WIDTH}, \hyperpage{27}
     \subitem {displayStrings}, \hyperpage{27}
@@ -100,10 +106,10 @@
     \subitem {display.c}, \hyperpage{27}
     \subitem {display.h}, \hyperpage{10}
   \item {downsample\_Block}
-    \subitem {audioPreprocessor.c}, \hyperpage{60}
+    \subitem {audioPreprocessor.c}, \hyperpage{62}
     \subitem {audioPreprocessor.h}, \hyperpage{43}
   \item {downsample\_to\_1024\_samples}
-    \subitem {audioPreprocessor.c}, \hyperpage{60}
+    \subitem {audioPreprocessor.c}, \hyperpage{63}
     \subitem {audioPreprocessor.h}, \hyperpage{43}
   \item {drawFaderProzent}
     \subitem {display.c}, \hyperpage{28}
@@ -112,10 +118,10 @@
   \indexspace
 
   \item {EnableDWT}
-    \subitem {cpu\_time.c}, \hyperpage{63}
+    \subitem {cpu\_time.c}, \hyperpage{66}
   \item {Error\_Handler}
-    \subitem {main.c}, \hyperpage{66}, \hyperpage{70}
-    \subitem {main.h}, \hyperpage{48}, \hyperpage{50}
+    \subitem {main.c}, \hyperpage{69}, \hyperpage{72}, \hyperpage{74}
+    \subitem {main.h}, \hyperpage{48}, \hyperpage{50}, \hyperpage{53}
   \item {EXISTS}
     \subitem {filemanager.h}, \hyperpage{13}
 
@@ -134,7 +140,7 @@
   \item {f401\_display\_encoder\_fader\_test/Core/Inc/ssd1306.h}, 
 		\hyperpage{25}
   \item {f401\_display\_encoder\_fader\_test/Core/Inc/util.h}, 
-		\hyperpage{52}
+		\hyperpage{54}
   \item {f401\_display\_encoder\_fader\_test/Core/Src/display.c}, 
 		\hyperpage{26}
   \item {f401\_display\_encoder\_fader\_test/Core/Src/filemanager.c}, 
@@ -142,7 +148,7 @@
   \item {f401\_display\_encoder\_fader\_test/Core/Src/interface.c}, 
 		\hyperpage{33}
   \item {f401\_display\_encoder\_fader\_test/Core/Src/main.c}, 
-		\hyperpage{65}
+		\hyperpage{67}
   \item {f401\_sd\_card\_audio\_codec\_test/Core/Inc/audio.h}, 
 		\hyperpage{39}, \hyperpage{41}
   \item {f401\_sd\_card\_audio\_codec\_test/Core/Inc/audioPreprocessor.h}, 
@@ -154,23 +160,23 @@
   \item {f401\_sd\_card\_audio\_codec\_test/Core/Inc/main.h}, 
 		\hyperpage{50, 51}
   \item {f401\_sd\_card\_audio\_codec\_test/Core/Inc/util.h}, 
-		\hyperpage{52}
+		\hyperpage{54}
   \item {f401\_sd\_card\_audio\_codec\_test/Core/Inc/wavPlayer.h}, 
-		\hyperpage{52}, \hyperpage{56}
+		\hyperpage{55}, \hyperpage{59}
   \item {f401\_sd\_card\_audio\_codec\_test/Core/Src/audio.c}, 
-		\hyperpage{56}
-  \item {f401\_sd\_card\_audio\_codec\_test/Core/Src/audioPreprocessor.c}, 
 		\hyperpage{59}
-  \item {f401\_sd\_card\_audio\_codec\_test/Core/Src/cpu\_time.c}, 
+  \item {f401\_sd\_card\_audio\_codec\_test/Core/Src/audioPreprocessor.c}, 
 		\hyperpage{62}
-  \item {f401\_sd\_card\_audio\_codec\_test/Core/Src/lowpass\_16kFilter.c}, 
+  \item {f401\_sd\_card\_audio\_codec\_test/Core/Src/cpu\_time.c}, 
 		\hyperpage{64}
+  \item {f401\_sd\_card\_audio\_codec\_test/Core/Src/lowpass\_16kFilter.c}, 
+		\hyperpage{67}
   \item {f401\_sd\_card\_audio\_codec\_test/Core/Src/main.c}, 
-		\hyperpage{69}
-  \item {f401\_sd\_card\_audio\_codec\_test/Core/Src/util.c}, 
 		\hyperpage{71}
+  \item {f401\_sd\_card\_audio\_codec\_test/Core/Src/util.c}, 
+		\hyperpage{75}
   \item {f401\_sd\_card\_audio\_codec\_test/Core/Src/wavPlayer.c}, 
-		\hyperpage{72}
+		\hyperpage{76}
   \item {File}, \hyperpage{5}
   \item {FileManager}, \hyperpage{5}
   \item {filemanager.c}
@@ -194,32 +200,34 @@
     \subitem {setCursor}, \hyperpage{15}
   \item {fileNamesSDCard}
     \subitem {interface.h}, \hyperpage{23}
-    \subitem {main.c}, \hyperpage{68}
+    \subitem {main.c}, \hyperpage{70}
   \item {fillHalfBufferFromSD}
-    \subitem {audio.c}, \hyperpage{57}
+    \subitem {audio.c}, \hyperpage{60}
     \subitem {audio.h}, \hyperpage{40}
   \item {filter\_taps}
     \subitem {audioPreprocessor.h}, \hyperpage{45}
-    \subitem {lowpass\_16kFilter.c}, \hyperpage{64}
+    \subitem {lowpass\_16kFilter.c}, \hyperpage{67}
     \subitem {lowpass\_16kFilter.h}, \hyperpage{47}
   \item {fm}
     \subitem {interface.h}, \hyperpage{23}
-    \subitem {main.c}, \hyperpage{68}
+    \subitem {main.c}, \hyperpage{71}
   \item {fno}
     \subitem {interface.h}, \hyperpage{24}
-    \subitem {main.c}, \hyperpage{68}
+    \subitem {main.c}, \hyperpage{71}
   \item {FontDef}, \hyperpage{6}
+  \item {frame\_subsamples}
+    \subitem {audio\_classification.c}, \hyperpage{87}
 
   \indexspace
 
   \item {generateSineWave}
-    \subitem {audio.c}, \hyperpage{58}
+    \subitem {audio.c}, \hyperpage{60}
     \subitem {audio.h}, \hyperpage{40}
   \item {get\_number\_subsamples}
-    \subitem {audioPreprocessor.c}, \hyperpage{60}
+    \subitem {audioPreprocessor.c}, \hyperpage{63}
     \subitem {audioPreprocessor.h}, \hyperpage{44}
   \item {GetMeasuredCycles}
-    \subitem {cpu\_time.c}, \hyperpage{63}
+    \subitem {cpu\_time.c}, \hyperpage{66}
 
   \indexspace
 
@@ -230,9 +238,9 @@
     \subitem {interface.c}, \hyperpage{35}
     \subitem {interface.h}, \hyperpage{20}
   \item {HAL\_I2S\_TxCpltCallback}
-    \subitem {audio.c}, \hyperpage{58}
+    \subitem {audio.c}, \hyperpage{61}
   \item {HAL\_I2S\_TxHalfCpltCallback}
-    \subitem {audio.c}, \hyperpage{58}
+    \subitem {audio.c}, \hyperpage{61}
     \subitem {audio.h}, \hyperpage{41}
   \item {HAL\_TIM\_PeriodElapsedCallback}
     \subitem {interface.c}, \hyperpage{36}
@@ -241,16 +249,16 @@
   \indexspace
 
   \item {init\_nn}
-    \subitem {audio\_classification.c}, \hyperpage{77}
+    \subitem {audio\_classification.c}, \hyperpage{83}, \hyperpage{87}
   \item {initFilter}
-    \subitem {audioPreprocessor.c}, \hyperpage{61}
+    \subitem {audioPreprocessor.c}, \hyperpage{63}
     \subitem {audioPreprocessor.h}, \hyperpage{44}
   \item {initializeFileManager}
     \subitem {filemanager.c}, \hyperpage{31}
     \subitem {filemanager.h}, \hyperpage{14}
   \item {initPlayer}
-    \subitem {wavPlayer.c}, \hyperpage{73}
-    \subitem {wavPlayer.h}, \hyperpage{54}
+    \subitem {wavPlayer.c}, \hyperpage{77}
+    \subitem {wavPlayer.h}, \hyperpage{56}
   \item {interface.c}
     \subitem {compareADCValues}, \hyperpage{35}
     \subitem {HAL\_ADC\_ConvCpltCallback}, \hyperpage{35}
@@ -282,32 +290,34 @@
   \indexspace
 
   \item {lfn}
-    \subitem {main.c}, \hyperpage{68}
+    \subitem {main.c}, \hyperpage{71}
   \item {listFiles}
     \subitem {interface.c}, \hyperpage{36}
     \subitem {interface.h}, \hyperpage{21}
   \item {lowpass\_16kFilter.c}
-    \subitem {filter\_taps}, \hyperpage{64}
+    \subitem {filter\_taps}, \hyperpage{67}
   \item {lowpass\_16kFilter.h}
     \subitem {filter\_taps}, \hyperpage{47}
 
   \indexspace
 
   \item {main}
-    \subitem {main.c}, \hyperpage{66}, \hyperpage{70}
+    \subitem {main.c}, \hyperpage{69}, \hyperpage{72}, \hyperpage{74}
   \item {main.c}
-    \subitem {adcBuffer}, \hyperpage{68}
-    \subitem {adcDmaFlag}, \hyperpage{68}
-    \subitem {Error\_Handler}, \hyperpage{66}, \hyperpage{70}
-    \subitem {fileNamesSDCard}, \hyperpage{68}
-    \subitem {fm}, \hyperpage{68}
-    \subitem {fno}, \hyperpage{68}
-    \subitem {lfn}, \hyperpage{68}
-    \subitem {main}, \hyperpage{66}, \hyperpage{70}
-    \subitem {SystemClock\_Config}, \hyperpage{67}, \hyperpage{70}
-    \subitem {writeStringToFile}, \hyperpage{67}
+    \subitem {adcBuffer}, \hyperpage{70}
+    \subitem {adcDmaFlag}, \hyperpage{70}
+    \subitem {Error\_Handler}, \hyperpage{69}, \hyperpage{72}, 
+		\hyperpage{74}
+    \subitem {fileNamesSDCard}, \hyperpage{70}
+    \subitem {fm}, \hyperpage{71}
+    \subitem {fno}, \hyperpage{71}
+    \subitem {lfn}, \hyperpage{71}
+    \subitem {main}, \hyperpage{69}, \hyperpage{72}, \hyperpage{74}
+    \subitem {SystemClock\_Config}, \hyperpage{69}, \hyperpage{73, 74}
+    \subitem {writeStringToFile}, \hyperpage{69}
   \item {main.h}
-    \subitem {Error\_Handler}, \hyperpage{48}, \hyperpage{50}
+    \subitem {Error\_Handler}, \hyperpage{48}, \hyperpage{50}, 
+		\hyperpage{53}
   \item {MAX\_CLASSES}
     \subitem {filemanager.h}, \hyperpage{13}
   \item {MAX\_FILES}
@@ -315,17 +325,41 @@
 
   \indexspace
 
+  \item {neuronal\_network/esp\_cubeai\_for\_integration/Core/Inc/audio\_classification.h}, 
+		\hyperpage{79}
   \item {neuronal\_network/esp\_cubeai\_for\_integration/Core/Src/audio\_classification.c}, 
-		\hyperpage{75}
+		\hyperpage{80}
+  \item {neuronal\_network/esp\_cubeai\_test/Core/Inc/audio\_classification.h}, 
+		\hyperpage{80}
+  \item {neuronal\_network/esp\_cubeai\_test/Core/Inc/featurescaler.h}, 
+		\hyperpage{90}
+  \item {neuronal\_network/esp\_cubeai\_test/Core/Inc/main.h}, 
+		\hyperpage{52, 53}
+  \item {neuronal\_network/esp\_cubeai\_test/Core/Inc/test\_audio\_data.h}, 
+		\hyperpage{91}
+  \item {neuronal\_network/esp\_cubeai\_test/Core/Inc/utils.h}, 
+		\hyperpage{91}
+  \item {neuronal\_network/esp\_cubeai\_test/Core/Src/audio\_classification.c}, 
+		\hyperpage{86}
+  \item {neuronal\_network/esp\_cubeai\_test/Core/Src/main.c}, 
+		\hyperpage{73}
 
   \indexspace
 
   \item {playButtonHandler}
-    \subitem {wavPlayer.c}, \hyperpage{73}
-    \subitem {wavPlayer.h}, \hyperpage{54}
+    \subitem {wavPlayer.c}, \hyperpage{77}
+    \subitem {wavPlayer.h}, \hyperpage{57}
   \item {populateWavHeader}
-    \subitem {wavPlayer.c}, \hyperpage{73}
-    \subitem {wavPlayer.h}, \hyperpage{54}
+    \subitem {wavPlayer.c}, \hyperpage{77}
+    \subitem {wavPlayer.h}, \hyperpage{57}
+  \item {PowerToDb}
+    \subitem {audio\_classification.c}, \hyperpage{87}
+  \item {preprocess\_frame}
+    \subitem {audio\_classification.c}, \hyperpage{88}
+  \item {Preprocessing\_Init}
+    \subitem {audio\_classification.c}, \hyperpage{88}
+  \item {process\_subsample}
+    \subitem {audio\_classification.c}, \hyperpage{88}
 
   \indexspace
 
@@ -333,7 +367,7 @@
     \subitem {display.c}, \hyperpage{28}
     \subitem {display.h}, \hyperpage{11}
   \item {resampleFile}
-    \subitem {audioPreprocessor.c}, \hyperpage{61}
+    \subitem {audioPreprocessor.c}, \hyperpage{64}
     \subitem {audioPreprocessor.h}, \hyperpage{44}
   \item {resetShownFiles}
     \subitem {interface.c}, \hyperpage{37}
@@ -341,7 +375,7 @@
   \item {rotary\_enc\_count}
     \subitem {interface.c}, \hyperpage{39}
   \item {run\_nn\_classification}
-    \subitem {audio\_classification.c}, \hyperpage{78}
+    \subitem {audio\_classification.c}, \hyperpage{83}, \hyperpage{90}
 
   \indexspace
 
@@ -362,74 +396,76 @@
     \subitem {filemanager.c}, \hyperpage{32}
     \subitem {filemanager.h}, \hyperpage{15}
   \item {setPitchFactor}
-    \subitem {audio.c}, \hyperpage{59}
+    \subitem {audio.c}, \hyperpage{61}
     \subitem {audio.h}, \hyperpage{41}
   \item {sortFiles}
     \subitem {interface.c}, \hyperpage{38}
     \subitem {interface.h}, \hyperpage{22}
   \item {spectrogram\_generation\_init}
-    \subitem {audio\_classification.c}, \hyperpage{78}
+    \subitem {audio\_classification.c}, \hyperpage{84}
   \item {spectrogram\_power\_to\_db}
-    \subitem {audio\_classification.c}, \hyperpage{78}
+    \subitem {audio\_classification.c}, \hyperpage{84}
   \item {SSD1306\_t}, \hyperpage{7}
   \item {StartCycleMeasurement}
-    \subitem {cpu\_time.c}, \hyperpage{63}
+    \subitem {cpu\_time.c}, \hyperpage{66}
   \item {StopCycleMeasurement}
-    \subitem {cpu\_time.c}, \hyperpage{64}
+    \subitem {cpu\_time.c}, \hyperpage{66}
   \item {store\_classification\_result}
-    \subitem {audio\_classification.c}, \hyperpage{79}
+    \subitem {audio\_classification.c}, \hyperpage{85}
   \item {SystemClock\_Config}
-    \subitem {main.c}, \hyperpage{67}, \hyperpage{70}
+    \subitem {main.c}, \hyperpage{69}, \hyperpage{73, 74}
 
   \indexspace
 
+  \item {test\_call\_classification}
+    \subitem {audio\_classification.c}, \hyperpage{90}
   \item {THREASHOLD}
     \subitem {interface.h}, \hyperpage{19}
 
   \indexspace
 
   \item {uart\_printf}
-    \subitem {util.c}, \hyperpage{71}
+    \subitem {util.c}, \hyperpage{75}
   \item {updateScreen}
     \subitem {interface.c}, \hyperpage{38}
     \subitem {interface.h}, \hyperpage{22}
   \item {util.c}
-    \subitem {uart\_printf}, \hyperpage{71}
+    \subitem {uart\_printf}, \hyperpage{75}
 
   \indexspace
 
   \item {wav\_header\_t}, \hyperpage{7}
-    \subitem {wavPlayer.h}, \hyperpage{53}
+    \subitem {wavPlayer.h}, \hyperpage{56}
   \item {wavLoad}
-    \subitem {wavPlayer.c}, \hyperpage{74}
-    \subitem {wavPlayer.h}, \hyperpage{55}
+    \subitem {wavPlayer.c}, \hyperpage{78}
+    \subitem {wavPlayer.h}, \hyperpage{57}
   \item {wavPlay}
-    \subitem {wavPlayer.c}, \hyperpage{74}
-    \subitem {wavPlayer.h}, \hyperpage{55}
+    \subitem {wavPlayer.c}, \hyperpage{78}
+    \subitem {wavPlayer.h}, \hyperpage{58}
   \item {WavPlayer}, \hyperpage{8}
-    \subitem {wavPlayer.h}, \hyperpage{53}
+    \subitem {wavPlayer.h}, \hyperpage{56}
   \item {wavPlayer.c}
-    \subitem {checkWav}, \hyperpage{72}
-    \subitem {initPlayer}, \hyperpage{73}
-    \subitem {playButtonHandler}, \hyperpage{73}
-    \subitem {populateWavHeader}, \hyperpage{73}
-    \subitem {wavLoad}, \hyperpage{74}
-    \subitem {wavPlay}, \hyperpage{74}
-    \subitem {wavPlayPitched}, \hyperpage{74}
+    \subitem {checkWav}, \hyperpage{76}
+    \subitem {initPlayer}, \hyperpage{77}
+    \subitem {playButtonHandler}, \hyperpage{77}
+    \subitem {populateWavHeader}, \hyperpage{77}
+    \subitem {wavLoad}, \hyperpage{78}
+    \subitem {wavPlay}, \hyperpage{78}
+    \subitem {wavPlayPitched}, \hyperpage{78}
   \item {wavPlayer.h}
-    \subitem {checkWav}, \hyperpage{53}
-    \subitem {initPlayer}, \hyperpage{54}
-    \subitem {playButtonHandler}, \hyperpage{54}
-    \subitem {populateWavHeader}, \hyperpage{54}
-    \subitem {wav\_header\_t}, \hyperpage{53}
-    \subitem {wavLoad}, \hyperpage{55}
-    \subitem {wavPlay}, \hyperpage{55}
-    \subitem {WavPlayer}, \hyperpage{53}
-    \subitem {wavPlayPitched}, \hyperpage{55}
+    \subitem {checkWav}, \hyperpage{56}
+    \subitem {initPlayer}, \hyperpage{56}
+    \subitem {playButtonHandler}, \hyperpage{57}
+    \subitem {populateWavHeader}, \hyperpage{57}
+    \subitem {wav\_header\_t}, \hyperpage{56}
+    \subitem {wavLoad}, \hyperpage{57}
+    \subitem {wavPlay}, \hyperpage{58}
+    \subitem {WavPlayer}, \hyperpage{56}
+    \subitem {wavPlayPitched}, \hyperpage{58}
   \item {wavPlayPitched}
-    \subitem {wavPlayer.c}, \hyperpage{74}
-    \subitem {wavPlayer.h}, \hyperpage{55}
+    \subitem {wavPlayer.c}, \hyperpage{78}
+    \subitem {wavPlayer.h}, \hyperpage{58}
   \item {writeStringToFile}
-    \subitem {main.c}, \hyperpage{67}
+    \subitem {main.c}, \hyperpage{69}
 
 \end{theindex}

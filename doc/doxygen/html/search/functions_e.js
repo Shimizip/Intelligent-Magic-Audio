@@ -1,7 +1,5 @@
 var searchData=
 [
-  ['wavload_0',['wavLoad',['../wavPlayer_8c.html#a81ae4ad2cceb5e50440bee758173922b',1,'wavLoad(WavPlayer *player, const char *filename):&#160;wavPlayer.c'],['../wavPlayer_8h.html#a81ae4ad2cceb5e50440bee758173922b',1,'wavLoad(WavPlayer *player, const char *filename):&#160;wavPlayer.c']]],
-  ['wavplay_1',['wavPlay',['../wavPlayer_8c.html#a7ef5d87c0f7e4ffb764986329e92ef51',1,'wavPlay(WavPlayer *player):&#160;wavPlayer.c'],['../wavPlayer_8h.html#a7ef5d87c0f7e4ffb764986329e92ef51',1,'wavPlay(WavPlayer *player):&#160;wavPlayer.c']]],
-  ['wavplaypitched_2',['wavPlayPitched',['../wavPlayer_8c.html#ad05e6abad0601784f005b8b0d4685bad',1,'wavPlayPitched(WavPlayer *player):&#160;wavPlayer.c'],['../wavPlayer_8h.html#ad05e6abad0601784f005b8b0d4685bad',1,'wavPlayPitched(WavPlayer *player):&#160;wavPlayer.c']]],
-  ['writestringtofile_3',['writeStringToFile',['../f401__display__encoder__fader__test_2Core_2Src_2main_8c.html#ab8dff4ac438692a6e6646497cde3fe78',1,'main.c']]]
+  ['uart_5fprintf_0',['uart_printf',['../f401__sd__card__audio__codec__test_2Core_2Src_2util_8c.html#abd6e353d39a7ced9a87517a68bd13768',1,'util.c']]],
+  ['updatescreen_1',['updateScreen',['../interface_8c.html#a613aa0c99c5b2234f909f5f8b0cdc972',1,'updateScreen(void):&#160;interface.c'],['../interface_8h.html#a613aa0c99c5b2234f909f5f8b0cdc972',1,'updateScreen(void):&#160;interface.c']]]
 ];

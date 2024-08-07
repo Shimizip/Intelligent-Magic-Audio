@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.3.26)  7 AUG 2024 16:08
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.3.26)  7 AUG 2024 16:25
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -855,6 +855,9 @@ LaTeX Font Info:    Font shape `T1/phv/b/n' will be
 LaTeX Font Info:    Font shape `T1/phv/b/n' will be
 (Font)              scaled to size 6.29996pt on input line 230.
  [1] [2] [3] [4] [5] [6]
+[7] [8
+
+]
 Package hyperref Info: Option `pageanchor' set `true' on input line 233.
 
 Chapter 1.
@@ -868,7 +871,6 @@ LaTeX Font Info:    Font shape `T1/phv/b/n' will be
 LaTeX Font Info:    Font shape `T1/phv/b/n' will be
 (Font)              scaled to size 12.9599pt on input line 1.
 ) [1
-
 
 ] [2
 
@@ -1154,24 +1156,35 @@ Underfull \hbox (badness 10000) detected at line 70
  []
 
 [50]) (./f401__sd__card__audio__codec__test_2Core_2Inc_2main_8h_source.tex)
-(./f401__display__encoder__fader__test_2Core_2Inc_2util_8h_source.tex [51])
-(./f401__sd__card__audio__codec__test_2Core_2Inc_2util_8h_source.tex)
+(./neuronal__network_2esp__cubeai__test_2Core_2Inc_2main_8h.tex [51]
+Underfull \hbox (badness 10000) in paragraph at lines 8--10
+
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 125
+[][][]
+ []
+
+[52]) (./neuronal__network_2esp__cubeai__test_2Core_2Inc_2main_8h_source.tex
+[53]) (./f401__display__encoder__fader__test_2Core_2Inc_2util_8h_source.tex)
+(./f401__sd__card__audio__codec__test_2Core_2Inc_2util_8h_source.tex [54])
 (./wavPlayer_8h.tex
 Underfull \hbox (badness 10000) in paragraph at lines 8--11
 
  []
 
-[52] [53]
+[55]
 Underfull \hbox (badness 10000) detected at line 93
 [][][]
  []
 
-[54]
+[56]
 Underfull \hbox (badness 10000) detected at line 153
 [][][]
  []
 
-
+[57]
 Underfull \hbox (badness 10000) detected at line 175
 [][][]
  []
@@ -1181,32 +1194,32 @@ Underfull \hbox (badness 10000) detected at line 195
 [][][]
  []
 
-[55]
+
 Underfull \hbox (badness 10000) detected at line 215
 [][][]
  []
 
-) (./wavPlayer_8h_source.tex) (./audio_8c.tex
-Underfull \hbox (badness 10000) in paragraph at lines 8--9
-
- []
-
-[56] [57]
-Underfull \hbox (badness 10000) detected at line 79
-[][][]
- []
-
-[58]) (./audioPreprocessor_8c.tex
+) (./wavPlayer_8h_source.tex [58]) (./audio_8c.tex
 Underfull \hbox (badness 10000) in paragraph at lines 8--9
 
  []
 
 [59]
+Underfull \hbox (badness 10000) detected at line 79
+[][][]
+ []
+
+[60] [61]) (./audioPreprocessor_8c.tex
+Underfull \hbox (badness 10000) in paragraph at lines 8--9
+
+ []
+
+[62]
 Underfull \hbox (badness 10000) detected at line 77
 [][][]
  []
 
-[60]
+
 Underfull \hbox (badness 10000) detected at line 97
 [][][]
  []
@@ -1216,7 +1229,7 @@ Underfull \hbox (badness 10000) detected at line 112
 [][][]
  []
 
-
+[63]
 Underfull \hbox (badness 10000) detected at line 138
 [][][]
  []
@@ -1226,12 +1239,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 8--10
 
  []
 
-[61] [62]
+[64]
 Underfull \hbox (badness 10000) detected at line 65
 [][][]
  []
 
-
+[65]
 Underfull \hbox (badness 10000) detected at line 85
 [][][]
  []
@@ -1241,54 +1254,64 @@ Underfull \hbox (badness 10000) detected at line 110
 [][][]
  []
 
-) (./lowpass__16kFilter_8c.tex [63]
+) (./lowpass__16kFilter_8c.tex
 Underfull \hbox (badness 10000) in paragraph at lines 8--9
 
  []
 
-) (./f401__display__encoder__fader__test_2Core_2Src_2main_8c.tex
+[66]) (./f401__display__encoder__fader__test_2Core_2Src_2main_8c.tex
 Underfull \hbox (badness 10000) in paragraph at lines 8--18
 
  []
 
-[64] [65]
+[67] [68]
 Underfull \hbox (badness 10000) detected at line 100
 [][][]
  []
 
-[66]
+[69]
 Underfull \hbox (badness 10000) detected at line 184
 [][][]
  []
 
-[67]) (./f401__sd__card__audio__codec__test_2Core_2Src_2main_8c.tex
+[70]) (./f401__sd__card__audio__codec__test_2Core_2Src_2main_8c.tex
 Underfull \hbox (badness 10000) in paragraph at lines 8--18
 
  []
 
-[68]
+[71]
 Underfull \hbox (badness 10000) detected at line 59
 [][][]
  []
 
 LaTeX Font Info:    Font shape `TS1/phv/b/n' will be
 (Font)              scaled to size 8.99994pt on input line 62.
-[69]) (./f401__sd__card__audio__codec__test_2Core_2Src_2util_8c.tex
+[72]) (./neuronal__network_2esp__cubeai__test_2Core_2Src_2main_8c.tex
+Underfull \hbox (badness 10000) in paragraph at lines 8--14
+
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 46
+[][][]
+ []
+
+[73]) (./f401__sd__card__audio__codec__test_2Core_2Src_2util_8c.tex
 Underfull \hbox (badness 10000) in paragraph at lines 8--9
 
  []
 
-[70]) (./wavPlayer_8c.tex
+[74]) (./wavPlayer_8c.tex
 Underfull \hbox (badness 10000) in paragraph at lines 8--11
 
  []
 
-[71] [72]
+[75] [76]
 Underfull \hbox (badness 10000) detected at line 59
 [][][]
  []
 
-[73]
+[77]
 Underfull \hbox (badness 10000) detected at line 119
 [][][]
  []
@@ -1303,17 +1326,21 @@ Underfull \hbox (badness 10000) detected at line 161
 [][][]
  []
 
-[74]
+[78]
 Underfull \hbox (badness 10000) detected at line 181
 [][][]
  []
 
-) (./audio__classification_8c.tex
+)
+(./esp__cubeai__for__integration_2Core_2Inc_2audio__classification_8h_source.te
+x) (./esp__cubeai__test_2Core_2Inc_2audio__classification_8h_source.tex
+[79]) (./esp__cubeai__for__integration_2Core_2Src_2audio__classification_8c.tex
+
 Underfull \hbox (badness 10000) in paragraph at lines 8--15
 
  []
 
-[75]
+[80] [81]
 Underfull \hbox (badness 10000) detected at line 71
 [][][]
  []
@@ -1323,12 +1350,12 @@ Underfull \hbox (badness 10000) detected at line 74
 [][][]
  []
 
-[76]
+[82]
 Underfull \hbox (badness 10000) detected at line 149
 [][][]
  []
 
-[77]
+
 Underfull \hbox (badness 10000) detected at line 164
 [][][]
  []
@@ -1350,7 +1377,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 168--169
 _[][]STM32[]Cube-[]AI[]_[]application[]_[]using[]_[][]X-[]
  []
 
-
+[83]
 Underfull \hbox (badness 10000) detected at line 189
 [][][]
  []
@@ -1366,116 +1393,211 @@ Overfull \hbox (107.5977pt too wide) in paragraph at lines 205--206
 cr/m/n/10 https[]://www.[]st.[]com/en/embedded-software/fp-ai-sensing1.[]
  []
 
-[78]
+[84]
 Underfull \hbox (badness 10000) detected at line 245
 [][][]
  []
 
-) [79] [80
+) (./esp__cubeai__test_2Core_2Src_2audio__classification_8c.tex
+Underfull \hbox (badness 10000) in paragraph at lines 8--17
+
+ []
+
+[85] [86]
+Underfull \hbox (badness 10000) detected at line 70
+[][][]
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 73
+[][][]
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 108
+[][][]
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 111
+[][][]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 112--113
+[]\T1/phv/m/n/10 Drived from [][] \T1/pcr/m/n/10 https[]://wiki.[]st.[]com/stm3
+2mcu/wiki/[]AI[]:[]How[]_[]to[]_[]perform[]_[]motion[]_[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 112--113
+\T1/pcr/m/n/10 sensing[]_[]on[]_[][]STM32[]L4[]_[][]Io[]Tnode#[]Create[]_[]an[]
+_[][]STM32[]Cube-[]AI[]_[]application[]_[]using[]_[][]X-[]
+ []
+
+[87]
+Underfull \hbox (badness 10000) detected at line 148
+[][][]
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 163
+[][][]
+ []
+
+
+Overfull \hbox (107.5977pt too wide) in paragraph at lines 164--165
+[]\T1/phv/m/n/10 Derived from the FP-[]AI-[]SENSING fea-ture pack[]: [][] \T1/p
+cr/m/n/10 https[]://www.[]st.[]com/en/embedded-software/fp-ai-sensing1.[]
+ []
+
+[88] [89]
+Underfull \hbox (badness 10000) detected at line 202
+[][][]
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 215
+[][][]
+ []
+
+) (./featurescaler_8h_source.tex) (./test__audio__data_8h_source.tex [90])
+(./utils_8h_source.tex) [91] [92
 
 ] (./refman.ind
 LaTeX Font Info:    Font shape `T1/phv/m/n' will be
 (Font)              scaled to size 22.39185pt on input line 1.
- [81
+ [93
 
 
 ]
-Underfull \hbox (badness 1152) in paragraph at lines 124--126
+Underfull \hbox (badness 1152) in paragraph at lines 130--132
 []\T1/phv/m/n/10 f401_display_encoder_fader_test/Core/Inc/display.h, [][]9[][],
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 130--132
+Underfull \hbox (badness 10000) in paragraph at lines 136--138
 []\T1/phv/m/n/10 f401_display_encoder_fader_test/Core/Inc/interface.h,
  []
 
 
-Underfull \hbox (badness 4316) in paragraph at lines 132--134
+Underfull \hbox (badness 4316) in paragraph at lines 138--140
 []\T1/phv/m/n/10 f401_display_encoder_fader_test/Core/Inc/main.h, [][]47[][],
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 134--136
+Underfull \hbox (badness 10000) in paragraph at lines 140--142
 []\T1/phv/m/n/10 f401_display_encoder_fader_test/Core/Inc/ssd1306.h,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 142--144
+Underfull \hbox (badness 10000) in paragraph at lines 148--150
 []\T1/phv/m/n/10 f401_display_encoder_fader_test/Core/Src/interface.c,
  []
 
 
-Underfull \hbox (badness 4954) in paragraph at lines 146--148
+Underfull \hbox (badness 4954) in paragraph at lines 152--154
 []\T1/phv/m/n/10 f401_sd_card_audio_codec_test/Core/Inc/audio.h, [][]39[][],
  []
 
 
-Overfull \hbox (31.55107pt too wide) in paragraph at lines 148--150
+Overfull \hbox (31.55107pt too wide) in paragraph at lines 154--156
 []\T1/phv/m/n/10 f401_sd_card_audio_codec_test/Core/Inc/audioPreprocessor.h,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 150--152
+Underfull \hbox (badness 10000) in paragraph at lines 156--158
 []\T1/phv/m/n/10 f401_sd_card_audio_codec_test/Core/Inc/cpu_time.h,
  []
 
 
-Overfull \hbox (27.90627pt too wide) in paragraph at lines 152--154
+Overfull \hbox (27.90627pt too wide) in paragraph at lines 158--160
 []\T1/phv/m/n/10 f401_sd_card_audio_codec_test/Core/Inc/lowpass_16kFilter.h,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 154--156
+Underfull \hbox (badness 10000) in paragraph at lines 160--162
 []\T1/phv/m/n/10 f401_sd_card_audio_codec_test/Core/Inc/main.h, [][]50[][],
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 158--160
+Underfull \hbox (badness 10000) in paragraph at lines 164--166
 []\T1/phv/m/n/10 f401_sd_card_audio_codec_test/Core/Inc/wavPlayer.h,
  []
 
 
-Overfull \hbox (32.54115pt too wide) in paragraph at lines 162--164
+Overfull \hbox (32.54115pt too wide) in paragraph at lines 168--170
 []\T1/phv/m/n/10 f401_sd_card_audio_codec_test/Core/Src/audioPreprocessor.c,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 164--166
+Underfull \hbox (badness 10000) in paragraph at lines 170--172
 []\T1/phv/m/n/10 f401_sd_card_audio_codec_test/Core/Src/cpu_time.c,
  []
 
 
-Overfull \hbox (28.89635pt too wide) in paragraph at lines 166--168
+Overfull \hbox (28.89635pt too wide) in paragraph at lines 172--174
 []\T1/phv/m/n/10 f401_sd_card_audio_codec_test/Core/Src/lowpass_16kFilter.c,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 172--174
+Underfull \hbox (badness 10000) in paragraph at lines 178--180
 []\T1/phv/m/n/10 f401_sd_card_audio_codec_test/Core/Src/wavPlayer.c,
  []
 
-[82]
-Overfull \hbox (87.60193pt too wide) in paragraph at lines 318--320
+[94]
+Overfull \hbox (86.61185pt too wide) in paragraph at lines 328--330
+[]\T1/phv/m/n/10 neuronal_network/esp_cubeai_for_integration/Core/Inc/audio_cla
+ssification.h,
+ []
+
+
+Overfull \hbox (87.60193pt too wide) in paragraph at lines 330--332
 []\T1/phv/m/n/10 neuronal_network/esp_cubeai_for_integration/Core/Src/audio_cla
 ssification.c,
  []
 
-[83] [84
 
-]) (./refman.aux)
+Overfull \hbox (44.04274pt too wide) in paragraph at lines 332--334
+[]\T1/phv/m/n/10 neuronal_network/esp_cubeai_test/Core/Inc/audio_classification
+.h,
+ []
+
+
+Overfull \hbox (17.31305pt too wide) in paragraph at lines 334--336
+[]\T1/phv/m/n/10 neuronal_network/esp_cubeai_test/Core/Inc/featurescaler.h,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 336--338
+[]\T1/phv/m/n/10 neuronal_network/esp_cubeai_test/Core/Inc/main.h,
+ []
+
+
+Overfull \hbox (30.05669pt too wide) in paragraph at lines 338--340
+[]\T1/phv/m/n/10 neuronal_network/esp_cubeai_test/Core/Inc/test_audio_data.h,
+ []
+
+
+Overfull \hbox (45.03282pt too wide) in paragraph at lines 342--344
+[]\T1/phv/m/n/10 neuronal_network/esp_cubeai_test/Core/Src/audio_classification
+.c,
+ []
+
+[95] [96]) (./refman.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-03-14>
  ***********
 Package rerunfilecheck Info: File `refman.out' has not changed.
-(rerunfilecheck)             Checksum: 2C8299C9E32AF9B98A8F0690A28510AC;49876.
+(rerunfilecheck)             Checksum: A2073DD3DCD404C2999E2FDB8220157E;56021.
  ) 
 Here is how much of TeX's memory you used:
- 19538 strings out of 474104
- 345505 string characters out of 5743473
- 1961493 words of memory out of 5000000
- 40688 multiletter control sequences out of 15000+600000
+ 19828 strings out of 474104
+ 363885 string characters out of 5743473
+ 1965493 words of memory out of 5000000
+ 40837 multiletter control sequences out of 15000+600000
  613462 words of font info for 106 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  101i,16n,117p,1128b,744s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -1490,10 +1612,10 @@ xlive/2024/texmf-dist/fonts/type1/urw/courier/ucrro8a.pfb></usr/local/texlive/2
 mf-dist/fonts/type1/urw/helvetic/uhvb8ac.pfb></usr/local/texlive/2024/texmf-dis
 t/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/local/texlive/2024/texmf-dist/fonts
 /type1/urw/helvetic/uhvro8a.pfb>
-Output written on refman.pdf (92 pages, 351558 bytes).
+Output written on refman.pdf (106 pages, 384975 bytes).
 PDF statistics:
- 3183 PDF objects out of 3580 (max. 8388607)
- 2969 compressed objects within 30 object streams
- 807 named destinations out of 1000 (max. 500000)
- 1793 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 3590 PDF objects out of 4296 (max. 8388607)
+ 3358 compressed objects within 34 object streams
+ 929 named destinations out of 1000 (max. 500000)
+ 2009 words of extra memory for PDF output out of 10000 (max. 10000000)
 

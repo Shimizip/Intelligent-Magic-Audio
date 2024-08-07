@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['de_5finit_5fnn_0',['de_init_nn',['../audio__classification_8c.html#a40483ac3257ee8a4b986fd6ff6fb8b1c',1,'audio_classification.c']]],
+  ['de_5finit_5fnn_0',['de_init_nn',['../esp__cubeai__for__integration_2Core_2Src_2audio__classification_8c.html#a40483ac3257ee8a4b986fd6ff6fb8b1c',1,'audio_classification.c']]],
   ['displaystrings_1',['displayStrings',['../display_8c.html#ae65c5538f7f5f538e8ee851f6ffa0f0f',1,'displayStrings(I2C_HandleTypeDef *hi2c1, char **strings, uint8_t numStrings, uint8_t cursor_index):&#160;display.c'],['../display_8h.html#ae65c5538f7f5f538e8ee851f6ffa0f0f',1,'displayStrings(I2C_HandleTypeDef *hi2c1, char **strings, uint8_t numStrings, uint8_t cursor_index):&#160;display.c']]],
   ['downsample_5fblock_2',['downsample_Block',['../audioPreprocessor_8c.html#a0a0e70bc477aae30a8eb09466fe12505',1,'downsample_Block(int16_t *src, int16_t *dest):&#160;audioPreprocessor.c'],['../audioPreprocessor_8h.html#a0a0e70bc477aae30a8eb09466fe12505',1,'downsample_Block(int16_t *src, int16_t *dest):&#160;audioPreprocessor.c']]],
   ['downsample_5fto_5f1024_5fsamples_3',['downsample_to_1024_samples',['../audioPreprocessor_8c.html#aa6af641895199b92a55c307fe0dc9cea',1,'downsample_to_1024_samples(FIL *file, int16_t outChunk[NUM_SAMPLES_CHUNK_OUT]):&#160;audioPreprocessor.c'],['../audioPreprocessor_8h.html#aa6af641895199b92a55c307fe0dc9cea',1,'downsample_to_1024_samples(FIL *file, int16_t outChunk[NUM_SAMPLES_CHUNK_OUT]):&#160;audioPreprocessor.c']]],

@@ -19,5 +19,6 @@ var searchData=
   ['fno_16',['fno',['../f401__display__encoder__fader__test_2Core_2Src_2main_8c.html#adb2adf9b3f315041beb78852fa37a984',1,'fno:&#160;main.c'],['../interface_8h.html#adb2adf9b3f315041beb78852fa37a984',1,'fno:&#160;main.c']]],
   ['fontdef_17',['FontDef',['../structFontDef.html',1,'']]],
   ['frame_5fsize_18',['FRAME_SIZE',['../audioPreprocessor_8h.html#af9b1b2ba12857a4bf11289dac8c5462d',1,'audioPreprocessor.h']]],
-  ['fres_19',['fres',['../f401__display__encoder__fader__test_2Core_2Src_2main_8c.html#a66029510323ef6f0b9dc59dea22098e5',1,'fres:&#160;main.c'],['../interface_8h.html#a66029510323ef6f0b9dc59dea22098e5',1,'fres:&#160;main.c']]]
+  ['frame_5fsubsamples_19',['frame_subsamples',['../esp__cubeai__test_2Core_2Src_2audio__classification_8c.html#aaefcaf181ee79b12dbc3120610d78ea5',1,'audio_classification.c']]],
+  ['fres_20',['fres',['../f401__display__encoder__fader__test_2Core_2Src_2main_8c.html#a66029510323ef6f0b9dc59dea22098e5',1,'fres:&#160;main.c'],['../interface_8h.html#a66029510323ef6f0b9dc59dea22098e5',1,'fres:&#160;main.c']]]
 ];

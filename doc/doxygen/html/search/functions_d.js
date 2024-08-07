@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['uart_5fprintf_0',['uart_printf',['../f401__sd__card__audio__codec__test_2Core_2Src_2util_8c.html#abd6e353d39a7ced9a87517a68bd13768',1,'util.c']]],
-  ['updatescreen_1',['updateScreen',['../interface_8c.html#a613aa0c99c5b2234f909f5f8b0cdc972',1,'updateScreen(void):&#160;interface.c'],['../interface_8h.html#a613aa0c99c5b2234f909f5f8b0cdc972',1,'updateScreen(void):&#160;interface.c']]]
+  ['test_5fcall_5fclassification_0',['test_call_classification',['../esp__cubeai__test_2Core_2Src_2audio__classification_8c.html#a16f618da32af7135f1dffb945d22f94e',1,'audio_classification.c']]]
 ];

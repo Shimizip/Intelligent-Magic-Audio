@@ -1,10 +1,10 @@
 var searchData=
 [
-  ['calculate_5fspectrogram_5fcolumn_0',['calculate_spectrogram_column',['../audio__classification_8c.html#a26571aa118be866db187b4e41ac99559',1,'audio_classification.c']]],
-  ['calculate_5ftotal_5fclassification_5fresult_1',['calculate_total_classification_result',['../audio__classification_8c.html#a7b90c348ba72a00ce37282328444d907',1,'audio_classification.c']]],
+  ['calculate_5fspectrogram_5fcolumn_0',['calculate_spectrogram_column',['../esp__cubeai__for__integration_2Core_2Src_2audio__classification_8c.html#a26571aa118be866db187b4e41ac99559',1,'audio_classification.c']]],
+  ['calculate_5ftotal_5fclassification_5fresult_1',['calculate_total_classification_result',['../esp__cubeai__for__integration_2Core_2Src_2audio__classification_8c.html#a7b90c348ba72a00ce37282328444d907',1,'audio_classification.c']]],
   ['checkwav_2',['checkWav',['../wavPlayer_8c.html#a7cf4d4f820fce107f3239fc741a56f8c',1,'checkWav(WavPlayer *player):&#160;wavPlayer.c'],['../wavPlayer_8h.html#a7cf4d4f820fce107f3239fc741a56f8c',1,'checkWav(WavPlayer *player):&#160;wavPlayer.c']]],
   ['classes_3',['classes',['../structFile.html#a499f013d2076aec4067ac340669bacd3',1,'File']]],
-  ['classify_5ffile_4',['classify_file',['../audio__classification_8c.html#ab353c6864a0e779783dafdc415a356bb',1,'audio_classification.c']]],
+  ['classify_5ffile_4',['classify_file',['../esp__cubeai__for__integration_2Core_2Src_2audio__classification_8c.html#ab353c6864a0e779783dafdc415a356bb',1,'audio_classification.c']]],
   ['cnt_5',['cnt',['../interface_8c.html#ae1d905c6ac1a0c9b96dca16153917334',1,'interface.c']]],
   ['compareadcvalues_6',['compareADCValues',['../interface_8c.html#aa5a2a772fa51a752d6fbe6d902aa4bce',1,'compareADCValues(void):&#160;interface.c'],['../interface_8h.html#aa5a2a772fa51a752d6fbe6d902aa4bce',1,'compareADCValues(void):&#160;interface.c']]],
   ['cpu_5ftime_2ec_7',['cpu_time.c',['../cpu__time_8c.html',1,'']]],
