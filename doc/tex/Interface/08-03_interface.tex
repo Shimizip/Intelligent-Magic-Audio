@@ -112,7 +112,7 @@ Die Auswertung und Verarbeitung der Signale erfolgt in der Funktion
 
 \mint{c}|HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc)|
 
-Im laufe der Implementation des ADC könnte man Schwankungen an den Ausgangssignalen des ADCs festellen, was die Genaugigkeit der Potentiometer einstellung beeinflüsste. 
+Im Laufe der Implementation des ADC könnte man Schwankungen an den Ausgangssignalen des ADCs festellen, was die Genaugigkeit der Potentiometer einstellung beeinflüsste. 
 
 \textbf{Lösung No.1:}
 
@@ -121,7 +121,7 @@ Um das Problem zu beheben, wurde ein \textbf{Timer} \mintinline{c}|tim5| impleme
 \newpage
 \textbf{Lösung No.2:}
 
-Diese Schwankungen würden behoben in dem man ein Glättung der Werte eingeführt hat.
+Diese Schwankungen sind durch Glättung der Werte behoben.
 
 Zunächst werden des \mintinline{c}|adcBuffer[i]| in \mintinline{c}|smoothValue[i]| aufeinander addiert. Dann wird derren Durchschnittswerte berechnet. Die geglätteten Werte werden für alle Kanäle des ADC berechnet. 
 
@@ -184,11 +184,11 @@ Zusammenfassend ermöglicht der SD1306-Treiber die vollständige Integration des
 
 Die beiden Hauptfunktionen zur Darstellung auf dem OLED-Bildschirm sind:
 
- \mintinline{c}|void  displayStrings(I2C_HandleTypeDef *hi2c1, char** strings, uint8_t numStrings, uint8_t cursor_index)|
- 
- \mintinline{c}|void renderSelectedFile(I2C_HandleTypeDef *hi2c1, const char *filename)| bzw. 
- 
- \mintinline{c}|drawFaderProzent| ähnliche funktionsweiße wie  \mintinline{c}|renderSelectedFile|. 
+\mintinline{c}|void  displayStrings(I2C_HandleTypeDef *hi2c1, char** strings, uint8_t numStrings, uint8_t cursor_index)|
+
+\mintinline{c}|void renderSelectedFile(I2C_HandleTypeDef *hi2c1, const char *filename)| bzw. 
+
+\mintinline{c}|drawFaderProzent| ähnliche funktionsweiße wie  \mintinline{c}|renderSelectedFile|. 
 
 
 In der Funktion \mintinline{c}|displayStrings| werden die `ssd1306 Treiber`-Funktionen verwendet, um die Strings auf dem LCD-Display darzustellen. Die Funktion \mintinline{c}|ssd1306_SetCursor| legt die Position für die Anzeige fest, und \mintinline{c}|ssd1306_WriteString| wird verwendet, um die Strings auf dem Display auszugeben. Bei der Anzeige des ausgewählten Strings wird zusätzlich ein Cursor-Symbol integriert.
@@ -217,7 +217,7 @@ Das Dateimanagement fungiert als zentrale Schnittstelle zwischen der Audio-Wiede
 Die \boldinline{File}-Struktur repräsentiert einzelne Audiodateien im System. Sie enthält den Dateinamen, der sowohl für das Abspielen der Audiodatei als auch für die Anzeige in einer Liste von Samples verwendet wird. Zusätzlich speichert die Struktur Klassifizierungsdaten, die vom neuronalen Netzwerk bereitgestellt werden.
 
 
- \inputminted[firstline=60, lastline=63]{c}{../../f401_display_encoder_fader_test/Core/Inc/filemanager.h}
+\inputminted[firstline=60, lastline=63]{c}{../../f401_display_encoder_fader_test/Core/Inc/filemanager.h}
  
 \vspace{1em}
 \textbf{FileManager}
@@ -225,7 +225,7 @@ Die \boldinline{File}-Struktur repräsentiert einzelne Audiodateien im System. S
 
 Die \boldinline{FileManager}-Struktur repräsentiert das Dateisystem selbst. Sie ist verantwortlich für die Verwaltung und Speicherung von Dateien und umfasst wesentliche Elemente, die für die Visualisierung der Dateien auf dem LCD-Display erforderlich sind.
  
- \inputminted[firstline=72, lastline=81]{c}{../../f401_display_encoder_fader_test/Core/Inc/filemanager.h}
+\inputminted[firstline=72, lastline=81]{c}{../../f401_display_encoder_fader_test/Core/Inc/filemanager.h}
  
 \vspace{1em} 
 \textbf{Problematik:} \\
@@ -235,16 +235,10 @@ Die \boldinline{FileManager}-Struktur repräsentiert das Dateisystem selbst. Sie
 Das Schreiben und Lesen des \boldinline{FileManager}-Struktur auf der SD-Karte war zunächst nicht möglich und konnte aus zeitlichen Gründen nicht behoben werden.
 
 \textbf{Teillösung:} \\
-Das Lesen der Audiodateinamen und die Übertragung in den \boldinline{FileManager} funktionierten und ermöglichten somit eine Visualisierung auf dem Display.
+Das Lesen der Audiodateinamen und die Übertragung in den \boldinline{FileManager} (im RAM der MCU) funktionierten und ermöglichten somit eine Visualisierung auf dem Display.
 
-Das Rausholen der Namen könnte über \boldinline{FILINFO fno} in der Methode \mintinline{c}|listFiles(const char *path)| realisiert werden, indem man als Pfad den im Root-Verzeichnis befindlichen Ordner \textbf{"/SamplePool"} übergeben hat.
+Das Lesen der Namen wird über \boldinline{FILINFO fno} in der Funktion \mintinline{c}|listFiles(const char *path)| realisiert, indem man als Pfad den im Root-Verzeichnis befindlichen Ordner \textbf{"/SamplePool"} übergeben hat.
 
+\inputminted[firstline=373, lastline=387]{c}{../../f401_display_encoder_fader_test/Core/Src/interface.c}
 
- \inputminted[firstline=373, lastline=387]{c}{../../f401_display_encoder_fader_test/Core/Src/interface.c}
- 
- Das \boldinline{fileNamesSDCard} würde bei der Initialisieung des Displays weiter verwendet. 
- 
-
-
-
-
+Das Array \boldinline{fileNamesSDCard} wird bei der Initialisieung des Displays weiter verwendet. 

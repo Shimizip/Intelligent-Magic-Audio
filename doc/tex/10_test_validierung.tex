@@ -5,22 +5,14 @@ Zur Überprüfung der Anforderungserfüllung jedes Lastenfalls (LF) wurden zunä
 
 In den nachfolgenden Abschnitten werden die Testfälle und deren Ergebnisse für jeden Lastenfall beschrieben. Diese dienen dazu, die korrekte Funktionalität und die erfolgreiche Umsetzung der jeweiligen Anforderungen zu validieren.
 
-
-\begin{itemize}
-	\item Testfälle beschreiben, wurden LF erfüllt?
-	\item Dokumentation des Tests und der Inbetriebnahme, Testprotokoll in der Form: Erwartetes Verhalten/gemessenes Verhalten, Checklisten
-	\item Genau so wie in der ES Dokumentation
-\end{itemize}
-
-\textcolor{red}{TODO: Tests nach Redundanz aussortieren}
-\textcolor{red}{TODO: Vorschlag Leon: Evtl. Struktur ändern? Ziel ist Validierung von LFs. In ES hatten wir ja keine LFs, daher mein Vorschlag: wie in SYP, also subsection: LF 01; subsubsection: Testen der korrekten Funktionsweise des Encoders, noch eine subsection für den zweiten Test für den LF (falls erforderlich) usw.}
-
-\include{10-01_audiotests}
-
-\include{10-02_nntests}
-
-\include{Interface/10-03_1_interfacetest}
+\input{Interface/10-03_1_interfacetest}
 
 \include{Interface/10-03_2_interfacetest}
 
 \include{Interface/10-03_3_interfacetest}
+
+\include{10-02_nntests}
+
+\include{10-01_audiotests}
+
+
