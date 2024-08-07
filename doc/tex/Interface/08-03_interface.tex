@@ -108,7 +108,9 @@ Bei der Implementierung der DMA traten Probleme auf, die dazu führten, dass der
 
 \textbf{No.2}
 
-Die Auswertung und Verarbeitung der Signale erfolgt in der \mintinline{c}| HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc)|.
+Die Auswertung und Verarbeitung der Signale erfolgt in der Funktion
+
+\mint{c}|HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc)|
 
 Im laufe der Implementation des ADC könnte man Schwankungen an den Ausgangssignalen des ADCs festellen, was die Genaugigkeit der Potentiometer einstellung beeinflüsste. 
 
@@ -123,9 +125,8 @@ Diese Schwankungen würden behoben in dem man ein Glättung der Werte eingeführ
 
 Zunächst werden des \mintinline{c}|adcBuffer[i]| in \mintinline{c}|smoothValue[i]| aufeinander addiert. Dann wird derren Durchschnittswerte berechnet. Die geglätteten Werte werden für alle Kanäle des ADC berechnet. 
 
-\textcolor{red}{TODO: Code Verschieben}
-
- \inputminted[firstline=142, lastline=156]{c}{../../f401_display_encoder_fader_test/Core/Src/interface.c}
+ \inputminted[firstline=142, lastline=156, tabsize=3]{c}{../../f401_display_encoder_fader_test/Core/Src/interface.c}
+ 
 
 Diese Glättung sorgt dafür, dass die Messwerte stabiler und weniger anfällig für zufällige Schwankungen sind. Anschließend werden die Durchschnittswerte ermittelt. Diese Durchschnittswerte dienen zwei Zwecken: Einerseits werden sie zur Anzeige auf dem Bildschirm verwendet  \mintinline{c}|currentClassPercentADC[]|
 , andererseits sind sie für Vergleichsoperationen innerhalb des Sortieralgorithmus von Bedeutung  \mintinline{c}|fm.fader_Class[]|.
@@ -204,10 +205,10 @@ Die Anpassung der Definitionskonstanten, die als Befehle über I2C an das Displa
 \newpage
 
 
-\subsubsection{Dateisystem} 
+\subsubsection{Dateimanagement} 
 \vspace{1em}
 \hypertarget{Dateisystem}{}
-Das Dateisystem fungiert als zentrale Schnittstelle zwischen der Audio-Wiedergabe, dem neuronalen Netzwerk zur Klassifizierung und der Benutzeroberfläche. Es organisiert und verwaltet die Audiodateien, die vom neuronalen Netzwerk analysiert und klassifiziert werden. Nach der Klassifizierung speichert das Dateisystem die Ergebnisse und gewährleistet, dass nur relevante und korrekt kategorisierte Dateien im Interface angezeigt werden. Das Dateisystem besteht aus zwei Hauptstrukturen: File und FileManager welche Ihnen im folgenden nähr gebracht werden.
+Das Dateimanagement fungiert als zentrale Schnittstelle zwischen der Audio-Wiedergabe, dem neuronalen Netzwerk zur Klassifizierung und der Benutzeroberfläche. Es organisiert und verwaltet die Audiodateien, die vom neuronalen Netzwerk analysiert und klassifiziert werden. Nach der Klassifizierung speichert das Dateisystem die Ergebnisse und gewährleistet, dass nur relevante und korrekt kategorisierte Dateien im Interface angezeigt werden. Das Dateisystem besteht aus zwei Hauptstrukturen: File und FileManager welche Ihnen im folgenden näher gebracht werden.
 
 \vspace{1em}
 \textbf{File}
@@ -234,7 +235,7 @@ Die \boldinline{FileManager}-Struktur repräsentiert das Dateisystem selbst. Sie
 Das Schreiben und Lesen des \boldinline{FileManager}-Struktur auf der SD-Karte war zunächst nicht möglich und konnte aus zeitlichen Gründen nicht behoben werden.
 
 \textbf{Teillösung:} \\
-Das Lesen der Namen der Samples und Übertragen in den \boldinline{FileManager} hat geklappt und hat somit eine Visualisierung auf dem Display ermöglicht.
+Das Lesen der Audiodateinamen und die Übertragung in den \boldinline{FileManager} funktionierten und ermöglichten somit eine Visualisierung auf dem Display.
 
 Das Rausholen der Namen könnte über \boldinline{FILINFO fno} in der Methode \mintinline{c}|listFiles(const char *path)| realisiert werden, indem man als Pfad den im Root-Verzeichnis befindlichen Ordner \textbf{"/SamplePool"} übergeben hat.
 

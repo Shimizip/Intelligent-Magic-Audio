@@ -2,7 +2,7 @@
 \section{Durchführung}
 Im Anschluss an die Spezifikation des Systems folgt die Beschreibung der Umsetzung der einzelnen Komponenten. In diesem Abschnitt werden die angewandten Ansätze und Methodiken erörtert, die zur Realisierung der einzelnen Komponenten genutzt wurden. Weiterhin wird die Herangehensweise beschrieben, sowie wichtige Erkenntnisse und aufgetretene Probleme während der Implementierungsphase dokumentiert. Abschließend wird die Thematik der Gesamtintegration behandelt, einschließlich der Herausforderungen und der Gründe, warum eine vollständige Integration nicht erreicht wurde.
 
-Da nur ein NUCLEO F7 Board(TODO: Referenz auf HARDWARE) zur Verfügung stand, wurden die Komponenten (TODO: Referenz)Audioverarbeitung und Interface im Zusammenspiel mit dem Dateimanagement auf dem - aus ES bereits bekannten - NUCLEO F401re (TODO: Referenz) Board entwickelt.
+Da nur ein NUCLEO F7 Board (siehe Abschnitt \ref{sec:stm32-nucleo-f722ze}) zur Verfügung stand, wurden die Komponenten (siehe Abschnitt \ref{sec:schnittstellenbeschreibung-und-integration-der-komponenten}) Audioverarbeitung und Interface im Zusammenspiel mit dem Dateimanagement auf dem, aus ES bereits bekannten, NUCLEO F401RE (siehe Abschnitt \ref{sec:stm32-nucleo-f401re}) Board entwickelt.
 
 Lediglich die Komponente Klassifizierung wurde direkt auf dem F7 Board entwickelt, um direkt korrekte Einschätzungen über mögliche Performanceprobleme zu erlangen.
 
@@ -56,7 +56,7 @@ Enthält das Python Script für die Lerndatengenerierung, mehr dazu in Abschnitt
 
 \subsubsection{Anderes}
 
-\paragraph{\texttt{/paresi/}} enthält die Powerpoint Projekte für die Milestone-Präsentationen.
+\paragraph{\texttt{/praesi/}} enthält die Powerpoint Projekte für die Milestone-Präsentationen.
 
 \paragraph{\texttt{/util/}} enthält Nützliche Binaries (Zurzeit nur \texttt{riffpad.exe}, ein Tool zum Auslesen von .wav Headern).
 

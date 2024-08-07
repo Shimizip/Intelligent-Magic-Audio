@@ -1,20 +1,49 @@
 
 \subsubsection{LF04: Aufnahme von Audioquelle über REC IN}
-\label{lf-audiorecord}
+\hypertarget{lf-audiorecord}{}
 
-Das System muss eine Audioquelle mit Line-Pegel, welche in der Eingangsbuchse eingesteckt ist aufnehmen können, und diese Aufnahme als korrekt kodierte PCM .wav Datei auf der SD-Karte abspeichern. Nach der Aufnahme muss eine Indexierung und Klassifizierung durch das Neuronale Netz geschehen (Wie in LFxxx beschrieben)
+\begin{table}[h!]
+	\begin{tabularx}{\textwidth}{|l|X|}
+		\hline
+		\textbf{Priorität} & Muss \\ \hline
+		\textbf{Akteur} & Benutzer \\ \hline
+		\textbf{Beschreibung} & Das System muss eine Audioquelle mit Line-Pegel, welche in der Eingangsbuchse eingesteckt ist aufnehmen können, und diese Aufnahme als korrekt kodierte PCM .wav Datei auf der SD-Karte abspeichern. Nach der Aufnahme muss eine Indexierung und Klassifizierung durch das Neuronale Netz geschehen (Wie in \textbf{\hyperlink{lf-nn-01}{LF03}} beschrieben)
+		\\ \hline
+	\end{tabularx}
+\end{table}
+
+
 
 
 \subsubsection{LF05: Wiedergabe von Audiodaten über OUT}
-\label{lf-audioplayback}
+\hypertarget{lf-audioplayback}{}
 
-Das System muss Stereo PCM .wav Audiodaten, welche auf der SD-Karte gespeichert sind, über den Audiocodec abspielen können.
+\begin{table}[h!]
+	\begin{tabularx}{\textwidth}{|l|X|}
+		\hline
+		\textbf{Priorität} & Muss \\ \hline
+		\textbf{Akteur} & Benutzer \\ \hline
+		\textbf{Beschreibung} & Das System muss Stereo PCM .wav Audiodaten, welche auf der SD-Karte gespeichert sind, über den Audiocodec abspielen können.
+		
+		Ziel ist eine zuverlässige, saubere Audiowiedergabe, die keine Störgeräusche wie Knackser und andere Artifakte produziert.
+		\\ \hline
+	\end{tabularx}
+\end{table}
 
-Ziel ist eine zuverlässige, saubere Audiowiedergabe, die keine Störgeräusche wie Knackser und andere Artifakte produziert.
+
 
 \subsubsection{LF06: Dynamische Änderung der Tonhöhe/Abspielgeschwindigkeit}
-\label{lf-pitchaudio}
+\hypertarget{lf-pitchaudio}{}
 
-Das System muss die Audiodaten (wie in \textbf{\hyperlink{lf-audioplayback}{LFxx}} beschrieben) in verschiedenen Abspielgeschwindigkeiten wiedergeben können. So kann die Tonhöhe angepasst werden.
+\begin{table}[h!]
+	\begin{tabularx}{\textwidth}{|l|X|}
+		\hline
+		\textbf{Priorität} & Muss \\ \hline
+		\textbf{Akteur} & Benutzer \\ \hline
+		\textbf{Beschreibung} & Das System muss die Audiodaten (wie in \textbf{\hyperlink{lf-audioplayback}{LF05}} beschrieben) in verschiedenen Abspielgeschwindigkeiten wiedergeben können. So kann die Tonhöhe angepasst werden.
+		
+		Hierbei ist ein Algorithmus zu implementieren, der eine auditiv qualitative Tonhöhenanpassung umsetzt. Artifakte sollen vermieden werden.
+		\\ \hline
+	\end{tabularx}
+\end{table}
 
-Hierbei ist ein Algorithmus zu implementieren, der eine auditiv qualitative Tonhöhenanpassung umsetzt. Artifakte sollen vermieden werden.

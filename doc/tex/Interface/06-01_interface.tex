@@ -1,5 +1,5 @@
 
-\textbf{Komponenten\hyperlink{LF01_Link}{/LF01/}} \\
+
 
 \begin{wrapfigure}{r}{0.4\textwidth} % Increase the width of the figure environment
 	\vspace{-60pt + 0.02\textwidth}
@@ -12,9 +12,11 @@
 
 \textbf{\hypertarget{Encoder}{Encoder}} \\
 
+\textbf{\hyperlink{LF01_Link}{/LF01/}} \\
+
 \textbf{Model} RIC11-22S16D5M-TH
 
-\textbf{Spannung} 3.3V
+\textbf{Betriebsspannung} 3.3V
 
 \textbf{Mechanisch:}
 \begin{itemize}
@@ -34,7 +36,7 @@ Das Drücken des Switch über den Pin \boldinline{PA4}. Durch das drücken des S
 	\item \textbf{Benutzerfreundlichkeit:} Der Benutzer kann durch die Liste navigieren und ein Sample auswählen. Die Kombination aus Drehbewegung und Druckknopf-Funktionalität macht den Encoder intuitiv.  
 \end{itemize}
 
-\vspace{3em}
+\vspace{2em}
 
 \begin{wrapfigure}{r}{0.4\textwidth} % Increase the width of the figure environment
 	\vspace{-20pt + 0.02\textwidth}
@@ -47,13 +49,15 @@ Das Drücken des Switch über den Pin \boldinline{PA4}. Durch das drücken des S
 
 \textbf{\hypertarget{Display}{LCD-Display}} \\
 
+\textbf{\hyperlink{LF01_Link}{/LF01/}} \\
+
 \textbf{Model:} GME128128-01-ii2
 
 \textbf{Treiber:} SH1107
 
 \textbf{Mode} Monochrom (1Bit)
 
-\textbf{Spannung} 5.0V \\ \\
+\textbf{Betriebsspannung} 5.0V \\ \\
 
 Zur Visualisierung der Samples haben wir ein monochromes LCD-Display verwendet. Dieses Display wird über das \textbf{\hyperlink{I2C_target}{I2C}}-Protokoll angesteuert. Der Datenpin \textbf{PB7} ist mit dem SDA-Pin des Displays verbunden, während der Taktpin \textbf{PB6} an den SCL-Pin des Displays angeschlossen ist. 
 	
@@ -67,17 +71,17 @@ Im Zusammenspiel mit dem Encoder ermöglicht das Display eine präzise Navigatio
 	\item \textbf{Anpassbarkeit:} Sie können einfach an verschiedene Layouts und Designs angepasst werden.
 \end{itemize}
 
-\textbf{Komponenten\hyperlink{LF02_Link}{/LF02/}} \\
-
 \textbf{\hypertarget{Potentiometer}{Schiebe-Potentiometer}}\\
+
+\textbf{\hyperlink{LF02_Link}{/LF02/}} \\
 
 \textbf{Model} Bourns PTL45-15R0-103B2
 
-\textbf{Wiederstand} 10k Ohm
+\textbf{Widerstand} \SI{10}{\kilo\ohm}
 
 \textbf{Weg} 45mm
 
-\textbf{Spannung} 3.3V \\ \\ \\
+\textbf{Betriebsspannung} 3.3V \\ \\ \\
 
 	\begin{wrapfigure}{r}{0.4\textwidth} % Increase the width of the figure environment
 	\vspace{-155pt + 0.02\textwidth}

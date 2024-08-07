@@ -73,7 +73,7 @@ In den Callback-Funktionen \mintinline{c}|HAL_I2S_TxHalfCpltCallback()| und \min
 
 Diese Callbacks, werden systembedingt aufgerufen, sobald die DMA die erste Hälfte oder den gesamten Buffer übertragen hat. Sie eignen sich daher sehr gut um den Pointer zu setzen.
 
-"Sobald das Flag \mintinline{c}|dma_dataReady == true| gesetzt ist, wird die nächste Bufferhälfte von der SD-Karte gelesen."
+Sobald das Flag \mintinline{c}|dma_dataReady == true| gesetzt ist, wird die nächste Bufferhälfte von der SD-Karte gelesen.
 
 \paragraph{Latenzmessung}
 
@@ -223,7 +223,7 @@ Wie in Abbildung \ref{fig:fir-filter} zu sehen, bietet der Filter ab \SI{16}{\ki
 
 \begin{figure}[h!]
 	\centering
-	\includegraphics[width=0.7\textwidth]{images/08_durchfuehrung/audio/fir_lowpass.png}
+	\includegraphics[width=0.6\textwidth]{images/08_durchfuehrung/audio/fir_lowpass.png}
 	\caption{Anti-Aliasing FIR Lowpass Filter}
 	\label{fig:fir-filter}
 \end{figure}

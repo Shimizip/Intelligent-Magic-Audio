@@ -4,8 +4,36 @@ Dieser Abschnitt behandelt die technischen Anforderungen des Projekts, die für 
 
 \subsubsection{Hardware}
 
+
+
 \input{Interface/06-01_interface}
 \input{06-02_audio}
+
+\newpage
+\paragraph{STM32 NUCLEO-F401RE}\label{sec:stm32-nucleo-f401re}\mbox{}\\
+
+\textbf{{\hyperlink{LF01_Link}{/LF01/}, \hyperlink{LF02_Link}{/LF02/}, \hyperlink{lf-audiorecord}{/LF04/}, \hyperlink{lf-audioplayback}{/LF05/}, \hyperlink{lf-pitchaudio}{/LF06/}}}
+
+\begin{wrapfigure}{r}{0.4\textwidth} % Increase the width of the figure environment
+	\vspace{-10pt}
+	\hspace{20pt}
+	\includegraphics[width=0.25\textwidth]{images/05_technische_spezifikation/NUCLEO-F401RE.jpg}
+	\caption{STM32 NUCLEO-F401RE Board}
+	\label{fig:nucleo-f401re}
+\end{wrapfigure}
+
+\vspace{1em}
+
+Da nicht genug NUCLEO-F722 Boards zur Verfügung standen, um jede Komponente damit zu entwickeln, wurden die Audio- und Interface-Komponenten mit dem, bereits aus ES bekannten, NUCLEO-F401RE Board entwickelt. Eine Migration und anschließende Integration auf das F7 Board folgt nach der Entwicklung der Komponenten.
+
+Die F4-CPU ist im Vergleich zur F7 Zielhardware zwar schwächer, sollte jedoch für die minimalen DSP-Operationen und Peripherien des Interface ausreichen.
+
+Es verfügt über einen ARM Cortex-M4 Prozessor mit einer Taktfrequenz von \SI{84}{\mega\hertz}, \SI{512}{\kilo\byte} Flash-Speicher und \SI{96}{\kilo\byte} SRAM.
+
+Das Board wird mit einer Versorgungsspannung von 5V betrieben. \cite{nucleo-f401re}
+
+\vspace{4em}
+
 \input{06-03_nn}
 
 
