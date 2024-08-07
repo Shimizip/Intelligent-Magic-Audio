@@ -1,3 +1,10 @@
+/**
+ * @file wavPlayer.h
+ * @brief Header file for WAV audio player functionality.
+ * 
+ * Defines the structures and function prototypes for handling WAV file playback.
+ */
+
 #ifndef INC_WAVPLAYER_H_
 #define INC_WAVPLAYER_H_
 

@@ -1,0 +1,184 @@
+\doxysection{f401\+\_\+sd\+\_\+card\+\_\+audio\+\_\+codec\+\_\+test/\+Core/\+Inc/audio\+Preprocessor.h File Reference}
+\hypertarget{audioPreprocessor_8h}{}\label{audioPreprocessor_8h}\index{f401\_sd\_card\_audio\_codec\_test/Core/Inc/audioPreprocessor.h@{f401\_sd\_card\_audio\_codec\_test/Core/Inc/audioPreprocessor.h}}
+
+
+Header file for the audio preprocessing DSP-\/\+Operations.  
+
+
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+{\ttfamily \#include "{}arm\+\_\+math.\+h"{}}\newline
+{\ttfamily \#include "{}fatfs.\+h"{}}\newline
+{\ttfamily \#include "{}lowpass\+\_\+16k\+Filter.\+h"{}}\newline
+{\ttfamily \#include "{}wav\+Player.\+h"{}}\newline
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{audioPreprocessor_8h_a181cedf56314a0b1cb0e4b9ab65266df}\label{audioPreprocessor_8h_a181cedf56314a0b1cb0e4b9ab65266df} 
+\#define {\bfseries DECIMATION\+\_\+\+FACTOR\+\_\+\+ROUNDED}~3
+\begin{DoxyCompactList}\small\item\em Decimation factor rounded up from 2.\+8 to 3.\+0. \end{DoxyCompactList}\item 
+\Hypertarget{audioPreprocessor_8h_ae5597ce31d23d11493e6e674fe257d73}\label{audioPreprocessor_8h_ae5597ce31d23d11493e6e674fe257d73} 
+\#define {\bfseries NUM\+\_\+\+CHANNELS}~2
+\item 
+\Hypertarget{audioPreprocessor_8h_ad94430c7598dcc3e9342f18554006ec9}\label{audioPreprocessor_8h_ad94430c7598dcc3e9342f18554006ec9} 
+\#define {\bfseries NUM\+\_\+\+SAMPLES\+\_\+\+CHUNK\+\_\+\+OUT}~1024
+\begin{DoxyCompactList}\small\item\em Number of samples per chunk for output processing. \end{DoxyCompactList}\item 
+\Hypertarget{audioPreprocessor_8h_a0134b0575f3b27de6a9ae9ed9cef45b7}\label{audioPreprocessor_8h_a0134b0575f3b27de6a9ae9ed9cef45b7} 
+\#define {\bfseries NUM\+\_\+\+SAMPLES\+\_\+\+CHUNK\+\_\+\+IN}~((\mbox{\hyperlink{audioPreprocessor_8h_ad94430c7598dcc3e9342f18554006ec9}{NUM\+\_\+\+SAMPLES\+\_\+\+CHUNK\+\_\+\+OUT}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{audioPreprocessor_8h_a181cedf56314a0b1cb0e4b9ab65266df}{DECIMATION\+\_\+\+FACTOR\+\_\+\+ROUNDED}} \texorpdfstring{$\ast$}{*} NUM\+\_\+\+CHANNELS + 1) \& \texorpdfstring{$\sim$}{\string~}1)
+\begin{DoxyCompactList}\small\item\em Number of samples per chunk for input processing, adjusted to be even for stereo. \end{DoxyCompactList}\item 
+\Hypertarget{audioPreprocessor_8h_a75a06d3138077a6a8170be8667d0c2d3}\label{audioPreprocessor_8h_a75a06d3138077a6a8170be8667d0c2d3} 
+\#define {\bfseries RESAMPLE\+\_\+\+CHUNK\+\_\+\+IN\+\_\+\+SIZE}~(\mbox{\hyperlink{audioPreprocessor_8h_a0134b0575f3b27de6a9ae9ed9cef45b7}{NUM\+\_\+\+SAMPLES\+\_\+\+CHUNK\+\_\+\+IN}} \texorpdfstring{$\ast$}{*} sizeof(int16\+\_\+t))
+\begin{DoxyCompactList}\small\item\em Byte size of the input chunk for resampling. \end{DoxyCompactList}\item 
+\Hypertarget{audioPreprocessor_8h_a477760ac6874137d9b2330d6bd13f6bc}\label{audioPreprocessor_8h_a477760ac6874137d9b2330d6bd13f6bc} 
+\#define {\bfseries RESAMPLE\+\_\+\+CHUNK\+\_\+\+OUT\+\_\+\+SIZE}~(\mbox{\hyperlink{audioPreprocessor_8h_ad94430c7598dcc3e9342f18554006ec9}{NUM\+\_\+\+SAMPLES\+\_\+\+CHUNK\+\_\+\+OUT}} \texorpdfstring{$\ast$}{*} sizeof(int16\+\_\+t))
+\begin{DoxyCompactList}\small\item\em Byte size of the output chunk for resampling. \end{DoxyCompactList}\item 
+\Hypertarget{audioPreprocessor_8h_af9b1b2ba12857a4bf11289dac8c5462d}\label{audioPreprocessor_8h_af9b1b2ba12857a4bf11289dac8c5462d} 
+\#define {\bfseries FRAME\+\_\+\+SIZE}~1024
+\begin{DoxyCompactList}\small\item\em Size of the window frame for processing. \end{DoxyCompactList}\item 
+\Hypertarget{audioPreprocessor_8h_a541bb1ef35ab4a13ad7d96e73c0a412f}\label{audioPreprocessor_8h_a541bb1ef35ab4a13ad7d96e73c0a412f} 
+\#define {\bfseries HOP\+\_\+\+SIZE}~512
+\begin{DoxyCompactList}\small\item\em Overlap size between consecutive frames. \end{DoxyCompactList}\item 
+\Hypertarget{audioPreprocessor_8h_a47024204d8ea2cdcc3154f63677b3832}\label{audioPreprocessor_8h_a47024204d8ea2cdcc3154f63677b3832} 
+\#define {\bfseries STEP\+\_\+\+SIZE}~(\mbox{\hyperlink{audioPreprocessor_8h_af9b1b2ba12857a4bf11289dac8c5462d}{FRAME\+\_\+\+SIZE}} -\/ \mbox{\hyperlink{audioPreprocessor_8h_a541bb1ef35ab4a13ad7d96e73c0a412f}{HOP\+\_\+\+SIZE}})
+\begin{DoxyCompactList}\small\item\em Step size between frames, calculated as the difference between frame size and overlap size. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+arm\+\_\+status \mbox{\hyperlink{audioPreprocessor_8h_a1b4ad63e84db7952f30bf4e0c7d31dfd}{init\+Filter}} ()
+\begin{DoxyCompactList}\small\item\em Initializes the FIR decimation filter. \end{DoxyCompactList}\item 
+uint16\+\_\+t \mbox{\hyperlink{audioPreprocessor_8h_a4f55768903813eb99fb6375c0cbe0bf2}{resample\+File}} (FIL \texorpdfstring{$\ast$}{*}in\+Fil, FIL \texorpdfstring{$\ast$}{*}out\+Fil, \mbox{\hyperlink{structwav__header__t}{wav\+\_\+header\+\_\+t}} \texorpdfstring{$\ast$}{*}wave\+Header\+Input, \mbox{\hyperlink{structwav__header__t}{wav\+\_\+header\+\_\+t}} \texorpdfstring{$\ast$}{*}wave\+Header\+Resampled)
+\begin{DoxyCompactList}\small\item\em Resamples audio data from an input file and writes to an output file. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{audioPreprocessor_8h_a0a0e70bc477aae30a8eb09466fe12505}{downsample\+\_\+\+Block}} (int16\+\_\+t \texorpdfstring{$\ast$}{*}src, int16\+\_\+t \texorpdfstring{$\ast$}{*}dest)
+\begin{DoxyCompactList}\small\item\em Performs downsampling and FIR filtering on a block of audio data. \end{DoxyCompactList}\item 
+uint16\+\_\+t \mbox{\hyperlink{audioPreprocessor_8h_abb523204efdd7bc2de76b58e69823675}{get\+\_\+number\+\_\+subsamples}} (FIL \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{f401__display__encoder__fader__test_2Core_2Src_2main_8c_a296b3c88b34a2294d0bd990ac963543b}{file}})
+\begin{DoxyCompactList}\small\item\em Calculates the number of subsamples based on the WAV file data. \end{DoxyCompactList}\item 
+uint32\+\_\+t \mbox{\hyperlink{audioPreprocessor_8h_aa6af641895199b92a55c307fe0dc9cea}{downsample\+\_\+to\+\_\+1024\+\_\+samples}} (FIL \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{f401__display__encoder__fader__test_2Core_2Src_2main_8c_a296b3c88b34a2294d0bd990ac963543b}{file}}, int16\+\_\+t out\+Chunk\mbox{[}\mbox{\hyperlink{audioPreprocessor_8h_ad94430c7598dcc3e9342f18554006ec9}{NUM\+\_\+\+SAMPLES\+\_\+\+CHUNK\+\_\+\+OUT}}\mbox{]})
+\begin{DoxyCompactList}\small\item\em Downsamples a chunk of audio data to 1024 samples. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+float32\+\_\+t \mbox{\hyperlink{audioPreprocessor_8h_a9a727b2195b77000797d3ab933bc7630}{filter\+\_\+taps}} \mbox{[}\mbox{\hyperlink{lowpass__16kFilter_8h_a7579d94e0a80fb9d376ea6c7897f73b0}{NUM\+\_\+\+TAPS}}\mbox{]}
+\begin{DoxyCompactList}\small\item\em Array of filter coefficients for the FIR filter. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Header file for the audio preprocessing DSP-\/\+Operations. 
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{audioPreprocessor_8h_a0a0e70bc477aae30a8eb09466fe12505}\index{audioPreprocessor.h@{audioPreprocessor.h}!downsample\_Block@{downsample\_Block}}
+\index{downsample\_Block@{downsample\_Block}!audioPreprocessor.h@{audioPreprocessor.h}}
+\doxysubsubsection{\texorpdfstring{downsample\_Block()}{downsample\_Block()}}
+{\footnotesize\ttfamily \label{audioPreprocessor_8h_a0a0e70bc477aae30a8eb09466fe12505} 
+void downsample\+\_\+\+Block (\begin{DoxyParamCaption}\item[{int16\+\_\+t \texorpdfstring{$\ast$}{*}}]{src}{, }\item[{int16\+\_\+t \texorpdfstring{$\ast$}{*}}]{dest}{}\end{DoxyParamCaption})}
+
+
+
+Performs downsampling and FIR filtering on a block of audio data. 
+
+Converts a block of 16-\/bit integer audio samples to floating-\/point format, applies FIR filtering and decimation, and then converts the filtered samples back to 16-\/bit integer format. The processed data is written to the destination buffer.
+
+
+\begin{DoxyParams}{Parameters}
+{\em src} & Pointer to the source buffer containing 16-\/bit audio samples to be processed. \\
+\hline
+{\em dest} & Pointer to the destination buffer where the downsampled 16-\/bit audio samples will be written. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{audioPreprocessor_8h_aa6af641895199b92a55c307fe0dc9cea}\index{audioPreprocessor.h@{audioPreprocessor.h}!downsample\_to\_1024\_samples@{downsample\_to\_1024\_samples}}
+\index{downsample\_to\_1024\_samples@{downsample\_to\_1024\_samples}!audioPreprocessor.h@{audioPreprocessor.h}}
+\doxysubsubsection{\texorpdfstring{downsample\_to\_1024\_samples()}{downsample\_to\_1024\_samples()}}
+{\footnotesize\ttfamily \label{audioPreprocessor_8h_aa6af641895199b92a55c307fe0dc9cea} 
+uint32\+\_\+t downsample\+\_\+to\+\_\+1024\+\_\+samples (\begin{DoxyParamCaption}\item[{FIL \texorpdfstring{$\ast$}{*}}]{file}{, }\item[{int16\+\_\+t}]{out\+Chunk}{\mbox{[}\+NUM\+\_\+\+SAMPLES\+\_\+\+CHUNK\+\_\+\+OUT\mbox{]}}\end{DoxyParamCaption})}
+
+
+
+Downsamples a chunk of audio data to 1024 samples. 
+
+Reads a chunk of audio data from the specified file, converts stereo samples to mono, and then performs downsampling. The processed samples are written to the {\ttfamily out\+Chunk} buffer. The function processes data in blocks and returns the number of downsampled samples. NUM\+\_\+\+SAMPLES\+\_\+\+CHUNK\+\_\+\+OUT \texorpdfstring{$\ast$}{*} DECIMATION\+\_\+\+FACTOR\+\_\+\+ROUNDED = NUM\+\_\+\+SAMPLES\+\_\+\+CHUNK\+\_\+\+IN
+
+
+\begin{DoxyParams}{Parameters}
+{\em file} & Pointer to the input file ({\ttfamily FIL} structure) containing audio data. \\
+\hline
+{\em out\+Chunk} & Array to store the downsampled audio samples.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The actual number of samples written to the {\ttfamily out\+Chunk} buffer. 
+\end{DoxyReturn}
+\Hypertarget{audioPreprocessor_8h_abb523204efdd7bc2de76b58e69823675}\index{audioPreprocessor.h@{audioPreprocessor.h}!get\_number\_subsamples@{get\_number\_subsamples}}
+\index{get\_number\_subsamples@{get\_number\_subsamples}!audioPreprocessor.h@{audioPreprocessor.h}}
+\doxysubsubsection{\texorpdfstring{get\_number\_subsamples()}{get\_number\_subsamples()}}
+{\footnotesize\ttfamily \label{audioPreprocessor_8h_abb523204efdd7bc2de76b58e69823675} 
+uint16\+\_\+t get\+\_\+number\+\_\+subsamples (\begin{DoxyParamCaption}\item[{FIL \texorpdfstring{$\ast$}{*}}]{file}{}\end{DoxyParamCaption})}
+
+
+
+Calculates the number of subsamples based on the WAV file data. 
+
+Determines the number of mono subsamples in a WAV file after applying downsampling. It calculates the total number of samples based on the file\textquotesingle{}s audio data size, decimation factor, and header information, then computes the number of frames using the {\ttfamily HOP\+\_\+\+SIZE} and {\ttfamily STEP\+\_\+\+SIZE}.
+
+
+\begin{DoxyParams}{Parameters}
+{\em file} & Pointer to the WAV file ({\ttfamily FIL} structure) from which the header information is read.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of frames after downsampling, as a {\ttfamily uint16\+\_\+t}. 
+\end{DoxyReturn}
+\Hypertarget{audioPreprocessor_8h_a1b4ad63e84db7952f30bf4e0c7d31dfd}\index{audioPreprocessor.h@{audioPreprocessor.h}!initFilter@{initFilter}}
+\index{initFilter@{initFilter}!audioPreprocessor.h@{audioPreprocessor.h}}
+\doxysubsubsection{\texorpdfstring{initFilter()}{initFilter()}}
+{\footnotesize\ttfamily \label{audioPreprocessor_8h_a1b4ad63e84db7952f30bf4e0c7d31dfd} 
+arm\+\_\+status init\+Filter (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Initializes the FIR decimation filter. 
+
+Configures the FIR decimation filter using the ARM CMSIS DSP library. Sets up the filter structure with the specified number of taps, decimation factor, filter coefficients, state buffer, and block size.
+
+\begin{DoxyReturn}{Returns}
+Status of the filter initialization ({\ttfamily arm\+\_\+status}). 
+\end{DoxyReturn}
+\Hypertarget{audioPreprocessor_8h_a4f55768903813eb99fb6375c0cbe0bf2}\index{audioPreprocessor.h@{audioPreprocessor.h}!resampleFile@{resampleFile}}
+\index{resampleFile@{resampleFile}!audioPreprocessor.h@{audioPreprocessor.h}}
+\doxysubsubsection{\texorpdfstring{resampleFile()}{resampleFile()}}
+{\footnotesize\ttfamily \label{audioPreprocessor_8h_a4f55768903813eb99fb6375c0cbe0bf2} 
+uint16\+\_\+t resample\+File (\begin{DoxyParamCaption}\item[{FIL \texorpdfstring{$\ast$}{*}}]{in\+Fil}{, }\item[{FIL \texorpdfstring{$\ast$}{*}}]{out\+Fil}{, }\item[{\mbox{\hyperlink{structwav__header__t}{wav\+\_\+header\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{wave\+Header\+Input}{, }\item[{\mbox{\hyperlink{structwav__header__t}{wav\+\_\+header\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{wave\+Header\+Resampled}{}\end{DoxyParamCaption})}
+
+
+
+Resamples audio data from an input file and writes to an output file. 
+
+Reads chunks of audio data from the input file, performs downsampling and resampling, and writes the processed data to the output file. Updates the WAV header of the output file to reflect the new format after resampling.
+
+
+\begin{DoxyParams}{Parameters}
+{\em in\+Fil} & Pointer to the input file ({\ttfamily FIL} structure) containing original audio data. \\
+\hline
+{\em out\+Fil} & Pointer to the output file ({\ttfamily FIL} structure) to write resampled audio data. \\
+\hline
+{\em wave\+Header\+Input} & Pointer to the WAV header of the input file. \\
+\hline
+{\em wave\+Header\+Resampled} & Pointer to the WAV header to be written to the output file.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of bytes written to the resampled file. 
+\end{DoxyReturn}
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{audioPreprocessor_8h_a9a727b2195b77000797d3ab933bc7630}\index{audioPreprocessor.h@{audioPreprocessor.h}!filter\_taps@{filter\_taps}}
+\index{filter\_taps@{filter\_taps}!audioPreprocessor.h@{audioPreprocessor.h}}
+\doxysubsubsection{\texorpdfstring{filter\_taps}{filter\_taps}}
+{\footnotesize\ttfamily \label{audioPreprocessor_8h_a9a727b2195b77000797d3ab933bc7630} 
+float32\+\_\+t filter\+\_\+taps\mbox{[}\mbox{\hyperlink{lowpass__16kFilter_8h_a7579d94e0a80fb9d376ea6c7897f73b0}{NUM\+\_\+\+TAPS}}\mbox{]}\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Array of filter coefficients for the FIR filter. 
+
+Holds the coefficients used in the FIR filter. The size of the array is determined by {\ttfamily NUM\+\_\+\+TAPS}, which specifies the number of filter taps. These coefficients are used for filtering audio or signal data. 

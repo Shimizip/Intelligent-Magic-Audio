@@ -1,3 +1,11 @@
+/**
+ * @file audioPreprocessor.c
+ * @brief Audio preprocessing functions for FIR decimation and resampling.
+ * 
+ * Contains functions for initializing FIR decimation filters, resampling audio files,
+ * and performing block downsampling of audio data for the neuronal net input. Utilizes the ARM CMSIS DSP library 
+ * for efficient signal processing.
+ */
 #include "audioPreprocessor.h"
 
 static float32_t firState[NUM_TAPS + BLOCK_SIZE - 1];  // State buffer for FIR filter

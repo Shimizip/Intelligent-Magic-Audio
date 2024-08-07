@@ -1,0 +1,200 @@
+\doxysection{f401\+\_\+display\+\_\+encoder\+\_\+fader\+\_\+test/\+Core/\+Src/display.c File Reference}
+\hypertarget{display_8c}{}\label{display_8c}\index{f401\_display\_encoder\_fader\_test/Core/Src/display.c@{f401\_display\_encoder\_fader\_test/Core/Src/display.c}}
+
+
+\+: Display handling functions for OLED screen  
+
+
+{\ttfamily \#include "{}display.\+h"{}}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{display_8c_a46d67d48a7faab308f2e058dc35da83a}{DISPLAY\+\_\+\+WIDTH}}~128
+\begin{DoxyCompactList}\small\item\em Definitions for display dimensions and global variables for managing the visible portion of the list. \end{DoxyCompactList}\item 
+\Hypertarget{display_8c_a43b7b2061f733ea1dc0a5a6028e131ff}\label{display_8c_a43b7b2061f733ea1dc0a5a6028e131ff} 
+\#define {\bfseries DISPLAY\+\_\+\+HEIGHT}~128
+\begin{DoxyCompactList}\small\item\em Height of the display in pixels. \end{DoxyCompactList}\item 
+\Hypertarget{display_8c_ae913909d3e8e230f3d67fb82f9976f34}\label{display_8c_ae913909d3e8e230f3d67fb82f9976f34} 
+\#define {\bfseries LIST\+\_\+\+SECTION\+\_\+\+HEIGHT}~81
+\begin{DoxyCompactList}\small\item\em Height of the section that lists files in pixels. \end{DoxyCompactList}\item 
+\Hypertarget{display_8c_a7db40502d6f67fda491baf07c93bd849}\label{display_8c_a7db40502d6f67fda491baf07c93bd849} 
+\#define {\bfseries SELECTED\+\_\+\+FILE\+\_\+\+HEIGHT}~10
+\begin{DoxyCompactList}\small\item\em Height of the section that displays the selected file in pixels. \end{DoxyCompactList}\item 
+\Hypertarget{display_8c_a4221b0a24a1716cf086b820f988e4285}\label{display_8c_a4221b0a24a1716cf086b820f988e4285} 
+\#define {\bfseries BORDER\+\_\+\+WIDTH}~1
+\begin{DoxyCompactList}\small\item\em Width of the border around display sections in pixels. \end{DoxyCompactList}\item 
+\Hypertarget{display_8c_a810562d232296df8a4bb3991849dc23d}\label{display_8c_a810562d232296df8a4bb3991849dc23d} 
+\#define {\bfseries LINE\+\_\+\+HEIGHT}~10
+\begin{DoxyCompactList}\small\item\em Height of each line of text in pixels. \end{DoxyCompactList}\item 
+\Hypertarget{display_8c_ae67dffdc8e496c16aff7e8903a3f2117}\label{display_8c_ae67dffdc8e496c16aff7e8903a3f2117} 
+\#define {\bfseries CURSOR}~\textquotesingle{}$>$\textquotesingle{}
+\begin{DoxyCompactList}\small\item\em Character used to indicate the cursor position. \end{DoxyCompactList}\item 
+\Hypertarget{display_8c_adf9cfb95baf85b06cd3ebf72927a30bc}\label{display_8c_adf9cfb95baf85b06cd3ebf72927a30bc} 
+\#define {\bfseries WAVEFORM\+\_\+\+TOP}~0
+\begin{DoxyCompactList}\small\item\em Top position for waveform display. \end{DoxyCompactList}\item 
+\Hypertarget{display_8c_a76a6ad187ae72ab81991148a3db4040f}\label{display_8c_a76a6ad187ae72ab81991148a3db4040f} 
+\#define {\bfseries WAVEFORM\+\_\+\+BOTTOM}~(\mbox{\hyperlink{display_8c_ae913909d3e8e230f3d67fb82f9976f34}{LIST\+\_\+\+SECTION\+\_\+\+HEIGHT}} -\/ \mbox{\hyperlink{display_8c_a4221b0a24a1716cf086b820f988e4285}{BORDER\+\_\+\+WIDTH}})
+\begin{DoxyCompactList}\small\item\em Bottom position for waveform display. \end{DoxyCompactList}\item 
+\Hypertarget{display_8c_a10ff366886f14e1ab6a423ebdc59f37a}\label{display_8c_a10ff366886f14e1ab6a423ebdc59f37a} 
+\#define {\bfseries SAMPLE\+\_\+\+SKIP}~2
+\begin{DoxyCompactList}\small\item\em Number of samples to skip when drawing the waveform. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{display_8c_ae65c5538f7f5f538e8ee851f6ffa0f0f}{display\+Strings}} (I2\+C\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}hi2c1, char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}strings, uint8\+\_\+t num\+Strings, uint8\+\_\+t cursor\+\_\+index)
+\begin{DoxyCompactList}\small\item\em Displays a list of strings on the OLED screen with cursor highlighting. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{display_8c_a5cb5135b6111e4f91dacba76b8a71d40}{scroll\+Up}} ()
+\begin{DoxyCompactList}\small\item\em Scrolls the list up by one line. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{display_8c_adb5125162a6f799c027c532dce3a322f}{scroll\+Down}} (uint8\+\_\+t num\+Strings)
+\begin{DoxyCompactList}\small\item\em Scrolls the list down by one line. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{display_8c_a1d12d1e15cdfda94f3d81a6a3d02f8f5}{render\+Selected\+File}} (I2\+C\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}hi2c1, const char \texorpdfstring{$\ast$}{*}filename)
+\begin{DoxyCompactList}\small\item\em Renders the selected file name on the OLED screen. \end{DoxyCompactList}\item 
+\Hypertarget{display_8c_ae8fa5b4387ee76b1bec15c8ad5576ef2}\label{display_8c_ae8fa5b4387ee76b1bec15c8ad5576ef2} 
+void {\bfseries draw\+Line} (int16\+\_\+t x0, int16\+\_\+t y0, int16\+\_\+t x1, int16\+\_\+t y1, uint16\+\_\+t color)
+\item 
+void \mbox{\hyperlink{display_8c_ae76603e49270cd7f9f3952e58e836a15}{draw\+Fader\+Prozent}} (I2\+C\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}hi2c1, const char \texorpdfstring{$\ast$}{*}prozent, int multiplikator)
+\begin{DoxyCompactList}\small\item\em Draws the fader percentage on the OLED screen at a specified vertical position. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\+: Display handling functions for OLED screen 
+
+\begin{DoxyAttention}{Attention}
+
+\end{DoxyAttention}
+This file contains the definitions and functions for managing the OLED display, including displaying lists, handling cursor positions, and drawing various elements on the screen. 
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{display_8c_a46d67d48a7faab308f2e058dc35da83a}\index{display.c@{display.c}!DISPLAY\_WIDTH@{DISPLAY\_WIDTH}}
+\index{DISPLAY\_WIDTH@{DISPLAY\_WIDTH}!display.c@{display.c}}
+\doxysubsubsection{\texorpdfstring{DISPLAY\_WIDTH}{DISPLAY\_WIDTH}}
+{\footnotesize\ttfamily \label{display_8c_a46d67d48a7faab308f2e058dc35da83a} 
+\#define DISPLAY\+\_\+\+WIDTH~128}
+
+
+
+Definitions for display dimensions and global variables for managing the visible portion of the list. 
+
+These definitions and variables control the layout and display sections of the OLED screen, as well as manage the portion of the file list that is visible on the screen. Width of the display in pixels 
+
+\doxysubsection{Function Documentation}
+\Hypertarget{display_8c_ae65c5538f7f5f538e8ee851f6ffa0f0f}\index{display.c@{display.c}!displayStrings@{displayStrings}}
+\index{displayStrings@{displayStrings}!display.c@{display.c}}
+\doxysubsubsection{\texorpdfstring{displayStrings()}{displayStrings()}}
+{\footnotesize\ttfamily \label{display_8c_ae65c5538f7f5f538e8ee851f6ffa0f0f} 
+void display\+Strings (\begin{DoxyParamCaption}\item[{I2\+C\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}}]{hi2c1}{, }\item[{char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{strings}{, }\item[{uint8\+\_\+t}]{num\+Strings}{, }\item[{uint8\+\_\+t}]{cursor\+\_\+index}{}\end{DoxyParamCaption})}
+
+
+
+Displays a list of strings on the OLED screen with cursor highlighting. 
+
+This function renders a list of strings on the OLED display, highlighting the current selection with a cursor. It also manages the display of strings based on the current cursor position and adjusts the visible portion of the list as needed.
+
+
+\begin{DoxyItemize}
+\item Clears the screen before drawing new content.
+\item Calculates the visible range of strings based on the {\ttfamily cursor\+\_\+index} and ensures that the cursor is within the visible range.
+\item Draws each string on the display, with the current selection highlighted by a cursor.
+\item Draws a border around the list section of the screen.
+\end{DoxyItemize}
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em hi2c1} & Pointer to the I2C handle used for communication with the OLED display. \\
+\hline
+\mbox{\texttt{ in}}  & {\em strings} & Array of string pointers to be displayed. \\
+\hline
+\mbox{\texttt{ in}}  & {\em num\+Strings} & Total number of strings in the array. \\
+\hline
+\mbox{\texttt{ in}}  & {\em cursor\+\_\+index} & Index of the currently selected string, which will be highlighted on the display.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+Ensure that the {\ttfamily strings} array is correctly populated and {\ttfamily num\+Strings} reflects the actual number of valid strings. The display dimensions and font sizes should be configured to match the display hardware. 
+\end{DoxyNote}
+\Hypertarget{display_8c_ae76603e49270cd7f9f3952e58e836a15}\index{display.c@{display.c}!drawFaderProzent@{drawFaderProzent}}
+\index{drawFaderProzent@{drawFaderProzent}!display.c@{display.c}}
+\doxysubsubsection{\texorpdfstring{drawFaderProzent()}{drawFaderProzent()}}
+{\footnotesize\ttfamily \label{display_8c_ae76603e49270cd7f9f3952e58e836a15} 
+void draw\+Fader\+Prozent (\begin{DoxyParamCaption}\item[{I2\+C\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}}]{hi2c1}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{prozent}{, }\item[{int}]{multiplikator}{}\end{DoxyParamCaption})}
+
+
+
+Draws the fader percentage on the OLED screen at a specified vertical position. 
+
+This function updates the display to show the fader percentage in a designated area of the screen. It first clears the region where the fader percentage will be displayed, and then writes the percentage at a vertical position determined by the {\ttfamily multiplikator}.
+
+The {\ttfamily multiplikator} parameter is used to calculate the vertical offset from a base position on the screen. This allows for the display of multiple fader percentages at different vertical positions.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em hi2c1} & Pointer to the I2C handle used for communication with the OLED display. \\
+\hline
+\mbox{\texttt{ in}}  & {\em prozent} & Pointer to a null-\/terminated string representing the fader percentage to be displayed. \\
+\hline
+\mbox{\texttt{ in}}  & {\em multiplikator} & Integer value used to adjust the vertical position on the screen, affecting where the percentage is drawn.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+Ensure that the {\ttfamily prozent} string is properly null-\/terminated and that the display dimensions and font settings are configured correctly to match the hardware. The {\ttfamily multiplikator} should be set appropriately to ensure that the displayed text does not overlap with other screen elements. 
+\end{DoxyNote}
+\Hypertarget{display_8c_a1d12d1e15cdfda94f3d81a6a3d02f8f5}\index{display.c@{display.c}!renderSelectedFile@{renderSelectedFile}}
+\index{renderSelectedFile@{renderSelectedFile}!display.c@{display.c}}
+\doxysubsubsection{\texorpdfstring{renderSelectedFile()}{renderSelectedFile()}}
+{\footnotesize\ttfamily \label{display_8c_a1d12d1e15cdfda94f3d81a6a3d02f8f5} 
+void render\+Selected\+File (\begin{DoxyParamCaption}\item[{I2\+C\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}}]{hi2c1}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{filename}{}\end{DoxyParamCaption})}
+
+
+
+Renders the selected file name on the OLED screen. 
+
+This function updates the display to show the currently selected file name in a dedicated section of the screen. It first clears the area designated for displaying the selected file name, and then writes the file name at the appropriate position.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em hi2c1} & Pointer to the I2C handle used for communication with the OLED display. \\
+\hline
+\mbox{\texttt{ in}}  & {\em filename} & Pointer to a null-\/terminated string representing the name of the selected file to be displayed.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+Ensure that the {\ttfamily filename} is properly null-\/terminated and that the display dimensions and font settings are configured correctly to match the hardware. 
+\end{DoxyNote}
+\Hypertarget{display_8c_adb5125162a6f799c027c532dce3a322f}\index{display.c@{display.c}!scrollDown@{scrollDown}}
+\index{scrollDown@{scrollDown}!display.c@{display.c}}
+\doxysubsubsection{\texorpdfstring{scrollDown()}{scrollDown()}}
+{\footnotesize\ttfamily \label{display_8c_adb5125162a6f799c027c532dce3a322f} 
+void scroll\+Down (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{num\+Strings}{}\end{DoxyParamCaption})}
+
+
+
+Scrolls the list down by one line. 
+
+This function updates the {\ttfamily first\+\_\+visible\+\_\+index} to scroll the displayed list downward by one line.
+
+It ensures that the {\ttfamily first\+\_\+visible\+\_\+index} does not exceed the number of available strings ({\ttfamily num\+Strings}), preventing it from scrolling beyond the end of the list.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em num\+Strings} & Total number of strings available in the list.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+If scrolling down would cause the {\ttfamily first\+\_\+visible\+\_\+index} to go beyond the last item in the list, the function does nothing to avoid invalid index access. 
+\end{DoxyNote}
+\Hypertarget{display_8c_a5cb5135b6111e4f91dacba76b8a71d40}\index{display.c@{display.c}!scrollUp@{scrollUp}}
+\index{scrollUp@{scrollUp}!display.c@{display.c}}
+\doxysubsubsection{\texorpdfstring{scrollUp()}{scrollUp()}}
+{\footnotesize\ttfamily \label{display_8c_a5cb5135b6111e4f91dacba76b8a71d40} 
+void scroll\+Up (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Scrolls the list up by one line. 
+
+This function updates the {\ttfamily first\+\_\+visible\+\_\+index} to scroll the displayed list upward by one line. It ensures that the {\ttfamily first\+\_\+visible\+\_\+index} does not go below zero, which would be out of bounds for the visible portion of the list.
+
+\begin{DoxyNote}{Note}
+If {\ttfamily first\+\_\+visible\+\_\+index} is already at the top of the list (i.\+e., 0), the function does nothing to avoid invalid index access. 
+\end{DoxyNote}

@@ -1,7 +1,8 @@
 var searchData=
 [
-  ['debugmon_5fhandler_0',['DebugMon_Handler',['../stm32f4xx__it_8c.html#adbdfb05858cc36fc520974df37ec3cb0',1,'stm32f4xx_it.c']]],
-  ['dma1_5fstream4_5firqhandler_1',['DMA1_Stream4_IRQHandler',['../stm32f4xx__it_8c.html#a30841f7aec070752b7b989ea8a271039',1,'stm32f4xx_it.c']]],
-  ['dma2_5fstream3_5firqhandler_2',['DMA2_Stream3_IRQHandler',['../stm32f4xx__it_8c.html#a877135f6494d6923d6f6ec32d75d9eeb',1,'stm32f4xx_it.c']]],
-  ['dma2_5fstream6_5firqhandler_3',['DMA2_Stream6_IRQHandler',['../stm32f4xx__it_8c.html#a76d38919f345dfea8ab0e0cd9e2c47e3',1,'stm32f4xx_it.c']]]
+  ['de_5finit_5fnn_0',['de_init_nn',['../audio__classification_8c.html#a40483ac3257ee8a4b986fd6ff6fb8b1c',1,'audio_classification.c']]],
+  ['displaystrings_1',['displayStrings',['../display_8c.html#ae65c5538f7f5f538e8ee851f6ffa0f0f',1,'displayStrings(I2C_HandleTypeDef *hi2c1, char **strings, uint8_t numStrings, uint8_t cursor_index):&#160;display.c'],['../display_8h.html#ae65c5538f7f5f538e8ee851f6ffa0f0f',1,'displayStrings(I2C_HandleTypeDef *hi2c1, char **strings, uint8_t numStrings, uint8_t cursor_index):&#160;display.c']]],
+  ['downsample_5fblock_2',['downsample_Block',['../audioPreprocessor_8c.html#a0a0e70bc477aae30a8eb09466fe12505',1,'downsample_Block(int16_t *src, int16_t *dest):&#160;audioPreprocessor.c'],['../audioPreprocessor_8h.html#a0a0e70bc477aae30a8eb09466fe12505',1,'downsample_Block(int16_t *src, int16_t *dest):&#160;audioPreprocessor.c']]],
+  ['downsample_5fto_5f1024_5fsamples_3',['downsample_to_1024_samples',['../audioPreprocessor_8c.html#aa6af641895199b92a55c307fe0dc9cea',1,'downsample_to_1024_samples(FIL *file, int16_t outChunk[NUM_SAMPLES_CHUNK_OUT]):&#160;audioPreprocessor.c'],['../audioPreprocessor_8h.html#aa6af641895199b92a55c307fe0dc9cea',1,'downsample_to_1024_samples(FIL *file, int16_t outChunk[NUM_SAMPLES_CHUNK_OUT]):&#160;audioPreprocessor.c']]],
+  ['drawfaderprozent_4',['drawFaderProzent',['../display_8c.html#ae76603e49270cd7f9f3952e58e836a15',1,'drawFaderProzent(I2C_HandleTypeDef *hi2c1, const char *prozent, int multiplikator):&#160;display.c'],['../display_8h.html#a9018306542bb479498601372bac39be4',1,'drawFaderProzent(I2C_HandleTypeDef *hi2c1, const char *filename, int multiplikator):&#160;display.c']]]
 ];

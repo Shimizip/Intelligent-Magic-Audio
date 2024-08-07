@@ -1,0 +1,140 @@
+\doxysection{f401\+\_\+sd\+\_\+card\+\_\+audio\+\_\+codec\+\_\+test/\+Core/\+Src/audio\+Preprocessor.c File Reference}
+\hypertarget{audioPreprocessor_8c}{}\label{audioPreprocessor_8c}\index{f401\_sd\_card\_audio\_codec\_test/Core/Src/audioPreprocessor.c@{f401\_sd\_card\_audio\_codec\_test/Core/Src/audioPreprocessor.c}}
+
+
+Audio preprocessing functions for FIR decimation and resampling.  
+
+
+{\ttfamily \#include "{}audio\+Preprocessor.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{audioPreprocessor_8c_a09c8785a97dca54cfdac46bcb8d1354e}\label{audioPreprocessor_8c_a09c8785a97dca54cfdac46bcb8d1354e} 
+uint32\+\_\+t {\bfseries DWT\+\_\+\+Get\+Cycle\+Count} (void)
+\item 
+arm\+\_\+status \mbox{\hyperlink{audioPreprocessor_8c_a1b4ad63e84db7952f30bf4e0c7d31dfd}{init\+Filter}} ()
+\begin{DoxyCompactList}\small\item\em Initializes the FIR decimation filter. \end{DoxyCompactList}\item 
+uint16\+\_\+t \mbox{\hyperlink{audioPreprocessor_8c_a4f55768903813eb99fb6375c0cbe0bf2}{resample\+File}} (FIL \texorpdfstring{$\ast$}{*}in\+Fil, FIL \texorpdfstring{$\ast$}{*}out\+Fil, \mbox{\hyperlink{structwav__header__t}{wav\+\_\+header\+\_\+t}} \texorpdfstring{$\ast$}{*}wave\+Header\+Input, \mbox{\hyperlink{structwav__header__t}{wav\+\_\+header\+\_\+t}} \texorpdfstring{$\ast$}{*}wave\+Header\+Resampled)
+\begin{DoxyCompactList}\small\item\em Resamples audio data from an input file and writes to an output file. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{audioPreprocessor_8c_a0a0e70bc477aae30a8eb09466fe12505}{downsample\+\_\+\+Block}} (int16\+\_\+t \texorpdfstring{$\ast$}{*}src, int16\+\_\+t \texorpdfstring{$\ast$}{*}dest)
+\begin{DoxyCompactList}\small\item\em Performs downsampling and FIR filtering on a block of audio data. \end{DoxyCompactList}\item 
+uint16\+\_\+t \mbox{\hyperlink{audioPreprocessor_8c_abb523204efdd7bc2de76b58e69823675}{get\+\_\+number\+\_\+subsamples}} (FIL \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{f401__display__encoder__fader__test_2Core_2Src_2main_8c_a296b3c88b34a2294d0bd990ac963543b}{file}})
+\begin{DoxyCompactList}\small\item\em Calculates the number of subsamples based on the WAV file data. \end{DoxyCompactList}\item 
+uint32\+\_\+t \mbox{\hyperlink{audioPreprocessor_8c_aa6af641895199b92a55c307fe0dc9cea}{downsample\+\_\+to\+\_\+1024\+\_\+samples}} (FIL \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{f401__display__encoder__fader__test_2Core_2Src_2main_8c_a296b3c88b34a2294d0bd990ac963543b}{file}}, int16\+\_\+t out\+Chunk\mbox{[}\mbox{\hyperlink{audioPreprocessor_8h_ad94430c7598dcc3e9342f18554006ec9}{NUM\+\_\+\+SAMPLES\+\_\+\+CHUNK\+\_\+\+OUT}}\mbox{]})
+\begin{DoxyCompactList}\small\item\em Downsamples a chunk of audio data to 1024 samples. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{audioPreprocessor_8c_a4598f8a5e66e5011c70f5bcf5467c181}\label{audioPreprocessor_8c_a4598f8a5e66e5011c70f5bcf5467c181} 
+arm\+\_\+fir\+\_\+decimate\+\_\+instance\+\_\+f32 {\bfseries FIR\+\_\+\+F32\+\_\+\+Struct}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Audio preprocessing functions for FIR decimation and resampling. 
+
+Contains functions for initializing FIR decimation filters, resampling audio files, and performing block downsampling of audio data for the neuronal net input. Utilizes the ARM CMSIS DSP library for efficient signal processing. 
+
+\doxysubsection{Function Documentation}
+\Hypertarget{audioPreprocessor_8c_a0a0e70bc477aae30a8eb09466fe12505}\index{audioPreprocessor.c@{audioPreprocessor.c}!downsample\_Block@{downsample\_Block}}
+\index{downsample\_Block@{downsample\_Block}!audioPreprocessor.c@{audioPreprocessor.c}}
+\doxysubsubsection{\texorpdfstring{downsample\_Block()}{downsample\_Block()}}
+{\footnotesize\ttfamily \label{audioPreprocessor_8c_a0a0e70bc477aae30a8eb09466fe12505} 
+void downsample\+\_\+\+Block (\begin{DoxyParamCaption}\item[{int16\+\_\+t \texorpdfstring{$\ast$}{*}}]{src}{, }\item[{int16\+\_\+t \texorpdfstring{$\ast$}{*}}]{dest}{}\end{DoxyParamCaption})}
+
+
+
+Performs downsampling and FIR filtering on a block of audio data. 
+
+Converts a block of 16-\/bit integer audio samples to floating-\/point format, applies FIR filtering and decimation, and then converts the filtered samples back to 16-\/bit integer format. The processed data is written to the destination buffer.
+
+
+\begin{DoxyParams}{Parameters}
+{\em src} & Pointer to the source buffer containing 16-\/bit audio samples to be processed. \\
+\hline
+{\em dest} & Pointer to the destination buffer where the downsampled 16-\/bit audio samples will be written. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{audioPreprocessor_8c_aa6af641895199b92a55c307fe0dc9cea}\index{audioPreprocessor.c@{audioPreprocessor.c}!downsample\_to\_1024\_samples@{downsample\_to\_1024\_samples}}
+\index{downsample\_to\_1024\_samples@{downsample\_to\_1024\_samples}!audioPreprocessor.c@{audioPreprocessor.c}}
+\doxysubsubsection{\texorpdfstring{downsample\_to\_1024\_samples()}{downsample\_to\_1024\_samples()}}
+{\footnotesize\ttfamily \label{audioPreprocessor_8c_aa6af641895199b92a55c307fe0dc9cea} 
+uint32\+\_\+t downsample\+\_\+to\+\_\+1024\+\_\+samples (\begin{DoxyParamCaption}\item[{FIL \texorpdfstring{$\ast$}{*}}]{file}{, }\item[{int16\+\_\+t}]{out\+Chunk}{\mbox{[}\+NUM\+\_\+\+SAMPLES\+\_\+\+CHUNK\+\_\+\+OUT\mbox{]}}\end{DoxyParamCaption})}
+
+
+
+Downsamples a chunk of audio data to 1024 samples. 
+
+Reads a chunk of audio data from the specified file, converts stereo samples to mono, and then performs downsampling. The processed samples are written to the {\ttfamily out\+Chunk} buffer. The function processes data in blocks and returns the number of downsampled samples. NUM\+\_\+\+SAMPLES\+\_\+\+CHUNK\+\_\+\+OUT \texorpdfstring{$\ast$}{*} DECIMATION\+\_\+\+FACTOR\+\_\+\+ROUNDED = NUM\+\_\+\+SAMPLES\+\_\+\+CHUNK\+\_\+\+IN
+
+
+\begin{DoxyParams}{Parameters}
+{\em file} & Pointer to the input file ({\ttfamily FIL} structure) containing audio data. \\
+\hline
+{\em out\+Chunk} & Array to store the downsampled audio samples.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The actual number of samples written to the {\ttfamily out\+Chunk} buffer. 
+\end{DoxyReturn}
+\Hypertarget{audioPreprocessor_8c_abb523204efdd7bc2de76b58e69823675}\index{audioPreprocessor.c@{audioPreprocessor.c}!get\_number\_subsamples@{get\_number\_subsamples}}
+\index{get\_number\_subsamples@{get\_number\_subsamples}!audioPreprocessor.c@{audioPreprocessor.c}}
+\doxysubsubsection{\texorpdfstring{get\_number\_subsamples()}{get\_number\_subsamples()}}
+{\footnotesize\ttfamily \label{audioPreprocessor_8c_abb523204efdd7bc2de76b58e69823675} 
+uint16\+\_\+t get\+\_\+number\+\_\+subsamples (\begin{DoxyParamCaption}\item[{FIL \texorpdfstring{$\ast$}{*}}]{file}{}\end{DoxyParamCaption})}
+
+
+
+Calculates the number of subsamples based on the WAV file data. 
+
+Determines the number of mono subsamples in a WAV file after applying downsampling. It calculates the total number of samples based on the file\textquotesingle{}s audio data size, decimation factor, and header information, then computes the number of frames using the {\ttfamily HOP\+\_\+\+SIZE} and {\ttfamily STEP\+\_\+\+SIZE}.
+
+
+\begin{DoxyParams}{Parameters}
+{\em file} & Pointer to the WAV file ({\ttfamily FIL} structure) from which the header information is read.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of frames after downsampling, as a {\ttfamily uint16\+\_\+t}. 
+\end{DoxyReturn}
+\Hypertarget{audioPreprocessor_8c_a1b4ad63e84db7952f30bf4e0c7d31dfd}\index{audioPreprocessor.c@{audioPreprocessor.c}!initFilter@{initFilter}}
+\index{initFilter@{initFilter}!audioPreprocessor.c@{audioPreprocessor.c}}
+\doxysubsubsection{\texorpdfstring{initFilter()}{initFilter()}}
+{\footnotesize\ttfamily \label{audioPreprocessor_8c_a1b4ad63e84db7952f30bf4e0c7d31dfd} 
+arm\+\_\+status init\+Filter (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Initializes the FIR decimation filter. 
+
+Configures the FIR decimation filter using the ARM CMSIS DSP library. Sets up the filter structure with the specified number of taps, decimation factor, filter coefficients, state buffer, and block size.
+
+\begin{DoxyReturn}{Returns}
+Status of the filter initialization ({\ttfamily arm\+\_\+status}). 
+\end{DoxyReturn}
+\Hypertarget{audioPreprocessor_8c_a4f55768903813eb99fb6375c0cbe0bf2}\index{audioPreprocessor.c@{audioPreprocessor.c}!resampleFile@{resampleFile}}
+\index{resampleFile@{resampleFile}!audioPreprocessor.c@{audioPreprocessor.c}}
+\doxysubsubsection{\texorpdfstring{resampleFile()}{resampleFile()}}
+{\footnotesize\ttfamily \label{audioPreprocessor_8c_a4f55768903813eb99fb6375c0cbe0bf2} 
+uint16\+\_\+t resample\+File (\begin{DoxyParamCaption}\item[{FIL \texorpdfstring{$\ast$}{*}}]{in\+Fil}{, }\item[{FIL \texorpdfstring{$\ast$}{*}}]{out\+Fil}{, }\item[{\mbox{\hyperlink{structwav__header__t}{wav\+\_\+header\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{wave\+Header\+Input}{, }\item[{\mbox{\hyperlink{structwav__header__t}{wav\+\_\+header\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{wave\+Header\+Resampled}{}\end{DoxyParamCaption})}
+
+
+
+Resamples audio data from an input file and writes to an output file. 
+
+Reads chunks of audio data from the input file, performs downsampling and resampling, and writes the processed data to the output file. Updates the WAV header of the output file to reflect the new format after resampling.
+
+
+\begin{DoxyParams}{Parameters}
+{\em in\+Fil} & Pointer to the input file ({\ttfamily FIL} structure) containing original audio data. \\
+\hline
+{\em out\+Fil} & Pointer to the output file ({\ttfamily FIL} structure) to write resampled audio data. \\
+\hline
+{\em wave\+Header\+Input} & Pointer to the WAV header of the input file. \\
+\hline
+{\em wave\+Header\+Resampled} & Pointer to the WAV header to be written to the output file.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of bytes written to the resampled file. 
+\end{DoxyReturn}

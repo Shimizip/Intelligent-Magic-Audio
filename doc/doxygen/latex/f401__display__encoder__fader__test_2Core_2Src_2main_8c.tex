@@ -1,0 +1,250 @@
+\doxysection{f401\+\_\+display\+\_\+encoder\+\_\+fader\+\_\+test/\+Core/\+Src/main.c File Reference}
+\hypertarget{f401__display__encoder__fader__test_2Core_2Src_2main_8c}{}\label{f401__display__encoder__fader__test_2Core_2Src_2main_8c}\index{f401\_display\_encoder\_fader\_test/Core/Src/main.c@{f401\_display\_encoder\_fader\_test/Core/Src/main.c}}
+
+
+\+: Main program body  
+
+
+{\ttfamily \#include "{}main.\+h"{}}\newline
+{\ttfamily \#include "{}fatfs.\+h"{}}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+{\ttfamily \#include "{}ssd1306.\+h"{}}\newline
+{\ttfamily \#include "{}fonts.\+h"{}}\newline
+{\ttfamily \#include "{}display.\+h"{}}\newline
+{\ttfamily \#include "{}filemanager.\+h"{}}\newline
+{\ttfamily \#include "{}interface.\+h"{}}\newline
+{\ttfamily \#include "{}util.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{f401__display__encoder__fader__test_2Core_2Src_2main_8c_a70af21c671abfcc773614a9a4f63d920}{System\+Clock\+\_\+\+Config}} (void)
+\begin{DoxyCompactList}\small\item\em System Clock Configuration. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{f401__display__encoder__fader__test_2Core_2Src_2main_8c_ab8dff4ac438692a6e6646497cde3fe78}{write\+String\+To\+File}} (const char \texorpdfstring{$\ast$}{*}filename, const char \texorpdfstring{$\ast$}{*}str)
+\begin{DoxyCompactList}\small\item\em Writes a string to a file on the SD card. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{f401__display__encoder__fader__test_2Core_2Src_2main_8c_a840291bc02cba5474a4cb46a9b9566fe}{main}} (void)
+\begin{DoxyCompactList}\small\item\em The application entry point. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{f401__display__encoder__fader__test_2Core_2Src_2main_8c_a1730ffe1e560465665eb47d9264826f9}{Error\+\_\+\+Handler}} (void)
+\begin{DoxyCompactList}\small\item\em This function is executed in case of error occurrence. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{f401__display__encoder__fader__test_2Core_2Src_2main_8c_a22b804736f5648d52f639b2647d4ed13}\label{f401__display__encoder__fader__test_2Core_2Src_2main_8c_a22b804736f5648d52f639b2647d4ed13} 
+ADC\+\_\+\+Handle\+Type\+Def {\bfseries hadc1}
+\item 
+\Hypertarget{f401__display__encoder__fader__test_2Core_2Src_2main_8c_a1c126854bb1813d31ab4776b21dcc51f}\label{f401__display__encoder__fader__test_2Core_2Src_2main_8c_a1c126854bb1813d31ab4776b21dcc51f} 
+DMA\+\_\+\+Handle\+Type\+Def {\bfseries hdma\+\_\+adc1}
+\item 
+\Hypertarget{f401__display__encoder__fader__test_2Core_2Src_2main_8c_af7b2c26e44dadaaa798a5c3d82914ba7}\label{f401__display__encoder__fader__test_2Core_2Src_2main_8c_af7b2c26e44dadaaa798a5c3d82914ba7} 
+I2\+C\+\_\+\+Handle\+Type\+Def {\bfseries hi2c1}
+\item 
+\Hypertarget{f401__display__encoder__fader__test_2Core_2Src_2main_8c_ae81fa362038e2e56bce3dd2e6416c78e}\label{f401__display__encoder__fader__test_2Core_2Src_2main_8c_ae81fa362038e2e56bce3dd2e6416c78e} 
+SD\+\_\+\+Handle\+Type\+Def {\bfseries hsd}
+\item 
+\Hypertarget{f401__display__encoder__fader__test_2Core_2Src_2main_8c_adb8978634f4a0fd26c3d9d39cc63d490}\label{f401__display__encoder__fader__test_2Core_2Src_2main_8c_adb8978634f4a0fd26c3d9d39cc63d490} 
+DMA\+\_\+\+Handle\+Type\+Def {\bfseries hdma\+\_\+sdio\+\_\+rx}
+\item 
+\Hypertarget{f401__display__encoder__fader__test_2Core_2Src_2main_8c_aa83f62f831cb1aa0d1005e9dcc0c275d}\label{f401__display__encoder__fader__test_2Core_2Src_2main_8c_aa83f62f831cb1aa0d1005e9dcc0c275d} 
+DMA\+\_\+\+Handle\+Type\+Def {\bfseries hdma\+\_\+sdio\+\_\+tx}
+\item 
+\Hypertarget{f401__display__encoder__fader__test_2Core_2Src_2main_8c_aac3d2c59ee0e3bbae1b99529a154eb62}\label{f401__display__encoder__fader__test_2Core_2Src_2main_8c_aac3d2c59ee0e3bbae1b99529a154eb62} 
+TIM\+\_\+\+Handle\+Type\+Def {\bfseries htim3}
+\item 
+\Hypertarget{f401__display__encoder__fader__test_2Core_2Src_2main_8c_acefaeaaa3856ddddae7083b2d220fe4b}\label{f401__display__encoder__fader__test_2Core_2Src_2main_8c_acefaeaaa3856ddddae7083b2d220fe4b} 
+TIM\+\_\+\+Handle\+Type\+Def {\bfseries htim5}
+\item 
+\Hypertarget{f401__display__encoder__fader__test_2Core_2Src_2main_8c_aa9479c261d65eecedd3d9582f7f0f89c}\label{f401__display__encoder__fader__test_2Core_2Src_2main_8c_aa9479c261d65eecedd3d9582f7f0f89c} 
+UART\+\_\+\+Handle\+Type\+Def {\bfseries huart2}
+\item 
+\mbox{\hyperlink{structFileManager}{File\+Manager}} \mbox{\hyperlink{f401__display__encoder__fader__test_2Core_2Src_2main_8c_a48052dfd7ff5a05459e719f9a2fc027c}{fm}}
+\begin{DoxyCompactList}\small\item\em \doxylink{structFileManager}{File\+Manager} instances for managing and testing files. \end{DoxyCompactList}\item 
+\Hypertarget{f401__display__encoder__fader__test_2Core_2Src_2main_8c_a110e4609fe3ee5f08731067a68092045}\label{f401__display__encoder__fader__test_2Core_2Src_2main_8c_a110e4609fe3ee5f08731067a68092045} 
+\mbox{\hyperlink{structFileManager}{File\+Manager}} {\bfseries fm\+Copy}
+\begin{DoxyCompactList}\small\item\em Copy of \doxylink{structFileManager}{File\+Manager} for testing purposes. \end{DoxyCompactList}\item 
+char \mbox{\hyperlink{f401__display__encoder__fader__test_2Core_2Src_2main_8c_ad00531b6747613dc2d57aa3a68d5d2da}{lfn}} \mbox{[}MAX\+\_\+\+FILENAME\+\_\+\+LENGTH\mbox{]}
+\begin{DoxyCompactList}\small\item\em Buffer for the filename string. \end{DoxyCompactList}\item 
+FILINFO \mbox{\hyperlink{f401__display__encoder__fader__test_2Core_2Src_2main_8c_adb2adf9b3f315041beb78852fa37a984}{fno}}
+\begin{DoxyCompactList}\small\item\em FATFS file system objects and handles. \end{DoxyCompactList}\item 
+\Hypertarget{f401__display__encoder__fader__test_2Core_2Src_2main_8c_a8f47e042c2aca024c6534fdf5c3d9426}\label{f401__display__encoder__fader__test_2Core_2Src_2main_8c_a8f47e042c2aca024c6534fdf5c3d9426} 
+FATFS {\bfseries Fat\+Fs}
+\begin{DoxyCompactList}\small\item\em FATFS handle for the file system. \end{DoxyCompactList}\item 
+\Hypertarget{f401__display__encoder__fader__test_2Core_2Src_2main_8c_a296b3c88b34a2294d0bd990ac963543b}\label{f401__display__encoder__fader__test_2Core_2Src_2main_8c_a296b3c88b34a2294d0bd990ac963543b} 
+FIL {\bfseries file}
+\begin{DoxyCompactList}\small\item\em \doxylink{structFile}{File} object for FATFS. \end{DoxyCompactList}\item 
+\Hypertarget{f401__display__encoder__fader__test_2Core_2Src_2main_8c_a16a0d8546e4f883263d1ef7fc29e296a}\label{f401__display__encoder__fader__test_2Core_2Src_2main_8c_a16a0d8546e4f883263d1ef7fc29e296a} 
+UINT {\bfseries bytes\+Written}
+\begin{DoxyCompactList}\small\item\em Number of bytes written in file operations. \end{DoxyCompactList}\item 
+\Hypertarget{f401__display__encoder__fader__test_2Core_2Src_2main_8c_a66029510323ef6f0b9dc59dea22098e5}\label{f401__display__encoder__fader__test_2Core_2Src_2main_8c_a66029510323ef6f0b9dc59dea22098e5} 
+FRESULT {\bfseries fres}
+\begin{DoxyCompactList}\small\item\em Result of FATFS operations. \end{DoxyCompactList}\item 
+\Hypertarget{f401__display__encoder__fader__test_2Core_2Src_2main_8c_aa59fe1cb43760885aa78301453764fe0}\label{f401__display__encoder__fader__test_2Core_2Src_2main_8c_aa59fe1cb43760885aa78301453764fe0} 
+DIR {\bfseries dir}
+\begin{DoxyCompactList}\small\item\em Directory handle for directory operations. \end{DoxyCompactList}\item 
+char \mbox{\hyperlink{f401__display__encoder__fader__test_2Core_2Src_2main_8c_a7c55b937e7340a9ce495107f5846891b}{file\+Names\+SDCard}} \mbox{[}\mbox{\hyperlink{filemanager_8h_a2c5eecb22513a88c24ae5831a3265e54}{MAX\+\_\+\+FILES}}\mbox{]}\mbox{[}MAX\+\_\+\+FILENAME\+\_\+\+LENGTH\mbox{]}
+\begin{DoxyCompactList}\small\item\em List of filenames on the SD card with .wav extension. \end{DoxyCompactList}\item 
+\Hypertarget{f401__display__encoder__fader__test_2Core_2Src_2main_8c_aa5d2c07c787632f6cb91886c1713fc2c}\label{f401__display__encoder__fader__test_2Core_2Src_2main_8c_aa5d2c07c787632f6cb91886c1713fc2c} 
+int {\bfseries file\+Count} = 0
+\begin{DoxyCompactList}\small\item\em Counter for the number of .wav files found on the SD card. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{f401__display__encoder__fader__test_2Core_2Src_2main_8c_a8ba3e8d7110b9284c65a67cce453ad9e}{adc\+Dma\+Flag}} = false
+\begin{DoxyCompactList}\small\item\em Flags for managing time intervals and DMA operations. \end{DoxyCompactList}\item 
+\Hypertarget{f401__display__encoder__fader__test_2Core_2Src_2main_8c_a764562b24eaa039f43dba17f7fdbfce9}\label{f401__display__encoder__fader__test_2Core_2Src_2main_8c_a764562b24eaa039f43dba17f7fdbfce9} 
+bool {\bfseries update\+Screen\+Flag} = false
+\begin{DoxyCompactList}\small\item\em Flag to manage the time interval for display updates. \end{DoxyCompactList}\item 
+uint32\+\_\+t \mbox{\hyperlink{f401__display__encoder__fader__test_2Core_2Src_2main_8c_a84c9ecdab5e9141199fe9bc145095407}{adc\+Buffer}} \mbox{[}NUM\+\_\+\+CHANNELS\mbox{]} = \{0\}
+\begin{DoxyCompactList}\small\item\em Buffer for ADC polling. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\+: Main program body 
+
+\begin{DoxyAttention}{Attention}
+
+\end{DoxyAttention}
+Copyright (c) 2024 STMicroelectronics. All rights reserved.
+
+This software is licensed under terms that can be found in the LICENSE file in the root directory of this software component. If no LICENSE file comes with this software, it is provided AS-\/\+IS. 
+
+\doxysubsection{Function Documentation}
+\Hypertarget{f401__display__encoder__fader__test_2Core_2Src_2main_8c_a1730ffe1e560465665eb47d9264826f9}\index{main.c@{main.c}!Error\_Handler@{Error\_Handler}}
+\index{Error\_Handler@{Error\_Handler}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{Error\_Handler()}{Error\_Handler()}}
+{\footnotesize\ttfamily \label{f401__display__encoder__fader__test_2Core_2Src_2main_8c_a1730ffe1e560465665eb47d9264826f9} 
+void Error\+\_\+\+Handler (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+This function is executed in case of error occurrence. 
+
+
+\begin{DoxyRetVals}{Return values}
+{\em None} & \\
+\hline
+\end{DoxyRetVals}
+\Hypertarget{f401__display__encoder__fader__test_2Core_2Src_2main_8c_a840291bc02cba5474a4cb46a9b9566fe}\index{main.c@{main.c}!main@{main}}
+\index{main@{main}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily \label{f401__display__encoder__fader__test_2Core_2Src_2main_8c_a840291bc02cba5474a4cb46a9b9566fe} 
+int main (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+The application entry point. 
+
+
+\begin{DoxyRetVals}{Return values}
+{\em int} & \\
+\hline
+\end{DoxyRetVals}
+\Hypertarget{f401__display__encoder__fader__test_2Core_2Src_2main_8c_a70af21c671abfcc773614a9a4f63d920}\index{main.c@{main.c}!SystemClock\_Config@{SystemClock\_Config}}
+\index{SystemClock\_Config@{SystemClock\_Config}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{SystemClock\_Config()}{SystemClock\_Config()}}
+{\footnotesize\ttfamily \label{f401__display__encoder__fader__test_2Core_2Src_2main_8c_a70af21c671abfcc773614a9a4f63d920} 
+void System\+Clock\+\_\+\+Config (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+System Clock Configuration. 
+
+
+\begin{DoxyRetVals}{Return values}
+{\em None} & \\
+\hline
+\end{DoxyRetVals}
+Configure the main internal regulator output voltage
+
+Initializes the RCC Oscillators according to the specified parameters in the RCC\+\_\+\+Osc\+Init\+Type\+Def structure.
+
+Initializes the CPU, AHB and APB buses clocks\Hypertarget{f401__display__encoder__fader__test_2Core_2Src_2main_8c_ab8dff4ac438692a6e6646497cde3fe78}\index{main.c@{main.c}!writeStringToFile@{writeStringToFile}}
+\index{writeStringToFile@{writeStringToFile}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{writeStringToFile()}{writeStringToFile()}}
+{\footnotesize\ttfamily \label{f401__display__encoder__fader__test_2Core_2Src_2main_8c_ab8dff4ac438692a6e6646497cde3fe78} 
+void write\+String\+To\+File (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{filename}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{str}{}\end{DoxyParamCaption})}
+
+
+
+Writes a string to a file on the SD card. 
+
+This function opens a file for writing and writes a specified string to it. If the file does not exist, it will be created. The function performs the following actions\+:
+
+
+\begin{DoxyItemize}
+\item Opens the file specified by {\ttfamily filename} in write mode, creating it if it does not already exist.
+\item Writes the provided string to the file.
+\item Checks for errors during the file operations and reports them.
+\item Closes the file after writing is completed.
+\end{DoxyItemize}
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em filename} & The name of the file to write to. (Note\+: This parameter is not used in the current implementation.) \\
+\hline
+\mbox{\texttt{ in}}  & {\em str} & The string to be written to the file.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+In the current implementation, the {\ttfamily filename} parameter is not used, and the file name is hardcoded as {\ttfamily "{}test.\+txt"{}}. Modify the file opening mode and filename if you need to use the provided {\ttfamily filename} parameter. 
+\end{DoxyNote}
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{f401__display__encoder__fader__test_2Core_2Src_2main_8c_a84c9ecdab5e9141199fe9bc145095407}\index{main.c@{main.c}!adcBuffer@{adcBuffer}}
+\index{adcBuffer@{adcBuffer}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{adcBuffer}{adcBuffer}}
+{\footnotesize\ttfamily \label{f401__display__encoder__fader__test_2Core_2Src_2main_8c_a84c9ecdab5e9141199fe9bc145095407} 
+uint32\+\_\+t adc\+Buffer\mbox{[}NUM\+\_\+\+CHANNELS\mbox{]} = \{0\}}
+
+
+
+Buffer for ADC polling. 
+
+This buffer stores the values read from the ADC channels. Buffer for storing ADC channel values. \Hypertarget{f401__display__encoder__fader__test_2Core_2Src_2main_8c_a8ba3e8d7110b9284c65a67cce453ad9e}\index{main.c@{main.c}!adcDmaFlag@{adcDmaFlag}}
+\index{adcDmaFlag@{adcDmaFlag}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{adcDmaFlag}{adcDmaFlag}}
+{\footnotesize\ttfamily \label{f401__display__encoder__fader__test_2Core_2Src_2main_8c_a8ba3e8d7110b9284c65a67cce453ad9e} 
+bool adc\+Dma\+Flag = false}
+
+
+
+Flags for managing time intervals and DMA operations. 
+
+These flags are used to manage the intervals at which DMA operations and display updates occur. Flag to manage the time interval for ADC DMA operations. \Hypertarget{f401__display__encoder__fader__test_2Core_2Src_2main_8c_a7c55b937e7340a9ce495107f5846891b}\index{main.c@{main.c}!fileNamesSDCard@{fileNamesSDCard}}
+\index{fileNamesSDCard@{fileNamesSDCard}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{fileNamesSDCard}{fileNamesSDCard}}
+{\footnotesize\ttfamily \label{f401__display__encoder__fader__test_2Core_2Src_2main_8c_a7c55b937e7340a9ce495107f5846891b} 
+char file\+Names\+SDCard\mbox{[}\mbox{\hyperlink{filemanager_8h_a2c5eecb22513a88c24ae5831a3265e54}{MAX\+\_\+\+FILES}}\mbox{]}\mbox{[}MAX\+\_\+\+FILENAME\+\_\+\+LENGTH\mbox{]}}
+
+
+
+List of filenames on the SD card with .wav extension. 
+
+This array stores the filenames of all .wav files found on the SD card. Array of filenames on the SD card with .wav extension. \Hypertarget{f401__display__encoder__fader__test_2Core_2Src_2main_8c_a48052dfd7ff5a05459e719f9a2fc027c}\index{main.c@{main.c}!fm@{fm}}
+\index{fm@{fm}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{fm}{fm}}
+{\footnotesize\ttfamily \label{f401__display__encoder__fader__test_2Core_2Src_2main_8c_a48052dfd7ff5a05459e719f9a2fc027c} 
+\mbox{\hyperlink{structFileManager}{File\+Manager}} fm}
+
+
+
+\doxylink{structFileManager}{File\+Manager} instances for managing and testing files. 
+
+These variables are used to manage files, including the main \doxylink{structFileManager}{File\+Manager} and a copy for testing purposes. Main \doxylink{structFileManager}{File\+Manager} instance. \Hypertarget{f401__display__encoder__fader__test_2Core_2Src_2main_8c_adb2adf9b3f315041beb78852fa37a984}\index{main.c@{main.c}!fno@{fno}}
+\index{fno@{fno}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{fno}{fno}}
+{\footnotesize\ttfamily \label{f401__display__encoder__fader__test_2Core_2Src_2main_8c_adb2adf9b3f315041beb78852fa37a984} 
+FILINFO fno}
+
+
+
+FATFS file system objects and handles. 
+
+These variables are used for managing file operations and directory access with the FATFS library. File\+Info handle for displaying filenames. \Hypertarget{f401__display__encoder__fader__test_2Core_2Src_2main_8c_ad00531b6747613dc2d57aa3a68d5d2da}\index{main.c@{main.c}!lfn@{lfn}}
+\index{lfn@{lfn}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{lfn}{lfn}}
+{\footnotesize\ttfamily \label{f401__display__encoder__fader__test_2Core_2Src_2main_8c_ad00531b6747613dc2d57aa3a68d5d2da} 
+char lfn\mbox{[}MAX\+\_\+\+FILENAME\+\_\+\+LENGTH\mbox{]}}
+
+
+
+Buffer for the filename string. 
+
+This buffer stores filenames with a maximum length defined by MAX\+\_\+\+FILENAME\+\_\+\+LENGTH. Buffer for storing a filename string. 

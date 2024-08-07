@@ -1,3 +1,11 @@
+/**
+ * @file cpu_time.c
+ * @brief Functions for cycle counting and time measurement using DWT on STM32.
+ * 
+ * This file provides functions to configure and use the Data Watchpoint and Trace (DWT)
+ * unit on STM32 microcontrollers for precise cycle counting.
+ */
+
 #include "cpu_time.h"
 #include "stm32f4xx_hal.h"  // Adjust the header according to your specific STM32 series
 

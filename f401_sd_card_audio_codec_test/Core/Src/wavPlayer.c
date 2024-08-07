@@ -1,3 +1,15 @@
+/**
+ * @file wavPlayer.c
+ * @brief Implementation of a WAV player using FATFS and I2S with DMA.
+ * 
+ * This file provides functions to:
+ * - Initialize the WAV player.
+ * - Read and validate WAV file headers.
+ * - Handle playback control via button actions.
+ * - Load and play WAV files, with optional pitch shifting.
+ * 
+ */
+
 #include "fatfs.h"
 #include "wavPlayer.h"
 #include "string.h"

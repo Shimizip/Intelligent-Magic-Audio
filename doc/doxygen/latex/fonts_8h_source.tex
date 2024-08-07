@@ -1,0 +1,28 @@
+\doxysection{fonts.\+h}
+\hypertarget{fonts_8h_source}{}\label{fonts_8h_source}\index{f401\_display\_encoder\_fader\_test/Core/Inc/fonts.h@{f401\_display\_encoder\_fader\_test/Core/Inc/fonts.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ \_FONTS\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ \_FONTS\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <stdint.h>}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{comment}{//}}
+\DoxyCodeLine{00007\ \textcolor{comment}{//\ \ Structure\ used\ to\ define\ fonts}}
+\DoxyCodeLine{00008\ \textcolor{comment}{//}}
+\DoxyCodeLine{00009\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00010\ \ \ \ \ \textcolor{keyword}{const}\ uint8\_t\ FontWidth;\ \ \ \ \textcolor{comment}{/*\ Font\ width\ in\ pixels\ */}}
+\DoxyCodeLine{00011\ \ \ \ \ uint8\_t\ FontHeight;\ \ \ \ \ \ \ \ \ \textcolor{comment}{/*\ Font\ height\ in\ pixels\ */}}
+\DoxyCodeLine{00012\ \ \ \ \ \textcolor{keyword}{const}\ uint16\_t\ *data;\ \ \ \ \ \ \ \textcolor{comment}{/*\ Pointer\ to\ data\ font\ data\ array\ */}}
+\DoxyCodeLine{00013\ \}\ \mbox{\hyperlink{structFontDef}{FontDef}};}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{comment}{//}}
+\DoxyCodeLine{00016\ \textcolor{comment}{//\ \ Export\ the\ 3\ available\ fonts}}
+\DoxyCodeLine{00017\ \textcolor{comment}{//}}
+\DoxyCodeLine{00018\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{structFontDef}{FontDef}}\ Font\_7x10;}
+\DoxyCodeLine{00019\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{structFontDef}{FontDef}}\ Font\_11x18;}
+\DoxyCodeLine{00020\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{structFontDef}{FontDef}}\ Font\_16x26;}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#endif\ \ }\textcolor{comment}{//\ \_FONTS\_H}}
+
+\end{DoxyCode}

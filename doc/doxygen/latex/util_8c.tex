@@ -1,0 +1,51 @@
+\doxysection{f401\+\_\+sd\+\_\+card\+\_\+audio\+\_\+codec\+\_\+test/\+Core/\+Src/util.c File Reference}
+\hypertarget{util_8c}{}\label{util_8c}\index{f401\_sd\_card\_audio\_codec\_test/Core/Src/util.c@{f401\_sd\_card\_audio\_codec\_test/Core/Src/util.c}}
+
+
+Utility functions for the project.  
+
+
+{\ttfamily \#include "{}util.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{util_8c_abd6e353d39a7ced9a87517a68bd13768}{uart\+\_\+printf}} (const char \texorpdfstring{$\ast$}{*}fmt,...)
+\begin{DoxyCompactList}\small\item\em Formats and sends a string over UART. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Utility functions for the project. 
+
+This file contains utility functions used across the project. Currently, it includes a function to format and send strings over UART.
+
+Functions provided\+:
+\begin{DoxyItemize}
+\item {\ttfamily void \doxylink{util_8c_abd6e353d39a7ced9a87517a68bd13768}{uart\+\_\+printf(const char \texorpdfstring{$\ast$}{*}fmt, ...)}}\+: Formats and sends a string over UART.
+\end{DoxyItemize}
+
+The {\ttfamily uart\+\_\+printf} function\+:
+\begin{DoxyItemize}
+\item Uses {\ttfamily vsnprintf} to format a string.
+\item Uses {\ttfamily HAL\+\_\+\+UART\+\_\+\+Transmit} to send the formatted string over UART2. 
+\end{DoxyItemize}
+
+\doxysubsection{Function Documentation}
+\Hypertarget{util_8c_abd6e353d39a7ced9a87517a68bd13768}\index{util.c@{util.c}!uart\_printf@{uart\_printf}}
+\index{uart\_printf@{uart\_printf}!util.c@{util.c}}
+\doxysubsubsection{\texorpdfstring{uart\_printf()}{uart\_printf()}}
+{\footnotesize\ttfamily \label{util_8c_abd6e353d39a7ced9a87517a68bd13768} 
+void uart\+\_\+printf (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{fmt}{, }\item[{}]{...}{}\end{DoxyParamCaption})}
+
+
+
+Formats and sends a string over UART. 
+
+Uses {\ttfamily vsnprintf} to format the string and {\ttfamily HAL\+\_\+\+UART\+\_\+\+Transmit} to send it over UART2.
+
+
+\begin{DoxyParams}{Parameters}
+{\em fmt} & Format string. \\
+\hline
+{\em ...} & Arguments for formatting. \\
+\hline
+\end{DoxyParams}

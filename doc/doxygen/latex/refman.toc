@@ -1,1 +1,225 @@
 \@ifundefined {etoctocstyle}{\let \etoc@startlocaltoc \@gobble \let \etoc@settocdepth \@gobble \let \etoc@depthtag \@gobble \let \etoc@setlocaltop \@gobble }{}
+\contentsline {chapter}{\numberline {1}Data Structure Index}{1}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Data Structures}{1}{section.1.1}%
+\contentsline {chapter}{\numberline {2}File Index}{3}{chapter.2}%
+\contentsline {section}{\numberline {2.1}File List}{3}{section.2.1}%
+\contentsline {chapter}{\numberline {3}Data Structure Documentation}{5}{chapter.3}%
+\contentsline {section}{\numberline {3.1}File Struct Reference}{5}{section.3.1}%
+\contentsline {subsection}{\numberline {3.1.1}Detailed Description}{5}{subsection.3.1.1}%
+\contentsline {section}{\numberline {3.2}File\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Manager Struct Reference}{5}{section.3.2}%
+\contentsline {subsection}{\numberline {3.2.1}Detailed Description}{6}{subsection.3.2.1}%
+\contentsline {section}{\numberline {3.3}Font\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Def Struct Reference}{6}{section.3.3}%
+\contentsline {section}{\numberline {3.4}SSD1306\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}t Struct Reference}{7}{section.3.4}%
+\contentsline {section}{\numberline {3.5}wav\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}header\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}t Struct Reference}{7}{section.3.5}%
+\contentsline {subsection}{\numberline {3.5.1}Detailed Description}{7}{subsection.3.5.1}%
+\contentsline {section}{\numberline {3.6}Wav\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Player Struct Reference}{8}{section.3.6}%
+\contentsline {subsection}{\numberline {3.6.1}Detailed Description}{8}{subsection.3.6.1}%
+\contentsline {chapter}{\numberline {4}File Documentation}{9}{chapter.4}%
+\contentsline {section}{\numberline {4.1}f401\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}display\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}encoder\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}fader\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}test/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Core/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Inc/display.h File Reference}{9}{section.4.1}%
+\contentsline {subsection}{\numberline {4.1.1}Detailed Description}{9}{subsection.4.1.1}%
+\contentsline {subsection}{\numberline {4.1.2}Function Documentation}{10}{subsection.4.1.2}%
+\contentsline {subsubsection}{\numberline {4.1.2.1}displayStrings()}{10}{subsubsection.4.1.2.1}%
+\contentsline {subsubsection}{\numberline {4.1.2.2}drawFaderProzent()}{10}{subsubsection.4.1.2.2}%
+\contentsline {subsubsection}{\numberline {4.1.2.3}renderSelectedFile()}{11}{subsubsection.4.1.2.3}%
+\contentsline {section}{\numberline {4.2}display.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{11}{section.4.2}%
+\contentsline {section}{\numberline {4.3}f401\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}display\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}encoder\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}fader\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}test/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Core/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Inc/filemanager.h File Reference}{12}{section.4.3}%
+\contentsline {subsection}{\numberline {4.3.1}Detailed Description}{13}{subsection.4.3.1}%
+\contentsline {subsection}{\numberline {4.3.2}Macro Definition Documentation}{13}{subsection.4.3.2}%
+\contentsline {subsubsection}{\numberline {4.3.2.1}EXISTS}{13}{subsubsection.4.3.2.1}%
+\contentsline {subsubsection}{\numberline {4.3.2.2}MAX\_CLASSES}{13}{subsubsection.4.3.2.2}%
+\contentsline {subsubsection}{\numberline {4.3.2.3}MAX\_FILES}{13}{subsubsection.4.3.2.3}%
+\contentsline {subsection}{\numberline {4.3.3}Function Documentation}{13}{subsection.4.3.3}%
+\contentsline {subsubsection}{\numberline {4.3.3.1}addFile()}{13}{subsubsection.4.3.3.1}%
+\contentsline {subsubsection}{\numberline {4.3.3.2}cursorDown()}{14}{subsubsection.4.3.3.2}%
+\contentsline {subsubsection}{\numberline {4.3.3.3}cursorUp()}{14}{subsubsection.4.3.3.3}%
+\contentsline {subsubsection}{\numberline {4.3.3.4}initializeFileManager()}{14}{subsubsection.4.3.3.4}%
+\contentsline {subsubsection}{\numberline {4.3.3.5}safeCurrentFileName()}{15}{subsubsection.4.3.3.5}%
+\contentsline {subsubsection}{\numberline {4.3.3.6}selectFile()}{15}{subsubsection.4.3.3.6}%
+\contentsline {subsubsection}{\numberline {4.3.3.7}setCursor()}{16}{subsubsection.4.3.3.7}%
+\contentsline {section}{\numberline {4.4}filemanager.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{16}{section.4.4}%
+\contentsline {section}{\numberline {4.5}fonts.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{17}{section.4.5}%
+\contentsline {section}{\numberline {4.6}f401\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}display\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}encoder\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}fader\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}test/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Core/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Inc/interface.h File Reference}{17}{section.4.6}%
+\contentsline {subsection}{\numberline {4.6.1}Detailed Description}{19}{subsection.4.6.1}%
+\contentsline {subsection}{\numberline {4.6.2}Macro Definition Documentation}{19}{subsection.4.6.2}%
+\contentsline {subsubsection}{\numberline {4.6.2.1}THREASHOLD}{19}{subsubsection.4.6.2.1}%
+\contentsline {subsection}{\numberline {4.6.3}Function Documentation}{19}{subsection.4.6.3}%
+\contentsline {subsubsection}{\numberline {4.6.3.1}compareADCValues()}{19}{subsubsection.4.6.3.1}%
+\contentsline {subsubsection}{\numberline {4.6.3.2}HAL\_ADC\_ConvCpltCallback()}{20}{subsubsection.4.6.3.2}%
+\contentsline {subsubsection}{\numberline {4.6.3.3}HAL\_GPIO\_EXTI\_Callback()}{20}{subsubsection.4.6.3.3}%
+\contentsline {subsubsection}{\numberline {4.6.3.4}HAL\_TIM\_PeriodElapsedCallback()}{21}{subsubsection.4.6.3.4}%
+\contentsline {subsubsection}{\numberline {4.6.3.5}listFiles()}{21}{subsubsection.4.6.3.5}%
+\contentsline {subsubsection}{\numberline {4.6.3.6}resetShownFiles()}{22}{subsubsection.4.6.3.6}%
+\contentsline {subsubsection}{\numberline {4.6.3.7}screenInit()}{22}{subsubsection.4.6.3.7}%
+\contentsline {subsubsection}{\numberline {4.6.3.8}sortFiles()}{22}{subsubsection.4.6.3.8}%
+\contentsline {subsubsection}{\numberline {4.6.3.9}updateScreen()}{23}{subsubsection.4.6.3.9}%
+\contentsline {subsection}{\numberline {4.6.4}Variable Documentation}{23}{subsection.4.6.4}%
+\contentsline {subsubsection}{\numberline {4.6.4.1}adcBuffer}{23}{subsubsection.4.6.4.1}%
+\contentsline {subsubsection}{\numberline {4.6.4.2}adcDmaFlag}{23}{subsubsection.4.6.4.2}%
+\contentsline {subsubsection}{\numberline {4.6.4.3}fileNamesSDCard}{23}{subsubsection.4.6.4.3}%
+\contentsline {subsubsection}{\numberline {4.6.4.4}fm}{24}{subsubsection.4.6.4.4}%
+\contentsline {subsubsection}{\numberline {4.6.4.5}fno}{24}{subsubsection.4.6.4.5}%
+\contentsline {section}{\numberline {4.7}interface.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{24}{section.4.7}%
+\contentsline {section}{\numberline {4.8}ssd1306.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{25}{section.4.8}%
+\contentsline {section}{\numberline {4.9}f401\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}display\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}encoder\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}fader\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}test/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Core/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Src/display.c File Reference}{26}{section.4.9}%
+\contentsline {subsection}{\numberline {4.9.1}Detailed Description}{27}{subsection.4.9.1}%
+\contentsline {subsection}{\numberline {4.9.2}Macro Definition Documentation}{27}{subsection.4.9.2}%
+\contentsline {subsubsection}{\numberline {4.9.2.1}DISPLAY\_WIDTH}{27}{subsubsection.4.9.2.1}%
+\contentsline {subsection}{\numberline {4.9.3}Function Documentation}{27}{subsection.4.9.3}%
+\contentsline {subsubsection}{\numberline {4.9.3.1}displayStrings()}{27}{subsubsection.4.9.3.1}%
+\contentsline {subsubsection}{\numberline {4.9.3.2}drawFaderProzent()}{28}{subsubsection.4.9.3.2}%
+\contentsline {subsubsection}{\numberline {4.9.3.3}renderSelectedFile()}{28}{subsubsection.4.9.3.3}%
+\contentsline {subsubsection}{\numberline {4.9.3.4}scrollDown()}{29}{subsubsection.4.9.3.4}%
+\contentsline {subsubsection}{\numberline {4.9.3.5}scrollUp()}{29}{subsubsection.4.9.3.5}%
+\contentsline {section}{\numberline {4.10}f401\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}display\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}encoder\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}fader\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}test/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Core/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Src/filemanager.c File Reference}{30}{section.4.10}%
+\contentsline {subsection}{\numberline {4.10.1}Detailed Description}{30}{subsection.4.10.1}%
+\contentsline {subsection}{\numberline {4.10.2}Function Documentation}{30}{subsection.4.10.2}%
+\contentsline {subsubsection}{\numberline {4.10.2.1}addFile()}{30}{subsubsection.4.10.2.1}%
+\contentsline {subsubsection}{\numberline {4.10.2.2}cursorDown()}{31}{subsubsection.4.10.2.2}%
+\contentsline {subsubsection}{\numberline {4.10.2.3}cursorUp()}{31}{subsubsection.4.10.2.3}%
+\contentsline {subsubsection}{\numberline {4.10.2.4}initializeFileManager()}{31}{subsubsection.4.10.2.4}%
+\contentsline {subsubsection}{\numberline {4.10.2.5}safeCurrentFileName()}{32}{subsubsection.4.10.2.5}%
+\contentsline {subsubsection}{\numberline {4.10.2.6}selectFile()}{32}{subsubsection.4.10.2.6}%
+\contentsline {subsubsection}{\numberline {4.10.2.7}setCursor()}{33}{subsubsection.4.10.2.7}%
+\contentsline {section}{\numberline {4.11}f401\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}display\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}encoder\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}fader\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}test/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Core/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Src/interface.c File Reference}{33}{section.4.11}%
+\contentsline {subsection}{\numberline {4.11.1}Detailed Description}{34}{subsection.4.11.1}%
+\contentsline {subsection}{\numberline {4.11.2}Function Documentation}{35}{subsection.4.11.2}%
+\contentsline {subsubsection}{\numberline {4.11.2.1}compareADCValues()}{35}{subsubsection.4.11.2.1}%
+\contentsline {subsubsection}{\numberline {4.11.2.2}HAL\_ADC\_ConvCpltCallback()}{35}{subsubsection.4.11.2.2}%
+\contentsline {subsubsection}{\numberline {4.11.2.3}HAL\_GPIO\_EXTI\_Callback()}{36}{subsubsection.4.11.2.3}%
+\contentsline {subsubsection}{\numberline {4.11.2.4}HAL\_TIM\_PeriodElapsedCallback()}{36}{subsubsection.4.11.2.4}%
+\contentsline {subsubsection}{\numberline {4.11.2.5}listFiles()}{37}{subsubsection.4.11.2.5}%
+\contentsline {subsubsection}{\numberline {4.11.2.6}resetShownFiles()}{37}{subsubsection.4.11.2.6}%
+\contentsline {subsubsection}{\numberline {4.11.2.7}screenInit()}{37}{subsubsection.4.11.2.7}%
+\contentsline {subsubsection}{\numberline {4.11.2.8}sortFiles()}{38}{subsubsection.4.11.2.8}%
+\contentsline {subsubsection}{\numberline {4.11.2.9}updateScreen()}{38}{subsubsection.4.11.2.9}%
+\contentsline {subsection}{\numberline {4.11.3}Variable Documentation}{39}{subsection.4.11.3}%
+\contentsline {subsubsection}{\numberline {4.11.3.1}rotary\_enc\_count}{39}{subsubsection.4.11.3.1}%
+\contentsline {section}{\numberline {4.12}f401\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}sd\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}card\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}audio\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}codec\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}test/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Core/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Inc/audio.h File Reference}{39}{section.4.12}%
+\contentsline {subsection}{\numberline {4.12.1}Detailed Description}{40}{subsection.4.12.1}%
+\contentsline {subsection}{\numberline {4.12.2}Function Documentation}{40}{subsection.4.12.2}%
+\contentsline {subsubsection}{\numberline {4.12.2.1}fillHalfBufferFromSD()}{40}{subsubsection.4.12.2.1}%
+\contentsline {subsubsection}{\numberline {4.12.2.2}generateSineWave()}{40}{subsubsection.4.12.2.2}%
+\contentsline {subsubsection}{\numberline {4.12.2.3}HAL\_I2S\_TxHalfCpltCallback()}{41}{subsubsection.4.12.2.3}%
+\contentsline {subsubsection}{\numberline {4.12.2.4}setPitchFactor()}{41}{subsubsection.4.12.2.4}%
+\contentsline {section}{\numberline {4.13}audio.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{41}{section.4.13}%
+\contentsline {section}{\numberline {4.14}f401\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}sd\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}card\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}audio\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}codec\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}test/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Core/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Inc/audio\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Preprocessor.h File Reference}{42}{section.4.14}%
+\contentsline {subsection}{\numberline {4.14.1}Detailed Description}{43}{subsection.4.14.1}%
+\contentsline {subsection}{\numberline {4.14.2}Function Documentation}{43}{subsection.4.14.2}%
+\contentsline {subsubsection}{\numberline {4.14.2.1}downsample\_Block()}{43}{subsubsection.4.14.2.1}%
+\contentsline {subsubsection}{\numberline {4.14.2.2}downsample\_to\_1024\_samples()}{43}{subsubsection.4.14.2.2}%
+\contentsline {subsubsection}{\numberline {4.14.2.3}get\_number\_subsamples()}{44}{subsubsection.4.14.2.3}%
+\contentsline {subsubsection}{\numberline {4.14.2.4}initFilter()}{44}{subsubsection.4.14.2.4}%
+\contentsline {subsubsection}{\numberline {4.14.2.5}resampleFile()}{44}{subsubsection.4.14.2.5}%
+\contentsline {subsection}{\numberline {4.14.3}Variable Documentation}{45}{subsection.4.14.3}%
+\contentsline {subsubsection}{\numberline {4.14.3.1}filter\_taps}{45}{subsubsection.4.14.3.1}%
+\contentsline {section}{\numberline {4.15}audio\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Preprocessor.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{45}{section.4.15}%
+\contentsline {section}{\numberline {4.16}cpu\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}time.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{46}{section.4.16}%
+\contentsline {section}{\numberline {4.17}f401\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}sd\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}card\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}audio\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}codec\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}test/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Core/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Inc/lowpass\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}16k\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Filter.h File Reference}{46}{section.4.17}%
+\contentsline {subsection}{\numberline {4.17.1}Detailed Description}{46}{subsection.4.17.1}%
+\contentsline {subsection}{\numberline {4.17.2}Variable Documentation}{47}{subsection.4.17.2}%
+\contentsline {subsubsection}{\numberline {4.17.2.1}filter\_taps}{47}{subsubsection.4.17.2.1}%
+\contentsline {section}{\numberline {4.18}lowpass\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}16k\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Filter.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{47}{section.4.18}%
+\contentsline {section}{\numberline {4.19}f401\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}display\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}encoder\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}fader\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}test/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Core/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Inc/main.h File Reference}{47}{section.4.19}%
+\contentsline {subsection}{\numberline {4.19.1}Detailed Description}{48}{subsection.4.19.1}%
+\contentsline {subsection}{\numberline {4.19.2}Function Documentation}{48}{subsection.4.19.2}%
+\contentsline {subsubsection}{\numberline {4.19.2.1}Error\_Handler()}{48}{subsubsection.4.19.2.1}%
+\contentsline {section}{\numberline {4.20}main.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{49}{section.4.20}%
+\contentsline {section}{\numberline {4.21}f401\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}sd\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}card\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}audio\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}codec\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}test/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Core/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Inc/main.h File Reference}{50}{section.4.21}%
+\contentsline {subsection}{\numberline {4.21.1}Detailed Description}{50}{subsection.4.21.1}%
+\contentsline {subsection}{\numberline {4.21.2}Function Documentation}{50}{subsection.4.21.2}%
+\contentsline {subsubsection}{\numberline {4.21.2.1}Error\_Handler()}{50}{subsubsection.4.21.2.1}%
+\contentsline {section}{\numberline {4.22}main.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{51}{section.4.22}%
+\contentsline {section}{\numberline {4.23}util.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{52}{section.4.23}%
+\contentsline {section}{\numberline {4.24}util.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{52}{section.4.24}%
+\contentsline {section}{\numberline {4.25}f401\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}sd\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}card\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}audio\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}codec\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}test/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Core/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Inc/wav\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Player.h File Reference}{52}{section.4.25}%
+\contentsline {subsection}{\numberline {4.25.1}Detailed Description}{53}{subsection.4.25.1}%
+\contentsline {subsection}{\numberline {4.25.2}Typedef Documentation}{53}{subsection.4.25.2}%
+\contentsline {subsubsection}{\numberline {4.25.2.1}wav\_header\_t}{53}{subsubsection.4.25.2.1}%
+\contentsline {subsubsection}{\numberline {4.25.2.2}WavPlayer}{53}{subsubsection.4.25.2.2}%
+\contentsline {subsection}{\numberline {4.25.3}Function Documentation}{53}{subsection.4.25.3}%
+\contentsline {subsubsection}{\numberline {4.25.3.1}checkWav()}{53}{subsubsection.4.25.3.1}%
+\contentsline {subsubsection}{\numberline {4.25.3.2}initPlayer()}{54}{subsubsection.4.25.3.2}%
+\contentsline {subsubsection}{\numberline {4.25.3.3}playButtonHandler()}{54}{subsubsection.4.25.3.3}%
+\contentsline {subsubsection}{\numberline {4.25.3.4}populateWavHeader()}{54}{subsubsection.4.25.3.4}%
+\contentsline {subsubsection}{\numberline {4.25.3.5}wavLoad()}{55}{subsubsection.4.25.3.5}%
+\contentsline {subsubsection}{\numberline {4.25.3.6}wavPlay()}{55}{subsubsection.4.25.3.6}%
+\contentsline {subsubsection}{\numberline {4.25.3.7}wavPlayPitched()}{55}{subsubsection.4.25.3.7}%
+\contentsline {section}{\numberline {4.26}wav\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Player.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{56}{section.4.26}%
+\contentsline {section}{\numberline {4.27}f401\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}sd\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}card\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}audio\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}codec\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}test/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Core/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Src/audio.c File Reference}{56}{section.4.27}%
+\contentsline {subsection}{\numberline {4.27.1}Detailed Description}{57}{subsection.4.27.1}%
+\contentsline {subsection}{\numberline {4.27.2}Function Documentation}{57}{subsection.4.27.2}%
+\contentsline {subsubsection}{\numberline {4.27.2.1}fillHalfBufferFromSD()}{57}{subsubsection.4.27.2.1}%
+\contentsline {subsubsection}{\numberline {4.27.2.2}generateSineWave()}{58}{subsubsection.4.27.2.2}%
+\contentsline {subsubsection}{\numberline {4.27.2.3}HAL\_I2S\_TxCpltCallback()}{58}{subsubsection.4.27.2.3}%
+\contentsline {subsubsection}{\numberline {4.27.2.4}HAL\_I2S\_TxHalfCpltCallback()}{58}{subsubsection.4.27.2.4}%
+\contentsline {subsubsection}{\numberline {4.27.2.5}setPitchFactor()}{59}{subsubsection.4.27.2.5}%
+\contentsline {section}{\numberline {4.28}f401\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}sd\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}card\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}audio\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}codec\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}test/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Core/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Src/audio\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Preprocessor.c File Reference}{59}{section.4.28}%
+\contentsline {subsection}{\numberline {4.28.1}Detailed Description}{60}{subsection.4.28.1}%
+\contentsline {subsection}{\numberline {4.28.2}Function Documentation}{60}{subsection.4.28.2}%
+\contentsline {subsubsection}{\numberline {4.28.2.1}downsample\_Block()}{60}{subsubsection.4.28.2.1}%
+\contentsline {subsubsection}{\numberline {4.28.2.2}downsample\_to\_1024\_samples()}{60}{subsubsection.4.28.2.2}%
+\contentsline {subsubsection}{\numberline {4.28.2.3}get\_number\_subsamples()}{60}{subsubsection.4.28.2.3}%
+\contentsline {subsubsection}{\numberline {4.28.2.4}initFilter()}{61}{subsubsection.4.28.2.4}%
+\contentsline {subsubsection}{\numberline {4.28.2.5}resampleFile()}{61}{subsubsection.4.28.2.5}%
+\contentsline {section}{\numberline {4.29}f401\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}sd\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}card\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}audio\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}codec\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}test/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Core/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Src/cpu\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}time.c File Reference}{62}{section.4.29}%
+\contentsline {subsection}{\numberline {4.29.1}Detailed Description}{62}{subsection.4.29.1}%
+\contentsline {subsection}{\numberline {4.29.2}Function Documentation}{62}{subsection.4.29.2}%
+\contentsline {subsubsection}{\numberline {4.29.2.1}CyclesToMicroseconds()}{62}{subsubsection.4.29.2.1}%
+\contentsline {subsubsection}{\numberline {4.29.2.2}CyclesToMilliseconds()}{63}{subsubsection.4.29.2.2}%
+\contentsline {subsubsection}{\numberline {4.29.2.3}EnableDWT()}{63}{subsubsection.4.29.2.3}%
+\contentsline {subsubsection}{\numberline {4.29.2.4}GetMeasuredCycles()}{63}{subsubsection.4.29.2.4}%
+\contentsline {subsubsection}{\numberline {4.29.2.5}StartCycleMeasurement()}{64}{subsubsection.4.29.2.5}%
+\contentsline {subsubsection}{\numberline {4.29.2.6}StopCycleMeasurement()}{64}{subsubsection.4.29.2.6}%
+\contentsline {section}{\numberline {4.30}f401\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}sd\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}card\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}audio\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}codec\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}test/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Core/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Src/lowpass\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}16k\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Filter.c File Reference}{64}{section.4.30}%
+\contentsline {subsection}{\numberline {4.30.1}Detailed Description}{64}{subsection.4.30.1}%
+\contentsline {subsection}{\numberline {4.30.2}Variable Documentation}{64}{subsection.4.30.2}%
+\contentsline {subsubsection}{\numberline {4.30.2.1}filter\_taps}{64}{subsubsection.4.30.2.1}%
+\contentsline {section}{\numberline {4.31}f401\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}display\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}encoder\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}fader\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}test/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Core/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Src/main.c File Reference}{65}{section.4.31}%
+\contentsline {subsection}{\numberline {4.31.1}Detailed Description}{66}{subsection.4.31.1}%
+\contentsline {subsection}{\numberline {4.31.2}Function Documentation}{66}{subsection.4.31.2}%
+\contentsline {subsubsection}{\numberline {4.31.2.1}Error\_Handler()}{66}{subsubsection.4.31.2.1}%
+\contentsline {subsubsection}{\numberline {4.31.2.2}main()}{66}{subsubsection.4.31.2.2}%
+\contentsline {subsubsection}{\numberline {4.31.2.3}SystemClock\_Config()}{67}{subsubsection.4.31.2.3}%
+\contentsline {subsubsection}{\numberline {4.31.2.4}writeStringToFile()}{67}{subsubsection.4.31.2.4}%
+\contentsline {subsection}{\numberline {4.31.3}Variable Documentation}{68}{subsection.4.31.3}%
+\contentsline {subsubsection}{\numberline {4.31.3.1}adcBuffer}{68}{subsubsection.4.31.3.1}%
+\contentsline {subsubsection}{\numberline {4.31.3.2}adcDmaFlag}{68}{subsubsection.4.31.3.2}%
+\contentsline {subsubsection}{\numberline {4.31.3.3}fileNamesSDCard}{68}{subsubsection.4.31.3.3}%
+\contentsline {subsubsection}{\numberline {4.31.3.4}fm}{68}{subsubsection.4.31.3.4}%
+\contentsline {subsubsection}{\numberline {4.31.3.5}fno}{68}{subsubsection.4.31.3.5}%
+\contentsline {subsubsection}{\numberline {4.31.3.6}lfn}{69}{subsubsection.4.31.3.6}%
+\contentsline {section}{\numberline {4.32}f401\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}sd\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}card\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}audio\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}codec\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}test/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Core/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Src/main.c File Reference}{69}{section.4.32}%
+\contentsline {subsection}{\numberline {4.32.1}Detailed Description}{69}{subsection.4.32.1}%
+\contentsline {subsection}{\numberline {4.32.2}Function Documentation}{70}{subsection.4.32.2}%
+\contentsline {subsubsection}{\numberline {4.32.2.1}Error\_Handler()}{70}{subsubsection.4.32.2.1}%
+\contentsline {subsubsection}{\numberline {4.32.2.2}main()}{70}{subsubsection.4.32.2.2}%
+\contentsline {subsubsection}{\numberline {4.32.2.3}SystemClock\_Config()}{70}{subsubsection.4.32.2.3}%
+\contentsline {section}{\numberline {4.33}f401\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}sd\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}card\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}audio\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}codec\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}test/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Core/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Src/util.c File Reference}{71}{section.4.33}%
+\contentsline {subsection}{\numberline {4.33.1}Detailed Description}{71}{subsection.4.33.1}%
+\contentsline {subsection}{\numberline {4.33.2}Function Documentation}{71}{subsection.4.33.2}%
+\contentsline {subsubsection}{\numberline {4.33.2.1}uart\_printf()}{71}{subsubsection.4.33.2.1}%
+\contentsline {section}{\numberline {4.34}f401\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}sd\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}card\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}audio\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}codec\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}test/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Core/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Src/wav\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Player.c File Reference}{72}{section.4.34}%
+\contentsline {subsection}{\numberline {4.34.1}Detailed Description}{72}{subsection.4.34.1}%
+\contentsline {subsection}{\numberline {4.34.2}Function Documentation}{72}{subsection.4.34.2}%
+\contentsline {subsubsection}{\numberline {4.34.2.1}checkWav()}{72}{subsubsection.4.34.2.1}%
+\contentsline {subsubsection}{\numberline {4.34.2.2}initPlayer()}{73}{subsubsection.4.34.2.2}%
+\contentsline {subsubsection}{\numberline {4.34.2.3}playButtonHandler()}{73}{subsubsection.4.34.2.3}%
+\contentsline {subsubsection}{\numberline {4.34.2.4}populateWavHeader()}{73}{subsubsection.4.34.2.4}%
+\contentsline {subsubsection}{\numberline {4.34.2.5}wavLoad()}{74}{subsubsection.4.34.2.5}%
+\contentsline {subsubsection}{\numberline {4.34.2.6}wavPlay()}{74}{subsubsection.4.34.2.6}%
+\contentsline {subsubsection}{\numberline {4.34.2.7}wavPlayPitched()}{74}{subsubsection.4.34.2.7}%
+\contentsline {section}{\numberline {4.35}neuronal\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}network/esp\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}cubeai\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}for\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}integration/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Core/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Src/audio\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}classification.c File Reference}{75}{section.4.35}%
+\contentsline {subsection}{\numberline {4.35.1}Detailed Description}{76}{subsection.4.35.1}%
+\contentsline {subsection}{\numberline {4.35.2}Function Documentation}{76}{subsection.4.35.2}%
+\contentsline {subsubsection}{\numberline {4.35.2.1}calculate\_spectrogram\_column()}{76}{subsubsection.4.35.2.1}%
+\contentsline {subsubsection}{\numberline {4.35.2.2}calculate\_total\_classification\_result()}{77}{subsubsection.4.35.2.2}%
+\contentsline {subsubsection}{\numberline {4.35.2.3}classify\_file()}{77}{subsubsection.4.35.2.3}%
+\contentsline {subsubsection}{\numberline {4.35.2.4}de\_init\_nn()}{77}{subsubsection.4.35.2.4}%
+\contentsline {subsubsection}{\numberline {4.35.2.5}init\_nn()}{78}{subsubsection.4.35.2.5}%
+\contentsline {subsubsection}{\numberline {4.35.2.6}run\_nn\_classification()}{78}{subsubsection.4.35.2.6}%
+\contentsline {subsubsection}{\numberline {4.35.2.7}spectrogram\_generation\_init()}{78}{subsubsection.4.35.2.7}%
+\contentsline {subsubsection}{\numberline {4.35.2.8}spectrogram\_power\_to\_db()}{79}{subsubsection.4.35.2.8}%
+\contentsline {subsubsection}{\numberline {4.35.2.9}store\_classification\_result()}{79}{subsubsection.4.35.2.9}%
+\contentsline {subsection}{\numberline {4.35.3}Variable Documentation}{79}{subsection.4.35.3}%
+\contentsline {subsubsection}{\numberline {4.35.3.1}aiOutDataLabels}{79}{subsubsection.4.35.3.1}%
+\contentsline {chapter}{Index}{81}{section*.51}%

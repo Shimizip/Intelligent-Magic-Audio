@@ -1,0 +1,56 @@
+\doxysection{audio.\+h}
+\hypertarget{audio_8h_source}{}\label{audio_8h_source}\index{f401\_sd\_card\_audio\_codec\_test/Core/Inc/audio.h@{f401\_sd\_card\_audio\_codec\_test/Core/Inc/audio.h}}
+\mbox{\hyperlink{audio_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#ifndef\ INC\_AUDIO\_H\_}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#define\ INC\_AUDIO\_H\_}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <stdbool.h>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <math.h>}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{f401__sd__card__audio__codec__test_2Core_2Inc_2main_8h}{main.h}}"{}}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}fatfs.h"{}}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ "{}stm32f4xx\_hal\_i2s\_ex.h"{}}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{wavPlayer_8h}{wavPlayer.h}}"{}}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#ifndef\ M\_PI}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#define\ M\_PI\ 3.14159265358979323846}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#define\ BUFFER\_SIZE\ 256}}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00028\ \textcolor{preprocessor}{\#define\ HALF\_BUFFER\_SIZE\ (BUFFER\_SIZE\ /\ 2)}}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00033\ \textcolor{preprocessor}{\#define\ BUFFER\_SIZE\_INPUT\ 4096}}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \textcolor{keyword}{extern}\ I2S\_HandleTypeDef\ hi2s2;}
+\DoxyCodeLine{00036\ \textcolor{keyword}{extern}\ int16\_t\ dacData[\mbox{\hyperlink{audio_8h_a6b20d41d6252e9871430c242cb1a56e7}{BUFFER\_SIZE}}];}
+\DoxyCodeLine{00037\ \textcolor{keyword}{extern}\ int16\_t\ fileReadBuf[\mbox{\hyperlink{audio_8h_ac462a6384d0c07c9748976a66d7cb761}{BUFFER\_SIZE\_INPUT}}];\ \textcolor{comment}{//\ actually\ for\ one\ halfBuffer,\ now\ is\ =\ BUFFER\_SIZE,\ to\ allow\ 2x\ playback\ speed}}
+\DoxyCodeLine{00038\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{bool}\ dma\_dataReady;}
+\DoxyCodeLine{00039\ \textcolor{keyword}{extern}\ \textcolor{keyword}{volatile}\ int16\_t\ *outBufPtr;}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ \textcolor{keyword}{extern}\ \textcolor{keyword}{volatile}\ \textcolor{keywordtype}{float}\ pitchFactor;}
+\DoxyCodeLine{00042\ \textcolor{keyword}{extern}\ \textcolor{keyword}{volatile}\ \textcolor{keywordtype}{bool}\ pitchChanged;}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structWavPlayer}{WavPlayer}};}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \textcolor{comment}{//\ Callbacks\ for\ DMA\ Complete}}
+\DoxyCodeLine{00047\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{audio_8h_a5bef3c73683b81e822368c9029e495bc}{HAL\_I2S\_TxHalfCpltCallback}}(I2S\_HandleTypeDef\ *hi2s);}
+\DoxyCodeLine{00048\ \textcolor{keywordtype}{void}\ HAL\_I2SS\_TxCpltCallback(I2S\_HandleTypeDef\ *hi2s);}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00050\ \textcolor{comment}{//\ fills\ half\ of\ the\ buffer\ with\ next\ chunk\ of\ data\ from\ file}}
+\DoxyCodeLine{00051\ \textcolor{comment}{//\ returns\ the\ number\ of\ bytes\ read}}
+\DoxyCodeLine{00052\ uint16\_t\ \mbox{\hyperlink{audio_8h_a5c729ff330f3962edeee7f29892a7e06}{fillHalfBufferFromSD}}(\textcolor{keyword}{struct}\ \mbox{\hyperlink{structWavPlayer}{WavPlayer}}\ *player,\ \textcolor{keywordtype}{bool}\ pitched);}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ \textcolor{comment}{//\ Test\ Functions}}
+\DoxyCodeLine{00055\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{audio_8h_aa4c711f3eafe603209a8799713c0e3fa}{generateSineWave}}(\textcolor{keywordtype}{double}\ frequency);}
+\DoxyCodeLine{00056\ \textcolor{keywordtype}{void}\ initSineTable();}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00058\ \textcolor{comment}{//\ Pitch\ functions}}
+\DoxyCodeLine{00059\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{audio_8h_a4a83b5cae5b3b91dbcee7c3665ec5400}{setPitchFactor}}(\textcolor{keywordtype}{float}\ newPitchFactor);}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00061\ int16\_t\ interpolate(int16\_t\ *buffer,\ \textcolor{keywordtype}{float}\ index);}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00063\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ INC\_AUDIO\_H\_\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

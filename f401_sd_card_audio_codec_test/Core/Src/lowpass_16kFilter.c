@@ -1,3 +1,12 @@
+/**
+ * @file lowpass_16kFilter.c
+ * @brief Contains the filter coefficients for a 16 kHz low-pass FIR filter.
+ * 
+ * This file defines an array of filter coefficients used in a finite impulse 
+ * response (FIR) filter. The filter is designed for low-pass filtering with a 
+ * cutoff frequency suitable for 16 kHz sampled audio or signal data.
+ */
+
 #include "lowpass_16kFilter.h"
 
 /**

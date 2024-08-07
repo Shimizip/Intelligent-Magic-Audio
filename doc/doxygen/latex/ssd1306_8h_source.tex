@@ -1,0 +1,99 @@
+\doxysection{ssd1306.\+h}
+\hypertarget{ssd1306_8h_source}{}\label{ssd1306_8h_source}\index{f401\_display\_encoder\_fader\_test/Core/Inc/ssd1306.h@{f401\_display\_encoder\_fader\_test/Core/Inc/ssd1306.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#ifndef\ \_SSD1306\_H}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#define\ \_SSD1306\_H}}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ "{}stm32f4xx\_hal.h"{}}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ "{}fonts.h"{}}}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \textcolor{comment}{//\ I2c\ address}}
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#ifndef\ SSD1306\_I2C\_ADDR}}
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#define\ SSD1306\_I2C\_ADDR\ \ \ \ \ \ \ \ 0x78}}
+\DoxyCodeLine{00024\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ SSD1306\_I2C\_ADDR}}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \textcolor{comment}{//\ SSD1306\ width\ in\ pixels}}
+\DoxyCodeLine{00027\ \textcolor{preprocessor}{\#ifndef\ SSD1306\_WIDTH}}
+\DoxyCodeLine{00028\ \textcolor{preprocessor}{\#define\ SSD1306\_WIDTH\ \ \ \ \ \ \ \ \ \ \ 128}}
+\DoxyCodeLine{00029\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ SSD1306\_WIDTH}}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \textcolor{comment}{//\ SSD1306\ LCD\ height\ in\ pixels}}
+\DoxyCodeLine{00032\ \textcolor{preprocessor}{\#ifndef\ SSD1306\_HEIGHT}}
+\DoxyCodeLine{00033\ \textcolor{preprocessor}{\#define\ SSD1306\_HEIGHT\ \ \ \ \ \ \ \ \ \ 128}}
+\DoxyCodeLine{00034\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ SSD1306\_HEIGHT}}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \textcolor{preprocessor}{\#ifndef\ SSD1306\_COM\_LR\_REMAP}}
+\DoxyCodeLine{00037\ \textcolor{preprocessor}{\#define\ SSD1306\_COM\_LR\_REMAP\ \ \ \ 0}}
+\DoxyCodeLine{00038\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ SSD1306\_COM\_LR\_REMAP}}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \textcolor{preprocessor}{\#ifndef\ SSD1306\_COM\_ALTERNATIVE\_PIN\_CONFIG}}
+\DoxyCodeLine{00041\ \textcolor{preprocessor}{\#define\ SSD1306\_COM\_ALTERNATIVE\_PIN\_CONFIG\ \ \ \ 1}}
+\DoxyCodeLine{00042\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ SSD1306\_COM\_ALTERNATIVE\_PIN\_CONFIG}}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ \textcolor{preprocessor}{\#define\ SH110X\_MEMORYMODE\ 0x20\ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00046\ \textcolor{preprocessor}{\#define\ SH110X\_COLUMNADDR\ 0x21\ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00047\ \textcolor{preprocessor}{\#define\ SH110X\_PAGEADDR\ 0x22\ \ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00048\ \textcolor{preprocessor}{\#define\ SH110X\_SETCONTRAST\ 0x81\ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00049\ \textcolor{preprocessor}{\#define\ SH110X\_CHARGEPUMP\ 0x8D\ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00050\ \textcolor{preprocessor}{\#define\ SH110X\_SEGREMAP\ 0xA0\ \ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00051\ \textcolor{preprocessor}{\#define\ SH110X\_DISPLAYALLON\_RESUME\ 0xA4\ }}
+\DoxyCodeLine{00052\ \textcolor{preprocessor}{\#define\ SH110X\_DISPLAYALLON\ 0xA5\ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00053\ \textcolor{preprocessor}{\#define\ SH110X\_NORMALDISPLAY\ 0xA6\ \ \ \ \ \ \ }}
+\DoxyCodeLine{00054\ \textcolor{preprocessor}{\#define\ SH110X\_INVERTDISPLAY\ 0xA7\ \ \ \ \ \ \ }}
+\DoxyCodeLine{00055\ \textcolor{preprocessor}{\#define\ SH110X\_SETMULTIPLEX\ 0xA8\ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00056\ \textcolor{preprocessor}{\#define\ SH110X\_DCDC\ 0xAD\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00057\ \textcolor{preprocessor}{\#define\ SH110X\_DISPLAYOFF\ 0xAE\ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00058\ \textcolor{preprocessor}{\#define\ SH110X\_DISPLAYON\ 0xAF\ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00059\ \textcolor{preprocessor}{\#define\ SH110X\_SETPAGEADDR\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00060\ \textcolor{preprocessor}{\ \ 0xB0\ }}
+\DoxyCodeLine{00062\ \textcolor{preprocessor}{\#define\ SH110X\_COMSCANINC\ 0xC0\ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00063\ \textcolor{preprocessor}{\#define\ SH110X\_COMSCANDEC\ 0xC8\ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00064\ \textcolor{preprocessor}{\#define\ SH110X\_SETDISPLAYOFFSET\ 0xD3\ \ \ }}
+\DoxyCodeLine{00065\ \textcolor{preprocessor}{\#define\ SH110X\_SETDISPLAYCLOCKDIV\ 0xD5\ }}
+\DoxyCodeLine{00066\ \textcolor{preprocessor}{\#define\ SH110X\_SETPRECHARGE\ 0xD9\ \ \ \ \ \ \ }}
+\DoxyCodeLine{00067\ \textcolor{preprocessor}{\#define\ SH110X\_SETCOMPINS\ 0xDA\ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00068\ \textcolor{preprocessor}{\#define\ SH110X\_SETVCOMDETECT\ 0xDB\ \ \ \ \ \ }}
+\DoxyCodeLine{00069\ \textcolor{preprocessor}{\#define\ SH110X\_SETDISPSTARTLINE\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00070\ \textcolor{preprocessor}{\ \ 0xDC\ }}
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00073\ \textcolor{preprocessor}{\#define\ SH110X\_SETLOWCOLUMN\ 0x00\ \ }}
+\DoxyCodeLine{00074\ \textcolor{preprocessor}{\#define\ SH110X\_SETHIGHCOLUMN\ 0x10\ }}
+\DoxyCodeLine{00075\ \textcolor{preprocessor}{\#define\ SH110X\_SETSTARTLINE\ 0x40\ \ }}
+\DoxyCodeLine{00076\ }
+\DoxyCodeLine{00077\ \textcolor{comment}{//}}
+\DoxyCodeLine{00078\ \textcolor{comment}{//\ \ Enumeration\ for\ screen\ colors}}
+\DoxyCodeLine{00079\ \textcolor{comment}{//}}
+\DoxyCodeLine{00080\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \{}
+\DoxyCodeLine{00081\ \ \ \ \ Black\ =\ 0x00,\ \ \ \textcolor{comment}{//\ Black\ color,\ no\ pixel}}
+\DoxyCodeLine{00082\ \ \ \ \ White\ =\ 0x01,\ \ \ \textcolor{comment}{//\ Pixel\ is\ set.\ Color\ depends\ on\ LCD}}
+\DoxyCodeLine{00083\ \}\ SSD1306\_COLOR;}
+\DoxyCodeLine{00084\ }
+\DoxyCodeLine{00085\ \textcolor{comment}{//}}
+\DoxyCodeLine{00086\ \textcolor{comment}{//\ \ Struct\ to\ store\ transformations}}
+\DoxyCodeLine{00087\ \textcolor{comment}{//}}
+\DoxyCodeLine{00088\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00089\ \ \ \ \ uint16\_t\ CurrentX;}
+\DoxyCodeLine{00090\ \ \ \ \ uint16\_t\ CurrentY;}
+\DoxyCodeLine{00091\ \ \ \ \ uint8\_t\ Inverted;}
+\DoxyCodeLine{00092\ \ \ \ \ uint8\_t\ Initialized;}
+\DoxyCodeLine{00093\ \}\ \mbox{\hyperlink{structSSD1306__t}{SSD1306\_t}};}
+\DoxyCodeLine{00094\ }
+\DoxyCodeLine{00095\ \textcolor{comment}{//}}
+\DoxyCodeLine{00096\ \textcolor{comment}{//\ \ Function\ definitions}}
+\DoxyCodeLine{00097\ \textcolor{comment}{//}}
+\DoxyCodeLine{00098\ }
+\DoxyCodeLine{00099\ uint8\_t\ ssd1306\_Init(I2C\_HandleTypeDef\ *hi2c);}
+\DoxyCodeLine{00100\ \textcolor{keywordtype}{void}\ ssd1306\_UpdateScreen(I2C\_HandleTypeDef\ *hi2c);}
+\DoxyCodeLine{00101\ \textcolor{keywordtype}{void}\ ssd1306\_Fill(SSD1306\_COLOR\ color);}
+\DoxyCodeLine{00102\ \textcolor{keywordtype}{void}\ ssd1306\_DrawPixel(uint8\_t\ x,\ uint8\_t\ y,\ SSD1306\_COLOR\ color);}
+\DoxyCodeLine{00103\ \textcolor{keywordtype}{char}\ ssd1306\_WriteChar(\textcolor{keywordtype}{char}\ ch,\ \mbox{\hyperlink{structFontDef}{FontDef}}\ Font,\ SSD1306\_COLOR\ color);}
+\DoxyCodeLine{00104\ \textcolor{keywordtype}{char}\ ssd1306\_WriteString(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ str,\ \mbox{\hyperlink{structFontDef}{FontDef}}\ Font,\ SSD1306\_COLOR\ color);}
+\DoxyCodeLine{00105\ \textcolor{keywordtype}{void}\ ssd1306\_SetCursor(uint8\_t\ x,\ uint8\_t\ y);}
+\DoxyCodeLine{00106\ \textcolor{keywordtype}{void}\ ssd1306\_InvertColors(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00107\ }
+\DoxyCodeLine{00108\ \textcolor{preprocessor}{\#endif\ \ }\textcolor{comment}{//\ \_SSD1306\_H}}
+
+\end{DoxyCode}

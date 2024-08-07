@@ -1,0 +1,72 @@
+\doxysection{interface.\+h}
+\hypertarget{interface_8h_source}{}\label{interface_8h_source}\index{f401\_display\_encoder\_fader\_test/Core/Inc/interface.h@{f401\_display\_encoder\_fader\_test/Core/Inc/interface.h}}
+\mbox{\hyperlink{interface_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#include\ <stdlib.h>}}
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#include\ <stdbool.h>}}
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#include\ "{}ssd1306.h"{}}}
+\DoxyCodeLine{00024\ \textcolor{preprocessor}{\#include\ "{}fonts.h"{}}}
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{display_8h}{display.h}}"{}}}
+\DoxyCodeLine{00026\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{filemanager_8h}{filemanager.h}}"{}}}
+\DoxyCodeLine{00027\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{f401__display__encoder__fader__test_2Core_2Inc_2main_8h}{main.h}}"{}}}
+\DoxyCodeLine{00028\ \textcolor{preprocessor}{\#include\ "{}ff.h"{}}}
+\DoxyCodeLine{00029\ \textcolor{preprocessor}{\#include\ "{}util.h"{}}}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00038\ \textcolor{preprocessor}{\#define\ THREASHOLD\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0.1f\ }}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \textcolor{preprocessor}{\#define\ EXISTS\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0\ }}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ \textcolor{preprocessor}{\#define\ NOT\_EXISTS\ \ \ \ \ \ \ \ \ \ \ \ \ \ -\/1\ }}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \textcolor{preprocessor}{\#define\ SAME\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0\ }}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \textcolor{preprocessor}{\#define\ NOT\_SAME\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ -\/1\ }}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \textcolor{preprocessor}{\#define\ SMOOTHING\_HEIGHT\ \ \ \ \ \ \ \ 30000\ }}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00051\ \textcolor{comment}{//extern\ parameters\ from\ main}}
+\DoxyCodeLine{00052\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ \textcolor{keyword}{extern}\ ADC\_HandleTypeDef\ hadc1;}
+\DoxyCodeLine{00055\ \textcolor{keyword}{extern}\ DMA\_HandleTypeDef\ hdma\_adc1;}
+\DoxyCodeLine{00056\ \textcolor{keyword}{extern}\ I2C\_HandleTypeDef\ hi2c1;}
+\DoxyCodeLine{00057\ \textcolor{keyword}{extern}\ TIM\_HandleTypeDef\ htim3;}
+\DoxyCodeLine{00058\ \textcolor{keyword}{extern}\ TIM\_HandleTypeDef\ htim5;}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00060\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{structFileManager}{FileManager}}\ \mbox{\hyperlink{interface_8h_a48052dfd7ff5a05459e719f9a2fc027c}{fm}};}
+\DoxyCodeLine{00061\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{structFileManager}{FileManager}}\ \mbox{\hyperlink{interface_8h_a110e4609fe3ee5f08731067a68092045}{fmCopy}};}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00063\ \textcolor{keyword}{extern}\ FATFS\ \mbox{\hyperlink{interface_8h_a8f47e042c2aca024c6534fdf5c3d9426}{FatFs}};}
+\DoxyCodeLine{00064\ \textcolor{keyword}{extern}\ FILINFO\ \mbox{\hyperlink{interface_8h_adb2adf9b3f315041beb78852fa37a984}{fno}};}
+\DoxyCodeLine{00065\ \textcolor{keyword}{extern}\ DIR\ \mbox{\hyperlink{interface_8h_aa59fe1cb43760885aa78301453764fe0}{dir}};}
+\DoxyCodeLine{00066\ \textcolor{keyword}{extern}\ FRESULT\ \mbox{\hyperlink{interface_8h_a66029510323ef6f0b9dc59dea22098e5}{fres}};}
+\DoxyCodeLine{00067\ \textcolor{keyword}{extern}\ FIL\ \mbox{\hyperlink{interface_8h_a296b3c88b34a2294d0bd990ac963543b}{file}};}
+\DoxyCodeLine{00068\ }
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00070\ \textcolor{keyword}{extern}\ uint32\_t\ \mbox{\hyperlink{interface_8h_a84c9ecdab5e9141199fe9bc145095407}{adcBuffer}}[NUM\_CHANNELS];}
+\DoxyCodeLine{00071\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{char}\ \mbox{\hyperlink{interface_8h_a7c55b937e7340a9ce495107f5846891b}{fileNamesSDCard}}[\mbox{\hyperlink{filemanager_8h_a2c5eecb22513a88c24ae5831a3265e54}{MAX\_FILES}}][MAX\_FILENAME\_LENGTH];}
+\DoxyCodeLine{00072\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{interface_8h_aa5d2c07c787632f6cb91886c1713fc2c}{fileCount}};}
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00074\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{interface_8h_a8ba3e8d7110b9284c65a67cce453ad9e}{adcDmaFlag}};}
+\DoxyCodeLine{00075\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{interface_8h_a764562b24eaa039f43dba17f7fdbfce9}{updateScreenFlag}};}
+\DoxyCodeLine{00076\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{interface_8h_a3303243505ff4e4d3f9339ec7dee7544}{sortFilesFlag}};}
+\DoxyCodeLine{00077\ }
+\DoxyCodeLine{00078\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00079\ }
+\DoxyCodeLine{00080\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{interface_8h_af20a88180db1113be1e89266917d148b}{HAL\_ADC\_ConvCpltCallback}}(ADC\_HandleTypeDef*\ hadc);}
+\DoxyCodeLine{00081\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{interface_8h_a0cd91fd3a9608559c2a87a8ba6cba55f}{HAL\_GPIO\_EXTI\_Callback}}(uint16\_t\ GPIO\_Pin);}
+\DoxyCodeLine{00082\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{interface_8h_a8a3b0ad512a6e6c6157440b68d395eac}{HAL\_TIM\_PeriodElapsedCallback}}(TIM\_HandleTypeDef\ *htim);}
+\DoxyCodeLine{00083\ }
+\DoxyCodeLine{00084\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{interface_8h_a3ce89a950d7397271c896ef778373d7e}{screenInit}}(\textcolor{keywordtype}{char}\ (*fileNames)[MAX\_FILENAME\_LENGTH]);}
+\DoxyCodeLine{00085\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{interface_8h_a613aa0c99c5b2234f909f5f8b0cdc972}{updateScreen}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00086\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{interface_8h_af18dbb5e3f6d43a5504216e1f427cfdd}{sortFiles}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00087\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{interface_8h_aa5a2a772fa51a752d6fbe6d902aa4bce}{compareADCValues}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00088\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{interface_8h_a8ba638cf01ae1b79501208d3ed35c394}{resetShownFiles}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00089\ \textcolor{keywordtype}{void}\ writeFileManagerOnSD(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00090\ \textcolor{keywordtype}{void}\ readFileManagerFromSD(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00091\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{interface_8h_a0a90e886ffd55777b46a49d913a49a6c}{listFiles}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *path);}
+\DoxyCodeLine{00092\ }
+
+\end{DoxyCode}

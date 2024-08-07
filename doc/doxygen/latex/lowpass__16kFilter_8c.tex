@@ -1,0 +1,32 @@
+\doxysection{f401\+\_\+sd\+\_\+card\+\_\+audio\+\_\+codec\+\_\+test/\+Core/\+Src/lowpass\+\_\+16k\+Filter.c File Reference}
+\hypertarget{lowpass__16kFilter_8c}{}\label{lowpass__16kFilter_8c}\index{f401\_sd\_card\_audio\_codec\_test/Core/Src/lowpass\_16kFilter.c@{f401\_sd\_card\_audio\_codec\_test/Core/Src/lowpass\_16kFilter.c}}
+
+
+Contains the filter coefficients for a 16 k\+Hz low-\/pass FIR filter.  
+
+
+{\ttfamily \#include "{}lowpass\+\_\+16k\+Filter.\+h"{}}\newline
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+float \mbox{\hyperlink{lowpass__16kFilter_8c_ad8d6372f3889cdb0e6c2dd3c07931a6c}{filter\+\_\+taps}} \mbox{[}\mbox{\hyperlink{lowpass__16kFilter_8h_a7579d94e0a80fb9d376ea6c7897f73b0}{NUM\+\_\+\+TAPS}}\mbox{]}
+\begin{DoxyCompactList}\small\item\em Array of filter coefficients for the FIR filter. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Contains the filter coefficients for a 16 k\+Hz low-\/pass FIR filter. 
+
+This file defines an array of filter coefficients used in a finite impulse response (FIR) filter. The filter is designed for low-\/pass filtering with a cutoff frequency suitable for 16 k\+Hz sampled audio or signal data. 
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{lowpass__16kFilter_8c_ad8d6372f3889cdb0e6c2dd3c07931a6c}\index{lowpass\_16kFilter.c@{lowpass\_16kFilter.c}!filter\_taps@{filter\_taps}}
+\index{filter\_taps@{filter\_taps}!lowpass\_16kFilter.c@{lowpass\_16kFilter.c}}
+\doxysubsubsection{\texorpdfstring{filter\_taps}{filter\_taps}}
+{\footnotesize\ttfamily \label{lowpass__16kFilter_8c_ad8d6372f3889cdb0e6c2dd3c07931a6c} 
+float filter\+\_\+taps\mbox{[}\mbox{\hyperlink{lowpass__16kFilter_8h_a7579d94e0a80fb9d376ea6c7897f73b0}{NUM\+\_\+\+TAPS}}\mbox{]}}
+
+
+
+Array of filter coefficients for the FIR filter. 
+
+Holds the coefficients used in the FIR filter. The size of the array is determined by {\ttfamily NUM\+\_\+\+TAPS}, which specifies the number of filter taps. These coefficients are used for filtering audio or signal data. 

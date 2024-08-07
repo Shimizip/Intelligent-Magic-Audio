@@ -1,0 +1,427 @@
+\doxysection{f401\+\_\+display\+\_\+encoder\+\_\+fader\+\_\+test/\+Core/\+Inc/interface.h File Reference}
+\hypertarget{interface_8h}{}\label{interface_8h}\index{f401\_display\_encoder\_fader\_test/Core/Inc/interface.h@{f401\_display\_encoder\_fader\_test/Core/Inc/interface.h}}
+
+
+\+: Header file for interface functions and global definitions  
+
+
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+{\ttfamily \#include "{}ssd1306.\+h"{}}\newline
+{\ttfamily \#include "{}fonts.\+h"{}}\newline
+{\ttfamily \#include "{}display.\+h"{}}\newline
+{\ttfamily \#include "{}filemanager.\+h"{}}\newline
+{\ttfamily \#include "{}main.\+h"{}}\newline
+{\ttfamily \#include "{}ff.\+h"{}}\newline
+{\ttfamily \#include "{}util.\+h"{}}\newline
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{interface_8h_a07403327e3eb3c5f2b1cdc3b2ece5a1b}{THREASHOLD}}~0.\+1f
+\begin{DoxyCompactList}\small\item\em Definitions for thresholds, existence checks, comparison results, and smoothing height. \end{DoxyCompactList}\item 
+\Hypertarget{interface_8h_a2d4a0d149ebe553d221448e121f84e37}\label{interface_8h_a2d4a0d149ebe553d221448e121f84e37} 
+\#define {\bfseries EXISTS}~0
+\begin{DoxyCompactList}\small\item\em Value indicating existence. \end{DoxyCompactList}\item 
+\Hypertarget{interface_8h_acf206975a08f0fda2b9ed60f5bc41f50}\label{interface_8h_acf206975a08f0fda2b9ed60f5bc41f50} 
+\#define {\bfseries NOT\+\_\+\+EXISTS}~-\/1
+\begin{DoxyCompactList}\small\item\em Value indicating non-\/existence. \end{DoxyCompactList}\item 
+\Hypertarget{interface_8h_a36ed1d495cff9aeeae2287660d7c4455}\label{interface_8h_a36ed1d495cff9aeeae2287660d7c4455} 
+\#define {\bfseries SAME}~0
+\begin{DoxyCompactList}\small\item\em Value indicating comparison result is the same. \end{DoxyCompactList}\item 
+\Hypertarget{interface_8h_ae61820dcbd445ac7c3241dede0491298}\label{interface_8h_ae61820dcbd445ac7c3241dede0491298} 
+\#define {\bfseries NOT\+\_\+\+SAME}~-\/1
+\begin{DoxyCompactList}\small\item\em Value indicating comparison result is different. \end{DoxyCompactList}\item 
+\Hypertarget{interface_8h_a6c6825b7c6cbab972109e736511cf433}\label{interface_8h_a6c6825b7c6cbab972109e736511cf433} 
+\#define {\bfseries SMOOTHING\+\_\+\+HEIGHT}~30000
+\begin{DoxyCompactList}\small\item\em Height value used for smoothing calculations. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{interface_8h_af20a88180db1113be1e89266917d148b}{HAL\+\_\+\+ADC\+\_\+\+Conv\+Cplt\+Callback}} (ADC\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}hadc)
+\begin{DoxyCompactList}\small\item\em Callback function for the ADC conversion. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{interface_8h_a0cd91fd3a9608559c2a87a8ba6cba55f}{HAL\+\_\+\+GPIO\+\_\+\+EXTI\+\_\+\+Callback}} (uint16\+\_\+t GPIO\+\_\+\+Pin)
+\begin{DoxyCompactList}\small\item\em Callback function that responds to encoder signals. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{interface_8h_a8a3b0ad512a6e6c6157440b68d395eac}{HAL\+\_\+\+TIM\+\_\+\+Period\+Elapsed\+Callback}} (TIM\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}htim)
+\begin{DoxyCompactList}\small\item\em Callback function triggered when a timer expires. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{interface_8h_a3ce89a950d7397271c896ef778373d7e}{screen\+Init}} (char(\texorpdfstring{$\ast$}{*}file\+Names)\mbox{[}MAX\+\_\+\+FILENAME\+\_\+\+LENGTH\mbox{]})
+\begin{DoxyCompactList}\small\item\em Initializes the screen and sets up the file manager with random class percentages. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{interface_8h_a613aa0c99c5b2234f909f5f8b0cdc972}{update\+Screen}} (void)
+\begin{DoxyCompactList}\small\item\em Updates the display with filenames, the currently selected file, and fader settings. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{interface_8h_af18dbb5e3f6d43a5504216e1f427cfdd}{sort\+Files}} (void)
+\begin{DoxyCompactList}\small\item\em Sorts filenames for display based on fader settings. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{interface_8h_aa5a2a772fa51a752d6fbe6d902aa4bce}{compare\+ADCValues}} (void)
+\begin{DoxyCompactList}\small\item\em Checks if fader settings have changed and updates accordingly. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{interface_8h_a8ba638cf01ae1b79501208d3ed35c394}{reset\+Shown\+Files}} (void)
+\begin{DoxyCompactList}\small\item\em Resets the {\ttfamily shown\+Files} array and updates the number of matched files. \end{DoxyCompactList}\item 
+\Hypertarget{interface_8h_aca22e5ccdba198907a9b2c14b1e93540}\label{interface_8h_aca22e5ccdba198907a9b2c14b1e93540} 
+void {\bfseries write\+File\+Manager\+On\+SD} (void)
+\item 
+\Hypertarget{interface_8h_a318a20be431d81388effc4f5c61549f1}\label{interface_8h_a318a20be431d81388effc4f5c61549f1} 
+void {\bfseries read\+File\+Manager\+From\+SD} (void)
+\item 
+void \mbox{\hyperlink{interface_8h_a0a90e886ffd55777b46a49d913a49a6c}{list\+Files}} (const char \texorpdfstring{$\ast$}{*}path)
+\begin{DoxyCompactList}\small\item\em Lists all filenames with a .wav extension from the specified directory on the SD card. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{interface_8h_a22b804736f5648d52f639b2647d4ed13}\label{interface_8h_a22b804736f5648d52f639b2647d4ed13} 
+ADC\+\_\+\+Handle\+Type\+Def {\bfseries hadc1}
+\item 
+\Hypertarget{interface_8h_a1c126854bb1813d31ab4776b21dcc51f}\label{interface_8h_a1c126854bb1813d31ab4776b21dcc51f} 
+DMA\+\_\+\+Handle\+Type\+Def {\bfseries hdma\+\_\+adc1}
+\item 
+\Hypertarget{interface_8h_af7b2c26e44dadaaa798a5c3d82914ba7}\label{interface_8h_af7b2c26e44dadaaa798a5c3d82914ba7} 
+I2\+C\+\_\+\+Handle\+Type\+Def {\bfseries hi2c1}
+\item 
+\Hypertarget{interface_8h_aac3d2c59ee0e3bbae1b99529a154eb62}\label{interface_8h_aac3d2c59ee0e3bbae1b99529a154eb62} 
+TIM\+\_\+\+Handle\+Type\+Def {\bfseries htim3}
+\item 
+\Hypertarget{interface_8h_acefaeaaa3856ddddae7083b2d220fe4b}\label{interface_8h_acefaeaaa3856ddddae7083b2d220fe4b} 
+TIM\+\_\+\+Handle\+Type\+Def {\bfseries htim5}
+\item 
+\mbox{\hyperlink{structFileManager}{File\+Manager}} \mbox{\hyperlink{interface_8h_a48052dfd7ff5a05459e719f9a2fc027c}{fm}}
+\begin{DoxyCompactList}\small\item\em \doxylink{structFileManager}{File\+Manager} instances for managing and testing files. \end{DoxyCompactList}\item 
+\Hypertarget{interface_8h_a110e4609fe3ee5f08731067a68092045}\label{interface_8h_a110e4609fe3ee5f08731067a68092045} 
+\mbox{\hyperlink{structFileManager}{File\+Manager}} {\bfseries fm\+Copy}
+\begin{DoxyCompactList}\small\item\em Copy of \doxylink{structFileManager}{File\+Manager} for testing purposes. \end{DoxyCompactList}\item 
+\Hypertarget{interface_8h_a8f47e042c2aca024c6534fdf5c3d9426}\label{interface_8h_a8f47e042c2aca024c6534fdf5c3d9426} 
+FATFS {\bfseries Fat\+Fs}
+\begin{DoxyCompactList}\small\item\em FATFS handle for the file system. \end{DoxyCompactList}\item 
+FILINFO \mbox{\hyperlink{interface_8h_adb2adf9b3f315041beb78852fa37a984}{fno}}
+\begin{DoxyCompactList}\small\item\em FATFS file system objects and handles. \end{DoxyCompactList}\item 
+\Hypertarget{interface_8h_aa59fe1cb43760885aa78301453764fe0}\label{interface_8h_aa59fe1cb43760885aa78301453764fe0} 
+DIR {\bfseries dir}
+\begin{DoxyCompactList}\small\item\em Directory handle for directory operations. \end{DoxyCompactList}\item 
+\Hypertarget{interface_8h_a66029510323ef6f0b9dc59dea22098e5}\label{interface_8h_a66029510323ef6f0b9dc59dea22098e5} 
+FRESULT {\bfseries fres}
+\begin{DoxyCompactList}\small\item\em Result of FATFS operations. \end{DoxyCompactList}\item 
+\Hypertarget{interface_8h_a296b3c88b34a2294d0bd990ac963543b}\label{interface_8h_a296b3c88b34a2294d0bd990ac963543b} 
+FIL {\bfseries file}
+\begin{DoxyCompactList}\small\item\em \doxylink{structFile}{File} object for FATFS. \end{DoxyCompactList}\item 
+uint32\+\_\+t \mbox{\hyperlink{interface_8h_a84c9ecdab5e9141199fe9bc145095407}{adc\+Buffer}} \mbox{[}NUM\+\_\+\+CHANNELS\mbox{]}
+\begin{DoxyCompactList}\small\item\em Buffer for ADC polling. \end{DoxyCompactList}\item 
+char \mbox{\hyperlink{interface_8h_a7c55b937e7340a9ce495107f5846891b}{file\+Names\+SDCard}} \mbox{[}\mbox{\hyperlink{filemanager_8h_a2c5eecb22513a88c24ae5831a3265e54}{MAX\+\_\+\+FILES}}\mbox{]}\mbox{[}MAX\+\_\+\+FILENAME\+\_\+\+LENGTH\mbox{]}
+\begin{DoxyCompactList}\small\item\em List of filenames on the SD card with .wav extension. \end{DoxyCompactList}\item 
+\Hypertarget{interface_8h_aa5d2c07c787632f6cb91886c1713fc2c}\label{interface_8h_aa5d2c07c787632f6cb91886c1713fc2c} 
+int {\bfseries file\+Count}
+\begin{DoxyCompactList}\small\item\em Counter for the number of .wav files found on the SD card. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{interface_8h_a8ba3e8d7110b9284c65a67cce453ad9e}{adc\+Dma\+Flag}}
+\begin{DoxyCompactList}\small\item\em Flags for managing time intervals and DMA operations. \end{DoxyCompactList}\item 
+\Hypertarget{interface_8h_a764562b24eaa039f43dba17f7fdbfce9}\label{interface_8h_a764562b24eaa039f43dba17f7fdbfce9} 
+bool {\bfseries update\+Screen\+Flag}
+\begin{DoxyCompactList}\small\item\em Flag to manage the time interval for display updates. \end{DoxyCompactList}\item 
+\Hypertarget{interface_8h_a3303243505ff4e4d3f9339ec7dee7544}\label{interface_8h_a3303243505ff4e4d3f9339ec7dee7544} 
+bool {\bfseries sort\+Files\+Flag}
+\begin{DoxyCompactList}\small\item\em Flag to regroup the shown file names. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\+: Header file for interface functions and global definitions 
+
+\begin{DoxyAttention}{Attention}
+
+\end{DoxyAttention}
+This file contains function prototypes and global definitions for managing user inputs, file operations, and display updates. It includes\+:
+\begin{DoxyItemize}
+\item Function prototypes for handling ADC conversions, GPIO interrupts, and timer callbacks.
+\item Functions for initializing the display, updating the screen, sorting files, comparing ADC values, resetting displayed files, and managing file storage on SD.
+\item Global variables and external references related to ADC, I2C, timer, file management, and display operations.
+\end{DoxyItemize}
+
+These functions and definitions are crucial for interfacing between the user inputs, display rendering, and file management system, ensuring smooth operation of the application. 
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{interface_8h_a07403327e3eb3c5f2b1cdc3b2ece5a1b}\index{interface.h@{interface.h}!THREASHOLD@{THREASHOLD}}
+\index{THREASHOLD@{THREASHOLD}!interface.h@{interface.h}}
+\doxysubsubsection{\texorpdfstring{THREASHOLD}{THREASHOLD}}
+{\footnotesize\ttfamily \label{interface_8h_a07403327e3eb3c5f2b1cdc3b2ece5a1b} 
+\#define THREASHOLD~0.\+1f}
+
+
+
+Definitions for thresholds, existence checks, comparison results, and smoothing height. 
+
+These macros are used for setting thresholds, checking existence, comparing results, and defining the height for smoothing calculations. Threashold value for class comparison 
+
+\doxysubsection{Function Documentation}
+\Hypertarget{interface_8h_aa5a2a772fa51a752d6fbe6d902aa4bce}\index{interface.h@{interface.h}!compareADCValues@{compareADCValues}}
+\index{compareADCValues@{compareADCValues}!interface.h@{interface.h}}
+\doxysubsubsection{\texorpdfstring{compareADCValues()}{compareADCValues()}}
+{\footnotesize\ttfamily \label{interface_8h_aa5a2a772fa51a752d6fbe6d902aa4bce} 
+void compare\+ADCValues (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Checks if fader settings have changed and updates accordingly. 
+
+This function compares the current fader settings with previous values to determine if any changes have occurred. If changes are detected, it performs the following actions\+:
+
+
+\begin{DoxyItemize}
+\item Compares the current and past fader settings.
+\item Updates the past fader settings with the current values if a change is detected.
+\item Sets a flag to indicate that the file list needs to be sorted.
+\item Saves the current filename and clears the {\ttfamily shown\+Files} array if a change is detected.
+\end{DoxyItemize}
+
+\begin{DoxyNote}{Note}
+This function uses global variables for fader settings and file management. 
+\end{DoxyNote}
+\Hypertarget{interface_8h_af20a88180db1113be1e89266917d148b}\index{interface.h@{interface.h}!HAL\_ADC\_ConvCpltCallback@{HAL\_ADC\_ConvCpltCallback}}
+\index{HAL\_ADC\_ConvCpltCallback@{HAL\_ADC\_ConvCpltCallback}!interface.h@{interface.h}}
+\doxysubsubsection{\texorpdfstring{HAL\_ADC\_ConvCpltCallback()}{HAL\_ADC\_ConvCpltCallback()}}
+{\footnotesize\ttfamily \label{interface_8h_af20a88180db1113be1e89266917d148b} 
+void HAL\+\_\+\+ADC\+\_\+\+Conv\+Cplt\+Callback (\begin{DoxyParamCaption}\item[{ADC\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}}]{hadc}{}\end{DoxyParamCaption})}
+
+
+
+Callback function for the ADC conversion. 
+
+This function is called when the ADC conversion is complete. It performs the following actions\+:
+
+
+\begin{DoxyItemize}
+\item Calculates the smooth values for all channels of the ADC.
+\item Computes the average values for display and comparison operations.
+\begin{DoxyItemize}
+\item These average values are used for displaying on the screen and for the sorting algorithm\textquotesingle{}s comparison operations.
+\end{DoxyItemize}
+\item Initializes the character array that will be shown on the display.
+\end{DoxyItemize}
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em hadc} & Pointer to the ADC handle structure. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{interface_8h_a0cd91fd3a9608559c2a87a8ba6cba55f}\index{interface.h@{interface.h}!HAL\_GPIO\_EXTI\_Callback@{HAL\_GPIO\_EXTI\_Callback}}
+\index{HAL\_GPIO\_EXTI\_Callback@{HAL\_GPIO\_EXTI\_Callback}!interface.h@{interface.h}}
+\doxysubsubsection{\texorpdfstring{HAL\_GPIO\_EXTI\_Callback()}{HAL\_GPIO\_EXTI\_Callback()}}
+{\footnotesize\ttfamily \label{interface_8h_a0cd91fd3a9608559c2a87a8ba6cba55f} 
+void HAL\+\_\+\+GPIO\+\_\+\+EXTI\+\_\+\+Callback (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{GPIO\+\_\+\+Pin}{}\end{DoxyParamCaption})}
+
+
+
+Callback function that responds to encoder signals. 
+
+This function handles encoder signals by adjusting the encoder count and cursor position on the display. It also debounces the encoder switch using Timer5 and a debounce flag.
+
+
+\begin{DoxyItemize}
+\item If A is High and B is High\+:
+\begin{DoxyItemize}
+\item Decrement the encoder count and increment the cursor position on the display.
+\end{DoxyItemize}
+\item If A is High and B is Low\+:
+\begin{DoxyItemize}
+\item Increment the encoder count and decrement the cursor position on the display.
+\end{DoxyItemize}
+\item If the switch is pushed\+:
+\begin{DoxyItemize}
+\item Select the file and debounce the encoder switch using Timer5 and the debounce flag.
+\end{DoxyItemize}
+\end{DoxyItemize}
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em GPIO\+\_\+pin} & The GPIO pin signals from the MCU related to the encoder and switch. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{interface_8h_a8a3b0ad512a6e6c6157440b68d395eac}\index{interface.h@{interface.h}!HAL\_TIM\_PeriodElapsedCallback@{HAL\_TIM\_PeriodElapsedCallback}}
+\index{HAL\_TIM\_PeriodElapsedCallback@{HAL\_TIM\_PeriodElapsedCallback}!interface.h@{interface.h}}
+\doxysubsubsection{\texorpdfstring{HAL\_TIM\_PeriodElapsedCallback()}{HAL\_TIM\_PeriodElapsedCallback()}}
+{\footnotesize\ttfamily \label{interface_8h_a8a3b0ad512a6e6c6157440b68d395eac} 
+void HAL\+\_\+\+TIM\+\_\+\+Period\+Elapsed\+Callback (\begin{DoxyParamCaption}\item[{TIM\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}}]{htim}{}\end{DoxyParamCaption})}
+
+
+
+Callback function triggered when a timer expires. 
+
+This function handles timer expirations by performing the following actions\+:
+
+For Timer5 (tim5)\+:
+\begin{DoxyItemize}
+\item Resets the debounce flag after Timer5 has elapsed.
+\item Stops Timer5.
+\end{DoxyItemize}
+
+For Timer3 (tim3)\+:
+\begin{DoxyItemize}
+\item Sets flags to indicate DMA completion and screen update.
+\item Sets a new timer for the next refresh interval.
+\end{DoxyItemize}
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em htim} & Pointer to the TIM\+\_\+\+Handle\+Type\+Def structure for the current timer. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{interface_8h_a0a90e886ffd55777b46a49d913a49a6c}\index{interface.h@{interface.h}!listFiles@{listFiles}}
+\index{listFiles@{listFiles}!interface.h@{interface.h}}
+\doxysubsubsection{\texorpdfstring{listFiles()}{listFiles()}}
+{\footnotesize\ttfamily \label{interface_8h_a0a90e886ffd55777b46a49d913a49a6c} 
+void list\+Files (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{path}{}\end{DoxyParamCaption})}
+
+
+
+Lists all filenames with a .wav extension from the specified directory on the SD card. 
+
+This function opens the directory specified by the {\ttfamily path} parameter, reads through its contents, and stores filenames with a {\ttfamily .wav} extension in the {\ttfamily file\+Names\+SDCard} array. It performs the following actions\+:
+
+
+\begin{DoxyItemize}
+\item Opens the directory at the specified path.
+\item Iterates through directory entries until reaching the maximum file count or encountering an end-\/of-\/directory condition.
+\item Checks if each entry is a file (not a directory) and if it has a {\ttfamily .wav} extension.
+\item Stores valid filenames in the {\ttfamily file\+Names\+SDCard} array.
+\item Closes the directory after reading all entries.
+\end{DoxyItemize}
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em path} & The directory path on the SD card to search for files.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+This function assumes that {\ttfamily file\+Names\+SDCard} and {\ttfamily file\+Count} are global variables and that {\ttfamily MAX\+\_\+\+FILES} and {\ttfamily MAX\+\_\+\+FILENAME\+\_\+\+LENGTH} are defined constants. 
+\end{DoxyNote}
+\Hypertarget{interface_8h_a8ba638cf01ae1b79501208d3ed35c394}\index{interface.h@{interface.h}!resetShownFiles@{resetShownFiles}}
+\index{resetShownFiles@{resetShownFiles}!interface.h@{interface.h}}
+\doxysubsubsection{\texorpdfstring{resetShownFiles()}{resetShownFiles()}}
+{\footnotesize\ttfamily \label{interface_8h_a8ba638cf01ae1b79501208d3ed35c394} 
+void reset\+Shown\+Files (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Resets the {\ttfamily shown\+Files} array and updates the number of matched files. 
+
+This function sets all entries in the {\ttfamily shown\+Files} array to zero and resets the count of matched files.
+
+
+\begin{DoxyItemize}
+\item Sets the memory area of {\ttfamily fm.\+shown\+Files} to zero using {\ttfamily memset}.
+\item Resets the {\ttfamily num\+\_\+matched\+\_\+files} field to 0.
+\end{DoxyItemize}
+
+\begin{DoxyNote}{Note}
+This function is used to clear the list of files currently displayed on the screen. 
+\end{DoxyNote}
+\Hypertarget{interface_8h_a3ce89a950d7397271c896ef778373d7e}\index{interface.h@{interface.h}!screenInit@{screenInit}}
+\index{screenInit@{screenInit}!interface.h@{interface.h}}
+\doxysubsubsection{\texorpdfstring{screenInit()}{screenInit()}}
+{\footnotesize\ttfamily \label{interface_8h_a3ce89a950d7397271c896ef778373d7e} 
+void screen\+Init (\begin{DoxyParamCaption}\item[{char(\texorpdfstring{$\ast$}{*})}]{file\+Names}{\mbox{[}\+MAX\+\_\+\+FILENAME\+\_\+\+LENGTH\mbox{]}}\end{DoxyParamCaption})}
+
+
+
+Initializes the screen and sets up the file manager with random class percentages. 
+
+This function initializes the LCD-\/\+Display, fills it with black, and updates the screen. It also initializes the file manager with file names and assigns random class percentages for system tests.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em file\+Names} & Array of file names to be added to the file manager. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{interface_8h_af18dbb5e3f6d43a5504216e1f427cfdd}\index{interface.h@{interface.h}!sortFiles@{sortFiles}}
+\index{sortFiles@{sortFiles}!interface.h@{interface.h}}
+\doxysubsubsection{\texorpdfstring{sortFiles()}{sortFiles()}}
+{\footnotesize\ttfamily \label{interface_8h_af18dbb5e3f6d43a5504216e1f427cfdd} 
+void sort\+Files (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Sorts filenames for display based on fader settings. 
+
+This function sorts filenames by comparing file classes with the fader settings. It performs the following actions\+:
+
+
+\begin{DoxyItemize}
+\item Compares file classes against the fader settings with a threshold of 0.\+1.
+\item Compares the newly added filenames with the existing ones.
+\item Adds files from the existing file list to the {\ttfamily shown\+Files} in the file manager.
+\end{DoxyItemize}
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em void} & \\
+\hline
+\end{DoxyParams}
+\Hypertarget{interface_8h_a613aa0c99c5b2234f909f5f8b0cdc972}\index{interface.h@{interface.h}!updateScreen@{updateScreen}}
+\index{updateScreen@{updateScreen}!interface.h@{interface.h}}
+\doxysubsubsection{\texorpdfstring{updateScreen()}{updateScreen()}}
+{\footnotesize\ttfamily \label{interface_8h_a613aa0c99c5b2234f909f5f8b0cdc972} 
+void update\+Screen (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Updates the display with filenames, the currently selected file, and fader settings. 
+
+This function updates the display by performing the following tasks\+:
+
+
+\begin{DoxyItemize}
+\item Extracts filenames from the file manager\textquotesingle{}s {\ttfamily shown\+Files} array.
+\item Sets the current filename to be displayed based on the initialization state.
+\item Displays all filenames in the {\ttfamily shown\+Files} array.
+\item Display the currently selected filename.
+\item Shows the fader settings on the display.
+\end{DoxyItemize}
+
+\begin{DoxyNote}{Note}
+The function relies on global variables and external functions to interact with the display. 
+\end{DoxyNote}
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{interface_8h_a84c9ecdab5e9141199fe9bc145095407}\index{interface.h@{interface.h}!adcBuffer@{adcBuffer}}
+\index{adcBuffer@{adcBuffer}!interface.h@{interface.h}}
+\doxysubsubsection{\texorpdfstring{adcBuffer}{adcBuffer}}
+{\footnotesize\ttfamily \label{interface_8h_a84c9ecdab5e9141199fe9bc145095407} 
+uint32\+\_\+t adc\+Buffer\mbox{[}NUM\+\_\+\+CHANNELS\mbox{]}\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Buffer for ADC polling. 
+
+This buffer stores the values read from the ADC channels. Buffer for storing ADC channel values. \Hypertarget{interface_8h_a8ba3e8d7110b9284c65a67cce453ad9e}\index{interface.h@{interface.h}!adcDmaFlag@{adcDmaFlag}}
+\index{adcDmaFlag@{adcDmaFlag}!interface.h@{interface.h}}
+\doxysubsubsection{\texorpdfstring{adcDmaFlag}{adcDmaFlag}}
+{\footnotesize\ttfamily \label{interface_8h_a8ba3e8d7110b9284c65a67cce453ad9e} 
+bool adc\+Dma\+Flag\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Flags for managing time intervals and DMA operations. 
+
+These flags are used to manage the intervals at which DMA operations and display updates occur. Flag to manage the time interval for ADC DMA operations. \Hypertarget{interface_8h_a7c55b937e7340a9ce495107f5846891b}\index{interface.h@{interface.h}!fileNamesSDCard@{fileNamesSDCard}}
+\index{fileNamesSDCard@{fileNamesSDCard}!interface.h@{interface.h}}
+\doxysubsubsection{\texorpdfstring{fileNamesSDCard}{fileNamesSDCard}}
+{\footnotesize\ttfamily \label{interface_8h_a7c55b937e7340a9ce495107f5846891b} 
+char file\+Names\+SDCard\mbox{[}\mbox{\hyperlink{filemanager_8h_a2c5eecb22513a88c24ae5831a3265e54}{MAX\+\_\+\+FILES}}\mbox{]}\mbox{[}MAX\+\_\+\+FILENAME\+\_\+\+LENGTH\mbox{]}\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+List of filenames on the SD card with .wav extension. 
+
+This array stores the filenames of all .wav files found on the SD card. Array of filenames on the SD card with .wav extension. \Hypertarget{interface_8h_a48052dfd7ff5a05459e719f9a2fc027c}\index{interface.h@{interface.h}!fm@{fm}}
+\index{fm@{fm}!interface.h@{interface.h}}
+\doxysubsubsection{\texorpdfstring{fm}{fm}}
+{\footnotesize\ttfamily \label{interface_8h_a48052dfd7ff5a05459e719f9a2fc027c} 
+\mbox{\hyperlink{structFileManager}{File\+Manager}} fm\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+\doxylink{structFileManager}{File\+Manager} instances for managing and testing files. 
+
+These variables are used to manage files, including the main \doxylink{structFileManager}{File\+Manager} and a copy for testing purposes. Main \doxylink{structFileManager}{File\+Manager} instance. \Hypertarget{interface_8h_adb2adf9b3f315041beb78852fa37a984}\index{interface.h@{interface.h}!fno@{fno}}
+\index{fno@{fno}!interface.h@{interface.h}}
+\doxysubsubsection{\texorpdfstring{fno}{fno}}
+{\footnotesize\ttfamily \label{interface_8h_adb2adf9b3f315041beb78852fa37a984} 
+FILINFO fno\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+FATFS file system objects and handles. 
+
+These variables are used for managing file operations and directory access with the FATFS library. File\+Info handle for displaying filenames. 

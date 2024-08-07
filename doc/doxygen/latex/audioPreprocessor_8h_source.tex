@@ -1,0 +1,38 @@
+\doxysection{audio\+Preprocessor.\+h}
+\hypertarget{audioPreprocessor_8h_source}{}\label{audioPreprocessor_8h_source}\index{f401\_sd\_card\_audio\_codec\_test/Core/Inc/audioPreprocessor.h@{f401\_sd\_card\_audio\_codec\_test/Core/Inc/audioPreprocessor.h}}
+\mbox{\hyperlink{audioPreprocessor_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#ifndef\ RESAMPLE\_H}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#define\ RESAMPLE\_H}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <stdint.h>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}arm\_math.h"{}}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}fatfs.h"{}}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{lowpass__16kFilter_8h}{lowpass\_16kFilter.h}}"{}}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{wavPlayer_8h}{wavPlayer.h}}"{}}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{comment}{//\ Constants}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#define\ DECIMATION\_FACTOR\_ROUNDED\ 3\ }\textcolor{comment}{//\ Rounded\ up\ from\ 44.1kHz\ /\ 16kHz\ =\ 2.75625}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#define\ NUM\_CHANNELS\ 2}}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#define\ NUM\_SAMPLES\_CHUNK\_OUT\ 1024}}
+\DoxyCodeLine{00029\ \textcolor{preprocessor}{\#define\ NUM\_SAMPLES\_CHUNK\_IN\ ((NUM\_SAMPLES\_CHUNK\_OUT\ *\ DECIMATION\_FACTOR\_ROUNDED\ *\ NUM\_CHANNELS\ +\ 1)\ \&\ \string~1)}}
+\DoxyCodeLine{00033\ \textcolor{preprocessor}{\#define\ RESAMPLE\_CHUNK\_IN\_SIZE\ (NUM\_SAMPLES\_CHUNK\_IN\ *\ sizeof(int16\_t))}}
+\DoxyCodeLine{00037\ \textcolor{preprocessor}{\#define\ RESAMPLE\_CHUNK\_OUT\_SIZE\ (NUM\_SAMPLES\_CHUNK\_OUT\ *\ sizeof(int16\_t))}}
+\DoxyCodeLine{00041\ \textcolor{preprocessor}{\#define\ FRAME\_SIZE\ 1024}}
+\DoxyCodeLine{00045\ \textcolor{preprocessor}{\#define\ HOP\_SIZE\ 512}}
+\DoxyCodeLine{00049\ \textcolor{preprocessor}{\#define\ STEP\_SIZE\ (FRAME\_SIZE\ -\/\ HOP\_SIZE)}}
+\DoxyCodeLine{00050\ \textcolor{comment}{//\ External\ filter\ coefficients\ (defined\ in\ your\ filter\ file)}}
+\DoxyCodeLine{00051\ \textcolor{keyword}{extern}\ float32\_t\ \mbox{\hyperlink{audioPreprocessor_8h_a9a727b2195b77000797d3ab933bc7630}{filter\_taps}}[\mbox{\hyperlink{lowpass__16kFilter_8h_a7579d94e0a80fb9d376ea6c7897f73b0}{NUM\_TAPS}}];}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00053\ \textcolor{comment}{//\ Function\ declarations}}
+\DoxyCodeLine{00054\ arm\_status\ \mbox{\hyperlink{audioPreprocessor_8h_a1b4ad63e84db7952f30bf4e0c7d31dfd}{initFilter}}();}
+\DoxyCodeLine{00055\ uint16\_t\ \mbox{\hyperlink{audioPreprocessor_8h_a4f55768903813eb99fb6375c0cbe0bf2}{resampleFile}}(FIL\ *inFil,\ FIL\ *outFil,\ \mbox{\hyperlink{structwav__header__t}{wav\_header\_t}}\ *waveHeaderInput,\ \mbox{\hyperlink{structwav__header__t}{wav\_header\_t}}\ *waveHeaderResampled);}
+\DoxyCodeLine{00056\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{audioPreprocessor_8h_a0a0e70bc477aae30a8eb09466fe12505}{downsample\_Block}}(int16\_t\ *src,\ int16\_t\ *dest);}
+\DoxyCodeLine{00057\ uint16\_t\ \mbox{\hyperlink{audioPreprocessor_8h_abb523204efdd7bc2de76b58e69823675}{get\_number\_subsamples}}(FIL\ *\mbox{\hyperlink{f401__display__encoder__fader__test_2Core_2Src_2main_8c_a296b3c88b34a2294d0bd990ac963543b}{file}});}
+\DoxyCodeLine{00058\ uint32\_t\ \mbox{\hyperlink{audioPreprocessor_8h_aa6af641895199b92a55c307fe0dc9cea}{downsample\_to\_1024\_samples}}(FIL\ *\mbox{\hyperlink{f401__display__encoder__fader__test_2Core_2Src_2main_8c_a296b3c88b34a2294d0bd990ac963543b}{file}},\ int16\_t\ outChunk[\mbox{\hyperlink{audioPreprocessor_8h_ad94430c7598dcc3e9342f18554006ec9}{NUM\_SAMPLES\_CHUNK\_OUT}}]);}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00060\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ RESAMPLE\_H}}
+
+\end{DoxyCode}

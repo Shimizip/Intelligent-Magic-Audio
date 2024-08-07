@@ -1,3 +1,8 @@
+/**
+ * @file audio.h
+ * @brief Header file for audio playback and processing functions.
+ * 
+ */
 #ifndef INC_AUDIO_H_
 #define INC_AUDIO_H_
 
@@ -12,8 +17,19 @@
 #define M_PI 3.14159265358979323846
 #endif
 
+/**
+ * @brief Size of the audio buffer.
+ */
 #define BUFFER_SIZE 256
-#define HALF_BUFFER_SIZE BUFFER_SIZE/2
+
+/**
+ * @brief Size of half of the audio buffer.
+ */
+#define HALF_BUFFER_SIZE (BUFFER_SIZE / 2)
+
+/**
+ * @brief Size of the input buffer for reading from the file.
+ */
 #define BUFFER_SIZE_INPUT 4096
 
 extern I2S_HandleTypeDef hi2s2;

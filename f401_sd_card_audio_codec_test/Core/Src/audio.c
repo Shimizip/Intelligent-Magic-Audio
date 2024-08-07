@@ -1,3 +1,12 @@
+/**
+ * @file audio.c
+ * @brief Audio playback and processing functions.
+ * 
+ * Implements functions for audio playback using DMA and I2S, including sine wave 
+ * generation, buffer management, and pitch adjustment. 
+ * Also provides a precomputed sine wave table for testing the Codec. 
+ */
+
 #include "audio.h"
 
 bool dma_dataReady = false;

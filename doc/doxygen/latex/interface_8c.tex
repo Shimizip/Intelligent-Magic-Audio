@@ -1,0 +1,328 @@
+\doxysection{f401\+\_\+display\+\_\+encoder\+\_\+fader\+\_\+test/\+Core/\+Src/interface.c File Reference}
+\hypertarget{interface_8c}{}\label{interface_8c}\index{f401\_display\_encoder\_fader\_test/Core/Src/interface.c@{f401\_display\_encoder\_fader\_test/Core/Src/interface.c}}
+
+
+\+: Interface functions for handling user inputs, file management, and display updates  
+
+
+{\ttfamily \#include "{}interface.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{interface_8c_a0cd91fd3a9608559c2a87a8ba6cba55f}{HAL\+\_\+\+GPIO\+\_\+\+EXTI\+\_\+\+Callback}} (uint16\+\_\+t GPIO\+\_\+\+Pin)
+\begin{DoxyCompactList}\small\item\em Callback function that responds to encoder signals. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{interface_8c_a8a3b0ad512a6e6c6157440b68d395eac}{HAL\+\_\+\+TIM\+\_\+\+Period\+Elapsed\+Callback}} (TIM\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}htim)
+\begin{DoxyCompactList}\small\item\em Callback function triggered when a timer expires. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{interface_8c_af20a88180db1113be1e89266917d148b}{HAL\+\_\+\+ADC\+\_\+\+Conv\+Cplt\+Callback}} (ADC\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}hadc)
+\begin{DoxyCompactList}\small\item\em Callback function for the ADC conversion. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{interface_8c_a3ce89a950d7397271c896ef778373d7e}{screen\+Init}} (char(\texorpdfstring{$\ast$}{*}file\+Names)\mbox{[}MAX\+\_\+\+FILENAME\+\_\+\+LENGTH\mbox{]})
+\begin{DoxyCompactList}\small\item\em Initializes the screen and sets up the file manager with random class percentages. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{interface_8c_af18dbb5e3f6d43a5504216e1f427cfdd}{sort\+Files}} (void)
+\begin{DoxyCompactList}\small\item\em Sorts filenames for display based on fader settings. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{interface_8c_a613aa0c99c5b2234f909f5f8b0cdc972}{update\+Screen}} (void)
+\begin{DoxyCompactList}\small\item\em Updates the display with filenames, the currently selected file, and fader settings. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{interface_8c_aa5a2a772fa51a752d6fbe6d902aa4bce}{compare\+ADCValues}} (void)
+\begin{DoxyCompactList}\small\item\em Checks if fader settings have changed and updates accordingly. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{interface_8c_a8ba638cf01ae1b79501208d3ed35c394}{reset\+Shown\+Files}} (void)
+\begin{DoxyCompactList}\small\item\em Resets the {\ttfamily shown\+Files} array and updates the number of matched files. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{interface_8c_a0a90e886ffd55777b46a49d913a49a6c}{list\+Files}} (const char \texorpdfstring{$\ast$}{*}path)
+\begin{DoxyCompactList}\small\item\em Lists all filenames with a .wav extension from the specified directory on the SD card. \end{DoxyCompactList}\item 
+\Hypertarget{interface_8c_aca22e5ccdba198907a9b2c14b1e93540}\label{interface_8c_aca22e5ccdba198907a9b2c14b1e93540} 
+void {\bfseries write\+File\+Manager\+On\+SD} (void)
+\item 
+\Hypertarget{interface_8c_a318a20be431d81388effc4f5c61549f1}\label{interface_8c_a318a20be431d81388effc4f5c61549f1} 
+void {\bfseries read\+File\+Manager\+From\+SD} (void)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+uint32\+\_\+t \mbox{\hyperlink{interface_8c_af1789ca511292094a59434d03382f90d}{rotary\+\_\+enc\+\_\+count}} = 0
+\begin{DoxyCompactList}\small\item\em Global variables for debugging, debouncing, initialization, and managing fader settings. \end{DoxyCompactList}\item 
+\Hypertarget{interface_8c_a4109f6ff3a190165f4c94b0c205faed2}\label{interface_8c_a4109f6ff3a190165f4c94b0c205faed2} 
+bool {\bfseries switch\+\_\+push\+\_\+button} = false
+\begin{DoxyCompactList}\small\item\em Boolean to verify if the encoder switch is pushed. \end{DoxyCompactList}\item 
+\Hypertarget{interface_8c_a0a9390b5d6ac67f4b941d32c83932e51}\label{interface_8c_a0a9390b5d6ac67f4b941d32c83932e51} 
+bool {\bfseries debounce} = false
+\begin{DoxyCompactList}\small\item\em Flag to debounce the encoder. \end{DoxyCompactList}\item 
+\Hypertarget{interface_8c_a50300ba6e38ec30121edcc07ebac42c6}\label{interface_8c_a50300ba6e38ec30121edcc07ebac42c6} 
+bool {\bfseries init} = false
+\begin{DoxyCompactList}\small\item\em Flag to check if initialization is done. \end{DoxyCompactList}\item 
+\Hypertarget{interface_8c_a3303243505ff4e4d3f9339ec7dee7544}\label{interface_8c_a3303243505ff4e4d3f9339ec7dee7544} 
+bool {\bfseries sort\+Files\+Flag} = false
+\begin{DoxyCompactList}\small\item\em Flag to regroup the shown file names. \end{DoxyCompactList}\item 
+\Hypertarget{interface_8c_ae1d905c6ac1a0c9b96dca16153917334}\label{interface_8c_ae1d905c6ac1a0c9b96dca16153917334} 
+uint16\+\_\+t {\bfseries cnt}
+\begin{DoxyCompactList}\small\item\em Counter to smooth the fader values. \end{DoxyCompactList}\item 
+\Hypertarget{interface_8c_ae09c5138c25e39489f0bdeae5782b0eb}\label{interface_8c_ae09c5138c25e39489f0bdeae5782b0eb} 
+uint32\+\_\+t {\bfseries smooth\+Value} \mbox{[}NUM\+\_\+\+CHANNELS\mbox{]} = \{0\}
+\begin{DoxyCompactList}\small\item\em Array to store smoothed values of the ADC buffer outputs. \end{DoxyCompactList}\item 
+\Hypertarget{interface_8c_a4ba1927c2882e3830a9a92af60321b98}\label{interface_8c_a4ba1927c2882e3830a9a92af60321b98} 
+uint8\+\_\+t {\bfseries past\+Class\+Percent\+ADC} \mbox{[}NUM\+\_\+\+CHANNELS\mbox{]} = \{0\}
+\begin{DoxyCompactList}\small\item\em Array to cache the previous fader settings. \end{DoxyCompactList}\item 
+\Hypertarget{interface_8c_ad2c131f9ba93a951665ee03601a52bd0}\label{interface_8c_ad2c131f9ba93a951665ee03601a52bd0} 
+uint8\+\_\+t {\bfseries current\+Class\+Percent\+ADC} \mbox{[}NUM\+\_\+\+CHANNELS\mbox{]} = \{0\}
+\begin{DoxyCompactList}\small\item\em Array to store the current fader settings in percentage. \end{DoxyCompactList}\item 
+\Hypertarget{interface_8c_a73a26b30e455654dc4ff2d59edb9f5d8}\label{interface_8c_a73a26b30e455654dc4ff2d59edb9f5d8} 
+char {\bfseries fader\+Prozent} \mbox{[}2\mbox{]}\mbox{[}50\mbox{]}
+\begin{DoxyCompactList}\small\item\em Array to hold fader percentage strings for display on the LCD. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\+: Interface functions for handling user inputs, file management, and display updates 
+
+\begin{DoxyAttention}{Attention}
+
+\end{DoxyAttention}
+This file contains functions for handling user inputs through encoders and switches, updating the display, and managing file operations. Key functionalities include\+:
+\begin{DoxyItemize}
+\item Handling encoder signals and debouncing.
+\item Updating screen display based on file names and fader settings.
+\item Sorting files based on fader values.
+\item Managing file lists and file selection.
+\item Interacting with the ADC for smooth value calculations.
+\end{DoxyItemize}
+
+This file is essential for the interaction between the user interface and the file management system, ensuring that the display is updated with relevant information and user inputs are processed correctly. 
+
+\doxysubsection{Function Documentation}
+\Hypertarget{interface_8c_aa5a2a772fa51a752d6fbe6d902aa4bce}\index{interface.c@{interface.c}!compareADCValues@{compareADCValues}}
+\index{compareADCValues@{compareADCValues}!interface.c@{interface.c}}
+\doxysubsubsection{\texorpdfstring{compareADCValues()}{compareADCValues()}}
+{\footnotesize\ttfamily \label{interface_8c_aa5a2a772fa51a752d6fbe6d902aa4bce} 
+void compare\+ADCValues (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Checks if fader settings have changed and updates accordingly. 
+
+This function compares the current fader settings with previous values to determine if any changes have occurred. If changes are detected, it performs the following actions\+:
+
+
+\begin{DoxyItemize}
+\item Compares the current and past fader settings.
+\item Updates the past fader settings with the current values if a change is detected.
+\item Sets a flag to indicate that the file list needs to be sorted.
+\item Saves the current filename and clears the {\ttfamily shown\+Files} array if a change is detected.
+\end{DoxyItemize}
+
+\begin{DoxyNote}{Note}
+This function uses global variables for fader settings and file management. 
+\end{DoxyNote}
+\Hypertarget{interface_8c_af20a88180db1113be1e89266917d148b}\index{interface.c@{interface.c}!HAL\_ADC\_ConvCpltCallback@{HAL\_ADC\_ConvCpltCallback}}
+\index{HAL\_ADC\_ConvCpltCallback@{HAL\_ADC\_ConvCpltCallback}!interface.c@{interface.c}}
+\doxysubsubsection{\texorpdfstring{HAL\_ADC\_ConvCpltCallback()}{HAL\_ADC\_ConvCpltCallback()}}
+{\footnotesize\ttfamily \label{interface_8c_af20a88180db1113be1e89266917d148b} 
+void HAL\+\_\+\+ADC\+\_\+\+Conv\+Cplt\+Callback (\begin{DoxyParamCaption}\item[{ADC\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}}]{hadc}{}\end{DoxyParamCaption})}
+
+
+
+Callback function for the ADC conversion. 
+
+This function is called when the ADC conversion is complete. It performs the following actions\+:
+
+
+\begin{DoxyItemize}
+\item Calculates the smooth values for all channels of the ADC.
+\item Computes the average values for display and comparison operations.
+\begin{DoxyItemize}
+\item These average values are used for displaying on the screen and for the sorting algorithm\textquotesingle{}s comparison operations.
+\end{DoxyItemize}
+\item Initializes the character array that will be shown on the display.
+\end{DoxyItemize}
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em hadc} & Pointer to the ADC handle structure. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{interface_8c_a0cd91fd3a9608559c2a87a8ba6cba55f}\index{interface.c@{interface.c}!HAL\_GPIO\_EXTI\_Callback@{HAL\_GPIO\_EXTI\_Callback}}
+\index{HAL\_GPIO\_EXTI\_Callback@{HAL\_GPIO\_EXTI\_Callback}!interface.c@{interface.c}}
+\doxysubsubsection{\texorpdfstring{HAL\_GPIO\_EXTI\_Callback()}{HAL\_GPIO\_EXTI\_Callback()}}
+{\footnotesize\ttfamily \label{interface_8c_a0cd91fd3a9608559c2a87a8ba6cba55f} 
+void HAL\+\_\+\+GPIO\+\_\+\+EXTI\+\_\+\+Callback (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{GPIO\+\_\+\+Pin}{}\end{DoxyParamCaption})}
+
+
+
+Callback function that responds to encoder signals. 
+
+This function handles encoder signals by adjusting the encoder count and cursor position on the display. It also debounces the encoder switch using Timer5 and a debounce flag.
+
+
+\begin{DoxyItemize}
+\item If A is High and B is High\+:
+\begin{DoxyItemize}
+\item Decrement the encoder count and increment the cursor position on the display.
+\end{DoxyItemize}
+\item If A is High and B is Low\+:
+\begin{DoxyItemize}
+\item Increment the encoder count and decrement the cursor position on the display.
+\end{DoxyItemize}
+\item If the switch is pushed\+:
+\begin{DoxyItemize}
+\item Select the file and debounce the encoder switch using Timer5 and the debounce flag.
+\end{DoxyItemize}
+\end{DoxyItemize}
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em GPIO\+\_\+pin} & The GPIO pin signals from the MCU related to the encoder and switch. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{interface_8c_a8a3b0ad512a6e6c6157440b68d395eac}\index{interface.c@{interface.c}!HAL\_TIM\_PeriodElapsedCallback@{HAL\_TIM\_PeriodElapsedCallback}}
+\index{HAL\_TIM\_PeriodElapsedCallback@{HAL\_TIM\_PeriodElapsedCallback}!interface.c@{interface.c}}
+\doxysubsubsection{\texorpdfstring{HAL\_TIM\_PeriodElapsedCallback()}{HAL\_TIM\_PeriodElapsedCallback()}}
+{\footnotesize\ttfamily \label{interface_8c_a8a3b0ad512a6e6c6157440b68d395eac} 
+void HAL\+\_\+\+TIM\+\_\+\+Period\+Elapsed\+Callback (\begin{DoxyParamCaption}\item[{TIM\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}}]{htim}{}\end{DoxyParamCaption})}
+
+
+
+Callback function triggered when a timer expires. 
+
+This function handles timer expirations by performing the following actions\+:
+
+For Timer5 (tim5)\+:
+\begin{DoxyItemize}
+\item Resets the debounce flag after Timer5 has elapsed.
+\item Stops Timer5.
+\end{DoxyItemize}
+
+For Timer3 (tim3)\+:
+\begin{DoxyItemize}
+\item Sets flags to indicate DMA completion and screen update.
+\item Sets a new timer for the next refresh interval.
+\end{DoxyItemize}
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em htim} & Pointer to the TIM\+\_\+\+Handle\+Type\+Def structure for the current timer. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{interface_8c_a0a90e886ffd55777b46a49d913a49a6c}\index{interface.c@{interface.c}!listFiles@{listFiles}}
+\index{listFiles@{listFiles}!interface.c@{interface.c}}
+\doxysubsubsection{\texorpdfstring{listFiles()}{listFiles()}}
+{\footnotesize\ttfamily \label{interface_8c_a0a90e886ffd55777b46a49d913a49a6c} 
+void list\+Files (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{path}{}\end{DoxyParamCaption})}
+
+
+
+Lists all filenames with a .wav extension from the specified directory on the SD card. 
+
+This function opens the directory specified by the {\ttfamily path} parameter, reads through its contents, and stores filenames with a {\ttfamily .wav} extension in the {\ttfamily file\+Names\+SDCard} array. It performs the following actions\+:
+
+
+\begin{DoxyItemize}
+\item Opens the directory at the specified path.
+\item Iterates through directory entries until reaching the maximum file count or encountering an end-\/of-\/directory condition.
+\item Checks if each entry is a file (not a directory) and if it has a {\ttfamily .wav} extension.
+\item Stores valid filenames in the {\ttfamily file\+Names\+SDCard} array.
+\item Closes the directory after reading all entries.
+\end{DoxyItemize}
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em path} & The directory path on the SD card to search for files.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+This function assumes that {\ttfamily file\+Names\+SDCard} and {\ttfamily file\+Count} are global variables and that {\ttfamily MAX\+\_\+\+FILES} and {\ttfamily MAX\+\_\+\+FILENAME\+\_\+\+LENGTH} are defined constants. 
+\end{DoxyNote}
+\Hypertarget{interface_8c_a8ba638cf01ae1b79501208d3ed35c394}\index{interface.c@{interface.c}!resetShownFiles@{resetShownFiles}}
+\index{resetShownFiles@{resetShownFiles}!interface.c@{interface.c}}
+\doxysubsubsection{\texorpdfstring{resetShownFiles()}{resetShownFiles()}}
+{\footnotesize\ttfamily \label{interface_8c_a8ba638cf01ae1b79501208d3ed35c394} 
+void reset\+Shown\+Files (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Resets the {\ttfamily shown\+Files} array and updates the number of matched files. 
+
+This function sets all entries in the {\ttfamily shown\+Files} array to zero and resets the count of matched files.
+
+
+\begin{DoxyItemize}
+\item Sets the memory area of {\ttfamily fm.\+shown\+Files} to zero using {\ttfamily memset}.
+\item Resets the {\ttfamily num\+\_\+matched\+\_\+files} field to 0.
+\end{DoxyItemize}
+
+\begin{DoxyNote}{Note}
+This function is used to clear the list of files currently displayed on the screen. 
+\end{DoxyNote}
+\Hypertarget{interface_8c_a3ce89a950d7397271c896ef778373d7e}\index{interface.c@{interface.c}!screenInit@{screenInit}}
+\index{screenInit@{screenInit}!interface.c@{interface.c}}
+\doxysubsubsection{\texorpdfstring{screenInit()}{screenInit()}}
+{\footnotesize\ttfamily \label{interface_8c_a3ce89a950d7397271c896ef778373d7e} 
+void screen\+Init (\begin{DoxyParamCaption}\item[{char(\texorpdfstring{$\ast$}{*})}]{file\+Names}{\mbox{[}\+MAX\+\_\+\+FILENAME\+\_\+\+LENGTH\mbox{]}}\end{DoxyParamCaption})}
+
+
+
+Initializes the screen and sets up the file manager with random class percentages. 
+
+This function initializes the LCD-\/\+Display, fills it with black, and updates the screen. It also initializes the file manager with file names and assigns random class percentages for system tests.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em file\+Names} & Array of file names to be added to the file manager. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{interface_8c_af18dbb5e3f6d43a5504216e1f427cfdd}\index{interface.c@{interface.c}!sortFiles@{sortFiles}}
+\index{sortFiles@{sortFiles}!interface.c@{interface.c}}
+\doxysubsubsection{\texorpdfstring{sortFiles()}{sortFiles()}}
+{\footnotesize\ttfamily \label{interface_8c_af18dbb5e3f6d43a5504216e1f427cfdd} 
+void sort\+Files (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Sorts filenames for display based on fader settings. 
+
+This function sorts filenames by comparing file classes with the fader settings. It performs the following actions\+:
+
+
+\begin{DoxyItemize}
+\item Compares file classes against the fader settings with a threshold of 0.\+1.
+\item Compares the newly added filenames with the existing ones.
+\item Adds files from the existing file list to the {\ttfamily shown\+Files} in the file manager.
+\end{DoxyItemize}
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em void} & \\
+\hline
+\end{DoxyParams}
+\Hypertarget{interface_8c_a613aa0c99c5b2234f909f5f8b0cdc972}\index{interface.c@{interface.c}!updateScreen@{updateScreen}}
+\index{updateScreen@{updateScreen}!interface.c@{interface.c}}
+\doxysubsubsection{\texorpdfstring{updateScreen()}{updateScreen()}}
+{\footnotesize\ttfamily \label{interface_8c_a613aa0c99c5b2234f909f5f8b0cdc972} 
+void update\+Screen (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Updates the display with filenames, the currently selected file, and fader settings. 
+
+This function updates the display by performing the following tasks\+:
+
+
+\begin{DoxyItemize}
+\item Extracts filenames from the file manager\textquotesingle{}s {\ttfamily shown\+Files} array.
+\item Sets the current filename to be displayed based on the initialization state.
+\item Displays all filenames in the {\ttfamily shown\+Files} array.
+\item Display the currently selected filename.
+\item Shows the fader settings on the display.
+\end{DoxyItemize}
+
+\begin{DoxyNote}{Note}
+The function relies on global variables and external functions to interact with the display. 
+\end{DoxyNote}
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{interface_8c_af1789ca511292094a59434d03382f90d}\index{interface.c@{interface.c}!rotary\_enc\_count@{rotary\_enc\_count}}
+\index{rotary\_enc\_count@{rotary\_enc\_count}!interface.c@{interface.c}}
+\doxysubsubsection{\texorpdfstring{rotary\_enc\_count}{rotary\_enc\_count}}
+{\footnotesize\ttfamily \label{interface_8c_af1789ca511292094a59434d03382f90d} 
+uint32\+\_\+t rotary\+\_\+enc\+\_\+count = 0}
+
+
+
+Global variables for debugging, debouncing, initialization, and managing fader settings. 
+
+These variables are used for various purposes throughout the program, including debugging, debouncing encoder inputs, initializing states, sorting file names, smoothing ADC values, and displaying fader settings on the LCD. Count variable for debugging purposes. 
