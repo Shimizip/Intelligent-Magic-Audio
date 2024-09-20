@@ -1,9 +1,0 @@
-EESchema-DOCLIB  Version 2.0
-#
-$CMP 830055951
-D Crystals WE-XTAL 16.0MHz 30ppm 3.2 x 2.5mm
-K
-F https://www.mouser.co.uk/datasheet/2/445/830055951-2005581.pdf
-$ENDCMP
-#
-#End Doc Library
